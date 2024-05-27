@@ -754,7 +754,7 @@ async function updateSidebarCards(partyID, sessionData, pokemonData) {
     let css_class_condensed = '';
 
     /* Change the sidebar view to a more condensed version when more than 8 pokemon are fighting. (Olny some trianer battles) */
-    if ((enemyPartySize + allyPartySize) > maxPokemonForDetailedView) {
+    if ((enemyPartySize + allyPartySize) > maxPokemonForDetailedView && partyID == 'allies') {
         css_class_condensed = 'condensed';
     }
 

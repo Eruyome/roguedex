@@ -1,3 +1,19 @@
+/**
+ * @typedef {Object} Setting
+ * @property {string} text - The description of the setting.
+ * @property {string[]} options - The available options for the setting.
+ * @property {string} localStorage - The key used for storing the setting in local storage.
+ * @property {string} type - The data type of the setting's value.
+ * @property {string} [appendText] - Optional text to append to the option value when displayed.
+ */
+
+/**
+ * A template for settings configuration. Each key represents a setting with its
+ * description, options, and other relevant information.
+ * 
+ * @type {Object<number, Setting>}
+ */
+
 const settingsTemplate = {
     0: {
         text: "Use Minified",

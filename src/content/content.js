@@ -1,3 +1,11 @@
+/**
+ * @fileoverview This content script is part of a browser extension. It includes functions for interacting with the UI,
+ *      handling data-ui-mode changes, observing DOM elements, and adjusting UI elements based on canvas resizing.
+ *      Specifically it creates and handles overlay cards with enemy and ally pokemon information, and optionally
+ *      a sidebar and bottompanel the does the same and more.
+ * @file 'src/content/content.js'
+ */
+
 /* Ideally only bundle/import what is used. 
  * lit-html: https://lit.dev/
  * Template rendering.
@@ -64,6 +72,10 @@ scriptInjector();
 updateExtensionStatus();
 listenForDataUiModeChange();
 
+/**
+ * Injects a script into the current webpage.
+ * @function scriptInjector
+ */
 function scriptInjector() {
     const scriptElem = document.createElement("script");
     scriptElem.src = chrome.runtime.getURL("/content/utils.js");
@@ -72,6 +84,11 @@ function scriptInjector() {
     scriptElem.addEventListener("load", initUtilities);
 }
 
+/**
+ * Initializes utility functions after the injected script is loaded.
+ * @function initUtilities
+ * @memberof scriptInjector
+ */
 function initUtilities() {
     // Initialize and set up UtilsClass
     window.Utils = new UtilsClass();
@@ -88,6 +105,12 @@ function initUtilities() {
     });
 }
 
+/**
+ * Updates the status display of the extension.
+ * @function updateExtensionStatus
+ * @param {Object} properties - The properties to update the status.
+ * @memberof window
+ */
 function updateExtensionStatus(properties) {
     let wrapper = document.getElementById('extension-status');
     if (!wrapper) {  
@@ -103,6 +126,11 @@ function updateExtensionStatus(properties) {
     render(extensionStatusHTML, wrapper)
 }
 
+/**
+ * Enables dragging functionality for pokemon cards.
+ * @function enableDragElement
+ * @param {HTMLElement} elmnt - The element to enable dragging for.
+ */
 function enableDragElement(elmnt) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
@@ -136,6 +164,13 @@ function enableDragElement(elmnt) {
     }
 }
 
+/**
+ * Initializes Pokemon card wrapper elements on the webpage.
+ * @function initPokemonCardWrappers
+ * @param {boolean} [sidebarState=false] - The state of the sidebar.
+ * @param {string} [id1="enemies"] - The ID of the first wrapper.
+ * @param {string} [id2="allies"] - The ID of the second wrapper.
+ */
 async function initPokemonCardWrappers(sidebarState = false, id1 = "enemies", id2 = "allies") {
     if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
         return;
@@ -176,6 +211,12 @@ async function initPokemonCardWrappers(sidebarState = false, id1 = "enemies", id
     });
 }
 
+/**
+ * Deletes Pokemon card wrapper elements from the webpage.
+ * @function deletePokemonCardWrappers
+ * @param {string} [id1="enemies"] - The ID of the first wrapper.
+ * @param {string} [id2="allies"] - The ID of the second wrapper.
+ */
 async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
     const enemiesWrapper = document.getElementById(id1);
     const alliesWrapper = document.getElementById(id2);
@@ -195,6 +236,11 @@ async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
     initStates.cardsInitialized = false;
 }
 
+/**
+ * Changes the opacity of pokemon cards.
+ * @function changeOpacity
+ * @param {Event} e - The event triggering the opacity change.
+ */
 function changeOpacity(e) {
     const { id } = e.target;
     const divId = id.split("-")[0];
@@ -209,6 +255,14 @@ function changeOpacity(e) {
     }
 }
 
+/**
+ * Changes the displayed page of Pokemon cards (cycles through pokemon in target party).
+ * @function changePokemonCardPage
+ * @async
+ * @param {Event} click - The click event triggering the page change.
+ * @param {string} partyId - The ID of the Pokemon party.
+ * @param {Object[]} pokemonData - Data of the Pokemon.
+ */
 async function changePokemonCardPage(click, partyId, pokemonData) {
     const { id } = click.target;
     const [divId, direction] = id.split("-"); // Destructuring for clarity
@@ -235,8 +289,16 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
     await createCardsDiv(partyId, pokemonData, uiDataGlobals.pages[divId]);
 }
 
-/* pokemon cards */
-
+/**
+ * Chooses the type of Pokemon card to create (normal/big or minified).
+ * @function chooseCardType
+ * @async
+ * @param {string} divId - The ID of the wrapper div.
+ * @param {Object} pokemon - The Pokemon data.
+ * @param {string} weather - The weather condition.
+ * @param {boolean} minified - Flag indicating if the card should be minified.
+ * @returns {Promise<import('Lit-HTML-Template')>} - The created Pokemon card template.
+ */
 async function chooseCardType(divId, pokemon, weather, minified) {
     if (minified) {
         return await createPokemonCardDivMinified(divId, pokemon, weather);
@@ -245,6 +307,15 @@ async function chooseCardType(divId, pokemon, weather, minified) {
     }
 }
 
+/**
+ * Creates a div containing Pokemon cards.
+ * @function createCardsDiv
+ * @async
+ * @param {string} divId - The ID of the wrapper div.
+ * @param {Object[]} pokemonData - Data of the Pokemon.
+ * @param {number} pokemonIndex - The index of the current Pokemon.
+ * @returns {Promise<HTMLElement>} - The created wrapper div.
+ */
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
     const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
@@ -270,6 +341,18 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     });
 }
 
+/**
+ * Updates the Poekmon Card element contents.
+ * @function updateCardWrapper
+ * @async
+ * @param {string} divId - The ID of the wrapper div.
+ * @param {string} top - The top position of the div.
+ * @param {string} left - The left position of the div.
+ * @param {string} right - The right position of the div.
+ * @param {string} opacity - The opacity of the div.
+ * @param {import('Lit-HTML-Template')} content - The content to render in the wrapper.
+ * @param {boolean} [showSidebar=false] - Flag indicating if the sidebar should be shown.
+ */
 async function updateCardWrapper(divId, top, left, right, opacity, content, showSidebar = false) {
     const existingWrapper = document.getElementById(divId);
     
@@ -285,18 +368,39 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
     }
 }
 
+/**
+ * Saves the position properties of a card element.
+ * @function saveCardWrapperPositions
+ * @param {string} divId - The ID of the wrapper div.
+ * @param {Object} properties - The position properties to save.
+ */
 function saveCardWrapperPositions(divId, properties) {
     Object.keys(properties).forEach(prop => {
         uiDataGlobals.wrapperDivPositions[divId][prop] = properties[prop];
     });
 }
 
+/**
+ * Sets properties for an HTML element.
+ * @function setElementProperties
+ * @param {HTMLElement} element - The HTML element to set properties for.
+ * @param {Object} properties - The properties to set.
+ */
 function setElementProperties(element, properties) {
     Object.keys(properties).forEach(prop => {
         element.style[prop] = properties[prop];
     });
 }
 
+/**
+ * Creates a minified Pokemon card template.
+ * @function createPokemonCardDivMinified
+ * @async
+ * @param {string} cardId - The ID of the card.
+ * @param {Object} pokemon - The Pokemon data.
+ * @param {string} weather - The weather condition.
+ * @returns {Promise<{html: import('Lit-HTML-Template')}>} - The created minified Pokemon card template.
+ */
 async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
@@ -304,27 +408,35 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexIvs);
 
     return {
-        html: window.lit.createPokemonCardDivMinified(cardId, pokemon, dexIvs, ivsGeneratedHTML, weather)
+        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather)
     };
 }
 
+/**
+ * Creates a full-size Pokemon card template.
+ * @function createPokemonCardDiv
+ * @async
+ * @param {string} cardId - The ID of the card.
+ * @param {Object} pokemon - The Pokemon data.
+ * @param {string} weather - The weather condition.
+ * @returns {Promise<{html: import('Lit-HTML-Template')}>} - The created full-size Pokemon card template.
+ */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
     const opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "10", "100");
     const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
-        html: window.lit.createPokemonCardDiv(cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather)
+        html: window.lit.createPokemonCardContent(cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather)
     };
 }
 
 /**
- * Creates the sidebar and bottom-panel elements.
- * Binds click controls to switch between showing IVs and movesets (optional: keyboard and gamepad). 
- * 
- * @param {Object} sessionData
+ * Creates the sidebar and bottom panel elements.
+ * Binds click controls to switch between showing IVs and movesets.
+ * @function createPanels
  */
-function createPanels(sessionData) {
-    const sidebarTemplate = window.lit.createSidebarTemplate(sessionData);
+function createPanels() {
+    const sidebarTemplate = window.lit.createSidebarTemplate();
     const bottomPanelTemplate = window.lit.createBottomPanelTemplate();
 
     render(sidebarTemplate, document.body, { renderBefore: document.body.firstChild });
@@ -342,10 +454,11 @@ function createPanels(sessionData) {
 
 /**
  * Updates the sidebar cards with the provided Pokémon data.
- * 
- * @param {Object} sessionData - The session data containing various modifiers.
+ * @function renderSidebarPartyTemplate
+ * @async
+ * @param {Object} sessionData - The session data.
  * @param {string} partyID - The ID of the party ('allies' or 'enemies').
- * @param {number} maxPokemonForDetailedView - The maximum number of Pokémon for detailed view.
+ * @param {number} [maxPokemonForDetailedView=8] - The maximum number of Pokémon for detailed view.
  */
 async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDetailedView = 8) {
     const savedData = window.Utils.LocalStorage.getPlayerData();
@@ -366,6 +479,11 @@ async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDet
     render(headerTemplate, headerElement);
 }
 
+/**
+ * Toggles between displaying IVs and movesets in the sidebar.
+ * @function sidebarSwitchBetweenIVsAndMoveset
+ * @async
+ */
 async function sidebarSwitchBetweenIVsAndMoveset() {
     const sidebarElement = document.getElementById('roguedex-sidebar');
 
@@ -378,10 +496,11 @@ async function sidebarSwitchBetweenIVsAndMoveset() {
 }
 
 /**
- * Updates the bottom panel content (weather, global modifiers, pokemon specific modifiers).
- * 
- * @param {Object} sessionData - The session data containing various modifiers.
- * @param {Object} pokemonData - The data for the Pokémon in the party.
+ * Updates the bottom panel content.
+ * @function updateBottomPanel
+ * @async
+ * @param {Object} sessionData - The session data.
+ * @param {Object} pokemonData - The Pokémon data.
  */
 async function updateBottomPanel(sessionData, pokemonData) {
     const partyID = pokemonData.partyId;
@@ -403,6 +522,11 @@ async function updateBottomPanel(sessionData, pokemonData) {
     }
 }
 
+/**
+ * Scales elements based on the window size.
+ * @function scaleElements
+ * @async
+ */
 async function scaleElements() {
     const partiesScaleFactor = await getScaleFactor('scaleFactor', 1);
     const scaleFactor = await calculateScaleFactor();
@@ -414,6 +538,11 @@ async function scaleElements() {
     scaleFont(alliesDiv, scaleFactor, partiesScaleFactor, 16);
 }
 
+/**
+ * Scales sidebar elements based on the window size.
+ * @function scaleSidebarElements
+ * @async
+ */
 async function scaleSidebarElements() {
     const scaleFactorMulti = await getScaleFactor('sidebarScaleFactor', 1);
     const scaleFactor = await calculateScaleFactor();
@@ -422,15 +551,37 @@ async function scaleSidebarElements() {
     scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);
 }
 
+/**
+ * Retrieves the scale factor from storage.
+ * @function getScaleFactor
+ * @async
+ * @param {string} storageKey - The key to retrieve from storage.
+ * @param {number} defaultValue - The default value if the key is not found in storage.
+ * @returns {Promise<number>} - The retrieved scale factor.
+ */
 async function getScaleFactor(storageKey, defaultValue) {
     const data = await browserApi.storage.sync.get(storageKey);
     return data[storageKey] || defaultValue;
 }
 
+/**
+ * Scales the font size of an element.
+ * @function scaleFont
+ * @param {HTMLElement} element - The element to scale the font size of.
+ * @param {number} scaleFactor - The scale factor.
+ * @param {number} scaleFactorMulti - The scale factor multiplier.
+ * @param {number} baseSize - The base font size.
+ */
 function scaleFont(element, scaleFactor, scaleFactorMulti, baseSize) {
     element.style.fontSize = `${baseSize * scaleFactor * scaleFactorMulti}px`;
 }
 
+/**
+ * Calculates the scale factor based on the window size.
+ * @function calculateScaleFactor
+ * @async
+ * @returns {Promise<number>} - The calculated scale factor.
+ */
 async function calculateScaleFactor() {
     const baseWidth = 1920; // Assume a base width of 1920 pixels
     const baseHeight = 1080; // Assume a base height of 1080 pixels
@@ -441,6 +592,12 @@ async function calculateScaleFactor() {
     return Math.min(scaleFactorWidth, scaleFactorHeight);
 }
 
+/**
+ * Toggles the sidebar visibility, shows/hides some other UI elements and changes the properties of others
+ * to make the UI work well with a displayed sidebar and bottompanel.
+ * @function toggleSidebar
+ * @async
+ */
 async function toggleSidebar() {
     const { showSidebar } = await browserApi.storage.sync.get('showSidebar');
     const sidebarElement = document.querySelector('#roguedex-sidebar');
@@ -474,6 +631,11 @@ async function toggleSidebar() {
     }
 }
 
+/**
+ * Changes the position of the sidebar (left, right of the game app).
+ * @function changeSidebarPosition
+ * @async
+ */
 async function changeSidebarPosition() {
     const { sidebarPosition } = await browserApi.storage.sync.get('sidebarPosition');
     const sidebarParentElement = document.body;
@@ -489,18 +651,37 @@ async function changeSidebarPosition() {
     bottomPanelElement.classList.add(`sidebar-${sidebarPosition}`);
 }
 
+/**
+ * Toggles the display of a sidebar party (enemies/allies).
+ * @function toggleSidebarPartyDisplay
+ * @async
+ * @param {string} partyID - The ID of the party ('enemies' or 'allies').
+ * @param {boolean} state - The desired display state.
+ */
 async function toggleSidebarPartyDisplay(partyID, state) {
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
     sidebarPartyElement.classList.toggle('visible', state);
     sidebarPartyElement.classList.toggle('hidden', !state);
 }
 
+/**
+ * Switches between compact and default types display in the sidebar.
+ * @function switchSidebarTypesDisplay
+ * @async
+ * @param {boolean} state - The desired display state.
+ */
 async function switchSidebarTypesDisplay(state) {
     const sidebarElement = document.getElementById('roguedex-sidebar');
     sidebarElement.classList.toggle('compactTypeDisplay', state);
     sidebarElement.classList.toggle('defaultTypeDisplay', !state);
 }
 
+/**
+ * Initializes the UI creation process and some of its updating processes.
+ * @function initCreation
+ * @async
+ * @param {Object} sessionData - The session data.
+ */
 async function initCreation(sessionData) {   
     await initPokemonCardWrappers();
 
@@ -518,6 +699,15 @@ async function initCreation(sessionData) {
     await switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
 }
 
+/**
+ * Creates arrays of pokemon objects for either the enemy or ally party. Data is taken from sessionData and processed
+ * by the class window.Utils.PokeMapper.
+ * @function dataMapping
+ * @async
+ * @param {string} pokemonLocation - The location of the Pokémon data ('enemyParty' or 'party').
+ * @param {string} divId - The ID of the div.
+ * @param {Object} sessionData - The session data.
+ */
 async function dataMapping(pokemonLocation, divId, sessionData) {
     const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
@@ -537,7 +727,7 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
 
         if (!initStates.panelsInitialized) {
             initStates.panelsInitialized = true;
-            createPanels(sessionData, pokemonData);
+            createPanels();
         }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
@@ -550,6 +740,14 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
     }
 }
 
+/**
+ * Gets the cyclic page index based on the current index and maximum length.
+ * @function getCyclicPageIndex
+ * @param {number} currentIndex - The current index.
+ * @param {number} maxLength - The maximum length.
+ * @param {number} [increment=0] - The increment value.
+ * @returns {number} - The cyclic page index.
+ */
 function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
     /* 
      *  Uses the modulo operator %. It gives you the remainder of a division operation,
@@ -559,44 +757,10 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
     return (currentIndex + maxLength + increment) % maxLength
 }
 
-function extensionSettingsListener_() {
-    browserApi.storage.onChanged.addListener(async function (changes, namespace) {
-        for (const [key, values = {oldValue, newValue}] of Object.entries(changes)) {
-            if (key === 'showMinified') {
-                const sessionData = window.Utils.LocalStorage.getSessionData();
-                await initCreation(sessionData);
-            }
-            if (key === 'scaleFactor') {
-                await scaleElements();
-            }
-            if (key === 'showEnemies') {
-                const sessionData = window.Utils.LocalStorage.getSessionData();
-                await initCreation(sessionData);
-                await toggleSidebarPartyDisplay('enemies', values.newValue);
-            }
-            if (key === 'showParty') {
-                const sessionData = window.Utils.LocalStorage.getSessionData();
-                await initCreation(sessionData);
-                await toggleSidebarPartyDisplay('allies', values.newValue);
-            }
-            if (key === 'showSidebar') {
-                const sessionData = window.Utils.LocalStorage.getSessionData();
-                await toggleSidebar();
-            }
-            if (key === 'sidebarPosition') {
-                const sessionData = window.Utils.LocalStorage.getSessionData();
-                await changeSidebarPosition(sessionData);
-            }
-            if (key === 'sidebarScaleFactor') {
-                await scaleSidebarElements();
-            }
-            if (key === 'sidebarCompactTypes') {
-                await switchSidebarTypesDisplay(values.newValue);
-            }            
-        }
-    });
-}
-
+/**
+ * Listens for changes in extension settings.
+ * @function extensionSettingsListener
+ */
 function extensionSettingsListener() {
     browserApi.storage.onChanged.addListener(async function (changes, namespace) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
@@ -637,6 +801,11 @@ function extensionSettingsListener() {
     });
 }
 
+/**
+ * Listens for changes in data-ui-mode attribute and handles corresponding actions.
+ * Actions such as updating sessionData, creating, deleting or updating UI elements.
+ * @function listenForDataUiModeChange
+ */
 function listenForDataUiModeChange() {
     function handleDataUIModeChange(newValue) {
         try {
@@ -710,61 +879,12 @@ function listenForDataUiModeChange() {
     observeTouchControls();
 }
 
-/*
-function listenForDataUiModeChange_old() {
-    function observeTouchControls() {
-        const touchControlsElement = document.getElementById('touchControls');
-        if (touchControlsElement) {
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach(async (mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-ui-mode') {
-                        const newValue = touchControlsElement.getAttribute('data-ui-mode');
-                        console.info('[data-ui-mode] new value:', newValue);
-
-                        // Logic for handling data-ui-mode changes
-                        if (newValue === "MESSAGE" || newValue === "COMMAND" || newValue === "CONFIRM") {
-                            try {
-                                window.Utils.LocalStorage.setSessionData();
-                                const sessionData = window.Utils.LocalStorage.getSessionData();
-                                if (sessionData && Object.keys(sessionData).length > 0) {                                    
-                                    await initCreation(sessionData);
-                                    initStates.sessionIntialized = true;
-                                    updateExtensionStatus({sessionState: initStates.sessionIntialized});                                    
-                                } else {
-                                    console.warn("SessionData empty. 'initCreation(sessionData)' was skipped. UI won't work for the moment.");
-                                    initStates.sessionIntialized = false;
-                                    updateExtensionStatus({sessionState: initStates.sessionIntialized});
-                                }                      
-                            } catch (err) {
-                                console.warn("Getting sessionData failed. UI won't work for the moment.");
-                                console.error(err)
-                            }
-                        }
-                        if (newValue === "SAVE_SLOT") {
-                            window.Utils.LocalStorage.clearAllSessionData();
-                            initStates.sessionIntialized = false;
-                            updateExtensionStatus({sessionState: initStates.sessionIntialized});
-                        }
-                        if (newValue === "SAVE_SLOT" || newValue === "TITLE" || newValue === "MODIFIER_SELECT" || newValue === "STARTER_SELECT") {                            
-                            deletePokemonCardWrappers();
-                        }
-                    }
-                });
-            });
-
-            observer.observe(touchControlsElement, {attributes: true});
-            // console.info('Touch control listener called');
-        } else {
-            console.error('Element with ID "touchControls" not found.');
-            // Retry after a short delay if the element might be added later
-            setTimeout(observeTouchControls, 1000);
-        }
-    }
-
-    observeTouchControls();
-}
-*/
-
+/**
+ * Executes a callback when a specified element becomes available in the DOM.
+ * @function onElementAvailable
+ * @param {string} selector - The CSS selector for the target element.
+ * @param {Function} callback - The callback function to execute when the element becomes available.
+ */
 function onElementAvailable(selector, callback) {
     const observer = new MutationObserver(mutations => {
       if (document.querySelector(selector)) {
@@ -775,6 +895,10 @@ function onElementAvailable(selector, callback) {
     observer.observe(document.body, { childList: true, subtree: true });
 }
 
+/**
+ * Observes the resizing of the game canvas and adjusts UI elements accordingly (bottompanel).
+ * @function observeGameCanvasResize
+ */
 async function observeGameCanvasResize() {
     if (initStates.resizeObserverInitialized) {
         return;
@@ -845,7 +969,13 @@ async function observeGameCanvasResize() {
     }
 }
 
-// Existing synchronous function to resize the bottom panel
+/**
+ * Resizes the UI bottom panel based on the dimensions of the canvas and sidebar.
+ * @function resizeUIBottomPanel
+ * @param {number} right - The right offset of the canvas.
+ * @param {number} width - The width of the canvas.
+ * @param {number} height - The height of the canvas.
+ */
 function resizeUIBottomPanel(right, width, height) {
     const panel = document.getElementById('roguedex-bottom-panel');
     const sidePanel = document.getElementById('roguedex-sidebar');

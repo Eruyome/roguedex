@@ -1,6 +1,7 @@
 /**
- * Represents a utility class for drawing Pokémon icons onto canvases.
- * This class handles the fetching and caching of Pokémon images.
+ * @fileoverview Represents a utility class for drawing Pokémon icons onto canvases.
+ *      This class handles the fetching and caching of Pokémon images.
+ * @file 'src/content/util_classes/pokemonIconDrawer.utils.js'
  * @class PokemonIconDrawer
  */
 
@@ -59,20 +60,45 @@ class PokemonIconDrawer {
         const image2 = new Image();
         const fusionImage = new Image();
 
+        /**
+         * Loads an image from a data URL (blob converted to data URL).
+         * @param {HTMLImageElement} image - The image element to load the data URL into.
+         * @param {string} blobUrl - The blob URL of the image.
+         * @returns {Promise<HTMLImageElement>} A promise that resolves with the loaded image.
+         */
         const loadImageFromBlobUrl = (image, blobUrl) => new Promise((resolve, reject) => {
             image.onload = () => resolve(image);
             image.onerror = reject;
             image.src = blobUrl;
         });
 
+        /**
+         * Draws fallback text on the canvas if the image cannot be loaded.
+         */
         const drawFallbackText = () => {
             canvas.parentElement.insertAdjacentHTML("beforeend", `<span class="canvas-fallback-text">${pokemon.name}</span>`);
         };
 
+        /**
+         * Draws an image on the canvas.
+         * @param {HTMLImageElement} image - The image to be drawn.
+         * @param {number} startX - The x-coordinate of the top-left corner of the source rectangle.
+         * @param {number} startY - The y-coordinate of the top-left corner of the source rectangle.
+         * @param {number} sourceWidth - The width of the source rectangle.
+         * @param {number} sourceHeight - The height of the source rectangle.
+         * @param {number} destX - The x-coordinate of the top-left corner of the destination rectangle.
+         * @param {number} destY - The y-coordinate of the top-left corner of the destination rectangle.
+         * @param {number} destWidth - The width of the destination rectangle.
+         * @param {number} destHeight - The height of the destination rectangle.
+         */
         const drawImage = (image, startX, startY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) => {
             ctx.drawImage(image, startX, startY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
         };
 
+        /**
+         * Draws a single image on the canvas.
+         * @param {HTMLImageElement} image - The image to be drawn.
+         */
         const drawSingleImage = (image) => {
             const width = image.width;
             const height = image.height;
@@ -85,6 +111,11 @@ class PokemonIconDrawer {
             drawImage(image, 0, 0, width, height, 0, 0, canvasWidth, parentHeight);
         };
 
+         /**
+         * Draws two combined images on the canvas.
+         * @param {HTMLImageElement} image1 - The first image to be drawn.
+         * @param {HTMLImageElement} image2 - The second image to be drawn.
+         */
         const drawCombinedImages = (image1, image2) => {
             const width = image1.width;
             const height = image1.height;
@@ -98,6 +129,12 @@ class PokemonIconDrawer {
             drawImage(image2, 0, height / 2, width, height / 2, 0, parentHeight / 2, canvasWidth, parentHeight / 2);
         };
 
+        /**
+         * Fetches an image from a URL and caches it.
+         * @param {string} url - The URL of the image to be fetched.
+         * @param {string} cacheKey - The key to use for caching the image.
+         * @returns {Promise<Object>} A promise that resolves with the success status and data URL of the fetched image.
+         */
         const fetchImageAndCache = (url, cacheKey) => {
             return new Promise((resolve) => {
                 const message = { action: "fetchImage", url };
@@ -127,6 +164,10 @@ class PokemonIconDrawer {
             });
         };
         
+        /**
+         * Fetches the HTML for a fusion image.
+         * @returns {Promise<Object>} A promise that resolves with the success status and data URL of the fetched fusion image.
+         */
         const fetchFusionImage = () => {
             return new Promise((resolve, reject) => {
                 const message = { action: "fetchFusionImageHtml" };
@@ -175,6 +216,9 @@ class PokemonIconDrawer {
 
         const cachedImage = this.imageCache[cacheKey] || window.Utils.LocalStorage.getImageFromCache(cacheKey);
 
+        /**
+         * Fetches separate images for a fusion Pokémon and combines them.
+         */
         const fallbackToSeparateImages = async () => {
             try {
                 const [image1Response, image2Response] = await Promise.all([
@@ -189,6 +233,11 @@ class PokemonIconDrawer {
             }
         };
 
+        /**
+         * Caches a combined image.
+         * @param {HTMLCanvasElement} canvas - The canvas containing the combined image.
+         * @param {string} cacheKey - The key to use for caching the combined image.
+         */
         const cacheCombinedImage = (canvas, cacheKey) => {
             const combinedCanvas = document.createElement('canvas');
             combinedCanvas.width = canvas.width;

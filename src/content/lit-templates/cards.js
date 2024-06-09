@@ -9,6 +9,14 @@
 (function(window) {
     window.lit = window.lit || {};
 
+    /**
+     * Creates a wrapper element for Pokémon cards.
+     * @param {string} partyID - The ID of the party ('enemies' or 'allies').
+     * @param {boolean} [showSidebar=false] - Flag indicating whether the sidebar is shown.
+     * @returns {Lit-HTML-Template} The wrapper element for Pokémon cards.
+     * @memberof lit
+     * @function createCardWrapper
+     */
     window.lit.createCardWrapper = (partyID, showSidebar = false) => {
         const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${showSidebar ? 'hidden' : ''}`;
 
@@ -17,7 +25,18 @@
         `;
     };    
 
-    window.lit.createPokemonCardDiv = (cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather) => {
+    /**
+     * Creates a div element and it's content for a Pokémon card.
+     * @param {string} cardId - The ID of the Pokémon card.
+     * @param {Object} pokemon - The Pokémon object.
+     * @param {Object} opacitySlider - An object containing the slider elements id and lit-html object.
+     * @param {Lit-HTML-Template} typeEffectivenessHTML - lit-html object containing the type effectiveness HTML.
+     * @param {Object} weather - The weather object.
+     * @returns {Lit-HTML-Template} The div element for the Pokémon card.
+     * @memberof lit
+     * @function createPokemonCardContent
+     */
+    window.lit.createPokemonCardContent = (cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather) => {
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
@@ -51,7 +70,17 @@
         `;
     };
 
-    window.lit.createPokemonCardDivMinified = (cardId, pokemon, dexIvs, ivsGeneratedHTML, weather) => {
+    /**
+     * Creates a div element and it's content for a minified Pokémon card.
+     * @param {string} cardId - The ID of the Pokémon card.
+     * @param {Object} pokemon - The Pokémon object.
+     * @param {string} ivsGeneratedHTML - Pre-generated html string for pokemon IVs.
+     * @param {Object} weather - The weather object.
+     * @returns {Lit-HTML-Template} The div element for the minified Pokémon card.
+     * @memberof lit
+     * @function createPokemonCardContentMinified
+     */
+    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather) => {
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
@@ -80,6 +109,13 @@
         `;
     };
 
+    /**
+     * Creates a wrapper element for type effectiveness.
+     * @param {Object} typeEffectivenesses - The type effectiveness object.
+     * @returns {Lit-HTML-Template} The wrapper element for type effectivenesses.
+     * @memberof lit
+     * @function createTypeEffectivenessWrapper
+     */
     window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
@@ -124,6 +160,16 @@
         `;
     };    
 
+    /**
+     * Generates HTML for displaying IVs.
+     * @param {Object} pokemon - The Pokémon object.
+     * @param {Object} dexIvs - The IVs object.
+     * @param {boolean} [simpleDisplay=false] - Flag indicating whether to display in a simple format.
+     * @param {boolean} [addStyleClasses=false] - Flag indicating whether to add style classes.
+     * @returns {string} The HTML for displaying IVs.
+     * @memberof lit
+     * @function generateCardIVsHTML
+     */
     window.lit.generateCardIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
         const getColor = (num) => {
             if (num < 0 || num > 31) {
@@ -173,6 +219,18 @@
         return fullHTML;
     };
 
+    /**
+     * Creates a div element for arrow buttons.
+     * @param {string} divId - The ID of the div element.
+     * @param {string} upString - The text for the up button.
+     * @param {string} downString - The text for the down button.
+     * @param {boolean} showMinified - Flag indicating whether to show the minified version.
+     * @param {Function} clickFunction - The function to be called on click.
+     * @param {Array} additionalParams - Additional parameters for the click function.
+     * @returns {Lit-HTML-Template} The div element for the arrow buttons.
+     * @memberof lit
+     * @function createArrowButtonsDiv
+     */
     window.lit.createArrowButtonsDiv = (divId, upString, downString, showMinified, clickFunction, ...additionalParams) => {
         const sizes = (showMinified ? "1em !important" : "2.5em !important");
         const result = {};
@@ -187,6 +245,17 @@
         return result;
     };
 
+    /**
+     * Creates a div element for an opacity slider.
+     * @param {string} divId - The ID of the div element.
+     * @param {Function} changeOpacity - The function to be called on opacity change.
+     * @param {string} [initialValue="100"] - The initial value of the slider.
+     * @param {string} [min="10"] - The minimum value of the slider.
+     * @param {string} [max="100"] - The maximum value of the slider.
+     * @returns {Object} Contains the slider element id and lit-html object.
+     * @memberof lit
+     * @function createOpacitySliderDiv
+     */
     window.lit.createOpacitySliderDiv = (divId, changeOpacity, initialValue = "100", min = "10", max = "100") => {
         const result = {};
         result.id = `${divId}-slider`;

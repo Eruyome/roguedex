@@ -1,16 +1,31 @@
+/**
+ * @fileoverview Manages the initialization of options, event listeners, and UI updates for the extension options page.
+ * @file 'src/options/options.js'
+ */
+
 import OptionsManager from './optionsManager.js';
 import ImageInjector from './imageInjector.js';
 import generateSettingsUI from './generateSettingsUI.js';
 
+/**
+ * Initializes the settings UI, sets up event listeners, and restores previous options.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     generateSettingsUI();
 
+    /** @type {OptionsManager} */
     const optionsManager = new OptionsManager();
+    /** @type {ImageInjector} */
     const imageInjector = new ImageInjector();
 
+    /** @type {number} */
     let focusedSettingIndex = 0;
+    /** @type {NodeListOf<Element>} */
     const settings = document.querySelectorAll('.input-item');
 
+    /**
+     * Updates the focus of the settings UI based on the current focusedSettingIndex.
+     */
     const updateFocus = () => {
         settings.forEach((setting, index) => {
             const label = setting.querySelector('.setting-label');
@@ -22,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    /**
+     * Handles the change of an option for a given setting.
+     * @param {Element} setting - The setting element containing the options.
+     * @param {string} directionOrValue - The direction ('left', 'right') or specific value to change to.
+     */
     const handleOptionChange = (setting, directionOrValue) => {
         const options = setting.querySelectorAll('.option');
         let selectedIndex = Array.from(options).findIndex(option => option.classList.contains('selected'));
@@ -29,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedIndex -= 1;
         } else if (directionOrValue === 'right' && selectedIndex < options.length - 1) {
             selectedIndex += 1;
-        } else if ((directionOrValue !== "left" && directionOrValue !== "right")) {
+        } else if (directionOrValue !== "left" && directionOrValue !== "right") {
             selectedIndex = Array.from(options).findIndex(option => option.getAttribute('data-value') === directionOrValue);
         }
         options.forEach(option => option.classList.remove('selected'));
@@ -48,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    /**
+     * Handles keyboard navigation for changing settings and options.
+     * @param {KeyboardEvent} event - The keyboard event.
+     */
     document.addEventListener('keydown', (event) => {
         switch (event.key) {
             case 'ArrowUp':
@@ -71,7 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Attach click event listeners to the options
+    /**
+     * Attach click event listeners to the options for handling option changes.
+     */
     document.querySelectorAll('.setting-options .option').forEach(option => {
         option.addEventListener('click', (event) => {
             const setting = event.target.closest('.input-item');
@@ -81,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /**
+     * Restores the options from storage and updates the UI.
+     */
     optionsManager.restoreOptions((menuType) => {
         imageInjector.injectImages(menuType);
         updateFocus();

@@ -12,7 +12,9 @@
      * Generates HTML for a small tooltip.
      * 
      * @param {string} tip - Tooltip contents.
-     * @returns {TemplateResult} - A lit-html template result representing the HTML markup.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+     * @function createTooltipDiv
      */
     window.lit.createTooltipDiv = (tip) => html`
         <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
@@ -26,8 +28,10 @@
     /**
      * Generates HTML for a status bar, showing certain info about the running extension.
      * 
-     * @param {object} properties 
-     * @returns {TemplateResult} - A lit-html template result representing the HTML markup.
+     * @param {object} properties
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+     * @function updateExtensionStatusElement
      */
     window.lit.updateExtensionStatusElement = (properties) => {
         return html`            

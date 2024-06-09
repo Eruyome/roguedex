@@ -11,10 +11,11 @@
     /**
      * Creates the HTML template for the sidebar.
      * 
-     * @param {Object} sessionData - The session data object.
-     * @returns {TemplateResult} - The HTML template result.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template result.
+     * @function createSidebarTemplate
      */
-    window.lit.createSidebarTemplate = (sessionData) => {
+    window.lit.createSidebarTemplate = () => {
         return html`
             <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets">        
                 <button id="sidebar-switch-iv-moves" class="tooltip">&#8644; ${window.lit.createTooltipDiv('Switch between showing ally IVs and movesets.')}</button>
@@ -29,7 +30,9 @@
      * Updates the sidebar header based on the session data.
      * 
      * @param {Object} sessionData - The session data object.
-     * @returns {TemplateResult} - The HTML template result.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template result.
+     * @function updateSidebarHeader
      */
     window.lit.updateSidebarHeader = (sessionData) => {
         const trainer = sessionData.trainer;
@@ -49,7 +52,9 @@
      * @param {Object} pokemonData - The Pokémon data object.
      * @param {string} partyID - The ID of the party ('allies' or 'enemies').
      * @param {Object} dexData - The Pokédex data.
-     * @returns {TemplateResult} - The HTML template result.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template result.
+     * @function createSidebarPartyTemplate
      */
     window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, maxPokemonForDetailedView = 8) => html`
         <div class="${partyID}-party">
@@ -96,6 +101,22 @@
         </div>
     `;
     
+    /**
+     * Creates a tooltip HTML template for an individual Pokémon.
+     * 
+     * @function createPokemonTooltipDiv
+     * @param {Object} pokemon - The data object for the Pokémon.
+     * @param {string} pokemon.name - The name of the Pokémon.
+     * @param {string} pokemon.basePokemon - The base Pokémon of the fusion.
+     * @param {string} pokemon.fusionPokemon - The fusion Pokémon.
+     * @param {string[]} pokemon.currentTypes - An array of the current types of the Pokémon.
+     * @param {number} pokemon.level - The level of the Pokémon.
+     * @param {boolean} pokemon.shiny - Indicates if the Pokémon is shiny.
+     * @param {number} pokemon.luck - The luck value of the Pokémon.
+     * @param {number} pokemon.fusionLuck - The luck value of the fusion Pokémon.
+     * @param {number} pokemon.friendship - The friendship experience of the Pokémon.
+     * @returns {Lit-HTML-Template} - The HTML template for the Pokémon tooltip.
+     */
     window.lit.createPokemonTooltipDiv = (pokemon) => html`
         <div class="text-base tooltiptext">
             <span>Name: ${pokemon.name}</span></br>
@@ -117,7 +138,9 @@
      * 
      * @param {Object} sessionData - The session data object.
      * @param {number} maxPokemonForDetailedView - The maximum number of Pokémon for detailed view.
+     * @memberof lit
      * @returns {string} - The CSS class.
+     * @function getCssClassCondensed
      */
     window.lit.getCssClassCondensed = (sessionData, maxPokemonForDetailedView) => {
         const enemyPartySize = sessionData.enemyParty.length;
@@ -136,7 +159,9 @@
     * @param {object} dexIvs - IV values of the base Pokémon, taken from the user's save file.
     * @param {boolean} simpleDisplay - Whether default or simplified version is returned.
     * @param {boolean} addStyleClasses - Whether colors and indicators should be shown.
-    * @returns {TemplateResult} - A lit-html template result representing the HTML markup.
+    * @memberof lit
+    * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+    * @function generateIVsHTML
     */
     window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => html`
         ${Object.keys(pokemon.ivs).map(i => {
@@ -164,7 +189,9 @@
      * Generates HTML for displaying a Pokemon's moveset.
      * 
      * @param {object} pokemon - Object representing all data known about this current Pokémon.
-     * @returns {TemplateResult} - A lit-html template result representing the HTML markup.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+     * @function 
      */
     window.lit.generateMovesetHTML = (pokemon) => html`
         ${Object.keys(pokemon.moveset).map(i => {
@@ -187,7 +214,9 @@
      * @param {number} maxItemsPerRow - The maximum number of items per row.
      * @param {number} maxRows - The maximum number of rows.
      * @param {boolean} growRowLength - Whether to grow the row length.
-     * @returns {TemplateResult} - The HTML template result.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template result.
+     * @function createSidebarTypeEffectivenessWrapperCompact
      */
     window.lit.createSidebarTypeEffectivenessWrapperCompact = (typeEffectivenesses, maxItemsPerRow = 5, maxRows = 4, growRowLength = true) => {
         const urlPrefix = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield';
@@ -294,7 +323,9 @@
      * @param {number} itemsPerRow - The number of items per row.
      * @param {string} firstOfType - The first-of-type class.
      * @param {string} lastOfType - The last-of-type class.
+     * @memberof lit
      * @returns {string} - The transparency classes.
+     * @function determineTransparencyClasses
      */
     window.lit.determineTransparencyClasses = (item, rowCounter, itemsPerRow, firstOfType, lastOfType) => {
         let transparencyClasses = '';
@@ -368,7 +399,9 @@
     * Template function for rendering the non-compact sidebar type effectiveness wrapper.
     * 
     * @param {Object} typeEffectivenesses - The type effectiveness data object.
-    * @returns {TemplateResult} - The HTML template result.
+    * @memberof lit
+    * @returns {Lit-HTML-Template} - The HTML template result.
+    * @function createSidebarTypeEffectivenessWrapper
     */
     window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses) => html`
         ${Object.keys(typeEffectivenesses).map(effectiveness => {

@@ -98,48 +98,80 @@ class PokemonIconDrawer {
             drawImage(image2, 0, height / 2, width, height / 2, 0, parentHeight / 2, canvasWidth, parentHeight / 2);
         };
 
-        const fetchImageAndCache = (url, cacheKey) => new Promise((resolve) => {
-            chrome.runtime.sendMessage({ action: "fetchImage", url }, response => {
-                if (response.success) {
-                    const blobUrl = response.dataUrl;
-                    this.imageCache[cacheKey] = blobUrl;
-                    window.Utils.LocalStorage.saveImageToCache(cacheKey, blobUrl);
-                    resolve({ success: true, dataUrl: blobUrl });
-                } else {
-                    const errMsg = `Function: "fetchImageAndCache()". Failed to fetch image from ${url}. Error: ${response.errorMessage || 'Unknown error'}`;
-                    resolve({ success: false, error: response.error, errorMessage: errMsg });
+        const fetchImageAndCache = (url, cacheKey) => {
+            return new Promise((resolve) => {
+                const message = { action: "fetchImage", url };
+        
+                const handleResponse = (response) => {
+                    if (response.success) {
+                        const blobUrl = response.dataUrl;
+                        this.imageCache[cacheKey] = blobUrl;
+                        window.Utils.LocalStorage.saveImageToCache(cacheKey, blobUrl);
+                        resolve({ success: true, dataUrl: blobUrl });
+                    } else {
+                        const errMsg = `Function: "fetchImageAndCache()". Failed to fetch image from ${url}. Error: ${response.errorMessage || 'Unknown error'}`;
+                        resolve({ success: false, error: response.error, errorMessage: errMsg });
+                    }
+                };
+        
+                if (typeof browser !== 'undefined') { // Firefox environment (uses promises)
+                    browser.runtime.sendMessage(message)
+                        .then(handleResponse)
+                        .catch(error => {
+                            const errMsg = `Function: "fetchImageAndCache()". Failed to fetch image from ${url}. Error: ${error.message || 'Unknown error'}`;
+                            resolve({ success: false, error: error, errorMessage: errMsg });
+                        });
+                } else { // Chrome environment (uses callbacks)
+                    chrome.runtime.sendMessage(message, handleResponse);
                 }
             });
-        });        
-
-        const fetchFusionImage = () => new Promise((resolve, reject) => {
-            chrome.runtime.sendMessage({
-                action: "fetchFusionImageHtml"
-            }, response => {
-                if (response.success) {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(response.html, 'text/html');
-                    const figure = doc.querySelector('figure.sprite.sprite-variant-main');
-                    if (figure) {
-                        const img = figure.querySelector('img');
-                        if (img) {
-                            chrome.runtime.sendMessage({
-                                action: "fetchImage",
-                                url: img.src
-                            }, imageResponse => {
-                                if (imageResponse.success) {
-                                    resolve({ success: true, dataUrl: imageResponse.dataUrl });
-                                } else {
-                                    reject(imageResponse.error);
+        };
+        
+        const fetchFusionImage = () => {
+            return new Promise((resolve, reject) => {
+                const message = { action: "fetchFusionImageHtml" };
+        
+                const handleResponse = (response) => {
+                    if (response.success) {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(response.html, 'text/html');
+                        const figure = doc.querySelector('figure.sprite.sprite-variant-main');
+                        if (figure) {
+                            const img = figure.querySelector('img');
+                            if (img) {
+                                const imageMessage = { action: "fetchImage", url: img.src };
+                                
+                                const handleImageResponse = (imageResponse) => {
+                                    if (imageResponse.success) {
+                                        resolve({ success: true, dataUrl: imageResponse.dataUrl });
+                                    } else {
+                                        reject(imageResponse.error);
+                                    }
+                                };
+        
+                                if (typeof browser !== 'undefined') { // Firefox environment (uses promises)
+                                    browser.runtime.sendMessage(imageMessage)
+                                        .then(handleImageResponse)
+                                        .catch(error => reject(error));
+                                } else { // Chrome environment (uses callbacks)
+                                    chrome.runtime.sendMessage(imageMessage, handleImageResponse);
                                 }
-                            });
-                            return;
+                                return;
+                            }
                         }
                     }
+                    resolve({ success: false });
+                };
+        
+                if (typeof browser !== 'undefined') { // Firefox environment (uses promises)
+                    browser.runtime.sendMessage(message)
+                        .then(handleResponse)
+                        .catch(error => resolve({ success: false, error: error }));
+                } else { // Chrome environment (uses callbacks)
+                    chrome.runtime.sendMessage(message, handleResponse);
                 }
-                resolve({ success: false });
             });
-        });
+        };
 
         const cachedImage = this.imageCache[cacheKey] || window.Utils.LocalStorage.getImageFromCache(cacheKey);
 

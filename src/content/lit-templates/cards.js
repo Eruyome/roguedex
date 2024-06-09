@@ -84,36 +84,34 @@
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const effectivenessObj = typeEffectivenesses[effectiveness];
-                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return '';
-        
+                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return;
+                if (effectiveness === "cssClasses") return;               
+
                 const tooltipMap = {
                     weaknesses: "Weak to",
                     resistances: "Resists",
                     immunities: "Immune to"
                 };
-        
+
                 const allTypes = [
                     ...(effectivenessObj.double || []),
                     ...(effectivenessObj.normal || [])
                 ];
-    
-                // Group types into arrays of 3
+
+                // Group types into arrays of 3.
                 const groupedTypes = [];
                 for (let i = 0; i < allTypes.length; i += 3) {
                     groupedTypes.push(allTypes.slice(i, i + 3));
-                }
-        
+                }               
+
                 return html`
                     <div class="pokemon-${effectiveness} tooltip">
                         ${groupedTypes.map((group) => html`
                             <div>
                                 ${group.map((type) => {
-                                    const cssClass = effectivenessObj.cssClasses ? effectivenessObj.cssClasses[type] : '';
-                                    if (effectiveness === "cssClasses") {
-                                        return ''; // Skip if effectiveness is not equal to cssClass
-                                    }
+                                    const cssClass = typeEffectivenesses.cssClasses[type];
                                     return html`
-                                        <div class="type-icon ${cssClass}" 
+                                        <div class="pokemon-type-icon ${cssClass}" 
                                             style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/${Types[type]}.png')"></div>
                                     `;
                                 })}

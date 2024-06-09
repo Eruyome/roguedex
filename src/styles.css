@@ -697,7 +697,7 @@ body.sidebar-Bottom {
     margin-bottom: 10px;
 }
 
-.type-icon {
+.pokemon-type-icon {
     width: var(--icon-size);
     height: var(--icon-size);
     background-size: cover;
@@ -734,9 +734,9 @@ body.sidebar-Bottom {
     border-radius: 10px;
 }
 
-.pokemon-weaknesses .type-icon,
-.pokemon-resistances .type-icon,
-.pokemon-immunities .type-icon {
+.pokemon-weaknesses .pokemon-type-icon,
+.pokemon-resistances .pokemon-type-icon,
+.pokemon-immunities .pokemon-type-icon {
     opacity: 1;
 }
 

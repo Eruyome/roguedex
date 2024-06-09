@@ -196,32 +196,43 @@ async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
 }
 
 function changeOpacity(e) {
-    const divId = e.target.id.split("-")[0];
+    const { id } = e.target;
+    const divId = id.split("-")[0];
     const div = document.getElementById(divId);
-    uiDataGlobals.wrapperDivPositions[divId].opacity = e.target.value;
-    div.style.opacity = `${e.target.value / 100}`;
+
+    if (div) {
+        const opacity = e.target.value / 100;
+        uiDataGlobals.wrapperDivPositions[divId].opacity = opacity;
+        div.style.opacity = `${opacity}`;
+    } else {
+        console.error(`Element with ID '${divId}' not found.`);
+    }
 }
 
 async function changePokemonCardPage(click, partyId, pokemonData) {
-    const buttonId = click.target.id;
-    const divId = buttonId.split("-")[0];
-    const direction = buttonId.split("-")[1];
+    const { id } = click.target;
+    const [divId, direction] = id.split("-"); // Destructuring for clarity
+    
     const partySize = uiDataGlobals.activePokemonParties[partyId].pokemon.length;
 
-    if (partySize == 0) {  // might never happen, just in case.
+    // If no Pokemon in the party, initialize creation
+    if (partySize === 0) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
         await initCreation(sessionData);
-    }
-    else if (partySize <= 1) {  // no need if only 1 pokemon in party
-        return
+    } else if (partySize <= 1) { // Skip if only one Pokemon in the party
+        // No need to change the page
+        return;
     }
 
-    if (direction === 'up') {
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], partySize, -1);
-    } else if (direction === 'down') {
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], partySize, 1);
+    // Update page index based on direction
+    if (direction === 'up' || direction === 'down') {
+        uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], partySize, direction === 'up' ? -1 : 1);
+    } else {
+        console.error(`Invalid direction: ${direction}`);
+        return;
     }
-    await createCardsDiv(partyId, pokemonData, uiDataGlobals.pages[divId]);    
+
+    await createCardsDiv(partyId, pokemonData, uiDataGlobals.pages[divId]);
 }
 
 /* pokemon cards */
@@ -329,28 +340,6 @@ function createPanels(sessionData) {
     });    
 }
 
-const generateIVsHTML__ = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => html`
-    ${Object.keys(pokemon.ivs).map(i => {
-        const curIV = pokemon.ivs[i];
-        const dexIv = dexIvs[i];
-        const isBetter = curIV > dexIv;
-        const isWorse = curIV < dexIv;
-        const icon = isBetter ? '↑' : (isWorse ? '↓' : '-');
-        const color = isBetter ? '#00FF00' : (isWorse ? '#FF0000' : '#FFFF00');
-        const colorStyle = !simpleDisplay && !addStyleClasses ? { color: color } : {};
-        const ivValue = simpleDisplay ? curIV : html`${curIV}${icon}`;
-        const statClass = addStyleClasses ? `stat-p-colors` : '';
-        const valueClass = addStyleClasses ? `stat-c-colors` : '';
-
-        return html`
-            <div class="stat-p ${statClass}">
-                ${Stat[i]}:&nbsp;
-                <div class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>${ivValue}</div>&nbsp;&nbsp;
-            </div>
-        `;
-    })}
-`;
-
 /**
  * Updates the sidebar cards with the provided Pokémon data.
  * 
@@ -414,73 +403,73 @@ async function updateBottomPanel(sessionData, pokemonData) {
     }
 }
 
-function deleteAllChildren(element) {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-    element.innerHTML = '';
-}
-
 async function scaleElements() {
-    const data = await browserApi.storage.sync.get('scaleFactor');
-    const scaleFactorMulti = data.scaleFactor || 1;
-    const baseWidth = 1920; // Assume a base width of 1920 pixels
-    const baseHeight = 1080; // Assume a base height of 1080 pixels
-    const currentWidth = window.innerWidth;
-    const currentHeight = window.innerHeight;
-    const scaleFactorWidth = currentWidth / baseWidth;
-    const scaleFactorHeight = currentHeight / baseHeight;
-    const scaleFactor = scaleFactorWidth < scaleFactorHeight ? scaleFactorWidth : scaleFactorHeight;
+    const partiesScaleFactor = await getScaleFactor('scaleFactor', 1);
+    const scaleFactor = await calculateScaleFactor();
+    
     const enemiesDiv = document.getElementById('enemies');
     const alliesDiv = document.getElementById('allies');
-    enemiesDiv.style.fontSize = `${16 * scaleFactor * scaleFactorMulti}px`;
-    alliesDiv.style.fontSize = `${16 * scaleFactor * scaleFactorMulti}px`;
+    
+    scaleFont(enemiesDiv, scaleFactor, partiesScaleFactor, 16);
+    scaleFont(alliesDiv, scaleFactor, partiesScaleFactor, 16);
 }
 
-/* should probably refactor this and combine it with the scaleElements() function */
 async function scaleSidebarElements() {
-    const data = await browserApi.storage.sync.get('sidebarScaleFactor');
-    const scaleFactorMulti = data.sidebarScaleFactor || 1;
+    const scaleFactorMulti = await getScaleFactor('sidebarScaleFactor', 1);
+    const scaleFactor = await calculateScaleFactor();
+    
+    const sidebarDiv = document.getElementById('roguedex-sidebar');
+    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);
+}
+
+async function getScaleFactor(storageKey, defaultValue) {
+    const data = await browserApi.storage.sync.get(storageKey);
+    return data[storageKey] || defaultValue;
+}
+
+function scaleFont(element, scaleFactor, scaleFactorMulti, baseSize) {
+    element.style.fontSize = `${baseSize * scaleFactor * scaleFactorMulti}px`;
+}
+
+async function calculateScaleFactor() {
     const baseWidth = 1920; // Assume a base width of 1920 pixels
     const baseHeight = 1080; // Assume a base height of 1080 pixels
     const currentWidth = window.innerWidth;
     const currentHeight = window.innerHeight;
     const scaleFactorWidth = currentWidth / baseWidth;
     const scaleFactorHeight = currentHeight / baseHeight;
-    const scaleFactor = scaleFactorWidth < scaleFactorHeight ? scaleFactorWidth : scaleFactorHeight;
-    const sidebarDiv = document.getElementById('roguedex-sidebar');
-    sidebarDiv.style.fontSize = `${12 * scaleFactor * scaleFactorMulti}px`;
+    return Math.min(scaleFactorWidth, scaleFactorHeight);
 }
 
 async function toggleSidebar() {
-    const data = await browserApi.storage.sync.get('showSidebar');
-    const sidebarToggleState = data.showSidebar;
-    const sidebarElement = document.getElementById('roguedex-sidebar');
-    const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
-    const gameAppElement = document.getElementById('app');
-    const runningStatusElement = document.getElementsByClassName('running-status')[0];
-    const enemyCardDiv = document.getElementById('enemies');
-    const allyCardDiv = document.getElementById('allies');
+    const { showSidebar } = await browserApi.storage.sync.get('showSidebar');
+    const sidebarElement = document.querySelector('#roguedex-sidebar');
+    const bottomPanelElement = document.querySelector('#roguedex-bottom-panel');
+    const gameAppElement = document.querySelector('#app');
+    const runningStatusElement = document.querySelector('.running-status');
+    const enemyCardDiv = document.querySelector('#enemies');
+    const allyCardDiv = document.querySelector('#allies');
+    
+    const toggleClasses = (element, active) => {
+        element.classList.toggle('active', active);
+        element.classList.toggle('hidden', !active);
+    };
 
-    if (sidebarToggleState === true) {
-        sidebarElement.classList.remove('hidden');
-        sidebarElement.classList.add('active');
+    if (showSidebar) {
+        toggleClasses(sidebarElement, true);
         gameAppElement.classList.add('sidebar-active');
         runningStatusElement.classList.add('sidebar-active');
         bottomPanelElement.classList.add('sidebar-active');
-
-        allyCardDiv.classList.add('hidden');
-        enemyCardDiv.classList.add('hidden');
+        toggleClasses(allyCardDiv, false);
+        toggleClasses(enemyCardDiv, false);
         console.info("SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes.");
-    } else if (sidebarToggleState === false) {
-        sidebarElement.classList.remove('active');
-        sidebarElement.classList.add('hidden');
+    } else {
+        toggleClasses(sidebarElement, false);
         gameAppElement.classList.remove('sidebar-active');
         runningStatusElement.classList.remove('sidebar-active');
         bottomPanelElement.classList.remove('sidebar-active');
-
-        allyCardDiv.classList.remove('hidden');
-        enemyCardDiv.classList.remove('hidden');
+        toggleClasses(allyCardDiv, true);
+        toggleClasses(enemyCardDiv, true);
         console.info("SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes.");
     }
 }
@@ -530,30 +519,35 @@ async function initCreation(sessionData) {
 }
 
 async function dataMapping(pokemonLocation, divId, sessionData) {
-    // const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
-    const modifiers = (pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers);
+    const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
-    await window.Utils.PokeMapper.getPokemonArray(sessionData[pokemonLocation], sessionData.arena, modifiers, pokemonLocation).then(async (pokemonData) => {
-        weather = Object.hasOwn(pokemonData, 'weather') ? pokemonData.weather : null;
-        const partyID = (pokemonLocation === "enemyParty" ? "enemies" : "allies");
+    try {
+        const pokemonData = await window.Utils.PokeMapper.getPokemonArray(sessionData[pokemonLocation], sessionData.arena, modifiers, pokemonLocation);
+        const weather = pokemonData.weather || null;
+        const partyID = pokemonLocation === "enemyParty" ? "enemies" : "allies";
+
         uiDataGlobals.activePokemonParties[partyID] = pokemonData;
-        //const pIndex = getCyclicPageIndex(uiDataGlobals.pages[divId], pokemonData.pokemon.length);
         uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], pokemonData.pokemon.length);
 
-        await createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]).then(() => {
-            scaleElements();
-        });        
+        await new Promise(resolve => {
+            createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]);
+            resolve();
+        });
+        scaleElements();
 
         if (!initStates.panelsInitialized) {
             initStates.panelsInitialized = true;
-            createPanels(sessionData, pokemonData);           
-        }        
+            createPanels(sessionData, pokemonData);
+        }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
-        if (initStates.panelsInitialized) {            
+
+        if (initStates.panelsInitialized) {
             await updateBottomPanel(sessionData, pokemonData);
         }
-    });
+    } catch (error) {
+        console.error("Error occurred during pokemon data mapping:", error);
+    }
 }
 
 function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
@@ -565,7 +559,7 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
     return (currentIndex + maxLength + increment) % maxLength
 }
 
-function extensionSettingsListener() {
+function extensionSettingsListener_() {
     browserApi.storage.onChanged.addListener(async function (changes, namespace) {
         for (const [key, values = {oldValue, newValue}] of Object.entries(changes)) {
             if (key === 'showMinified') {
@@ -603,7 +597,121 @@ function extensionSettingsListener() {
     });
 }
 
+function extensionSettingsListener() {
+    browserApi.storage.onChanged.addListener(async function (changes, namespace) {
+        const sessionData = window.Utils.LocalStorage.getSessionData();
+        
+        for (const [key, values = {oldValue, newValue}] of Object.entries(changes)) {
+            switch (key) {
+                case 'showMinified':
+                    await initCreation(sessionData);
+                    break;
+                case 'scaleFactor':
+                    await scaleElements();
+                    break;
+                case 'showEnemies':
+                    await initCreation(sessionData);
+                    await toggleSidebarPartyDisplay('enemies', values.newValue);
+                    break;
+                case 'showParty':
+                    await initCreation(sessionData);
+                    await toggleSidebarPartyDisplay('allies', values.newValue);
+                    break;
+                case 'showSidebar':
+                    await toggleSidebar();
+                    break;
+                case 'sidebarPosition':
+                    await changeSidebarPosition(sessionData);
+                    break;
+                case 'sidebarScaleFactor':
+                    await scaleSidebarElements();
+                    break;
+                case 'sidebarCompactTypes':
+                    await switchSidebarTypesDisplay(values.newValue);
+                    break;
+                default:
+                    console.error(`Unhandled key: ${key}`);
+                    break;
+            }
+        }
+    });
+}
+
 function listenForDataUiModeChange() {
+    function handleDataUIModeChange(newValue) {
+        try {
+            switch (newValue) {
+                case "MESSAGE":
+                case "COMMAND":
+                case "CONFIRM":
+                    handleSessionInitialization();
+                    break;
+                case "SAVE_SLOT":
+                    handleSaveSlotMode();
+                    break;
+                case "TITLE":
+                case "MODIFIER_SELECT":
+                case "STARTER_SELECT":
+                    handleModeWithPokemonCards();
+                    break;
+                default:
+                    console.warn("Unhandled data-ui-mode:", newValue);
+                    break;
+            }
+        } catch (err) {
+            console.error("An error occurred while handling data-ui-mode change:", err);
+        }
+    }
+
+    function handleSessionInitialization() {
+        window.Utils.LocalStorage.setSessionData();
+        const sessionData = window.Utils.LocalStorage.getSessionData();
+        if (sessionData && Object.keys(sessionData).length > 0) {
+            initStates.sessionIntialized = true;
+            updateExtensionStatus({sessionState: initStates.sessionIntialized});
+            initCreation(sessionData);
+        } else {
+            console.warn("SessionData empty. UI won't work for the moment.");
+            initStates.sessionIntialized = false;
+            updateExtensionStatus({sessionState: initStates.sessionIntialized});
+        }
+    }
+
+    function handleSaveSlotMode() {
+        window.Utils.LocalStorage.clearAllSessionData();
+        initStates.sessionIntialized = false;
+        updateExtensionStatus({sessionState: initStates.sessionIntialized});
+    }
+
+    function handleModeWithPokemonCards() {
+        deletePokemonCardWrappers();
+    }
+
+    function observeTouchControls() {
+        const touchControlsElement = document.getElementById('touchControls');
+        if (touchControlsElement) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-ui-mode') {
+                        const newValue = touchControlsElement.getAttribute('data-ui-mode');
+                        console.info('[data-ui-mode] new value:', newValue);
+                        handleDataUIModeChange(newValue);
+                    }
+                });
+            });
+
+            observer.observe(touchControlsElement, {attributes: true});
+        } else {
+            console.error('Element with ID "touchControls" not found.');
+            setTimeout(observeTouchControls, 1000); // Retry after a short delay
+        }
+    }
+
+    observeTouchControls();
+}
+
+/*
+function listenForDataUiModeChange_old() {
     function observeTouchControls() {
         const touchControlsElement = document.getElementById('touchControls');
         if (touchControlsElement) {
@@ -655,6 +763,7 @@ function listenForDataUiModeChange() {
 
     observeTouchControls();
 }
+*/
 
 function onElementAvailable(selector, callback) {
     const observer = new MutationObserver(mutations => {

@@ -1,7 +1,7 @@
 class PokemonMapperClass{
     constructor() {
-        //this.W2I = window.__WeatherMap;
-        //this.I2W = null;
+        this.W2I = window.__WeatherMap;
+        this.I2W = null;
         this.N2I = window.__NatureMap;
         this.I2N = null;
         this.MoveList = window.__moveList;
@@ -11,7 +11,7 @@ class PokemonMapperClass{
     }
 
     static #init($this) {
-        //$this.I2W = PokemonMapperClass.#calculateInverseMap($this.W2I);
+        $this.I2W = PokemonMapperClass.#calculateInverseMap($this.W2I);
         $this.I2N = PokemonMapperClass.#calculateInverseMap($this.N2I);
     }
 

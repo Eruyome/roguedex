@@ -58,46 +58,50 @@
      */
     window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, maxPokemonForDetailedView = 8) => html`
         <div class="${partyID}-party">
-            ${pokemonData.pokemon.map((pokemon, counter) => html`
-                <div class="pokemon-entry ${window.lit.getCssClassCondensed(sessionData, maxPokemonForDetailedView)}" id="sidebar_${partyID}_${counter}">
-                    <div class="pokemon-entry-image tooltip">
-                        <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
-                        ${window.lit.createPokemonTooltipDiv(pokemon)}
-                        <div class="sidebar-pokemon-info" style="position: absolute; ${partyID === 'enemies' ? 'display: none;' : ''}">
-                            <span class="sidebar-pokemon-level">L ${pokemon.level}</span>
-                            <span class="sidebar-pokemon-shiny">${pokemon.shiny ? '☀' : ''}</span>
-                            <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
-                        </div>
-                    </div>
-                    <div class="pokemon-type-effectiveness-wrapper compact">
-                        ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 5, 3)}
-                    </div>
-                    <div class="pokemon-type-effectiveness-wrapper default">
-                        ${window.lit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness)}
-                    </div>
-                    <div class="pokemon-info-text-wrapper">
-                        <div class="pokemon-ability-nature">
-                            <span class="pokemon-ability tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
-                                <span class="pokemon-ability-description">Ability:</span>
-                                <span class="pokemon-ability-value">${pokemon.ability.name}</span>
-                                ${window.lit.createTooltipDiv(pokemon.ability.description)}
-                            </span>
-                            <span class="pokemon-nature tooltip">
-                                <span class="pokemon-nature-description">Nature:</span>
-                                <span class="pokemon-nature-value">${pokemon.nature}</span>
-                            </span>
-                        </div>
-                        <div class="pokemon-ivs stat-cont">
-                            ${window.lit.generateIVsHTML(pokemon, dexData[pokemon.baseId].ivs, partyID === 'allies', partyID === 'allies')}
-                        </div>
-                        ${partyID === 'enemies' ? '' : html`
-                            <div class="pokemon-moveset-wrapper">
-                                ${window.lit.generateMovesetHTML(pokemon)}
+            ${pokemonData.pokemon.map((pokemon, counter) => {
+                const allZeroStarterIVs = dexData[pokemon.baseId]?.ivs?.every(num => num === 0);
+
+                return html`
+                    <div class="pokemon-entry ${window.lit.getCssClassCondensed(sessionData, maxPokemonForDetailedView)}" id="sidebar_${partyID}_${counter}">
+                        <div class="pokemon-entry-image tooltip">
+                            <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
+                            ${window.lit.createPokemonTooltipDiv(pokemon)}
+                            <div class="sidebar-pokemon-info" style="position: absolute; ${partyID === 'enemies' ? 'display: none;' : ''}">
+                                <span class="sidebar-pokemon-level">L ${pokemon.level}</span>
+                                <span class="sidebar-pokemon-shiny">${pokemon.shiny ? '☀' : ''}</span>
+                                <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
                             </div>
-                        `}                       
+                        </div>
+                        <div class="pokemon-type-effectiveness-wrapper compact">
+                            ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 5, 3)}
+                        </div>
+                        <div class="pokemon-type-effectiveness-wrapper default">
+                            ${window.lit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness)}
+                        </div>
+                        <div class="pokemon-info-text-wrapper">
+                            <div class="pokemon-ability-nature">
+                                <span class="pokemon-ability tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
+                                    <span class="pokemon-ability-description">Ability:</span>
+                                    <span class="pokemon-ability-value">${pokemon.ability.name}</span>
+                                    ${window.lit.createTooltipDiv(pokemon.ability.description)}
+                                </span>
+                                <span class="pokemon-nature tooltip">
+                                    <span class="pokemon-nature-description">Nature:</span>
+                                    <span class="pokemon-nature-value">${pokemon.nature}</span>
+                                </span>
+                            </div>
+                            <div class="pokemon-ivs stat-cont ${allZeroStarterIVs ? 'warn-zeroIVs' : ''}">
+                                ${window.lit.generateIVsHTML(pokemon, dexData[pokemon.baseId].ivs, partyID === 'allies', partyID === 'allies')}
+                            </div>
+                            ${partyID === 'enemies' ? '' : html`
+                                <div class="pokemon-moveset-wrapper">
+                                    ${window.lit.generateMovesetHTML(pokemon)}
+                                </div>
+                            `}                       
+                        </div>
                     </div>
-                </div>
-            `)}
+                `;
+            })}            
         </div>
     `;
     
@@ -163,27 +167,29 @@
     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
     * @function generateIVsHTML
     */
-    window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => html`
-        ${Object.keys(pokemon.ivs).map(i => {
-            const curIV = pokemon.ivs[i];
-            const dexIv = dexIvs[i];
-            const isBetter = curIV > dexIv;
-            const isWorse = curIV < dexIv;
-            const icon = isBetter ? '↑' : (isWorse ? '↓' : '-');
-            const color = isBetter ? '#00FF00' : (isWorse ? '#FF0000' : '#FFFF00');
-            const colorStyle = !simpleDisplay && !addStyleClasses ? { color: color } : {};
-            const ivValue = simpleDisplay ? curIV : html`${curIV}${icon}`;
-            const statClass = addStyleClasses ? `stat-p-colors` : '';
-            const valueClass = addStyleClasses ? `stat-c-colors` : '';
+    window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
+        return html`
+            ${Object.keys(pokemon.ivs).map(i => {
+                const curIV = pokemon.ivs[i];
+                const dexIv = dexIvs[i];
+                const isBetter = curIV > dexIv;
+                const isWorse = curIV < dexIv;
+                const icon = isBetter ? '↑' : (isWorse ? '↓' : '-');
+                const color = isBetter ? '#00FF00' : (isWorse ? '#FF0000' : '#FFFF00');
+                const colorStyle = !simpleDisplay && !addStyleClasses ? { color: color } : {};
+                const ivValue = simpleDisplay ? curIV : html`${curIV}${icon}`;
+                const statClass = addStyleClasses ? `stat-p-colors` : '';
+                const valueClass = addStyleClasses ? `stat-c-colors` : '';
 
-            return html`
-                <div class="stat-p ${statClass}">
-                    ${Stat[i]}:&nbsp;
-                    <div class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>${ivValue}</div>&nbsp;&nbsp;
-                </div>
-            `;
-        })}
-    `;
+                return html`
+                    <div class="stat-p ${statClass}">
+                        ${Stat[i]}:&nbsp;
+                        <div class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>${ivValue}</div>&nbsp;&nbsp;
+                    </div>
+                `;
+            })}
+        `;
+    }
 
     /**
      * Generates HTML for displaying a Pokemon's moveset.

@@ -2,6 +2,11 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import retry from 'retry';
 
+// Read command-line arguments
+// "node this-script.js 50" can be used to limit the fetching to the first 50 pokemon.
+const args = process.argv.slice(2);
+const limit = args.length > 0 ? parseInt(args[0], 10) : null;
+
 const outputSubfolder = 'fetched_data'; // Subfolder where output will be saved
 const jsonName = 'pokemon-list';
 const jsName = 'pokemonList';
@@ -36,16 +41,22 @@ async function fetchWithRetry(url, retries = 5, delayMs = 1000) {
     });
 }
 
-// Fetch the list of all Pokémon species
-async function fetchAllPokemonSpecies() {
+// Fetch the list of all Pokémon species, optionally limited
+async function fetchAllPokemonSpecies(limit = null) {
     let species = [];
     let nextUrl = `${baseUrl}/pokemon-species?limit=1000`;
 
-    while (nextUrl) {
+    while (nextUrl && (limit === null || species.length < limit)) {
         console.log(`Fetching species list from: ${nextUrl}`);
         const data = await fetchWithRetry(nextUrl);
         species = species.concat(data.results);
         nextUrl = data.next;
+
+        // Stop fetching if we have reached the limit
+        if (limit !== null && species.length >= limit) {
+            species = species.slice(0, limit);
+            break;
+        }
     }
 
     return species;
@@ -56,18 +67,36 @@ async function fetchPokemonForms(speciesUrl) {
     console.log(`Fetching forms for species: ${speciesUrl}`);
     const speciesData = await fetchWithRetry(speciesUrl);
 
+    // Fetch the evolution chain to get the base Pokémon
+    const evolutionChainUrl = speciesData.evolution_chain.url;
+    const evolutionData = await fetchWithRetry(evolutionChainUrl);
+
+    // Find the base Pokémon in the evolution chain
+    let basePokemon = {};
+    if (evolutionData.chain.species) {
+        basePokemon.name = evolutionData.chain.species.name;
+        basePokemon.url = evolutionData.chain.species.url;
+    }
+
+    // Find the default variety
+    const defaultVariety = speciesData.varieties.find(variety => variety.is_default);
+
     // Each species can have multiple forms
     const forms = speciesData.varieties.map(variety => ({
         pokemonUrl: variety.pokemon.url,
-        basePokemonId: speciesData.id,
-        basePokemonName: speciesData.name
+        basePokemonId: basePokemon.url.split('/').slice(-2, -1)[0] ?? '',
+        basePokemonName: basePokemon.name ?? '',
+        defaultVarietyId: defaultVariety.pokemon.url.split('/').slice(-2, -1)[0],
+        defaultVarietyName: defaultVariety.pokemon.name,
+        isLegendary: speciesData.is_legendary,
+        isMythical: speciesData.is_mythical
     }));
 
     return forms;
 }
 
 // Fetch details for each form/variant to get types, abilities, and sprite URL
-async function fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName) {
+async function fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical) {
     console.log(`Fetching data for Pokémon: ${pokemonUrl}`);
     const pokemonData = await fetchWithRetry(pokemonUrl);
 
@@ -82,14 +111,18 @@ async function fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName) {
         })),
         sprite: pokemonData.sprites.front_default,
         basePokemonId: basePokemonId,
-        basePokemonName: basePokemonName
+        basePokemonName: basePokemonName,
+        defaultVarietyId: defaultVarietyId,
+        defaultVarietyName: defaultVarietyName,
+        isLegendary: isLegendary,
+        isMythical: isMythical
     };
 }
 
 async function getPokemonDetails() {
     try {
         console.log('Fetching all Pokémon species...');
-        const speciesList = await fetchAllPokemonSpecies();
+        const speciesList = await fetchAllPokemonSpecies(limit);
         const pokemonUrls = [];
 
         console.log('Fetching forms for each species...');
@@ -99,19 +132,14 @@ async function getPokemonDetails() {
             pokemonUrls.push(...formUrls);
         }
 
-        const allPokemonDetails = {};
-
         console.log('Fetching details for each form...');
-        // Get details for each form
-        for (const { pokemonUrl, basePokemonId, basePokemonName } of pokemonUrls) {
-            try {
-                const pokemonDetail = await fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName);
-                allPokemonDetails[pokemonDetail.id] = pokemonDetail;
-            } catch (error) {
-                console.error(`Failed to fetch data for ${pokemonUrl}: ${error.message}`);
-            }
-            await delay(50); // Adding a small delay between requests to avoid rate limiting
-        }
+        // Use Promise.all to fetch details for each form concurrently
+        const pokemonDetailsPromises = pokemonUrls.map(({ pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical }) =>
+            fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical)
+        );
+
+        const allPokemonDetailsArray = await Promise.all(pokemonDetailsPromises);
+        const allPokemonDetails = Object.fromEntries(allPokemonDetailsArray.map(detail => [detail.id, detail]));
 
         // Determine the output filenames
         const jsonOutputFilename = `${outputSubfolder}/${jsonName}.json`;

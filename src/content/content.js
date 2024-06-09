@@ -387,9 +387,11 @@ function saveCardWrapperPositions(divId, properties) {
  * @param {Object} properties - The properties to set.
  */
 function setElementProperties(element, properties) {
-    Object.keys(properties).forEach(prop => {
-        element.style[prop] = properties[prop];
-    });
+    if (element) {
+        Object.keys(properties).forEach(prop => {
+            element.style[prop] = properties[prop];
+        });
+    }    
 }
 
 /**

@@ -55,7 +55,6 @@
 		"content/maps/moveList.js",
 		"content/data/abilityList.js",
 		"content/data/pokemonList.js",
-		"content/data/speciesData.js",
         "content/util_classes/pokemonMapper.util.js",
         "content/util_classes/localStorage.util.js",
 		"content/util_classes/uiController.util.js",

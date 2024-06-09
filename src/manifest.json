@@ -1,0 +1,95 @@
+{
+  "manifest_version": 3,
+  "name": "Rogue Dex",
+  "version": "2.6",
+  "permissions": [
+    "activeTab",
+    "webRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://pokerogue.net/*",
+    "https://api.pokerogue.net/*",
+    "https://if.daena.me/*",
+    "https://cdn.daena.me/*"
+  ],
+  "options_page": "options/options.html",
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "action": {
+    "default_popup": "options/options.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+	"type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://api.pokerogue.net/*",
+        "https://pokerogue.net/*"
+      ],
+      "js": [
+        "inject.js"
+      ],	  
+      "type": "module",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://pokerogue.net/*"
+      ],
+      "type": "module",
+      "js": [
+        "content/utils.js",
+        "libs/crypto-js.min.js",
+		"libs/lit-html.bundle.js",
+        "content/maps/abilityMap.js",
+        "content/maps/natureMap.js",
+        "content/maps/Pokemon_To_Id.js",
+        "content/maps/weatherMap.js",
+        "content/maps/PokemonEvolutions.js",
+		"content/maps/moveList.js",
+		"content/data/abilityList.js",
+		"content/data/pokemonList.js",
+		"content/data/speciesData.js",
+        "content/util_classes/pokemonMapper.util.js",
+        "content/util_classes/localStorage.util.js",
+		"content/util_classes/uiController.util.js",
+		"content/util_classes/pokemonIconDrawer.util.js",
+		"content/lit-templates/general.js",
+		"content/lit-templates/bottompanel.js",
+		"content/lit-templates/sidebar.js",
+		"content/lit-templates/cards.js",
+        "content/content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "RogueDex.png",
+    "48": "RogueDex.png",
+    "128": "RogueDex.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inject.js",
+        "injected.js",
+        "content/*",
+        "images/*",
+        "fonts/*",
+		"libs/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "extension_ids": []
+    }
+  ]
+}

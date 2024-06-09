@@ -1,0 +1,8 @@
+# .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm test
+# npx lint-staged
+
+# exit 1 # enable this line to purposely fail the commit (testing)

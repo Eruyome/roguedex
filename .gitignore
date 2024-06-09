@@ -1,1 +1,4 @@
-manifest.json
+*.log
+*.orig
+node_modules/*
+fetch_scripts/node_modules/*

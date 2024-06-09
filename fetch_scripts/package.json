@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "retry": "^0.13.1",
+    "yargs": "^17.7.2"
+  },
+  "name": "pokeapi_calls",
+  "version": "1.0.0",
+  "main": "collect-data.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -111,7 +111,7 @@
      * @function createPokemonTooltipDiv
      * @param {Object} pokemon - The data object for the Pokémon.
      * @param {string} pokemon.name - The name of the Pokémon.
-     * @param {string} pokemon.basePokemon - The base Pokémon of the fusion.
+     * @param {string} pokemon.speciesName - The base Pokémon of the fusion.
      * @param {string} pokemon.fusionPokemon - The fusion Pokémon.
      * @param {string[]} pokemon.currentTypes - An array of the current types of the Pokémon.
      * @param {number} pokemon.level - The level of the Pokémon.
@@ -125,8 +125,8 @@
         <div class="text-base tooltiptext">
             <span>Name: ${pokemon.name}</span></br>
             ${!pokemon.fusionId ? '' : html`
-                <span>Base: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
-                <span>Fusion: ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
+                <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
+                <span>Fused with : ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
             `}
             <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
             <span>Level: ${pokemon.level}</span></br>

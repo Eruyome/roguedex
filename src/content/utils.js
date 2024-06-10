@@ -89,7 +89,7 @@ class UtilsClass extends EventTarget {
         const targetScript = contentInjectables[this.index];
         console.log(`Injecting script: ${targetScript}`);
         const scriptElem = document.createElement("script");
-        scriptElem.src = chrome.runtime.getURL(targetScript);
+        scriptElem.src = browserApi.runtime.getURL(targetScript);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 

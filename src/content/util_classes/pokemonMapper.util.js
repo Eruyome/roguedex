@@ -430,11 +430,9 @@ class PokemonMapperClass{
         }
 
         const pokemonPromises = pokemonArray.map(async (pokemon) => {
-            const pokemonId = PokemonMapperClass.#getPokemonId($this, pokemon.species);
+            const pokemonName = PokemonMapperClass.#getPokemonSpeciesName($this, pokemon.species);
             const speciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.species);
             const fusionSpeciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.fusionSpecies);
-
-            const fusionId = $this.PokemonList[fusionSpeciesId]?.name;
 
             const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);
 
@@ -442,15 +440,18 @@ class PokemonMapperClass{
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
             const teraType = PokemonMapperClass.#getTeraType(pokemon.modifiers);
             const typeEffectiveness = await PokemonMapperClass.#getFullTypeEffectivenessAllCases( baseTypes, fusionTypes, teraType );
+            const currentTypes = (teraType?.length ? teraType : (fusionTypes?.length ? [baseTypes[0], fusionTypes[1]] : baseTypes));
 
-            const basePokemon = $this.PokemonList[speciesId].basePokemonName;
-            const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.basePokemonName;
-            const name = $this.getPokemonName(pokemonId, fusionSpeciesId, basePokemon, fusionPokemon);
+            const basePokemon = $this.PokemonList[speciesId].basePokemonName;   // name of the starter pokemon / lowest in the evolution chain
+            const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.name;
+            const name = $this.getPokemonName(pokemonName, fusionPokemon, basePokemon);
+
             const pokemonSprite = $this.PokemonList[speciesId].sprite;
 
             return {
                 id: speciesId,
                 name: $this.capitalizeFirstLetter(name.toUpperCase()),
+                speciesName: $this.capitalizeFirstLetter(pokemonName),
                 typeEffectiveness: {
                     weaknesses: typeEffectiveness.weaknesses,
                     resistances: typeEffectiveness.resistances,
@@ -460,11 +461,11 @@ class PokemonMapperClass{
                 ivs: pokemon.ivs,
                 ability: await $this.getPokemonAbility(speciesId, pokemon.abilityIndex, fusionSpeciesId, pokemon.fusionAbilityIndex),
                 nature: $this.I2N[pokemon.nature],
-                basePokemon,
-                baseId: $this.PokemonList[speciesId].basePokemonId,
+                basePokemon: $this.capitalizeFirstLetter(basePokemon),
+                baseId: parseInt($this.PokemonList[speciesId].basePokemonId),
                 sprite: pokemonSprite,
                 fusionId: fusionSpeciesId,
-                fusionPokemon: fusionPokemon,
+                fusionPokemon: ( fusionPokemon ? $this.capitalizeFirstLetter(fusionPokemon) : null ),
                 moveset,
                 boss: pokemon.boss,
                 friendship: pokemon.friendship,
@@ -474,13 +475,13 @@ class PokemonMapperClass{
                 pokerus: pokemon.pokerus,
                 fusionLuck: pokemon.fusionLuck,
                 modifiers: pokemon.modifiers,
-                currentTypes: (teraType?.length ? teraType : (fusionTypes?.length ? [baseTypes[0], fusionTypes[1]] : baseTypes)),
+                currentTypes: currentTypes.map(type => $this.capitalizeFirstLetter(type)),
             };
         });
 
         frontendPokemonArray = await Promise.all(pokemonPromises);
 
-        const partyId = ( pokemonLocation == 'enemyParty' ? 'enemies' : 'allies' )
+        const partyId = ( pokemonLocation == 'enemyParty' ? 'enemies' : 'allies' );
         return { pokemon: frontendPokemonArray, weather, partyId : partyId };
     }
 
@@ -488,24 +489,23 @@ class PokemonMapperClass{
      * Retrieves the name of a Pokémon based on the provided parameters.
      * 
      * @function
-     * @param {string} pokemonId - The ID of the Pokémon.
+     * @param {string} pokemonName - The name of the Pokémon species.
      * @param {string} fusionSpeciesId - The ID of the fused species.
-     * @param {string} basePokemon - The name of the base Pokémon.
+     * @param {string} basePokemonName - The name of the base Pokémon.
      * @param {string} fusionPokemon - The name of the fusion Pokémon.
      * @returns {string} The name of the Pokémon.
      */
-    getPokemonName(pokemonId, fusionSpeciesId, basePokemon, fusionPokemon) {
-        if (fusionSpeciesId) {
-            const nameA = basePokemon;
+    getPokemonName(pokemonName, fusionPokemon, basePokemonName ) {
+        if (fusionPokemon) {
+            const nameA = pokemonName;
             const nameB = fusionPokemon;
             return this.getFusedSpeciesName(nameA, nameB);
-            // getFusedSpeciesName
         }
-        else if (pokemonId) {
-            return pokemonId;
+        else if (pokemonName) {
+            return pokemonName;
         }
         else {        
-            return basePokemon;
+            return basePokemonName;
         }
     }
 
@@ -583,14 +583,14 @@ class PokemonMapperClass{
      * @private
      * @param {Object} $this - The instance of the PokemonMapperClass.
      * @param {string} speciesId - The ID of the species to retrieve.
-     * @returns {string} The ID of the Pokémon species.
+     * @returns {string} The name of the Pokémon species.
      */
-    static #getPokemonId($this, speciesId) {
-        let id = $this.PokemonList[speciesId]?.name;
-        if (!id) {
-            id = $this.PokemonList[$this.convertPokemonId(speciesId)]?.name;
+    static #getPokemonSpeciesName($this, speciesId) {
+        let name = $this.PokemonList[speciesId]?.name;
+        if (!name) {
+            name = $this.PokemonList[$this.convertPokemonId(speciesId)]?.name;
         }
-        return id
+        return name
     }
 
     /**

@@ -297,7 +297,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
  * @param {boolean} minified - Flag indicating if the card should be minified.
- * @returns {Promise<import('Lit-HTML-Template')>} - The created Pokemon card template.
+ * @returns {Promise<Lit-HTML-Template>} - The created Pokemon card template.
  */
 async function chooseCardType(divId, pokemon, weather, minified) {
     if (minified) {
@@ -350,7 +350,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
  * @param {string} left - The left position of the div.
  * @param {string} right - The right position of the div.
  * @param {string} opacity - The opacity of the div.
- * @param {import('Lit-HTML-Template')} content - The content to render in the wrapper.
+ * @param {Lit-HTML-Template} content - The content to render in the wrapper.
  * @param {boolean} [showSidebar=false] - Flag indicating if the sidebar should be shown.
  */
 async function updateCardWrapper(divId, top, left, right, opacity, content, showSidebar = false) {
@@ -401,7 +401,7 @@ function setElementProperties(element, properties) {
  * @param {string} cardId - The ID of the card.
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
- * @returns {Promise<{html: import('Lit-HTML-Template')}>} - The created minified Pokemon card template.
+ * @returns {Promise<Lit-HTML-Template>} - The created minified Pokemon card template.
  */
 async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
@@ -421,7 +421,7 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
  * @param {string} cardId - The ID of the card.
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
- * @returns {Promise<{html: import('Lit-HTML-Template')}>} - The created full-size Pokemon card template.
+ * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
     const opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "10", "100");

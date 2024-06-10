@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Description of the PokemonMapper class and its methods.
+ * @file 'src/content/util_classes/pokemonMapper.utils.js'
+ * @class PokemonMapperClass
+ */
+
 class PokemonMapperClass{
     constructor() {
         this.W2I = window.__WeatherMap;
@@ -10,11 +16,22 @@ class PokemonMapperClass{
         PokemonMapperClass.#init(this);
     }
 
+    /**
+     * Initializes the PokemonMapperClass instance.
+     * @param {PokemonMapperClass} $this - The instance of PokemonMapperClass.
+     * @function
+     */
     static #init($this) {
         $this.I2W = PokemonMapperClass.#calculateInverseMap($this.W2I);
         $this.I2N = PokemonMapperClass.#calculateInverseMap($this.N2I);
     }
 
+    /**
+     * Calculates the inverse of a given map.
+     * @param {Object} map - The map to invert.
+     * @returns {Object} The inverted map.
+     * @function
+     */
     static #calculateInverseMap(map) {
         const returnMap = {};
         for (const [key, value] of Object.entries(map)) {
@@ -23,6 +40,13 @@ class PokemonMapperClass{
         return returnMap;
     }
 
+    /**
+     * Maps a party to an array of Pokémon objects.
+     * @param {Array} party - The party to map.
+     * @param {Array} battleModifiers - The battle modifiers.
+     * @returns {Array} The array of Pokémon objects.
+     * @function
+     */
     static #mapPartyToPokemonArray(party, battleModifiers) {
         return party.map(pokemon => ({
             species: pokemon.species,
@@ -46,6 +70,13 @@ class PokemonMapperClass{
         }));
     }
 
+    /**
+     * Retrieves the modifiers for a given Pokémon.
+     * @param {Object} pokemon - The Pokémon object.
+     * @param {Array} modifiers - The list of modifiers.
+     * @returns {Object} The modifiers for the Pokémon.
+     * @function
+     */
     static #getPokemonModifiers(pokemon, modifiers) {
         const typeList = [ "NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "FIRE", "WATER", "GRASS", "ELECTRIC",
             "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "STELLAR"];
@@ -98,6 +129,12 @@ class PokemonMapperClass{
         return modifierList
     }
 
+    /**
+     * Retrieves the Tera type from the modifiers.
+     * @param {Object} modifiers - The list of modifiers.
+     * @returns {Array|null} The Tera type array or null if not present.
+     * @function
+     */
     static #getTeraType(modifiers) {
         // should return an array with a single string like "Water"
         if (modifiers?.teraState?.type) {
@@ -106,7 +143,14 @@ class PokemonMapperClass{
             return null;
         }
     }
-    
+
+    /**
+     * Retrieves the Pokémon moveset with detailed type information.
+     * @param {Object} movelist - The list of moves.
+     * @param {Object} movesetObj - The moveset object.
+     * @returns {Promise<Array>} The detailed moveset.
+     * @function
+     */
     static async #getPokemonTypeMoveset(movelist, movesetObj) {
         // https://pokeapi.co/api/v2/move/${id}
         
@@ -123,6 +167,12 @@ class PokemonMapperClass{
         return moveset
     }
 
+    /**
+     * Retrieves detailed type effectiveness information.
+     * @param {Array} typeArray - The array of types.
+     * @returns {Promise<Object>} The detailed type effectiveness.
+     * @function
+     */
     static async #getPokemonTypeEffectivenessDetailed(typeArray) {
         let types = typeArray;
 
@@ -140,6 +190,12 @@ class PokemonMapperClass{
         return { }
     }
 
+     /**
+     * Calculates detailed type effectiveness for given types.
+     * @param {Array} types - The array of types.
+     * @returns {Promise<Object>} The detailed type effectiveness.
+     * @function
+     */
     static async #calculateTypeEffectivenessDetailed(types) {        
         const typesInPokemondbOrder = [	
             "normal",
@@ -267,6 +323,17 @@ class PokemonMapperClass{
         return { weaknesses, resistances, immunities, cssClasses };    
     }
 
+    /**
+     * Retrieves the Pokémon ability information.
+     * 
+     * @async
+     * @function
+     * @param {number} pokemonId - The ID of the Pokémon.
+     * @param {number} pokemonAbilityIndex - The index of the Pokémon's ability.
+     * @param {number} [fusionId] - The ID of the fusion Pokémon (optional).
+     * @param {number} [fusionAbilityIndex] - The index of the fusion Pokémon's ability (optional).
+     * @returns {Promise<Object>} A promise that resolves to an object containing the ability name, description, and whether it is a hidden ability.
+     */
     async getPokemonAbility(pokemonId, pokemonAbilityIndex, fusionId, fusionAbilityIndex) {
         const $this = this;
         let pokeID;
@@ -303,11 +370,29 @@ class PokemonMapperClass{
         }
     }
 
+    /**
+     * Capitalizes the first letter of a string.
+     * 
+     * @function
+     * @param {string} string - The input string to be capitalized.
+     * @returns {string} The string with the first letter capitalized.
+     */
     capitalizeFirstLetter(string) {
         string = string.toLowerCase();
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    /**
+     * Retrieves the full type effectiveness for all cases based on the provided type arrays.
+     * 
+     * @function
+     * @private
+     * @static
+     * @param {string[]} baseTypeArray - The array of base types.
+     * @param {string[]} fusionTypeArray - The array of fusion types.
+     * @param {string[]} teraTypeArray - The array of tera types.
+     * @returns {Promise<Object>} A promise that resolves to an object containing the type effectiveness details.
+     */
     static async #getFullTypeEffectivenessAllCases(baseTypeArray, fusionTypeArray, teraTypeArray) {
         if (teraTypeArray) {
             return await PokemonMapperClass.#getPokemonTypeEffectivenessDetailed(teraTypeArray);
@@ -321,6 +406,16 @@ class PokemonMapperClass{
         }
     }
 
+    /**
+     * Retrieves an array of Pokémon data based on the provided parameters.
+     * 
+     * @function
+     * @param {Object[]} pokemonData - The data of the Pokémon.
+     * @param {Object} arena - The arena information.
+     * @param {Object} modifiers - The modifiers for the Pokémon.
+     * @param {string} pokemonLocation - The "location" of the Pokémon, in this case meaning "enemy" or "ally" party.
+     * @returns {Promise<Object>} A promise that resolves to an object containing the Pokémon array, weather information, and party ID.
+     */
     async getPokemonArray(pokemonData, arena, modifiers, pokemonLocation) {
         const $this = this;
         const pokemonArray = PokemonMapperClass.#mapPartyToPokemonArray(pokemonData, modifiers);
@@ -389,6 +484,16 @@ class PokemonMapperClass{
         return { pokemon: frontendPokemonArray, weather, partyId : partyId };
     }
 
+    /**
+     * Retrieves the name of a Pokémon based on the provided parameters.
+     * 
+     * @function
+     * @param {string} pokemonId - The ID of the Pokémon.
+     * @param {string} fusionSpeciesId - The ID of the fused species.
+     * @param {string} basePokemon - The name of the base Pokémon.
+     * @param {string} fusionPokemon - The name of the fusion Pokémon.
+     * @returns {string} The name of the Pokémon.
+     */
     getPokemonName(pokemonId, fusionSpeciesId, basePokemon, fusionPokemon) {
         if (fusionSpeciesId) {
             const nameA = basePokemon;
@@ -404,7 +509,15 @@ class PokemonMapperClass{
         }
     }
 
-     getFusedSpeciesName(speciesAName, speciesBName) {
+    /**
+     * Constructs the name of a fused species based on the names of the two species.
+     * 
+     * @function
+     * @param {string} speciesAName - The name of the first species.
+     * @param {string} speciesBName - The name of the second species.
+     * @returns {string} The name of the fused species.
+     */
+    getFusedSpeciesName(speciesAName, speciesBName) {
         const fragAPattern = /([a-z]{2}.*?[aeiou(?:y$)\-']+)(.*?)$/i;
         const fragBPattern = /([a-z]{2}.*?[aeiou(?:y$)\-'])(.*?)$/i;
 
@@ -462,6 +575,16 @@ class PokemonMapperClass{
         return `${speciesAPrefix || speciesBPrefix}${fragA}${fragB}${speciesBSuffix || speciesASuffix}`;
     }
 
+    /**
+     * Retrieves the ID of a Pokémon species from the Pokémon list.
+     * 
+     * @function
+     * @memberof PokemonMapperClass
+     * @private
+     * @param {Object} $this - The instance of the PokemonMapperClass.
+     * @param {string} speciesId - The ID of the species to retrieve.
+     * @returns {string} The ID of the Pokémon species.
+     */
     static #getPokemonId($this, speciesId) {
         let id = $this.PokemonList[speciesId]?.name;
         if (!id) {
@@ -470,6 +593,16 @@ class PokemonMapperClass{
         return id
     }
 
+    /**
+     * Retrieves the ID of a Pokémon species from the Pokémon list or converts it if necessary.
+     * 
+     * @function
+     * @memberof PokemonMapperClass
+     * @private
+     * @param {Object} $this - The instance of the PokemonMapperClass.
+     * @param {string} speciesId - The ID of the species to retrieve.
+     * @returns {string} The ID of the Pokémon species.
+     */
     static #getSpeciesId($this, speciesId) {
         if ($this.PokemonList[speciesId]?.name) {            
             // if this species id returns something useful, use it
@@ -480,6 +613,14 @@ class PokemonMapperClass{
         }
     }
 
+    /**
+     * Converts a Pokémon ID using a predefined conversion list. This is needed to get the "correct" IDs for some
+     * pokemon, for example all alolan and galar pokemon.
+     * 
+     * @function
+     * @param {number} pokemonId - The ID of the Pokémon to convert.
+     * @returns {number} The converted Pokémon ID, if found in the conversion list; otherwise, returns the original ID.
+     */
     convertPokemonId(pokemonId) {
         const conversionList = {
             2019: 10091,

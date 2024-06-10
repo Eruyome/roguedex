@@ -1,3 +1,10 @@
+/**
+ * @fileoverview
+ * This class manages options for the extension settings.
+ * @file 'src/options/optionsManager.js'
+ * @class OptionsManager
+ */
+
 import settingsTemplate from './settingsTemplate.js';
 
 class OptionsManager {
@@ -5,6 +12,11 @@ class OptionsManager {
         this.browserApi = typeof browser !== "undefined" ? browser : chrome;
     }
 
+    /**
+     * Saves an option setting.
+     * @param {string} setting - The setting to save.
+     * @param {string|number} value - The value of the setting.
+     */
     saveOption(setting, value) {
         const settings = {};
         if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor') {
@@ -23,6 +35,10 @@ class OptionsManager {
         });
     }
 
+     /**
+     * Restores options from storage and updates UI accordingly.
+     * @param {Function} callback - The function to call after restoring options.
+     */
     restoreOptions(callback) {
         const keys = Object.values(settingsTemplate).map(setting => setting.localStorage);
         this.browserApi.storage.sync.get(keys, (data) => {
@@ -47,17 +63,27 @@ class OptionsManager {
         });
     }
 
+    /**
+     * Updates scale UI elements.
+     * @param {number} value - The scale value.
+     */
     updateScale(value) {
         const scaleFactor = parseFloat(value);
         document.getElementById('scaleValue').textContent = scaleFactor;
         // Update any other necessary elements based on scale factor      
     }
 
+    /**
+     * Scales UI elements.
+     */
     scaleElements() {
         const manualScaleFactor = document.getElementById('scaleSlider').value;
         document.getElementById('scaleValue').textContent = manualScaleFactor;
     }
 
+    /**
+     * Saves options to storage.
+     */
     saveOptions() {
         const showMin = document.querySelector('.option[data-setting="showMinified"].selected').getAttribute('data-value') === 'true';
         const showEnemy = document.querySelector('.option[data-setting="showEnemies"].selected').getAttribute('data-value') === 'true';

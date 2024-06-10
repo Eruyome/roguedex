@@ -48,16 +48,23 @@
       "js": [
         "content/utils.js",
         "libs/crypto-js.min.js",
+		"libs/lit-html.bundle.js",
         "content/maps/abilityMap.js",
         "content/maps/natureMap.js",
         "content/maps/Pokemon_To_Id.js",
         "content/maps/weatherMap.js",
         "content/maps/PokemonEvolutions.js",
-        "content/maps/moveList.js",
-        "content/data/speciesData.js",
+		"content/maps/moveList.js",
+		"content/data/abilityList.js",
+		"content/data/pokemonList.js",
         "content/util_classes/pokemonMapper.util.js",
         "content/util_classes/localStorage.util.js",
-        "content/util_classes/uiController.util.js",
+		"content/util_classes/uiController.util.js",
+		"content/util_classes/pokemonIconDrawer.util.js",
+		"content/lit-templates/general.js",
+		"content/lit-templates/bottompanel.js",
+		"content/lit-templates/sidebar.js",
+		"content/lit-templates/cards.js",
         "content/content.js"
       ],
       "css": [
@@ -77,7 +84,8 @@
         "injected.js",
         "content/*",
         "images/*",
-        "fonts/*"
+        "fonts/*",
+		"libs/*"
       ],
       "matches": [
         "<all_urls>"

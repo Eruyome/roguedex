@@ -1,3 +1,14 @@
+/**
+ * @fileoverview
+ * This class manages the initialization and injection of utility scripts into the content page.
+ * It also handles the loading and instantiation of utility classes once the scripts are injected and loaded.
+ * @file 'src/content/utils.js'
+ */
+
+/**
+ * Array containing paths to the utility scripts to be injected.
+ * @type {string[]}
+ */
 const contentInjectables = [
     "/content/maps/natureMap.js",
     "/content/maps/weatherMap.js",
@@ -11,6 +22,11 @@ const contentInjectables = [
     "/content/util_classes/uiController.util.js"
 ];
 
+/**
+ * Utility class that manages the injection and loading of scripts and the instantiation of utility classes.
+ * @class UtilsClass
+ * @extends {EventTarget}
+ */
 class UtilsClass extends EventTarget {
     constructor() {
         super();
@@ -28,10 +44,18 @@ class UtilsClass extends EventTarget {
         this.index = 0;
     }
 
+    /**
+     * Gets the readiness state of the UtilsClass.
+     * @type {boolean}
+     */
     get isReady() {
         return this._isReady;
     }
 
+    /**
+     * Sets the readiness state of the UtilsClass and dispatches an 'isReadyChange' event.
+     * @type {boolean}
+     */
     set isReady(value) {
         if (this._isReady !== value) {
             this._isReady = value;
@@ -39,14 +63,23 @@ class UtilsClass extends EventTarget {
         }
     }
 
+    /**
+     * Initializes the UtilsClass by injecting scripts.
+     */
     init() {
         this.injectScripts();
     }
 
+     /**
+     * Checks if all utility classes are ready.
+     */
     checkIfReady() {
         this.isReady = Object.values(this.classesReady).every(value => value);
     }
 
+    /**
+     * Injects utility scripts into the content page.
+     */
     injectScripts() {
         if (this.index >= contentInjectables.length) {
             console.log("All scripts injected.");
@@ -72,6 +105,10 @@ class UtilsClass extends EventTarget {
         });
     }
 
+    /**
+     * Handles the loaded state of the injected scripts and instantiates utility classes accordingly.
+     * @param {string} targetScript - The path of the loaded script.
+     */
     handleScriptLoaded(targetScript) {
         if (targetScript.includes("/content/util_classes/pokemonMapper.util.js")) {
             this.classesReady["pokemonMapper.util.js"] = true;

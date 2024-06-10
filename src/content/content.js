@@ -548,9 +548,11 @@ async function scaleElements() {
 async function scaleSidebarElements() {
     const scaleFactorMulti = await getScaleFactor('sidebarScaleFactor', 1);
     const scaleFactor = await calculateScaleFactor();
-    
+
     const sidebarDiv = document.getElementById('roguedex-sidebar');
     scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);
+    const bottomPanelDiv = document.getElementById('roguedex-bottom-panel');
+    scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti, 18);
 }
 
 /**

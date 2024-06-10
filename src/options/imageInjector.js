@@ -1,3 +1,10 @@
+/**
+ * @fileoverview
+ * This class handles preloading and injecting images for menu elements.
+ * @file 'src/options/imageInjector.js'
+ * @class ImageInjector
+ */
+
 export default class ImageInjector {
     constructor() {
         this.browserApi = typeof browser !== "undefined" ? browser : chrome;
@@ -6,6 +13,9 @@ export default class ImageInjector {
         this.preloadImages();
     }
 
+    /**
+     * Preloads images for all menu types.
+     */
     preloadImages() {
         for (let menuType = 1; menuType <= 5; menuType++) {
             this.preloadedImages[menuType] = {};
@@ -31,6 +41,10 @@ export default class ImageInjector {
         }
     }
 
+    /**
+     * Injects preloaded images into menu elements.
+     * @param {number} menuType - The type of menu.
+     */
     injectImages(menuType = 1) {
         const parts = [
             { class: 'corner-top-left', part: 'corner-top-left' },

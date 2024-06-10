@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * This module provides utilities for interacting with the browser API, including fetching fusion images, showing options, and fetching images.
+ * @file 'src/background.js'
+ */
+
+/**
+ * Browser API utility module.
+ * @module browserApi
+ */
+
+/**
+ * Detects the browser environment and returns the appropriate browser API object.
+ * @returns {Object | null} The browser API object or null if unsupported browser or environment.
+ */
 const browserApi = (() => {
     if (typeof browser !== "undefined" && typeof browser.runtime !== "undefined" && typeof browser.runtime.getURL === "function") {
         return browser; // Firefox or compatible
@@ -10,6 +25,13 @@ const browserApi = (() => {
 })();
 
 if (browserApi) {
+    /**
+     * Handles messages from the background script.
+     * @param {Object} request - The message payload.
+     * @param {Object} sender - The sender of the message.
+     * @param {Function} sendResponse - Function to send a response asynchronously.
+     * @returns {boolean} True to indicate that a response will be sent asynchronously.
+     */
     browserApi.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.action === "fetchFusionImageHtml") {
             const { fusionId, pokemonId } = request;

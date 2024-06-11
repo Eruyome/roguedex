@@ -73,15 +73,36 @@ updateExtensionStatus();
 listenForDataUiModeChange();
 
 /**
- * Injects a script into the current webpage.
- * @function scriptInjector
+ * Injects the utils.js script if it is not properly initialized.
  */
 function scriptInjector() {
-    const scriptElem = document.createElement("script");
-    scriptElem.src = chrome.runtime.getURL("/content/utils.js");
-    scriptElem.type = "module";
-    document.head.append(scriptElem);
-    scriptElem.addEventListener("load", initUtilities);
+    if (!isUtilsProperlyInitialized()) {
+        const scriptElem = document.createElement("script");
+        scriptElem.src = browserApi.runtime.getURL("/content/utils.js");
+        console.log(browserApi);
+        console.log(scriptElem.src);
+        scriptElem.type = "module";
+        document.head.appendChild(scriptElem);
+
+        scriptElem.addEventListener("load", () => {
+            console.log("window.Utils:", window.Utils);
+            initUtilities();
+            console.log("Utils script loaded.");
+        });
+    }
+}
+
+/**
+ * Checks if the UtilsClass is properly initialized.
+ * @returns {boolean} True if UtilsClass is properly initialized, false otherwise.
+ */
+function isUtilsProperlyInitialized() {
+    if (window.Utils && window.Utils instanceof UtilsClass) {
+        // Check for expected properties and methods
+        return typeof window.Utils.init === 'function' &&
+               typeof window.Utils.injectScripts === 'function';
+    }
+    return false;
 }
 
 /**
@@ -90,19 +111,20 @@ function scriptInjector() {
  * @memberof scriptInjector
  */
 function initUtilities() {
-    // Initialize and set up UtilsClass
-    window.Utils = new UtilsClass();
-    window.Utils.init();
+    if (window.Utils && typeof window.Utils.init === 'function') {
+        window.Utils.init();
 
-    // Listen for the 'isReadyChange' event to check if all scripts are loaded
-    window.Utils.addEventListener('isReadyChange', () => {
-        if (window.Utils.isReady) {
-            console.info("All Scripts Loaded!");
-            extensionSettingsListener();
-        } else {
-            console.info("Error Loading Scripts :(");
-        }
-    });
+        window.Utils.on('isReadyChange', () => {
+            if (window.Utils.isReady) {
+                console.info("All Scripts Loaded!");
+                extensionSettingsListener();
+            } else {
+                console.info("Error Loading Scripts :(");
+            }
+        });
+    } else {
+        console.error("UtilsClass is not initialized or init is not a function");
+    }
 }
 
 /**

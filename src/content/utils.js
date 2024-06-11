@@ -3,6 +3,7 @@
  * This class manages the initialization and injection of utility scripts into the content page.
  * It also handles the loading and instantiation of utility classes once the scripts are injected and loaded.
  * @file 'src/content/utils.js'
+ * @class UtilsClass
  */
 
 /**
@@ -23,13 +24,10 @@ const contentInjectables = [
 ];
 
 /**
- * Utility class that manages the injection and loading of scripts and the instantiation of utility classes.
- * @class UtilsClass
- * @extends {EventTarget}
+ * Class representing utility functions and managing the injection of utility scripts.
  */
-class UtilsClass extends EventTarget {
+class UtilsClass {
     constructor() {
-        super();
         this.PokeMapper = null;
         this.LocalStorage = null;
         this.PokemonIconDrawer = null;
@@ -42,24 +40,47 @@ class UtilsClass extends EventTarget {
         };
         this._isReady = false;
         this.index = 0;
+        this.eventListeners = {};
     }
 
     /**
-     * Gets the readiness state of the UtilsClass.
-     * @type {boolean}
+     * Registers an event listener.
+     * @param {string} event - The event to listen for.
+     * @param {Function} listener - The callback function to execute when the event is fired.
+     */
+    on(event, listener) {
+        if (!this.eventListeners[event]) {
+            this.eventListeners[event] = [];
+        }
+        this.eventListeners[event].push(listener);
+    }
+
+    /**
+     * Dispatches an event to all registered listeners.
+     * @param {string} event - The event to dispatch.
+     */
+    dispatchEvent(event) {
+        if (this.eventListeners[event]) {
+            this.eventListeners[event].forEach(listener => listener());
+        }
+    }
+
+    /**
+     * Gets the readiness state.
+     * @returns {boolean}
      */
     get isReady() {
         return this._isReady;
     }
 
     /**
-     * Sets the readiness state of the UtilsClass and dispatches an 'isReadyChange' event.
-     * @type {boolean}
+     * Sets the readiness state and dispatches an event if the state changes.
+     * @param {boolean} value - The new readiness state.
      */
     set isReady(value) {
         if (this._isReady !== value) {
             this._isReady = value;
-            this.dispatchEvent(new Event('isReadyChange'));
+            this.dispatchEvent('isReadyChange');
         }
     }
 
@@ -67,29 +88,25 @@ class UtilsClass extends EventTarget {
      * Initializes the UtilsClass by injecting scripts.
      */
     init() {
+        console.log("UtilsClass init called.");
         this.injectScripts();
-    }
-
-     /**
-     * Checks if all utility classes are ready.
-     */
-    checkIfReady() {
-        this.isReady = Object.values(this.classesReady).every(value => value);
     }
 
     /**
      * Injects utility scripts into the content page.
+     * @private
      */
     injectScripts() {
         if (this.index >= contentInjectables.length) {
             console.log("All scripts injected.");
+            this.checkIfReady();
             return;
         }
 
         const targetScript = contentInjectables[this.index];
         console.log(`Injecting script: ${targetScript}`);
         const scriptElem = document.createElement("script");
-        scriptElem.src = browserApi.runtime.getURL(targetScript);
+        scriptElem.src = this.browserApi.runtime.getURL(targetScript);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 
@@ -105,9 +122,10 @@ class UtilsClass extends EventTarget {
         });
     }
 
-    /**
+     /**
      * Handles the loaded state of the injected scripts and instantiates utility classes accordingly.
      * @param {string} targetScript - The path of the loaded script.
+     * @private
      */
     handleScriptLoaded(targetScript) {
         if (targetScript.includes("/content/util_classes/pokemonMapper.util.js")) {
@@ -125,4 +143,33 @@ class UtilsClass extends EventTarget {
         }
         this.checkIfReady();
     }
+
+    /**
+     * Checks if all utility classes are ready and updates the readiness state.
+     * @private
+     */
+    checkIfReady() {
+        this.isReady = Object.values(this.classesReady).every(value => value);
+    }
+
+    /**
+     * Detects the browser environment and returns the appropriate browser API object.
+     * @returns {Object | null} The browser API object or null if unsupported browser or environment.
+     * @readonly
+     */
+    get browserApi() {
+        if (typeof browser !== "undefined" && typeof browser.runtime !== "undefined" && typeof browser.runtime.getURL === "function") {
+            return browser; // Firefox or compatible
+        } else if (typeof chrome !== "undefined" && typeof chrome.runtime !== "undefined" && typeof chrome.runtime.getURL === "function") {
+            return chrome; // Chrome or compatible
+        } else {
+            console.error("Browser API not found or unsupported browser");
+            return null;
+        }
+    }
 }
+
+// Attach an instance of UtilsClass to the window object
+window.Utils = new UtilsClass();
+console.debug("UtilsClass instance created and assigned to window.Utils:", window.Utils);
+    

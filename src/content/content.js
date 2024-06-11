@@ -79,16 +79,20 @@ function scriptInjector() {
     if (!isUtilsProperlyInitialized()) {
         const scriptElem = document.createElement("script");
         scriptElem.src = browserApi.runtime.getURL("/content/utils.js");
-        console.log(browserApi);
-        console.log(scriptElem.src);
+        console.debug("Browser api :", browserApi);
+        console.debug("UtilsClass url:", scriptElem.src);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.log("window.Utils:", window.Utils);
+            console.debug("window.Utils:", window.Utils);
             initUtilities();
-            console.log("Utils script loaded.");
+            console.debug("Utils script loaded.");
         });
+    } else {
+        console.debug("Utils class is properly initialized.");
+        // Call initUtilities directly if UtilsClass is already initialized
+        initUtilities();
     }
 }
 
@@ -111,9 +115,8 @@ function isUtilsProperlyInitialized() {
  * @memberof scriptInjector
  */
 function initUtilities() {
-    if (window.Utils && typeof window.Utils.init === 'function') {
-        window.Utils.init();
-
+    if (window.Utils && window.Utils instanceof UtilsClass) {
+        // Listen for 'isReadyChange' event to determine when all scripts are loaded
         window.Utils.on('isReadyChange', () => {
             if (window.Utils.isReady) {
                 console.info("All Scripts Loaded!");
@@ -122,8 +125,11 @@ function initUtilities() {
                 console.info("Error Loading Scripts :(");
             }
         });
+
+        // Call UtilsClass.init() to start the initialization process
+        window.Utils.init();
     } else {
-        console.error("UtilsClass is not initialized or init is not a function");
+        console.error("UtilsClass is not properly initialized.");
     }
 }
 
@@ -787,7 +793,7 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
  * Listens for changes in extension settings.
  * @function extensionSettingsListener
  */
-function extensionSettingsListener() {
+function extensionSettingsListener() {    
     browserApi.storage.onChanged.addListener(async function (changes, namespace) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
         
@@ -825,6 +831,7 @@ function extensionSettingsListener() {
             }
         }
     });
+    console.debug("Extension settings listener activated.");
 }
 
 /**

@@ -23,9 +23,6 @@ const contentInjectables = [
     "/content/util_classes/uiController.util.js"
 ];
 
-/**
- * Class representing utility functions and managing the injection of utility scripts.
- */
 class UtilsClass {
     constructor() {
         this.PokeMapper = null;
@@ -88,11 +85,11 @@ class UtilsClass {
      * Initializes the UtilsClass by injecting scripts.
      */
     init() {
-        console.log("UtilsClass init called.");
+        console.debug("UtilsClass init called.");
         this.injectScripts();
     }
 
-    /**
+     /**
      * Injects utility scripts into the content page.
      * @private
      */
@@ -122,7 +119,7 @@ class UtilsClass {
         });
     }
 
-     /**
+    /**
      * Handles the loaded state of the injected scripts and instantiates utility classes accordingly.
      * @param {string} targetScript - The path of the loaded script.
      * @private
@@ -149,7 +146,10 @@ class UtilsClass {
      * @private
      */
     checkIfReady() {
-        this.isReady = Object.values(this.classesReady).every(value => value);
+        const allReady = Object.values(this.classesReady).every(value => value);
+        if (allReady) {
+            this.isReady = true;
+        }
     }
 
     /**

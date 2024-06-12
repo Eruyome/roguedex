@@ -74,6 +74,7 @@ body {
     box-sizing: border-box;
     position: relative;
     font-family: var(--sidebar-font);
+    line-height: 100%;
 }
 .roguedex-sidebar.active {
     display: block;    
@@ -101,6 +102,7 @@ body.sidebar-Bottom {
     min-width: 1em;
     min-height: 1em;
     font-size: 1.5em;
+    line-height: 100%;
     margin: 0.19em 0px 0px 0.19em;
     background-color: #5c5c5c;
     color: white;
@@ -123,7 +125,7 @@ body.sidebar-Bottom {
 .roguedex-sidebar .sidebar-header {
     color: white;
     font-size: 2em;
-    padding: 0.1em 0 0.3em 0;
+    padding: 0.3em 0 0.3em 0;
     width: 100%;
     text-align: center;
     font-family: inherit;
@@ -558,7 +560,8 @@ body.sidebar-Bottom {
 /* bottom panel */
 
 .roguedex-bottom-panel {
-    font-size: 1.5em;  
+    font-size: 1.5em;
+    line-height: 100%;
     bottom: 0;
     position: absolute;
     z-index: 0;
@@ -581,14 +584,16 @@ body.sidebar-Bottom {
     left: 0;    
 }
 .roguedex-bottom-panel-content {
-    padding: 0.5em;
+    padding: 0.2em;
     height: -webkit-fill-available;
     color: white;
     font-family: inherit;
-    font-size: 1em;
+    /*font-size: 1em;*/
+    font-size: inherit;
 }
 .roguedex-bottom-panel-header {
-    font-size: 1em;
+    /*font-size: 1em;*/
+    font-size: inherit;
 }
 .bottom-panel-weather-box {
     margin: 0.5em;
@@ -609,11 +614,61 @@ body.sidebar-Bottom {
     float: left;
 }
 .bottom-panel-party-modifiers, .bottom-panel-pokemon-modifiers {
-    margin-right: 0.5em;
+    margin-right: 0.1em;
 }
 .bottom-panel-party-modifiers .zeroValue, .bottom-panel-enemy-modifiers .zeroValue, .bottom-panel-pokemon-modifiers .zeroValue {
     color: rgb(104, 104, 104);
 }
+.bottom-panel-party-modifiers {
+    border-width: 0.2em;
+    border-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-image: linear-gradient(to bottom, #0095ff, var(--sidebar-bg-color)) 1;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    position: relative;
+}
+.bottom-panel-party-modifiers::before {
+    position: absolute;
+    inset: 0px -1px;
+    content: '';
+    background: transparent;
+    border-width: 0.2em;
+    border-style: solid;
+    border-image: linear-gradient(to left, #0095ff, var(--sidebar-bg-color)) 1;
+    border-image-slice: 1;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: -moz-available;
+  }
+.bottom-panel-enemy-modifiers {
+    border-width: 0.2em;
+    border-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-image: linear-gradient(to bottom, #b30a21, var(--sidebar-bg-color)) 1;
+    border-bottom: none;
+    border-right: none;
+    border-top: none;
+    position: relative;
+}
+.bottom-panel-enemy-modifiers::before {
+    position: absolute;
+    inset: 0px -1px;
+    content: '';
+    background: transparent;
+    border-width: 0.2em;
+    border-style: solid;
+    border-image: linear-gradient(to right, #b30a21, var(--sidebar-bg-color)) 1;
+    border-image-slice: 1;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: -moz-available;
+  }
 .bottom-panel-modifiers-wrapper {
     float: left;
 }
@@ -629,7 +684,7 @@ body.sidebar-Bottom {
 }
 
 .bottom-panel-tab-button {
-    padding: 5px 5px;
+    padding: 0.1em 0.2em;
     cursor: pointer;
     background: none;
     outline: none;
@@ -637,7 +692,8 @@ body.sidebar-Bottom {
     transition: background-color 0.3s;    
     color: white;
     font-family: inherit;
-    font-size: 1em;
+    /*/font-size: 1em;    */
+    line-height: 100%;
 
     border: 1px solid var(--sidebar-borders-color);
     background-color: rgb(30, 31, 34);
@@ -798,7 +854,7 @@ body.sidebar-Bottom {
     font-size: 1em;
     position: absolute;
     z-index: 1;
-    font-family: inherit;
+    font-family: var(--overlay-font);
     background-color: white;
 }
 

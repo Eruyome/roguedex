@@ -94,34 +94,28 @@ class LocalStorageClass {
      */
     async getExtensionSettings() {
         return new Promise((resolve) => {
-            browserApi.storage.sync.get(['showMinified', 'scaleFactor', 'showEnemies', 'showParty', 'showSidebar', 'sidebarPosition', 'sidebarScaleFactor', 'sidebarCompactTypes'], (data) => {
-                if (data.showMinified === undefined) {
-                    browserApi.storage.sync.set({ 'showMinified': false });
-                    data.showMinified = false;
-                }
-                if (data.scaleFactor === undefined) {
-                    browserApi.storage.sync.set({ 'scaleFactor': 1 });
-                    data.scaleFactor = 1;
-                }
-                if (data.showEnemies === undefined) {
-                    browserApi.storage.sync.set({ 'showEnemies': true });
-                    data.showEnemies = true;
-                }
-                if (data.showParty === undefined) {
-                    browserApi.storage.sync.set({ 'showParty': true });
-                    data.showParty = true;
-                }
-                if (data.showSidebar === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarPosition': 'Left' });
-                    data.sidebarPosition = 'Left';
-                }
-                if (data.sidebarScaleFactor === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarScaleFactor': 1 });
-                    data.sidebarScaleFactor = 1;
-                }
-                if (data.sidebarCompactTypes === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarCompactTypes': false });
-                    data.sidebarCompactTypes = false;
+            // List of settings to retrieve and their default values
+            const settingsDefaults = {
+                showMinified: false,
+                scaleFactor: 1,
+                showEnemies: true,
+                showParty: true,
+                menuType: 1,
+                showSidebar: false,
+                sidebarPosition: 'Left',
+                sidebarScaleFactor: 1,
+                sidebarCompactTypes: false,
+                bottompanelScaleFactor: 1
+            };
+    
+            // Retrieve the settings from browser storage
+            browserApi.storage.sync.get(Object.keys(settingsDefaults), (data) => {
+                // Check and set default values if any setting is undefined
+                for (const [key, defaultValue] of Object.entries(settingsDefaults)) {
+                    if (data[key] === undefined) {
+                        browserApi.storage.sync.set({ [key]: defaultValue });
+                        data[key] = defaultValue;
+                    }
                 }
                 resolve(data);
             });

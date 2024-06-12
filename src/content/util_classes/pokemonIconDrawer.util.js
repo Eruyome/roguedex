@@ -66,11 +66,18 @@ class PokemonIconDrawer {
          * @param {string} blobUrl - The blob URL of the image.
          * @returns {Promise<HTMLImageElement>} A promise that resolves with the loaded image.
          */
-        const loadImageFromBlobUrl = (image, blobUrl) => new Promise((resolve, reject) => {
+        const loadImageFromBlobUrl_ = (image, blobUrl) => new Promise((resolve, reject) => {
             image.onload = () => resolve(image);
             image.onerror = reject;
             image.src = blobUrl;
         });
+        const loadImageFromBlobUrl = (imgElement, dataUrl) => {
+            return new Promise((resolve, reject) => {
+                imgElement.onload = () => resolve();
+                imgElement.onerror = () => reject(new Error('Failed to load image from Blob URL'));
+                imgElement.src = dataUrl;
+            });
+        };
 
         /**
          * Draws fallback text on the canvas if the image cannot be loaded.
@@ -218,18 +225,52 @@ class PokemonIconDrawer {
 
         /**
          * Fetches separate images for a fusion Pokémon and combines them.
-         */
+         */        
         const fallbackToSeparateImages = async () => {
             try {
+                // Fetch images concurrently
                 const [image1Response, image2Response] = await Promise.all([
                     fetchImageAndCache(`${pokemon.sprite}`, `${pokemon.name}-1`),
                     fetchImageAndCache(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.fusionId}.png`, `${pokemon.name}-2`)
-                ]);   
-                await Promise.all([loadImageFromBlobUrl(image1, image1Response.dataUrl), loadImageFromBlobUrl(image2, image2Response.dataUrl)]);
+                ]);
+        
+                // Check if both images are fetched successfully
+                if (!image1Response.dataUrl || !image2Response.dataUrl) {
+                    throw new Error('Failed to fetch one or both images.');
+                }
+        
+                // Load images from blob URLs with cross-origin handling
+                const image1 = new Image();
+                const image2 = new Image();
+        
+                // Set crossOrigin attribute to handle cross-origin images
+                image1.crossOrigin = "anonymous";
+                image2.crossOrigin = "anonymous";
+        
+                await Promise.all([
+                    loadImageFromBlobUrl(image1, image1Response.dataUrl),
+                    loadImageFromBlobUrl(image2, image2Response.dataUrl)
+                ]);
+        
+                // Ensure images are fully loaded before drawing
+                if (!image1.complete || !image2.complete) {
+                    throw new Error('One or both images failed to load completely.');
+                }
+        
+                // Draw the combined images on the canvas
                 drawCombinedImages(image1, image2);
+        
+                // Cache the combined image
                 cacheCombinedImage(canvas, cacheKey);
             } catch (error) {
-                console.error(error);
+                if (error.message.includes('The operation is insecure')) {
+                    console.warn('Harmless error in fallbackToSeparateImages():', error.message);
+                }
+                else if (error.message.includes('CanvasRenderingContext2D.drawImage: Passed-in canvas is empty')) {
+                    console.debug('Non-critical error in fallbackToSeparateImages():', error.message);
+                } else {
+                    console.error('Error in fallbackToSeparateImages:', error.message);
+                }
             }
         };
 

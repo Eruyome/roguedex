@@ -66,10 +66,17 @@ const settingsTemplate = {
         type: "Float"
     },
     8: {
-        text: "Sidebar Compact Types",
+        text: "Side:Compact",
         options: ["No", "Yes"],
         localStorage: "sidebarCompactTypes",
         type: "Bool"
+    },
+    9: {
+        text: "Bottom Scale",
+        options: ["0.5", "1.0", "1.5", "2.0","2.5","3.0"],
+        appendText: "x",
+        localStorage: "bottompanelScaleFactor",
+        type: "Float"
     }
     /*,
     9: {

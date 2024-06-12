@@ -325,21 +325,23 @@
          * @memberof lit
          * @returns {Lit-HTML-Template} - The HTML template for the table.
          */
-        const createTable = (caption, cssTag, data) => html`
-            <table class="bottom-panel-${cssTag}-modifiers">
-                <caption>${caption}</caption>
-                ${data.map((item, index) => index % 2 === 0 ? html`
-                    <tr>
-                        <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.label}</td>
-                        <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.value}${item.unit}</td>
-                        ${data[index + 1] ? html`
-                            <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].label}</td>
-                            <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].value}${data[index + 1].unit}</td>
-                        ` : html`<td></td><td></td>`}
-                    </tr>
-                ` : '')}
-            </table>
-        `;
+        const createTable = (caption, cssTag, data) => {
+            // <caption>${caption}</caption>
+            return html`
+                <table class="bottom-panel-${cssTag}-modifiers">                    
+                    ${data.map((item, index) => index % 2 === 0 ? html`
+                        <tr>
+                            <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.label}</td>
+                            <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.value}${item.unit}</td>
+                            ${data[index + 1] ? html`
+                                <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].label}</td>
+                                <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].value}${data[index + 1].unit}</td>
+                            ` : html`<td></td><td></td>`}
+                        </tr>
+                    ` : '')}
+                </table>
+            `;
+        }
 
         return html`
             <div class="bottom-panel-modifiers-wrapper">

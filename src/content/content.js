@@ -558,14 +558,15 @@ async function updateBottomPanel(sessionData, pokemonData) {
  * @async
  */
 async function scaleElements() {
-    const partiesScaleFactor = await getScaleFactor('scaleFactor', 1);
+    const scaleFactorMulti = await getScaleFactor('scaleFactor', 1);
     const scaleFactor = await calculateScaleFactor();
     
     const enemiesDiv = document.getElementById('enemies');
     const alliesDiv = document.getElementById('allies');
     
-    scaleFont(enemiesDiv, scaleFactor, partiesScaleFactor, 16);
-    scaleFont(alliesDiv, scaleFactor, partiesScaleFactor, 16);
+    scaleFont(enemiesDiv, scaleFactor, scaleFactorMulti, 16);
+    scaleFont(alliesDiv, scaleFactor, scaleFactorMulti, 16);
+    // console.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 16);
 }
 
 /**
@@ -578,9 +579,22 @@ async function scaleSidebarElements() {
     const scaleFactor = await calculateScaleFactor();
 
     const sidebarDiv = document.getElementById('roguedex-sidebar');
-    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);
+    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);   
+    // console.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 12);
+}
+
+/**
+ * Scales bottom panel elements based on the window size.
+ * @function scaleBottomPanelElements
+ * @async
+ */
+async function scaleBottomPanelElements() {
+    const scaleFactorMulti = await getScaleFactor('bottompanelScaleFactor', 1);
+    const scaleFactor = await calculateScaleFactor();
+
     const bottomPanelDiv = document.getElementById('roguedex-bottom-panel');
     scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti, 18);
+    // console.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 18);
 }
 
 /**
@@ -640,8 +654,15 @@ async function toggleSidebar() {
     const allyCardDiv = document.querySelector('#allies');
     
     const toggleClasses = (element, active) => {
-        element.classList.toggle('active', active);
-        element.classList.toggle('hidden', !active);
+        try {
+            if (!element) {
+                throw new Error("Element does not exist");
+            }
+            element.classList.toggle('active', active);
+            element.classList.toggle('hidden', !active);
+        } catch (error) {
+            console.error("Error toggling classes:", error.message, error);
+        }
     };
 
     if (showSidebar) {
@@ -763,9 +784,11 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
         }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
+        scaleSidebarElements();
 
         if (initStates.panelsInitialized) {
             await updateBottomPanel(sessionData, pokemonData);
+            scaleBottomPanelElements();
         }
     } catch (error) {
         console.error("Error occurred during pokemon data mapping:", error);
@@ -825,8 +848,14 @@ function extensionSettingsListener() {
                 case 'sidebarCompactTypes':
                     await switchSidebarTypesDisplay(values.newValue);
                     break;
+                case 'bottompanelScaleFactor':
+                    await scaleBottomPanelElements();
+                    break;    
+                case 'menuType':
+                    // do nothing?
+                    break;
                 default:
-                    console.error(`Unhandled key: ${key}`);
+                    console.error(`Unhandled key in extensionSettingsListener(): ${key}`);
                     break;
             }
         }

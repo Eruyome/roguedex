@@ -19,7 +19,7 @@ class OptionsManager {
      */
     saveOption(setting, value) {
         const settings = {};
-        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor') {
+        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor') {
             settings[setting] = parseFloat(value);
         } else if (value === 'true' || value === 'false') {
             settings[setting] = value === 'true';
@@ -46,12 +46,25 @@ class OptionsManager {
                 console.error('Error retrieving options:', this.browserApi.runtime.lastError);
             } else {
                 document.querySelectorAll('.setting-options .option').forEach(option => {
+                    // Get the setting and value from the data attributes of the current option
                     const setting = option.getAttribute('data-setting');
                     const value = option.getAttribute('data-value');
-                    if (data[setting] === (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' ? parseFloat(value) : value === 'true')) {
-                        option.classList.add('selected');
+                    
+                    let parsedValue;
+                    // Determine how to parse the value based on the setting type
+                    if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor') {
+                        // Parse numeric values as floats
+                        parsedValue = parseFloat(value);
+                    } else {
+                        // Convert 'true'/'false' strings to boolean
+                        parsedValue = value === 'true';
                     }
-                    else if (setting === 'sidebarPosition' && (data[setting] === value)) {
+                
+                    // Check if the current option should be selected
+                    const isSelected = data[setting] === parsedValue || (setting === 'sidebarPosition' && data[setting] === value);
+                    
+                    // Add the 'selected' class if the option matches the setting value
+                    if (isSelected) {
                         option.classList.add('selected');
                     }
                 });
@@ -94,6 +107,7 @@ class OptionsManager {
         const sidebarPosition = document.querySelector('.option[data-setting="sidebarPosition"].selected').getAttribute('data-value') === 'true';
         const sidebarScaleFactor = parseFloat(document.querySelector('.option[data-setting="sidebarScaleFactor"].selected').getAttribute('data-value'));
         const sidebarCompactTypes = document.querySelector('.option[data-setting="sidebarCompactTypes"].selected').getAttribute('data-value') === 'true';
+        const bottompanelScaleFactor = parseFloat(document.querySelector('.option[data-setting="bottompanelScaleFactor"].selected').getAttribute('data-value'));
 
         this.browserApi.storage.sync.set({
             'showMinified': showMin,
@@ -105,6 +119,7 @@ class OptionsManager {
             'sidebarPosition': sidebarPosition,
             'sidebarScaleFactor': sidebarScaleFactor,
             'sidebarCompactTypes': sidebarCompactTypes,
+            'bottompanelScaleFactor': bottompanelScaleFactor,
         }, () => {
             if (this.browserApi.runtime.lastError) {
                 console.error('Error saving options:', this.browserApi.runtime.lastError);

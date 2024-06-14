@@ -876,6 +876,7 @@ body.sidebar-Bottom {
         overflow: hidden;
         width: 4em;
         -webkit-appearance: none;
+        appearance: none;
     }
 
     /*input[type='range']::-webkit-slider-runnable-track {*/

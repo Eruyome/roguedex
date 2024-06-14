@@ -17,8 +17,7 @@
 body {
     margin: 0;
     position: relative;
-    width: 700px; /* Defined width */
-    /*height: 300px; !* Defined height *!*/
+    width: 800px; /* Defined width */
     overflow: hidden;
     background: rgb(55, 45, 62); /* Make the background transparent */
     background-size: cover;
@@ -154,6 +153,7 @@ body {
 
 .setting-label {
     margin-right: 10px;
+    flex-grow: 1;
 }
 
 .bool-label{

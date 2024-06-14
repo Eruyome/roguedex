@@ -187,7 +187,6 @@ function enableDragElement(elmnt) {
     function stopDragging() {
         document.onpointerup = null;
         document.onpointermove = null;
-        console.log(elmnt)
         saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : "auto" });
     }
 }
@@ -490,13 +489,14 @@ function createPanels() {
  * @param {string} partyID - The ID of the party ('allies' or 'enemies').
  * @param {number} [maxPokemonForDetailedView=8] - The maximum number of Pokémon for detailed view.
  */
-async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDetailedView = 8) {
+async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDetailedView = null, breakpointOverridePartyDisplay = null) {
     const savedData = window.Utils.LocalStorage.getPlayerData();
     const pokeData = uiDataGlobals.activePokemonParties[partyID];
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
 
     if (pokeData?.pokemon?.length) {
-        const partyTemplate = window.lit.createSidebarPartyTemplate(pokeData, partyID, savedData.dexData, sessionData, maxPokemonForDetailedView);
+        const condensedView = await adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay);
+        const partyTemplate = window.lit.createSidebarPartyTemplate(pokeData, partyID, savedData.dexData, sessionData, condensedView);
         render(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
@@ -507,6 +507,83 @@ async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDet
     const headerElement = document.getElementById(`sidebar-header`);
     const headerTemplate = window.lit.updateSidebarHeader(sessionData);
     render(headerTemplate, headerElement);
+}
+
+/**
+ * Adjusts the sidebar view based on the number of Pokémon in the sidebar and the specified breakpoints.
+ *
+ * @param {number|null} maxPokemonForDetailedView - The maximum number of Pokémon in the sidebar at which the view should be switched to a more condensed/smaller one. If null, the value is fetched from the extension settings.
+ * @param {number|null} breakpointOverridePartyDisplay - The breakpoint of Pokémon in the sidebar at which the ally party should be hidden. If null, the value is fetched from the extension settings.
+ * @returns {Promise<string>} - Returns a promise that resolves to a string indicating the condensed view state, will be used as css slass in some cases.
+ */
+async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay) {
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const showParty = extensionSettings.showParty;
+
+    if (maxPokemonForDetailedView === null) { // breakpoint of pokemon in the sidebar at both party views should be switched to a more condensed/smaller one.
+        maxPokemonForDetailedView = extensionSettings.sidebarCondenseBreakpoint;
+    }
+    if (breakpointOverridePartyDisplay === null) { // breakpoint of pokemon in the sidebar at which the ally party should be hidden.
+        breakpointOverridePartyDisplay = extensionSettings.sidebarHideAlliesBreakpoint;
+    }
+    // console.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
+
+    const enemyCount = uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0;    // return 0 if undefined
+    const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0;      // return 0 if undefined
+
+    const totalPartySize = enemyCount + allyCount;
+    const overridePartyDisplayState = ( totalPartySize >= breakpointOverridePartyDisplay ? true : false);
+    const displayedPartySize = enemyCount + ( (showParty && overridePartyDisplayState === false) ? allyCount : 0 );
+    // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
+
+    let condensedView = '';
+    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+     * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
+     * Reset previously set temporary states, uses defaults according to user settings.
+    */
+    if ( (overridePartyDisplayState === false) && (totalPartySize <= maxPokemonForDetailedView) ) {
+        await toggleSidebarPartyDisplay('allies', showParty);
+        switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
+        condensedView = '';
+    }
+    // too many pokemon, no override to hide allies; change to defaultView + condensed
+    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+     * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
+    */
+    else if ( (overridePartyDisplayState === false) && (totalPartySize > maxPokemonForDetailedView) ) {
+        switchSidebarTypesDisplay(false);
+        await toggleSidebarPartyDisplay('allies', showParty);
+        condensedView = 'condensed';
+    }
+    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
+    */
+    else if ( (overridePartyDisplayState === true) && (displayedPartySize > maxPokemonForDetailedView) ) {
+        await toggleSidebarPartyDisplay('allies', false);
+        switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
+    }
+    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
+    */
+    else if ( (overridePartyDisplayState === true) && (displayedPartySize < maxPokemonForDetailedView) ) {
+        await toggleSidebarPartyDisplay('allies', false);
+        switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
+        condensedView = '';
+    }
+
+    return condensedView
+}
+
+/**
+ * Toggles the 'condensed' CSS class on every .pokemon-entry element based on the given view state.
+ *
+ * @param {string} condensedView - The view state indicating whether to apply the condensed class. If the value is 'condensed', the class will be added; otherwise, it will be removed.
+ */
+function toggleCondensedSidebarView(condensedView) {
+    const pokemonEntries = document.querySelectorAll('.pokemon-entry');
+    pokemonEntries.forEach(entry => {
+        entry.classList.toggle('condensed', condensedView == 'condensed' ? true : false );
+    });
 }
 
 /**
@@ -672,7 +749,7 @@ async function toggleSidebar() {
         bottomPanelElement.classList.add('sidebar-active');
         toggleClasses(allyCardDiv, false);
         toggleClasses(enemyCardDiv, false);
-        console.info("SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes.");
+        console.debug("SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes.");
     } else {
         toggleClasses(sidebarElement, false);
         gameAppElement.classList.remove('sidebar-active');
@@ -680,7 +757,7 @@ async function toggleSidebar() {
         bottomPanelElement.classList.remove('sidebar-active');
         toggleClasses(allyCardDiv, true);
         toggleClasses(enemyCardDiv, true);
-        console.info("SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes.");
+        console.debug("SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes.");
     }
 }
 
@@ -819,7 +896,7 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
 function extensionSettingsListener() {    
     browserApi.storage.onChanged.addListener(async function (changes, namespace) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
-        
+
         for (const [key, values = {oldValue, newValue}] of Object.entries(changes)) {
             switch (key) {
                 case 'showMinified':
@@ -850,7 +927,13 @@ function extensionSettingsListener() {
                     break;
                 case 'bottompanelScaleFactor':
                     await scaleBottomPanelElements();
-                    break;    
+                    break;
+                case 'sidebarCondenseBreakpoint':
+                    toggleCondensedSidebarView(adjustSidebarView(values.newValue, null));
+                    break;
+                case 'sidebarHideAlliesBreakpoint':
+                    toggleCondensedSidebarView(adjustSidebarView(null, values.newValue));
+                    break;
                 case 'menuType':
                     // do nothing?
                     break;

@@ -56,13 +56,13 @@
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarPartyTemplate
      */
-    window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, maxPokemonForDetailedView = 8) => html`
+    window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, condensedView) => html`
         <div class="${partyID}-party">
             ${pokemonData.pokemon.map((pokemon, counter) => {
                 const allZeroStarterIVs = dexData[pokemon.baseId]?.ivs?.every(num => num === 0);
-
+                
                 return html`
-                    <div class="pokemon-entry ${window.lit.getCssClassCondensed(sessionData, maxPokemonForDetailedView)}" id="sidebar_${partyID}_${counter}">
+                    <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                         <div class="pokemon-entry-image tooltip">
                             <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
                             ${window.lit.createPokemonTooltipDiv(pokemon)}
@@ -147,9 +147,12 @@
      * @function getCssClassCondensed
      */
     window.lit.getCssClassCondensed = (sessionData, maxPokemonForDetailedView) => {
-        const enemyPartySize = sessionData.enemyParty.length;
-        const allyPartySize = sessionData.party.length;    
-        return (enemyPartySize + allyPartySize) > maxPokemonForDetailedView ? 'condensed' : '';
+        const totalPartySize = sessionData.enemyParty.length + sessionData.party.length;
+
+        if (maxPokemonForDetailedView !== null && totalPartySize > maxPokemonForDetailedView) {
+            return 'condensed';
+        }
+        return '';
     }
 
     /**

@@ -16,19 +16,19 @@
 
 const settingsTemplate = {
     0: {
-        text: "Use Minified",
+        text: "Use Minified Overlay Cards",
         options: ["No", "Yes"],
         localStorage: "showMinified",
         type: "Bool"
     },
     1: {
-        text: "Show Enemies",
+        text: "Show Enemy Party",
         options: ["No", "Yes"],
         localStorage: "showEnemies",
         type: "Bool"
     },
     2: {
-        text: "Show Party",
+        text: "Show Ally Party",
         options: ["No", "Yes"],
         localStorage: "showParty",
         type: "Bool"
@@ -66,20 +66,32 @@ const settingsTemplate = {
         type: "Float"
     },
     8: {
-        text: "Side:Compact",
+        text: "Side: Compact TypeEffectiveness ",
         options: ["No", "Yes"],
         localStorage: "sidebarCompactTypes",
         type: "Bool"
     },
     9: {
-        text: "Bottom Scale",
+        text: "Side: Small view at # of Pokemon",
+        options: ["9", "11", "12", "100"],
+        localStorage: "sidebarCondenseBreakpoint",
+        type: "Int"
+    },
+    10: {
+        text: "Side: Hide Allies at # of Pokemon",
+        options: ["9", "11", "12", "100"],
+        localStorage: "sidebarHideAlliesBreakpoint",
+        type: "Int"
+    },
+    11: {
+        text: "Bottom Panel Scale",
         options: ["0.5", "1.0", "1.5", "2.0","2.5","3.0"],
         appendText: "x",
         localStorage: "bottompanelScaleFactor",
         type: "Float"
     }
     /*,
-    9: {
+    12: {
         text: "Sidebar Width",
         options: ["20", "25", "30", "35", "40"],
         appendText: "%",

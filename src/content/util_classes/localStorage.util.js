@@ -73,7 +73,7 @@ class LocalStorageClass {
         }
         if (currentSessionData) {
             this.sessionData = JSON.parse(CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8));
-            console.log("Got session data", this.sessionData, "for slot id", this.slotId);
+            console.debug("Got session data", this.sessionData, "for slot id", this.slotId);
         } else {
             this.sessionData = {};
         }
@@ -105,7 +105,9 @@ class LocalStorageClass {
                 sidebarPosition: 'Left',
                 sidebarScaleFactor: 1,
                 sidebarCompactTypes: false,
-                bottompanelScaleFactor: 1
+                bottompanelScaleFactor: 1,
+                sidebarCondenseBreakpoint: 100,
+                sidebarHideAlliesBreakpoint: 100
             };
     
             // Retrieve the settings from browser storage

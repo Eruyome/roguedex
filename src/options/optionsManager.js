@@ -19,7 +19,7 @@ class OptionsManager {
      */
     saveOption(setting, value) {
         const settings = {};
-        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor') {
+        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint') {
             settings[setting] = parseFloat(value);
         } else if (value === 'true' || value === 'false') {
             settings[setting] = value === 'true';
@@ -52,10 +52,11 @@ class OptionsManager {
                     
                     let parsedValue;
                     // Determine how to parse the value based on the setting type
-                    if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor') {
+                    if ( setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint') {
                         // Parse numeric values as floats
                         parsedValue = parseFloat(value);
-                    } else {
+                    }
+                    else {
                         // Convert 'true'/'false' strings to boolean
                         parsedValue = value === 'true';
                     }
@@ -108,6 +109,8 @@ class OptionsManager {
         const sidebarScaleFactor = parseFloat(document.querySelector('.option[data-setting="sidebarScaleFactor"].selected').getAttribute('data-value'));
         const sidebarCompactTypes = document.querySelector('.option[data-setting="sidebarCompactTypes"].selected').getAttribute('data-value') === 'true';
         const bottompanelScaleFactor = parseFloat(document.querySelector('.option[data-setting="bottompanelScaleFactor"].selected').getAttribute('data-value'));
+        const sidebarCondenseBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarCondenseBreakpoint"].selected').getAttribute('data-value'), 10);
+        const sidebarHideAlliesBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarHideAlliesBreakpoint"].selected').getAttribute('data-value'), 10);
 
         this.browserApi.storage.sync.set({
             'showMinified': showMin,
@@ -120,6 +123,8 @@ class OptionsManager {
             'sidebarScaleFactor': sidebarScaleFactor,
             'sidebarCompactTypes': sidebarCompactTypes,
             'bottompanelScaleFactor': bottompanelScaleFactor,
+            'sidebarCondenseBreakpoint': sidebarCondenseBreakpoint,
+            'sidebarHideAlliesBreakpoint': sidebarHideAlliesBreakpoint,
         }, () => {
             if (this.browserApi.runtime.lastError) {
                 console.error('Error saving options:', this.browserApi.runtime.lastError);

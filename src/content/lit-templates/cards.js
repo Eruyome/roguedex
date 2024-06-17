@@ -29,18 +29,18 @@
      * Creates a div element and it's content for a Pokémon card.
      * @param {string} cardId - The ID of the Pokémon card.
      * @param {Object} pokemon - The Pokémon object.
-     * @param {Object} opacitySlider - An object containing the slider elements id and lit-html object.
+     * @param {Lit-HTML-Template} opacitySliderTemplate - lit-html object containing the opactiy slider HTML.
      * @param {Lit-HTML-Template} typeEffectivenessHTML - lit-html object containing the type effectiveness HTML.
      * @param {Object} weather - The weather object.
      * @returns {Lit-HTML-Template} The div element for the Pokémon card.
      * @memberof lit
      * @function createPokemonCardContent
      */
-    window.lit.createPokemonCardContent = (cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather) => {
+    window.lit.createPokemonCardContent = (cardId, pokemon, opacitySliderTemplate, typeEffectivenessHTML, weather) => {
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
-                    ${opacitySlider.html}
+                    ${opacitySliderTemplate}
                     <div style="display: flex;">
                         <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
                         ${typeEffectivenessHTML}

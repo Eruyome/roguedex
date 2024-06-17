@@ -19,7 +19,7 @@ class OptionsManager {
      */
     saveOption(setting, value) {
         const settings = {};
-        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint') {
+        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint' || setting === 'overlayOpacity') {
             settings[setting] = parseFloat(value);
         } else if (value === 'true' || value === 'false') {
             settings[setting] = value === 'true';
@@ -52,7 +52,7 @@ class OptionsManager {
                     
                     let parsedValue;
                     // Determine how to parse the value based on the setting type
-                    if ( setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint') {
+                    if ( setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint' || setting === 'overlayOpacity') {
                         // Parse numeric values as floats
                         parsedValue = parseFloat(value);
                     }
@@ -100,6 +100,7 @@ class OptionsManager {
      */
     saveOptions() {
         const showMin = document.querySelector('.option[data-setting="showMinified"].selected').getAttribute('data-value') === 'true';
+        const overlayOpacity = parseInt(document.querySelector('.option[data-setting="overlayOpacity"].selected').getAttribute('data-value'), 10);
         const showEnemy = document.querySelector('.option[data-setting="showEnemies"].selected').getAttribute('data-value') === 'true';
         const showParty = document.querySelector('.option[data-setting="showParty"].selected').getAttribute('data-value') === 'true';
         const scaleFactor = document.getElementById('scaleSlider').value;
@@ -114,6 +115,7 @@ class OptionsManager {
 
         this.browserApi.storage.sync.set({
             'showMinified': showMin,
+            'overlayOpacity' : overlayOpacity,
             'scaleFactor': scaleFactor,
             'showEnemies': showEnemy,
             'showParty': showParty,

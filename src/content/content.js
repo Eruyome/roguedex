@@ -20,6 +20,7 @@ const uiDataGlobals = {}
 uiDataGlobals.activePokemonParties = { "enemies" : {}, "allies" : {} };
 // positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars.
 uiDataGlobals.scrollbarWidth = window.lit.getScrollbarWidth();
+uiDataGlobals.isMobile = window.lit.mobileCheck();
 uiDataGlobals.wrapperDivPositions = {
     'enemies': {
         'top': '5px',
@@ -279,11 +280,31 @@ function changeOpacity(e) {
 
     if (div) {
         const opacity = e.target.value / 100;
-        uiDataGlobals.wrapperDivPositions[divId].opacity = opacity;
+        uiDataGlobals.wrapperDivPositions[divId].opacity = e.target.value;
         div.style.opacity = `${opacity}`;
     } else {
         console.error(`Element with ID '${divId}' not found.`);
     }
+}
+
+/**
+ * Changes the opacity of pokemon cards.
+ * @function changeOpacity
+ * @param {Array} elementIds - Id list of target elements.
+ * @param {Integer} value - Value to change opacity to (0 - 100%).
+ */
+function changePokemonCardOpacity(elementIds, value) {
+    const opacity = value / 100;
+
+    elementIds.forEach(divId => {
+        const div = document.getElementById(divId);
+        if (div) {            
+            uiDataGlobals.wrapperDivPositions[divId].opacity = value;
+            div.style.opacity = `${opacity}`;
+        } else {
+            console.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
+        }
+    });
 }
 
 /**
@@ -455,7 +476,10 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    const opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "25", "100");
+    let opacitySlider = html``; // empty lit-html template
+    if (uiDataGlobals.isMobile) {
+        opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "25", "100");
+    }    
     const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
@@ -916,7 +940,7 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
  * Listens for changes in extension settings.
  * @function extensionSettingsListener
  */
-function extensionSettingsListener() {    
+function extensionSettingsListener() {
     browserApi.storage.onChanged.addListener(async function (changes, namespace) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
 
@@ -924,6 +948,9 @@ function extensionSettingsListener() {
             switch (key) {
                 case 'showMinified':
                     await initCreation(sessionData);
+                    break;
+                case 'overlayOpacity':
+                    changePokemonCardOpacity(['enemies', 'allies'], values.newValue);
                     break;
                 case 'scaleFactor':
                     await scaleElements();

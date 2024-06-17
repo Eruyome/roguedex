@@ -97,6 +97,7 @@ class LocalStorageClass {
             // List of settings to retrieve and their default values
             const settingsDefaults = {
                 showMinified: false,
+                overlayOpacity: 100,
                 scaleFactor: 1,
                 showEnemies: true,
                 showParty: true,

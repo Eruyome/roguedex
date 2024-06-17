@@ -55,8 +55,18 @@ body {
     float: right;    
 }
 
-#enemies.hidden,
-#allies.hidden {
+/*  Pokemon Cards (Overlay) display state handling 
+    .active-because-sidebar-hidden + .disabled = sidebar not shown but card hidden by user choice
+    .hidden-because-sidebar-active = all cards hidden because sidebar is active
+*/
+#enemies.active-because-sidebar-hidden.disabled,
+#enemies.disabled,
+#allies.active-because-sidebar-hidden.disabled,
+#allies.disabled {
+    display: none;
+}
+#enemies.hidden-because-sidebar-active,
+#allies.hidden-because-sidebar-active {
     display: none;
 }
 
@@ -835,11 +845,16 @@ body.sidebar-Bottom {
 }
 
 .arrow-button-wrapper {
-    display: grid;
+    display: block;
+    font-size: 1.5em;
 }
-/*.arrow-button {*/
-/*  font-size: 2.5em;*/
-/*}*/
+.arrow-button-wrapper.minified {
+    font-size: 1.0em;
+}
+.arrow-button-wrapper.mobile {
+    display: grid;
+    font-size: 2.5em;
+}
 
 .centered-flex {
     display: flex;

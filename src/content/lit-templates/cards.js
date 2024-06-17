@@ -232,12 +232,14 @@
      * @function createArrowButtonsDiv
      */
     window.lit.createArrowButtonsDiv = (divId, upString, downString, showMinified, clickFunction, ...additionalParams) => {
-        const sizes = (showMinified ? "1em !important" : "2.5em !important");
+        const isMinified = (showMinified ? 'minified' : '');
+        const isMobileDevice = window.lit.mobileCheck() ? 'mobile' : 'desktop' ;    // 'desktop' added for clarity, no css needed
         const result = {};
         result.idUp = `${divId}-up`;
         result.idDown = `${divId}-down`;
+
         result.html = html`
-            <div class="arrow-button-wrapper" style="font-size: ${sizes}">
+            <div class="arrow-button-wrapper ${isMobileDevice} ${isMinified}">
                 <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idUp}">${upString}</button>
                 <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idDown}">${downString}</button>
             </div>
@@ -267,5 +269,26 @@
         `;
         return result;
     };
+
+    window.lit.getScrollbarWidth = () => {
+        // Creating invisible container
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+        outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+        document.body.appendChild(outer);
+      
+        // Creating inner element and placing it in the container
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        
+        // Calculating difference between container's full width and the child width
+        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+      
+        // Removing temporary elements from the DOM
+        outer.parentNode.removeChild(outer);
+      
+        return scrollbarWidth;          
+    }
 
 })(window);

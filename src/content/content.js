@@ -15,18 +15,21 @@ const { html, render, ref, unsafeHTML, unsafeSVG, templateContent, asyncAppend, 
 	live, guard, cache, keyed, ifDefined, range, repeat, join, map, choose, when, classMap, styleMap } = window.LitHtml;
 
 const initStates = { panelsInitialized : false, cardsInitialized: false, resizeObserverInitialized : false, sessionIntialized : false };
+
 const uiDataGlobals = {}
 uiDataGlobals.activePokemonParties = { "enemies" : {}, "allies" : {} };
+// positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars.
+uiDataGlobals.scrollbarWidth = window.lit.getScrollbarWidth();
 uiDataGlobals.wrapperDivPositions = {
     'enemies': {
-        'top': '0',
-        'left': '0',
+        'top': '5px',
+        'left': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`,
         'opacity': '100'
     },
     'allies': {
-        'top': '0',
+        'top': '5px',
         'left': 'auto',
-        'right': '0',
+        'right': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`,
         'opacity': '100'
     }
 }
@@ -182,12 +185,13 @@ function enableDragElement(elmnt) {
         pos4 = e.clientY;
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        elmnt.style.right = "auto";
     }
 
     function stopDragging() {
         document.onpointerup = null;
         document.onpointermove = null;
-        saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : "auto" });
+        saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : elmnt.style.right });
     }
 }
 
@@ -346,8 +350,8 @@ async function chooseCardType(divId, pokemon, weather, minified) {
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
     const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
-    const top = uiDataGlobals.wrapperDivPositions[divId]?.top || '0px';
-    const left = uiDataGlobals.wrapperDivPositions[divId]?.left || '0px';
+    const top = uiDataGlobals.wrapperDivPositions[divId]?.top || '10px';
+    const left = uiDataGlobals.wrapperDivPositions[divId]?.left || `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`;
     const right = uiDataGlobals.wrapperDivPositions[divId]?.right || 'auto';
     const opacity = `${Number(uiDataGlobals.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
     const weather = pokemonData.weather;
@@ -451,7 +455,7 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    const opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "10", "100");
+    const opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "25", "100");
     const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
@@ -730,20 +734,26 @@ async function toggleSidebar() {
     const enemyCardDiv = document.querySelector('#enemies');
     const allyCardDiv = document.querySelector('#allies');
     
-    const toggleClasses = (element, active) => {
+    const toggleClasses = (element, active, isSidebar = false) => {
         try {
             if (!element) {
                 throw new Error("Element does not exist");
             }
-            element.classList.toggle('active', active);
-            element.classList.toggle('hidden', !active);
+            if (isSidebar) {
+                element.classList.toggle('active', active);
+                element.classList.toggle('hidden', !active);
+            }
+            else {
+                element.classList.toggle('active-because-sidebar-hidden', active);
+                element.classList.toggle('hidden-because-sidebar-active', !active);
+            }
         } catch (error) {
             console.error("Error toggling classes:", error.message, error);
         }
     };
 
     if (showSidebar) {
-        toggleClasses(sidebarElement, true);
+        toggleClasses(sidebarElement, true, true);
         gameAppElement.classList.add('sidebar-active');
         runningStatusElement.classList.add('sidebar-active');
         bottomPanelElement.classList.add('sidebar-active');
@@ -751,7 +761,7 @@ async function toggleSidebar() {
         toggleClasses(enemyCardDiv, false);
         console.debug("SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes.");
     } else {
-        toggleClasses(sidebarElement, false);
+        toggleClasses(sidebarElement, false, true);
         gameAppElement.classList.remove('sidebar-active');
         runningStatusElement.classList.remove('sidebar-active');
         bottomPanelElement.classList.remove('sidebar-active');
@@ -792,6 +802,19 @@ async function toggleSidebarPartyDisplay(partyID, state) {
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
     sidebarPartyElement.classList.toggle('visible', state);
     sidebarPartyElement.classList.toggle('hidden', !state);
+}
+
+/**
+ * Toggles the display of a sidebar party (enemies/allies).
+ * @function togglePokemonCardDisplay
+ * @async
+ * @param {string} partyID - The ID of the party ('enemies' or 'allies').
+ * @param {boolean} state - The desired display state.
+ */
+async function togglePokemonCardDisplay(partyID, state) {
+    const pokemonCardElement = document.getElementById(`${partyID}`);
+    pokemonCardElement.classList.toggle('visible', state); // no css apllied, added for clarity
+    pokemonCardElement.classList.toggle('disabled', !state);
 }
 
 /**
@@ -908,10 +931,12 @@ function extensionSettingsListener() {
                 case 'showEnemies':
                     await initCreation(sessionData);
                     await toggleSidebarPartyDisplay('enemies', values.newValue);
+                    await togglePokemonCardDisplay('enemies', values.newValue);
                     break;
                 case 'showParty':
                     await initCreation(sessionData);
                     await toggleSidebarPartyDisplay('allies', values.newValue);
+                    await togglePokemonCardDisplay('allies', values.newValue);
                     break;
                 case 'showSidebar':
                     await toggleSidebar();

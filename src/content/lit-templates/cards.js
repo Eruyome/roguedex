@@ -18,7 +18,7 @@
      * @function createCardWrapper
      */
     window.lit.createCardWrapper = (partyID, showSidebar = false) => {
-        const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${showSidebar ? 'hidden' : ''}`;
+        const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${showSidebar ? 'disabled' : ''}`;
 
         return html`
             <div id="${partyID}" class="${classes}"></div>

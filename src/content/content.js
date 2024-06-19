@@ -207,7 +207,7 @@ async function initPokemonCardWrappers(sidebarState = false, id1 = "enemies", id
     if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
         return;
     }
-    
+
     const enemiesWrapper = window.lit.createCardWrapper(id1, sidebarState);
     const alliesWrapper = window.lit.createCardWrapper(id2, sidebarState);
 
@@ -387,7 +387,6 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
         `;
 
         await updateCardWrapper(divId, top, left, right, opacity, content, extensionSettings.showSidebar);
-
         window.Utils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
         return document.getElementById(divId);
     });
@@ -407,7 +406,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
  */
 async function updateCardWrapper(divId, top, left, right, opacity, content, showSidebar = false) {
     const existingWrapper = document.getElementById(divId);
-    
+
     if (existingWrapper) {
         setElementProperties(existingWrapper, { top, left, right: right || "auto", opacity });
         render(content, existingWrapper);
@@ -859,10 +858,11 @@ async function switchSidebarTypesDisplay(state) {
  * @async
  * @param {Object} sessionData - The session data.
  */
-async function initCreation(sessionData) {   
-    await initPokemonCardWrappers();
-
+async function initCreation(sessionData) {
     const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    
+    await initPokemonCardWrappers(extensionSettings.showSidebar);
+    
     if (extensionSettings.showEnemies) {
         await dataMapping("enemyParty", "enemies", sessionData);
     }
@@ -1016,10 +1016,12 @@ function listenForDataUiModeChange() {
                     handleSaveSlotMode();
                     break;
                 case "TITLE":
-                case "MODIFIER_SELECT":
                 case "STARTER_SELECT":
                     handleModeWithPokemonCards();
                     break;
+                case "MODIFIER_SELECT":
+                    // do nothing?
+                    break
                 default:
                     console.warn("Unhandled data-ui-mode:", newValue);
                     break;

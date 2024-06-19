@@ -145,6 +145,30 @@ class PokemonMapperClass{
     }
 
     /**
+     * Get the current types of a Pokémon based on Tera type, fusion types, and base types.
+     * @param {string[]} teraType - The Tera type(s) of the Pokémon.
+     * @param {string[]} fusionTypes - The fusion types of the Pokémon.
+     * @param {string[]} baseTypes - The base types of the Pokémon.
+     * @returns {string[]} The current types of the Pokémon.
+     */
+    static #getCurrentTypes(teraType, fusionTypes, baseTypes) {
+        // Return the (always single) Tera type if it exists
+        if (teraType?.length) {
+            return [teraType[0]];
+        }
+
+        // Determine the first and second types based on fusion types and base types
+        const firstType = baseTypes[0];
+
+        // With the optional chaining operator (?.), the expression will short-circuit if fusionTypes is null/undefined and returns undefined without throwing an error.
+        // The || operator is used to evaluate expressions from left to right and returns the first "truthy" value it encounters
+        const secondType = fusionTypes?.[1] || fusionTypes?.[0] || '';
+
+        // Return the types ensuring a Pokémon cannot have the same type twice
+        return ( firstType === secondType ) ? [firstType] : [firstType, secondType];
+    }
+
+    /**
      * Retrieves the Pokémon moveset with detailed type information.
      * @param {Object} movelist - The list of moves.
      * @param {Object} movesetObj - The moveset object.
@@ -378,6 +402,9 @@ class PokemonMapperClass{
      * @returns {string} The string with the first letter capitalized.
      */
     capitalizeFirstLetter(string) {
+        if (typeof string !== 'string') {
+            return '';
+        }
         string = string.toLowerCase();
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -440,12 +467,11 @@ class PokemonMapperClass{
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
             const teraType = PokemonMapperClass.#getTeraType(pokemon.modifiers);
             const typeEffectiveness = await PokemonMapperClass.#getFullTypeEffectivenessAllCases( baseTypes, fusionTypes, teraType );
-            const currentTypes = (teraType?.length ? teraType : (fusionTypes?.length ? [baseTypes[0], fusionTypes[1]] : baseTypes));
 
-            const basePokemon = $this.PokemonList[speciesId].basePokemonName;   // name of the starter pokemon / lowest in the evolution chain
+            const currentTypes = PokemonMapperClass.#getCurrentTypes(teraType, fusionTypes, baseTypes);
+            const basePokemon = $this.PokemonList[speciesId]?.basePokemonName;   // name of the starter pokemon / lowest in the evolution chain
             const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.name;
             const name = $this.getPokemonName(pokemonName, fusionPokemon, basePokemon);
-
             const pokemonSprite = $this.PokemonList[speciesId].sprite;
 
             return {

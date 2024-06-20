@@ -4,8 +4,12 @@ import retry from 'retry';
 
 // Read command-line arguments
 // "node this-script.js 50" can be used to limit the fetching to the first 50 pokemon.
+// "node this-script.js --use-existing" can be used to skip fetching and use existing data.
+// "node this-script.js --regional-fix" can be used to generate regional fix files.
 const args = process.argv.slice(2);
-const limit = args.length > 0 ? parseInt(args[0], 10) : null;
+const limit = args.length > 0 && !isNaN(args[0]) ? parseInt(args[0], 10) : null;
+const useExisting = args.includes('--use-existing');
+const generateRegionalFix = args.includes('--regional-fix');
 
 const outputSubfolder = 'fetched_data'; // Subfolder where output will be saved
 const jsonName = 'pokemon-list';
@@ -84,9 +88,9 @@ async function fetchPokemonForms(speciesUrl) {
     // Each species can have multiple forms
     const forms = speciesData.varieties.map(variety => ({
         pokemonUrl: variety.pokemon.url,
-        basePokemonId: basePokemon.url.split('/').slice(-2, -1)[0] ?? '',
+        basePokemonId: parseInt(basePokemon.url.split('/').slice(-2, -1)[0] ?? '0', 10),
         basePokemonName: basePokemon.name ?? '',
-        defaultVarietyId: defaultVariety.pokemon.url.split('/').slice(-2, -1)[0],
+        defaultVarietyId: parseInt(defaultVariety.pokemon.url.split('/').slice(-2, -1)[0], 10),
         defaultVarietyName: defaultVariety.pokemon.name,
         isLegendary: speciesData.is_legendary,
         isMythical: speciesData.is_mythical
@@ -120,38 +124,78 @@ async function fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName, defa
 }
 
 async function getPokemonDetails() {
+    let allPokemonDetailsArray;
     try {
-        console.log('Fetching all Pokémon species...');
-        const speciesList = await fetchAllPokemonSpecies(limit);
-        const pokemonUrls = [];
+        if (useExisting) {
+            console.log('Using existing Pokémon data...');
+            const jsonInputFilename = `${outputSubfolder}/${jsonName}.json`;
+            const data = fs.readFileSync(jsonInputFilename, 'utf8');
+            allPokemonDetailsArray = Object.values(JSON.parse(data));
+        } else {
+            console.log('Fetching all Pokémon species...');
+            const speciesList = await fetchAllPokemonSpecies(limit);
+            const pokemonUrls = [];
 
-        console.log('Fetching forms for each species...');
-        // Get all form URLs for each species
-        for (const species of speciesList) {
-            const formUrls = await fetchPokemonForms(species.url);
-            pokemonUrls.push(...formUrls);
+            console.log('Fetching forms for each species...');
+            // Get all form URLs for each species
+            for (const species of speciesList) {
+                const formUrls = await fetchPokemonForms(species.url);
+                pokemonUrls.push(...formUrls);
+            }
+
+            console.log('Fetching details for each form...');
+            // Use Promise.all to fetch details for each form concurrently
+            const pokemonDetailsPromises = pokemonUrls.map(({ pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical }) =>
+                fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical)
+            );
+
+            allPokemonDetailsArray = await Promise.all(pokemonDetailsPromises);
         }
 
-        console.log('Fetching details for each form...');
-        // Use Promise.all to fetch details for each form concurrently
-        const pokemonDetailsPromises = pokemonUrls.map(({ pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical }) =>
-            fetchPokemonData(pokemonUrl, basePokemonId, basePokemonName, defaultVarietyId, defaultVarietyName, isLegendary, isMythical)
-        );
+        // Convert all integer fields to integers
+        allPokemonDetailsArray.forEach(detail => {
+            detail.id = parseInt(detail.id, 10);
+            detail.basePokemonId = parseInt(detail.basePokemonId, 10);
+            detail.defaultVarietyId = parseInt(detail.defaultVarietyId, 10);
+        });
 
-        const allPokemonDetailsArray = await Promise.all(pokemonDetailsPromises);
         const allPokemonDetails = Object.fromEntries(allPokemonDetailsArray.map(detail => [detail.id, detail]));
 
-        // Determine the output filenames
-        const jsonOutputFilename = `${outputSubfolder}/${jsonName}.json`;
-        const jsOutputFilename = `${outputSubfolder}/${jsName}.js`;
+        // Overwrite base name and id with regional name and id if applicable
+        for (const detail of allPokemonDetailsArray) {
+            const nameParts = detail.name.split('-');
+            if (nameParts.length > 1) {
+                const suffix = nameParts.slice(1).join('-');
+                const regionalBaseName = `${detail.basePokemonName}-${suffix}`;
+                const regionalBase = allPokemonDetailsArray.find(pokemon => pokemon.name === regionalBaseName);
 
-        // Write the details to a JSON file
-        fs.writeFileSync(jsonOutputFilename, JSON.stringify(allPokemonDetails, null, 2));
-        console.log(`\nPokemon data has been saved to ${jsonOutputFilename}`);
+                if (regionalBase && regionalBase.id !== detail.id) {
+                    detail.basePokemonName = regionalBase.name;
+                    detail.basePokemonId = regionalBase.id;
+                }
+            }
+        }
 
-        // Write the details to a JavaScript file
-        fs.writeFileSync(jsOutputFilename, `window.__pokemonList = ${JSON.stringify(allPokemonDetails, null, 2)};`);
-        console.log(`Pokemon data has been saved to ${jsOutputFilename}`);
+        // Write the details to the default output file as well
+        if (!useExisting) {
+            const defaultJsonOutputFilename = `${outputSubfolder}/${jsonName}.json`;
+            const defaultJsOutputFilename = `${outputSubfolder}/${jsName}.js`;
+            fs.writeFileSync(defaultJsonOutputFilename, JSON.stringify(allPokemonDetails, null, 2));
+            console.log(`\nPokemon data has been saved to ${defaultJsonOutputFilename}`);
+            fs.writeFileSync(defaultJsOutputFilename, `window.__pokemonList = ${JSON.stringify(allPokemonDetails, null, 2)};`);
+            console.log(`Pokemon data has been saved to ${defaultJsOutputFilename}`);
+        }
+
+        // Write the regional fix files if --regional-fix argument is used
+        if (generateRegionalFix) {
+            const jsonOutputFilename = `${outputSubfolder}/${jsonName}-regional-fix.json`;
+            const jsOutputFilename = `${outputSubfolder}/${jsName}-regional-fix.js`;
+            fs.writeFileSync(jsonOutputFilename, JSON.stringify(allPokemonDetails, null, 2));
+            console.log(`\nPokemon data has been saved to ${jsonOutputFilename}`);
+            fs.writeFileSync(jsOutputFilename, `window.__pokemonList = ${JSON.stringify(allPokemonDetails, null, 2)};`);
+            console.log(`Pokemon data has been saved to ${jsOutputFilename}`);
+        }
+
     } catch (error) {
         console.error('Error fetching Pokémon data:', error);
     }

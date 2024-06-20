@@ -530,8 +530,9 @@ class PokemonMapperClass{
         else if (pokemonName) {
             return pokemonName;
         }
-        else {        
-            return basePokemonName;
+        else {
+            // return only the first part of the name (removes suffixes like -galar and other variants)
+            return basePokemonName.split('-')[0];
         }
     }
 

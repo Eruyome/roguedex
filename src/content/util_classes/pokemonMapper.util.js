@@ -13,6 +13,7 @@ class PokemonMapperClass{
         this.MoveList = window.__moveList;
         this.AbilityList = window.__abilityList;
         this.PokemonList = window.__pokemonList;
+        this.IdConversionList = null;
         PokemonMapperClass.#init(this);
     }
 
@@ -24,8 +25,9 @@ class PokemonMapperClass{
     static #init($this) {
         $this.I2W = PokemonMapperClass.#calculateInverseMap($this.W2I);
         $this.I2N = PokemonMapperClass.#calculateInverseMap($this.N2I);
+        $this.IdConversionList = PokemonMapperClass.#getIdConversionList();
     }
-
+    
     /**
      * Calculates the inverse of a given map.
      * @param {Object} map - The map to invert.
@@ -162,10 +164,10 @@ class PokemonMapperClass{
 
         // With the optional chaining operator (?.), the expression will short-circuit if fusionTypes is null/undefined and returns undefined without throwing an error.
         // The || operator is used to evaluate expressions from left to right and returns the first "truthy" value it encounters
-        const secondType = fusionTypes?.[1] || fusionTypes?.[0] || '';
+        const secondType = fusionTypes?.[1] || fusionTypes?.[0] || baseTypes?.[1] || '';
 
-        // Return the types ensuring a Pokémon cannot have the same type twice
-        return ( firstType === secondType ) ? [firstType] : [firstType, secondType];
+        // Return the types ensuring a Pokémon cannot have the same type twice and secondType is a valid non-empty string
+        return (firstType === secondType || typeof secondType !== 'string' || secondType === '') ? [firstType] : [firstType, secondType];
     }
 
     /**
@@ -459,6 +461,7 @@ class PokemonMapperClass{
         const pokemonPromises = pokemonArray.map(async (pokemon) => {
             const pokemonName = PokemonMapperClass.#getPokemonSpeciesName($this, pokemon.species);
             const speciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.species);
+            const speciesIdPreConversion = pokemon.species;
             const fusionSpeciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.fusionSpecies);
 
             const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);
@@ -467,15 +470,20 @@ class PokemonMapperClass{
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
             const teraType = PokemonMapperClass.#getTeraType(pokemon.modifiers);
             const typeEffectiveness = await PokemonMapperClass.#getFullTypeEffectivenessAllCases( baseTypes, fusionTypes, teraType );
-
             const currentTypes = PokemonMapperClass.#getCurrentTypes(teraType, fusionTypes, baseTypes);
+
             const basePokemon = $this.PokemonList[speciesId]?.basePokemonName;   // name of the starter pokemon / lowest in the evolution chain
+            const basePokemonId = $this.PokemonList[speciesId]?.basePokemonId;   
+            const temp_convertedId = PokemonMapperClass.#findOriginalPokemonId($this, basePokemonId);
+            const basePokemonIdPreConversion = temp_convertedId !== basePokemonId ? temp_convertedId : basePokemonId;   // savedata is saved using the pre-converted id
+
             const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.name;
             const name = $this.getPokemonName(pokemonName, fusionPokemon, basePokemon);
             const pokemonSprite = $this.PokemonList[speciesId].sprite;
 
             return {
                 id: speciesId,
+                idPreConversion: speciesIdPreConversion,
                 name: $this.capitalizeFirstLetter(name.toUpperCase()),
                 speciesName: $this.capitalizeFirstLetter(pokemonName),
                 typeEffectiveness: {
@@ -489,6 +497,7 @@ class PokemonMapperClass{
                 nature: $this.I2N[pokemon.nature],
                 basePokemon: $this.capitalizeFirstLetter(basePokemon),
                 baseId: parseInt($this.PokemonList[speciesId].basePokemonId),
+                basePokemonIdPreConversion: basePokemonIdPreConversion,
                 sprite: pokemonSprite,
                 fusionId: fusionSpeciesId,
                 fusionPokemon: ( fusionPokemon ? $this.capitalizeFirstLetter(fusionPokemon) : null ),
@@ -615,7 +624,7 @@ class PokemonMapperClass{
     static #getPokemonSpeciesName($this, speciesId) {
         let name = $this.PokemonList[speciesId]?.name;
         if (!name) {
-            name = $this.PokemonList[$this.convertPokemonId(speciesId)]?.name;
+            name = $this.PokemonList[PokemonMapperClass.#convertPokemonId($this, speciesId)]?.name;
         }
         return name
     }
@@ -635,21 +644,56 @@ class PokemonMapperClass{
             // if this species id returns something useful, use it
             return speciesId;
         } else {
-            // otherwise use the converted id
-            return $this.convertPokemonId(speciesId);
+            // otherwise use the converted id     
+            return PokemonMapperClass.#convertPokemonId($this, speciesId);
         }
     }
 
     /**
      * Converts a Pokémon ID using a predefined conversion list. This is needed to get the "correct" IDs for some
-     * pokemon, for example all alolan and galar pokemon.
+     * Pokémon, for example all Alolan and Galar Pokémon.
      * 
      * @function
+     * @param {Object} $this - The instance of the PokemonMapperClass.
      * @param {number} pokemonId - The ID of the Pokémon to convert.
      * @returns {number} The converted Pokémon ID, if found in the conversion list; otherwise, returns the original ID.
      */
-    convertPokemonId(pokemonId) {
-        const conversionList = {
+    static #convertPokemonId($this, pokemonId) {
+        const conversionList = $this.IdConversionList;
+        if (pokemonId in conversionList) {
+            return conversionList[pokemonId];
+        } else {
+            return pokemonId;
+        }
+    }
+
+    /**
+     * Finds the original Pokémon ID by looking up its converted value in the predefined conversion list.
+     * 
+     * @function
+     * @param {Object} $this - The instance of the PokemonMapperClass.
+     * @param {number} convertedId - The converted ID of the Pokémon to find the original ID for.
+     * @returns {number} The original Pokémon ID, if found by the converted value; otherwise, returns the converted ID.
+     */
+    static #findOriginalPokemonId($this, convertedId) {
+        const conversionList = $this.IdConversionList;
+        for (const [originalId, value] of Object.entries(conversionList)) {
+            if (value == convertedId) {
+                return Number(originalId);
+            }
+        }
+        return convertedId;
+    }
+
+    /**
+     * Pokémon ID conversion list. This is needed to get the "correct" IDs for some
+     * Pokémon, for example all Alolan and Galar Pokémon (regional).
+     * 
+     * @function
+     * @returns {Object} Conversion list.
+     */
+    static #getIdConversionList() {
+        return {
             2019: 10091,
             2020: 10092,
             2026: 10100,
@@ -707,12 +751,7 @@ class PokemonMapperClass{
             8128: 10252,
             8194: 10253,
             8901: 10272
-        }
-        if (pokemonId in conversionList) {
-            return conversionList[pokemonId]
-        } else {
-            return pokemonId
-        }
+        };
     }
 }
 

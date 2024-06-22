@@ -457,7 +457,7 @@ function setElementProperties(element, properties) {
 async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
-    const dexIvs = dexData[pokemon.baseId].ivs;
+    const dexIvs = dexData[pokemon.basePokemonIdPreConversion].ivs;
     const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexIvs);
 
     return {

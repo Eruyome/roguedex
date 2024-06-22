@@ -37,7 +37,7 @@
         return html`            
             <span class="rd-status-text">${properties.text}</span>
             ${!properties.sessionState ? html`
-                <span class="rd-status-session">Session data not loaded! UI won't work for now.</span>
+                <span class="rd-status-session">Session data not loaded yet! UI might not work (try reloading if it persists).</span>
             ` : '' }            
         `;
     }

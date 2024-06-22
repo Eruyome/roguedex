@@ -61,6 +61,7 @@
             <div class="${partyID}-party">
                 ${pokemonData.pokemon.map((pokemon, counter) => {
                     const saveDataId = pokemon.basePokemonIdPreConversion;
+                    const ivSaveData = dexData[saveDataId].ivs || dexData[pokemon.baseId].ivs || {};
                     const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every(num => num === 0);
 
                     return html`
@@ -93,7 +94,7 @@
                                     </span>
                                 </div>
                                 <div class="pokemon-ivs stat-cont ${allZeroStarterIVs ? 'warn-zeroIVs' : ''}">
-                                    ${window.lit.generateIVsHTML(pokemon, dexData[saveDataId].ivs, partyID === 'allies', partyID === 'allies')}
+                                    ${window.lit.generateIVsHTML(pokemon, ivSaveData, partyID === 'allies', partyID === 'allies')}
                                 </div>
                                 ${partyID === 'enemies' ? '' : html`
                                     <div class="pokemon-moveset-wrapper">

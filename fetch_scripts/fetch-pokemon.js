@@ -17,6 +17,13 @@ const jsName = 'pokemonList';
 const baseUrl = 'https://pokeapi.co/api/v2';
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+// List of regional suffixes
+const regionals = ['alola', 'galar', 'hisui', 'paldea'];
+
+// Global flag to enable/disable type comparison
+// Type comparison might work in special cases but should be avoided in general
+const compareTypes = false;
+
 // Fetch data with retries
 async function fetchWithRetry(url, retries = 5, delayMs = 1000) {
     const operation = retry.operation({
@@ -93,7 +100,8 @@ async function fetchPokemonForms(speciesUrl) {
         defaultVarietyId: parseInt(defaultVariety.pokemon.url.split('/').slice(-2, -1)[0], 10),
         defaultVarietyName: defaultVariety.pokemon.name,
         isLegendary: speciesData.is_legendary,
-        isMythical: speciesData.is_mythical
+        isMythical: speciesData.is_mythical,
+        types: variety.pokemon.types.map(typeInfo => typeInfo.type.name) // Include types for each form
     }));
 
     return forms;
@@ -166,25 +174,27 @@ async function getPokemonDetails() {
             const nameParts = detail.name.split('-');
             if (nameParts.length > 1) {
                 const suffix = nameParts.slice(1).join('-');
-                const regionalBaseName = `${detail.basePokemonName}-${suffix}`;
-                const regionalBase = allPokemonDetailsArray.find(pokemon => pokemon.name === regionalBaseName);
+                const basePokemon = allPokemonDetails[detail.basePokemonId];
+                const regionalSuffixMatch = regionals.some(region => suffix.includes(region));
 
-                if (regionalBase && regionalBase.id !== detail.id) {
-                    detail.basePokemonName = regionalBase.name;
-                    detail.basePokemonId = regionalBase.id;
+                if (basePokemon && (regionalSuffixMatch || (compareTypes && !basePokemon.types.every(type => detail.types.includes(type))))) {
+                    const regionalBaseName = `${detail.basePokemonName}-${suffix}`;
+                    const regionalBase = allPokemonDetailsArray.find(pokemon => pokemon.name === regionalBaseName);
+                    if (regionalBase && regionalBase.id !== detail.basePokemonId) {
+                        detail.basePokemonName = regionalBase.name;
+                        detail.basePokemonId = regionalBase.id;
+                    }
                 }
             }
         }
 
-        // Write the details to the default output file as well
-        if (!useExisting) {
-            const defaultJsonOutputFilename = `${outputSubfolder}/${jsonName}.json`;
-            const defaultJsOutputFilename = `${outputSubfolder}/${jsName}.js`;
-            fs.writeFileSync(defaultJsonOutputFilename, JSON.stringify(allPokemonDetails, null, 2));
-            console.log(`\nPokemon data has been saved to ${defaultJsonOutputFilename}`);
-            fs.writeFileSync(defaultJsOutputFilename, `window.__pokemonList = ${JSON.stringify(allPokemonDetails, null, 2)};`);
-            console.log(`Pokemon data has been saved to ${defaultJsOutputFilename}`);
-        }
+        // Write the details to the default output files (overwrite them if they exist)
+        const defaultJsonOutputFilename = `${outputSubfolder}/${jsonName}.json`;
+        const defaultJsOutputFilename = `${outputSubfolder}/${jsName}.js`;
+        fs.writeFileSync(defaultJsonOutputFilename, JSON.stringify(allPokemonDetails, null, 2));
+        console.log(`\nPokemon data has been saved to ${defaultJsonOutputFilename}`);
+        fs.writeFileSync(defaultJsOutputFilename, `window.__pokemonList = ${JSON.stringify(allPokemonDetails, null, 2)};`);
+        console.log(`Pokemon data has been saved to ${defaultJsOutputFilename}`);
 
         // Write the regional fix files if --regional-fix argument is used
         if (generateRegionalFix) {

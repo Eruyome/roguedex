@@ -17,8 +17,9 @@
      * @memberof lit
      * @function createCardWrapper
      */
-    window.lit.createCardWrapper = (partyID, showSidebar = false) => {
-        const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${showSidebar ? 'disabled' : ''}`;
+    window.lit.createCardWrapper = (partyID, showSidebar) => {
+        const displayClass = showSidebar ? 'hidden-because-sidebar-active' : 'active-because-sidebar-hidden';
+        const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${displayClass}`;
 
         return html`
             <div id="${partyID}" class="${classes}"></div>
@@ -170,23 +171,26 @@
      * @memberof lit
      * @function generateCardIVsHTML
      */
-    window.lit.generateCardIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
+    window.lit.generateCardIVsHTML = (pokemon, dexData, simpleDisplay = false, addStyleClasses = false) => {
+        const saveDataId = pokemon.basePokemonIdPreConversion;
+        const dexIvs = dexData[saveDataId]?.ivs || dexData[pokemon.baseId]?.ivs || {};
+    
         const getColor = (num) => {
             if (num < 0 || num > 31) {
                 throw new Error('Number must be between 0 and 31');
             }
-
+    
             const red = Math.floor(255 * (1 - num / 31));
             const green = Math.floor(255 * (num / 31));
             const blue = 0;
-
+    
             const redHex = red.toString(16).padStart(2, '0');
             const greenHex = green.toString(16).padStart(2, '0');
             const blueHex = blue.toString(16).padStart(2, '0');
-
+    
             return `#${redHex}${greenHex}${blueHex}`;
         };
-
+    
         const ivComparison = (pokeIv, dexIv) => {
             let iconA = "";
             let colorS = "#00FF00";
@@ -202,10 +206,17 @@
             }
             return `<div class="stat-icon" style="color: ${colorS} !important; opacity: 0.3">${iconA}</div>`;
         };
-
-        let fullHTML = ``;
+    
+        let fullHTML = '';
         for (const i in pokemon.ivs) {
             const curIV = pokemon.ivs[i];
+            const dexIv = dexIvs[i];
+    
+            if (typeof dexIv !== 'number') {
+                // Handle case where dexIv is not a number (null, undefined, or other non-numeric value)
+                continue; // Skip this iteration if dexIv is not valid
+            }
+    
             if (simpleDisplay && !addStyleClasses) {
                 fullHTML += `<div class="stat-p">${Stat[i]}:&nbsp;<div class="stat-c">${curIV}</div>&nbsp;&nbsp;</div>`;
             } else if (simpleDisplay && addStyleClasses) {
@@ -213,11 +224,18 @@
             } else if (!simpleDisplay && addStyleClasses) {
                 fullHTML += `<div class="stat-p stat-p-colors">${Stat[i]}:&nbsp;<div class="stat-c stat-c-colors">${curIV}</div>&nbsp;&nbsp;</div>`;
             } else {
-                fullHTML += `<div class="stat-p">${Stat[i]}:&nbsp;<div class="stat-c" style="color: ${getColor(curIV)}">${curIV}${ivComparison(curIV, dexIvs[i])}</div>&nbsp;&nbsp;</div>`;
+                fullHTML += `<div class="stat-p">${Stat[i]}:&nbsp;<div class="stat-c" style="color: ${getColor(curIV)}">${curIV}${ivComparison(curIV, dexIv)}</div>&nbsp;&nbsp;</div>`;
             }
         }
+    
+        if (fullHTML === '') {
+            // Default HTML if there are no valid IVs to display
+            fullHTML = `<div class="stat-p">No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
+        }
+    
         return fullHTML;
     };
+    
 
     /**
      * Creates a div element for arrow buttons.

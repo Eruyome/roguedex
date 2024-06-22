@@ -199,32 +199,33 @@ function enableDragElement(elmnt) {
 /**
  * Initializes Pokemon card wrapper elements on the webpage.
  * @function initPokemonCardWrappers
- * @param {boolean} [sidebarState=false] - The state of the sidebar.
+ * @param {boolean} [showSidebar=false] - The state of the sidebar.
  * @param {string} [id1="enemies"] - The ID of the first wrapper.
  * @param {string} [id2="allies"] - The ID of the second wrapper.
  */
-async function initPokemonCardWrappers(sidebarState = false, id1 = "enemies", id2 = "allies") {
-    if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
-        return;
-    }
+function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "allies") {
+    return new Promise(async (resolve) => {
+        if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
+            resolve();
+            return;
+        }
 
-    const enemiesWrapper = window.lit.createCardWrapper(id1, sidebarState);
-    const alliesWrapper = window.lit.createCardWrapper(id2, sidebarState);
+        const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
+        const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
 
-    await new Promise((resolve) => {
         const body = document.body;
-        
+
         // Render the elements
         render(enemiesWrapper, body, { renderBefore: body.firstChild });
         render(alliesWrapper, body, { renderBefore: body.firstChild });
-        
+
         // Move the rendered elements to be the last children of the body
         const enemies = body.querySelector(`#${id1}`);
-        const allies = body.querySelector(`#${id2}`);        
+        const allies = body.querySelector(`#${id2}`);
         body.appendChild(enemies);
         body.appendChild(allies);
-        initStates.cardsInitialized = true;
-        
+
+        // Initialize drag functionality
         const newWrapper1 = document.getElementById(id1);
         const newWrapper2 = document.getElementById(id2);
         if (newWrapper1) {
@@ -234,10 +235,13 @@ async function initPokemonCardWrappers(sidebarState = false, id1 = "enemies", id
             enableDragElement(newWrapper2);
         }
 
+        // Optional console logs
         if (false) {
             console.log(`${id1} pokemon card wrapper created:`, newWrapper1)
             console.log(`${id2} pokemon card wrapper created:`, newWrapper2)
         }
+
+        initStates.cardsInitialized = true;
 
         resolve();
     });
@@ -457,8 +461,7 @@ function setElementProperties(element, properties) {
 async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
-    const dexIvs = dexData[pokemon.basePokemonIdPreConversion].ivs;
-    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexIvs);
+    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData);
 
     return {
         html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather)
@@ -860,19 +863,19 @@ async function switchSidebarTypesDisplay(state) {
  */
 async function initCreation(sessionData) {
     const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
-    
+
     await initPokemonCardWrappers(extensionSettings.showSidebar);
-    
     if (extensionSettings.showEnemies) {
         await dataMapping("enemyParty", "enemies", sessionData);
     }
     if (extensionSettings.showParty) {
         await dataMapping("party", "allies", sessionData);
     }
+
     if (extensionSettings.showSidebar) {
         await toggleSidebar(sessionData);
         await changeSidebarPosition(sessionData);
-    }    
+    }
     await switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
 }
 

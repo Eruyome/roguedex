@@ -84,7 +84,7 @@
                         `)}
                     </div>
                     <div class="bottom-panel-tab-content" id="bottom-panel-global">
-                        ${weatherHtml ? weatherHtml : ''}
+                        ${weatherHtml || ''}
                         ${modifierHtml}
                     </div>
                     ${pokemonTabsHtml}

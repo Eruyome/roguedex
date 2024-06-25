@@ -5,6 +5,7 @@
  * @class PokemonIconDrawer
  */
 
+// eslint-disable-next-line no-unused-vars
 class PokemonIconDrawer {
     /**
      * Creates an instance of PokemonIconDrawer. 
@@ -66,11 +67,6 @@ class PokemonIconDrawer {
          * @param {string} blobUrl - The blob URL of the image.
          * @returns {Promise<HTMLImageElement>} A promise that resolves with the loaded image.
          */
-        const loadImageFromBlobUrl_ = (image, blobUrl) => new Promise((resolve, reject) => {
-            image.onload = () => resolve(image);
-            image.onerror = reject;
-            image.src = blobUrl;
-        });
         const loadImageFromBlobUrl = (imgElement, dataUrl) => {
             return new Promise((resolve, reject) => {
                 imgElement.onload = () => resolve();
@@ -163,7 +159,7 @@ class PokemonIconDrawer {
                         .then(handleResponse)
                         .catch(error => {
                             const errMsg = `Function: "fetchImageAndCache()". Failed to fetch image from ${url}. Error: ${error.message || 'Unknown error'}`;
-                            resolve({ success: false, error: error, errorMessage: errMsg });
+                            resolve({ success: false, error, errorMessage: errMsg });
                         });
                 } else { // Chrome environment (uses callbacks)
                     chrome.runtime.sendMessage(message, handleResponse);
@@ -214,7 +210,7 @@ class PokemonIconDrawer {
                 if (typeof browser !== 'undefined') { // Firefox environment (uses promises)
                     browser.runtime.sendMessage(message)
                         .then(handleResponse)
-                        .catch(error => resolve({ success: false, error: error }));
+                        .catch(error => resolve({ success: false, error }));
                 } else { // Chrome environment (uses callbacks)
                     chrome.runtime.sendMessage(message, handleResponse);
                 }

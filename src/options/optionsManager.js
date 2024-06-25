@@ -114,19 +114,19 @@ class OptionsManager {
         const sidebarHideAlliesBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarHideAlliesBreakpoint"].selected').getAttribute('data-value'), 10);
 
         this.browserApi.storage.sync.set({
-            'showMinified': showMin,
-            'overlayOpacity' : overlayOpacity,
-            'scaleFactor': scaleFactor,
-            'showEnemies': showEnemy,
-            'showParty': showParty,
-            'menuType': menuType,
-            'showSidebar': showSidebar,
-            'sidebarPosition': sidebarPosition,
-            'sidebarScaleFactor': sidebarScaleFactor,
-            'sidebarCompactTypes': sidebarCompactTypes,
-            'bottompanelScaleFactor': bottompanelScaleFactor,
-            'sidebarCondenseBreakpoint': sidebarCondenseBreakpoint,
-            'sidebarHideAlliesBreakpoint': sidebarHideAlliesBreakpoint,
+            showMinified: showMin,
+            overlayOpacity,
+            scaleFactor,
+            showEnemies: showEnemy,
+            showParty,
+            menuType,
+            showSidebar,
+            sidebarPosition,
+            sidebarScaleFactor,
+            sidebarCompactTypes,
+            bottompanelScaleFactor,
+            sidebarCondenseBreakpoint,
+            sidebarHideAlliesBreakpoint,
         }, () => {
             if (this.browserApi.runtime.lastError) {
                 console.error('Error saving options:', this.browserApi.runtime.lastError);

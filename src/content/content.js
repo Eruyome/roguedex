@@ -10,9 +10,9 @@
  * lit-html: https://lit.dev/
  * Template rendering.
  * templates and helper functions are prefixed with `window.lit.`
-*/
-const { html, render, ref, unsafeHTML, unsafeSVG, templateContent, asyncAppend, asyncReplace, until, 
-	live, guard, cache, keyed, ifDefined, range, repeat, join, map, choose, when, classMap, styleMap } = window.LitHtml;
+ */
+// eslint-disable-next-line no-unused-vars
+const { html, render, ref, unsafeHTML, unsafeSVG, templateContent, asyncAppend, asyncReplace, until, live, guard, cache, keyed, ifDefined, range, repeat, join, map, choose, when, classMap, styleMap } = window.LitHtml;
 
 const initStates = { panelsInitialized : false, cardsInitialized: false, resizeObserverInitialized : false, sessionIntialized : false };
 
@@ -38,39 +38,6 @@ uiDataGlobals.pages = {
     "enemies": 0,
     "allies": 0,
 }
-
-let Types
-(function (Types) {
-    Types[Types.normal = 1] = 1;
-    Types[Types.fighting = 2] = 2;
-    Types[Types.flying = 3] = 3;
-    Types[Types.poison = 4] = 4;
-    Types[Types.ground = 5] = 5;
-    Types[Types.rock = 6] = 6;
-    Types[Types.bug = 7] = 7;
-    Types[Types.ghost = 8] = 8;
-    Types[Types.steel = 9] = 9;
-    Types[Types.fire = 10] = 10;
-    Types[Types.water = 11] = 11;
-    Types[Types.grass = 12] = 12;
-    Types[Types.electric = 13] = 13;
-    Types[Types.psychic = 14] = 14;
-    Types[Types.ice = 15] = 15;
-    Types[Types.dragon = 16] = 16;
-    Types[Types.dark = 17] = 17;
-    Types[Types.fairy = 18] = 18;
-})(Types || (Types = {}));
-
-let Stat;
-(function (Stat) {
-    Stat[Stat.HP = 0] = "HP";
-    Stat[Stat.ATK = 1] = "ATK";
-    Stat[Stat.DEF = 2] = "DEF";
-    Stat[Stat.SPATK = 3] = "SPATK";
-    Stat[Stat.SPDEF = 4] = "SPDEF";
-    Stat[Stat.SPD = 5] = "SPD";
-})(Stat || (Stat = {}));
-
 
 scriptInjector();
 updateExtensionStatus();
@@ -145,7 +112,7 @@ function initUtilities() {
  */
 function updateExtensionStatus(properties) {
     let wrapper = document.getElementById('extension-status');
-    if (!wrapper) {  
+    if (!wrapper) {
         render(html`<div class="text-base running-status" id="extension-status"></div>`, document.body, { renderBefore: document.body.firstChild });
         wrapper = document.getElementById('extension-status');
     }
@@ -164,7 +131,10 @@ function updateExtensionStatus(properties) {
  * @param {HTMLElement} elmnt - The element to enable dragging for.
  */
 function enableDragElement(elmnt) {
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    let pos1 = 0; 
+    let pos2 = 0;
+    let pos3 = 0;
+    let pos4 = 0;
 
     // Attach the pointerdown event handler
     elmnt.onpointerdown = dragMouseDown;
@@ -204,46 +174,51 @@ function enableDragElement(elmnt) {
  * @param {string} [id2="allies"] - The ID of the second wrapper.
  */
 function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "allies") {
-    return new Promise(async (resolve) => {
-        if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
+    return new Promise((resolve) => {
+        const initialize = async () => {
+            if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
+                resolve();
+                return;
+            }
+
+            const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
+            const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
+
+            const body = document.body;
+
+            // Render the elements
+            render(enemiesWrapper, body, { renderBefore: body.firstChild });
+            render(alliesWrapper, body, { renderBefore: body.firstChild });
+
+            // Move the rendered elements to be the last children of the body
+            const enemies = body.querySelector(`#${id1}`);
+            const allies = body.querySelector(`#${id2}`);
+            body.appendChild(enemies);
+            body.appendChild(allies);
+
+            // Initialize drag functionality
+            const newWrapper1 = document.getElementById(id1);
+            const newWrapper2 = document.getElementById(id2);
+            if (newWrapper1) {
+                enableDragElement(newWrapper1);
+            }
+            if (newWrapper2) {
+                enableDragElement(newWrapper2);
+            }
+
+            // Optional console logs
+            const debug = false;
+            if (debug) {
+                console.log(`${id1} pokemon card wrapper created:`, newWrapper1);
+                console.log(`${id2} pokemon card wrapper created:`, newWrapper2);
+            }
+
+            initStates.cardsInitialized = true;
+
             resolve();
-            return;
-        }
+        };
 
-        const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
-        const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
-
-        const body = document.body;
-
-        // Render the elements
-        render(enemiesWrapper, body, { renderBefore: body.firstChild });
-        render(alliesWrapper, body, { renderBefore: body.firstChild });
-
-        // Move the rendered elements to be the last children of the body
-        const enemies = body.querySelector(`#${id1}`);
-        const allies = body.querySelector(`#${id2}`);
-        body.appendChild(enemies);
-        body.appendChild(allies);
-
-        // Initialize drag functionality
-        const newWrapper1 = document.getElementById(id1);
-        const newWrapper2 = document.getElementById(id2);
-        if (newWrapper1) {
-            enableDragElement(newWrapper1);
-        }
-        if (newWrapper2) {
-            enableDragElement(newWrapper2);
-        }
-
-        // Optional console logs
-        if (false) {
-            console.log(`${id1} pokemon card wrapper created:`, newWrapper1)
-            console.log(`${id2} pokemon card wrapper created:`, newWrapper2)
-        }
-
-        initStates.cardsInitialized = true;
-
-        resolve();
+        initialize();
     });
 }
 
@@ -506,6 +481,7 @@ function createPanels() {
     });
 
     onElementAvailable("#sidebar-switch-iv-moves", () => {
+        // eslint-disable-next-line no-unused-vars
         const uiControllerSwitchIVsMovesetDisplay = new UIController(sidebarSwitchBetweenIVsAndMoveset, '#sidebar-switch-iv-moves', { bindMouse: true, bindKeyboard: false, bindGamepad: false });
         // uiControllerSwitchIVsMovesetDisplay.setBindings(null, [6, 5]) // xbox lt + rb
     });    
@@ -562,7 +538,7 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
     const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0;      // return 0 if undefined
 
     const totalPartySize = enemyCount + allyCount;
-    const overridePartyDisplayState = ( totalPartySize >= breakpointOverridePartyDisplay ? true : false);
+    const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay;     // returns a boolean value (true/false)
     const displayedPartySize = enemyCount + ( (showParty && overridePartyDisplayState === false) ? allyCount : 0 );
     // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
 
@@ -612,7 +588,7 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
 function toggleCondensedSidebarView(condensedView) {
     const pokemonEntries = document.querySelectorAll('.pokemon-entry');
     pokemonEntries.forEach(entry => {
-        entry.classList.toggle('condensed', condensedView == 'condensed' ? true : false );
+        entry.classList.toggle('condensed', condensedView.toLowerCase() === 'condensed');
     });
 }
 
@@ -641,7 +617,7 @@ async function sidebarSwitchBetweenIVsAndMoveset() {
  */
 async function updateBottomPanel(sessionData, pokemonData) {
     const partyID = pokemonData.partyId;
-    if (partyID == "enemies") {
+    if (partyID.toLowerCase() === "enemies") {
         return;
     }
 
@@ -893,7 +869,6 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
 
     try {
         const pokemonData = await window.Utils.PokeMapper.getPokemonArray(sessionData[pokemonLocation], sessionData.arena, modifiers, pokemonLocation);
-        const weather = pokemonData.weather || null;
         const partyID = pokemonLocation === "enemyParty" ? "enemies" : "allies";
 
         uiDataGlobals.activePokemonParties[partyID] = pokemonData;
@@ -944,29 +919,30 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
  * @function extensionSettingsListener
  */
 function extensionSettingsListener() {
-    browserApi.storage.onChanged.addListener(async function (changes, namespace) {
+    browserApi.storage.onChanged.addListener(async function (changes) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
 
-        for (const [key, values = {oldValue, newValue}] of Object.entries(changes)) {
+        // eslint-disable-next-line no-unused-vars
+        for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
             switch (key) {
                 case 'showMinified':
                     await initCreation(sessionData);
                     break;
                 case 'overlayOpacity':
-                    changePokemonCardOpacity(['enemies', 'allies'], values.newValue);
+                    changePokemonCardOpacity(['enemies', 'allies'], newValue);
                     break;
                 case 'scaleFactor':
                     await scaleElements();
                     break;
                 case 'showEnemies':
                     await initCreation(sessionData);
-                    await toggleSidebarPartyDisplay('enemies', values.newValue);
-                    await togglePokemonCardDisplay('enemies', values.newValue);
+                    await toggleSidebarPartyDisplay('enemies', newValue);
+                    await togglePokemonCardDisplay('enemies', newValue);
                     break;
                 case 'showParty':
                     await initCreation(sessionData);
-                    await toggleSidebarPartyDisplay('allies', values.newValue);
-                    await togglePokemonCardDisplay('allies', values.newValue);
+                    await toggleSidebarPartyDisplay('allies', newValue);
+                    await togglePokemonCardDisplay('allies', newValue);
                     break;
                 case 'showSidebar':
                     await toggleSidebar();
@@ -978,16 +954,16 @@ function extensionSettingsListener() {
                     await scaleSidebarElements();
                     break;
                 case 'sidebarCompactTypes':
-                    await switchSidebarTypesDisplay(values.newValue);
+                    await switchSidebarTypesDisplay(newValue);
                     break;
                 case 'bottompanelScaleFactor':
                     await scaleBottomPanelElements();
                     break;
                 case 'sidebarCondenseBreakpoint':
-                    toggleCondensedSidebarView(adjustSidebarView(values.newValue, null));
+                    toggleCondensedSidebarView(adjustSidebarView(newValue, null));
                     break;
                 case 'sidebarHideAlliesBreakpoint':
-                    toggleCondensedSidebarView(adjustSidebarView(null, values.newValue));
+                    toggleCondensedSidebarView(adjustSidebarView(null, newValue));
                     break;
                 case 'menuType':
                     // do nothing?
@@ -1088,11 +1064,11 @@ function listenForDataUiModeChange() {
  * @param {Function} callback - The callback function to execute when the element becomes available.
  */
 function onElementAvailable(selector, callback) {
-    const observer = new MutationObserver(mutations => {
-      if (document.querySelector(selector)) {
-        observer.disconnect();
-        callback();
-      }
+    const observer = new MutationObserver(() => {
+        if (document.querySelector(selector)) {
+            observer.disconnect();
+            callback();
+        }
     });
     observer.observe(document.body, { childList: true, subtree: true });
 }
@@ -1151,7 +1127,7 @@ async function observeGameCanvasResize() {
     resizeObserver.observe(document.getElementById('app').getElementsByTagName('canvas')[0]);
 
     // Function to handle MutationObserver logic
-    function useMutationObserver(entries, extensionSettings) {
+    function useMutationObserver(entries) {
         // MutationObserver to detect changes in the sidebar's display property
         const mutationObserver = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {

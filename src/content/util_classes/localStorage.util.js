@@ -7,6 +7,7 @@
  * @class LocalStorageClass
  */
 
+// eslint-disable-next-line no-unused-vars
 class LocalStorageClass {
     constructor() {
         this.slotId = -1;

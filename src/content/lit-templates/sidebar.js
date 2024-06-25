@@ -178,6 +178,7 @@
     * @function generateIVsHTML
     */
     window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
+        const Stat = window.lit.getStatList();
         const ivs = pokemon.ivs || {};
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const defaultHtml = html`<div>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
@@ -190,7 +191,7 @@
                 const isWorse = curIV < dexIv;
                 const icon = isBetter ? '↑' : (isWorse ? '↓' : '-');
                 const color = isBetter ? '#00FF00' : (isWorse ? '#FF0000' : '#FFFF00');
-                const colorStyle = !simpleDisplay && !addStyleClasses ? { color: color } : {};
+                const colorStyle = !simpleDisplay && !addStyleClasses ? { color } : {};
                 const ivValue = simpleDisplay ? curIV : html`${curIV}${icon}`;
                 const statClass = addStyleClasses ? `stat-p-colors` : '';
                 const valueClass = addStyleClasses ? `stat-c-colors` : '';
@@ -261,6 +262,7 @@
 
         // Populate the typeItemList with items containing type effectiveness data
         Object.keys(typeEffectivenesses).forEach((effectiveness) => {
+            const Types = window.lit.getTypeList();
             const effectivenessObj = typeEffectivenesses[effectiveness];
             if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return;
             if (effectiveness === "cssClasses") return;
@@ -425,6 +427,7 @@
     */
     window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses) => html`
         ${Object.keys(typeEffectivenesses).map(effectiveness => {
+            const Types = window.lit.getTypeList();
             const effectivenessObj = typeEffectivenesses[effectiveness];
             if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) || effectiveness === 'cssClasses') {
                 return '';

@@ -19,7 +19,7 @@
      */
     window.lit.createCardWrapper = (partyID, showSidebar) => {
         const displayClass = showSidebar ? 'hidden-because-sidebar-active' : 'active-because-sidebar-hidden';
-        const classes = `${partyID == 'enemies' ? 'enemy-team' : 'allies-team'} ${displayClass}`;
+        const classes = `${partyID.toLowerCase() === 'enemies' ? 'enemy-team' : 'allies-team'} ${displayClass}`;
 
         return html`
             <div id="${partyID}" class="${classes}"></div>
@@ -38,6 +38,8 @@
      * @function createPokemonCardContent
      */
     window.lit.createPokemonCardContent = (cardId, pokemon, opacitySliderTemplate, typeEffectivenessHTML, weather) => {
+        const Stat = window.lit.getStatList();
+
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
@@ -120,9 +122,10 @@
     window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
+                const Types = window.lit.getTypeList();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
-                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return;
-                if (effectiveness === "cssClasses") return;               
+                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return null;
+                if (effectiveness === "cssClasses") return null;
 
                 const tooltipMap = {
                     weaknesses: "Weak to",
@@ -139,7 +142,7 @@
                 const groupedTypes = [];
                 for (let i = 0; i < allTypes.length; i += 3) {
                     groupedTypes.push(allTypes.slice(i, i + 3));
-                }               
+                }
 
                 return html`
                     <div class="pokemon-${effectiveness} tooltip">
@@ -159,7 +162,7 @@
                 `;
             })}
         `;
-    };    
+    };   
 
     /**
      * Generates HTML for displaying IVs.
@@ -172,6 +175,7 @@
      * @function generateCardIVsHTML
      */
     window.lit.generateCardIVsHTML = (pokemon, dexData, simpleDisplay = false, addStyleClasses = false) => {
+        const Stat = window.lit.getStatList();
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const dexIvs = dexData[saveDataId]?.ivs || dexData[pokemon.baseId]?.ivs || {};
     

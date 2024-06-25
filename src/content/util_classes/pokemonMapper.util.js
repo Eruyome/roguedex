@@ -4,6 +4,7 @@
  * @class PokemonMapperClass
  */
 
+// eslint-disable-next-line no-unused-vars
 class PokemonMapperClass{
     constructor() {
         this.W2I = window.__WeatherMap;
@@ -101,7 +102,7 @@ class PokemonMapperClass{
         modifiers?.forEach((modifier) => {
             // pokemon id as randomly assigned by the game, not the species id.
             if (modifier?.args?.[0] === pokemon.id) {
-                if (modifier.typeId == "TERA_SHARD") {
+                if (modifier.typeId.toUpperCase() === "TERA_SHARD") {
                     const teraState = {};
                     teraState.typeId = modifier.typePregenArgs[0]; // modifier.args[2] should also work
                     teraState.type = typeList[teraState.typeId];
@@ -109,14 +110,14 @@ class PokemonMapperClass{
                     teraState.stackCount = modifier.stackCount;
                     modifierList.teraState = teraState;
                 }
-                else if (modifier.typeId == "BERRY") {
+                else if (modifier.typeId.toUpperCase() === "BERRY") {
                     const berry = {};
                     berry.typeId = modifier.typePregenArgs[0];  // modifier.args[2] should also work
                     berry.type = berryList[berry.typeId];
                     berry.stackCount = modifier.stackCount;
                     modifierList.berries.push(berry);
                 }
-                else if (modifier.typeId == "ATTACK_TYPE_BOOSTER") {
+                else if (modifier.typeId.toUpperCase() === "ATTACK_TYPE_BOOSTER") {
                     const attackBoost = {};
                     attackBoost.typeId = attackModifierList[modifier.typePregenArgs[0]].toUpperCase();
                     attackBoost.id = modifier.typePregenArgs[0];
@@ -200,7 +201,7 @@ class PokemonMapperClass{
      * @function
      */
     static async #getPokemonTypeEffectivenessDetailed(typeArray) {
-        let types = typeArray;
+        const types = typeArray;
 
         try {
             const { weaknesses, resistances, immunities, cssClasses } = await PokemonMapperClass.#calculateTypeEffectivenessDetailed(types);        
@@ -222,8 +223,8 @@ class PokemonMapperClass{
      * @returns {Promise<Object>} The detailed type effectiveness.
      * @function
      */
-    static async #calculateTypeEffectivenessDetailed(types) {        
-        const typesInPokemondbOrder = [	
+    static async #calculateTypeEffectivenessDetailed(types) {
+        const typesInPokemondbOrder = [
             "normal",
             "fire",
             "water",
@@ -243,7 +244,7 @@ class PokemonMapperClass{
             "steel",
             "fairy",
             "stellar"
-        ]
+        ];
 
         const _ = 1;
         const h = 1 / 2;     
@@ -474,8 +475,8 @@ class PokemonMapperClass{
 
             const basePokemon = $this.PokemonList[speciesId]?.basePokemonName;   // name of the starter pokemon / lowest in the evolution chain
             const basePokemonId = $this.PokemonList[speciesId]?.basePokemonId;   
-            const temp_convertedId = PokemonMapperClass.#findOriginalPokemonId($this, basePokemonId);
-            const basePokemonIdPreConversion = temp_convertedId !== basePokemonId ? temp_convertedId : basePokemonId;   // savedata is saved using the pre-converted id
+            const tempConvertedId = PokemonMapperClass.#findOriginalPokemonId($this, basePokemonId);
+            const basePokemonIdPreConversion = tempConvertedId !== basePokemonId ? tempConvertedId : basePokemonId;   // savedata is saved using the pre-converted id
 
             const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.name;
             const name = $this.getPokemonName(pokemonName, fusionPokemon, basePokemon);
@@ -497,7 +498,7 @@ class PokemonMapperClass{
                 nature: $this.I2N[pokemon.nature],
                 basePokemon: $this.capitalizeFirstLetter(basePokemon),
                 baseId: parseInt($this.PokemonList[speciesId].basePokemonId),
-                basePokemonIdPreConversion: basePokemonIdPreConversion,
+                basePokemonIdPreConversion,
                 sprite: pokemonSprite,
                 fusionId: fusionSpeciesId,
                 fusionPokemon: ( fusionPokemon ? $this.capitalizeFirstLetter(fusionPokemon) : null ),
@@ -516,8 +517,8 @@ class PokemonMapperClass{
 
         frontendPokemonArray = await Promise.all(pokemonPromises);
 
-        const partyId = ( pokemonLocation == 'enemyParty' ? 'enemies' : 'allies' );
-        return { pokemon: frontendPokemonArray, weather, partyId : partyId };
+        const partyId = ( pokemonLocation.toLocaleLowerCase() === 'enemyparty' ? 'enemies' : 'allies' );
+        return { pokemon: frontendPokemonArray, weather, partyId };
     }
 
     /**
@@ -677,12 +678,14 @@ class PokemonMapperClass{
      */
     static #findOriginalPokemonId($this, convertedId) {
         const conversionList = $this.IdConversionList;
+        const convertedIdNumber = Number(convertedId); // Coerce convertedId to number
+    
         for (const [originalId, value] of Object.entries(conversionList)) {
-            if (value == convertedId) {
+            if (Number(value) === convertedIdNumber) { // Ensure value is also compared as number
                 return Number(originalId);
             }
         }
-        return convertedId;
+        return convertedIdNumber; // Return the original convertedId if no match found
     }
 
     /**

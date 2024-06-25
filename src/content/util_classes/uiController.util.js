@@ -235,51 +235,6 @@ class UIController {    // eslint-disable-line no-unused-vars
         return !UIController.assignedGamepadButtons.has(key);
     }
 
-/**
-     * Sets the keyboard and gamepad bindings dynamically.
-     * @param {string[]} keyboardCombination The keyboard combination to bind.
-     * @param {number[]} gamepadCombination The gamepad combination to bind.
-     */
-    setBindings(keyboardCombination, gamepadCombination) {
-        if (!keyboardCombination && !gamepadCombination) {
-            throw new Error('At least one binding must be provided');
-        }
-
-        if (keyboardCombination) {
-            this.setKeyboardHotkey(keyboardCombination);
-        }
-
-        if (gamepadCombination) {
-            this.setGamepadButtons(gamepadCombination);
-        }
-    }
-
-    /**
-     * Sets the keyboard hotkey combination dynamically.
-     * @param {string[]} combination The keyboard combination to set.
-     */
-    setKeyboardHotkey(combination) {
-        // Check if the combination is valid and unique
-        if (combination.every(key => this.validKeyCodes.has(key))) {
-            // Code to set the keyboard combination and handle uniqueness
-        } else {
-            console.error('Invalid keyboard combination:', combination);
-        }
-    }
-
-    /**
-     * Sets the gamepad button combination dynamically.
-     * @param {number[]} combination The gamepad combination to set.
-     */
-    setGamepadButtons(combination) {
-        // Check if the combination is valid and unique
-        if (combination.every(index => Number.isInteger(index) && index >= 0)) {
-            // Code to set the gamepad combination and handle uniqueness
-        } else {
-            console.error('Invalid gamepad combination:', combination);
-        }
-    }
-
     /**
      * Sets the keyboard hotkey combination.
      * @param {string[]} combination The keyboard combination to set.

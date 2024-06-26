@@ -945,7 +945,8 @@ function extensionSettingsListener() {
                     await togglePokemonCardDisplay('allies', newValue);
                     break;
                 case 'showSidebar':
-                    await toggleSidebar();
+                    await toggleSidebar();                    
+                    await initCreation(sessionData);    // lazy way to make sure that all canvases are drawn
                     break;
                 case 'sidebarPosition':
                     await changeSidebarPosition(sessionData);

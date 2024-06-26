@@ -49,6 +49,7 @@ class PokemonIconDrawer {
         }
 
         const canvas = document.getElementById(`pokemon-icon_${divId}`);
+        const canvasShown = canvas.offsetParent !== null;   // parents cannot have position: fixed
         if (!canvas) {
             console.error(`Canvas element with ID pokemon-icon_${divId} not found.`);
             return;
@@ -76,6 +77,77 @@ class PokemonIconDrawer {
         };
 
         /**
+         * Sets the dimensions of the canvas based on the image and parent element dimensions.
+         * @param {HTMLImageElement} image - The image element used to calculate dimensions.
+         */
+        const setCanvasDimensions = (image) => {
+            const width = image.width;
+            const height = image.height;
+            const parentHeight = parent.clientHeight;
+            const canvasWidth = parentHeight * (width / height);
+
+            canvas.width = canvasWidth;
+            canvas.height = parentHeight;
+        };
+
+        /**
+         * Waits for an image to load and the canvas to be properly initialized.
+         * The function checks if the image is complete and if the canvas dimensions are greater than zero.
+         * It retries the checks at specified intervals until either the conditions are met or the maximum wait time or number of tries is exceeded.
+         * 
+         * @param {HTMLImageElement} image - The image element to wait for loading.
+         * @param {number} [maxWaitTime=5000] - The maximum time to wait in milliseconds.
+         * @param {number} [maxTries=10] - The maximum number of attempts to check the image and canvas status.
+         * @returns {Promise<boolean>} A promise that resolves to true if the image and canvas are ready, otherwise rejects with an error.
+         */
+        const waitForImageLoadAndCanvas = (image, maxWaitTime = 500, maxTries = 10) => {
+            return new Promise((resolve, reject) => {
+                let tries = 0;
+                const interval = 50; // check every 50ms
+        
+                const checkImageAndCanvasLoaded = () => {
+                    const canvasReady = canvas.width > 0 && canvas.height > 0;
+                    const imageReady = image.complete && image.naturalWidth !== 0;
+        
+                    if (imageReady && canvasReady) {
+                        resolve(true);
+                    } else {
+                        // Update canvas dimensions within the loop
+                        setCanvasDimensions(image);
+        
+                        tries += 1;
+                        if (tries * interval >= maxWaitTime || tries >= maxTries) {
+                            if (canvasShown) {
+                                reject(new Error('Image or canvas load timeout'));
+                            } else {
+                                resolve(false)  // Don't throw an error if the canvas isn't visible
+                            }
+                        } else {
+                            setTimeout(checkImageAndCanvasLoaded, interval);
+                        }
+                    }
+                };
+        
+                // Use img.decode() if available, otherwise fall back to manual checks
+                if (image.decode) {
+                    image.decode().then(() => {
+                        setCanvasDimensions(image);
+        
+                        if (image.complete && image.naturalWidth !== 0 && canvas.width > 0 && canvas.height > 0) {
+                            resolve(true);
+                        } else {
+                            checkImageAndCanvasLoaded();
+                        }
+                    }).catch(() => {
+                        checkImageAndCanvasLoaded();
+                    });
+                } else {
+                    checkImageAndCanvasLoaded();
+                }
+            });
+        };                
+
+        /**
          * Draws fallback text on the canvas if the image cannot be loaded.
          */
         const drawFallbackText = () => {
@@ -95,42 +167,82 @@ class PokemonIconDrawer {
          * @param {number} destHeight - The height of the destination rectangle.
          */
         const drawImage = (image, startX, startY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) => {
+            // Ensure the image is fully loaded
+            if (!image.complete || image.naturalWidth === 0) {
+                // console.error("Canvas (Pokemon Icon): Image not loaded");
+                return false;
+            }
+        
+            // Validate dimensions
+            if (destWidth <= 0 || destHeight <= 0) {
+                // console.error("Canvas (Pokemon Icon): Invalid destination dimensions.");
+                return false;
+            }
+        
+            // Save the canvas content before drawing the image
+            let before;
+            try {
+                before = ctx.getImageData(destX, destY, destWidth, destHeight);
+            } catch (error) {
+                // console.error("Canvas (Pokemon Icon): Failed to get image data before drawing:", error);
+                return false;
+            }
+        
+            // Draw the image
             ctx.drawImage(image, startX, startY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+        
+            // Save the canvas content after drawing the image
+            let after;
+            try {
+                after = ctx.getImageData(destX, destY, destWidth, destHeight);
+            } catch (error) {
+                // console.error("Canvas (Pokemon Icon): Failed to get image data after drawing:", error);
+                return false;
+            }
+        
+            // Compare before and after pixel data
+            for (let i = 0; i < before.data.length; i++) {
+                if (before.data[i] !== after.data[i]) {
+                    // console.log("Canvas (Pokemon Icon): Image was drawn (at least some pixel data changed)");
+                    return true; // Image was drawn (at least some pixel data changed)
+                }
+            }
+        
+            // console.error("Canvas (Pokemon Icon): Image draw failed");
+            return false; // No change detected in the pixel data
         };
+        
 
         /**
          * Draws a single image on the canvas.
          * @param {HTMLImageElement} image - The image to be drawn.
          */
-        const drawSingleImage = (image) => {
-            const width = image.width;
-            const height = image.height;
-            const parentHeight = parent.clientHeight;
-            const canvasWidth = parentHeight * (width / height);
-
-            canvas.width = canvasWidth;
-            canvas.height = parentHeight;
-
-            drawImage(image, 0, 0, width, height, 0, 0, canvasWidth, parentHeight);
+        const drawSingleImage = async (image) => {
+            try {
+                await waitForImageLoadAndCanvas(image);
+                drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+            } catch (error) {
+                console.error('Failed to draw single image:', error);
+                drawFallbackText();
+            }
         };
 
-         /**
+        /**
          * Draws two combined images on the canvas.
          * @param {HTMLImageElement} image1 - The first image to be drawn.
          * @param {HTMLImageElement} image2 - The second image to be drawn.
          */
-        const drawCombinedImages = (image1, image2) => {
-            const width = image1.width;
-            const height = image1.height;
-            const parentHeight = parent.clientHeight;
-            const canvasWidth = parentHeight * (width / height);
-
-            canvas.width = canvasWidth;
-            canvas.height = parentHeight;
-
-            drawImage(image1, 0, 0, width, height / 2, 0, 0, canvasWidth, parentHeight / 2);
-            drawImage(image2, 0, height / 2, width, height / 2, 0, parentHeight / 2, canvasWidth, parentHeight / 2);
-        };
+        const drawCombinedImages = async (image1, image2) => {
+            try {
+                await Promise.all([waitForImageLoadAndCanvas(image1), waitForImageLoadAndCanvas(image2)]);
+        
+                drawImage(image1, 0, 0, image1.width, image1.height / 2, 0, 0, canvas.width, canvas.height / 2);
+                drawImage(image2, 0, image2.height / 2, image2.width, image2.height / 2, 0, canvas.height / 2, canvas.width, canvas.height / 2);
+            } catch (error) {
+                console.error('Failed to draw combined images:', error);
+                drawFallbackText();
+            }
+        };                      
 
         /**
          * Fetches an image from a URL and caches it.
@@ -242,7 +354,6 @@ class PokemonIconDrawer {
                 // Set crossOrigin attribute to handle cross-origin images
                 image1.crossOrigin = "anonymous";
                 image2.crossOrigin = "anonymous";
-        
                 await Promise.all([
                     loadImageFromBlobUrl(image1, image1Response.dataUrl),
                     loadImageFromBlobUrl(image2, image2Response.dataUrl)
@@ -252,7 +363,6 @@ class PokemonIconDrawer {
                 if (!image1.complete || !image2.complete) {
                     throw new Error('One or both images failed to load completely.');
                 }
-        
                 // Draw the combined images on the canvas
                 drawCombinedImages(image1, image2);
         

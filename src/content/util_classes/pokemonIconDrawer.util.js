@@ -329,8 +329,6 @@ class PokemonIconDrawer {
             });
         };
 
-        const cachedImage = this.imageCache[cacheKey] || window.Utils.LocalStorage.getImageFromCache(cacheKey);
-
         /**
          * Fetches separate images for a fusion Pokémon and combines them.
          */        
@@ -396,6 +394,8 @@ class PokemonIconDrawer {
             this.imageCache[cacheKey] = combinedDataUrl;
             window.Utils.LocalStorage.saveImageToCache(cacheKey, combinedDataUrl);
         };
+
+        const cachedImage = this.imageCache[cacheKey] || window.Utils.LocalStorage.getImageFromCache(cacheKey);
 
         if (cachedImage) {
             try {

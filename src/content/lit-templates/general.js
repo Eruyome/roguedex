@@ -69,10 +69,42 @@
             Types[Types.dragon = 16] = 16;
             Types[Types.dark = 17] = 17;
             Types[Types.fairy = 18] = 18;
+            Types[Types.stellar = 19] = 19;
         })(Types || (Types = {}));
 
         return Types
     }
+
+    window.lit.getTypeIconUrls = () => {
+        const prefix1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/';
+        const prefix2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/brilliant-diamond-and-shining-pearl/';
+
+        const Urls = {
+            normal: prefix1 + 1 +".png",
+            fighting: prefix1 + 2 +".png",
+            flying: prefix2 + 3 +".png",
+            poison: prefix1 + 4 +".png",
+            ground: prefix1 + 5 +".png",
+            rock: prefix1 + 6 +".png",
+            bug: prefix2 + 7 +".png",
+            ghost: prefix1 + 8 +".png",
+            steel: prefix2 + 9 +".png",
+            fire: prefix1 + 10 +".png",
+            water: prefix2 + 11 +".png",
+            grass: prefix2 + 12 +".png",
+            electric: prefix1 + 13 +".png",
+            psychic: prefix1 + 14 +".png",
+            // ice: prefix1 + 15 +".png",
+            ice: "https://archives.bulbagarden.net/media/upload/9/9b/IceIC_Masters.png",
+            dragon: prefix1 + 16 +".png",
+            dark: prefix1 + 17 +".png",
+            // fairy: prefix2 + 18 +".png",
+            fairy: "https://archives.bulbagarden.net/media/upload/f/fa/FairyIC_Masters.png",
+            stellar: "https://archives.bulbagarden.net/media/upload/4/4e/Stellar_icon_SV.png"
+        };
+    
+        return Urls;
+    };
 
     /**
      * Retrieves an object mapping Pokémon stats to their respective names.

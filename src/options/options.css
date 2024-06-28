@@ -127,7 +127,9 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    padding: calc(var(--corner-size) - 2px); /* Adjust padding as necessary to fit within the border */
+    padding: calc(
+        var(--corner-size) - 2px
+    ); /* Adjust padding as necessary to fit within the border */
     position: relative;
     z-index: 1; /* Ensure input-container appears above the background */
     box-sizing: border-box; /* Ensure padding is included in the width and height */
@@ -156,7 +158,7 @@ body {
     flex-grow: 1;
 }
 
-.bool-label{
+.bool-label {
     width: 160px !important;
 }
 
@@ -180,13 +182,11 @@ body {
     text-shadow: 2px 2px 0 var(--red-sub);
 }
 
-.setting-label{
+.setting-label {
     color: var(--yellow-main); /* Focused color */
     text-shadow: 2px 2px 0 var(--white-sub);
     font-family: 'PKMNems';
 }
-
-
 
 .setting-label.focus {
     color: var(--yellow-main); /* Focused color */
@@ -206,4 +206,3 @@ body {
     font-family: 'PKMNems';
     font-size: 16px;
 }
-

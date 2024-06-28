@@ -465,7 +465,8 @@ class PokemonMapperClass{
             const speciesIdPreConversion = pokemon.species;
             const fusionSpeciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.fusionSpecies);
 
-            const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);
+            const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);            
+            const rarity = PokemonMapperClass.#getPokemonRarity($this, pokemon.species);
 
             const baseTypes = $this.PokemonList[speciesId]?.types;
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
@@ -503,6 +504,7 @@ class PokemonMapperClass{
                 fusionId: fusionSpeciesId,
                 fusionPokemon: ( fusionPokemon ? $this.capitalizeFirstLetter(fusionPokemon) : null ),
                 moveset,
+                rarity,
                 boss: pokemon.boss,
                 friendship: pokemon.friendship,
                 level: pokemon.level,
@@ -628,6 +630,23 @@ class PokemonMapperClass{
             name = $this.PokemonList[PokemonMapperClass.#convertPokemonId($this, speciesId)]?.name;
         }
         return name
+    }
+
+    /**
+     * Retrieves the rarity (legendary, mythical, none) of a Pokémon from the Pokémon list.
+     * 
+     * @function
+     * @memberof PokemonMapperClass
+     * @private
+     * @param {Object} $this - The instance of the PokemonMapperClass.
+     * @param {string} speciesId - The ID of the species to retrieve the rarity of.
+     * @returns {string} The rarity of the Pokémon species.
+     */
+    static #getPokemonRarity($this, speciesId) {
+        const legendary = $this.PokemonList[speciesId]?.isLegendary;
+        const mythical = $this.PokemonList[speciesId]?.isMythical;
+        const rarity = ( legendary ? 'legendary' : (mythical ? 'mythical' : '') );
+        return rarity
     }
 
     /**

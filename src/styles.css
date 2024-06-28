@@ -3,11 +3,6 @@
 /*  --icon-size: min(10vh, 6vw);*/
 /*}*/
 
-
-/*
-fangsong?
-
-*/
 @font-face {
     font-family: 'pokemon-emerald-pro';
     src: url('../fonts/pokemon-emerald-pro.ttf') format('truetype');
@@ -21,24 +16,24 @@ fangsong?
     --sidebar-img-max-height: max(90px);
     --sidebar-borders-color: rgb(59, 59, 59);
     --sidebar-bg-color: #2b2d31;
-    --sidebar-font: "pokemon-emerald-pro";
-    --overlay-font: "pokemon-emerald-pro";
-    --text-shadow-dark: .1em 0 rgba(255, 255, 255, 0),
-        -0.1em 0 rgba(255, 255, 255, 0),
-        0 0.1em rgba(255, 255, 255, 0),
-        0 -0.1em rgba(255, 255, 255, 0),
-        0.05em 0.05em rgba(255, 255, 255, 0),
+    --sidebar-font: 'pokemon-emerald-pro';
+    --overlay-font: 'pokemon-emerald-pro';
+    --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0),
+        -0.1em 0 rgba(255, 255, 255, 0), 0 0.1em rgba(255, 255, 255, 0),
+        0 -0.1em rgba(255, 255, 255, 0), 0.05em 0.05em rgba(255, 255, 255, 0),
         -0.05em -0.05em rgba(255, 255, 255, 0),
         0.05em -0.05em rgba(255, 255, 255, 0),
         -0.05em 0.05em rgba(255, 255, 255, 0);
-    --text-shadow-light: .1em 0 rgba(255, 255, 255, 0.9),
-        -0.1em 0 rgba(255, 255, 255, 0.9),
-        0 0.1em rgba(255, 255, 255, 0.9),
+    --text-shadow-light: 0.1em 0 rgba(255, 255, 255, 0.9),
+        -0.1em 0 rgba(255, 255, 255, 0.9), 0 0.1em rgba(255, 255, 255, 0.9),
         0 -0.1em rgba(255, 255, 255, 0.9),
         0.05em 0.05em rgba(255, 255, 255, 0.9),
         -0.05em -0.05em rgba(255, 255, 255, 0.9),
         0.05em -0.05em rgba(255, 255, 255, 0.9),
         -0.05em 0.05em rgba(255, 255, 255, 0.9);
+    /* PLACEHOLDERS, set programmatically  */
+    --extension-rarity-bg-image-sparkles: url('__EXTENSION_IMAGE_1_URL__');
+    --extension-rarity-bg-image-holo: url('__EXTENSION_IMAGE_2_URL__');
 }
 
 /* pokerogue overwrites  */
@@ -52,7 +47,7 @@ body {
 /* apply to game app when sidebar is visible */
 #app.sidebar-active {
     max-width: 70%;
-    float: right;    
+    float: right;
 }
 
 /*  Pokemon Cards (Overlay) display state handling 
@@ -87,7 +82,7 @@ body {
     line-height: 100%;
 }
 .roguedex-sidebar.active {
-    display: block;    
+    display: block;
     overflow-y: clip;
 }
 .roguedex-sidebar.hidden {
@@ -142,19 +137,20 @@ body.sidebar-Bottom {
 }
 .roguedex-sidebar .sidebar-header-trainer-battle {
     color: #ff7e7e;
-    font-size: .8em;
+    font-size: 0.8em;
 }
-.enemies-party, .allies-party {
+.enemies-party,
+.allies-party {
     display: table;
     color: white;
     font-family: inherit;
-    border-top: 1px solid var(--sidebar-borders-color);    
+    border-top: 1px solid var(--sidebar-borders-color);
     margin: 0;
     width: 100%;
     box-sizing: border-box;
 }
 .enemies-party {
-    --party-border-width : 0.3em;
+    --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
     border-image: linear-gradient(to right, #b30a21, var(--sidebar-bg-color)) 1;
@@ -162,18 +158,19 @@ body.sidebar-Bottom {
     border-right: none;
 }
 .allies-party {
-    --party-border-width : 0.3em;
+    --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
     border-image: linear-gradient(to right, #0095ff, var(--sidebar-bg-color)) 1;
-    border-bottom : none;
-    border-right : none;
+    border-bottom: none;
+    border-right: none;
 }
-.sidebar-allies-box.hidden, .sidebar-enemies-box.hidden {
+.sidebar-allies-box.hidden,
+.sidebar-enemies-box.hidden {
     display: none;
 }
 .sidebar-Right .enemies-party {
-    --party-border-width : 0.3em;
+    --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
     border-image: linear-gradient(to left, #b30a21, var(--sidebar-bg-color)) 1;
@@ -181,12 +178,12 @@ body.sidebar-Bottom {
     border-left: none;
 }
 .sidebar-Right .allies-party {
-    --party-border-width : 0.3em;
+    --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
     border-image: linear-gradient(to left, #0095ff, var(--sidebar-bg-color)) 1;
-    border-bottom : none;
-    border-left : none;
+    border-bottom: none;
+    border-left: none;
 }
 .pokemon-entry {
     display: table-row;
@@ -200,7 +197,7 @@ body.sidebar-Bottom {
 .pokemon-entry-image,
 .pokemon-type-effectiveness-wrapper,
 .pokemon-info-text-wrapper {
-    display: table-cell;    
+    display: table-cell;
     border-bottom: 1px solid var(--sidebar-borders-color);
     padding: 0.3em 0.5em 0.3em 0;
     vertical-align: top;
@@ -254,12 +251,19 @@ body.sidebar-Bottom {
     background-repeat: no-repeat;
     background-position: left;
     background-position-x: -0.07em;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+.roguedex-sidebar .pokemon-type-icon-wrapper {
     border-radius: 50%;
     margin: 0.1em 0.1em;
-    
-    -webkit-box-shadow:0px 0px 2px 2px rgba(36,36,36,0.9);
-    -moz-box-shadow: 0px 0px 2px 2px rgba(36,36,36,0.9);
-    box-shadow: 0px 0px 2px 2px rgba(36,36,36,0.9);
+
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
+    -moz-box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
+    box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
+
+    overflow: hidden;
 }
 .roguedex-sidebar .pokemon-type-weaknesses,
 .roguedex-sidebar .pokemon-type-resistances,
@@ -279,21 +283,35 @@ body.sidebar-Bottom {
     position: relative;
     padding: 0.1em 0.1em 0.1em 0.1em;
     width: -webkit-fill-available;
-    
 }
 .roguedex-sidebar .pokemon-type-weaknesses {
-    background: rgb(36,0,0);
-    background: linear-gradient(90deg, rgb(71, 0, 0) 0%, rgba(154,2,2,1) 12%, rgba(255,0,0,0.17) 100%);
+    background: rgb(36, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgb(71, 0, 0) 0%,
+        rgba(154, 2, 2, 1) 12%,
+        rgba(255, 0, 0, 0.17) 100%
+    );
     border: 1px solid rgb(192, 2, 2);
 }
 .roguedex-sidebar .pokemon-type-resistances {
-    background: rgb(0,36,7);
-    background: linear-gradient(90deg, rgb(0, 75, 15) 0%, rgba(13,154,2,1) 12%, rgba(1,255,0,0.17) 100%);
+    background: rgb(0, 36, 7);
+    background: linear-gradient(
+        90deg,
+        rgb(0, 75, 15) 0%,
+        rgba(13, 154, 2, 1) 12%,
+        rgba(1, 255, 0, 0.17) 100%
+    );
     border: 1px solid rgb(14, 207, 1);
 }
 .roguedex-sidebar .pokemon-type-immunities {
-    background: rgb(68,68,68);
-    background: linear-gradient(90deg, rgba(68,68,68,1) 0%, rgba(115,115,115,1) 12%, rgba(161,161,161,0.17) 100%);
+    background: rgb(68, 68, 68);
+    background: linear-gradient(
+        90deg,
+        rgba(68, 68, 68, 1) 0%,
+        rgba(115, 115, 115, 1) 12%,
+        rgba(161, 161, 161, 0.17) 100%
+    );
     border: 1px solid rgb(148, 148, 148);
 }
 .roguedex-sidebar .pokemon-type-weaknesses::before,
@@ -314,17 +332,17 @@ body.sidebar-Bottom {
 }
 .roguedex-sidebar .pokemon-type-weaknesses::before {
     content: ' ';
-    background-color: rgb(36,0,0);
+    background-color: rgb(36, 0, 0);
     border: 1px solid rgb(192, 2, 2);
 }
 .roguedex-sidebar .pokemon-type-resistances::before {
     content: ' ';
-    background-color: rgb(0,36,7);
+    background-color: rgb(0, 36, 7);
     border: 1px solid rgb(14, 207, 1);
 }
 .roguedex-sidebar .pokemon-type-immunities::before {
     content: ' ';
-    background-color: rgb(68,68,68);
+    background-color: rgb(68, 68, 68);
     border: 1px solid rgb(148, 148, 148);
 }
 .roguedex-sidebar .pokemon-entry-image canvas {
@@ -344,18 +362,21 @@ body.sidebar-Bottom {
     left: 0px;
     color: rgb(184, 184, 184);
 }
-.pokemon-info-text-wrapper {    
+.pokemon-info-text-wrapper {
     padding: 0.2em 0.2m 0.2em 0px !important;
     font-size: 1.5em;
 }
-.roguedex-sidebar.hideIVs .allies-party .pokemon-ivs, .roguedex-sidebar.hideMoveset .allies-party .pokemon-moveset-wrapper {
+.roguedex-sidebar.hideIVs .allies-party .pokemon-ivs,
+.roguedex-sidebar.hideMoveset .allies-party .pokemon-moveset-wrapper {
     display: none;
 }
-.roguedex-sidebar .pokemon-ivs, .roguedex-sidebar .pokemon-ability-nature {
+.roguedex-sidebar .pokemon-ivs,
+.roguedex-sidebar .pokemon-ability-nature {
     display: flex;
     flex-wrap: wrap;
 }
-.roguedex-sidebar .pokemon-ability, .roguedex-sidebar .pokemon-nature {
+.roguedex-sidebar .pokemon-ability,
+.roguedex-sidebar .pokemon-nature {
     display: flex;
 }
 .roguedex-sidebar .stat-p {
@@ -367,7 +388,7 @@ body.sidebar-Bottom {
     position: relative;
     text-shadow: var(--text-shadow-dark);
 }
-.roguedex-sidebar .stat-p.stat-p-colors { 
+.roguedex-sidebar .stat-p.stat-p-colors {
     color: #adadad;
 }
 .roguedex-sidebar .stat-c.stat-c-colors {
@@ -379,30 +400,47 @@ body.sidebar-Bottom {
     right: -0.5em;
     opacity: 0.8 !important;
 }
-.roguedex-sidebar .pokemon-ability-description, .roguedex-sidebar .pokemon-nature-description {
+.roguedex-sidebar .pokemon-ability-description,
+.roguedex-sidebar .pokemon-nature-description {
     color: #adadad;
 }
-.roguedex-sidebar .pokemon-ability-value, .roguedex-sidebar .pokemon-nature-value {
+.roguedex-sidebar .pokemon-ability-value,
+.roguedex-sidebar .pokemon-nature-value {
     color: white;
     padding: 0 0.2em;
 }
 .roguedex-sidebar .pokemon-ability.hidden-ability .pokemon-ability-value {
     color: rgb(247, 0, 255);
 }
-.pokemon-type-icon.super-dmg, .pokemon-type-icon.super-resist {
+.pokemon-type-icon.super-dmg,
+.pokemon-type-icon.super-resist {
     animation: pulsate 1s ease-out;
     animation-iteration-count: infinite;
     opacity: 1;
 }
 @keyframes pulsate {
-    0% {-webkit-transform: scale(0.9, 0.9); opacity: 0.8;}
-    50% {opacity: 1.0;}
-    100% {-webkit-transform: scale(1.1, 1.1); opacity: 0.8;}
+    0% {
+        -webkit-transform: scale(0.9, 0.9);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.1, 1.1);
+        opacity: 0.8;
+    }
 }
 @keyframes opacityPulse {
-    0% {opacity: 0.5;}
-    50% {opacity: 1.0;}
-    100% {opacity: 0.5;}
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }
 .pokemon-moveset-wrapper {
     margin-top: 0.2em;
@@ -417,42 +455,85 @@ body.sidebar-Bottom {
     box-sizing: border-box;
     text-shadow: var(--text-shadow-dark);
 }
-.pokemon-moveset-wrapper .pokemon-move-name.move-normal { color: rgb(170 170 153); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-fire { color: rgb(255 68 34); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-water { color: rgb(51 153 255); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-electric { color: rgb(255 204 51); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-grass { color: rgb(119 204 85); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-ice { color: rgb(102 204 255); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-fighting { color: rgb(187 85 68); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-poison { color: rgb(170 85 153); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-ground { color: rgb(187 85 68); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-flying { color: rgb(136 153 255); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-psychic { color: rgb(255 85 153); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-bug { color: rgb(170 187 34); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-rock { color: rgb(187 170 102); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-ghost { color: rgb(102 102 187); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-dragon { color: rgb(119 102 238); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-dark { color: rgb(119 85 68); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-steel { color: rgb(170 170 187); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-fairy { color: rgb(238 153 238); }
-.pokemon-moveset-wrapper .pokemon-move-name.move-stellar { color: white; }
-
+.pokemon-moveset-wrapper .pokemon-move-name.move-normal {
+    color: rgb(170 170 153);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-fire {
+    color: rgb(255 68 34);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-water {
+    color: rgb(51 153 255);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-electric {
+    color: rgb(255 204 51);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-grass {
+    color: rgb(119 204 85);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-ice {
+    color: rgb(102 204 255);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-fighting {
+    color: rgb(187 85 68);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-poison {
+    color: rgb(170 85 153);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-ground {
+    color: rgb(187 85 68);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-flying {
+    color: rgb(136 153 255);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-psychic {
+    color: rgb(255 85 153);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-bug {
+    color: rgb(170 187 34);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-rock {
+    color: rgb(187 170 102);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-ghost {
+    color: rgb(102 102 187);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-dragon {
+    color: rgb(119 102 238);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-dark {
+    color: rgb(119 85 68);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-steel {
+    color: rgb(170 170 187);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-fairy {
+    color: rgb(238 153 238);
+}
+.pokemon-moveset-wrapper .pokemon-move-name.move-stellar {
+    color: white;
+}
 
 /* Compact sidebar type-effectiveness display */
-.roguedex-sidebar.compactTypeDisplay .pokemon-type-effectiveness-wrapper.compact {
+.roguedex-sidebar.compactTypeDisplay
+    .pokemon-type-effectiveness-wrapper.compact {
     display: table-cell;
 }
-.roguedex-sidebar.defaultTypeDisplay .pokemon-type-effectiveness-wrapper.compact {
+.roguedex-sidebar.defaultTypeDisplay
+    .pokemon-type-effectiveness-wrapper.compact {
     display: none;
 }
-.roguedex-sidebar.defaultTypeDisplay .pokemon-type-effectiveness-wrapper.default {
+.roguedex-sidebar.defaultTypeDisplay
+    .pokemon-type-effectiveness-wrapper.default {
     display: table-cell;
 }
-.roguedex-sidebar.compactTypeDisplay .pokemon-type-effectiveness-wrapper.default {
+.roguedex-sidebar.compactTypeDisplay
+    .pokemon-type-effectiveness-wrapper.default {
     display: none;
 }
 
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-category {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-category {
     border-width: var(--type-effectiveness-border-width);
     max-width: inherit;
     display: flex;
@@ -466,21 +547,29 @@ body.sidebar-Bottom {
     min-width: fit-content;
     width: fit-content;
     border-width: 1px;
-    border-style: solid;    
+    border-style: solid;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-weaknesses {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-weaknesses {
     background: #810e0e;
     border: 1px solid rgb(192, 2, 2);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-resistances {
-    background: rgba(13,154,2,1);
-    border: 1px solid rgb(14, 207, 1);
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-resistances {
+    background: rgba(76, 185, 68, 1);
+    border: 1px solid rgb(92, 229, 82, 1);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-immunities {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-immunities {
     background: rgb(97, 96, 96);
     border: 1px solid rgb(148, 148, 148);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-category:before {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-category:before {
     display: none;
     width: 1em;
     margin-right: 1em;
@@ -494,54 +583,71 @@ body.sidebar-Bottom {
     bottom: 0;
     left: 0;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-weaknesses::before {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-weaknesses::before {
     content: ' ';
-    background-color: rgb(36,0,0);
+    background-color: rgb(36, 0, 0);
     border-color: 1px solid rgb(192, 2, 2);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-resistances::before {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-resistances::before {
     content: ' ';
-    background-color: rgb(0,36,7);
+    background-color: rgb(0, 36, 7);
     border-color: 1px solid rgb(14, 207, 1);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-immunities::before {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .pokemon-type-immunities::before {
     content: ' ';
-    background-color: rgb(68,68,68);
+    background-color: rgb(68, 68, 68);
     border-color: 1px solid rgb(148, 148, 148);
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-block {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-block {
     display: flex;
     flex-direction: column;
     width: fit-content;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-row {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-row {
     display: flex;
     justify-content: flex-start;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-row:nth-child(2n) {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-row:nth-child(2n) {
     flex-direction: row-reverse;
     justify-content: end;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-row:nth-child(2n) .type-effectiveness-category {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-row:nth-child(2n)
+    .type-effectiveness-category {
     border-top: none !important;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .type-effectiveness-row:nth-child(n+2) .type-effectiveness-category {
+.roguedex-sidebar
+    .pokemon-type-effectiveness-wrapper.compact
+    .type-effectiveness-row:nth-child(n + 2)
+    .type-effectiveness-category {
     border-top: none !important;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact  .transp-right {
+.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .transp-right {
     border-right-color: transparent !important;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact  .transp-bottom {
+.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .transp-bottom {
     border-bottom-color: transparent !important;
 }
-.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact  .transp-left {
+.roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .transp-left {
     border-left-color: transparent !important;
 }
 
-
 /* change view for trainer battles */
 .pokemon-entry.condensed {
-	display: table-cell;
+    display: table-cell;
     border: 1px solid black;
 }
 .pokemon-entry.condensed .pokemon-type-effectiveness-wrapper.compact {
@@ -556,10 +662,11 @@ body.sidebar-Bottom {
     text-align: center;
 }
 .pokemon-entry.condensed .pokemon-type-effectiveness-wrapper {
-	display: contents;
+    display: contents;
 }
-.pokemon-entry.condensed .allies-party, .pokemon-entry.condensed .enemies-party {
-	display: flex;
+.pokemon-entry.condensed .allies-party,
+.pokemon-entry.condensed .enemies-party {
+    display: flex;
 }
 .pokemon-entry.condensed .pokemon-info-text-wrapper {
     display: none;
@@ -587,11 +694,11 @@ body.sidebar-Bottom {
 .roguedex-bottom-panel.sidebar-active {
     display: block;
 }
-.roguedex-bottom-panel.sidebar-Left {    
+.roguedex-bottom-panel.sidebar-Left {
     right: 0;
 }
 .roguedex-bottom-panel.sidebar-Right {
-    left: 0;    
+    left: 0;
 }
 .roguedex-bottom-panel-content {
     padding: 0.2em;
@@ -608,25 +715,36 @@ body.sidebar-Bottom {
 .bottom-panel-weather-box {
     margin: 0.5em;
 }
-.bottom-panel-party-modifiers td, .bottom-panel-enemy-modifiers td, .bottom-panel-pokemon-modifiers td {
+.bottom-panel-party-modifiers td,
+.bottom-panel-enemy-modifiers td,
+.bottom-panel-pokemon-modifiers td {
     padding: 0 0.1em;
 }
-.bottom-panel-party-modifiers td:nth-child(2n), .bottom-panel-enemy-modifiers td:nth-child(2n), .bottom-panel-pokemon-modifiers td:nth-child(2n) {
+.bottom-panel-party-modifiers td:nth-child(2n),
+.bottom-panel-enemy-modifiers td:nth-child(2n),
+.bottom-panel-pokemon-modifiers td:nth-child(2n) {
     text-align: right;
 }
-.bottom-panel-party-modifiers td:nth-child(2), .bottom-panel-enemy-modifiers td:nth-child(2), .bottom-panel-pokemon-modifiers td:nth-child(2) {
+.bottom-panel-party-modifiers td:nth-child(2),
+.bottom-panel-enemy-modifiers td:nth-child(2),
+.bottom-panel-pokemon-modifiers td:nth-child(2) {
     padding-right: 0.7em;
 }
-.bottom-panel-party-modifiers, .bottom-panel-enemy-modifiers, .bottom-panel-pokemon-modifiers {
+.bottom-panel-party-modifiers,
+.bottom-panel-enemy-modifiers,
+.bottom-panel-pokemon-modifiers {
     text-align: left;
     background-color: #25272b;
     border: 1px solid rgb(26, 25, 25);
     float: left;
 }
-.bottom-panel-party-modifiers, .bottom-panel-pokemon-modifiers {
+.bottom-panel-party-modifiers,
+.bottom-panel-pokemon-modifiers {
     margin-right: 0.1em;
 }
-.bottom-panel-party-modifiers .zeroValue, .bottom-panel-enemy-modifiers .zeroValue, .bottom-panel-pokemon-modifiers .zeroValue {
+.bottom-panel-party-modifiers .zeroValue,
+.bottom-panel-enemy-modifiers .zeroValue,
+.bottom-panel-pokemon-modifiers .zeroValue {
     color: rgb(104, 104, 104);
 }
 .bottom-panel-party-modifiers {
@@ -653,7 +771,7 @@ body.sidebar-Bottom {
     border-left: none;
     border-right: none;
     width: -moz-available;
-  }
+}
 .bottom-panel-enemy-modifiers {
     border-width: 0.2em;
     border-style: solid;
@@ -678,7 +796,7 @@ body.sidebar-Bottom {
     border-left: none;
     border-right: none;
     width: -moz-available;
-  }
+}
 .bottom-panel-modifiers-wrapper {
     float: left;
 }
@@ -699,7 +817,7 @@ body.sidebar-Bottom {
     background: none;
     outline: none;
     font-size: inherit;
-    transition: background-color 0.3s;    
+    transition: background-color 0.3s;
     color: white;
     font-family: inherit;
     /*/font-size: 1em;    */
@@ -726,11 +844,81 @@ body.sidebar-Bottom {
     display: block;
 }
 
-.roguedex-sidebar .text-base, .roguedex-bottom-panel .text-base {
+.roguedex-sidebar .text-base,
+.roguedex-bottom-panel .text-base {
     font-family: inherit;
 }
 
 /* bottom panel end */
+
+/*  legendary, mystical effects 
+    https://codepen.io/simeydotme/pen/PrQKgo
+    https://github.com/simeydotme/pokemon-cards-css
+*/
+
+.pokemon-entry-image.pokemon-rarity-legendary:before,
+.pokemon-entry-image.pokemon-rarity-legendary:after,
+.pokemon-entry-image.pokemon-rarity-mythical:before,
+.pokemon-entry-image.pokemon-rarity-mythical:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    mix-blend-mode: color-dodge;
+    transition: all 0.33s ease;
+    border-radius: 0.5em;
+}
+
+.pokemon-entry-image.pokemon-rarity-legendary:before,
+.pokemon-entry-image.pokemon-rarity-mythical:before {
+    --color1: rgb(0, 231, 255);
+    --color2: rgb(255, 0, 231);
+    background-position: 50% 50%;
+    background-size: 300% 300%;
+    background-image: linear-gradient(
+        115deg,
+        transparent 0%,
+        var(--color1) 25%,
+        transparent 47%,
+        transparent 53%,
+        var(--color2) 75%,
+        transparent 100%
+    );
+    opacity: 0.5;
+    filter: brightness(0.5) contrast(1);
+    z-index: 1;
+}
+
+.pokemon-entry-image.pokemon-rarity-legendary:after,
+.pokemon-entry-image.pokemon-rarity-mythical:after {
+    opacity: 1;
+    background-image: var(--extension-rarity-bg-image-sparkles),
+        var(--extension-rarity-bg-image-sparkles),
+        var(--extension-rarity-bg-image-holo),
+        linear-gradient(
+            125deg,
+            #ff008450 15%,
+            #fca40040 30%,
+            #ffff0030 40%,
+            #00ff8a20 60%,
+            #00cfff40 70%,
+            #cc4cfa50 85%
+        );
+    background-position: 50% 50%;
+    background-size: 360%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    filter: brightness(1) contrast(1);
+    transition: all 0.33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: 0.75;
+}
+
+/* legendary, mystical effects end */
 
 .allies-team {
     margin: 0 auto;
@@ -840,7 +1028,8 @@ body.sidebar-Bottom {
     color: black;
 }
 
-#enemies .text-base , #allies .text-base {
+#enemies .text-base,
+#allies .text-base {
     font-family: var(--overlay-font);
 }
 
@@ -849,7 +1038,7 @@ body.sidebar-Bottom {
     font-size: 1.5em;
 }
 .arrow-button-wrapper.minified {
-    font-size: 1.0em;
+    font-size: 1em;
 }
 .arrow-button-wrapper.mobile {
     display: grid;

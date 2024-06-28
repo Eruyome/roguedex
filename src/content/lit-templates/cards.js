@@ -122,7 +122,7 @@
     window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
-                const Types = window.lit.getTypeList();
+                const TypeIconUrls = window.lit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
                 if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return null;
                 if (effectiveness === "cssClasses") return null;
@@ -152,7 +152,8 @@
                                     const cssClass = typeEffectivenesses.cssClasses[type];
                                     return html`
                                         <div class="pokemon-type-icon ${cssClass}" 
-                                            style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/${Types[type]}.png')"></div>
+                                            style="background-image: url(${TypeIconUrls[type]})">
+                                        </div>
                                     `;
                                 })}
                             </div>

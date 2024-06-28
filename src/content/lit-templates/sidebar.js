@@ -63,10 +63,11 @@
                     const saveDataId = pokemon.basePokemonIdPreConversion;
                     const ivSaveData = dexData[saveDataId].ivs || dexData[pokemon.baseId].ivs || {};
                     const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every(num => num === 0);
+                    const rarityClass = pokemon.rarity.length ? 'pokemon-rarity-' + pokemon.rarity : '';
 
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
-                            <div class="pokemon-entry-image tooltip">
+                            <div class="pokemon-entry-image tooltip ${rarityClass}">
                                 <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
                                 ${window.lit.createPokemonTooltipDiv(pokemon)}
                                 <div class="sidebar-pokemon-info" style="position: absolute; ${partyID === 'enemies' ? 'display: none;' : ''}">
@@ -240,7 +241,7 @@
      * @function createSidebarTypeEffectivenessWrapperCompact
      */
     window.lit.createSidebarTypeEffectivenessWrapperCompact = (typeEffectivenesses, maxItemsPerRow = 5, maxRows = 4, growRowLength = true) => {
-        const urlPrefix = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield';
+        const TypeIconUrls = window.lit.getTypeIconUrls();
         const typeItemList = [];
         let globalCounter = 0;
         let itemsPerRow = maxItemsPerRow;
@@ -262,7 +263,6 @@
 
         // Populate the typeItemList with items containing type effectiveness data
         Object.keys(typeEffectivenesses).forEach((effectiveness) => {
-            const Types = window.lit.getTypeList();
             const effectivenessObj = typeEffectivenesses[effectiveness];
             if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return;
             if (effectiveness === "cssClasses") return;
@@ -284,8 +284,9 @@
                 const tempListItem = {
                     iconCssClasses: iconCssClass,
                     typeEffectiveness: effectiveness,
-                    iconUrl: `${urlPrefix}/${Types[type]}.png`,
+                    iconUrl: `${TypeIconUrls[type]}`,
                     wrapperCssClasses: `type-effectiveness-category pokemon-type-${effectiveness}`,
+                    additionalStyles : ( type.toLowerCase() === 'dragon' ? 'transform: scaleX(-1) scaleY(-1); background-blend-mode: multiply; filter: contrast(0.7) hue-rotate(24deg);' : '' ),
                     order: (globalCounter % itemsPerRow) + 1
                 };
 
@@ -320,7 +321,9 @@
                         const transparencyClasses = window.lit.determineTransparencyClasses(item, Math.floor(i / itemsPerRow) + 1, itemsPerRow, firstOfType, lastOfType);
                         return html`
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
-                                <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}')"></div>
+                                <div class="pokemon-type-icon-wrapper">
+                                    <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'), url('${item.iconUrl}'); ${item.additionalStyles}"></div>
+                                </div>
                             </div>
                         `;
                     })}

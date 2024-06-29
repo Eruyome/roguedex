@@ -512,7 +512,7 @@ async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDet
         render(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
-            await window.Utils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
+            window.Utils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
         }
     }
 

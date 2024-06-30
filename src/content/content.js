@@ -745,7 +745,8 @@ async function toggleSidebar() {
     const toggleClasses = (element, active, isSidebar = false) => {
         try {
             if (!element) {
-                throw new Error("Element does not exist");
+                // throw new Error("Element does not exist");
+                console.error("toggleSidebar(): Element does not exist:", element);
             }
             if (isSidebar) {
                 element.classList.toggle('active', active);

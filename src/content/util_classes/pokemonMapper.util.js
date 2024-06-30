@@ -468,6 +468,7 @@ class PokemonMapperClass{
 
             const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);            
             const rarity = PokemonMapperClass.#getPokemonRarity($this, pokemon.species);
+            const region = $this.PokemonList[speciesId].region || null;
 
             const baseTypes = $this.PokemonList[speciesId]?.types;
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
@@ -509,6 +510,7 @@ class PokemonMapperClass{
                 fusionPokemonSprite,
                 moveset,
                 rarity,
+                region,
                 boss: pokemon.boss,
                 friendship: pokemon.friendship,
                 level: pokemon.level,
@@ -647,8 +649,8 @@ class PokemonMapperClass{
      * @returns {string} The rarity of the Pokémon species (legendary, mythical, ultra).
      */
     static #getPokemonRarity($this, speciesId) {
-        let rarity = $this.PokemonList[speciesId]?.rarity;
-        return rarity ? rarity : '';
+        const rarity = $this.PokemonList[speciesId]?.rarity || '';
+        return rarity;
     }
 
     /**
@@ -707,7 +709,8 @@ class PokemonMapperClass{
         }
     
         // Regex patterns for classification
-        const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w \.-]*)*\/?$/;
+        // const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w \.-]*)*\/?$/;
+        const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w.-]*)*\/?$/;
         const filenameWithExtensionRegex = /^[^/]+\.[^/]+$/; // Updated regex pattern
     
         // Check if it's just a filename + filetype

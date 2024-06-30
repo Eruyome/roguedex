@@ -859,7 +859,15 @@ body.sidebar-Bottom {
 .pokemon-entry-image.pokemon-rarity-legendary:before,
 .pokemon-entry-image.pokemon-rarity-legendary:after,
 .pokemon-entry-image.pokemon-rarity-mythical:before,
-.pokemon-entry-image.pokemon-rarity-mythical:after {
+.pokemon-entry-image.pokemon-rarity-mythical:after,
+.pokemon-entry-image.pokemon-rarity-ultra:before,
+.pokemon-entry-image.pokemon-rarity-ultra:after,
+.pokemon-card .pokemon-rarity-legendary:before,
+.pokemon-card .pokemon-rarity-legendary:after,
+.pokemon-card .pokemon-rarity-ultra:before,
+.pokemon-card .pokemon-rarity-ultra:after,
+.pokemon-card .pokemon-rarity-mythical:before,
+.pokemon-card .pokemon-rarity-mythical:after {
     content: '';
     position: absolute;
     left: 0;
@@ -874,7 +882,7 @@ body.sidebar-Bottom {
 }
 
 .pokemon-entry-image.pokemon-rarity-legendary:before,
-.pokemon-entry-image.pokemon-rarity-mythical:before {
+.pokemon-card .pokemon-rarity-legendary:before {
     --color1: rgb(0, 231, 255);
     --color2: rgb(255, 0, 231);
     background-position: 50% 50%;
@@ -888,13 +896,55 @@ body.sidebar-Bottom {
         var(--color2) 75%,
         transparent 100%
     );
-    opacity: 0.5;
-    filter: brightness(0.5) contrast(1);
+    opacity: 0.7;
+    filter: brightness(0.6) contrast(1);
+    z-index: 1;
+}
+.pokemon-entry-image.pokemon-rarity-mythical:before,
+.pokemon-card .pokemon-rarity-mythical:before {
+    --color1: rgb(255, 0, 231);
+    --color2: rgb(229, 254, 44);
+    background-position: 50% 50%;
+    background-size: 300% 300%;
+    background-image: linear-gradient(
+        115deg,
+        transparent 0%,
+        var(--color1) 25%,
+        transparent 47%,
+        transparent 53%,
+        var(--color2) 75%,
+        transparent 100%
+    );
+    opacity: 0.7;
+    filter: brightness(0.6) contrast(1);
+    z-index: 1;
+}
+.pokemon-entry-image.pokemon-rarity-ultra:before,
+.pokemon-card .pokemon-rarity-ultra:before {
+    --color1: rgb(229, 254, 44);
+    --color2: rgb(0, 231, 255);
+    background-position: 50% 50%;
+    background-size: 300% 300%;
+    background-image: linear-gradient(
+        115deg,
+        transparent 0%,
+        var(--color1) 25%,
+        transparent 47%,
+        transparent 53%,
+        var(--color2) 75%,
+        transparent 100%
+    );
+    opacity: 0.7;
+    filter: brightness(0.6) contrast(1);
     z-index: 1;
 }
 
 .pokemon-entry-image.pokemon-rarity-legendary:after,
-.pokemon-entry-image.pokemon-rarity-mythical:after {
+.pokemon-entry-image.pokemon-rarity-mythical:after,
+.pokemon-entry-image.pokemon-rarity-ultra:after,
+.pokemon-card .pokemon-rarity-legendary:after,
+.pokemon-card .pokemon-rarity-mythical:after,
+.pokemon-card .pokemon-rarity-ultra:after {
     opacity: 1;
     background-image: var(--extension-rarity-bg-image-sparkles),
         var(--extension-rarity-bg-image-sparkles),

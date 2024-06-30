@@ -132,14 +132,18 @@
             ${ pokemon.fusionId ? html`
                 <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
                 <span>Fused with : ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
+                <span> </span></br>
             `: ''}
             ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
-                <span>Starter: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>                
+                <span>Starter: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
+                <span> </span></br>
             `: ''}
             <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
             <span>Level: ${pokemon.level}</span></br>
-            <span>Is shiny: ${pokemon.shiny ? 'Yes' : 'No'}</span></br>
-            <span>Pokemon luck (shiny bonus): ${pokemon.luck + pokemon.fusionLuck}</span></br>
+            ${ pokemon.shiny ? html`
+                <span>Shiny: ${pokemon.shiny ? 'Yes' : 'No'}</span></br>
+                <span>Luck bonus: ${pokemon.luck + pokemon.fusionLuck}</span></br>
+            `: ''}
             <span>Friendship EXP: ${pokemon.friendship}</span>
         </div>
     `;

@@ -39,13 +39,16 @@
      */
     window.lit.createPokemonCardContent = (cardId, pokemon, opacitySliderTemplate, typeEffectivenessHTML, weather) => {
         const Stat = window.lit.getStatList();
+        const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
 
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
                     ${opacitySliderTemplate}
                     <div style="display: flex;">
-                        <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
+                        <div class="${rarityClass}" style="position: relative;">
+                            <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
+                        </div>
                         ${typeEffectivenessHTML}
                     </div>
                     <div class="text-base">
@@ -84,12 +87,14 @@
      * @function createPokemonCardContentMinified
      */
     window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather) => {
+        const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
                     <div class="text-base centered-flex">${pokemon.name}</div>
                     <div class="text-base centered-flex">
-                        <div class="image-overlay">
+                        <div class="image-overlay ${rarityClass}">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
                         </div>
                         <div class="tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">

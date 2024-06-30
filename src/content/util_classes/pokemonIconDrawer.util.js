@@ -307,7 +307,7 @@ class PokemonIconDrawer {
             try {
                 const [image1Response, image2Response] = await Promise.all([
                     fetchImageAndCache(`${pokemon.sprite}`, `${pokemon.name}-1`),
-                    fetchImageAndCache(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.fusionId}.png`, `${pokemon.name}-2`)
+                    fetchImageAndCache(`${pokemon.fusionPokemonSprite}`, `${pokemon.name}-2`)
                 ]);
 
                 if (!image1Response.success || !image2Response.success) {

@@ -1,3 +1,4 @@
+window.__pokemonSpriteBaseUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 window.__pokemonList = {
   "1": {
     "id": 1,
@@ -18,13 +19,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    "sprite": "1.png",
     "basePokemonId": 1,
     "basePokemonName": "bulbasaur",
     "defaultVarietyId": 1,
     "defaultVarietyName": "bulbasaur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "2": {
     "id": 2,
@@ -45,13 +45,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+    "sprite": "2.png",
     "basePokemonId": 1,
     "basePokemonName": "bulbasaur",
     "defaultVarietyId": 2,
     "defaultVarietyName": "ivysaur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "3": {
     "id": 3,
@@ -72,13 +71,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+    "sprite": "3.png",
     "basePokemonId": 1,
     "basePokemonName": "bulbasaur",
     "defaultVarietyId": 3,
     "defaultVarietyName": "venusaur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "4": {
     "id": 4,
@@ -98,13 +96,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+    "sprite": "4.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 4,
     "defaultVarietyName": "charmander",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "5": {
     "id": 5,
@@ -124,13 +121,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+    "sprite": "5.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 5,
     "defaultVarietyName": "charmeleon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "6": {
     "id": 6,
@@ -151,13 +147,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+    "sprite": "6.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 6,
     "defaultVarietyName": "charizard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "7": {
     "id": 7,
@@ -177,13 +172,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+    "sprite": "7.png",
     "basePokemonId": 7,
     "basePokemonName": "squirtle",
     "defaultVarietyId": 7,
     "defaultVarietyName": "squirtle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "8": {
     "id": 8,
@@ -203,13 +197,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
+    "sprite": "8.png",
     "basePokemonId": 7,
     "basePokemonName": "squirtle",
     "defaultVarietyId": 8,
     "defaultVarietyName": "wartortle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "9": {
     "id": 9,
@@ -229,13 +222,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+    "sprite": "9.png",
     "basePokemonId": 7,
     "basePokemonName": "squirtle",
     "defaultVarietyId": 9,
     "defaultVarietyName": "blastoise",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10": {
     "id": 10,
@@ -255,13 +247,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
+    "sprite": "10.png",
     "basePokemonId": 10,
     "basePokemonName": "caterpie",
     "defaultVarietyId": 10,
     "defaultVarietyName": "caterpie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "11": {
     "id": 11,
@@ -276,13 +267,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
+    "sprite": "11.png",
     "basePokemonId": 10,
     "basePokemonName": "caterpie",
     "defaultVarietyId": 11,
     "defaultVarietyName": "metapod",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "12": {
     "id": 12,
@@ -303,13 +293,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
+    "sprite": "12.png",
     "basePokemonId": 10,
     "basePokemonName": "caterpie",
     "defaultVarietyId": 12,
     "defaultVarietyName": "butterfree",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "13": {
     "id": 13,
@@ -330,13 +319,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png",
+    "sprite": "13.png",
     "basePokemonId": 13,
     "basePokemonName": "weedle",
     "defaultVarietyId": 13,
     "defaultVarietyName": "weedle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "14": {
     "id": 14,
@@ -352,13 +340,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png",
+    "sprite": "14.png",
     "basePokemonId": 13,
     "basePokemonName": "weedle",
     "defaultVarietyId": 14,
     "defaultVarietyName": "kakuna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "15": {
     "id": 15,
@@ -379,13 +366,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png",
+    "sprite": "15.png",
     "basePokemonId": 13,
     "basePokemonName": "weedle",
     "defaultVarietyId": 15,
     "defaultVarietyName": "beedrill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "16": {
     "id": 16,
@@ -411,13 +397,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
+    "sprite": "16.png",
     "basePokemonId": 16,
     "basePokemonName": "pidgey",
     "defaultVarietyId": 16,
     "defaultVarietyName": "pidgey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "17": {
     "id": 17,
@@ -443,13 +428,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png",
+    "sprite": "17.png",
     "basePokemonId": 16,
     "basePokemonName": "pidgey",
     "defaultVarietyId": 17,
     "defaultVarietyName": "pidgeotto",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "18": {
     "id": 18,
@@ -475,13 +459,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png",
+    "sprite": "18.png",
     "basePokemonId": 16,
     "basePokemonName": "pidgey",
     "defaultVarietyId": 18,
     "defaultVarietyName": "pidgeot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "19": {
     "id": 19,
@@ -506,13 +489,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png",
+    "sprite": "19.png",
     "basePokemonId": 19,
     "basePokemonName": "rattata",
     "defaultVarietyId": 19,
     "defaultVarietyName": "rattata",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "20": {
     "id": 20,
@@ -537,13 +519,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png",
+    "sprite": "20.png",
     "basePokemonId": 19,
     "basePokemonName": "rattata",
     "defaultVarietyId": 20,
     "defaultVarietyName": "raticate",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "21": {
     "id": 21,
@@ -564,13 +545,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png",
+    "sprite": "21.png",
     "basePokemonId": 21,
     "basePokemonName": "spearow",
     "defaultVarietyId": 21,
     "defaultVarietyName": "spearow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "22": {
     "id": 22,
@@ -591,13 +571,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png",
+    "sprite": "22.png",
     "basePokemonId": 21,
     "basePokemonName": "spearow",
     "defaultVarietyId": 22,
     "defaultVarietyName": "fearow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "23": {
     "id": 23,
@@ -622,13 +601,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png",
+    "sprite": "23.png",
     "basePokemonId": 23,
     "basePokemonName": "ekans",
     "defaultVarietyId": 23,
     "defaultVarietyName": "ekans",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "24": {
     "id": 24,
@@ -653,13 +631,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
+    "sprite": "24.png",
     "basePokemonId": 23,
     "basePokemonName": "ekans",
     "defaultVarietyId": 24,
     "defaultVarietyName": "arbok",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "25": {
     "id": 25,
@@ -679,13 +656,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    "sprite": "25.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "26": {
     "id": 26,
@@ -705,13 +681,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
+    "sprite": "26.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 26,
     "defaultVarietyName": "raichu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "27": {
     "id": 27,
@@ -731,13 +706,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png",
+    "sprite": "27.png",
     "basePokemonId": 27,
     "basePokemonName": "sandshrew",
     "defaultVarietyId": 27,
     "defaultVarietyName": "sandshrew",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "28": {
     "id": 28,
@@ -757,13 +731,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
+    "sprite": "28.png",
     "basePokemonId": 27,
     "basePokemonName": "sandshrew",
     "defaultVarietyId": 28,
     "defaultVarietyName": "sandslash",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "29": {
     "id": 29,
@@ -788,13 +761,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png",
+    "sprite": "29.png",
     "basePokemonId": 29,
     "basePokemonName": "nidoran-f",
     "defaultVarietyId": 29,
     "defaultVarietyName": "nidoran-f",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "30": {
     "id": 30,
@@ -819,13 +791,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png",
+    "sprite": "30.png",
     "basePokemonId": 29,
     "basePokemonName": "nidoran-f",
     "defaultVarietyId": 30,
     "defaultVarietyName": "nidorina",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "31": {
     "id": 31,
@@ -851,13 +822,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png",
+    "sprite": "31.png",
     "basePokemonId": 29,
     "basePokemonName": "nidoran-f",
     "defaultVarietyId": 31,
     "defaultVarietyName": "nidoqueen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "32": {
     "id": 32,
@@ -882,13 +852,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png",
+    "sprite": "32.png",
     "basePokemonId": 32,
     "basePokemonName": "nidoran-m",
     "defaultVarietyId": 32,
     "defaultVarietyName": "nidoran-m",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "33": {
     "id": 33,
@@ -913,13 +882,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png",
+    "sprite": "33.png",
     "basePokemonId": 32,
     "basePokemonName": "nidoran-m",
     "defaultVarietyId": 33,
     "defaultVarietyName": "nidorino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "34": {
     "id": 34,
@@ -945,13 +913,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png",
+    "sprite": "34.png",
     "basePokemonId": 32,
     "basePokemonName": "nidoran-m",
     "defaultVarietyId": 34,
     "defaultVarietyName": "nidoking",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "35": {
     "id": 35,
@@ -976,13 +943,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png",
+    "sprite": "35.png",
     "basePokemonId": 173,
     "basePokemonName": "cleffa",
     "defaultVarietyId": 35,
     "defaultVarietyName": "clefairy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "36": {
     "id": 36,
@@ -1007,13 +973,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png",
+    "sprite": "36.png",
     "basePokemonId": 173,
     "basePokemonName": "cleffa",
     "defaultVarietyId": 36,
     "defaultVarietyName": "clefable",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "37": {
     "id": 37,
@@ -1033,13 +998,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png",
+    "sprite": "37.png",
     "basePokemonId": 37,
     "basePokemonName": "vulpix",
     "defaultVarietyId": 37,
     "defaultVarietyName": "vulpix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "38": {
     "id": 38,
@@ -1059,13 +1023,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
+    "sprite": "38.png",
     "basePokemonId": 37,
     "basePokemonName": "vulpix",
     "defaultVarietyId": 38,
     "defaultVarietyName": "ninetales",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "39": {
     "id": 39,
@@ -1091,13 +1054,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
+    "sprite": "39.png",
     "basePokemonId": 174,
     "basePokemonName": "igglybuff",
     "defaultVarietyId": 39,
     "defaultVarietyName": "jigglypuff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "40": {
     "id": 40,
@@ -1123,13 +1085,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png",
+    "sprite": "40.png",
     "basePokemonId": 174,
     "basePokemonName": "igglybuff",
     "defaultVarietyId": 40,
     "defaultVarietyName": "wigglytuff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "41": {
     "id": 41,
@@ -1150,13 +1111,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png",
+    "sprite": "41.png",
     "basePokemonId": 41,
     "basePokemonName": "zubat",
     "defaultVarietyId": 41,
     "defaultVarietyName": "zubat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "42": {
     "id": 42,
@@ -1177,13 +1137,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
+    "sprite": "42.png",
     "basePokemonId": 41,
     "basePokemonName": "zubat",
     "defaultVarietyId": 42,
     "defaultVarietyName": "golbat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "43": {
     "id": 43,
@@ -1204,13 +1163,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png",
+    "sprite": "43.png",
     "basePokemonId": 43,
     "basePokemonName": "oddish",
     "defaultVarietyId": 43,
     "defaultVarietyName": "oddish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "44": {
     "id": 44,
@@ -1231,13 +1189,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png",
+    "sprite": "44.png",
     "basePokemonId": 43,
     "basePokemonName": "oddish",
     "defaultVarietyId": 44,
     "defaultVarietyName": "gloom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "45": {
     "id": 45,
@@ -1258,13 +1215,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png",
+    "sprite": "45.png",
     "basePokemonId": 43,
     "basePokemonName": "oddish",
     "defaultVarietyId": 45,
     "defaultVarietyName": "vileplume",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "46": {
     "id": 46,
@@ -1290,13 +1246,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png",
+    "sprite": "46.png",
     "basePokemonId": 46,
     "basePokemonName": "paras",
     "defaultVarietyId": 46,
     "defaultVarietyName": "paras",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "47": {
     "id": 47,
@@ -1322,13 +1277,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png",
+    "sprite": "47.png",
     "basePokemonId": 46,
     "basePokemonName": "paras",
     "defaultVarietyId": 47,
     "defaultVarietyName": "parasect",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "48": {
     "id": 48,
@@ -1354,13 +1308,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png",
+    "sprite": "48.png",
     "basePokemonId": 48,
     "basePokemonName": "venonat",
     "defaultVarietyId": 48,
     "defaultVarietyName": "venonat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "49": {
     "id": 49,
@@ -1386,13 +1339,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png",
+    "sprite": "49.png",
     "basePokemonId": 48,
     "basePokemonName": "venonat",
     "defaultVarietyId": 49,
     "defaultVarietyName": "venomoth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "50": {
     "id": 50,
@@ -1417,13 +1369,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png",
+    "sprite": "50.png",
     "basePokemonId": 50,
     "basePokemonName": "diglett",
     "defaultVarietyId": 50,
     "defaultVarietyName": "diglett",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "51": {
     "id": 51,
@@ -1448,13 +1399,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png",
+    "sprite": "51.png",
     "basePokemonId": 50,
     "basePokemonName": "diglett",
     "defaultVarietyId": 51,
     "defaultVarietyName": "dugtrio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "52": {
     "id": 52,
@@ -1479,13 +1429,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png",
+    "sprite": "52.png",
     "basePokemonId": 52,
     "basePokemonName": "meowth",
     "defaultVarietyId": 52,
     "defaultVarietyName": "meowth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "53": {
     "id": 53,
@@ -1510,13 +1459,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png",
+    "sprite": "53.png",
     "basePokemonId": 52,
     "basePokemonName": "meowth",
     "defaultVarietyId": 53,
     "defaultVarietyName": "persian",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "54": {
     "id": 54,
@@ -1541,13 +1489,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png",
+    "sprite": "54.png",
     "basePokemonId": 54,
     "basePokemonName": "psyduck",
     "defaultVarietyId": 54,
     "defaultVarietyName": "psyduck",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "55": {
     "id": 55,
@@ -1572,13 +1519,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png",
+    "sprite": "55.png",
     "basePokemonId": 54,
     "basePokemonName": "psyduck",
     "defaultVarietyId": 55,
     "defaultVarietyName": "golduck",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "56": {
     "id": 56,
@@ -1603,13 +1549,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png",
+    "sprite": "56.png",
     "basePokemonId": 56,
     "basePokemonName": "mankey",
     "defaultVarietyId": 56,
     "defaultVarietyName": "mankey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "57": {
     "id": 57,
@@ -1634,13 +1579,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png",
+    "sprite": "57.png",
     "basePokemonId": 56,
     "basePokemonName": "mankey",
     "defaultVarietyId": 57,
     "defaultVarietyName": "primeape",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "58": {
     "id": 58,
@@ -1665,13 +1609,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png",
+    "sprite": "58.png",
     "basePokemonId": 58,
     "basePokemonName": "growlithe",
     "defaultVarietyId": 58,
     "defaultVarietyName": "growlithe",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "59": {
     "id": 59,
@@ -1696,13 +1639,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
+    "sprite": "59.png",
     "basePokemonId": 58,
     "basePokemonName": "growlithe",
     "defaultVarietyId": 59,
     "defaultVarietyName": "arcanine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "60": {
     "id": 60,
@@ -1727,13 +1669,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png",
+    "sprite": "60.png",
     "basePokemonId": 60,
     "basePokemonName": "poliwag",
     "defaultVarietyId": 60,
     "defaultVarietyName": "poliwag",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "61": {
     "id": 61,
@@ -1758,13 +1699,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png",
+    "sprite": "61.png",
     "basePokemonId": 60,
     "basePokemonName": "poliwag",
     "defaultVarietyId": 61,
     "defaultVarietyName": "poliwhirl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "62": {
     "id": 62,
@@ -1790,13 +1730,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png",
+    "sprite": "62.png",
     "basePokemonId": 60,
     "basePokemonName": "poliwag",
     "defaultVarietyId": 62,
     "defaultVarietyName": "poliwrath",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "63": {
     "id": 63,
@@ -1821,13 +1760,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
+    "sprite": "63.png",
     "basePokemonId": 63,
     "basePokemonName": "abra",
     "defaultVarietyId": 63,
     "defaultVarietyName": "abra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "64": {
     "id": 64,
@@ -1852,13 +1790,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png",
+    "sprite": "64.png",
     "basePokemonId": 63,
     "basePokemonName": "abra",
     "defaultVarietyId": 64,
     "defaultVarietyName": "kadabra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "65": {
     "id": 65,
@@ -1883,13 +1820,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
+    "sprite": "65.png",
     "basePokemonId": 63,
     "basePokemonName": "abra",
     "defaultVarietyId": 65,
     "defaultVarietyName": "alakazam",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "66": {
     "id": 66,
@@ -1914,13 +1850,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png",
+    "sprite": "66.png",
     "basePokemonId": 66,
     "basePokemonName": "machop",
     "defaultVarietyId": 66,
     "defaultVarietyName": "machop",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "67": {
     "id": 67,
@@ -1945,13 +1880,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png",
+    "sprite": "67.png",
     "basePokemonId": 66,
     "basePokemonName": "machop",
     "defaultVarietyId": 67,
     "defaultVarietyName": "machoke",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "68": {
     "id": 68,
@@ -1976,13 +1910,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png",
+    "sprite": "68.png",
     "basePokemonId": 66,
     "basePokemonName": "machop",
     "defaultVarietyId": 68,
     "defaultVarietyName": "machamp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "69": {
     "id": 69,
@@ -2003,13 +1936,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png",
+    "sprite": "69.png",
     "basePokemonId": 69,
     "basePokemonName": "bellsprout",
     "defaultVarietyId": 69,
     "defaultVarietyName": "bellsprout",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "70": {
     "id": 70,
@@ -2030,13 +1962,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png",
+    "sprite": "70.png",
     "basePokemonId": 69,
     "basePokemonName": "bellsprout",
     "defaultVarietyId": 70,
     "defaultVarietyName": "weepinbell",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "71": {
     "id": 71,
@@ -2057,13 +1988,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png",
+    "sprite": "71.png",
     "basePokemonId": 69,
     "basePokemonName": "bellsprout",
     "defaultVarietyId": 71,
     "defaultVarietyName": "victreebel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "72": {
     "id": 72,
@@ -2089,13 +2019,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png",
+    "sprite": "72.png",
     "basePokemonId": 72,
     "basePokemonName": "tentacool",
     "defaultVarietyId": 72,
     "defaultVarietyName": "tentacool",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "73": {
     "id": 73,
@@ -2121,13 +2050,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png",
+    "sprite": "73.png",
     "basePokemonId": 72,
     "basePokemonName": "tentacool",
     "defaultVarietyId": 73,
     "defaultVarietyName": "tentacruel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "74": {
     "id": 74,
@@ -2153,13 +2081,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png",
+    "sprite": "74.png",
     "basePokemonId": 74,
     "basePokemonName": "geodude",
     "defaultVarietyId": 74,
     "defaultVarietyName": "geodude",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "75": {
     "id": 75,
@@ -2185,13 +2112,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png",
+    "sprite": "75.png",
     "basePokemonId": 74,
     "basePokemonName": "geodude",
     "defaultVarietyId": 75,
     "defaultVarietyName": "graveler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "76": {
     "id": 76,
@@ -2217,13 +2143,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png",
+    "sprite": "76.png",
     "basePokemonId": 74,
     "basePokemonName": "geodude",
     "defaultVarietyId": 76,
     "defaultVarietyName": "golem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "77": {
     "id": 77,
@@ -2248,13 +2173,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png",
+    "sprite": "77.png",
     "basePokemonId": 77,
     "basePokemonName": "ponyta",
     "defaultVarietyId": 77,
     "defaultVarietyName": "ponyta",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "78": {
     "id": 78,
@@ -2279,13 +2203,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png",
+    "sprite": "78.png",
     "basePokemonId": 77,
     "basePokemonName": "ponyta",
     "defaultVarietyId": 78,
     "defaultVarietyName": "rapidash",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "79": {
     "id": 79,
@@ -2311,13 +2234,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png",
+    "sprite": "79.png",
     "basePokemonId": 79,
     "basePokemonName": "slowpoke",
     "defaultVarietyId": 79,
     "defaultVarietyName": "slowpoke",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "80": {
     "id": 80,
@@ -2343,13 +2265,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png",
+    "sprite": "80.png",
     "basePokemonId": 79,
     "basePokemonName": "slowpoke",
     "defaultVarietyId": 80,
     "defaultVarietyName": "slowbro",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "81": {
     "id": 81,
@@ -2375,13 +2296,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png",
+    "sprite": "81.png",
     "basePokemonId": 81,
     "basePokemonName": "magnemite",
     "defaultVarietyId": 81,
     "defaultVarietyName": "magnemite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "82": {
     "id": 82,
@@ -2407,13 +2327,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png",
+    "sprite": "82.png",
     "basePokemonId": 81,
     "basePokemonName": "magnemite",
     "defaultVarietyId": 82,
     "defaultVarietyName": "magneton",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "83": {
     "id": 83,
@@ -2439,13 +2358,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png",
+    "sprite": "83.png",
     "basePokemonId": 83,
     "basePokemonName": "farfetchd",
     "defaultVarietyId": 83,
     "defaultVarietyName": "farfetchd",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "84": {
     "id": 84,
@@ -2471,13 +2389,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png",
+    "sprite": "84.png",
     "basePokemonId": 84,
     "basePokemonName": "doduo",
     "defaultVarietyId": 84,
     "defaultVarietyName": "doduo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "85": {
     "id": 85,
@@ -2503,13 +2420,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png",
+    "sprite": "85.png",
     "basePokemonId": 84,
     "basePokemonName": "doduo",
     "defaultVarietyId": 85,
     "defaultVarietyName": "dodrio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "86": {
     "id": 86,
@@ -2534,13 +2450,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png",
+    "sprite": "86.png",
     "basePokemonId": 86,
     "basePokemonName": "seel",
     "defaultVarietyId": 86,
     "defaultVarietyName": "seel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "87": {
     "id": 87,
@@ -2566,13 +2481,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png",
+    "sprite": "87.png",
     "basePokemonId": 86,
     "basePokemonName": "seel",
     "defaultVarietyId": 87,
     "defaultVarietyName": "dewgong",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "88": {
     "id": 88,
@@ -2597,13 +2511,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png",
+    "sprite": "88.png",
     "basePokemonId": 88,
     "basePokemonName": "grimer",
     "defaultVarietyId": 88,
     "defaultVarietyName": "grimer",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "89": {
     "id": 89,
@@ -2628,13 +2541,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png",
+    "sprite": "89.png",
     "basePokemonId": 88,
     "basePokemonName": "grimer",
     "defaultVarietyId": 89,
     "defaultVarietyName": "muk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "90": {
     "id": 90,
@@ -2659,13 +2571,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png",
+    "sprite": "90.png",
     "basePokemonId": 90,
     "basePokemonName": "shellder",
     "defaultVarietyId": 90,
     "defaultVarietyName": "shellder",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "91": {
     "id": 91,
@@ -2691,13 +2602,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png",
+    "sprite": "91.png",
     "basePokemonId": 90,
     "basePokemonName": "shellder",
     "defaultVarietyId": 91,
     "defaultVarietyName": "cloyster",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "92": {
     "id": 92,
@@ -2713,13 +2623,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png",
+    "sprite": "92.png",
     "basePokemonId": 92,
     "basePokemonName": "gastly",
     "defaultVarietyId": 92,
     "defaultVarietyName": "gastly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "93": {
     "id": 93,
@@ -2735,13 +2644,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png",
+    "sprite": "93.png",
     "basePokemonId": 92,
     "basePokemonName": "gastly",
     "defaultVarietyId": 93,
     "defaultVarietyName": "haunter",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "94": {
     "id": 94,
@@ -2757,13 +2665,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
+    "sprite": "94.png",
     "basePokemonId": 92,
     "basePokemonName": "gastly",
     "defaultVarietyId": 94,
     "defaultVarietyName": "gengar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "95": {
     "id": 95,
@@ -2789,13 +2696,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png",
+    "sprite": "95.png",
     "basePokemonId": 95,
     "basePokemonName": "onix",
     "defaultVarietyId": 95,
     "defaultVarietyName": "onix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "96": {
     "id": 96,
@@ -2820,13 +2726,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png",
+    "sprite": "96.png",
     "basePokemonId": 96,
     "basePokemonName": "drowzee",
     "defaultVarietyId": 96,
     "defaultVarietyName": "drowzee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "97": {
     "id": 97,
@@ -2851,13 +2756,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png",
+    "sprite": "97.png",
     "basePokemonId": 96,
     "basePokemonName": "drowzee",
     "defaultVarietyId": 97,
     "defaultVarietyName": "hypno",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "98": {
     "id": 98,
@@ -2882,13 +2786,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png",
+    "sprite": "98.png",
     "basePokemonId": 98,
     "basePokemonName": "krabby",
     "defaultVarietyId": 98,
     "defaultVarietyName": "krabby",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "99": {
     "id": 99,
@@ -2913,13 +2816,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png",
+    "sprite": "99.png",
     "basePokemonId": 98,
     "basePokemonName": "krabby",
     "defaultVarietyId": 99,
     "defaultVarietyName": "kingler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "100": {
     "id": 100,
@@ -2944,13 +2846,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png",
+    "sprite": "100.png",
     "basePokemonId": 100,
     "basePokemonName": "voltorb",
     "defaultVarietyId": 100,
     "defaultVarietyName": "voltorb",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "101": {
     "id": 101,
@@ -2975,13 +2876,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png",
+    "sprite": "101.png",
     "basePokemonId": 100,
     "basePokemonName": "voltorb",
     "defaultVarietyId": 101,
     "defaultVarietyName": "electrode",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "102": {
     "id": 102,
@@ -3002,13 +2902,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png",
+    "sprite": "102.png",
     "basePokemonId": 102,
     "basePokemonName": "exeggcute",
     "defaultVarietyId": 102,
     "defaultVarietyName": "exeggcute",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "103": {
     "id": 103,
@@ -3029,13 +2928,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png",
+    "sprite": "103.png",
     "basePokemonId": 102,
     "basePokemonName": "exeggcute",
     "defaultVarietyId": 103,
     "defaultVarietyName": "exeggutor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "104": {
     "id": 104,
@@ -3060,13 +2958,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png",
+    "sprite": "104.png",
     "basePokemonId": 104,
     "basePokemonName": "cubone",
     "defaultVarietyId": 104,
     "defaultVarietyName": "cubone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "105": {
     "id": 105,
@@ -3091,13 +2988,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png",
+    "sprite": "105.png",
     "basePokemonId": 104,
     "basePokemonName": "cubone",
     "defaultVarietyId": 105,
     "defaultVarietyName": "marowak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "106": {
     "id": 106,
@@ -3122,13 +3018,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png",
+    "sprite": "106.png",
     "basePokemonId": 236,
     "basePokemonName": "tyrogue",
     "defaultVarietyId": 106,
     "defaultVarietyName": "hitmonlee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "107": {
     "id": 107,
@@ -3153,13 +3048,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png",
+    "sprite": "107.png",
     "basePokemonId": 236,
     "basePokemonName": "tyrogue",
     "defaultVarietyId": 107,
     "defaultVarietyName": "hitmonchan",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "108": {
     "id": 108,
@@ -3184,13 +3078,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png",
+    "sprite": "108.png",
     "basePokemonId": 108,
     "basePokemonName": "lickitung",
     "defaultVarietyId": 108,
     "defaultVarietyName": "lickitung",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "109": {
     "id": 109,
@@ -3215,13 +3108,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png",
+    "sprite": "109.png",
     "basePokemonId": 109,
     "basePokemonName": "koffing",
     "defaultVarietyId": 109,
     "defaultVarietyName": "koffing",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "110": {
     "id": 110,
@@ -3246,13 +3138,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png",
+    "sprite": "110.png",
     "basePokemonId": 109,
     "basePokemonName": "koffing",
     "defaultVarietyId": 110,
     "defaultVarietyName": "weezing",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "111": {
     "id": 111,
@@ -3278,13 +3169,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png",
+    "sprite": "111.png",
     "basePokemonId": 111,
     "basePokemonName": "rhyhorn",
     "defaultVarietyId": 111,
     "defaultVarietyName": "rhyhorn",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "112": {
     "id": 112,
@@ -3310,13 +3200,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
+    "sprite": "112.png",
     "basePokemonId": 111,
     "basePokemonName": "rhyhorn",
     "defaultVarietyId": 112,
     "defaultVarietyName": "rhydon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "113": {
     "id": 113,
@@ -3341,13 +3230,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png",
+    "sprite": "113.png",
     "basePokemonId": 440,
     "basePokemonName": "happiny",
     "defaultVarietyId": 113,
     "defaultVarietyName": "chansey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "114": {
     "id": 114,
@@ -3372,13 +3260,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png",
+    "sprite": "114.png",
     "basePokemonId": 114,
     "basePokemonName": "tangela",
     "defaultVarietyId": 114,
     "defaultVarietyName": "tangela",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "115": {
     "id": 115,
@@ -3403,13 +3290,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png",
+    "sprite": "115.png",
     "basePokemonId": 115,
     "basePokemonName": "kangaskhan",
     "defaultVarietyId": 115,
     "defaultVarietyName": "kangaskhan",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "116": {
     "id": 116,
@@ -3434,13 +3320,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png",
+    "sprite": "116.png",
     "basePokemonId": 116,
     "basePokemonName": "horsea",
     "defaultVarietyId": 116,
     "defaultVarietyName": "horsea",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "117": {
     "id": 117,
@@ -3465,13 +3350,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png",
+    "sprite": "117.png",
     "basePokemonId": 116,
     "basePokemonName": "horsea",
     "defaultVarietyId": 117,
     "defaultVarietyName": "seadra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "118": {
     "id": 118,
@@ -3496,13 +3380,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
+    "sprite": "118.png",
     "basePokemonId": 118,
     "basePokemonName": "goldeen",
     "defaultVarietyId": 118,
     "defaultVarietyName": "goldeen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "119": {
     "id": 119,
@@ -3527,13 +3410,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png",
+    "sprite": "119.png",
     "basePokemonId": 118,
     "basePokemonName": "goldeen",
     "defaultVarietyId": 119,
     "defaultVarietyName": "seaking",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "120": {
     "id": 120,
@@ -3558,13 +3440,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png",
+    "sprite": "120.png",
     "basePokemonId": 120,
     "basePokemonName": "staryu",
     "defaultVarietyId": 120,
     "defaultVarietyName": "staryu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "121": {
     "id": 121,
@@ -3590,13 +3471,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png",
+    "sprite": "121.png",
     "basePokemonId": 120,
     "basePokemonName": "staryu",
     "defaultVarietyId": 121,
     "defaultVarietyName": "starmie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "122": {
     "id": 122,
@@ -3622,13 +3502,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png",
+    "sprite": "122.png",
     "basePokemonId": 439,
     "basePokemonName": "mime-jr",
     "defaultVarietyId": 122,
     "defaultVarietyName": "mr-mime",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "123": {
     "id": 123,
@@ -3654,13 +3533,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png",
+    "sprite": "123.png",
     "basePokemonId": 123,
     "basePokemonName": "scyther",
     "defaultVarietyId": 123,
     "defaultVarietyName": "scyther",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "124": {
     "id": 124,
@@ -3686,13 +3564,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png",
+    "sprite": "124.png",
     "basePokemonId": 238,
     "basePokemonName": "smoochum",
     "defaultVarietyId": 124,
     "defaultVarietyName": "jynx",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "125": {
     "id": 125,
@@ -3712,13 +3589,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png",
+    "sprite": "125.png",
     "basePokemonId": 239,
     "basePokemonName": "elekid",
     "defaultVarietyId": 125,
     "defaultVarietyName": "electabuzz",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "126": {
     "id": 126,
@@ -3738,13 +3614,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png",
+    "sprite": "126.png",
     "basePokemonId": 240,
     "basePokemonName": "magby",
     "defaultVarietyId": 126,
     "defaultVarietyName": "magmar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "127": {
     "id": 127,
@@ -3769,13 +3644,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png",
+    "sprite": "127.png",
     "basePokemonId": 127,
     "basePokemonName": "pinsir",
     "defaultVarietyId": 127,
     "defaultVarietyName": "pinsir",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "128": {
     "id": 128,
@@ -3800,13 +3674,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png",
+    "sprite": "128.png",
     "basePokemonId": 128,
     "basePokemonName": "tauros",
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "129": {
     "id": 129,
@@ -3826,13 +3699,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png",
+    "sprite": "129.png",
     "basePokemonId": 129,
     "basePokemonName": "magikarp",
     "defaultVarietyId": 129,
     "defaultVarietyName": "magikarp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "130": {
     "id": 130,
@@ -3853,13 +3725,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
+    "sprite": "130.png",
     "basePokemonId": 129,
     "basePokemonName": "magikarp",
     "defaultVarietyId": 130,
     "defaultVarietyName": "gyarados",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "131": {
     "id": 131,
@@ -3885,13 +3756,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
+    "sprite": "131.png",
     "basePokemonId": 131,
     "basePokemonName": "lapras",
     "defaultVarietyId": 131,
     "defaultVarietyName": "lapras",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "132": {
     "id": 132,
@@ -3911,13 +3781,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+    "sprite": "132.png",
     "basePokemonId": 132,
     "basePokemonName": "ditto",
     "defaultVarietyId": 132,
     "defaultVarietyName": "ditto",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "133": {
     "id": 133,
@@ -3942,13 +3811,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+    "sprite": "133.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 133,
     "defaultVarietyName": "eevee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "134": {
     "id": 134,
@@ -3968,13 +3836,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png",
+    "sprite": "134.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 134,
     "defaultVarietyName": "vaporeon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "135": {
     "id": 135,
@@ -3994,13 +3861,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png",
+    "sprite": "135.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 135,
     "defaultVarietyName": "jolteon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "136": {
     "id": 136,
@@ -4020,13 +3886,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png",
+    "sprite": "136.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 136,
     "defaultVarietyName": "flareon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "137": {
     "id": 137,
@@ -4051,13 +3916,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png",
+    "sprite": "137.png",
     "basePokemonId": 137,
     "basePokemonName": "porygon",
     "defaultVarietyId": 137,
     "defaultVarietyName": "porygon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "138": {
     "id": 138,
@@ -4083,13 +3947,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png",
+    "sprite": "138.png",
     "basePokemonId": 138,
     "basePokemonName": "omanyte",
     "defaultVarietyId": 138,
     "defaultVarietyName": "omanyte",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "139": {
     "id": 139,
@@ -4115,13 +3978,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png",
+    "sprite": "139.png",
     "basePokemonId": 138,
     "basePokemonName": "omanyte",
     "defaultVarietyId": 139,
     "defaultVarietyName": "omastar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "140": {
     "id": 140,
@@ -4147,13 +4009,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png",
+    "sprite": "140.png",
     "basePokemonId": 140,
     "basePokemonName": "kabuto",
     "defaultVarietyId": 140,
     "defaultVarietyName": "kabuto",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "141": {
     "id": 141,
@@ -4179,13 +4040,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png",
+    "sprite": "141.png",
     "basePokemonId": 140,
     "basePokemonName": "kabuto",
     "defaultVarietyId": 141,
     "defaultVarietyName": "kabutops",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "142": {
     "id": 142,
@@ -4211,13 +4071,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png",
+    "sprite": "142.png",
     "basePokemonId": 142,
     "basePokemonName": "aerodactyl",
     "defaultVarietyId": 142,
     "defaultVarietyName": "aerodactyl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "143": {
     "id": 143,
@@ -4242,13 +4101,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
+    "sprite": "143.png",
     "basePokemonId": 446,
     "basePokemonName": "munchlax",
     "defaultVarietyId": 143,
     "defaultVarietyName": "snorlax",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "144": {
     "id": 144,
@@ -4269,13 +4127,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
+    "sprite": "144.png",
     "basePokemonId": 144,
     "basePokemonName": "articuno",
     "defaultVarietyId": 144,
     "defaultVarietyName": "articuno",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "145": {
     "id": 145,
@@ -4296,13 +4153,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
+    "sprite": "145.png",
     "basePokemonId": 145,
     "basePokemonName": "zapdos",
     "defaultVarietyId": 145,
     "defaultVarietyName": "zapdos",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "146": {
     "id": 146,
@@ -4323,13 +4179,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+    "sprite": "146.png",
     "basePokemonId": 146,
     "basePokemonName": "moltres",
     "defaultVarietyId": 146,
     "defaultVarietyName": "moltres",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "147": {
     "id": 147,
@@ -4349,13 +4204,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png",
+    "sprite": "147.png",
     "basePokemonId": 147,
     "basePokemonName": "dratini",
     "defaultVarietyId": 147,
     "defaultVarietyName": "dratini",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "148": {
     "id": 148,
@@ -4375,13 +4229,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png",
+    "sprite": "148.png",
     "basePokemonId": 147,
     "basePokemonName": "dratini",
     "defaultVarietyId": 148,
     "defaultVarietyName": "dragonair",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "149": {
     "id": 149,
@@ -4402,13 +4255,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
+    "sprite": "149.png",
     "basePokemonId": 147,
     "basePokemonName": "dratini",
     "defaultVarietyId": 149,
     "defaultVarietyName": "dragonite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "150": {
     "id": 150,
@@ -4428,13 +4280,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+    "sprite": "150.png",
     "basePokemonId": 150,
     "basePokemonName": "mewtwo",
     "defaultVarietyId": 150,
     "defaultVarietyName": "mewtwo",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "151": {
     "id": 151,
@@ -4449,13 +4300,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+    "sprite": "151.png",
     "basePokemonId": 151,
     "basePokemonName": "mew",
     "defaultVarietyId": 151,
     "defaultVarietyName": "mew",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "152": {
     "id": 152,
@@ -4475,13 +4325,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png",
+    "sprite": "152.png",
     "basePokemonId": 152,
     "basePokemonName": "chikorita",
     "defaultVarietyId": 152,
     "defaultVarietyName": "chikorita",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "153": {
     "id": 153,
@@ -4501,13 +4350,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/153.png",
+    "sprite": "153.png",
     "basePokemonId": 152,
     "basePokemonName": "chikorita",
     "defaultVarietyId": 153,
     "defaultVarietyName": "bayleef",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "154": {
     "id": 154,
@@ -4527,13 +4375,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/154.png",
+    "sprite": "154.png",
     "basePokemonId": 152,
     "basePokemonName": "chikorita",
     "defaultVarietyId": 154,
     "defaultVarietyName": "meganium",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "155": {
     "id": 155,
@@ -4553,13 +4400,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png",
+    "sprite": "155.png",
     "basePokemonId": 155,
     "basePokemonName": "cyndaquil",
     "defaultVarietyId": 155,
     "defaultVarietyName": "cyndaquil",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "156": {
     "id": 156,
@@ -4579,13 +4425,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/156.png",
+    "sprite": "156.png",
     "basePokemonId": 155,
     "basePokemonName": "cyndaquil",
     "defaultVarietyId": 156,
     "defaultVarietyName": "quilava",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "157": {
     "id": 157,
@@ -4605,13 +4450,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/157.png",
+    "sprite": "157.png",
     "basePokemonId": 155,
     "basePokemonName": "cyndaquil",
     "defaultVarietyId": 157,
     "defaultVarietyName": "typhlosion",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "158": {
     "id": 158,
@@ -4631,13 +4475,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png",
+    "sprite": "158.png",
     "basePokemonId": 158,
     "basePokemonName": "totodile",
     "defaultVarietyId": 158,
     "defaultVarietyName": "totodile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "159": {
     "id": 159,
@@ -4657,13 +4500,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/159.png",
+    "sprite": "159.png",
     "basePokemonId": 158,
     "basePokemonName": "totodile",
     "defaultVarietyId": 159,
     "defaultVarietyName": "croconaw",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "160": {
     "id": 160,
@@ -4683,13 +4525,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/160.png",
+    "sprite": "160.png",
     "basePokemonId": 158,
     "basePokemonName": "totodile",
     "defaultVarietyId": 160,
     "defaultVarietyName": "feraligatr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "161": {
     "id": 161,
@@ -4714,13 +4555,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/161.png",
+    "sprite": "161.png",
     "basePokemonId": 161,
     "basePokemonName": "sentret",
     "defaultVarietyId": 161,
     "defaultVarietyName": "sentret",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "162": {
     "id": 162,
@@ -4745,13 +4585,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/162.png",
+    "sprite": "162.png",
     "basePokemonId": 161,
     "basePokemonName": "sentret",
     "defaultVarietyId": 162,
     "defaultVarietyName": "furret",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "163": {
     "id": 163,
@@ -4777,13 +4616,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/163.png",
+    "sprite": "163.png",
     "basePokemonId": 163,
     "basePokemonName": "hoothoot",
     "defaultVarietyId": 163,
     "defaultVarietyName": "hoothoot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "164": {
     "id": 164,
@@ -4809,13 +4647,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/164.png",
+    "sprite": "164.png",
     "basePokemonId": 163,
     "basePokemonName": "hoothoot",
     "defaultVarietyId": 164,
     "defaultVarietyName": "noctowl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "165": {
     "id": 165,
@@ -4841,13 +4678,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/165.png",
+    "sprite": "165.png",
     "basePokemonId": 165,
     "basePokemonName": "ledyba",
     "defaultVarietyId": 165,
     "defaultVarietyName": "ledyba",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "166": {
     "id": 166,
@@ -4873,13 +4709,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/166.png",
+    "sprite": "166.png",
     "basePokemonId": 165,
     "basePokemonName": "ledyba",
     "defaultVarietyId": 166,
     "defaultVarietyName": "ledian",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "167": {
     "id": 167,
@@ -4905,13 +4740,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/167.png",
+    "sprite": "167.png",
     "basePokemonId": 167,
     "basePokemonName": "spinarak",
     "defaultVarietyId": 167,
     "defaultVarietyName": "spinarak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "168": {
     "id": 168,
@@ -4937,13 +4771,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/168.png",
+    "sprite": "168.png",
     "basePokemonId": 167,
     "basePokemonName": "spinarak",
     "defaultVarietyId": 168,
     "defaultVarietyName": "ariados",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "169": {
     "id": 169,
@@ -4964,13 +4797,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/169.png",
+    "sprite": "169.png",
     "basePokemonId": 41,
     "basePokemonName": "zubat",
     "defaultVarietyId": 169,
     "defaultVarietyName": "crobat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "170": {
     "id": 170,
@@ -4996,13 +4828,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/170.png",
+    "sprite": "170.png",
     "basePokemonId": 170,
     "basePokemonName": "chinchou",
     "defaultVarietyId": 170,
     "defaultVarietyName": "chinchou",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "171": {
     "id": 171,
@@ -5028,13 +4859,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/171.png",
+    "sprite": "171.png",
     "basePokemonId": 170,
     "basePokemonName": "chinchou",
     "defaultVarietyId": 171,
     "defaultVarietyName": "lanturn",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "172": {
     "id": 172,
@@ -5054,13 +4884,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/172.png",
+    "sprite": "172.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 172,
     "defaultVarietyName": "pichu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "173": {
     "id": 173,
@@ -5085,13 +4914,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/173.png",
+    "sprite": "173.png",
     "basePokemonId": 173,
     "basePokemonName": "cleffa",
     "defaultVarietyId": 173,
     "defaultVarietyName": "cleffa",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "174": {
     "id": 174,
@@ -5117,13 +4945,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/174.png",
+    "sprite": "174.png",
     "basePokemonId": 174,
     "basePokemonName": "igglybuff",
     "defaultVarietyId": 174,
     "defaultVarietyName": "igglybuff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "175": {
     "id": 175,
@@ -5148,13 +4975,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/175.png",
+    "sprite": "175.png",
     "basePokemonId": 175,
     "basePokemonName": "togepi",
     "defaultVarietyId": 175,
     "defaultVarietyName": "togepi",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "176": {
     "id": 176,
@@ -5180,13 +5006,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/176.png",
+    "sprite": "176.png",
     "basePokemonId": 175,
     "basePokemonName": "togepi",
     "defaultVarietyId": 176,
     "defaultVarietyName": "togetic",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "177": {
     "id": 177,
@@ -5212,13 +5037,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/177.png",
+    "sprite": "177.png",
     "basePokemonId": 177,
     "basePokemonName": "natu",
     "defaultVarietyId": 177,
     "defaultVarietyName": "natu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "178": {
     "id": 178,
@@ -5244,13 +5068,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/178.png",
+    "sprite": "178.png",
     "basePokemonId": 177,
     "basePokemonName": "natu",
     "defaultVarietyId": 178,
     "defaultVarietyName": "xatu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "179": {
     "id": 179,
@@ -5270,13 +5093,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/179.png",
+    "sprite": "179.png",
     "basePokemonId": 179,
     "basePokemonName": "mareep",
     "defaultVarietyId": 179,
     "defaultVarietyName": "mareep",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "180": {
     "id": 180,
@@ -5296,13 +5118,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/180.png",
+    "sprite": "180.png",
     "basePokemonId": 179,
     "basePokemonName": "mareep",
     "defaultVarietyId": 180,
     "defaultVarietyName": "flaaffy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "181": {
     "id": 181,
@@ -5322,13 +5143,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png",
+    "sprite": "181.png",
     "basePokemonId": 179,
     "basePokemonName": "mareep",
     "defaultVarietyId": 181,
     "defaultVarietyName": "ampharos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "182": {
     "id": 182,
@@ -5348,13 +5168,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/182.png",
+    "sprite": "182.png",
     "basePokemonId": 43,
     "basePokemonName": "oddish",
     "defaultVarietyId": 182,
     "defaultVarietyName": "bellossom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "183": {
     "id": 183,
@@ -5380,13 +5199,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/183.png",
+    "sprite": "183.png",
     "basePokemonId": 298,
     "basePokemonName": "azurill",
     "defaultVarietyId": 183,
     "defaultVarietyName": "marill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "184": {
     "id": 184,
@@ -5412,13 +5230,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/184.png",
+    "sprite": "184.png",
     "basePokemonId": 298,
     "basePokemonName": "azurill",
     "defaultVarietyId": 184,
     "defaultVarietyName": "azumarill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "185": {
     "id": 185,
@@ -5443,13 +5260,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/185.png",
+    "sprite": "185.png",
     "basePokemonId": 438,
     "basePokemonName": "bonsly",
     "defaultVarietyId": 185,
     "defaultVarietyName": "sudowoodo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "186": {
     "id": 186,
@@ -5474,13 +5290,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/186.png",
+    "sprite": "186.png",
     "basePokemonId": 60,
     "basePokemonName": "poliwag",
     "defaultVarietyId": 186,
     "defaultVarietyName": "politoed",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "187": {
     "id": 187,
@@ -5506,13 +5321,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/187.png",
+    "sprite": "187.png",
     "basePokemonId": 187,
     "basePokemonName": "hoppip",
     "defaultVarietyId": 187,
     "defaultVarietyName": "hoppip",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "188": {
     "id": 188,
@@ -5538,13 +5352,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/188.png",
+    "sprite": "188.png",
     "basePokemonId": 187,
     "basePokemonName": "hoppip",
     "defaultVarietyId": 188,
     "defaultVarietyName": "skiploom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "189": {
     "id": 189,
@@ -5570,13 +5383,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/189.png",
+    "sprite": "189.png",
     "basePokemonId": 187,
     "basePokemonName": "hoppip",
     "defaultVarietyId": 189,
     "defaultVarietyName": "jumpluff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "190": {
     "id": 190,
@@ -5601,13 +5413,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/190.png",
+    "sprite": "190.png",
     "basePokemonId": 190,
     "basePokemonName": "aipom",
     "defaultVarietyId": 190,
     "defaultVarietyName": "aipom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "191": {
     "id": 191,
@@ -5632,13 +5443,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/191.png",
+    "sprite": "191.png",
     "basePokemonId": 191,
     "basePokemonName": "sunkern",
     "defaultVarietyId": 191,
     "defaultVarietyName": "sunkern",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "192": {
     "id": 192,
@@ -5663,13 +5473,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/192.png",
+    "sprite": "192.png",
     "basePokemonId": 191,
     "basePokemonName": "sunkern",
     "defaultVarietyId": 192,
     "defaultVarietyName": "sunflora",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "193": {
     "id": 193,
@@ -5695,13 +5504,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/193.png",
+    "sprite": "193.png",
     "basePokemonId": 193,
     "basePokemonName": "yanma",
     "defaultVarietyId": 193,
     "defaultVarietyName": "yanma",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "194": {
     "id": 194,
@@ -5727,13 +5535,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/194.png",
+    "sprite": "194.png",
     "basePokemonId": 194,
     "basePokemonName": "wooper",
     "defaultVarietyId": 194,
     "defaultVarietyName": "wooper",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "195": {
     "id": 195,
@@ -5759,13 +5566,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/195.png",
+    "sprite": "195.png",
     "basePokemonId": 194,
     "basePokemonName": "wooper",
     "defaultVarietyId": 195,
     "defaultVarietyName": "quagsire",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "196": {
     "id": 196,
@@ -5785,13 +5591,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png",
+    "sprite": "196.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 196,
     "defaultVarietyName": "espeon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "197": {
     "id": 197,
@@ -5811,13 +5616,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png",
+    "sprite": "197.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 197,
     "defaultVarietyName": "umbreon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "198": {
     "id": 198,
@@ -5843,13 +5647,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/198.png",
+    "sprite": "198.png",
     "basePokemonId": 198,
     "basePokemonName": "murkrow",
     "defaultVarietyId": 198,
     "defaultVarietyName": "murkrow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "199": {
     "id": 199,
@@ -5875,13 +5678,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/199.png",
+    "sprite": "199.png",
     "basePokemonId": 79,
     "basePokemonName": "slowpoke",
     "defaultVarietyId": 199,
     "defaultVarietyName": "slowking",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "200": {
     "id": 200,
@@ -5896,13 +5698,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/200.png",
+    "sprite": "200.png",
     "basePokemonId": 200,
     "basePokemonName": "misdreavus",
     "defaultVarietyId": 200,
     "defaultVarietyName": "misdreavus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "201": {
     "id": 201,
@@ -5917,13 +5718,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/201.png",
+    "sprite": "201.png",
     "basePokemonId": 201,
     "basePokemonName": "unown",
     "defaultVarietyId": 201,
     "defaultVarietyName": "unown",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "202": {
     "id": 202,
@@ -5943,13 +5743,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/202.png",
+    "sprite": "202.png",
     "basePokemonId": 360,
     "basePokemonName": "wynaut",
     "defaultVarietyId": 202,
     "defaultVarietyName": "wobbuffet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "203": {
     "id": 203,
@@ -5975,13 +5774,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/203.png",
+    "sprite": "203.png",
     "basePokemonId": 203,
     "basePokemonName": "girafarig",
     "defaultVarietyId": 203,
     "defaultVarietyName": "girafarig",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "204": {
     "id": 204,
@@ -6001,13 +5799,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/204.png",
+    "sprite": "204.png",
     "basePokemonId": 204,
     "basePokemonName": "pineco",
     "defaultVarietyId": 204,
     "defaultVarietyName": "pineco",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "205": {
     "id": 205,
@@ -6028,13 +5825,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/205.png",
+    "sprite": "205.png",
     "basePokemonId": 204,
     "basePokemonName": "pineco",
     "defaultVarietyId": 205,
     "defaultVarietyName": "forretress",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "206": {
     "id": 206,
@@ -6059,13 +5855,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/206.png",
+    "sprite": "206.png",
     "basePokemonId": 206,
     "basePokemonName": "dunsparce",
     "defaultVarietyId": 206,
     "defaultVarietyName": "dunsparce",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "207": {
     "id": 207,
@@ -6091,13 +5886,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/207.png",
+    "sprite": "207.png",
     "basePokemonId": 207,
     "basePokemonName": "gligar",
     "defaultVarietyId": 207,
     "defaultVarietyName": "gligar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "208": {
     "id": 208,
@@ -6123,13 +5917,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/208.png",
+    "sprite": "208.png",
     "basePokemonId": 95,
     "basePokemonName": "onix",
     "defaultVarietyId": 208,
     "defaultVarietyName": "steelix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "209": {
     "id": 209,
@@ -6154,13 +5947,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/209.png",
+    "sprite": "209.png",
     "basePokemonId": 209,
     "basePokemonName": "snubbull",
     "defaultVarietyId": 209,
     "defaultVarietyName": "snubbull",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "210": {
     "id": 210,
@@ -6185,13 +5977,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/210.png",
+    "sprite": "210.png",
     "basePokemonId": 209,
     "basePokemonName": "snubbull",
     "defaultVarietyId": 210,
     "defaultVarietyName": "granbull",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "211": {
     "id": 211,
@@ -6217,13 +6008,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/211.png",
+    "sprite": "211.png",
     "basePokemonId": 211,
     "basePokemonName": "qwilfish",
     "defaultVarietyId": 211,
     "defaultVarietyName": "qwilfish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "212": {
     "id": 212,
@@ -6249,13 +6039,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png",
+    "sprite": "212.png",
     "basePokemonId": 123,
     "basePokemonName": "scyther",
     "defaultVarietyId": 212,
     "defaultVarietyName": "scizor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "213": {
     "id": 213,
@@ -6281,13 +6070,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/213.png",
+    "sprite": "213.png",
     "basePokemonId": 213,
     "basePokemonName": "shuckle",
     "defaultVarietyId": 213,
     "defaultVarietyName": "shuckle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "214": {
     "id": 214,
@@ -6313,13 +6101,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/214.png",
+    "sprite": "214.png",
     "basePokemonId": 214,
     "basePokemonName": "heracross",
     "defaultVarietyId": 214,
     "defaultVarietyName": "heracross",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "215": {
     "id": 215,
@@ -6345,13 +6132,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png",
+    "sprite": "215.png",
     "basePokemonId": 215,
     "basePokemonName": "sneasel",
     "defaultVarietyId": 215,
     "defaultVarietyName": "sneasel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "216": {
     "id": 216,
@@ -6376,13 +6162,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/216.png",
+    "sprite": "216.png",
     "basePokemonId": 216,
     "basePokemonName": "teddiursa",
     "defaultVarietyId": 216,
     "defaultVarietyName": "teddiursa",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "217": {
     "id": 217,
@@ -6407,13 +6192,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/217.png",
+    "sprite": "217.png",
     "basePokemonId": 216,
     "basePokemonName": "teddiursa",
     "defaultVarietyId": 217,
     "defaultVarietyName": "ursaring",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "218": {
     "id": 218,
@@ -6438,13 +6222,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/218.png",
+    "sprite": "218.png",
     "basePokemonId": 218,
     "basePokemonName": "slugma",
     "defaultVarietyId": 218,
     "defaultVarietyName": "slugma",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "219": {
     "id": 219,
@@ -6470,13 +6253,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/219.png",
+    "sprite": "219.png",
     "basePokemonId": 218,
     "basePokemonName": "slugma",
     "defaultVarietyId": 219,
     "defaultVarietyName": "magcargo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "220": {
     "id": 220,
@@ -6502,13 +6284,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/220.png",
+    "sprite": "220.png",
     "basePokemonId": 220,
     "basePokemonName": "swinub",
     "defaultVarietyId": 220,
     "defaultVarietyName": "swinub",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "221": {
     "id": 221,
@@ -6534,13 +6315,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/221.png",
+    "sprite": "221.png",
     "basePokemonId": 220,
     "basePokemonName": "swinub",
     "defaultVarietyId": 221,
     "defaultVarietyName": "piloswine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "222": {
     "id": 222,
@@ -6566,13 +6346,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/222.png",
+    "sprite": "222.png",
     "basePokemonId": 222,
     "basePokemonName": "corsola",
     "defaultVarietyId": 222,
     "defaultVarietyName": "corsola",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "223": {
     "id": 223,
@@ -6597,13 +6376,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/223.png",
+    "sprite": "223.png",
     "basePokemonId": 223,
     "basePokemonName": "remoraid",
     "defaultVarietyId": 223,
     "defaultVarietyName": "remoraid",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "224": {
     "id": 224,
@@ -6628,13 +6406,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/224.png",
+    "sprite": "224.png",
     "basePokemonId": 223,
     "basePokemonName": "remoraid",
     "defaultVarietyId": 224,
     "defaultVarietyName": "octillery",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "225": {
     "id": 225,
@@ -6660,13 +6437,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/225.png",
+    "sprite": "225.png",
     "basePokemonId": 225,
     "basePokemonName": "delibird",
     "defaultVarietyId": 225,
     "defaultVarietyName": "delibird",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "226": {
     "id": 226,
@@ -6692,13 +6468,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/226.png",
+    "sprite": "226.png",
     "basePokemonId": 458,
     "basePokemonName": "mantyke",
     "defaultVarietyId": 226,
     "defaultVarietyName": "mantine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "227": {
     "id": 227,
@@ -6724,13 +6499,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/227.png",
+    "sprite": "227.png",
     "basePokemonId": 227,
     "basePokemonName": "skarmory",
     "defaultVarietyId": 227,
     "defaultVarietyName": "skarmory",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "228": {
     "id": 228,
@@ -6756,13 +6530,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/228.png",
+    "sprite": "228.png",
     "basePokemonId": 228,
     "basePokemonName": "houndour",
     "defaultVarietyId": 228,
     "defaultVarietyName": "houndour",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "229": {
     "id": 229,
@@ -6788,13 +6561,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/229.png",
+    "sprite": "229.png",
     "basePokemonId": 228,
     "basePokemonName": "houndour",
     "defaultVarietyId": 229,
     "defaultVarietyName": "houndoom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "230": {
     "id": 230,
@@ -6820,13 +6592,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/230.png",
+    "sprite": "230.png",
     "basePokemonId": 116,
     "basePokemonName": "horsea",
     "defaultVarietyId": 230,
     "defaultVarietyName": "kingdra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "231": {
     "id": 231,
@@ -6846,13 +6617,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/231.png",
+    "sprite": "231.png",
     "basePokemonId": 231,
     "basePokemonName": "phanpy",
     "defaultVarietyId": 231,
     "defaultVarietyName": "phanpy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "232": {
     "id": 232,
@@ -6872,13 +6642,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/232.png",
+    "sprite": "232.png",
     "basePokemonId": 231,
     "basePokemonName": "phanpy",
     "defaultVarietyId": 232,
     "defaultVarietyName": "donphan",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "233": {
     "id": 233,
@@ -6903,13 +6672,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/233.png",
+    "sprite": "233.png",
     "basePokemonId": 137,
     "basePokemonName": "porygon",
     "defaultVarietyId": 233,
     "defaultVarietyName": "porygon2",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "234": {
     "id": 234,
@@ -6934,13 +6702,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/234.png",
+    "sprite": "234.png",
     "basePokemonId": 234,
     "basePokemonName": "stantler",
     "defaultVarietyId": 234,
     "defaultVarietyName": "stantler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "235": {
     "id": 235,
@@ -6965,13 +6732,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/235.png",
+    "sprite": "235.png",
     "basePokemonId": 235,
     "basePokemonName": "smeargle",
     "defaultVarietyId": 235,
     "defaultVarietyName": "smeargle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "236": {
     "id": 236,
@@ -6996,13 +6762,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/236.png",
+    "sprite": "236.png",
     "basePokemonId": 236,
     "basePokemonName": "tyrogue",
     "defaultVarietyId": 236,
     "defaultVarietyName": "tyrogue",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "237": {
     "id": 237,
@@ -7027,13 +6792,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/237.png",
+    "sprite": "237.png",
     "basePokemonId": 236,
     "basePokemonName": "tyrogue",
     "defaultVarietyId": 237,
     "defaultVarietyName": "hitmontop",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "238": {
     "id": 238,
@@ -7059,13 +6823,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/238.png",
+    "sprite": "238.png",
     "basePokemonId": 238,
     "basePokemonName": "smoochum",
     "defaultVarietyId": 238,
     "defaultVarietyName": "smoochum",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "239": {
     "id": 239,
@@ -7085,13 +6848,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/239.png",
+    "sprite": "239.png",
     "basePokemonId": 239,
     "basePokemonName": "elekid",
     "defaultVarietyId": 239,
     "defaultVarietyName": "elekid",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "240": {
     "id": 240,
@@ -7111,13 +6873,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/240.png",
+    "sprite": "240.png",
     "basePokemonId": 240,
     "basePokemonName": "magby",
     "defaultVarietyId": 240,
     "defaultVarietyName": "magby",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "241": {
     "id": 241,
@@ -7142,13 +6903,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/241.png",
+    "sprite": "241.png",
     "basePokemonId": 241,
     "basePokemonName": "miltank",
     "defaultVarietyId": 241,
     "defaultVarietyName": "miltank",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "242": {
     "id": 242,
@@ -7173,13 +6933,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/242.png",
+    "sprite": "242.png",
     "basePokemonId": 440,
     "basePokemonName": "happiny",
     "defaultVarietyId": 242,
     "defaultVarietyName": "blissey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "243": {
     "id": 243,
@@ -7199,13 +6958,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/243.png",
+    "sprite": "243.png",
     "basePokemonId": 243,
     "basePokemonName": "raikou",
     "defaultVarietyId": 243,
     "defaultVarietyName": "raikou",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "244": {
     "id": 244,
@@ -7225,13 +6983,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/244.png",
+    "sprite": "244.png",
     "basePokemonId": 244,
     "basePokemonName": "entei",
     "defaultVarietyId": 244,
     "defaultVarietyName": "entei",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "245": {
     "id": 245,
@@ -7251,13 +7008,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/245.png",
+    "sprite": "245.png",
     "basePokemonId": 245,
     "basePokemonName": "suicune",
     "defaultVarietyId": 245,
     "defaultVarietyName": "suicune",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "246": {
     "id": 246,
@@ -7278,13 +7034,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/246.png",
+    "sprite": "246.png",
     "basePokemonId": 246,
     "basePokemonName": "larvitar",
     "defaultVarietyId": 246,
     "defaultVarietyName": "larvitar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "247": {
     "id": 247,
@@ -7300,13 +7055,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/247.png",
+    "sprite": "247.png",
     "basePokemonId": 246,
     "basePokemonName": "larvitar",
     "defaultVarietyId": 247,
     "defaultVarietyName": "pupitar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "248": {
     "id": 248,
@@ -7327,13 +7081,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png",
+    "sprite": "248.png",
     "basePokemonId": 246,
     "basePokemonName": "larvitar",
     "defaultVarietyId": 248,
     "defaultVarietyName": "tyranitar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "249": {
     "id": 249,
@@ -7354,13 +7107,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/249.png",
+    "sprite": "249.png",
     "basePokemonId": 249,
     "basePokemonName": "lugia",
     "defaultVarietyId": 249,
     "defaultVarietyName": "lugia",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "250": {
     "id": 250,
@@ -7381,13 +7133,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png",
+    "sprite": "250.png",
     "basePokemonId": 250,
     "basePokemonName": "ho-oh",
     "defaultVarietyId": 250,
     "defaultVarietyName": "ho-oh",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "251": {
     "id": 251,
@@ -7403,13 +7154,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/251.png",
+    "sprite": "251.png",
     "basePokemonId": 251,
     "basePokemonName": "celebi",
     "defaultVarietyId": 251,
     "defaultVarietyName": "celebi",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "252": {
     "id": 252,
@@ -7429,13 +7179,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png",
+    "sprite": "252.png",
     "basePokemonId": 252,
     "basePokemonName": "treecko",
     "defaultVarietyId": 252,
     "defaultVarietyName": "treecko",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "253": {
     "id": 253,
@@ -7455,13 +7204,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/253.png",
+    "sprite": "253.png",
     "basePokemonId": 252,
     "basePokemonName": "treecko",
     "defaultVarietyId": 253,
     "defaultVarietyName": "grovyle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "254": {
     "id": 254,
@@ -7481,13 +7229,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
+    "sprite": "254.png",
     "basePokemonId": 252,
     "basePokemonName": "treecko",
     "defaultVarietyId": 254,
     "defaultVarietyName": "sceptile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "255": {
     "id": 255,
@@ -7507,13 +7254,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png",
+    "sprite": "255.png",
     "basePokemonId": 255,
     "basePokemonName": "torchic",
     "defaultVarietyId": 255,
     "defaultVarietyName": "torchic",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "256": {
     "id": 256,
@@ -7534,13 +7280,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/256.png",
+    "sprite": "256.png",
     "basePokemonId": 255,
     "basePokemonName": "torchic",
     "defaultVarietyId": 256,
     "defaultVarietyName": "combusken",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "257": {
     "id": 257,
@@ -7561,13 +7306,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png",
+    "sprite": "257.png",
     "basePokemonId": 255,
     "basePokemonName": "torchic",
     "defaultVarietyId": 257,
     "defaultVarietyName": "blaziken",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "258": {
     "id": 258,
@@ -7587,13 +7331,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png",
+    "sprite": "258.png",
     "basePokemonId": 258,
     "basePokemonName": "mudkip",
     "defaultVarietyId": 258,
     "defaultVarietyName": "mudkip",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "259": {
     "id": 259,
@@ -7614,13 +7357,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/259.png",
+    "sprite": "259.png",
     "basePokemonId": 258,
     "basePokemonName": "mudkip",
     "defaultVarietyId": 259,
     "defaultVarietyName": "marshtomp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "260": {
     "id": 260,
@@ -7641,13 +7383,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png",
+    "sprite": "260.png",
     "basePokemonId": 258,
     "basePokemonName": "mudkip",
     "defaultVarietyId": 260,
     "defaultVarietyName": "swampert",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "261": {
     "id": 261,
@@ -7672,13 +7413,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/261.png",
+    "sprite": "261.png",
     "basePokemonId": 261,
     "basePokemonName": "poochyena",
     "defaultVarietyId": 261,
     "defaultVarietyName": "poochyena",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "262": {
     "id": 262,
@@ -7703,13 +7443,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/262.png",
+    "sprite": "262.png",
     "basePokemonId": 261,
     "basePokemonName": "poochyena",
     "defaultVarietyId": 262,
     "defaultVarietyName": "mightyena",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "263": {
     "id": 263,
@@ -7734,13 +7473,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/263.png",
+    "sprite": "263.png",
     "basePokemonId": 263,
     "basePokemonName": "zigzagoon",
     "defaultVarietyId": 263,
     "defaultVarietyName": "zigzagoon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "264": {
     "id": 264,
@@ -7765,13 +7503,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/264.png",
+    "sprite": "264.png",
     "basePokemonId": 263,
     "basePokemonName": "zigzagoon",
     "defaultVarietyId": 264,
     "defaultVarietyName": "linoone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "265": {
     "id": 265,
@@ -7791,13 +7528,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/265.png",
+    "sprite": "265.png",
     "basePokemonId": 265,
     "basePokemonName": "wurmple",
     "defaultVarietyId": 265,
     "defaultVarietyName": "wurmple",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "266": {
     "id": 266,
@@ -7812,13 +7548,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/266.png",
+    "sprite": "266.png",
     "basePokemonId": 265,
     "basePokemonName": "wurmple",
     "defaultVarietyId": 266,
     "defaultVarietyName": "silcoon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "267": {
     "id": 267,
@@ -7839,13 +7574,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/267.png",
+    "sprite": "267.png",
     "basePokemonId": 265,
     "basePokemonName": "wurmple",
     "defaultVarietyId": 267,
     "defaultVarietyName": "beautifly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "268": {
     "id": 268,
@@ -7860,13 +7594,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/268.png",
+    "sprite": "268.png",
     "basePokemonId": 265,
     "basePokemonName": "wurmple",
     "defaultVarietyId": 268,
     "defaultVarietyName": "cascoon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "269": {
     "id": 269,
@@ -7887,13 +7620,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/269.png",
+    "sprite": "269.png",
     "basePokemonId": 265,
     "basePokemonName": "wurmple",
     "defaultVarietyId": 269,
     "defaultVarietyName": "dustox",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "270": {
     "id": 270,
@@ -7919,13 +7651,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/270.png",
+    "sprite": "270.png",
     "basePokemonId": 270,
     "basePokemonName": "lotad",
     "defaultVarietyId": 270,
     "defaultVarietyName": "lotad",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "271": {
     "id": 271,
@@ -7951,13 +7682,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/271.png",
+    "sprite": "271.png",
     "basePokemonId": 270,
     "basePokemonName": "lotad",
     "defaultVarietyId": 271,
     "defaultVarietyName": "lombre",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "272": {
     "id": 272,
@@ -7983,13 +7713,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/272.png",
+    "sprite": "272.png",
     "basePokemonId": 270,
     "basePokemonName": "lotad",
     "defaultVarietyId": 272,
     "defaultVarietyName": "ludicolo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "273": {
     "id": 273,
@@ -8014,13 +7743,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/273.png",
+    "sprite": "273.png",
     "basePokemonId": 273,
     "basePokemonName": "seedot",
     "defaultVarietyId": 273,
     "defaultVarietyName": "seedot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "274": {
     "id": 274,
@@ -8046,13 +7774,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/274.png",
+    "sprite": "274.png",
     "basePokemonId": 273,
     "basePokemonName": "seedot",
     "defaultVarietyId": 274,
     "defaultVarietyName": "nuzleaf",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "275": {
     "id": 275,
@@ -8078,13 +7805,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/275.png",
+    "sprite": "275.png",
     "basePokemonId": 273,
     "basePokemonName": "seedot",
     "defaultVarietyId": 275,
     "defaultVarietyName": "shiftry",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "276": {
     "id": 276,
@@ -8105,13 +7831,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/276.png",
+    "sprite": "276.png",
     "basePokemonId": 276,
     "basePokemonName": "taillow",
     "defaultVarietyId": 276,
     "defaultVarietyName": "taillow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "277": {
     "id": 277,
@@ -8132,13 +7857,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/277.png",
+    "sprite": "277.png",
     "basePokemonId": 276,
     "basePokemonName": "taillow",
     "defaultVarietyId": 277,
     "defaultVarietyName": "swellow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "278": {
     "id": 278,
@@ -8164,13 +7888,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/278.png",
+    "sprite": "278.png",
     "basePokemonId": 278,
     "basePokemonName": "wingull",
     "defaultVarietyId": 278,
     "defaultVarietyName": "wingull",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "279": {
     "id": 279,
@@ -8196,13 +7919,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/279.png",
+    "sprite": "279.png",
     "basePokemonId": 278,
     "basePokemonName": "wingull",
     "defaultVarietyId": 279,
     "defaultVarietyName": "pelipper",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "280": {
     "id": 280,
@@ -8228,13 +7950,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/280.png",
+    "sprite": "280.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 280,
     "defaultVarietyName": "ralts",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "281": {
     "id": 281,
@@ -8260,13 +7981,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/281.png",
+    "sprite": "281.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 281,
     "defaultVarietyName": "kirlia",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "282": {
     "id": 282,
@@ -8292,13 +8012,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
+    "sprite": "282.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 282,
     "defaultVarietyName": "gardevoir",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "283": {
     "id": 283,
@@ -8319,13 +8038,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/283.png",
+    "sprite": "283.png",
     "basePokemonId": 283,
     "basePokemonName": "surskit",
     "defaultVarietyId": 283,
     "defaultVarietyName": "surskit",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "284": {
     "id": 284,
@@ -8346,13 +8064,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/284.png",
+    "sprite": "284.png",
     "basePokemonId": 283,
     "basePokemonName": "surskit",
     "defaultVarietyId": 284,
     "defaultVarietyName": "masquerain",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "285": {
     "id": 285,
@@ -8377,13 +8094,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/285.png",
+    "sprite": "285.png",
     "basePokemonId": 285,
     "basePokemonName": "shroomish",
     "defaultVarietyId": 285,
     "defaultVarietyName": "shroomish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "286": {
     "id": 286,
@@ -8409,13 +8125,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/286.png",
+    "sprite": "286.png",
     "basePokemonId": 285,
     "basePokemonName": "shroomish",
     "defaultVarietyId": 286,
     "defaultVarietyName": "breloom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "287": {
     "id": 287,
@@ -8430,13 +8145,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/287.png",
+    "sprite": "287.png",
     "basePokemonId": 287,
     "basePokemonName": "slakoth",
     "defaultVarietyId": 287,
     "defaultVarietyName": "slakoth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "288": {
     "id": 288,
@@ -8451,13 +8165,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/288.png",
+    "sprite": "288.png",
     "basePokemonId": 287,
     "basePokemonName": "slakoth",
     "defaultVarietyId": 288,
     "defaultVarietyName": "vigoroth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "289": {
     "id": 289,
@@ -8472,13 +8185,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png",
+    "sprite": "289.png",
     "basePokemonId": 287,
     "basePokemonName": "slakoth",
     "defaultVarietyId": 289,
     "defaultVarietyName": "slaking",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "290": {
     "id": 290,
@@ -8499,13 +8211,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/290.png",
+    "sprite": "290.png",
     "basePokemonId": 290,
     "basePokemonName": "nincada",
     "defaultVarietyId": 290,
     "defaultVarietyName": "nincada",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "291": {
     "id": 291,
@@ -8526,13 +8237,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/291.png",
+    "sprite": "291.png",
     "basePokemonId": 290,
     "basePokemonName": "nincada",
     "defaultVarietyId": 291,
     "defaultVarietyName": "ninjask",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "292": {
     "id": 292,
@@ -8548,13 +8258,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/292.png",
+    "sprite": "292.png",
     "basePokemonId": 290,
     "basePokemonName": "nincada",
     "defaultVarietyId": 292,
     "defaultVarietyName": "shedinja",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "293": {
     "id": 293,
@@ -8574,13 +8283,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/293.png",
+    "sprite": "293.png",
     "basePokemonId": 293,
     "basePokemonName": "whismur",
     "defaultVarietyId": 293,
     "defaultVarietyName": "whismur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "294": {
     "id": 294,
@@ -8600,13 +8308,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/294.png",
+    "sprite": "294.png",
     "basePokemonId": 293,
     "basePokemonName": "whismur",
     "defaultVarietyId": 294,
     "defaultVarietyName": "loudred",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "295": {
     "id": 295,
@@ -8626,13 +8333,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/295.png",
+    "sprite": "295.png",
     "basePokemonId": 293,
     "basePokemonName": "whismur",
     "defaultVarietyId": 295,
     "defaultVarietyName": "exploud",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "296": {
     "id": 296,
@@ -8657,13 +8363,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/296.png",
+    "sprite": "296.png",
     "basePokemonId": 296,
     "basePokemonName": "makuhita",
     "defaultVarietyId": 296,
     "defaultVarietyName": "makuhita",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "297": {
     "id": 297,
@@ -8688,13 +8393,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/297.png",
+    "sprite": "297.png",
     "basePokemonId": 296,
     "basePokemonName": "makuhita",
     "defaultVarietyId": 297,
     "defaultVarietyName": "hariyama",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "298": {
     "id": 298,
@@ -8720,13 +8424,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/298.png",
+    "sprite": "298.png",
     "basePokemonId": 298,
     "basePokemonName": "azurill",
     "defaultVarietyId": 298,
     "defaultVarietyName": "azurill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "299": {
     "id": 299,
@@ -8751,13 +8454,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/299.png",
+    "sprite": "299.png",
     "basePokemonId": 299,
     "basePokemonName": "nosepass",
     "defaultVarietyId": 299,
     "defaultVarietyName": "nosepass",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "300": {
     "id": 300,
@@ -8782,13 +8484,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/300.png",
+    "sprite": "300.png",
     "basePokemonId": 300,
     "basePokemonName": "skitty",
     "defaultVarietyId": 300,
     "defaultVarietyName": "skitty",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "301": {
     "id": 301,
@@ -8813,13 +8514,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/301.png",
+    "sprite": "301.png",
     "basePokemonId": 300,
     "basePokemonName": "skitty",
     "defaultVarietyId": 301,
     "defaultVarietyName": "delcatty",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "302": {
     "id": 302,
@@ -8845,13 +8545,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
+    "sprite": "302.png",
     "basePokemonId": 302,
     "basePokemonName": "sableye",
     "defaultVarietyId": 302,
     "defaultVarietyName": "sableye",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "303": {
     "id": 303,
@@ -8877,13 +8576,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/303.png",
+    "sprite": "303.png",
     "basePokemonId": 303,
     "basePokemonName": "mawile",
     "defaultVarietyId": 303,
     "defaultVarietyName": "mawile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "304": {
     "id": 304,
@@ -8909,13 +8607,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png",
+    "sprite": "304.png",
     "basePokemonId": 304,
     "basePokemonName": "aron",
     "defaultVarietyId": 304,
     "defaultVarietyName": "aron",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "305": {
     "id": 305,
@@ -8941,13 +8638,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/305.png",
+    "sprite": "305.png",
     "basePokemonId": 304,
     "basePokemonName": "aron",
     "defaultVarietyId": 305,
     "defaultVarietyName": "lairon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "306": {
     "id": 306,
@@ -8973,13 +8669,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/306.png",
+    "sprite": "306.png",
     "basePokemonId": 304,
     "basePokemonName": "aron",
     "defaultVarietyId": 306,
     "defaultVarietyName": "aggron",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "307": {
     "id": 307,
@@ -9000,13 +8695,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/307.png",
+    "sprite": "307.png",
     "basePokemonId": 307,
     "basePokemonName": "meditite",
     "defaultVarietyId": 307,
     "defaultVarietyName": "meditite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "308": {
     "id": 308,
@@ -9027,13 +8721,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/308.png",
+    "sprite": "308.png",
     "basePokemonId": 307,
     "basePokemonName": "meditite",
     "defaultVarietyId": 308,
     "defaultVarietyName": "medicham",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "309": {
     "id": 309,
@@ -9058,13 +8751,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/309.png",
+    "sprite": "309.png",
     "basePokemonId": 309,
     "basePokemonName": "electrike",
     "defaultVarietyId": 309,
     "defaultVarietyName": "electrike",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "310": {
     "id": 310,
@@ -9089,13 +8781,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/310.png",
+    "sprite": "310.png",
     "basePokemonId": 309,
     "basePokemonName": "electrike",
     "defaultVarietyId": 310,
     "defaultVarietyName": "manectric",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "311": {
     "id": 311,
@@ -9115,13 +8806,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/311.png",
+    "sprite": "311.png",
     "basePokemonId": 311,
     "basePokemonName": "plusle",
     "defaultVarietyId": 311,
     "defaultVarietyName": "plusle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "312": {
     "id": 312,
@@ -9141,13 +8831,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/312.png",
+    "sprite": "312.png",
     "basePokemonId": 312,
     "basePokemonName": "minun",
     "defaultVarietyId": 312,
     "defaultVarietyName": "minun",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "313": {
     "id": 313,
@@ -9172,13 +8861,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/313.png",
+    "sprite": "313.png",
     "basePokemonId": 313,
     "basePokemonName": "volbeat",
     "defaultVarietyId": 313,
     "defaultVarietyName": "volbeat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "314": {
     "id": 314,
@@ -9203,13 +8891,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/314.png",
+    "sprite": "314.png",
     "basePokemonId": 314,
     "basePokemonName": "illumise",
     "defaultVarietyId": 314,
     "defaultVarietyName": "illumise",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "315": {
     "id": 315,
@@ -9235,13 +8922,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/315.png",
+    "sprite": "315.png",
     "basePokemonId": 406,
     "basePokemonName": "budew",
     "defaultVarietyId": 315,
     "defaultVarietyName": "roselia",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "316": {
     "id": 316,
@@ -9266,13 +8952,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/316.png",
+    "sprite": "316.png",
     "basePokemonId": 316,
     "basePokemonName": "gulpin",
     "defaultVarietyId": 316,
     "defaultVarietyName": "gulpin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "317": {
     "id": 317,
@@ -9297,13 +8982,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/317.png",
+    "sprite": "317.png",
     "basePokemonId": 316,
     "basePokemonName": "gulpin",
     "defaultVarietyId": 317,
     "defaultVarietyName": "swalot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "318": {
     "id": 318,
@@ -9324,13 +9008,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/318.png",
+    "sprite": "318.png",
     "basePokemonId": 318,
     "basePokemonName": "carvanha",
     "defaultVarietyId": 318,
     "defaultVarietyName": "carvanha",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "319": {
     "id": 319,
@@ -9351,13 +9034,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png",
+    "sprite": "319.png",
     "basePokemonId": 318,
     "basePokemonName": "carvanha",
     "defaultVarietyId": 319,
     "defaultVarietyName": "sharpedo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "320": {
     "id": 320,
@@ -9382,13 +9064,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/320.png",
+    "sprite": "320.png",
     "basePokemonId": 320,
     "basePokemonName": "wailmer",
     "defaultVarietyId": 320,
     "defaultVarietyName": "wailmer",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "321": {
     "id": 321,
@@ -9413,13 +9094,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/321.png",
+    "sprite": "321.png",
     "basePokemonId": 320,
     "basePokemonName": "wailmer",
     "defaultVarietyId": 321,
     "defaultVarietyName": "wailord",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "322": {
     "id": 322,
@@ -9445,13 +9125,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png",
+    "sprite": "322.png",
     "basePokemonId": 322,
     "basePokemonName": "numel",
     "defaultVarietyId": 322,
     "defaultVarietyName": "numel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "323": {
     "id": 323,
@@ -9477,13 +9156,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png",
+    "sprite": "323.png",
     "basePokemonId": 322,
     "basePokemonName": "numel",
     "defaultVarietyId": 323,
     "defaultVarietyName": "camerupt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "324": {
     "id": 324,
@@ -9508,13 +9186,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/324.png",
+    "sprite": "324.png",
     "basePokemonId": 324,
     "basePokemonName": "torkoal",
     "defaultVarietyId": 324,
     "defaultVarietyName": "torkoal",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "325": {
     "id": 325,
@@ -9539,13 +9216,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/325.png",
+    "sprite": "325.png",
     "basePokemonId": 325,
     "basePokemonName": "spoink",
     "defaultVarietyId": 325,
     "defaultVarietyName": "spoink",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "326": {
     "id": 326,
@@ -9570,13 +9246,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/326.png",
+    "sprite": "326.png",
     "basePokemonId": 325,
     "basePokemonName": "spoink",
     "defaultVarietyId": 326,
     "defaultVarietyName": "grumpig",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "327": {
     "id": 327,
@@ -9601,13 +9276,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/327.png",
+    "sprite": "327.png",
     "basePokemonId": 327,
     "basePokemonName": "spinda",
     "defaultVarietyId": 327,
     "defaultVarietyName": "spinda",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "328": {
     "id": 328,
@@ -9632,13 +9306,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png",
+    "sprite": "328.png",
     "basePokemonId": 328,
     "basePokemonName": "trapinch",
     "defaultVarietyId": 328,
     "defaultVarietyName": "trapinch",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "329": {
     "id": 329,
@@ -9654,13 +9327,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/329.png",
+    "sprite": "329.png",
     "basePokemonId": 328,
     "basePokemonName": "trapinch",
     "defaultVarietyId": 329,
     "defaultVarietyName": "vibrava",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "330": {
     "id": 330,
@@ -9676,13 +9348,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/330.png",
+    "sprite": "330.png",
     "basePokemonId": 328,
     "basePokemonName": "trapinch",
     "defaultVarietyId": 330,
     "defaultVarietyName": "flygon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "331": {
     "id": 331,
@@ -9702,13 +9373,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/331.png",
+    "sprite": "331.png",
     "basePokemonId": 331,
     "basePokemonName": "cacnea",
     "defaultVarietyId": 331,
     "defaultVarietyName": "cacnea",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "332": {
     "id": 332,
@@ -9729,13 +9399,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/332.png",
+    "sprite": "332.png",
     "basePokemonId": 331,
     "basePokemonName": "cacnea",
     "defaultVarietyId": 332,
     "defaultVarietyName": "cacturne",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "333": {
     "id": 333,
@@ -9756,13 +9425,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/333.png",
+    "sprite": "333.png",
     "basePokemonId": 333,
     "basePokemonName": "swablu",
     "defaultVarietyId": 333,
     "defaultVarietyName": "swablu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "334": {
     "id": 334,
@@ -9783,13 +9451,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png",
+    "sprite": "334.png",
     "basePokemonId": 333,
     "basePokemonName": "swablu",
     "defaultVarietyId": 334,
     "defaultVarietyName": "altaria",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "335": {
     "id": 335,
@@ -9809,13 +9476,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/335.png",
+    "sprite": "335.png",
     "basePokemonId": 335,
     "basePokemonName": "zangoose",
     "defaultVarietyId": 335,
     "defaultVarietyName": "zangoose",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "336": {
     "id": 336,
@@ -9835,13 +9501,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/336.png",
+    "sprite": "336.png",
     "basePokemonId": 336,
     "basePokemonName": "seviper",
     "defaultVarietyId": 336,
     "defaultVarietyName": "seviper",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "337": {
     "id": 337,
@@ -9857,13 +9522,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/337.png",
+    "sprite": "337.png",
     "basePokemonId": 337,
     "basePokemonName": "lunatone",
     "defaultVarietyId": 337,
     "defaultVarietyName": "lunatone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "338": {
     "id": 338,
@@ -9879,13 +9543,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/338.png",
+    "sprite": "338.png",
     "basePokemonId": 338,
     "basePokemonName": "solrock",
     "defaultVarietyId": 338,
     "defaultVarietyName": "solrock",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "339": {
     "id": 339,
@@ -9911,13 +9574,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/339.png",
+    "sprite": "339.png",
     "basePokemonId": 339,
     "basePokemonName": "barboach",
     "defaultVarietyId": 339,
     "defaultVarietyName": "barboach",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "340": {
     "id": 340,
@@ -9943,13 +9605,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png",
+    "sprite": "340.png",
     "basePokemonId": 339,
     "basePokemonName": "barboach",
     "defaultVarietyId": 340,
     "defaultVarietyName": "whiscash",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "341": {
     "id": 341,
@@ -9974,13 +9635,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/341.png",
+    "sprite": "341.png",
     "basePokemonId": 341,
     "basePokemonName": "corphish",
     "defaultVarietyId": 341,
     "defaultVarietyName": "corphish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "342": {
     "id": 342,
@@ -10006,13 +9666,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/342.png",
+    "sprite": "342.png",
     "basePokemonId": 341,
     "basePokemonName": "corphish",
     "defaultVarietyId": 342,
     "defaultVarietyName": "crawdaunt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "343": {
     "id": 343,
@@ -10028,13 +9687,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/343.png",
+    "sprite": "343.png",
     "basePokemonId": 343,
     "basePokemonName": "baltoy",
     "defaultVarietyId": 343,
     "defaultVarietyName": "baltoy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "344": {
     "id": 344,
@@ -10050,13 +9708,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/344.png",
+    "sprite": "344.png",
     "basePokemonId": 343,
     "basePokemonName": "baltoy",
     "defaultVarietyId": 344,
     "defaultVarietyName": "claydol",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "345": {
     "id": 345,
@@ -10077,13 +9734,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/345.png",
+    "sprite": "345.png",
     "basePokemonId": 345,
     "basePokemonName": "lileep",
     "defaultVarietyId": 345,
     "defaultVarietyName": "lileep",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "346": {
     "id": 346,
@@ -10104,13 +9760,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/346.png",
+    "sprite": "346.png",
     "basePokemonId": 345,
     "basePokemonName": "lileep",
     "defaultVarietyId": 346,
     "defaultVarietyName": "cradily",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "347": {
     "id": 347,
@@ -10131,13 +9786,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/347.png",
+    "sprite": "347.png",
     "basePokemonId": 347,
     "basePokemonName": "anorith",
     "defaultVarietyId": 347,
     "defaultVarietyName": "anorith",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "348": {
     "id": 348,
@@ -10158,13 +9812,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/348.png",
+    "sprite": "348.png",
     "basePokemonId": 347,
     "basePokemonName": "anorith",
     "defaultVarietyId": 348,
     "defaultVarietyName": "armaldo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "349": {
     "id": 349,
@@ -10189,13 +9842,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/349.png",
+    "sprite": "349.png",
     "basePokemonId": 349,
     "basePokemonName": "feebas",
     "defaultVarietyId": 349,
     "defaultVarietyName": "feebas",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "350": {
     "id": 350,
@@ -10220,13 +9872,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png",
+    "sprite": "350.png",
     "basePokemonId": 349,
     "basePokemonName": "feebas",
     "defaultVarietyId": 350,
     "defaultVarietyName": "milotic",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "351": {
     "id": 351,
@@ -10241,13 +9892,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/351.png",
+    "sprite": "351.png",
     "basePokemonId": 351,
     "basePokemonName": "castform",
     "defaultVarietyId": 351,
     "defaultVarietyName": "castform",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "352": {
     "id": 352,
@@ -10267,13 +9917,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/352.png",
+    "sprite": "352.png",
     "basePokemonId": 352,
     "basePokemonName": "kecleon",
     "defaultVarietyId": 352,
     "defaultVarietyName": "kecleon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "353": {
     "id": 353,
@@ -10298,13 +9947,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/353.png",
+    "sprite": "353.png",
     "basePokemonId": 353,
     "basePokemonName": "shuppet",
     "defaultVarietyId": 353,
     "defaultVarietyName": "shuppet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "354": {
     "id": 354,
@@ -10329,13 +9977,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/354.png",
+    "sprite": "354.png",
     "basePokemonId": 353,
     "basePokemonName": "shuppet",
     "defaultVarietyId": 354,
     "defaultVarietyName": "banette",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "355": {
     "id": 355,
@@ -10355,13 +10002,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png",
+    "sprite": "355.png",
     "basePokemonId": 355,
     "basePokemonName": "duskull",
     "defaultVarietyId": 355,
     "defaultVarietyName": "duskull",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "356": {
     "id": 356,
@@ -10381,13 +10027,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/356.png",
+    "sprite": "356.png",
     "basePokemonId": 355,
     "basePokemonName": "duskull",
     "defaultVarietyId": 356,
     "defaultVarietyName": "dusclops",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "357": {
     "id": 357,
@@ -10413,13 +10058,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/357.png",
+    "sprite": "357.png",
     "basePokemonId": 357,
     "basePokemonName": "tropius",
     "defaultVarietyId": 357,
     "defaultVarietyName": "tropius",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "358": {
     "id": 358,
@@ -10434,13 +10078,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png",
+    "sprite": "358.png",
     "basePokemonId": 433,
     "basePokemonName": "chingling",
     "defaultVarietyId": 358,
     "defaultVarietyName": "chimecho",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "359": {
     "id": 359,
@@ -10465,13 +10108,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
+    "sprite": "359.png",
     "basePokemonId": 359,
     "basePokemonName": "absol",
     "defaultVarietyId": 359,
     "defaultVarietyName": "absol",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "360": {
     "id": 360,
@@ -10491,13 +10133,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/360.png",
+    "sprite": "360.png",
     "basePokemonId": 360,
     "basePokemonName": "wynaut",
     "defaultVarietyId": 360,
     "defaultVarietyName": "wynaut",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "361": {
     "id": 361,
@@ -10522,13 +10163,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/361.png",
+    "sprite": "361.png",
     "basePokemonId": 361,
     "basePokemonName": "snorunt",
     "defaultVarietyId": 361,
     "defaultVarietyName": "snorunt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "362": {
     "id": 362,
@@ -10553,13 +10193,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png",
+    "sprite": "362.png",
     "basePokemonId": 361,
     "basePokemonName": "snorunt",
     "defaultVarietyId": 362,
     "defaultVarietyName": "glalie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "363": {
     "id": 363,
@@ -10585,13 +10224,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/363.png",
+    "sprite": "363.png",
     "basePokemonId": 363,
     "basePokemonName": "spheal",
     "defaultVarietyId": 363,
     "defaultVarietyName": "spheal",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "364": {
     "id": 364,
@@ -10617,13 +10255,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/364.png",
+    "sprite": "364.png",
     "basePokemonId": 363,
     "basePokemonName": "spheal",
     "defaultVarietyId": 364,
     "defaultVarietyName": "sealeo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "365": {
     "id": 365,
@@ -10649,13 +10286,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/365.png",
+    "sprite": "365.png",
     "basePokemonId": 363,
     "basePokemonName": "spheal",
     "defaultVarietyId": 365,
     "defaultVarietyName": "walrein",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "366": {
     "id": 366,
@@ -10675,13 +10311,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/366.png",
+    "sprite": "366.png",
     "basePokemonId": 366,
     "basePokemonName": "clamperl",
     "defaultVarietyId": 366,
     "defaultVarietyName": "clamperl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "367": {
     "id": 367,
@@ -10701,13 +10336,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/367.png",
+    "sprite": "367.png",
     "basePokemonId": 366,
     "basePokemonName": "clamperl",
     "defaultVarietyId": 367,
     "defaultVarietyName": "huntail",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "368": {
     "id": 368,
@@ -10727,13 +10361,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/368.png",
+    "sprite": "368.png",
     "basePokemonId": 366,
     "basePokemonName": "clamperl",
     "defaultVarietyId": 368,
     "defaultVarietyName": "gorebyss",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "369": {
     "id": 369,
@@ -10759,13 +10392,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/369.png",
+    "sprite": "369.png",
     "basePokemonId": 369,
     "basePokemonName": "relicanth",
     "defaultVarietyId": 369,
     "defaultVarietyName": "relicanth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "370": {
     "id": 370,
@@ -10785,13 +10417,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/370.png",
+    "sprite": "370.png",
     "basePokemonId": 370,
     "basePokemonName": "luvdisc",
     "defaultVarietyId": 370,
     "defaultVarietyName": "luvdisc",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "371": {
     "id": 371,
@@ -10811,13 +10442,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/371.png",
+    "sprite": "371.png",
     "basePokemonId": 371,
     "basePokemonName": "bagon",
     "defaultVarietyId": 371,
     "defaultVarietyName": "bagon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "372": {
     "id": 372,
@@ -10837,13 +10467,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/372.png",
+    "sprite": "372.png",
     "basePokemonId": 371,
     "basePokemonName": "bagon",
     "defaultVarietyId": 372,
     "defaultVarietyName": "shelgon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "373": {
     "id": 373,
@@ -10864,13 +10493,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
+    "sprite": "373.png",
     "basePokemonId": 371,
     "basePokemonName": "bagon",
     "defaultVarietyId": 373,
     "defaultVarietyName": "salamence",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "374": {
     "id": 374,
@@ -10891,13 +10519,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/374.png",
+    "sprite": "374.png",
     "basePokemonId": 374,
     "basePokemonName": "beldum",
     "defaultVarietyId": 374,
     "defaultVarietyName": "beldum",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "375": {
     "id": 375,
@@ -10918,13 +10545,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/375.png",
+    "sprite": "375.png",
     "basePokemonId": 374,
     "basePokemonName": "beldum",
     "defaultVarietyId": 375,
     "defaultVarietyName": "metang",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "376": {
     "id": 376,
@@ -10945,13 +10571,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png",
+    "sprite": "376.png",
     "basePokemonId": 374,
     "basePokemonName": "beldum",
     "defaultVarietyId": 376,
     "defaultVarietyName": "metagross",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "377": {
     "id": 377,
@@ -10971,13 +10596,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/377.png",
+    "sprite": "377.png",
     "basePokemonId": 377,
     "basePokemonName": "regirock",
     "defaultVarietyId": 377,
     "defaultVarietyName": "regirock",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "378": {
     "id": 378,
@@ -10997,13 +10621,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/378.png",
+    "sprite": "378.png",
     "basePokemonId": 378,
     "basePokemonName": "regice",
     "defaultVarietyId": 378,
     "defaultVarietyName": "regice",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "379": {
     "id": 379,
@@ -11023,13 +10646,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/379.png",
+    "sprite": "379.png",
     "basePokemonId": 379,
     "basePokemonName": "registeel",
     "defaultVarietyId": 379,
     "defaultVarietyName": "registeel",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "380": {
     "id": 380,
@@ -11045,13 +10667,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/380.png",
+    "sprite": "380.png",
     "basePokemonId": 380,
     "basePokemonName": "latias",
     "defaultVarietyId": 380,
     "defaultVarietyName": "latias",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "381": {
     "id": 381,
@@ -11067,13 +10688,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/381.png",
+    "sprite": "381.png",
     "basePokemonId": 381,
     "basePokemonName": "latios",
     "defaultVarietyId": 381,
     "defaultVarietyName": "latios",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "382": {
     "id": 382,
@@ -11088,13 +10708,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png",
+    "sprite": "382.png",
     "basePokemonId": 382,
     "basePokemonName": "kyogre",
     "defaultVarietyId": 382,
     "defaultVarietyName": "kyogre",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "383": {
     "id": 383,
@@ -11109,13 +10728,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png",
+    "sprite": "383.png",
     "basePokemonId": 383,
     "basePokemonName": "groudon",
     "defaultVarietyId": 383,
     "defaultVarietyName": "groudon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "384": {
     "id": 384,
@@ -11131,13 +10749,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
+    "sprite": "384.png",
     "basePokemonId": 384,
     "basePokemonName": "rayquaza",
     "defaultVarietyId": 384,
     "defaultVarietyName": "rayquaza",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "385": {
     "id": 385,
@@ -11153,13 +10770,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
+    "sprite": "385.png",
     "basePokemonId": 385,
     "basePokemonName": "jirachi",
     "defaultVarietyId": 385,
     "defaultVarietyName": "jirachi",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "386": {
     "id": 386,
@@ -11174,13 +10790,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
+    "sprite": "386.png",
     "basePokemonId": 386,
     "basePokemonName": "deoxys",
     "defaultVarietyId": 386,
     "defaultVarietyName": "deoxys-normal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "387": {
     "id": 387,
@@ -11200,13 +10815,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/387.png",
+    "sprite": "387.png",
     "basePokemonId": 387,
     "basePokemonName": "turtwig",
     "defaultVarietyId": 387,
     "defaultVarietyName": "turtwig",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "388": {
     "id": 388,
@@ -11226,13 +10840,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/388.png",
+    "sprite": "388.png",
     "basePokemonId": 387,
     "basePokemonName": "turtwig",
     "defaultVarietyId": 388,
     "defaultVarietyName": "grotle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "389": {
     "id": 389,
@@ -11253,13 +10866,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/389.png",
+    "sprite": "389.png",
     "basePokemonId": 387,
     "basePokemonName": "turtwig",
     "defaultVarietyId": 389,
     "defaultVarietyName": "torterra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "390": {
     "id": 390,
@@ -11279,13 +10891,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/390.png",
+    "sprite": "390.png",
     "basePokemonId": 390,
     "basePokemonName": "chimchar",
     "defaultVarietyId": 390,
     "defaultVarietyName": "chimchar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "391": {
     "id": 391,
@@ -11306,13 +10917,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/391.png",
+    "sprite": "391.png",
     "basePokemonId": 390,
     "basePokemonName": "chimchar",
     "defaultVarietyId": 391,
     "defaultVarietyName": "monferno",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "392": {
     "id": 392,
@@ -11333,13 +10943,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/392.png",
+    "sprite": "392.png",
     "basePokemonId": 390,
     "basePokemonName": "chimchar",
     "defaultVarietyId": 392,
     "defaultVarietyName": "infernape",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "393": {
     "id": 393,
@@ -11359,13 +10968,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png",
+    "sprite": "393.png",
     "basePokemonId": 393,
     "basePokemonName": "piplup",
     "defaultVarietyId": 393,
     "defaultVarietyName": "piplup",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "394": {
     "id": 394,
@@ -11385,13 +10993,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/394.png",
+    "sprite": "394.png",
     "basePokemonId": 393,
     "basePokemonName": "piplup",
     "defaultVarietyId": 394,
     "defaultVarietyName": "prinplup",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "395": {
     "id": 395,
@@ -11412,13 +11019,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/395.png",
+    "sprite": "395.png",
     "basePokemonId": 393,
     "basePokemonName": "piplup",
     "defaultVarietyId": 395,
     "defaultVarietyName": "empoleon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "396": {
     "id": 396,
@@ -11439,13 +11045,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/396.png",
+    "sprite": "396.png",
     "basePokemonId": 396,
     "basePokemonName": "starly",
     "defaultVarietyId": 396,
     "defaultVarietyName": "starly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "397": {
     "id": 397,
@@ -11466,13 +11071,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/397.png",
+    "sprite": "397.png",
     "basePokemonId": 396,
     "basePokemonName": "starly",
     "defaultVarietyId": 397,
     "defaultVarietyName": "staravia",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "398": {
     "id": 398,
@@ -11493,13 +11097,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/398.png",
+    "sprite": "398.png",
     "basePokemonId": 396,
     "basePokemonName": "starly",
     "defaultVarietyId": 398,
     "defaultVarietyName": "staraptor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "399": {
     "id": 399,
@@ -11524,13 +11127,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/399.png",
+    "sprite": "399.png",
     "basePokemonId": 399,
     "basePokemonName": "bidoof",
     "defaultVarietyId": 399,
     "defaultVarietyName": "bidoof",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "400": {
     "id": 400,
@@ -11556,13 +11158,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/400.png",
+    "sprite": "400.png",
     "basePokemonId": 399,
     "basePokemonName": "bidoof",
     "defaultVarietyId": 400,
     "defaultVarietyName": "bibarel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "401": {
     "id": 401,
@@ -11582,13 +11183,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/401.png",
+    "sprite": "401.png",
     "basePokemonId": 401,
     "basePokemonName": "kricketot",
     "defaultVarietyId": 401,
     "defaultVarietyName": "kricketot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "402": {
     "id": 402,
@@ -11608,13 +11208,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/402.png",
+    "sprite": "402.png",
     "basePokemonId": 401,
     "basePokemonName": "kricketot",
     "defaultVarietyId": 402,
     "defaultVarietyName": "kricketune",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "403": {
     "id": 403,
@@ -11639,13 +11238,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/403.png",
+    "sprite": "403.png",
     "basePokemonId": 403,
     "basePokemonName": "shinx",
     "defaultVarietyId": 403,
     "defaultVarietyName": "shinx",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "404": {
     "id": 404,
@@ -11670,13 +11268,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/404.png",
+    "sprite": "404.png",
     "basePokemonId": 403,
     "basePokemonName": "shinx",
     "defaultVarietyId": 404,
     "defaultVarietyName": "luxio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "405": {
     "id": 405,
@@ -11701,13 +11298,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png",
+    "sprite": "405.png",
     "basePokemonId": 403,
     "basePokemonName": "shinx",
     "defaultVarietyId": 405,
     "defaultVarietyName": "luxray",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "406": {
     "id": 406,
@@ -11733,13 +11329,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/406.png",
+    "sprite": "406.png",
     "basePokemonId": 406,
     "basePokemonName": "budew",
     "defaultVarietyId": 406,
     "defaultVarietyName": "budew",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "407": {
     "id": 407,
@@ -11765,13 +11360,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/407.png",
+    "sprite": "407.png",
     "basePokemonId": 406,
     "basePokemonName": "budew",
     "defaultVarietyId": 407,
     "defaultVarietyName": "roserade",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "408": {
     "id": 408,
@@ -11791,13 +11385,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/408.png",
+    "sprite": "408.png",
     "basePokemonId": 408,
     "basePokemonName": "cranidos",
     "defaultVarietyId": 408,
     "defaultVarietyName": "cranidos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "409": {
     "id": 409,
@@ -11817,13 +11410,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/409.png",
+    "sprite": "409.png",
     "basePokemonId": 408,
     "basePokemonName": "cranidos",
     "defaultVarietyId": 409,
     "defaultVarietyName": "rampardos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "410": {
     "id": 410,
@@ -11844,13 +11436,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/410.png",
+    "sprite": "410.png",
     "basePokemonId": 410,
     "basePokemonName": "shieldon",
     "defaultVarietyId": 410,
     "defaultVarietyName": "shieldon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "411": {
     "id": 411,
@@ -11871,13 +11462,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/411.png",
+    "sprite": "411.png",
     "basePokemonId": 410,
     "basePokemonName": "shieldon",
     "defaultVarietyId": 411,
     "defaultVarietyName": "bastiodon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "412": {
     "id": 412,
@@ -11897,13 +11487,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/412.png",
+    "sprite": "412.png",
     "basePokemonId": 412,
     "basePokemonName": "burmy",
     "defaultVarietyId": 412,
     "defaultVarietyName": "burmy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "413": {
     "id": 413,
@@ -11924,13 +11513,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/413.png",
+    "sprite": "413.png",
     "basePokemonId": 412,
     "basePokemonName": "burmy",
     "defaultVarietyId": 413,
     "defaultVarietyName": "wormadam-plant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "414": {
     "id": 414,
@@ -11951,13 +11539,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/414.png",
+    "sprite": "414.png",
     "basePokemonId": 412,
     "basePokemonName": "burmy",
     "defaultVarietyId": 414,
     "defaultVarietyName": "mothim",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "415": {
     "id": 415,
@@ -11978,13 +11565,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/415.png",
+    "sprite": "415.png",
     "basePokemonId": 415,
     "basePokemonName": "combee",
     "defaultVarietyId": 415,
     "defaultVarietyName": "combee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "416": {
     "id": 416,
@@ -12005,13 +11591,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/416.png",
+    "sprite": "416.png",
     "basePokemonId": 415,
     "basePokemonName": "combee",
     "defaultVarietyId": 416,
     "defaultVarietyName": "vespiquen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "417": {
     "id": 417,
@@ -12036,13 +11621,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/417.png",
+    "sprite": "417.png",
     "basePokemonId": 417,
     "basePokemonName": "pachirisu",
     "defaultVarietyId": 417,
     "defaultVarietyName": "pachirisu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "418": {
     "id": 418,
@@ -12062,13 +11646,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/418.png",
+    "sprite": "418.png",
     "basePokemonId": 418,
     "basePokemonName": "buizel",
     "defaultVarietyId": 418,
     "defaultVarietyName": "buizel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "419": {
     "id": 419,
@@ -12088,13 +11671,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/419.png",
+    "sprite": "419.png",
     "basePokemonId": 418,
     "basePokemonName": "buizel",
     "defaultVarietyId": 419,
     "defaultVarietyName": "floatzel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "420": {
     "id": 420,
@@ -12109,13 +11691,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/420.png",
+    "sprite": "420.png",
     "basePokemonId": 420,
     "basePokemonName": "cherubi",
     "defaultVarietyId": 420,
     "defaultVarietyName": "cherubi",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "421": {
     "id": 421,
@@ -12130,13 +11711,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/421.png",
+    "sprite": "421.png",
     "basePokemonId": 420,
     "basePokemonName": "cherubi",
     "defaultVarietyId": 421,
     "defaultVarietyName": "cherrim",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "422": {
     "id": 422,
@@ -12161,13 +11741,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/422.png",
+    "sprite": "422.png",
     "basePokemonId": 422,
     "basePokemonName": "shellos",
     "defaultVarietyId": 422,
     "defaultVarietyName": "shellos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "423": {
     "id": 423,
@@ -12193,13 +11772,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/423.png",
+    "sprite": "423.png",
     "basePokemonId": 422,
     "basePokemonName": "shellos",
     "defaultVarietyId": 423,
     "defaultVarietyName": "gastrodon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "424": {
     "id": 424,
@@ -12224,13 +11802,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/424.png",
+    "sprite": "424.png",
     "basePokemonId": 190,
     "basePokemonName": "aipom",
     "defaultVarietyId": 424,
     "defaultVarietyName": "ambipom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "425": {
     "id": 425,
@@ -12256,13 +11833,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png",
+    "sprite": "425.png",
     "basePokemonId": 425,
     "basePokemonName": "drifloon",
     "defaultVarietyId": 425,
     "defaultVarietyName": "drifloon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "426": {
     "id": 426,
@@ -12288,13 +11864,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/426.png",
+    "sprite": "426.png",
     "basePokemonId": 425,
     "basePokemonName": "drifloon",
     "defaultVarietyId": 426,
     "defaultVarietyName": "drifblim",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "427": {
     "id": 427,
@@ -12319,13 +11894,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/427.png",
+    "sprite": "427.png",
     "basePokemonId": 427,
     "basePokemonName": "buneary",
     "defaultVarietyId": 427,
     "defaultVarietyName": "buneary",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "428": {
     "id": 428,
@@ -12350,13 +11924,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/428.png",
+    "sprite": "428.png",
     "basePokemonId": 427,
     "basePokemonName": "buneary",
     "defaultVarietyId": 428,
     "defaultVarietyName": "lopunny",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "429": {
     "id": 429,
@@ -12371,13 +11944,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/429.png",
+    "sprite": "429.png",
     "basePokemonId": 200,
     "basePokemonName": "misdreavus",
     "defaultVarietyId": 429,
     "defaultVarietyName": "mismagius",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "430": {
     "id": 430,
@@ -12403,13 +11975,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/430.png",
+    "sprite": "430.png",
     "basePokemonId": 198,
     "basePokemonName": "murkrow",
     "defaultVarietyId": 430,
     "defaultVarietyName": "honchkrow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "431": {
     "id": 431,
@@ -12434,13 +12005,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/431.png",
+    "sprite": "431.png",
     "basePokemonId": 431,
     "basePokemonName": "glameow",
     "defaultVarietyId": 431,
     "defaultVarietyName": "glameow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "432": {
     "id": 432,
@@ -12465,13 +12035,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/432.png",
+    "sprite": "432.png",
     "basePokemonId": 431,
     "basePokemonName": "glameow",
     "defaultVarietyId": 432,
     "defaultVarietyName": "purugly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "433": {
     "id": 433,
@@ -12486,13 +12055,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/433.png",
+    "sprite": "433.png",
     "basePokemonId": 433,
     "basePokemonName": "chingling",
     "defaultVarietyId": 433,
     "defaultVarietyName": "chingling",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "434": {
     "id": 434,
@@ -12518,13 +12086,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/434.png",
+    "sprite": "434.png",
     "basePokemonId": 434,
     "basePokemonName": "stunky",
     "defaultVarietyId": 434,
     "defaultVarietyName": "stunky",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "435": {
     "id": 435,
@@ -12550,13 +12117,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/435.png",
+    "sprite": "435.png",
     "basePokemonId": 434,
     "basePokemonName": "stunky",
     "defaultVarietyId": 435,
     "defaultVarietyName": "skuntank",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "436": {
     "id": 436,
@@ -12582,13 +12148,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/436.png",
+    "sprite": "436.png",
     "basePokemonId": 436,
     "basePokemonName": "bronzor",
     "defaultVarietyId": 436,
     "defaultVarietyName": "bronzor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "437": {
     "id": 437,
@@ -12614,13 +12179,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/437.png",
+    "sprite": "437.png",
     "basePokemonId": 436,
     "basePokemonName": "bronzor",
     "defaultVarietyId": 437,
     "defaultVarietyName": "bronzong",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "438": {
     "id": 438,
@@ -12645,13 +12209,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/438.png",
+    "sprite": "438.png",
     "basePokemonId": 438,
     "basePokemonName": "bonsly",
     "defaultVarietyId": 438,
     "defaultVarietyName": "bonsly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "439": {
     "id": 439,
@@ -12677,13 +12240,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/439.png",
+    "sprite": "439.png",
     "basePokemonId": 439,
     "basePokemonName": "mime-jr",
     "defaultVarietyId": 439,
     "defaultVarietyName": "mime-jr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "440": {
     "id": 440,
@@ -12708,13 +12270,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/440.png",
+    "sprite": "440.png",
     "basePokemonId": 440,
     "basePokemonName": "happiny",
     "defaultVarietyId": 440,
     "defaultVarietyName": "happiny",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "441": {
     "id": 441,
@@ -12740,13 +12301,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/441.png",
+    "sprite": "441.png",
     "basePokemonId": 441,
     "basePokemonName": "chatot",
     "defaultVarietyId": 441,
     "defaultVarietyName": "chatot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "442": {
     "id": 442,
@@ -12767,13 +12327,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/442.png",
+    "sprite": "442.png",
     "basePokemonId": 442,
     "basePokemonName": "spiritomb",
     "defaultVarietyId": 442,
     "defaultVarietyName": "spiritomb",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "443": {
     "id": 443,
@@ -12794,13 +12353,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/443.png",
+    "sprite": "443.png",
     "basePokemonId": 443,
     "basePokemonName": "gible",
     "defaultVarietyId": 443,
     "defaultVarietyName": "gible",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "444": {
     "id": 444,
@@ -12821,13 +12379,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/444.png",
+    "sprite": "444.png",
     "basePokemonId": 443,
     "basePokemonName": "gible",
     "defaultVarietyId": 444,
     "defaultVarietyName": "gabite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "445": {
     "id": 445,
@@ -12848,13 +12405,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png",
+    "sprite": "445.png",
     "basePokemonId": 443,
     "basePokemonName": "gible",
     "defaultVarietyId": 445,
     "defaultVarietyName": "garchomp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "446": {
     "id": 446,
@@ -12879,13 +12435,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/446.png",
+    "sprite": "446.png",
     "basePokemonId": 446,
     "basePokemonName": "munchlax",
     "defaultVarietyId": 446,
     "defaultVarietyName": "munchlax",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "447": {
     "id": 447,
@@ -12910,13 +12465,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/447.png",
+    "sprite": "447.png",
     "basePokemonId": 447,
     "basePokemonName": "riolu",
     "defaultVarietyId": 447,
     "defaultVarietyName": "riolu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "448": {
     "id": 448,
@@ -12942,13 +12496,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png",
+    "sprite": "448.png",
     "basePokemonId": 447,
     "basePokemonName": "riolu",
     "defaultVarietyId": 448,
     "defaultVarietyName": "lucario",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "449": {
     "id": 449,
@@ -12968,13 +12521,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/449.png",
+    "sprite": "449.png",
     "basePokemonId": 449,
     "basePokemonName": "hippopotas",
     "defaultVarietyId": 449,
     "defaultVarietyName": "hippopotas",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "450": {
     "id": 450,
@@ -12994,13 +12546,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/450.png",
+    "sprite": "450.png",
     "basePokemonId": 449,
     "basePokemonName": "hippopotas",
     "defaultVarietyId": 450,
     "defaultVarietyName": "hippowdon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "451": {
     "id": 451,
@@ -13026,13 +12577,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png",
+    "sprite": "451.png",
     "basePokemonId": 451,
     "basePokemonName": "skorupi",
     "defaultVarietyId": 451,
     "defaultVarietyName": "skorupi",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "452": {
     "id": 452,
@@ -13058,13 +12608,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/452.png",
+    "sprite": "452.png",
     "basePokemonId": 451,
     "basePokemonName": "skorupi",
     "defaultVarietyId": 452,
     "defaultVarietyName": "drapion",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "453": {
     "id": 453,
@@ -13090,13 +12639,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/453.png",
+    "sprite": "453.png",
     "basePokemonId": 453,
     "basePokemonName": "croagunk",
     "defaultVarietyId": 453,
     "defaultVarietyName": "croagunk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "454": {
     "id": 454,
@@ -13122,13 +12670,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png",
+    "sprite": "454.png",
     "basePokemonId": 453,
     "basePokemonName": "croagunk",
     "defaultVarietyId": 454,
     "defaultVarietyName": "toxicroak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "455": {
     "id": 455,
@@ -13143,13 +12690,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/455.png",
+    "sprite": "455.png",
     "basePokemonId": 455,
     "basePokemonName": "carnivine",
     "defaultVarietyId": 455,
     "defaultVarietyName": "carnivine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "456": {
     "id": 456,
@@ -13174,13 +12720,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/456.png",
+    "sprite": "456.png",
     "basePokemonId": 456,
     "basePokemonName": "finneon",
     "defaultVarietyId": 456,
     "defaultVarietyName": "finneon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "457": {
     "id": 457,
@@ -13205,13 +12750,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/457.png",
+    "sprite": "457.png",
     "basePokemonId": 456,
     "basePokemonName": "finneon",
     "defaultVarietyId": 457,
     "defaultVarietyName": "lumineon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "458": {
     "id": 458,
@@ -13237,13 +12781,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/458.png",
+    "sprite": "458.png",
     "basePokemonId": 458,
     "basePokemonName": "mantyke",
     "defaultVarietyId": 458,
     "defaultVarietyName": "mantyke",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "459": {
     "id": 459,
@@ -13264,13 +12807,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/459.png",
+    "sprite": "459.png",
     "basePokemonId": 459,
     "basePokemonName": "snover",
     "defaultVarietyId": 459,
     "defaultVarietyName": "snover",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "460": {
     "id": 460,
@@ -13291,13 +12833,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/460.png",
+    "sprite": "460.png",
     "basePokemonId": 459,
     "basePokemonName": "snover",
     "defaultVarietyId": 460,
     "defaultVarietyName": "abomasnow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "461": {
     "id": 461,
@@ -13318,13 +12859,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/461.png",
+    "sprite": "461.png",
     "basePokemonId": 215,
     "basePokemonName": "sneasel",
     "defaultVarietyId": 461,
     "defaultVarietyName": "weavile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "462": {
     "id": 462,
@@ -13350,13 +12890,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/462.png",
+    "sprite": "462.png",
     "basePokemonId": 81,
     "basePokemonName": "magnemite",
     "defaultVarietyId": 462,
     "defaultVarietyName": "magnezone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "463": {
     "id": 463,
@@ -13381,13 +12920,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/463.png",
+    "sprite": "463.png",
     "basePokemonId": 108,
     "basePokemonName": "lickitung",
     "defaultVarietyId": 463,
     "defaultVarietyName": "lickilicky",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "464": {
     "id": 464,
@@ -13413,13 +12951,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/464.png",
+    "sprite": "464.png",
     "basePokemonId": 111,
     "basePokemonName": "rhyhorn",
     "defaultVarietyId": 464,
     "defaultVarietyName": "rhyperior",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "465": {
     "id": 465,
@@ -13444,13 +12981,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/465.png",
+    "sprite": "465.png",
     "basePokemonId": 114,
     "basePokemonName": "tangela",
     "defaultVarietyId": 465,
     "defaultVarietyName": "tangrowth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "466": {
     "id": 466,
@@ -13470,13 +13006,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/466.png",
+    "sprite": "466.png",
     "basePokemonId": 239,
     "basePokemonName": "elekid",
     "defaultVarietyId": 466,
     "defaultVarietyName": "electivire",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "467": {
     "id": 467,
@@ -13496,13 +13031,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/467.png",
+    "sprite": "467.png",
     "basePokemonId": 240,
     "basePokemonName": "magby",
     "defaultVarietyId": 467,
     "defaultVarietyName": "magmortar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "468": {
     "id": 468,
@@ -13528,13 +13062,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/468.png",
+    "sprite": "468.png",
     "basePokemonId": 175,
     "basePokemonName": "togepi",
     "defaultVarietyId": 468,
     "defaultVarietyName": "togekiss",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "469": {
     "id": 469,
@@ -13560,13 +13093,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/469.png",
+    "sprite": "469.png",
     "basePokemonId": 193,
     "basePokemonName": "yanma",
     "defaultVarietyId": 469,
     "defaultVarietyName": "yanmega",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "470": {
     "id": 470,
@@ -13586,13 +13118,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/470.png",
+    "sprite": "470.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 470,
     "defaultVarietyName": "leafeon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "471": {
     "id": 471,
@@ -13612,13 +13143,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/471.png",
+    "sprite": "471.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 471,
     "defaultVarietyName": "glaceon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "472": {
     "id": 472,
@@ -13644,13 +13174,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/472.png",
+    "sprite": "472.png",
     "basePokemonId": 207,
     "basePokemonName": "gligar",
     "defaultVarietyId": 472,
     "defaultVarietyName": "gliscor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "473": {
     "id": 473,
@@ -13676,13 +13205,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/473.png",
+    "sprite": "473.png",
     "basePokemonId": 220,
     "basePokemonName": "swinub",
     "defaultVarietyId": 473,
     "defaultVarietyName": "mamoswine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "474": {
     "id": 474,
@@ -13707,13 +13235,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/474.png",
+    "sprite": "474.png",
     "basePokemonId": 137,
     "basePokemonName": "porygon",
     "defaultVarietyId": 474,
     "defaultVarietyName": "porygon-z",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "475": {
     "id": 475,
@@ -13739,13 +13266,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/475.png",
+    "sprite": "475.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 475,
     "defaultVarietyName": "gallade",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "476": {
     "id": 476,
@@ -13771,13 +13297,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/476.png",
+    "sprite": "476.png",
     "basePokemonId": 299,
     "basePokemonName": "nosepass",
     "defaultVarietyId": 476,
     "defaultVarietyName": "probopass",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "477": {
     "id": 477,
@@ -13797,13 +13322,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/477.png",
+    "sprite": "477.png",
     "basePokemonId": 355,
     "basePokemonName": "duskull",
     "defaultVarietyId": 477,
     "defaultVarietyName": "dusknoir",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "478": {
     "id": 478,
@@ -13824,13 +13348,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/478.png",
+    "sprite": "478.png",
     "basePokemonId": 361,
     "basePokemonName": "snorunt",
     "defaultVarietyId": 478,
     "defaultVarietyName": "froslass",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "479": {
     "id": 479,
@@ -13846,13 +13369,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/479.png",
+    "sprite": "479.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "480": {
     "id": 480,
@@ -13867,13 +13389,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/480.png",
+    "sprite": "480.png",
     "basePokemonId": 480,
     "basePokemonName": "uxie",
     "defaultVarietyId": 480,
     "defaultVarietyName": "uxie",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "481": {
     "id": 481,
@@ -13888,13 +13409,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/481.png",
+    "sprite": "481.png",
     "basePokemonId": 481,
     "basePokemonName": "mesprit",
     "defaultVarietyId": 481,
     "defaultVarietyName": "mesprit",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "482": {
     "id": 482,
@@ -13909,13 +13429,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/482.png",
+    "sprite": "482.png",
     "basePokemonId": 482,
     "basePokemonName": "azelf",
     "defaultVarietyId": 482,
     "defaultVarietyName": "azelf",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "483": {
     "id": 483,
@@ -13936,13 +13455,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/483.png",
+    "sprite": "483.png",
     "basePokemonId": 483,
     "basePokemonName": "dialga",
     "defaultVarietyId": 483,
     "defaultVarietyName": "dialga",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "484": {
     "id": 484,
@@ -13963,13 +13481,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/484.png",
+    "sprite": "484.png",
     "basePokemonId": 484,
     "basePokemonName": "palkia",
     "defaultVarietyId": 484,
     "defaultVarietyName": "palkia",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "485": {
     "id": 485,
@@ -13990,13 +13507,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/485.png",
+    "sprite": "485.png",
     "basePokemonId": 485,
     "basePokemonName": "heatran",
     "defaultVarietyId": 485,
     "defaultVarietyName": "heatran",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "486": {
     "id": 486,
@@ -14011,13 +13527,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/486.png",
+    "sprite": "486.png",
     "basePokemonId": 486,
     "basePokemonName": "regigigas",
     "defaultVarietyId": 486,
     "defaultVarietyName": "regigigas",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "487": {
     "id": 487,
@@ -14038,13 +13553,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/487.png",
+    "sprite": "487.png",
     "basePokemonId": 487,
     "basePokemonName": "giratina",
     "defaultVarietyId": 487,
     "defaultVarietyName": "giratina-altered",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "488": {
     "id": 488,
@@ -14059,13 +13573,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/488.png",
+    "sprite": "488.png",
     "basePokemonId": 488,
     "basePokemonName": "cresselia",
     "defaultVarietyId": 488,
     "defaultVarietyName": "cresselia",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "489": {
     "id": 489,
@@ -14080,13 +13593,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/489.png",
+    "sprite": "489.png",
     "basePokemonId": 489,
     "basePokemonName": "phione",
     "defaultVarietyId": 489,
     "defaultVarietyName": "phione",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "490": {
     "id": 490,
@@ -14101,13 +13613,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/490.png",
+    "sprite": "490.png",
     "basePokemonId": 489,
     "basePokemonName": "phione",
     "defaultVarietyId": 490,
     "defaultVarietyName": "manaphy",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "491": {
     "id": 491,
@@ -14122,13 +13633,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/491.png",
+    "sprite": "491.png",
     "basePokemonId": 491,
     "basePokemonName": "darkrai",
     "defaultVarietyId": 491,
     "defaultVarietyName": "darkrai",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "492": {
     "id": 492,
@@ -14143,13 +13653,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/492.png",
+    "sprite": "492.png",
     "basePokemonId": 492,
     "basePokemonName": "shaymin",
     "defaultVarietyId": 492,
     "defaultVarietyName": "shaymin-land",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "493": {
     "id": 493,
@@ -14164,13 +13673,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/493.png",
+    "sprite": "493.png",
     "basePokemonId": 493,
     "basePokemonName": "arceus",
     "defaultVarietyId": 493,
     "defaultVarietyName": "arceus",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "494": {
     "id": 494,
@@ -14186,13 +13694,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/494.png",
+    "sprite": "494.png",
     "basePokemonId": 494,
     "basePokemonName": "victini",
     "defaultVarietyId": 494,
     "defaultVarietyName": "victini",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "495": {
     "id": 495,
@@ -14212,13 +13719,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/495.png",
+    "sprite": "495.png",
     "basePokemonId": 495,
     "basePokemonName": "snivy",
     "defaultVarietyId": 495,
     "defaultVarietyName": "snivy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "496": {
     "id": 496,
@@ -14238,13 +13744,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/496.png",
+    "sprite": "496.png",
     "basePokemonId": 495,
     "basePokemonName": "snivy",
     "defaultVarietyId": 496,
     "defaultVarietyName": "servine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "497": {
     "id": 497,
@@ -14264,13 +13769,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/497.png",
+    "sprite": "497.png",
     "basePokemonId": 495,
     "basePokemonName": "snivy",
     "defaultVarietyId": 497,
     "defaultVarietyName": "serperior",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "498": {
     "id": 498,
@@ -14290,13 +13794,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/498.png",
+    "sprite": "498.png",
     "basePokemonId": 498,
     "basePokemonName": "tepig",
     "defaultVarietyId": 498,
     "defaultVarietyName": "tepig",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "499": {
     "id": 499,
@@ -14317,13 +13820,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/499.png",
+    "sprite": "499.png",
     "basePokemonId": 498,
     "basePokemonName": "tepig",
     "defaultVarietyId": 499,
     "defaultVarietyName": "pignite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "500": {
     "id": 500,
@@ -14344,13 +13846,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/500.png",
+    "sprite": "500.png",
     "basePokemonId": 498,
     "basePokemonName": "tepig",
     "defaultVarietyId": 500,
     "defaultVarietyName": "emboar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "501": {
     "id": 501,
@@ -14370,13 +13871,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/501.png",
+    "sprite": "501.png",
     "basePokemonId": 501,
     "basePokemonName": "oshawott",
     "defaultVarietyId": 501,
     "defaultVarietyName": "oshawott",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "502": {
     "id": 502,
@@ -14396,13 +13896,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/502.png",
+    "sprite": "502.png",
     "basePokemonId": 501,
     "basePokemonName": "oshawott",
     "defaultVarietyId": 502,
     "defaultVarietyName": "dewott",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "503": {
     "id": 503,
@@ -14422,13 +13921,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/503.png",
+    "sprite": "503.png",
     "basePokemonId": 501,
     "basePokemonName": "oshawott",
     "defaultVarietyId": 503,
     "defaultVarietyName": "samurott",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "504": {
     "id": 504,
@@ -14453,13 +13951,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/504.png",
+    "sprite": "504.png",
     "basePokemonId": 504,
     "basePokemonName": "patrat",
     "defaultVarietyId": 504,
     "defaultVarietyName": "patrat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "505": {
     "id": 505,
@@ -14484,13 +13981,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/505.png",
+    "sprite": "505.png",
     "basePokemonId": 504,
     "basePokemonName": "patrat",
     "defaultVarietyId": 505,
     "defaultVarietyName": "watchog",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "506": {
     "id": 506,
@@ -14515,13 +14011,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/506.png",
+    "sprite": "506.png",
     "basePokemonId": 506,
     "basePokemonName": "lillipup",
     "defaultVarietyId": 506,
     "defaultVarietyName": "lillipup",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "507": {
     "id": 507,
@@ -14546,13 +14041,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/507.png",
+    "sprite": "507.png",
     "basePokemonId": 506,
     "basePokemonName": "lillipup",
     "defaultVarietyId": 507,
     "defaultVarietyName": "herdier",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "508": {
     "id": 508,
@@ -14577,13 +14071,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/508.png",
+    "sprite": "508.png",
     "basePokemonId": 506,
     "basePokemonName": "lillipup",
     "defaultVarietyId": 508,
     "defaultVarietyName": "stoutland",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "509": {
     "id": 509,
@@ -14608,13 +14101,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/509.png",
+    "sprite": "509.png",
     "basePokemonId": 509,
     "basePokemonName": "purrloin",
     "defaultVarietyId": 509,
     "defaultVarietyName": "purrloin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "510": {
     "id": 510,
@@ -14639,13 +14131,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/510.png",
+    "sprite": "510.png",
     "basePokemonId": 509,
     "basePokemonName": "purrloin",
     "defaultVarietyId": 510,
     "defaultVarietyName": "liepard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "511": {
     "id": 511,
@@ -14665,13 +14156,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/511.png",
+    "sprite": "511.png",
     "basePokemonId": 511,
     "basePokemonName": "pansage",
     "defaultVarietyId": 511,
     "defaultVarietyName": "pansage",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "512": {
     "id": 512,
@@ -14691,13 +14181,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/512.png",
+    "sprite": "512.png",
     "basePokemonId": 511,
     "basePokemonName": "pansage",
     "defaultVarietyId": 512,
     "defaultVarietyName": "simisage",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "513": {
     "id": 513,
@@ -14717,13 +14206,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/513.png",
+    "sprite": "513.png",
     "basePokemonId": 513,
     "basePokemonName": "pansear",
     "defaultVarietyId": 513,
     "defaultVarietyName": "pansear",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "514": {
     "id": 514,
@@ -14743,13 +14231,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/514.png",
+    "sprite": "514.png",
     "basePokemonId": 513,
     "basePokemonName": "pansear",
     "defaultVarietyId": 514,
     "defaultVarietyName": "simisear",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "515": {
     "id": 515,
@@ -14769,13 +14256,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/515.png",
+    "sprite": "515.png",
     "basePokemonId": 515,
     "basePokemonName": "panpour",
     "defaultVarietyId": 515,
     "defaultVarietyName": "panpour",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "516": {
     "id": 516,
@@ -14795,13 +14281,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/516.png",
+    "sprite": "516.png",
     "basePokemonId": 515,
     "basePokemonName": "panpour",
     "defaultVarietyId": 516,
     "defaultVarietyName": "simipour",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "517": {
     "id": 517,
@@ -14826,13 +14311,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/517.png",
+    "sprite": "517.png",
     "basePokemonId": 517,
     "basePokemonName": "munna",
     "defaultVarietyId": 517,
     "defaultVarietyName": "munna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "518": {
     "id": 518,
@@ -14857,13 +14341,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/518.png",
+    "sprite": "518.png",
     "basePokemonId": 517,
     "basePokemonName": "munna",
     "defaultVarietyId": 518,
     "defaultVarietyName": "musharna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "519": {
     "id": 519,
@@ -14889,13 +14372,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/519.png",
+    "sprite": "519.png",
     "basePokemonId": 519,
     "basePokemonName": "pidove",
     "defaultVarietyId": 519,
     "defaultVarietyName": "pidove",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "520": {
     "id": 520,
@@ -14921,13 +14403,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/520.png",
+    "sprite": "520.png",
     "basePokemonId": 519,
     "basePokemonName": "pidove",
     "defaultVarietyId": 520,
     "defaultVarietyName": "tranquill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "521": {
     "id": 521,
@@ -14953,13 +14434,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/521.png",
+    "sprite": "521.png",
     "basePokemonId": 519,
     "basePokemonName": "pidove",
     "defaultVarietyId": 521,
     "defaultVarietyName": "unfezant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "522": {
     "id": 522,
@@ -14984,13 +14464,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/522.png",
+    "sprite": "522.png",
     "basePokemonId": 522,
     "basePokemonName": "blitzle",
     "defaultVarietyId": 522,
     "defaultVarietyName": "blitzle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "523": {
     "id": 523,
@@ -15015,13 +14494,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/523.png",
+    "sprite": "523.png",
     "basePokemonId": 522,
     "basePokemonName": "blitzle",
     "defaultVarietyId": 523,
     "defaultVarietyName": "zebstrika",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "524": {
     "id": 524,
@@ -15046,13 +14524,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/524.png",
+    "sprite": "524.png",
     "basePokemonId": 524,
     "basePokemonName": "roggenrola",
     "defaultVarietyId": 524,
     "defaultVarietyName": "roggenrola",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "525": {
     "id": 525,
@@ -15077,13 +14554,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/525.png",
+    "sprite": "525.png",
     "basePokemonId": 524,
     "basePokemonName": "roggenrola",
     "defaultVarietyId": 525,
     "defaultVarietyName": "boldore",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "526": {
     "id": 526,
@@ -15108,13 +14584,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/526.png",
+    "sprite": "526.png",
     "basePokemonId": 524,
     "basePokemonName": "roggenrola",
     "defaultVarietyId": 526,
     "defaultVarietyName": "gigalith",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "527": {
     "id": 527,
@@ -15140,13 +14615,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/527.png",
+    "sprite": "527.png",
     "basePokemonId": 527,
     "basePokemonName": "woobat",
     "defaultVarietyId": 527,
     "defaultVarietyName": "woobat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "528": {
     "id": 528,
@@ -15172,13 +14646,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/528.png",
+    "sprite": "528.png",
     "basePokemonId": 527,
     "basePokemonName": "woobat",
     "defaultVarietyId": 528,
     "defaultVarietyName": "swoobat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "529": {
     "id": 529,
@@ -15203,13 +14676,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/529.png",
+    "sprite": "529.png",
     "basePokemonId": 529,
     "basePokemonName": "drilbur",
     "defaultVarietyId": 529,
     "defaultVarietyName": "drilbur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "530": {
     "id": 530,
@@ -15235,13 +14707,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/530.png",
+    "sprite": "530.png",
     "basePokemonId": 529,
     "basePokemonName": "drilbur",
     "defaultVarietyId": 530,
     "defaultVarietyName": "excadrill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "531": {
     "id": 531,
@@ -15266,13 +14737,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/531.png",
+    "sprite": "531.png",
     "basePokemonId": 531,
     "basePokemonName": "audino",
     "defaultVarietyId": 531,
     "defaultVarietyName": "audino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "532": {
     "id": 532,
@@ -15297,13 +14767,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/532.png",
+    "sprite": "532.png",
     "basePokemonId": 532,
     "basePokemonName": "timburr",
     "defaultVarietyId": 532,
     "defaultVarietyName": "timburr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "533": {
     "id": 533,
@@ -15328,13 +14797,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/533.png",
+    "sprite": "533.png",
     "basePokemonId": 532,
     "basePokemonName": "timburr",
     "defaultVarietyId": 533,
     "defaultVarietyName": "gurdurr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "534": {
     "id": 534,
@@ -15359,13 +14827,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/534.png",
+    "sprite": "534.png",
     "basePokemonId": 532,
     "basePokemonName": "timburr",
     "defaultVarietyId": 534,
     "defaultVarietyName": "conkeldurr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "535": {
     "id": 535,
@@ -15390,13 +14857,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/535.png",
+    "sprite": "535.png",
     "basePokemonId": 535,
     "basePokemonName": "tympole",
     "defaultVarietyId": 535,
     "defaultVarietyName": "tympole",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "536": {
     "id": 536,
@@ -15422,13 +14888,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/536.png",
+    "sprite": "536.png",
     "basePokemonId": 535,
     "basePokemonName": "tympole",
     "defaultVarietyId": 536,
     "defaultVarietyName": "palpitoad",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "537": {
     "id": 537,
@@ -15454,13 +14919,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/537.png",
+    "sprite": "537.png",
     "basePokemonId": 535,
     "basePokemonName": "tympole",
     "defaultVarietyId": 537,
     "defaultVarietyName": "seismitoad",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "538": {
     "id": 538,
@@ -15485,13 +14949,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/538.png",
+    "sprite": "538.png",
     "basePokemonId": 538,
     "basePokemonName": "throh",
     "defaultVarietyId": 538,
     "defaultVarietyName": "throh",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "539": {
     "id": 539,
@@ -15516,13 +14979,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/539.png",
+    "sprite": "539.png",
     "basePokemonId": 539,
     "basePokemonName": "sawk",
     "defaultVarietyId": 539,
     "defaultVarietyName": "sawk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "540": {
     "id": 540,
@@ -15548,13 +15010,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/540.png",
+    "sprite": "540.png",
     "basePokemonId": 540,
     "basePokemonName": "sewaddle",
     "defaultVarietyId": 540,
     "defaultVarietyName": "sewaddle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "541": {
     "id": 541,
@@ -15580,13 +15041,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/541.png",
+    "sprite": "541.png",
     "basePokemonId": 540,
     "basePokemonName": "sewaddle",
     "defaultVarietyId": 541,
     "defaultVarietyName": "swadloon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "542": {
     "id": 542,
@@ -15612,13 +15072,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/542.png",
+    "sprite": "542.png",
     "basePokemonId": 540,
     "basePokemonName": "sewaddle",
     "defaultVarietyId": 542,
     "defaultVarietyName": "leavanny",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "543": {
     "id": 543,
@@ -15644,13 +15103,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/543.png",
+    "sprite": "543.png",
     "basePokemonId": 543,
     "basePokemonName": "venipede",
     "defaultVarietyId": 543,
     "defaultVarietyName": "venipede",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "544": {
     "id": 544,
@@ -15676,13 +15134,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/544.png",
+    "sprite": "544.png",
     "basePokemonId": 543,
     "basePokemonName": "venipede",
     "defaultVarietyId": 544,
     "defaultVarietyName": "whirlipede",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "545": {
     "id": 545,
@@ -15708,13 +15165,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/545.png",
+    "sprite": "545.png",
     "basePokemonId": 543,
     "basePokemonName": "venipede",
     "defaultVarietyId": 545,
     "defaultVarietyName": "scolipede",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "546": {
     "id": 546,
@@ -15740,13 +15196,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/546.png",
+    "sprite": "546.png",
     "basePokemonId": 546,
     "basePokemonName": "cottonee",
     "defaultVarietyId": 546,
     "defaultVarietyName": "cottonee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "547": {
     "id": 547,
@@ -15772,13 +15227,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/547.png",
+    "sprite": "547.png",
     "basePokemonId": 546,
     "basePokemonName": "cottonee",
     "defaultVarietyId": 547,
     "defaultVarietyName": "whimsicott",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "548": {
     "id": 548,
@@ -15803,13 +15257,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/548.png",
+    "sprite": "548.png",
     "basePokemonId": 548,
     "basePokemonName": "petilil",
     "defaultVarietyId": 548,
     "defaultVarietyName": "petilil",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "549": {
     "id": 549,
@@ -15834,13 +15287,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/549.png",
+    "sprite": "549.png",
     "basePokemonId": 548,
     "basePokemonName": "petilil",
     "defaultVarietyId": 549,
     "defaultVarietyName": "lilligant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "550": {
     "id": 550,
@@ -15865,13 +15317,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/550.png",
+    "sprite": "550.png",
     "basePokemonId": 550,
     "basePokemonName": "basculin",
     "defaultVarietyId": 550,
     "defaultVarietyName": "basculin-red-striped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "551": {
     "id": 551,
@@ -15897,13 +15348,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png",
+    "sprite": "551.png",
     "basePokemonId": 551,
     "basePokemonName": "sandile",
     "defaultVarietyId": 551,
     "defaultVarietyName": "sandile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "552": {
     "id": 552,
@@ -15929,13 +15379,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/552.png",
+    "sprite": "552.png",
     "basePokemonId": 551,
     "basePokemonName": "sandile",
     "defaultVarietyId": 552,
     "defaultVarietyName": "krokorok",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "553": {
     "id": 553,
@@ -15961,13 +15410,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png",
+    "sprite": "553.png",
     "basePokemonId": 551,
     "basePokemonName": "sandile",
     "defaultVarietyId": 553,
     "defaultVarietyName": "krookodile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "554": {
     "id": 554,
@@ -15987,13 +15435,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/554.png",
+    "sprite": "554.png",
     "basePokemonId": 554,
     "basePokemonName": "darumaka",
     "defaultVarietyId": 554,
     "defaultVarietyName": "darumaka",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "555": {
     "id": 555,
@@ -16013,13 +15460,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/555.png",
+    "sprite": "555.png",
     "basePokemonId": 554,
     "basePokemonName": "darumaka",
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "556": {
     "id": 556,
@@ -16044,13 +15490,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/556.png",
+    "sprite": "556.png",
     "basePokemonId": 556,
     "basePokemonName": "maractus",
     "defaultVarietyId": 556,
     "defaultVarietyName": "maractus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "557": {
     "id": 557,
@@ -16076,13 +15521,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/557.png",
+    "sprite": "557.png",
     "basePokemonId": 557,
     "basePokemonName": "dwebble",
     "defaultVarietyId": 557,
     "defaultVarietyName": "dwebble",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "558": {
     "id": 558,
@@ -16108,13 +15552,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/558.png",
+    "sprite": "558.png",
     "basePokemonId": 557,
     "basePokemonName": "dwebble",
     "defaultVarietyId": 558,
     "defaultVarietyName": "crustle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "559": {
     "id": 559,
@@ -16140,13 +15583,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/559.png",
+    "sprite": "559.png",
     "basePokemonId": 559,
     "basePokemonName": "scraggy",
     "defaultVarietyId": 559,
     "defaultVarietyName": "scraggy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "560": {
     "id": 560,
@@ -16172,13 +15614,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/560.png",
+    "sprite": "560.png",
     "basePokemonId": 559,
     "basePokemonName": "scraggy",
     "defaultVarietyId": 560,
     "defaultVarietyName": "scrafty",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "561": {
     "id": 561,
@@ -16204,13 +15645,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/561.png",
+    "sprite": "561.png",
     "basePokemonId": 561,
     "basePokemonName": "sigilyph",
     "defaultVarietyId": 561,
     "defaultVarietyName": "sigilyph",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "562": {
     "id": 562,
@@ -16225,13 +15665,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/562.png",
+    "sprite": "562.png",
     "basePokemonId": 562,
     "basePokemonName": "yamask",
     "defaultVarietyId": 562,
     "defaultVarietyName": "yamask",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "563": {
     "id": 563,
@@ -16246,13 +15685,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/563.png",
+    "sprite": "563.png",
     "basePokemonId": 562,
     "basePokemonName": "yamask",
     "defaultVarietyId": 563,
     "defaultVarietyName": "cofagrigus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "564": {
     "id": 564,
@@ -16278,13 +15716,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/564.png",
+    "sprite": "564.png",
     "basePokemonId": 564,
     "basePokemonName": "tirtouga",
     "defaultVarietyId": 564,
     "defaultVarietyName": "tirtouga",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "565": {
     "id": 565,
@@ -16310,13 +15747,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/565.png",
+    "sprite": "565.png",
     "basePokemonId": 564,
     "basePokemonName": "tirtouga",
     "defaultVarietyId": 565,
     "defaultVarietyName": "carracosta",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "566": {
     "id": 566,
@@ -16332,13 +15768,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/566.png",
+    "sprite": "566.png",
     "basePokemonId": 566,
     "basePokemonName": "archen",
     "defaultVarietyId": 566,
     "defaultVarietyName": "archen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "567": {
     "id": 567,
@@ -16354,13 +15789,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/567.png",
+    "sprite": "567.png",
     "basePokemonId": 566,
     "basePokemonName": "archen",
     "defaultVarietyId": 567,
     "defaultVarietyName": "archeops",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "568": {
     "id": 568,
@@ -16385,13 +15819,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/568.png",
+    "sprite": "568.png",
     "basePokemonId": 568,
     "basePokemonName": "trubbish",
     "defaultVarietyId": 568,
     "defaultVarietyName": "trubbish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "569": {
     "id": 569,
@@ -16416,13 +15849,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/569.png",
+    "sprite": "569.png",
     "basePokemonId": 568,
     "basePokemonName": "trubbish",
     "defaultVarietyId": 569,
     "defaultVarietyName": "garbodor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "570": {
     "id": 570,
@@ -16437,13 +15869,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/570.png",
+    "sprite": "570.png",
     "basePokemonId": 570,
     "basePokemonName": "zorua",
     "defaultVarietyId": 570,
     "defaultVarietyName": "zorua",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "571": {
     "id": 571,
@@ -16458,13 +15889,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/571.png",
+    "sprite": "571.png",
     "basePokemonId": 570,
     "basePokemonName": "zorua",
     "defaultVarietyId": 571,
     "defaultVarietyName": "zoroark",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "572": {
     "id": 572,
@@ -16489,13 +15919,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/572.png",
+    "sprite": "572.png",
     "basePokemonId": 572,
     "basePokemonName": "minccino",
     "defaultVarietyId": 572,
     "defaultVarietyName": "minccino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "573": {
     "id": 573,
@@ -16520,13 +15949,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/573.png",
+    "sprite": "573.png",
     "basePokemonId": 572,
     "basePokemonName": "minccino",
     "defaultVarietyId": 573,
     "defaultVarietyName": "cinccino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "574": {
     "id": 574,
@@ -16551,13 +15979,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/574.png",
+    "sprite": "574.png",
     "basePokemonId": 574,
     "basePokemonName": "gothita",
     "defaultVarietyId": 574,
     "defaultVarietyName": "gothita",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "575": {
     "id": 575,
@@ -16582,13 +16009,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/575.png",
+    "sprite": "575.png",
     "basePokemonId": 574,
     "basePokemonName": "gothita",
     "defaultVarietyId": 575,
     "defaultVarietyName": "gothorita",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "576": {
     "id": 576,
@@ -16613,13 +16039,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/576.png",
+    "sprite": "576.png",
     "basePokemonId": 574,
     "basePokemonName": "gothita",
     "defaultVarietyId": 576,
     "defaultVarietyName": "gothitelle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "577": {
     "id": 577,
@@ -16644,13 +16069,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/577.png",
+    "sprite": "577.png",
     "basePokemonId": 577,
     "basePokemonName": "solosis",
     "defaultVarietyId": 577,
     "defaultVarietyName": "solosis",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "578": {
     "id": 578,
@@ -16675,13 +16099,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/578.png",
+    "sprite": "578.png",
     "basePokemonId": 577,
     "basePokemonName": "solosis",
     "defaultVarietyId": 578,
     "defaultVarietyName": "duosion",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "579": {
     "id": 579,
@@ -16706,13 +16129,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/579.png",
+    "sprite": "579.png",
     "basePokemonId": 577,
     "basePokemonName": "solosis",
     "defaultVarietyId": 579,
     "defaultVarietyName": "reuniclus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "580": {
     "id": 580,
@@ -16738,13 +16160,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/580.png",
+    "sprite": "580.png",
     "basePokemonId": 580,
     "basePokemonName": "ducklett",
     "defaultVarietyId": 580,
     "defaultVarietyName": "ducklett",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "581": {
     "id": 581,
@@ -16770,13 +16191,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/581.png",
+    "sprite": "581.png",
     "basePokemonId": 580,
     "basePokemonName": "ducklett",
     "defaultVarietyId": 581,
     "defaultVarietyName": "swanna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "582": {
     "id": 582,
@@ -16801,13 +16221,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/582.png",
+    "sprite": "582.png",
     "basePokemonId": 582,
     "basePokemonName": "vanillite",
     "defaultVarietyId": 582,
     "defaultVarietyName": "vanillite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "583": {
     "id": 583,
@@ -16832,13 +16251,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/583.png",
+    "sprite": "583.png",
     "basePokemonId": 582,
     "basePokemonName": "vanillite",
     "defaultVarietyId": 583,
     "defaultVarietyName": "vanillish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "584": {
     "id": 584,
@@ -16863,13 +16281,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/584.png",
+    "sprite": "584.png",
     "basePokemonId": 582,
     "basePokemonName": "vanillite",
     "defaultVarietyId": 584,
     "defaultVarietyName": "vanilluxe",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "585": {
     "id": 585,
@@ -16895,13 +16312,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/585.png",
+    "sprite": "585.png",
     "basePokemonId": 585,
     "basePokemonName": "deerling",
     "defaultVarietyId": 585,
     "defaultVarietyName": "deerling",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "586": {
     "id": 586,
@@ -16927,13 +16343,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/586.png",
+    "sprite": "586.png",
     "basePokemonId": 585,
     "basePokemonName": "deerling",
     "defaultVarietyId": 586,
     "defaultVarietyName": "sawsbuck",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "587": {
     "id": 587,
@@ -16954,13 +16369,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png",
+    "sprite": "587.png",
     "basePokemonId": 587,
     "basePokemonName": "emolga",
     "defaultVarietyId": 587,
     "defaultVarietyName": "emolga",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "588": {
     "id": 588,
@@ -16985,13 +16399,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/588.png",
+    "sprite": "588.png",
     "basePokemonId": 588,
     "basePokemonName": "karrablast",
     "defaultVarietyId": 588,
     "defaultVarietyName": "karrablast",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "589": {
     "id": 589,
@@ -17017,13 +16430,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/589.png",
+    "sprite": "589.png",
     "basePokemonId": 588,
     "basePokemonName": "karrablast",
     "defaultVarietyId": 589,
     "defaultVarietyName": "escavalier",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "590": {
     "id": 590,
@@ -17044,13 +16456,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/590.png",
+    "sprite": "590.png",
     "basePokemonId": 590,
     "basePokemonName": "foongus",
     "defaultVarietyId": 590,
     "defaultVarietyName": "foongus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "591": {
     "id": 591,
@@ -17071,13 +16482,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/591.png",
+    "sprite": "591.png",
     "basePokemonId": 590,
     "basePokemonName": "foongus",
     "defaultVarietyId": 591,
     "defaultVarietyName": "amoonguss",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "592": {
     "id": 592,
@@ -17103,13 +16513,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/592.png",
+    "sprite": "592.png",
     "basePokemonId": 592,
     "basePokemonName": "frillish",
     "defaultVarietyId": 592,
     "defaultVarietyName": "frillish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "593": {
     "id": 593,
@@ -17135,13 +16544,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/593.png",
+    "sprite": "593.png",
     "basePokemonId": 592,
     "basePokemonName": "frillish",
     "defaultVarietyId": 593,
     "defaultVarietyName": "jellicent",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "594": {
     "id": 594,
@@ -17166,13 +16574,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/594.png",
+    "sprite": "594.png",
     "basePokemonId": 594,
     "basePokemonName": "alomomola",
     "defaultVarietyId": 594,
     "defaultVarietyName": "alomomola",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "595": {
     "id": 595,
@@ -17198,13 +16605,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/595.png",
+    "sprite": "595.png",
     "basePokemonId": 595,
     "basePokemonName": "joltik",
     "defaultVarietyId": 595,
     "defaultVarietyName": "joltik",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "596": {
     "id": 596,
@@ -17230,13 +16636,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/596.png",
+    "sprite": "596.png",
     "basePokemonId": 595,
     "basePokemonName": "joltik",
     "defaultVarietyId": 596,
     "defaultVarietyName": "galvantula",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "597": {
     "id": 597,
@@ -17252,13 +16657,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/597.png",
+    "sprite": "597.png",
     "basePokemonId": 597,
     "basePokemonName": "ferroseed",
     "defaultVarietyId": 597,
     "defaultVarietyName": "ferroseed",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "598": {
     "id": 598,
@@ -17279,13 +16683,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/598.png",
+    "sprite": "598.png",
     "basePokemonId": 597,
     "basePokemonName": "ferroseed",
     "defaultVarietyId": 598,
     "defaultVarietyName": "ferrothorn",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "599": {
     "id": 599,
@@ -17310,13 +16713,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/599.png",
+    "sprite": "599.png",
     "basePokemonId": 599,
     "basePokemonName": "klink",
     "defaultVarietyId": 599,
     "defaultVarietyName": "klink",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "600": {
     "id": 600,
@@ -17341,13 +16743,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/600.png",
+    "sprite": "600.png",
     "basePokemonId": 599,
     "basePokemonName": "klink",
     "defaultVarietyId": 600,
     "defaultVarietyName": "klang",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "601": {
     "id": 601,
@@ -17372,13 +16773,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/601.png",
+    "sprite": "601.png",
     "basePokemonId": 599,
     "basePokemonName": "klink",
     "defaultVarietyId": 601,
     "defaultVarietyName": "klinklang",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "602": {
     "id": 602,
@@ -17393,13 +16793,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/602.png",
+    "sprite": "602.png",
     "basePokemonId": 602,
     "basePokemonName": "tynamo",
     "defaultVarietyId": 602,
     "defaultVarietyName": "tynamo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "603": {
     "id": 603,
@@ -17414,13 +16813,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/603.png",
+    "sprite": "603.png",
     "basePokemonId": 602,
     "basePokemonName": "tynamo",
     "defaultVarietyId": 603,
     "defaultVarietyName": "eelektrik",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "604": {
     "id": 604,
@@ -17435,13 +16833,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/604.png",
+    "sprite": "604.png",
     "basePokemonId": 602,
     "basePokemonName": "tynamo",
     "defaultVarietyId": 604,
     "defaultVarietyName": "eelektross",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "605": {
     "id": 605,
@@ -17466,13 +16863,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/605.png",
+    "sprite": "605.png",
     "basePokemonId": 605,
     "basePokemonName": "elgyem",
     "defaultVarietyId": 605,
     "defaultVarietyName": "elgyem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "606": {
     "id": 606,
@@ -17497,13 +16893,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/606.png",
+    "sprite": "606.png",
     "basePokemonId": 605,
     "basePokemonName": "elgyem",
     "defaultVarietyId": 606,
     "defaultVarietyName": "beheeyem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "607": {
     "id": 607,
@@ -17529,13 +16924,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/607.png",
+    "sprite": "607.png",
     "basePokemonId": 607,
     "basePokemonName": "litwick",
     "defaultVarietyId": 607,
     "defaultVarietyName": "litwick",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "608": {
     "id": 608,
@@ -17561,13 +16955,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/608.png",
+    "sprite": "608.png",
     "basePokemonId": 607,
     "basePokemonName": "litwick",
     "defaultVarietyId": 608,
     "defaultVarietyName": "lampent",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "609": {
     "id": 609,
@@ -17593,13 +16986,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/609.png",
+    "sprite": "609.png",
     "basePokemonId": 607,
     "basePokemonName": "litwick",
     "defaultVarietyId": 609,
     "defaultVarietyName": "chandelure",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "610": {
     "id": 610,
@@ -17624,13 +17016,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/610.png",
+    "sprite": "610.png",
     "basePokemonId": 610,
     "basePokemonName": "axew",
     "defaultVarietyId": 610,
     "defaultVarietyName": "axew",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "611": {
     "id": 611,
@@ -17655,13 +17046,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/611.png",
+    "sprite": "611.png",
     "basePokemonId": 610,
     "basePokemonName": "axew",
     "defaultVarietyId": 611,
     "defaultVarietyName": "fraxure",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "612": {
     "id": 612,
@@ -17686,13 +17076,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/612.png",
+    "sprite": "612.png",
     "basePokemonId": 610,
     "basePokemonName": "axew",
     "defaultVarietyId": 612,
     "defaultVarietyName": "haxorus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "613": {
     "id": 613,
@@ -17717,13 +17106,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/613.png",
+    "sprite": "613.png",
     "basePokemonId": 613,
     "basePokemonName": "cubchoo",
     "defaultVarietyId": 613,
     "defaultVarietyName": "cubchoo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "614": {
     "id": 614,
@@ -17748,13 +17136,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/614.png",
+    "sprite": "614.png",
     "basePokemonId": 613,
     "basePokemonName": "cubchoo",
     "defaultVarietyId": 614,
     "defaultVarietyName": "beartic",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "615": {
     "id": 615,
@@ -17769,13 +17156,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/615.png",
+    "sprite": "615.png",
     "basePokemonId": 615,
     "basePokemonName": "cryogonal",
     "defaultVarietyId": 615,
     "defaultVarietyName": "cryogonal",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "616": {
     "id": 616,
@@ -17800,13 +17186,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/616.png",
+    "sprite": "616.png",
     "basePokemonId": 616,
     "basePokemonName": "shelmet",
     "defaultVarietyId": 616,
     "defaultVarietyName": "shelmet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "617": {
     "id": 617,
@@ -17831,13 +17216,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/617.png",
+    "sprite": "617.png",
     "basePokemonId": 616,
     "basePokemonName": "shelmet",
     "defaultVarietyId": 617,
     "defaultVarietyName": "accelgor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "618": {
     "id": 618,
@@ -17863,13 +17247,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/618.png",
+    "sprite": "618.png",
     "basePokemonId": 618,
     "basePokemonName": "stunfisk",
     "defaultVarietyId": 618,
     "defaultVarietyName": "stunfisk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "619": {
     "id": 619,
@@ -17894,13 +17277,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/619.png",
+    "sprite": "619.png",
     "basePokemonId": 619,
     "basePokemonName": "mienfoo",
     "defaultVarietyId": 619,
     "defaultVarietyName": "mienfoo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "620": {
     "id": 620,
@@ -17925,13 +17307,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/620.png",
+    "sprite": "620.png",
     "basePokemonId": 619,
     "basePokemonName": "mienfoo",
     "defaultVarietyId": 620,
     "defaultVarietyName": "mienshao",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "621": {
     "id": 621,
@@ -17956,13 +17337,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/621.png",
+    "sprite": "621.png",
     "basePokemonId": 621,
     "basePokemonName": "druddigon",
     "defaultVarietyId": 621,
     "defaultVarietyName": "druddigon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "622": {
     "id": 622,
@@ -17988,13 +17368,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/622.png",
+    "sprite": "622.png",
     "basePokemonId": 622,
     "basePokemonName": "golett",
     "defaultVarietyId": 622,
     "defaultVarietyName": "golett",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "623": {
     "id": 623,
@@ -18020,13 +17399,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/623.png",
+    "sprite": "623.png",
     "basePokemonId": 622,
     "basePokemonName": "golett",
     "defaultVarietyId": 623,
     "defaultVarietyName": "golurk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "624": {
     "id": 624,
@@ -18052,13 +17430,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/624.png",
+    "sprite": "624.png",
     "basePokemonId": 624,
     "basePokemonName": "pawniard",
     "defaultVarietyId": 624,
     "defaultVarietyName": "pawniard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "625": {
     "id": 625,
@@ -18084,13 +17461,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/625.png",
+    "sprite": "625.png",
     "basePokemonId": 624,
     "basePokemonName": "pawniard",
     "defaultVarietyId": 625,
     "defaultVarietyName": "bisharp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "626": {
     "id": 626,
@@ -18115,13 +17491,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/626.png",
+    "sprite": "626.png",
     "basePokemonId": 626,
     "basePokemonName": "bouffalant",
     "defaultVarietyId": 626,
     "defaultVarietyName": "bouffalant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "627": {
     "id": 627,
@@ -18147,13 +17522,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/627.png",
+    "sprite": "627.png",
     "basePokemonId": 627,
     "basePokemonName": "rufflet",
     "defaultVarietyId": 627,
     "defaultVarietyName": "rufflet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "628": {
     "id": 628,
@@ -18179,13 +17553,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/628.png",
+    "sprite": "628.png",
     "basePokemonId": 627,
     "basePokemonName": "rufflet",
     "defaultVarietyId": 628,
     "defaultVarietyName": "braviary",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "629": {
     "id": 629,
@@ -18211,13 +17584,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/629.png",
+    "sprite": "629.png",
     "basePokemonId": 629,
     "basePokemonName": "vullaby",
     "defaultVarietyId": 629,
     "defaultVarietyName": "vullaby",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "630": {
     "id": 630,
@@ -18243,13 +17615,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/630.png",
+    "sprite": "630.png",
     "basePokemonId": 629,
     "basePokemonName": "vullaby",
     "defaultVarietyId": 630,
     "defaultVarietyName": "mandibuzz",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "631": {
     "id": 631,
@@ -18274,13 +17645,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/631.png",
+    "sprite": "631.png",
     "basePokemonId": 631,
     "basePokemonName": "heatmor",
     "defaultVarietyId": 631,
     "defaultVarietyName": "heatmor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "632": {
     "id": 632,
@@ -18306,13 +17676,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/632.png",
+    "sprite": "632.png",
     "basePokemonId": 632,
     "basePokemonName": "durant",
     "defaultVarietyId": 632,
     "defaultVarietyName": "durant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "633": {
     "id": 633,
@@ -18328,13 +17697,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/633.png",
+    "sprite": "633.png",
     "basePokemonId": 633,
     "basePokemonName": "deino",
     "defaultVarietyId": 633,
     "defaultVarietyName": "deino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "634": {
     "id": 634,
@@ -18350,13 +17718,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/634.png",
+    "sprite": "634.png",
     "basePokemonId": 633,
     "basePokemonName": "deino",
     "defaultVarietyId": 634,
     "defaultVarietyName": "zweilous",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "635": {
     "id": 635,
@@ -18372,13 +17739,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/635.png",
+    "sprite": "635.png",
     "basePokemonId": 633,
     "basePokemonName": "deino",
     "defaultVarietyId": 635,
     "defaultVarietyName": "hydreigon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "636": {
     "id": 636,
@@ -18399,13 +17765,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/636.png",
+    "sprite": "636.png",
     "basePokemonId": 636,
     "basePokemonName": "larvesta",
     "defaultVarietyId": 636,
     "defaultVarietyName": "larvesta",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "637": {
     "id": 637,
@@ -18426,13 +17791,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/637.png",
+    "sprite": "637.png",
     "basePokemonId": 636,
     "basePokemonName": "larvesta",
     "defaultVarietyId": 637,
     "defaultVarietyName": "volcarona",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "638": {
     "id": 638,
@@ -18448,13 +17812,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/638.png",
+    "sprite": "638.png",
     "basePokemonId": 638,
     "basePokemonName": "cobalion",
     "defaultVarietyId": 638,
     "defaultVarietyName": "cobalion",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "639": {
     "id": 639,
@@ -18470,13 +17833,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/639.png",
+    "sprite": "639.png",
     "basePokemonId": 639,
     "basePokemonName": "terrakion",
     "defaultVarietyId": 639,
     "defaultVarietyName": "terrakion",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "640": {
     "id": 640,
@@ -18492,13 +17854,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/640.png",
+    "sprite": "640.png",
     "basePokemonId": 640,
     "basePokemonName": "virizion",
     "defaultVarietyId": 640,
     "defaultVarietyName": "virizion",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "641": {
     "id": 641,
@@ -18518,13 +17879,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/641.png",
+    "sprite": "641.png",
     "basePokemonId": 641,
     "basePokemonName": "tornadus",
     "defaultVarietyId": 641,
     "defaultVarietyName": "tornadus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "642": {
     "id": 642,
@@ -18545,13 +17905,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/642.png",
+    "sprite": "642.png",
     "basePokemonId": 642,
     "basePokemonName": "thundurus",
     "defaultVarietyId": 642,
     "defaultVarietyName": "thundurus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "643": {
     "id": 643,
@@ -18567,13 +17926,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/643.png",
+    "sprite": "643.png",
     "basePokemonId": 643,
     "basePokemonName": "reshiram",
     "defaultVarietyId": 643,
     "defaultVarietyName": "reshiram",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "644": {
     "id": 644,
@@ -18589,13 +17947,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/644.png",
+    "sprite": "644.png",
     "basePokemonId": 644,
     "basePokemonName": "zekrom",
     "defaultVarietyId": 644,
     "defaultVarietyName": "zekrom",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "645": {
     "id": 645,
@@ -18616,13 +17973,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/645.png",
+    "sprite": "645.png",
     "basePokemonId": 645,
     "basePokemonName": "landorus",
     "defaultVarietyId": 645,
     "defaultVarietyName": "landorus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "646": {
     "id": 646,
@@ -18638,13 +17994,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/646.png",
+    "sprite": "646.png",
     "basePokemonId": 646,
     "basePokemonName": "kyurem",
     "defaultVarietyId": 646,
     "defaultVarietyName": "kyurem",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "647": {
     "id": 647,
@@ -18660,13 +18015,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/647.png",
+    "sprite": "647.png",
     "basePokemonId": 647,
     "basePokemonName": "keldeo",
     "defaultVarietyId": 647,
     "defaultVarietyName": "keldeo-ordinary",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "648": {
     "id": 648,
@@ -18682,13 +18036,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/648.png",
+    "sprite": "648.png",
     "basePokemonId": 648,
     "basePokemonName": "meloetta",
     "defaultVarietyId": 648,
     "defaultVarietyName": "meloetta-aria",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "649": {
     "id": 649,
@@ -18704,13 +18057,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/649.png",
+    "sprite": "649.png",
     "basePokemonId": 649,
     "basePokemonName": "genesect",
     "defaultVarietyId": 649,
     "defaultVarietyName": "genesect",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "650": {
     "id": 650,
@@ -18730,13 +18082,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/650.png",
+    "sprite": "650.png",
     "basePokemonId": 650,
     "basePokemonName": "chespin",
     "defaultVarietyId": 650,
     "defaultVarietyName": "chespin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "651": {
     "id": 651,
@@ -18756,13 +18107,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/651.png",
+    "sprite": "651.png",
     "basePokemonId": 650,
     "basePokemonName": "chespin",
     "defaultVarietyId": 651,
     "defaultVarietyName": "quilladin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "652": {
     "id": 652,
@@ -18783,13 +18133,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/652.png",
+    "sprite": "652.png",
     "basePokemonId": 650,
     "basePokemonName": "chespin",
     "defaultVarietyId": 652,
     "defaultVarietyName": "chesnaught",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "653": {
     "id": 653,
@@ -18809,13 +18158,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/653.png",
+    "sprite": "653.png",
     "basePokemonId": 653,
     "basePokemonName": "fennekin",
     "defaultVarietyId": 653,
     "defaultVarietyName": "fennekin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "654": {
     "id": 654,
@@ -18835,13 +18183,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/654.png",
+    "sprite": "654.png",
     "basePokemonId": 653,
     "basePokemonName": "fennekin",
     "defaultVarietyId": 654,
     "defaultVarietyName": "braixen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "655": {
     "id": 655,
@@ -18862,13 +18209,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/655.png",
+    "sprite": "655.png",
     "basePokemonId": 653,
     "basePokemonName": "fennekin",
     "defaultVarietyId": 655,
     "defaultVarietyName": "delphox",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "656": {
     "id": 656,
@@ -18888,13 +18234,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/656.png",
+    "sprite": "656.png",
     "basePokemonId": 656,
     "basePokemonName": "froakie",
     "defaultVarietyId": 656,
     "defaultVarietyName": "froakie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "657": {
     "id": 657,
@@ -18914,13 +18259,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/657.png",
+    "sprite": "657.png",
     "basePokemonId": 656,
     "basePokemonName": "froakie",
     "defaultVarietyId": 657,
     "defaultVarietyName": "frogadier",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "658": {
     "id": 658,
@@ -18941,13 +18285,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/658.png",
+    "sprite": "658.png",
     "basePokemonId": 656,
     "basePokemonName": "froakie",
     "defaultVarietyId": 658,
     "defaultVarietyName": "greninja",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "659": {
     "id": 659,
@@ -18972,13 +18315,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/659.png",
+    "sprite": "659.png",
     "basePokemonId": 659,
     "basePokemonName": "bunnelby",
     "defaultVarietyId": 659,
     "defaultVarietyName": "bunnelby",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "660": {
     "id": 660,
@@ -19004,13 +18346,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/660.png",
+    "sprite": "660.png",
     "basePokemonId": 659,
     "basePokemonName": "bunnelby",
     "defaultVarietyId": 660,
     "defaultVarietyName": "diggersby",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "661": {
     "id": 661,
@@ -19031,13 +18372,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/661.png",
+    "sprite": "661.png",
     "basePokemonId": 661,
     "basePokemonName": "fletchling",
     "defaultVarietyId": 661,
     "defaultVarietyName": "fletchling",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "662": {
     "id": 662,
@@ -19058,13 +18398,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/662.png",
+    "sprite": "662.png",
     "basePokemonId": 661,
     "basePokemonName": "fletchling",
     "defaultVarietyId": 662,
     "defaultVarietyName": "fletchinder",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "663": {
     "id": 663,
@@ -19085,13 +18424,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/663.png",
+    "sprite": "663.png",
     "basePokemonId": 661,
     "basePokemonName": "fletchling",
     "defaultVarietyId": 663,
     "defaultVarietyName": "talonflame",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "664": {
     "id": 664,
@@ -19116,13 +18454,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/664.png",
+    "sprite": "664.png",
     "basePokemonId": 664,
     "basePokemonName": "scatterbug",
     "defaultVarietyId": 664,
     "defaultVarietyName": "scatterbug",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "665": {
     "id": 665,
@@ -19142,13 +18479,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/665.png",
+    "sprite": "665.png",
     "basePokemonId": 664,
     "basePokemonName": "scatterbug",
     "defaultVarietyId": 665,
     "defaultVarietyName": "spewpa",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "666": {
     "id": 666,
@@ -19174,13 +18510,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/666.png",
+    "sprite": "666.png",
     "basePokemonId": 664,
     "basePokemonName": "scatterbug",
     "defaultVarietyId": 666,
     "defaultVarietyName": "vivillon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "667": {
     "id": 667,
@@ -19206,13 +18541,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/667.png",
+    "sprite": "667.png",
     "basePokemonId": 667,
     "basePokemonName": "litleo",
     "defaultVarietyId": 667,
     "defaultVarietyName": "litleo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "668": {
     "id": 668,
@@ -19238,13 +18572,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/668.png",
+    "sprite": "668.png",
     "basePokemonId": 667,
     "basePokemonName": "litleo",
     "defaultVarietyId": 668,
     "defaultVarietyName": "pyroar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "669": {
     "id": 669,
@@ -19264,13 +18597,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/669.png",
+    "sprite": "669.png",
     "basePokemonId": 669,
     "basePokemonName": "flabebe",
     "defaultVarietyId": 669,
     "defaultVarietyName": "flabebe",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "670": {
     "id": 670,
@@ -19290,13 +18622,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/670.png",
+    "sprite": "670.png",
     "basePokemonId": 669,
     "basePokemonName": "flabebe",
     "defaultVarietyId": 670,
     "defaultVarietyName": "floette",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "671": {
     "id": 671,
@@ -19316,13 +18647,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/671.png",
+    "sprite": "671.png",
     "basePokemonId": 669,
     "basePokemonName": "flabebe",
     "defaultVarietyId": 671,
     "defaultVarietyName": "florges",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "672": {
     "id": 672,
@@ -19342,13 +18672,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/672.png",
+    "sprite": "672.png",
     "basePokemonId": 672,
     "basePokemonName": "skiddo",
     "defaultVarietyId": 672,
     "defaultVarietyName": "skiddo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "673": {
     "id": 673,
@@ -19368,13 +18697,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/673.png",
+    "sprite": "673.png",
     "basePokemonId": 672,
     "basePokemonName": "skiddo",
     "defaultVarietyId": 673,
     "defaultVarietyName": "gogoat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "674": {
     "id": 674,
@@ -19399,13 +18727,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/674.png",
+    "sprite": "674.png",
     "basePokemonId": 674,
     "basePokemonName": "pancham",
     "defaultVarietyId": 674,
     "defaultVarietyName": "pancham",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "675": {
     "id": 675,
@@ -19431,13 +18758,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/675.png",
+    "sprite": "675.png",
     "basePokemonId": 674,
     "basePokemonName": "pancham",
     "defaultVarietyId": 675,
     "defaultVarietyName": "pangoro",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "676": {
     "id": 676,
@@ -19452,13 +18778,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/676.png",
+    "sprite": "676.png",
     "basePokemonId": 676,
     "basePokemonName": "furfrou",
     "defaultVarietyId": 676,
     "defaultVarietyName": "furfrou",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "677": {
     "id": 677,
@@ -19483,13 +18808,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/677.png",
+    "sprite": "677.png",
     "basePokemonId": 677,
     "basePokemonName": "espurr",
     "defaultVarietyId": 677,
     "defaultVarietyName": "espurr",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "678": {
     "id": 678,
@@ -19514,13 +18838,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/678.png",
+    "sprite": "678.png",
     "basePokemonId": 677,
     "basePokemonName": "espurr",
     "defaultVarietyId": 678,
     "defaultVarietyName": "meowstic-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "679": {
     "id": 679,
@@ -19536,13 +18859,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/679.png",
+    "sprite": "679.png",
     "basePokemonId": 679,
     "basePokemonName": "honedge",
     "defaultVarietyId": 679,
     "defaultVarietyName": "honedge",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "680": {
     "id": 680,
@@ -19558,13 +18880,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/680.png",
+    "sprite": "680.png",
     "basePokemonId": 679,
     "basePokemonName": "honedge",
     "defaultVarietyId": 680,
     "defaultVarietyName": "doublade",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "681": {
     "id": 681,
@@ -19580,13 +18901,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/681.png",
+    "sprite": "681.png",
     "basePokemonId": 679,
     "basePokemonName": "honedge",
     "defaultVarietyId": 681,
     "defaultVarietyName": "aegislash-shield",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "682": {
     "id": 682,
@@ -19606,13 +18926,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/682.png",
+    "sprite": "682.png",
     "basePokemonId": 682,
     "basePokemonName": "spritzee",
     "defaultVarietyId": 682,
     "defaultVarietyName": "spritzee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "683": {
     "id": 683,
@@ -19632,13 +18951,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/683.png",
+    "sprite": "683.png",
     "basePokemonId": 682,
     "basePokemonName": "spritzee",
     "defaultVarietyId": 683,
     "defaultVarietyName": "aromatisse",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "684": {
     "id": 684,
@@ -19658,13 +18976,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/684.png",
+    "sprite": "684.png",
     "basePokemonId": 684,
     "basePokemonName": "swirlix",
     "defaultVarietyId": 684,
     "defaultVarietyName": "swirlix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "685": {
     "id": 685,
@@ -19684,13 +19001,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/685.png",
+    "sprite": "685.png",
     "basePokemonId": 684,
     "basePokemonName": "swirlix",
     "defaultVarietyId": 685,
     "defaultVarietyName": "slurpuff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "686": {
     "id": 686,
@@ -19716,13 +19032,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/686.png",
+    "sprite": "686.png",
     "basePokemonId": 686,
     "basePokemonName": "inkay",
     "defaultVarietyId": 686,
     "defaultVarietyName": "inkay",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "687": {
     "id": 687,
@@ -19748,13 +19063,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/687.png",
+    "sprite": "687.png",
     "basePokemonId": 686,
     "basePokemonName": "inkay",
     "defaultVarietyId": 687,
     "defaultVarietyName": "malamar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "688": {
     "id": 688,
@@ -19780,13 +19094,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/688.png",
+    "sprite": "688.png",
     "basePokemonId": 688,
     "basePokemonName": "binacle",
     "defaultVarietyId": 688,
     "defaultVarietyName": "binacle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "689": {
     "id": 689,
@@ -19812,13 +19125,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/689.png",
+    "sprite": "689.png",
     "basePokemonId": 688,
     "basePokemonName": "binacle",
     "defaultVarietyId": 689,
     "defaultVarietyName": "barbaracle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "690": {
     "id": 690,
@@ -19844,13 +19156,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/690.png",
+    "sprite": "690.png",
     "basePokemonId": 690,
     "basePokemonName": "skrelp",
     "defaultVarietyId": 690,
     "defaultVarietyName": "skrelp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "691": {
     "id": 691,
@@ -19876,13 +19187,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/691.png",
+    "sprite": "691.png",
     "basePokemonId": 690,
     "basePokemonName": "skrelp",
     "defaultVarietyId": 691,
     "defaultVarietyName": "dragalge",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "692": {
     "id": 692,
@@ -19897,13 +19207,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/692.png",
+    "sprite": "692.png",
     "basePokemonId": 692,
     "basePokemonName": "clauncher",
     "defaultVarietyId": 692,
     "defaultVarietyName": "clauncher",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "693": {
     "id": 693,
@@ -19918,13 +19227,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/693.png",
+    "sprite": "693.png",
     "basePokemonId": 692,
     "basePokemonName": "clauncher",
     "defaultVarietyId": 693,
     "defaultVarietyName": "clawitzer",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "694": {
     "id": 694,
@@ -19950,13 +19258,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/694.png",
+    "sprite": "694.png",
     "basePokemonId": 694,
     "basePokemonName": "helioptile",
     "defaultVarietyId": 694,
     "defaultVarietyName": "helioptile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "695": {
     "id": 695,
@@ -19982,13 +19289,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/695.png",
+    "sprite": "695.png",
     "basePokemonId": 694,
     "basePokemonName": "helioptile",
     "defaultVarietyId": 695,
     "defaultVarietyName": "heliolisk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "696": {
     "id": 696,
@@ -20009,13 +19315,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/696.png",
+    "sprite": "696.png",
     "basePokemonId": 696,
     "basePokemonName": "tyrunt",
     "defaultVarietyId": 696,
     "defaultVarietyName": "tyrunt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "697": {
     "id": 697,
@@ -20036,13 +19341,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/697.png",
+    "sprite": "697.png",
     "basePokemonId": 696,
     "basePokemonName": "tyrunt",
     "defaultVarietyId": 697,
     "defaultVarietyName": "tyrantrum",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "698": {
     "id": 698,
@@ -20063,13 +19367,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/698.png",
+    "sprite": "698.png",
     "basePokemonId": 698,
     "basePokemonName": "amaura",
     "defaultVarietyId": 698,
     "defaultVarietyName": "amaura",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "699": {
     "id": 699,
@@ -20090,13 +19393,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/699.png",
+    "sprite": "699.png",
     "basePokemonId": 698,
     "basePokemonName": "amaura",
     "defaultVarietyId": 699,
     "defaultVarietyName": "aurorus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "700": {
     "id": 700,
@@ -20116,13 +19418,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/700.png",
+    "sprite": "700.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 700,
     "defaultVarietyName": "sylveon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "701": {
     "id": 701,
@@ -20148,13 +19449,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/701.png",
+    "sprite": "701.png",
     "basePokemonId": 701,
     "basePokemonName": "hawlucha",
     "defaultVarietyId": 701,
     "defaultVarietyName": "hawlucha",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "702": {
     "id": 702,
@@ -20180,13 +19480,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/702.png",
+    "sprite": "702.png",
     "basePokemonId": 702,
     "basePokemonName": "dedenne",
     "defaultVarietyId": 702,
     "defaultVarietyName": "dedenne",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "703": {
     "id": 703,
@@ -20207,13 +19506,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/703.png",
+    "sprite": "703.png",
     "basePokemonId": 703,
     "basePokemonName": "carbink",
     "defaultVarietyId": 703,
     "defaultVarietyName": "carbink",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "704": {
     "id": 704,
@@ -20238,13 +19536,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/704.png",
+    "sprite": "704.png",
     "basePokemonId": 704,
     "basePokemonName": "goomy",
     "defaultVarietyId": 704,
     "defaultVarietyName": "goomy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "705": {
     "id": 705,
@@ -20269,13 +19566,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/705.png",
+    "sprite": "705.png",
     "basePokemonId": 704,
     "basePokemonName": "goomy",
     "defaultVarietyId": 705,
     "defaultVarietyName": "sliggoo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "706": {
     "id": 706,
@@ -20300,13 +19596,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/706.png",
+    "sprite": "706.png",
     "basePokemonId": 704,
     "basePokemonName": "goomy",
     "defaultVarietyId": 706,
     "defaultVarietyName": "goodra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "707": {
     "id": 707,
@@ -20327,13 +19622,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/707.png",
+    "sprite": "707.png",
     "basePokemonId": 707,
     "basePokemonName": "klefki",
     "defaultVarietyId": 707,
     "defaultVarietyName": "klefki",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "708": {
     "id": 708,
@@ -20359,13 +19653,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/708.png",
+    "sprite": "708.png",
     "basePokemonId": 708,
     "basePokemonName": "phantump",
     "defaultVarietyId": 708,
     "defaultVarietyName": "phantump",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "709": {
     "id": 709,
@@ -20391,13 +19684,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/709.png",
+    "sprite": "709.png",
     "basePokemonId": 708,
     "basePokemonName": "phantump",
     "defaultVarietyId": 709,
     "defaultVarietyName": "trevenant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "710": {
     "id": 710,
@@ -20423,13 +19715,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/710.png",
+    "sprite": "710.png",
     "basePokemonId": 710,
     "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 710,
     "defaultVarietyName": "pumpkaboo-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "711": {
     "id": 711,
@@ -20455,13 +19746,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/711.png",
+    "sprite": "711.png",
     "basePokemonId": 710,
-    "basePokemonName": "pumpkaboo-average",
+    "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 711,
     "defaultVarietyName": "gourgeist-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "712": {
     "id": 712,
@@ -20486,13 +19776,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/712.png",
+    "sprite": "712.png",
     "basePokemonId": 712,
     "basePokemonName": "bergmite",
     "defaultVarietyId": 712,
     "defaultVarietyName": "bergmite",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "713": {
     "id": 713,
@@ -20517,13 +19806,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/713.png",
+    "sprite": "713.png",
     "basePokemonId": 712,
     "basePokemonName": "bergmite",
     "defaultVarietyId": 713,
     "defaultVarietyName": "avalugg",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "714": {
     "id": 714,
@@ -20549,13 +19837,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/714.png",
+    "sprite": "714.png",
     "basePokemonId": 714,
     "basePokemonName": "noibat",
     "defaultVarietyId": 714,
     "defaultVarietyName": "noibat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "715": {
     "id": 715,
@@ -20581,13 +19868,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png",
+    "sprite": "715.png",
     "basePokemonId": 714,
     "basePokemonName": "noibat",
     "defaultVarietyId": 715,
     "defaultVarietyName": "noivern",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "716": {
     "id": 716,
@@ -20602,13 +19888,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/716.png",
+    "sprite": "716.png",
     "basePokemonId": 716,
     "basePokemonName": "xerneas",
     "defaultVarietyId": 716,
     "defaultVarietyName": "xerneas",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "717": {
     "id": 717,
@@ -20624,13 +19909,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/717.png",
+    "sprite": "717.png",
     "basePokemonId": 717,
     "basePokemonName": "yveltal",
     "defaultVarietyId": 717,
     "defaultVarietyName": "yveltal",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "718": {
     "id": 718,
@@ -20646,13 +19930,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/718.png",
+    "sprite": "718.png",
     "basePokemonId": 718,
     "basePokemonName": "zygarde",
     "defaultVarietyId": 718,
     "defaultVarietyName": "zygarde-50",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "719": {
     "id": 719,
@@ -20668,13 +19951,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/719.png",
+    "sprite": "719.png",
     "basePokemonId": 719,
     "basePokemonName": "diancie",
     "defaultVarietyId": 719,
     "defaultVarietyName": "diancie",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "720": {
     "id": 720,
@@ -20690,13 +19972,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/720.png",
+    "sprite": "720.png",
     "basePokemonId": 720,
     "basePokemonName": "hoopa",
     "defaultVarietyId": 720,
     "defaultVarietyName": "hoopa",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "721": {
     "id": 721,
@@ -20712,13 +19993,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/721.png",
+    "sprite": "721.png",
     "basePokemonId": 721,
     "basePokemonName": "volcanion",
     "defaultVarietyId": 721,
     "defaultVarietyName": "volcanion",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "722": {
     "id": 722,
@@ -20739,13 +20019,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/722.png",
+    "sprite": "722.png",
     "basePokemonId": 722,
     "basePokemonName": "rowlet",
     "defaultVarietyId": 722,
     "defaultVarietyName": "rowlet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "723": {
     "id": 723,
@@ -20766,13 +20045,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/723.png",
+    "sprite": "723.png",
     "basePokemonId": 722,
     "basePokemonName": "rowlet",
     "defaultVarietyId": 723,
     "defaultVarietyName": "dartrix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "724": {
     "id": 724,
@@ -20793,13 +20071,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/724.png",
+    "sprite": "724.png",
     "basePokemonId": 722,
     "basePokemonName": "rowlet",
     "defaultVarietyId": 724,
     "defaultVarietyName": "decidueye",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "725": {
     "id": 725,
@@ -20819,13 +20096,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/725.png",
+    "sprite": "725.png",
     "basePokemonId": 725,
     "basePokemonName": "litten",
     "defaultVarietyId": 725,
     "defaultVarietyName": "litten",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "726": {
     "id": 726,
@@ -20845,13 +20121,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/726.png",
+    "sprite": "726.png",
     "basePokemonId": 725,
     "basePokemonName": "litten",
     "defaultVarietyId": 726,
     "defaultVarietyName": "torracat",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "727": {
     "id": 727,
@@ -20872,13 +20147,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/727.png",
+    "sprite": "727.png",
     "basePokemonId": 725,
     "basePokemonName": "litten",
     "defaultVarietyId": 727,
     "defaultVarietyName": "incineroar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "728": {
     "id": 728,
@@ -20898,13 +20172,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/728.png",
+    "sprite": "728.png",
     "basePokemonId": 728,
     "basePokemonName": "popplio",
     "defaultVarietyId": 728,
     "defaultVarietyName": "popplio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "729": {
     "id": 729,
@@ -20924,13 +20197,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/729.png",
+    "sprite": "729.png",
     "basePokemonId": 728,
     "basePokemonName": "popplio",
     "defaultVarietyId": 729,
     "defaultVarietyName": "brionne",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "730": {
     "id": 730,
@@ -20951,13 +20223,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/730.png",
+    "sprite": "730.png",
     "basePokemonId": 728,
     "basePokemonName": "popplio",
     "defaultVarietyId": 730,
     "defaultVarietyName": "primarina",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "731": {
     "id": 731,
@@ -20983,13 +20254,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/731.png",
+    "sprite": "731.png",
     "basePokemonId": 731,
     "basePokemonName": "pikipek",
     "defaultVarietyId": 731,
     "defaultVarietyName": "pikipek",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "732": {
     "id": 732,
@@ -21015,13 +20285,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/732.png",
+    "sprite": "732.png",
     "basePokemonId": 731,
     "basePokemonName": "pikipek",
     "defaultVarietyId": 732,
     "defaultVarietyName": "trumbeak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "733": {
     "id": 733,
@@ -21047,13 +20316,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/733.png",
+    "sprite": "733.png",
     "basePokemonId": 731,
     "basePokemonName": "pikipek",
     "defaultVarietyId": 733,
     "defaultVarietyName": "toucannon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "734": {
     "id": 734,
@@ -21078,13 +20346,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/734.png",
+    "sprite": "734.png",
     "basePokemonId": 734,
     "basePokemonName": "yungoos",
     "defaultVarietyId": 734,
     "defaultVarietyName": "yungoos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "735": {
     "id": 735,
@@ -21109,13 +20376,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/735.png",
+    "sprite": "735.png",
     "basePokemonId": 734,
     "basePokemonName": "yungoos",
     "defaultVarietyId": 735,
     "defaultVarietyName": "gumshoos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "736": {
     "id": 736,
@@ -21130,13 +20396,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/736.png",
+    "sprite": "736.png",
     "basePokemonId": 736,
     "basePokemonName": "grubbin",
     "defaultVarietyId": 736,
     "defaultVarietyName": "grubbin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "737": {
     "id": 737,
@@ -21152,13 +20417,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/737.png",
+    "sprite": "737.png",
     "basePokemonId": 736,
     "basePokemonName": "grubbin",
     "defaultVarietyId": 737,
     "defaultVarietyName": "charjabug",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "738": {
     "id": 738,
@@ -21174,13 +20438,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/738.png",
+    "sprite": "738.png",
     "basePokemonId": 736,
     "basePokemonName": "grubbin",
     "defaultVarietyId": 738,
     "defaultVarietyName": "vikavolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "739": {
     "id": 739,
@@ -21205,13 +20468,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/739.png",
+    "sprite": "739.png",
     "basePokemonId": 739,
     "basePokemonName": "crabrawler",
     "defaultVarietyId": 739,
     "defaultVarietyName": "crabrawler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "740": {
     "id": 740,
@@ -21237,13 +20499,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/740.png",
+    "sprite": "740.png",
     "basePokemonId": 739,
     "basePokemonName": "crabrawler",
     "defaultVarietyId": 740,
     "defaultVarietyName": "crabominable",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "741": {
     "id": 741,
@@ -21259,13 +20520,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/741.png",
+    "sprite": "741.png",
     "basePokemonId": 741,
     "basePokemonName": "oricorio",
     "defaultVarietyId": 741,
     "defaultVarietyName": "oricorio-baile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "742": {
     "id": 742,
@@ -21291,13 +20551,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/742.png",
+    "sprite": "742.png",
     "basePokemonId": 742,
     "basePokemonName": "cutiefly",
     "defaultVarietyId": 742,
     "defaultVarietyName": "cutiefly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "743": {
     "id": 743,
@@ -21323,13 +20582,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/743.png",
+    "sprite": "743.png",
     "basePokemonId": 742,
     "basePokemonName": "cutiefly",
     "defaultVarietyId": 743,
     "defaultVarietyName": "ribombee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "744": {
     "id": 744,
@@ -21354,13 +20612,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/744.png",
+    "sprite": "744.png",
     "basePokemonId": 744,
     "basePokemonName": "rockruff",
     "defaultVarietyId": 744,
     "defaultVarietyName": "rockruff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "745": {
     "id": 745,
@@ -21385,13 +20642,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/745.png",
+    "sprite": "745.png",
     "basePokemonId": 744,
     "basePokemonName": "rockruff",
     "defaultVarietyId": 745,
     "defaultVarietyName": "lycanroc-midday",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "746": {
     "id": 746,
@@ -21406,13 +20662,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/746.png",
+    "sprite": "746.png",
     "basePokemonId": 746,
     "basePokemonName": "wishiwashi",
     "defaultVarietyId": 746,
     "defaultVarietyName": "wishiwashi-solo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "747": {
     "id": 747,
@@ -21438,13 +20693,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/747.png",
+    "sprite": "747.png",
     "basePokemonId": 747,
     "basePokemonName": "mareanie",
     "defaultVarietyId": 747,
     "defaultVarietyName": "mareanie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "748": {
     "id": 748,
@@ -21470,13 +20724,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/748.png",
+    "sprite": "748.png",
     "basePokemonId": 747,
     "basePokemonName": "mareanie",
     "defaultVarietyId": 748,
     "defaultVarietyName": "toxapex",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "749": {
     "id": 749,
@@ -21501,13 +20754,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/749.png",
+    "sprite": "749.png",
     "basePokemonId": 749,
     "basePokemonName": "mudbray",
     "defaultVarietyId": 749,
     "defaultVarietyName": "mudbray",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "750": {
     "id": 750,
@@ -21532,13 +20784,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/750.png",
+    "sprite": "750.png",
     "basePokemonId": 749,
     "basePokemonName": "mudbray",
     "defaultVarietyId": 750,
     "defaultVarietyName": "mudsdale",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "751": {
     "id": 751,
@@ -21559,13 +20810,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/751.png",
+    "sprite": "751.png",
     "basePokemonId": 751,
     "basePokemonName": "dewpider",
     "defaultVarietyId": 751,
     "defaultVarietyName": "dewpider",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "752": {
     "id": 752,
@@ -21586,13 +20836,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/752.png",
+    "sprite": "752.png",
     "basePokemonId": 751,
     "basePokemonName": "dewpider",
     "defaultVarietyId": 752,
     "defaultVarietyName": "araquanid",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "753": {
     "id": 753,
@@ -21612,13 +20861,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/753.png",
+    "sprite": "753.png",
     "basePokemonId": 753,
     "basePokemonName": "fomantis",
     "defaultVarietyId": 753,
     "defaultVarietyName": "fomantis",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "754": {
     "id": 754,
@@ -21638,13 +20886,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/754.png",
+    "sprite": "754.png",
     "basePokemonId": 753,
     "basePokemonName": "fomantis",
     "defaultVarietyId": 754,
     "defaultVarietyName": "lurantis",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "755": {
     "id": 755,
@@ -21670,13 +20917,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/755.png",
+    "sprite": "755.png",
     "basePokemonId": 755,
     "basePokemonName": "morelull",
     "defaultVarietyId": 755,
     "defaultVarietyName": "morelull",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "756": {
     "id": 756,
@@ -21702,13 +20948,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/756.png",
+    "sprite": "756.png",
     "basePokemonId": 755,
     "basePokemonName": "morelull",
     "defaultVarietyId": 756,
     "defaultVarietyName": "shiinotic",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "757": {
     "id": 757,
@@ -21729,13 +20974,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/757.png",
+    "sprite": "757.png",
     "basePokemonId": 757,
     "basePokemonName": "salandit",
     "defaultVarietyId": 757,
     "defaultVarietyName": "salandit",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "758": {
     "id": 758,
@@ -21756,13 +21000,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/758.png",
+    "sprite": "758.png",
     "basePokemonId": 757,
     "basePokemonName": "salandit",
     "defaultVarietyId": 758,
     "defaultVarietyName": "salazzle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "759": {
     "id": 759,
@@ -21788,13 +21031,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/759.png",
+    "sprite": "759.png",
     "basePokemonId": 759,
     "basePokemonName": "stufful",
     "defaultVarietyId": 759,
     "defaultVarietyName": "stufful",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "760": {
     "id": 760,
@@ -21820,13 +21062,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/760.png",
+    "sprite": "760.png",
     "basePokemonId": 759,
     "basePokemonName": "stufful",
     "defaultVarietyId": 760,
     "defaultVarietyName": "bewear",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "761": {
     "id": 761,
@@ -21851,13 +21092,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/761.png",
+    "sprite": "761.png",
     "basePokemonId": 761,
     "basePokemonName": "bounsweet",
     "defaultVarietyId": 761,
     "defaultVarietyName": "bounsweet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "762": {
     "id": 762,
@@ -21882,13 +21122,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/762.png",
+    "sprite": "762.png",
     "basePokemonId": 761,
     "basePokemonName": "bounsweet",
     "defaultVarietyId": 762,
     "defaultVarietyName": "steenee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "763": {
     "id": 763,
@@ -21913,13 +21152,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/763.png",
+    "sprite": "763.png",
     "basePokemonId": 761,
     "basePokemonName": "bounsweet",
     "defaultVarietyId": 763,
     "defaultVarietyName": "tsareena",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "764": {
     "id": 764,
@@ -21944,13 +21182,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/764.png",
+    "sprite": "764.png",
     "basePokemonId": 764,
     "basePokemonName": "comfey",
     "defaultVarietyId": 764,
     "defaultVarietyName": "comfey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "765": {
     "id": 765,
@@ -21976,13 +21213,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/765.png",
+    "sprite": "765.png",
     "basePokemonId": 765,
     "basePokemonName": "oranguru",
     "defaultVarietyId": 765,
     "defaultVarietyName": "oranguru",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "766": {
     "id": 766,
@@ -22002,13 +21238,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/766.png",
+    "sprite": "766.png",
     "basePokemonId": 766,
     "basePokemonName": "passimian",
     "defaultVarietyId": 766,
     "defaultVarietyName": "passimian",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "767": {
     "id": 767,
@@ -22024,13 +21259,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/767.png",
+    "sprite": "767.png",
     "basePokemonId": 767,
     "basePokemonName": "wimpod",
     "defaultVarietyId": 767,
     "defaultVarietyName": "wimpod",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "768": {
     "id": 768,
@@ -22046,13 +21280,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/768.png",
+    "sprite": "768.png",
     "basePokemonId": 767,
     "basePokemonName": "wimpod",
     "defaultVarietyId": 768,
     "defaultVarietyName": "golisopod",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "769": {
     "id": 769,
@@ -22073,13 +21306,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/769.png",
+    "sprite": "769.png",
     "basePokemonId": 769,
     "basePokemonName": "sandygast",
     "defaultVarietyId": 769,
     "defaultVarietyName": "sandygast",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "770": {
     "id": 770,
@@ -22100,13 +21332,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/770.png",
+    "sprite": "770.png",
     "basePokemonId": 769,
     "basePokemonName": "sandygast",
     "defaultVarietyId": 770,
     "defaultVarietyName": "palossand",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "771": {
     "id": 771,
@@ -22126,13 +21357,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/771.png",
+    "sprite": "771.png",
     "basePokemonId": 771,
     "basePokemonName": "pyukumuku",
     "defaultVarietyId": 771,
     "defaultVarietyName": "pyukumuku",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "772": {
     "id": 772,
@@ -22147,13 +21377,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/772.png",
+    "sprite": "772.png",
     "basePokemonId": 772,
     "basePokemonName": "type-null",
     "defaultVarietyId": 772,
     "defaultVarietyName": "type-null",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "773": {
     "id": 773,
@@ -22168,13 +21397,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/773.png",
+    "sprite": "773.png",
     "basePokemonId": 772,
     "basePokemonName": "type-null",
     "defaultVarietyId": 773,
     "defaultVarietyName": "silvally",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "774": {
     "id": 774,
@@ -22190,13 +21418,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/774.png",
+    "sprite": "774.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "775": {
     "id": 775,
@@ -22211,13 +21438,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/775.png",
+    "sprite": "775.png",
     "basePokemonId": 775,
     "basePokemonName": "komala",
     "defaultVarietyId": 775,
     "defaultVarietyName": "komala",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "776": {
     "id": 776,
@@ -22233,13 +21459,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/776.png",
+    "sprite": "776.png",
     "basePokemonId": 776,
     "basePokemonName": "turtonator",
     "defaultVarietyId": 776,
     "defaultVarietyName": "turtonator",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "777": {
     "id": 777,
@@ -22265,13 +21490,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/777.png",
+    "sprite": "777.png",
     "basePokemonId": 777,
     "basePokemonName": "togedemaru",
     "defaultVarietyId": 777,
     "defaultVarietyName": "togedemaru",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "778": {
     "id": 778,
@@ -22287,13 +21511,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/778.png",
+    "sprite": "778.png",
     "basePokemonId": 778,
     "basePokemonName": "mimikyu",
     "defaultVarietyId": 778,
     "defaultVarietyName": "mimikyu-disguised",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "779": {
     "id": 779,
@@ -22319,13 +21542,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/779.png",
+    "sprite": "779.png",
     "basePokemonId": 779,
     "basePokemonName": "bruxish",
     "defaultVarietyId": 779,
     "defaultVarietyName": "bruxish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "780": {
     "id": 780,
@@ -22351,13 +21573,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/780.png",
+    "sprite": "780.png",
     "basePokemonId": 780,
     "basePokemonName": "drampa",
     "defaultVarietyId": 780,
     "defaultVarietyName": "drampa",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "781": {
     "id": 781,
@@ -22373,13 +21594,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/781.png",
+    "sprite": "781.png",
     "basePokemonId": 781,
     "basePokemonName": "dhelmise",
     "defaultVarietyId": 781,
     "defaultVarietyName": "dhelmise",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "782": {
     "id": 782,
@@ -22404,13 +21624,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/782.png",
+    "sprite": "782.png",
     "basePokemonId": 782,
     "basePokemonName": "jangmo-o",
     "defaultVarietyId": 782,
     "defaultVarietyName": "jangmo-o",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "783": {
     "id": 783,
@@ -22436,13 +21655,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/783.png",
+    "sprite": "783.png",
     "basePokemonId": 782,
     "basePokemonName": "jangmo-o",
     "defaultVarietyId": 783,
     "defaultVarietyName": "hakamo-o",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "784": {
     "id": 784,
@@ -22468,13 +21686,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/784.png",
+    "sprite": "784.png",
     "basePokemonId": 782,
     "basePokemonName": "jangmo-o",
     "defaultVarietyId": 784,
     "defaultVarietyName": "kommo-o",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "785": {
     "id": 785,
@@ -22495,13 +21712,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/785.png",
+    "sprite": "785.png",
     "basePokemonId": 785,
     "basePokemonName": "tapu-koko",
     "defaultVarietyId": 785,
     "defaultVarietyName": "tapu-koko",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "786": {
     "id": 786,
@@ -22522,13 +21738,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/786.png",
+    "sprite": "786.png",
     "basePokemonId": 786,
     "basePokemonName": "tapu-lele",
     "defaultVarietyId": 786,
     "defaultVarietyName": "tapu-lele",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "787": {
     "id": 787,
@@ -22549,13 +21764,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/787.png",
+    "sprite": "787.png",
     "basePokemonId": 787,
     "basePokemonName": "tapu-bulu",
     "defaultVarietyId": 787,
     "defaultVarietyName": "tapu-bulu",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "788": {
     "id": 788,
@@ -22576,13 +21790,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/788.png",
+    "sprite": "788.png",
     "basePokemonId": 788,
     "basePokemonName": "tapu-fini",
     "defaultVarietyId": 788,
     "defaultVarietyName": "tapu-fini",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "789": {
     "id": 789,
@@ -22597,13 +21810,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/789.png",
+    "sprite": "789.png",
     "basePokemonId": 789,
     "basePokemonName": "cosmog",
     "defaultVarietyId": 789,
     "defaultVarietyName": "cosmog",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "790": {
     "id": 790,
@@ -22618,13 +21830,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/790.png",
+    "sprite": "790.png",
     "basePokemonId": 789,
     "basePokemonName": "cosmog",
     "defaultVarietyId": 790,
     "defaultVarietyName": "cosmoem",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "791": {
     "id": 791,
@@ -22640,13 +21851,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/791.png",
+    "sprite": "791.png",
     "basePokemonId": 789,
     "basePokemonName": "cosmog",
     "defaultVarietyId": 791,
     "defaultVarietyName": "solgaleo",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "792": {
     "id": 792,
@@ -22662,13 +21872,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/792.png",
+    "sprite": "792.png",
     "basePokemonId": 789,
     "basePokemonName": "cosmog",
     "defaultVarietyId": 792,
     "defaultVarietyName": "lunala",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "793": {
     "id": 793,
@@ -22684,13 +21893,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/793.png",
+    "sprite": "793.png",
     "basePokemonId": 793,
     "basePokemonName": "nihilego",
     "defaultVarietyId": 793,
     "defaultVarietyName": "nihilego",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "794": {
     "id": 794,
@@ -22706,13 +21914,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/794.png",
+    "sprite": "794.png",
     "basePokemonId": 794,
     "basePokemonName": "buzzwole",
     "defaultVarietyId": 794,
     "defaultVarietyName": "buzzwole",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "795": {
     "id": 795,
@@ -22728,13 +21935,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/795.png",
+    "sprite": "795.png",
     "basePokemonId": 795,
     "basePokemonName": "pheromosa",
     "defaultVarietyId": 795,
     "defaultVarietyName": "pheromosa",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "796": {
     "id": 796,
@@ -22749,13 +21955,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/796.png",
+    "sprite": "796.png",
     "basePokemonId": 796,
     "basePokemonName": "xurkitree",
     "defaultVarietyId": 796,
     "defaultVarietyName": "xurkitree",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "797": {
     "id": 797,
@@ -22771,13 +21976,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/797.png",
+    "sprite": "797.png",
     "basePokemonId": 797,
     "basePokemonName": "celesteela",
     "defaultVarietyId": 797,
     "defaultVarietyName": "celesteela",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "798": {
     "id": 798,
@@ -22793,13 +21997,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/798.png",
+    "sprite": "798.png",
     "basePokemonId": 798,
     "basePokemonName": "kartana",
     "defaultVarietyId": 798,
     "defaultVarietyName": "kartana",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "799": {
     "id": 799,
@@ -22815,13 +22018,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/799.png",
+    "sprite": "799.png",
     "basePokemonId": 799,
     "basePokemonName": "guzzlord",
     "defaultVarietyId": 799,
     "defaultVarietyName": "guzzlord",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "800": {
     "id": 800,
@@ -22836,13 +22038,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/800.png",
+    "sprite": "800.png",
     "basePokemonId": 800,
     "basePokemonName": "necrozma",
     "defaultVarietyId": 800,
     "defaultVarietyName": "necrozma",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "801": {
     "id": 801,
@@ -22858,13 +22059,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/801.png",
+    "sprite": "801.png",
     "basePokemonId": 801,
     "basePokemonName": "magearna",
     "defaultVarietyId": 801,
     "defaultVarietyName": "magearna",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "802": {
     "id": 802,
@@ -22880,13 +22080,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/802.png",
+    "sprite": "802.png",
     "basePokemonId": 802,
     "basePokemonName": "marshadow",
     "defaultVarietyId": 802,
     "defaultVarietyName": "marshadow",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "803": {
     "id": 803,
@@ -22901,13 +22100,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/803.png",
+    "sprite": "803.png",
     "basePokemonId": 803,
     "basePokemonName": "poipole",
     "defaultVarietyId": 803,
     "defaultVarietyName": "poipole",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "804": {
     "id": 804,
@@ -22923,13 +22121,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/804.png",
+    "sprite": "804.png",
     "basePokemonId": 803,
     "basePokemonName": "poipole",
     "defaultVarietyId": 804,
     "defaultVarietyName": "naganadel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "805": {
     "id": 805,
@@ -22945,13 +22142,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/805.png",
+    "sprite": "805.png",
     "basePokemonId": 805,
     "basePokemonName": "stakataka",
     "defaultVarietyId": 805,
     "defaultVarietyName": "stakataka",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "806": {
     "id": 806,
@@ -22967,13 +22163,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/806.png",
+    "sprite": "806.png",
     "basePokemonId": 806,
     "basePokemonName": "blacephalon",
     "defaultVarietyId": 806,
     "defaultVarietyName": "blacephalon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": "ultra"
   },
   "807": {
     "id": 807,
@@ -22988,13 +22183,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/807.png",
+    "sprite": "807.png",
     "basePokemonId": 807,
     "basePokemonName": "zeraora",
     "defaultVarietyId": 807,
     "defaultVarietyName": "zeraora",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "808": {
     "id": 808,
@@ -23009,13 +22203,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/808.png",
+    "sprite": "808.png",
     "basePokemonId": 808,
     "basePokemonName": "meltan",
     "defaultVarietyId": 808,
     "defaultVarietyName": "meltan",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "809": {
     "id": 809,
@@ -23030,13 +22223,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/809.png",
+    "sprite": "809.png",
     "basePokemonId": 809,
     "basePokemonName": "melmetal",
     "defaultVarietyId": 809,
     "defaultVarietyName": "melmetal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "810": {
     "id": 810,
@@ -23056,13 +22248,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/810.png",
+    "sprite": "810.png",
     "basePokemonId": 810,
     "basePokemonName": "grookey",
     "defaultVarietyId": 810,
     "defaultVarietyName": "grookey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "811": {
     "id": 811,
@@ -23082,13 +22273,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/811.png",
+    "sprite": "811.png",
     "basePokemonId": 810,
     "basePokemonName": "grookey",
     "defaultVarietyId": 811,
     "defaultVarietyName": "thwackey",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "812": {
     "id": 812,
@@ -23108,13 +22298,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/812.png",
+    "sprite": "812.png",
     "basePokemonId": 810,
     "basePokemonName": "grookey",
     "defaultVarietyId": 812,
     "defaultVarietyName": "rillaboom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "813": {
     "id": 813,
@@ -23134,13 +22323,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/813.png",
+    "sprite": "813.png",
     "basePokemonId": 813,
     "basePokemonName": "scorbunny",
     "defaultVarietyId": 813,
     "defaultVarietyName": "scorbunny",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "814": {
     "id": 814,
@@ -23160,13 +22348,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/814.png",
+    "sprite": "814.png",
     "basePokemonId": 813,
     "basePokemonName": "scorbunny",
     "defaultVarietyId": 814,
     "defaultVarietyName": "raboot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "815": {
     "id": 815,
@@ -23186,13 +22373,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/815.png",
+    "sprite": "815.png",
     "basePokemonId": 813,
     "basePokemonName": "scorbunny",
     "defaultVarietyId": 815,
     "defaultVarietyName": "cinderace",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "816": {
     "id": 816,
@@ -23212,13 +22398,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/816.png",
+    "sprite": "816.png",
     "basePokemonId": 816,
     "basePokemonName": "sobble",
     "defaultVarietyId": 816,
     "defaultVarietyName": "sobble",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "817": {
     "id": 817,
@@ -23238,13 +22423,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/817.png",
+    "sprite": "817.png",
     "basePokemonId": 816,
     "basePokemonName": "sobble",
     "defaultVarietyId": 817,
     "defaultVarietyName": "drizzile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "818": {
     "id": 818,
@@ -23264,13 +22448,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/818.png",
+    "sprite": "818.png",
     "basePokemonId": 816,
     "basePokemonName": "sobble",
     "defaultVarietyId": 818,
     "defaultVarietyName": "inteleon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "819": {
     "id": 819,
@@ -23290,13 +22473,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/819.png",
+    "sprite": "819.png",
     "basePokemonId": 819,
     "basePokemonName": "skwovet",
     "defaultVarietyId": 819,
     "defaultVarietyName": "skwovet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "820": {
     "id": 820,
@@ -23316,13 +22498,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/820.png",
+    "sprite": "820.png",
     "basePokemonId": 819,
     "basePokemonName": "skwovet",
     "defaultVarietyId": 820,
     "defaultVarietyName": "greedent",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "821": {
     "id": 821,
@@ -23347,13 +22528,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/821.png",
+    "sprite": "821.png",
     "basePokemonId": 821,
     "basePokemonName": "rookidee",
     "defaultVarietyId": 821,
     "defaultVarietyName": "rookidee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "822": {
     "id": 822,
@@ -23378,13 +22558,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/822.png",
+    "sprite": "822.png",
     "basePokemonId": 821,
     "basePokemonName": "rookidee",
     "defaultVarietyId": 822,
     "defaultVarietyName": "corvisquire",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "823": {
     "id": 823,
@@ -23410,13 +22589,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/823.png",
+    "sprite": "823.png",
     "basePokemonId": 821,
     "basePokemonName": "rookidee",
     "defaultVarietyId": 823,
     "defaultVarietyName": "corviknight",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "824": {
     "id": 824,
@@ -23441,13 +22619,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/824.png",
+    "sprite": "824.png",
     "basePokemonId": 824,
     "basePokemonName": "blipbug",
     "defaultVarietyId": 824,
     "defaultVarietyName": "blipbug",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "825": {
     "id": 825,
@@ -23473,13 +22650,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/825.png",
+    "sprite": "825.png",
     "basePokemonId": 824,
     "basePokemonName": "blipbug",
     "defaultVarietyId": 825,
     "defaultVarietyName": "dottler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "826": {
     "id": 826,
@@ -23505,13 +22681,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/826.png",
+    "sprite": "826.png",
     "basePokemonId": 824,
     "basePokemonName": "blipbug",
     "defaultVarietyId": 826,
     "defaultVarietyName": "orbeetle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "827": {
     "id": 827,
@@ -23536,13 +22711,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/827.png",
+    "sprite": "827.png",
     "basePokemonId": 827,
     "basePokemonName": "nickit",
     "defaultVarietyId": 827,
     "defaultVarietyName": "nickit",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "828": {
     "id": 828,
@@ -23567,13 +22741,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/828.png",
+    "sprite": "828.png",
     "basePokemonId": 827,
     "basePokemonName": "nickit",
     "defaultVarietyId": 828,
     "defaultVarietyName": "thievul",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "829": {
     "id": 829,
@@ -23598,13 +22771,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/829.png",
+    "sprite": "829.png",
     "basePokemonId": 829,
     "basePokemonName": "gossifleur",
     "defaultVarietyId": 829,
     "defaultVarietyName": "gossifleur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "830": {
     "id": 830,
@@ -23629,13 +22801,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/830.png",
+    "sprite": "830.png",
     "basePokemonId": 829,
     "basePokemonName": "gossifleur",
     "defaultVarietyId": 830,
     "defaultVarietyName": "eldegoss",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "831": {
     "id": 831,
@@ -23660,13 +22831,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/831.png",
+    "sprite": "831.png",
     "basePokemonId": 831,
     "basePokemonName": "wooloo",
     "defaultVarietyId": 831,
     "defaultVarietyName": "wooloo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "832": {
     "id": 832,
@@ -23691,13 +22861,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/832.png",
+    "sprite": "832.png",
     "basePokemonId": 831,
     "basePokemonName": "wooloo",
     "defaultVarietyId": 832,
     "defaultVarietyName": "dubwool",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "833": {
     "id": 833,
@@ -23722,13 +22891,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/833.png",
+    "sprite": "833.png",
     "basePokemonId": 833,
     "basePokemonName": "chewtle",
     "defaultVarietyId": 833,
     "defaultVarietyName": "chewtle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "834": {
     "id": 834,
@@ -23754,13 +22922,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/834.png",
+    "sprite": "834.png",
     "basePokemonId": 833,
     "basePokemonName": "chewtle",
     "defaultVarietyId": 834,
     "defaultVarietyName": "drednaw",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "835": {
     "id": 835,
@@ -23780,13 +22947,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/835.png",
+    "sprite": "835.png",
     "basePokemonId": 835,
     "basePokemonName": "yamper",
     "defaultVarietyId": 835,
     "defaultVarietyName": "yamper",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "836": {
     "id": 836,
@@ -23806,13 +22972,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/836.png",
+    "sprite": "836.png",
     "basePokemonId": 835,
     "basePokemonName": "yamper",
     "defaultVarietyId": 836,
     "defaultVarietyName": "boltund",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "837": {
     "id": 837,
@@ -23837,13 +23002,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/837.png",
+    "sprite": "837.png",
     "basePokemonId": 837,
     "basePokemonName": "rolycoly",
     "defaultVarietyId": 837,
     "defaultVarietyName": "rolycoly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "838": {
     "id": 838,
@@ -23869,13 +23033,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/838.png",
+    "sprite": "838.png",
     "basePokemonId": 837,
     "basePokemonName": "rolycoly",
     "defaultVarietyId": 838,
     "defaultVarietyName": "carkol",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "839": {
     "id": 839,
@@ -23901,13 +23064,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/839.png",
+    "sprite": "839.png",
     "basePokemonId": 837,
     "basePokemonName": "rolycoly",
     "defaultVarietyId": 839,
     "defaultVarietyName": "coalossal",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "840": {
     "id": 840,
@@ -23933,13 +23095,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/840.png",
+    "sprite": "840.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 840,
     "defaultVarietyName": "applin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "841": {
     "id": 841,
@@ -23965,13 +23126,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/841.png",
+    "sprite": "841.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 841,
     "defaultVarietyName": "flapple",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "842": {
     "id": 842,
@@ -23997,13 +23157,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/842.png",
+    "sprite": "842.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 842,
     "defaultVarietyName": "appletun",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "843": {
     "id": 843,
@@ -24028,13 +23187,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/843.png",
+    "sprite": "843.png",
     "basePokemonId": 843,
     "basePokemonName": "silicobra",
     "defaultVarietyId": 843,
     "defaultVarietyName": "silicobra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "844": {
     "id": 844,
@@ -24059,13 +23217,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/844.png",
+    "sprite": "844.png",
     "basePokemonId": 843,
     "basePokemonName": "silicobra",
     "defaultVarietyId": 844,
     "defaultVarietyName": "sandaconda",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "845": {
     "id": 845,
@@ -24081,13 +23238,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/845.png",
+    "sprite": "845.png",
     "basePokemonId": 845,
     "basePokemonName": "cramorant",
     "defaultVarietyId": 845,
     "defaultVarietyName": "cramorant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "846": {
     "id": 846,
@@ -24107,13 +23263,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/846.png",
+    "sprite": "846.png",
     "basePokemonId": 846,
     "basePokemonName": "arrokuda",
     "defaultVarietyId": 846,
     "defaultVarietyName": "arrokuda",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "847": {
     "id": 847,
@@ -24133,13 +23288,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/847.png",
+    "sprite": "847.png",
     "basePokemonId": 846,
     "basePokemonName": "arrokuda",
     "defaultVarietyId": 847,
     "defaultVarietyName": "barraskewda",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "848": {
     "id": 848,
@@ -24165,13 +23319,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/848.png",
+    "sprite": "848.png",
     "basePokemonId": 848,
     "basePokemonName": "toxel",
     "defaultVarietyId": 848,
     "defaultVarietyName": "toxel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "849": {
     "id": 849,
@@ -24197,13 +23350,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png",
+    "sprite": "849.png",
     "basePokemonId": 848,
     "basePokemonName": "toxel",
     "defaultVarietyId": 849,
     "defaultVarietyName": "toxtricity-amped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "850": {
     "id": 850,
@@ -24229,13 +23381,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/850.png",
+    "sprite": "850.png",
     "basePokemonId": 850,
     "basePokemonName": "sizzlipede",
     "defaultVarietyId": 850,
     "defaultVarietyName": "sizzlipede",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "851": {
     "id": 851,
@@ -24261,13 +23412,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/851.png",
+    "sprite": "851.png",
     "basePokemonId": 850,
     "basePokemonName": "sizzlipede",
     "defaultVarietyId": 851,
     "defaultVarietyName": "centiskorch",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "852": {
     "id": 852,
@@ -24287,13 +23437,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/852.png",
+    "sprite": "852.png",
     "basePokemonId": 852,
     "basePokemonName": "clobbopus",
     "defaultVarietyId": 852,
     "defaultVarietyName": "clobbopus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "853": {
     "id": 853,
@@ -24313,13 +23462,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/853.png",
+    "sprite": "853.png",
     "basePokemonId": 852,
     "basePokemonName": "clobbopus",
     "defaultVarietyId": 853,
     "defaultVarietyName": "grapploct",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "854": {
     "id": 854,
@@ -24339,13 +23487,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/854.png",
+    "sprite": "854.png",
     "basePokemonId": 854,
     "basePokemonName": "sinistea",
     "defaultVarietyId": 854,
     "defaultVarietyName": "sinistea",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "855": {
     "id": 855,
@@ -24365,13 +23512,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/855.png",
+    "sprite": "855.png",
     "basePokemonId": 854,
     "basePokemonName": "sinistea",
     "defaultVarietyId": 855,
     "defaultVarietyName": "polteageist",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "856": {
     "id": 856,
@@ -24396,13 +23542,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/856.png",
+    "sprite": "856.png",
     "basePokemonId": 856,
     "basePokemonName": "hatenna",
     "defaultVarietyId": 856,
     "defaultVarietyName": "hatenna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "857": {
     "id": 857,
@@ -24427,13 +23572,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/857.png",
+    "sprite": "857.png",
     "basePokemonId": 856,
     "basePokemonName": "hatenna",
     "defaultVarietyId": 857,
     "defaultVarietyName": "hattrem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "858": {
     "id": 858,
@@ -24459,13 +23603,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/858.png",
+    "sprite": "858.png",
     "basePokemonId": 856,
     "basePokemonName": "hatenna",
     "defaultVarietyId": 858,
     "defaultVarietyName": "hatterene",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "859": {
     "id": 859,
@@ -24491,13 +23634,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/859.png",
+    "sprite": "859.png",
     "basePokemonId": 859,
     "basePokemonName": "impidimp",
     "defaultVarietyId": 859,
     "defaultVarietyName": "impidimp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "860": {
     "id": 860,
@@ -24523,13 +23665,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/860.png",
+    "sprite": "860.png",
     "basePokemonId": 859,
     "basePokemonName": "impidimp",
     "defaultVarietyId": 860,
     "defaultVarietyName": "morgrem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "861": {
     "id": 861,
@@ -24555,13 +23696,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/861.png",
+    "sprite": "861.png",
     "basePokemonId": 859,
     "basePokemonName": "impidimp",
     "defaultVarietyId": 861,
     "defaultVarietyName": "grimmsnarl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "862": {
     "id": 862,
@@ -24587,13 +23727,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/862.png",
+    "sprite": "862.png",
     "basePokemonId": 263,
     "basePokemonName": "zigzagoon",
     "defaultVarietyId": 862,
     "defaultVarietyName": "obstagoon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "863": {
     "id": 863,
@@ -24618,13 +23757,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/863.png",
+    "sprite": "863.png",
     "basePokemonId": 52,
     "basePokemonName": "meowth",
     "defaultVarietyId": 863,
     "defaultVarietyName": "perrserker",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "864": {
     "id": 864,
@@ -24644,13 +23782,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/864.png",
+    "sprite": "864.png",
     "basePokemonId": 222,
     "basePokemonName": "corsola",
     "defaultVarietyId": 864,
     "defaultVarietyName": "cursola",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "865": {
     "id": 865,
@@ -24670,13 +23807,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/865.png",
+    "sprite": "865.png",
     "basePokemonId": 83,
     "basePokemonName": "farfetchd",
     "defaultVarietyId": 865,
     "defaultVarietyName": "sirfetchd",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "866": {
     "id": 866,
@@ -24702,13 +23838,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/866.png",
+    "sprite": "866.png",
     "basePokemonId": 439,
     "basePokemonName": "mime-jr",
     "defaultVarietyId": 866,
     "defaultVarietyName": "mr-rime",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "867": {
     "id": 867,
@@ -24724,13 +23859,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/867.png",
+    "sprite": "867.png",
     "basePokemonId": 562,
     "basePokemonName": "yamask",
     "defaultVarietyId": 867,
     "defaultVarietyName": "runerigus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "868": {
     "id": 868,
@@ -24750,13 +23884,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/868.png",
+    "sprite": "868.png",
     "basePokemonId": 868,
     "basePokemonName": "milcery",
     "defaultVarietyId": 868,
     "defaultVarietyName": "milcery",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "869": {
     "id": 869,
@@ -24776,13 +23909,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/869.png",
+    "sprite": "869.png",
     "basePokemonId": 868,
     "basePokemonName": "milcery",
     "defaultVarietyId": 869,
     "defaultVarietyName": "alcremie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "870": {
     "id": 870,
@@ -24802,13 +23934,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/870.png",
+    "sprite": "870.png",
     "basePokemonId": 870,
     "basePokemonName": "falinks",
     "defaultVarietyId": 870,
     "defaultVarietyName": "falinks",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "871": {
     "id": 871,
@@ -24828,13 +23959,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/871.png",
+    "sprite": "871.png",
     "basePokemonId": 871,
     "basePokemonName": "pincurchin",
     "defaultVarietyId": 871,
     "defaultVarietyName": "pincurchin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "872": {
     "id": 872,
@@ -24855,13 +23985,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/872.png",
+    "sprite": "872.png",
     "basePokemonId": 872,
     "basePokemonName": "snom",
     "defaultVarietyId": 872,
     "defaultVarietyName": "snom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "873": {
     "id": 873,
@@ -24882,13 +24011,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/873.png",
+    "sprite": "873.png",
     "basePokemonId": 872,
     "basePokemonName": "snom",
     "defaultVarietyId": 873,
     "defaultVarietyName": "frosmoth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "874": {
     "id": 874,
@@ -24903,13 +24031,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/874.png",
+    "sprite": "874.png",
     "basePokemonId": 874,
     "basePokemonName": "stonjourner",
     "defaultVarietyId": 874,
     "defaultVarietyName": "stonjourner",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "875": {
     "id": 875,
@@ -24924,13 +24051,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/875.png",
+    "sprite": "875.png",
     "basePokemonId": 875,
     "basePokemonName": "eiscue",
     "defaultVarietyId": 875,
     "defaultVarietyName": "eiscue-ice",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "876": {
     "id": 876,
@@ -24956,13 +24082,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/876.png",
+    "sprite": "876.png",
     "basePokemonId": 876,
     "basePokemonName": "indeedee",
     "defaultVarietyId": 876,
     "defaultVarietyName": "indeedee-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "877": {
     "id": 877,
@@ -24978,13 +24103,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/877.png",
+    "sprite": "877.png",
     "basePokemonId": 877,
     "basePokemonName": "morpeko",
     "defaultVarietyId": 877,
     "defaultVarietyName": "morpeko-full-belly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "878": {
     "id": 878,
@@ -25004,13 +24128,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/878.png",
+    "sprite": "878.png",
     "basePokemonId": 878,
     "basePokemonName": "cufant",
     "defaultVarietyId": 878,
     "defaultVarietyName": "cufant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "879": {
     "id": 879,
@@ -25030,13 +24153,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/879.png",
+    "sprite": "879.png",
     "basePokemonId": 878,
     "basePokemonName": "cufant",
     "defaultVarietyId": 879,
     "defaultVarietyName": "copperajah",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "880": {
     "id": 880,
@@ -25062,13 +24184,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/880.png",
+    "sprite": "880.png",
     "basePokemonId": 880,
     "basePokemonName": "dracozolt",
     "defaultVarietyId": 880,
     "defaultVarietyName": "dracozolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "881": {
     "id": 881,
@@ -25094,13 +24215,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/881.png",
+    "sprite": "881.png",
     "basePokemonId": 881,
     "basePokemonName": "arctozolt",
     "defaultVarietyId": 881,
     "defaultVarietyName": "arctozolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "882": {
     "id": 882,
@@ -25126,13 +24246,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/882.png",
+    "sprite": "882.png",
     "basePokemonId": 882,
     "basePokemonName": "dracovish",
     "defaultVarietyId": 882,
     "defaultVarietyName": "dracovish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "883": {
     "id": 883,
@@ -25158,13 +24277,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/883.png",
+    "sprite": "883.png",
     "basePokemonId": 883,
     "basePokemonName": "arctovish",
     "defaultVarietyId": 883,
     "defaultVarietyName": "arctovish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "884": {
     "id": 884,
@@ -25190,13 +24308,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/884.png",
+    "sprite": "884.png",
     "basePokemonId": 884,
     "basePokemonName": "duraludon",
     "defaultVarietyId": 884,
     "defaultVarietyName": "duraludon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "885": {
     "id": 885,
@@ -25222,13 +24339,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/885.png",
+    "sprite": "885.png",
     "basePokemonId": 885,
     "basePokemonName": "dreepy",
     "defaultVarietyId": 885,
     "defaultVarietyName": "dreepy",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "886": {
     "id": 886,
@@ -25254,13 +24370,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/886.png",
+    "sprite": "886.png",
     "basePokemonId": 885,
     "basePokemonName": "dreepy",
     "defaultVarietyId": 886,
     "defaultVarietyName": "drakloak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "887": {
     "id": 887,
@@ -25286,13 +24401,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png",
+    "sprite": "887.png",
     "basePokemonId": 885,
     "basePokemonName": "dreepy",
     "defaultVarietyId": 887,
     "defaultVarietyName": "dragapult",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "888": {
     "id": 888,
@@ -25307,13 +24421,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/888.png",
+    "sprite": "888.png",
     "basePokemonId": 888,
     "basePokemonName": "zacian",
     "defaultVarietyId": 888,
     "defaultVarietyName": "zacian",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "889": {
     "id": 889,
@@ -25328,13 +24441,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/889.png",
+    "sprite": "889.png",
     "basePokemonId": 889,
     "basePokemonName": "zamazenta",
     "defaultVarietyId": 889,
     "defaultVarietyName": "zamazenta",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "890": {
     "id": 890,
@@ -25350,13 +24462,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/890.png",
+    "sprite": "890.png",
     "basePokemonId": 890,
     "basePokemonName": "eternatus",
     "defaultVarietyId": 890,
     "defaultVarietyName": "eternatus",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "891": {
     "id": 891,
@@ -25371,13 +24482,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/891.png",
+    "sprite": "891.png",
     "basePokemonId": 891,
     "basePokemonName": "kubfu",
     "defaultVarietyId": 891,
     "defaultVarietyName": "kubfu",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "892": {
     "id": 892,
@@ -25393,13 +24503,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/892.png",
+    "sprite": "892.png",
     "basePokemonId": 891,
     "basePokemonName": "kubfu",
     "defaultVarietyId": 892,
     "defaultVarietyName": "urshifu-single-strike",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "893": {
     "id": 893,
@@ -25415,13 +24524,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/893.png",
+    "sprite": "893.png",
     "basePokemonId": 893,
     "basePokemonName": "zarude",
     "defaultVarietyId": 893,
     "defaultVarietyName": "zarude",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "894": {
     "id": 894,
@@ -25436,13 +24544,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/894.png",
+    "sprite": "894.png",
     "basePokemonId": 894,
     "basePokemonName": "regieleki",
     "defaultVarietyId": 894,
     "defaultVarietyName": "regieleki",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "895": {
     "id": 895,
@@ -25457,13 +24564,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/895.png",
+    "sprite": "895.png",
     "basePokemonId": 895,
     "basePokemonName": "regidrago",
     "defaultVarietyId": 895,
     "defaultVarietyName": "regidrago",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "896": {
     "id": 896,
@@ -25478,13 +24584,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/896.png",
+    "sprite": "896.png",
     "basePokemonId": 896,
     "basePokemonName": "glastrier",
     "defaultVarietyId": 896,
     "defaultVarietyName": "glastrier",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "897": {
     "id": 897,
@@ -25499,13 +24604,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/897.png",
+    "sprite": "897.png",
     "basePokemonId": 897,
     "basePokemonName": "spectrier",
     "defaultVarietyId": 897,
     "defaultVarietyName": "spectrier",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "898": {
     "id": 898,
@@ -25521,13 +24625,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/898.png",
+    "sprite": "898.png",
     "basePokemonId": 898,
     "basePokemonName": "calyrex",
     "defaultVarietyId": 898,
     "defaultVarietyName": "calyrex",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "899": {
     "id": 899,
@@ -25553,13 +24656,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/899.png",
+    "sprite": "899.png",
     "basePokemonId": 234,
     "basePokemonName": "stantler",
     "defaultVarietyId": 899,
     "defaultVarietyName": "wyrdeer",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "900": {
     "id": 900,
@@ -25585,13 +24687,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/900.png",
+    "sprite": "900.png",
     "basePokemonId": 123,
     "basePokemonName": "scyther",
     "defaultVarietyId": 900,
     "defaultVarietyName": "kleavor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "901": {
     "id": 901,
@@ -25617,13 +24718,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/901.png",
+    "sprite": "901.png",
     "basePokemonId": 216,
     "basePokemonName": "teddiursa",
     "defaultVarietyId": 901,
     "defaultVarietyName": "ursaluna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "902": {
     "id": 902,
@@ -25649,13 +24749,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/902.png",
+    "sprite": "902.png",
     "basePokemonId": 550,
     "basePokemonName": "basculin",
     "defaultVarietyId": 902,
     "defaultVarietyName": "basculegion-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "903": {
     "id": 903,
@@ -25681,13 +24780,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/903.png",
+    "sprite": "903.png",
     "basePokemonId": 215,
     "basePokemonName": "sneasel",
     "defaultVarietyId": 903,
     "defaultVarietyName": "sneasler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "904": {
     "id": 904,
@@ -25713,13 +24811,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/904.png",
+    "sprite": "904.png",
     "basePokemonId": 211,
     "basePokemonName": "qwilfish",
     "defaultVarietyId": 904,
     "defaultVarietyName": "overqwil",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "905": {
     "id": 905,
@@ -25740,13 +24837,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/905.png",
+    "sprite": "905.png",
     "basePokemonId": 905,
     "basePokemonName": "enamorus",
     "defaultVarietyId": 905,
     "defaultVarietyName": "enamorus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "906": {
     "id": 906,
@@ -25766,13 +24862,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/906.png",
+    "sprite": "906.png",
     "basePokemonId": 906,
     "basePokemonName": "sprigatito",
     "defaultVarietyId": 906,
     "defaultVarietyName": "sprigatito",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "907": {
     "id": 907,
@@ -25792,13 +24887,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/907.png",
+    "sprite": "907.png",
     "basePokemonId": 906,
     "basePokemonName": "sprigatito",
     "defaultVarietyId": 907,
     "defaultVarietyName": "floragato",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "908": {
     "id": 908,
@@ -25819,13 +24913,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/908.png",
+    "sprite": "908.png",
     "basePokemonId": 906,
     "basePokemonName": "sprigatito",
     "defaultVarietyId": 908,
     "defaultVarietyName": "meowscarada",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "909": {
     "id": 909,
@@ -25845,13 +24938,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/909.png",
+    "sprite": "909.png",
     "basePokemonId": 909,
     "basePokemonName": "fuecoco",
     "defaultVarietyId": 909,
     "defaultVarietyName": "fuecoco",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "910": {
     "id": 910,
@@ -25871,13 +24963,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/910.png",
+    "sprite": "910.png",
     "basePokemonId": 909,
     "basePokemonName": "fuecoco",
     "defaultVarietyId": 910,
     "defaultVarietyName": "crocalor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "911": {
     "id": 911,
@@ -25898,13 +24989,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/911.png",
+    "sprite": "911.png",
     "basePokemonId": 909,
     "basePokemonName": "fuecoco",
     "defaultVarietyId": 911,
     "defaultVarietyName": "skeledirge",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "912": {
     "id": 912,
@@ -25924,13 +25014,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/912.png",
+    "sprite": "912.png",
     "basePokemonId": 912,
     "basePokemonName": "quaxly",
     "defaultVarietyId": 912,
     "defaultVarietyName": "quaxly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "913": {
     "id": 913,
@@ -25950,13 +25039,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/913.png",
+    "sprite": "913.png",
     "basePokemonId": 912,
     "basePokemonName": "quaxly",
     "defaultVarietyId": 913,
     "defaultVarietyName": "quaxwell",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "914": {
     "id": 914,
@@ -25977,13 +25065,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/914.png",
+    "sprite": "914.png",
     "basePokemonId": 912,
     "basePokemonName": "quaxly",
     "defaultVarietyId": 914,
     "defaultVarietyName": "quaquaval",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "915": {
     "id": 915,
@@ -26008,13 +25095,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/915.png",
+    "sprite": "915.png",
     "basePokemonId": 915,
     "basePokemonName": "lechonk",
     "defaultVarietyId": 915,
     "defaultVarietyName": "lechonk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "916": {
     "id": 916,
@@ -26039,13 +25125,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/916.png",
+    "sprite": "916.png",
     "basePokemonId": 915,
     "basePokemonName": "lechonk",
     "defaultVarietyId": 916,
     "defaultVarietyName": "oinkologne",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "917": {
     "id": 917,
@@ -26065,13 +25150,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/917.png",
+    "sprite": "917.png",
     "basePokemonId": 917,
     "basePokemonName": "tarountula",
     "defaultVarietyId": 917,
     "defaultVarietyName": "tarountula",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "918": {
     "id": 918,
@@ -26091,13 +25175,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/918.png",
+    "sprite": "918.png",
     "basePokemonId": 917,
     "basePokemonName": "tarountula",
     "defaultVarietyId": 918,
     "defaultVarietyName": "spidops",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "919": {
     "id": 919,
@@ -26117,13 +25200,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/919.png",
+    "sprite": "919.png",
     "basePokemonId": 919,
     "basePokemonName": "nymble",
     "defaultVarietyId": 919,
     "defaultVarietyName": "nymble",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "920": {
     "id": 920,
@@ -26144,13 +25226,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/920.png",
+    "sprite": "920.png",
     "basePokemonId": 919,
     "basePokemonName": "nymble",
     "defaultVarietyId": 920,
     "defaultVarietyName": "lokix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "921": {
     "id": 921,
@@ -26175,13 +25256,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/921.png",
+    "sprite": "921.png",
     "basePokemonId": 921,
     "basePokemonName": "pawmi",
     "defaultVarietyId": 921,
     "defaultVarietyName": "pawmi",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "922": {
     "id": 922,
@@ -26207,13 +25287,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/922.png",
+    "sprite": "922.png",
     "basePokemonId": 921,
     "basePokemonName": "pawmi",
     "defaultVarietyId": 922,
     "defaultVarietyName": "pawmo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "923": {
     "id": 923,
@@ -26239,13 +25318,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/923.png",
+    "sprite": "923.png",
     "basePokemonId": 921,
     "basePokemonName": "pawmi",
     "defaultVarietyId": 923,
     "defaultVarietyName": "pawmot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "924": {
     "id": 924,
@@ -26270,13 +25348,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/924.png",
+    "sprite": "924.png",
     "basePokemonId": 924,
     "basePokemonName": "tandemaus",
     "defaultVarietyId": 924,
     "defaultVarietyName": "tandemaus",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "925": {
     "id": 925,
@@ -26301,13 +25378,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/925.png",
+    "sprite": "925.png",
     "basePokemonId": 924,
     "basePokemonName": "tandemaus",
     "defaultVarietyId": 925,
     "defaultVarietyName": "maushold",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "926": {
     "id": 926,
@@ -26327,13 +25403,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/926.png",
+    "sprite": "926.png",
     "basePokemonId": 926,
     "basePokemonName": "fidough",
     "defaultVarietyId": 926,
     "defaultVarietyName": "fidough",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "927": {
     "id": 927,
@@ -26353,13 +25428,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/927.png",
+    "sprite": "927.png",
     "basePokemonId": 926,
     "basePokemonName": "fidough",
     "defaultVarietyId": 927,
     "defaultVarietyName": "dachsbun",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "928": {
     "id": 928,
@@ -26380,13 +25454,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/928.png",
+    "sprite": "928.png",
     "basePokemonId": 928,
     "basePokemonName": "smoliv",
     "defaultVarietyId": 928,
     "defaultVarietyName": "smoliv",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "929": {
     "id": 929,
@@ -26407,13 +25480,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/929.png",
+    "sprite": "929.png",
     "basePokemonId": 928,
     "basePokemonName": "smoliv",
     "defaultVarietyId": 929,
     "defaultVarietyName": "dolliv",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "930": {
     "id": 930,
@@ -26434,13 +25506,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/930.png",
+    "sprite": "930.png",
     "basePokemonId": 928,
     "basePokemonName": "smoliv",
     "defaultVarietyId": 930,
     "defaultVarietyName": "arboliva",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "931": {
     "id": 931,
@@ -26466,13 +25537,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/931.png",
+    "sprite": "931.png",
     "basePokemonId": 931,
     "basePokemonName": "squawkabilly",
     "defaultVarietyId": 931,
     "defaultVarietyName": "squawkabilly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "932": {
     "id": 932,
@@ -26497,13 +25567,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/932.png",
+    "sprite": "932.png",
     "basePokemonId": 932,
     "basePokemonName": "nacli",
     "defaultVarietyId": 932,
     "defaultVarietyName": "nacli",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "933": {
     "id": 933,
@@ -26528,13 +25597,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/933.png",
+    "sprite": "933.png",
     "basePokemonId": 932,
     "basePokemonName": "nacli",
     "defaultVarietyId": 933,
     "defaultVarietyName": "naclstack",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "934": {
     "id": 934,
@@ -26559,13 +25627,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/934.png",
+    "sprite": "934.png",
     "basePokemonId": 932,
     "basePokemonName": "nacli",
     "defaultVarietyId": 934,
     "defaultVarietyName": "garganacl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "935": {
     "id": 935,
@@ -26585,13 +25652,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/935.png",
+    "sprite": "935.png",
     "basePokemonId": 935,
     "basePokemonName": "charcadet",
     "defaultVarietyId": 935,
     "defaultVarietyName": "charcadet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "936": {
     "id": 936,
@@ -26612,13 +25678,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/936.png",
+    "sprite": "936.png",
     "basePokemonId": 935,
     "basePokemonName": "charcadet",
     "defaultVarietyId": 936,
     "defaultVarietyName": "armarouge",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "937": {
     "id": 937,
@@ -26639,13 +25704,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/937.png",
+    "sprite": "937.png",
     "basePokemonId": 935,
     "basePokemonName": "charcadet",
     "defaultVarietyId": 937,
     "defaultVarietyName": "ceruledge",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "938": {
     "id": 938,
@@ -26670,13 +25734,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/938.png",
+    "sprite": "938.png",
     "basePokemonId": 938,
     "basePokemonName": "tadbulb",
     "defaultVarietyId": 938,
     "defaultVarietyName": "tadbulb",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "939": {
     "id": 939,
@@ -26701,13 +25764,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/939.png",
+    "sprite": "939.png",
     "basePokemonId": 938,
     "basePokemonName": "tadbulb",
     "defaultVarietyId": 939,
     "defaultVarietyName": "bellibolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "940": {
     "id": 940,
@@ -26733,13 +25795,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/940.png",
+    "sprite": "940.png",
     "basePokemonId": 940,
     "basePokemonName": "wattrel",
     "defaultVarietyId": 940,
     "defaultVarietyName": "wattrel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "941": {
     "id": 941,
@@ -26765,13 +25826,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/941.png",
+    "sprite": "941.png",
     "basePokemonId": 940,
     "basePokemonName": "wattrel",
     "defaultVarietyId": 941,
     "defaultVarietyName": "kilowattrel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "942": {
     "id": 942,
@@ -26796,13 +25856,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/942.png",
+    "sprite": "942.png",
     "basePokemonId": 942,
     "basePokemonName": "maschiff",
     "defaultVarietyId": 942,
     "defaultVarietyName": "maschiff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "943": {
     "id": 943,
@@ -26827,13 +25886,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/943.png",
+    "sprite": "943.png",
     "basePokemonId": 942,
     "basePokemonName": "maschiff",
     "defaultVarietyId": 943,
     "defaultVarietyName": "mabosstiff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "944": {
     "id": 944,
@@ -26859,13 +25917,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/944.png",
+    "sprite": "944.png",
     "basePokemonId": 944,
     "basePokemonName": "shroodle",
     "defaultVarietyId": 944,
     "defaultVarietyName": "shroodle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "945": {
     "id": 945,
@@ -26891,13 +25948,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/945.png",
+    "sprite": "945.png",
     "basePokemonId": 944,
     "basePokemonName": "shroodle",
     "defaultVarietyId": 945,
     "defaultVarietyName": "grafaiai",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "946": {
     "id": 946,
@@ -26918,13 +25974,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/946.png",
+    "sprite": "946.png",
     "basePokemonId": 946,
     "basePokemonName": "bramblin",
     "defaultVarietyId": 946,
     "defaultVarietyName": "bramblin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "947": {
     "id": 947,
@@ -26945,13 +26000,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/947.png",
+    "sprite": "947.png",
     "basePokemonId": 946,
     "basePokemonName": "bramblin",
     "defaultVarietyId": 947,
     "defaultVarietyName": "brambleghast",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "948": {
     "id": 948,
@@ -26972,13 +26026,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/948.png",
+    "sprite": "948.png",
     "basePokemonId": 948,
     "basePokemonName": "toedscool",
     "defaultVarietyId": 948,
     "defaultVarietyName": "toedscool",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "949": {
     "id": 949,
@@ -26999,13 +26052,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/949.png",
+    "sprite": "949.png",
     "basePokemonId": 948,
     "basePokemonName": "toedscool",
     "defaultVarietyId": 949,
     "defaultVarietyName": "toedscruel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "950": {
     "id": 950,
@@ -27030,13 +26082,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/950.png",
+    "sprite": "950.png",
     "basePokemonId": 950,
     "basePokemonName": "klawf",
     "defaultVarietyId": 950,
     "defaultVarietyName": "klawf",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "951": {
     "id": 951,
@@ -27061,13 +26112,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/951.png",
+    "sprite": "951.png",
     "basePokemonId": 951,
     "basePokemonName": "capsakid",
     "defaultVarietyId": 951,
     "defaultVarietyName": "capsakid",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "952": {
     "id": 952,
@@ -27093,13 +26143,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/952.png",
+    "sprite": "952.png",
     "basePokemonId": 951,
     "basePokemonName": "capsakid",
     "defaultVarietyId": 952,
     "defaultVarietyName": "scovillain",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "953": {
     "id": 953,
@@ -27119,13 +26168,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/953.png",
+    "sprite": "953.png",
     "basePokemonId": 953,
     "basePokemonName": "rellor",
     "defaultVarietyId": 953,
     "defaultVarietyName": "rellor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "954": {
     "id": 954,
@@ -27146,13 +26194,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/954.png",
+    "sprite": "954.png",
     "basePokemonId": 953,
     "basePokemonName": "rellor",
     "defaultVarietyId": 954,
     "defaultVarietyName": "rabsca",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "955": {
     "id": 955,
@@ -27177,13 +26224,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/955.png",
+    "sprite": "955.png",
     "basePokemonId": 955,
     "basePokemonName": "flittle",
     "defaultVarietyId": 955,
     "defaultVarietyName": "flittle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "956": {
     "id": 956,
@@ -27208,13 +26254,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/956.png",
+    "sprite": "956.png",
     "basePokemonId": 955,
     "basePokemonName": "flittle",
     "defaultVarietyId": 956,
     "defaultVarietyName": "espathra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "957": {
     "id": 957,
@@ -27240,13 +26285,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/957.png",
+    "sprite": "957.png",
     "basePokemonId": 957,
     "basePokemonName": "tinkatink",
     "defaultVarietyId": 957,
     "defaultVarietyName": "tinkatink",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "958": {
     "id": 958,
@@ -27272,13 +26316,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/958.png",
+    "sprite": "958.png",
     "basePokemonId": 957,
     "basePokemonName": "tinkatink",
     "defaultVarietyId": 958,
     "defaultVarietyName": "tinkatuff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "959": {
     "id": 959,
@@ -27304,13 +26347,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/959.png",
+    "sprite": "959.png",
     "basePokemonId": 957,
     "basePokemonName": "tinkatink",
     "defaultVarietyId": 959,
     "defaultVarietyName": "tinkaton",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "960": {
     "id": 960,
@@ -27335,13 +26377,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/960.png",
+    "sprite": "960.png",
     "basePokemonId": 960,
     "basePokemonName": "wiglett",
     "defaultVarietyId": 960,
     "defaultVarietyName": "wiglett",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "961": {
     "id": 961,
@@ -27366,13 +26407,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/961.png",
+    "sprite": "961.png",
     "basePokemonId": 960,
     "basePokemonName": "wiglett",
     "defaultVarietyId": 961,
     "defaultVarietyName": "wugtrio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "962": {
     "id": 962,
@@ -27398,13 +26438,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/962.png",
+    "sprite": "962.png",
     "basePokemonId": 962,
     "basePokemonName": "bombirdier",
     "defaultVarietyId": 962,
     "defaultVarietyName": "bombirdier",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "963": {
     "id": 963,
@@ -27424,13 +26463,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/963.png",
+    "sprite": "963.png",
     "basePokemonId": 963,
     "basePokemonName": "finizen",
     "defaultVarietyId": 963,
     "defaultVarietyName": "finizen",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "964": {
     "id": 964,
@@ -27450,13 +26488,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/964.png",
+    "sprite": "964.png",
     "basePokemonId": 963,
     "basePokemonName": "finizen",
     "defaultVarietyId": 964,
     "defaultVarietyName": "palafin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "965": {
     "id": 965,
@@ -27477,13 +26514,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/965.png",
+    "sprite": "965.png",
     "basePokemonId": 965,
     "basePokemonName": "varoom",
     "defaultVarietyId": 965,
     "defaultVarietyName": "varoom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "966": {
     "id": 966,
@@ -27504,13 +26540,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/966.png",
+    "sprite": "966.png",
     "basePokemonId": 965,
     "basePokemonName": "varoom",
     "defaultVarietyId": 966,
     "defaultVarietyName": "revavroom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "967": {
     "id": 967,
@@ -27531,13 +26566,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/967.png",
+    "sprite": "967.png",
     "basePokemonId": 967,
     "basePokemonName": "cyclizar",
     "defaultVarietyId": 967,
     "defaultVarietyName": "cyclizar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "968": {
     "id": 968,
@@ -27557,13 +26591,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/968.png",
+    "sprite": "968.png",
     "basePokemonId": 968,
     "basePokemonName": "orthworm",
     "defaultVarietyId": 968,
     "defaultVarietyName": "orthworm",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "969": {
     "id": 969,
@@ -27584,13 +26617,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/969.png",
+    "sprite": "969.png",
     "basePokemonId": 969,
     "basePokemonName": "glimmet",
     "defaultVarietyId": 969,
     "defaultVarietyName": "glimmet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "970": {
     "id": 970,
@@ -27611,13 +26643,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/970.png",
+    "sprite": "970.png",
     "basePokemonId": 969,
     "basePokemonName": "glimmet",
     "defaultVarietyId": 970,
     "defaultVarietyName": "glimmora",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "971": {
     "id": 971,
@@ -27637,13 +26668,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/971.png",
+    "sprite": "971.png",
     "basePokemonId": 971,
     "basePokemonName": "greavard",
     "defaultVarietyId": 971,
     "defaultVarietyName": "greavard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "972": {
     "id": 972,
@@ -27663,13 +26693,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/972.png",
+    "sprite": "972.png",
     "basePokemonId": 971,
     "basePokemonName": "greavard",
     "defaultVarietyId": 972,
     "defaultVarietyName": "houndstone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "973": {
     "id": 973,
@@ -27695,13 +26724,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/973.png",
+    "sprite": "973.png",
     "basePokemonId": 973,
     "basePokemonName": "flamigo",
     "defaultVarietyId": 973,
     "defaultVarietyName": "flamigo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "974": {
     "id": 974,
@@ -27726,13 +26754,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/974.png",
+    "sprite": "974.png",
     "basePokemonId": 974,
     "basePokemonName": "cetoddle",
     "defaultVarietyId": 974,
     "defaultVarietyName": "cetoddle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "975": {
     "id": 975,
@@ -27757,13 +26784,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/975.png",
+    "sprite": "975.png",
     "basePokemonId": 974,
     "basePokemonName": "cetoddle",
     "defaultVarietyId": 975,
     "defaultVarietyName": "cetitan",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "976": {
     "id": 976,
@@ -27784,13 +26810,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/976.png",
+    "sprite": "976.png",
     "basePokemonId": 976,
     "basePokemonName": "veluza",
     "defaultVarietyId": 976,
     "defaultVarietyName": "veluza",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "977": {
     "id": 977,
@@ -27815,13 +26840,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/977.png",
+    "sprite": "977.png",
     "basePokemonId": 977,
     "basePokemonName": "dondozo",
     "defaultVarietyId": 977,
     "defaultVarietyName": "dondozo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "978": {
     "id": 978,
@@ -27842,13 +26866,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/978.png",
+    "sprite": "978.png",
     "basePokemonId": 978,
     "basePokemonName": "tatsugiri",
     "defaultVarietyId": 978,
     "defaultVarietyName": "tatsugiri",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "979": {
     "id": 979,
@@ -27874,13 +26897,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/979.png",
+    "sprite": "979.png",
     "basePokemonId": 56,
     "basePokemonName": "mankey",
     "defaultVarietyId": 979,
     "defaultVarietyName": "annihilape",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "980": {
     "id": 980,
@@ -27906,13 +26928,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/980.png",
+    "sprite": "980.png",
     "basePokemonId": 194,
     "basePokemonName": "wooper",
     "defaultVarietyId": 980,
     "defaultVarietyName": "clodsire",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "981": {
     "id": 981,
@@ -27938,13 +26959,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/981.png",
+    "sprite": "981.png",
     "basePokemonId": 203,
     "basePokemonName": "girafarig",
     "defaultVarietyId": 981,
     "defaultVarietyName": "farigiraf",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "982": {
     "id": 982,
@@ -27969,13 +26989,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/982.png",
+    "sprite": "982.png",
     "basePokemonId": 206,
     "basePokemonName": "dunsparce",
     "defaultVarietyId": 982,
     "defaultVarietyName": "dudunsparce",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "983": {
     "id": 983,
@@ -28001,13 +27020,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/983.png",
+    "sprite": "983.png",
     "basePokemonId": 624,
     "basePokemonName": "pawniard",
     "defaultVarietyId": 983,
     "defaultVarietyName": "kingambit",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "984": {
     "id": 984,
@@ -28028,13 +27046,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/984.png",
+    "sprite": "984.png",
     "basePokemonId": 984,
     "basePokemonName": "great-tusk",
     "defaultVarietyId": 984,
     "defaultVarietyName": "great-tusk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "985": {
     "id": 985,
@@ -28055,13 +27073,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/985.png",
+    "sprite": "985.png",
     "basePokemonId": 985,
     "basePokemonName": "scream-tail",
     "defaultVarietyId": 985,
     "defaultVarietyName": "scream-tail",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "986": {
     "id": 986,
@@ -28082,13 +27100,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/986.png",
+    "sprite": "986.png",
     "basePokemonId": 986,
     "basePokemonName": "brute-bonnet",
     "defaultVarietyId": 986,
     "defaultVarietyName": "brute-bonnet",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "987": {
     "id": 987,
@@ -28109,13 +27127,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/987.png",
+    "sprite": "987.png",
     "basePokemonId": 987,
     "basePokemonName": "flutter-mane",
     "defaultVarietyId": 987,
     "defaultVarietyName": "flutter-mane",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "988": {
     "id": 988,
@@ -28136,13 +27154,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/988.png",
+    "sprite": "988.png",
     "basePokemonId": 988,
     "basePokemonName": "slither-wing",
     "defaultVarietyId": 988,
     "defaultVarietyName": "slither-wing",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "989": {
     "id": 989,
@@ -28163,13 +27181,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/989.png",
+    "sprite": "989.png",
     "basePokemonId": 989,
     "basePokemonName": "sandy-shocks",
     "defaultVarietyId": 989,
     "defaultVarietyName": "sandy-shocks",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "990": {
     "id": 990,
@@ -28190,13 +27208,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/990.png",
+    "sprite": "990.png",
     "basePokemonId": 990,
     "basePokemonName": "iron-treads",
     "defaultVarietyId": 990,
     "defaultVarietyName": "iron-treads",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "991": {
     "id": 991,
@@ -28217,13 +27235,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/991.png",
+    "sprite": "991.png",
     "basePokemonId": 991,
     "basePokemonName": "iron-bundle",
     "defaultVarietyId": 991,
     "defaultVarietyName": "iron-bundle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "992": {
     "id": 992,
@@ -28244,13 +27262,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/992.png",
+    "sprite": "992.png",
     "basePokemonId": 992,
     "basePokemonName": "iron-hands",
     "defaultVarietyId": 992,
     "defaultVarietyName": "iron-hands",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "993": {
     "id": 993,
@@ -28271,13 +27289,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/993.png",
+    "sprite": "993.png",
     "basePokemonId": 993,
     "basePokemonName": "iron-jugulis",
     "defaultVarietyId": 993,
     "defaultVarietyName": "iron-jugulis",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "994": {
     "id": 994,
@@ -28298,13 +27316,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/994.png",
+    "sprite": "994.png",
     "basePokemonId": 994,
     "basePokemonName": "iron-moth",
     "defaultVarietyId": 994,
     "defaultVarietyName": "iron-moth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "995": {
     "id": 995,
@@ -28325,13 +27343,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/995.png",
+    "sprite": "995.png",
     "basePokemonId": 995,
     "basePokemonName": "iron-thorns",
     "defaultVarietyId": 995,
     "defaultVarietyName": "iron-thorns",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "996": {
     "id": 996,
@@ -28352,13 +27370,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/996.png",
+    "sprite": "996.png",
     "basePokemonId": 996,
     "basePokemonName": "frigibax",
     "defaultVarietyId": 996,
     "defaultVarietyName": "frigibax",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "997": {
     "id": 997,
@@ -28379,13 +27396,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/997.png",
+    "sprite": "997.png",
     "basePokemonId": 996,
     "basePokemonName": "frigibax",
     "defaultVarietyId": 997,
     "defaultVarietyName": "arctibax",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "998": {
     "id": 998,
@@ -28406,13 +27422,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/998.png",
+    "sprite": "998.png",
     "basePokemonId": 996,
     "basePokemonName": "frigibax",
     "defaultVarietyId": 998,
     "defaultVarietyName": "baxcalibur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "999": {
     "id": 999,
@@ -28432,13 +27447,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/999.png",
+    "sprite": "999.png",
     "basePokemonId": 999,
     "basePokemonName": "gimmighoul",
     "defaultVarietyId": 999,
     "defaultVarietyName": "gimmighoul",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1000": {
     "id": 1000,
@@ -28459,13 +27473,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1000.png",
+    "sprite": "1000.png",
     "basePokemonId": 999,
     "basePokemonName": "gimmighoul",
     "defaultVarietyId": 1000,
     "defaultVarietyName": "gholdengo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1001": {
     "id": 1001,
@@ -28486,13 +27499,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1001.png",
+    "sprite": "1001.png",
     "basePokemonId": 1001,
     "basePokemonName": "wo-chien",
     "defaultVarietyId": 1001,
     "defaultVarietyName": "wo-chien",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1002": {
     "id": 1002,
@@ -28513,13 +27525,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1002.png",
+    "sprite": "1002.png",
     "basePokemonId": 1002,
     "basePokemonName": "chien-pao",
     "defaultVarietyId": 1002,
     "defaultVarietyName": "chien-pao",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1003": {
     "id": 1003,
@@ -28540,13 +27551,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1003.png",
+    "sprite": "1003.png",
     "basePokemonId": 1003,
     "basePokemonName": "ting-lu",
     "defaultVarietyId": 1003,
     "defaultVarietyName": "ting-lu",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1004": {
     "id": 1004,
@@ -28567,13 +27577,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1004.png",
+    "sprite": "1004.png",
     "basePokemonId": 1004,
     "basePokemonName": "chi-yu",
     "defaultVarietyId": 1004,
     "defaultVarietyName": "chi-yu",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1005": {
     "id": 1005,
@@ -28594,13 +27603,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1005.png",
+    "sprite": "1005.png",
     "basePokemonId": 1005,
     "basePokemonName": "roaring-moon",
     "defaultVarietyId": 1005,
     "defaultVarietyName": "roaring-moon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "1006": {
     "id": 1006,
@@ -28621,13 +27630,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1006.png",
+    "sprite": "1006.png",
     "basePokemonId": 1006,
     "basePokemonName": "iron-valiant",
     "defaultVarietyId": 1006,
     "defaultVarietyName": "iron-valiant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "1007": {
     "id": 1007,
@@ -28648,13 +27657,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1007.png",
+    "sprite": "1007.png",
     "basePokemonId": 1007,
     "basePokemonName": "koraidon",
     "defaultVarietyId": 1007,
     "defaultVarietyName": "koraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary",
+    "paradox": "ancient"
   },
   "1008": {
     "id": 1008,
@@ -28675,13 +27684,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1008.png",
+    "sprite": "1008.png",
     "basePokemonId": 1008,
     "basePokemonName": "miraidon",
     "defaultVarietyId": 1008,
     "defaultVarietyName": "miraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary",
+    "paradox": "future"
   },
   "1009": {
     "id": 1009,
@@ -28702,13 +27711,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1009.png",
+    "sprite": "1009.png",
     "basePokemonId": 1009,
     "basePokemonName": "walking-wake",
     "defaultVarietyId": 1009,
     "defaultVarietyName": "walking-wake",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "1010": {
     "id": 1010,
@@ -28729,13 +27738,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1010.png",
+    "sprite": "1010.png",
     "basePokemonId": 1010,
     "basePokemonName": "iron-leaves",
     "defaultVarietyId": 1010,
     "defaultVarietyName": "iron-leaves",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "1011": {
     "id": 1011,
@@ -28761,13 +27770,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1011.png",
+    "sprite": "1011.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 1011,
     "defaultVarietyName": "dipplin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1012": {
     "id": 1012,
@@ -28788,13 +27796,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1012.png",
+    "sprite": "1012.png",
     "basePokemonId": 1012,
     "basePokemonName": "poltchageist",
     "defaultVarietyId": 1012,
     "defaultVarietyName": "poltchageist",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1013": {
     "id": 1013,
@@ -28815,13 +27822,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1013.png",
+    "sprite": "1013.png",
     "basePokemonId": 1012,
     "basePokemonName": "poltchageist",
     "defaultVarietyId": 1013,
     "defaultVarietyName": "sinistcha",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1014": {
     "id": 1014,
@@ -28842,13 +27848,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1014.png",
+    "sprite": "1014.png",
     "basePokemonId": 1014,
     "basePokemonName": "okidogi",
     "defaultVarietyId": 1014,
     "defaultVarietyName": "okidogi",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1015": {
     "id": 1015,
@@ -28869,13 +27874,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1015.png",
+    "sprite": "1015.png",
     "basePokemonId": 1015,
     "basePokemonName": "munkidori",
     "defaultVarietyId": 1015,
     "defaultVarietyName": "munkidori",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1016": {
     "id": 1016,
@@ -28896,13 +27900,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1016.png",
+    "sprite": "1016.png",
     "basePokemonId": 1016,
     "basePokemonName": "fezandipiti",
     "defaultVarietyId": 1016,
     "defaultVarietyName": "fezandipiti",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1017": {
     "id": 1017,
@@ -28917,13 +27920,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1017.png",
+    "sprite": "1017.png",
     "basePokemonId": 1017,
     "basePokemonName": "ogerpon",
     "defaultVarietyId": 1017,
     "defaultVarietyName": "ogerpon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1018": {
     "id": 1018,
@@ -28949,13 +27951,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1018.png",
+    "sprite": "1018.png",
     "basePokemonId": 884,
     "basePokemonName": "duraludon",
     "defaultVarietyId": 1018,
     "defaultVarietyName": "archaludon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1019": {
     "id": 1019,
@@ -28981,13 +27982,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1019.png",
+    "sprite": "1019.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 1019,
     "defaultVarietyName": "hydrapple",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "1020": {
     "id": 1020,
@@ -29003,13 +28003,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1020.png",
+    "sprite": "1020.png",
     "basePokemonId": 1020,
     "basePokemonName": "gouging-fire",
     "defaultVarietyId": 1020,
     "defaultVarietyName": "gouging-fire",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "1021": {
     "id": 1021,
@@ -29025,13 +28025,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1021.png",
+    "sprite": "1021.png",
     "basePokemonId": 1021,
     "basePokemonName": "raging-bolt",
     "defaultVarietyId": 1021,
     "defaultVarietyName": "raging-bolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "ancient"
   },
   "1022": {
     "id": 1022,
@@ -29047,13 +28047,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1022.png",
+    "sprite": "1022.png",
     "basePokemonId": 1022,
     "basePokemonName": "iron-boulder",
     "defaultVarietyId": 1022,
     "defaultVarietyName": "iron-boulder",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "1023": {
     "id": 1023,
@@ -29069,13 +28069,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1023.png",
+    "sprite": "1023.png",
     "basePokemonId": 1023,
     "basePokemonName": "iron-crown",
     "defaultVarietyId": 1023,
     "defaultVarietyName": "iron-crown",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "paradox": "future"
   },
   "1024": {
     "id": 1024,
@@ -29090,13 +28090,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1024.png",
+    "sprite": "1024.png",
     "basePokemonId": 1024,
     "basePokemonName": "terapagos",
     "defaultVarietyId": 1024,
     "defaultVarietyName": "terapagos",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "1025": {
     "id": 1025,
@@ -29112,13 +28111,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1025.png",
+    "sprite": "1025.png",
     "basePokemonId": 1025,
     "basePokemonName": "pecharunt",
     "defaultVarietyId": 1025,
     "defaultVarietyName": "pecharunt",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10001": {
     "id": 10001,
@@ -29133,13 +28131,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10001.png",
+    "sprite": "10001.png",
     "basePokemonId": 386,
     "basePokemonName": "deoxys",
     "defaultVarietyId": 386,
     "defaultVarietyName": "deoxys-normal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10002": {
     "id": 10002,
@@ -29154,13 +28151,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10002.png",
+    "sprite": "10002.png",
     "basePokemonId": 386,
     "basePokemonName": "deoxys",
     "defaultVarietyId": 386,
     "defaultVarietyName": "deoxys-normal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10003": {
     "id": 10003,
@@ -29175,13 +28171,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10003.png",
+    "sprite": "10003.png",
     "basePokemonId": 386,
     "basePokemonName": "deoxys",
     "defaultVarietyId": 386,
     "defaultVarietyName": "deoxys-normal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10004": {
     "id": 10004,
@@ -29202,13 +28197,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10004.png",
+    "sprite": "10004.png",
     "basePokemonId": 412,
     "basePokemonName": "burmy",
     "defaultVarietyId": 413,
     "defaultVarietyName": "wormadam-plant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10005": {
     "id": 10005,
@@ -29229,13 +28223,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10005.png",
+    "sprite": "10005.png",
     "basePokemonId": 412,
     "basePokemonName": "burmy",
     "defaultVarietyId": 413,
     "defaultVarietyName": "wormadam-plant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10006": {
     "id": 10006,
@@ -29251,13 +28244,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10006.png",
+    "sprite": "10006.png",
     "basePokemonId": 492,
     "basePokemonName": "shaymin",
     "defaultVarietyId": 492,
     "defaultVarietyName": "shaymin-land",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10007": {
     "id": 10007,
@@ -29273,13 +28265,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10007.png",
+    "sprite": "10007.png",
     "basePokemonId": 487,
     "basePokemonName": "giratina",
     "defaultVarietyId": 487,
     "defaultVarietyName": "giratina-altered",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10008": {
     "id": 10008,
@@ -29295,13 +28286,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10008.png",
+    "sprite": "10008.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10009": {
     "id": 10009,
@@ -29317,13 +28307,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10009.png",
+    "sprite": "10009.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10010": {
     "id": 10010,
@@ -29339,13 +28328,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10010.png",
+    "sprite": "10010.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10011": {
     "id": 10011,
@@ -29361,13 +28349,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10011.png",
+    "sprite": "10011.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10012": {
     "id": 10012,
@@ -29383,13 +28370,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10012.png",
+    "sprite": "10012.png",
     "basePokemonId": 479,
     "basePokemonName": "rotom",
     "defaultVarietyId": 479,
     "defaultVarietyName": "rotom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10013": {
     "id": 10013,
@@ -29404,13 +28390,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10013.png",
+    "sprite": "10013.png",
     "basePokemonId": 351,
     "basePokemonName": "castform",
     "defaultVarietyId": 351,
     "defaultVarietyName": "castform",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10014": {
     "id": 10014,
@@ -29425,13 +28410,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10014.png",
+    "sprite": "10014.png",
     "basePokemonId": 351,
     "basePokemonName": "castform",
     "defaultVarietyId": 351,
     "defaultVarietyName": "castform",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10015": {
     "id": 10015,
@@ -29446,13 +28430,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10015.png",
+    "sprite": "10015.png",
     "basePokemonId": 351,
     "basePokemonName": "castform",
     "defaultVarietyId": 351,
     "defaultVarietyName": "castform",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10016": {
     "id": 10016,
@@ -29477,13 +28460,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10016.png",
+    "sprite": "10016.png",
     "basePokemonId": 550,
     "basePokemonName": "basculin",
     "defaultVarietyId": 550,
     "defaultVarietyName": "basculin-red-striped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10017": {
     "id": 10017,
@@ -29504,13 +28486,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10017.png",
+    "sprite": "10017.png",
     "basePokemonId": 554,
     "basePokemonName": "darumaka",
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10018": {
     "id": 10018,
@@ -29526,13 +28507,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10018.png",
+    "sprite": "10018.png",
     "basePokemonId": 648,
     "basePokemonName": "meloetta",
     "defaultVarietyId": 648,
     "defaultVarietyName": "meloetta-aria",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10019": {
     "id": 10019,
@@ -29547,13 +28527,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10019.png",
+    "sprite": "10019.png",
     "basePokemonId": 641,
     "basePokemonName": "tornadus",
     "defaultVarietyId": 641,
     "defaultVarietyName": "tornadus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10020": {
     "id": 10020,
@@ -29569,13 +28548,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10020.png",
+    "sprite": "10020.png",
     "basePokemonId": 642,
     "basePokemonName": "thundurus",
     "defaultVarietyId": 642,
     "defaultVarietyName": "thundurus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10021": {
     "id": 10021,
@@ -29591,13 +28569,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10021.png",
+    "sprite": "10021.png",
     "basePokemonId": 645,
     "basePokemonName": "landorus",
     "defaultVarietyId": 645,
     "defaultVarietyName": "landorus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10022": {
     "id": 10022,
@@ -29613,13 +28590,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10022.png",
+    "sprite": "10022.png",
     "basePokemonId": 646,
     "basePokemonName": "kyurem",
     "defaultVarietyId": 646,
     "defaultVarietyName": "kyurem",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10023": {
     "id": 10023,
@@ -29635,13 +28611,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10023.png",
+    "sprite": "10023.png",
     "basePokemonId": 646,
     "basePokemonName": "kyurem",
     "defaultVarietyId": 646,
     "defaultVarietyName": "kyurem",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10024": {
     "id": 10024,
@@ -29657,13 +28632,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10024.png",
+    "sprite": "10024.png",
     "basePokemonId": 647,
     "basePokemonName": "keldeo",
     "defaultVarietyId": 647,
     "defaultVarietyName": "keldeo-ordinary",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10025": {
     "id": 10025,
@@ -29688,13 +28662,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10025.png",
+    "sprite": "10025.png",
     "basePokemonId": 677,
     "basePokemonName": "espurr",
     "defaultVarietyId": 678,
     "defaultVarietyName": "meowstic-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10026": {
     "id": 10026,
@@ -29710,13 +28683,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10026.png",
+    "sprite": "10026.png",
     "basePokemonId": 679,
     "basePokemonName": "honedge",
     "defaultVarietyId": 681,
     "defaultVarietyName": "aegislash-shield",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10027": {
     "id": 10027,
@@ -29742,13 +28714,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10027.png",
+    "sprite": "10027.png",
     "basePokemonId": 710,
     "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 710,
     "defaultVarietyName": "pumpkaboo-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10028": {
     "id": 10028,
@@ -29774,13 +28745,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10028.png",
+    "sprite": "10028.png",
     "basePokemonId": 710,
     "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 710,
     "defaultVarietyName": "pumpkaboo-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10029": {
     "id": 10029,
@@ -29806,13 +28776,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10029.png",
+    "sprite": "10029.png",
     "basePokemonId": 710,
     "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 710,
     "defaultVarietyName": "pumpkaboo-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10030": {
     "id": 10030,
@@ -29838,13 +28807,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10030.png",
-    "basePokemonId": 10027,
-    "basePokemonName": "pumpkaboo-small",
+    "sprite": "10030.png",
+    "basePokemonId": 710,
+    "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 711,
     "defaultVarietyName": "gourgeist-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10031": {
     "id": 10031,
@@ -29870,13 +28838,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10031.png",
-    "basePokemonId": 10028,
-    "basePokemonName": "pumpkaboo-large",
+    "sprite": "10031.png",
+    "basePokemonId": 710,
+    "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 711,
     "defaultVarietyName": "gourgeist-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10032": {
     "id": 10032,
@@ -29902,13 +28869,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10032.png",
-    "basePokemonId": 10029,
-    "basePokemonName": "pumpkaboo-super",
+    "sprite": "10032.png",
+    "basePokemonId": 710,
+    "basePokemonName": "pumpkaboo",
     "defaultVarietyId": 711,
     "defaultVarietyName": "gourgeist-average",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10033": {
     "id": 10033,
@@ -29924,13 +28890,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10033.png",
+    "sprite": "10033.png",
     "basePokemonId": 1,
     "basePokemonName": "bulbasaur",
     "defaultVarietyId": 3,
     "defaultVarietyName": "venusaur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10034": {
     "id": 10034,
@@ -29946,13 +28911,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10034.png",
+    "sprite": "10034.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 6,
     "defaultVarietyName": "charizard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10035": {
     "id": 10035,
@@ -29968,13 +28932,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png",
+    "sprite": "10035.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 6,
     "defaultVarietyName": "charizard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10036": {
     "id": 10036,
@@ -29989,13 +28952,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10036.png",
+    "sprite": "10036.png",
     "basePokemonId": 7,
     "basePokemonName": "squirtle",
     "defaultVarietyId": 9,
     "defaultVarietyName": "blastoise",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10037": {
     "id": 10037,
@@ -30010,13 +28972,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10037.png",
+    "sprite": "10037.png",
     "basePokemonId": 63,
     "basePokemonName": "abra",
     "defaultVarietyId": 65,
     "defaultVarietyName": "alakazam",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10038": {
     "id": 10038,
@@ -30032,13 +28993,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10038.png",
+    "sprite": "10038.png",
     "basePokemonId": 92,
     "basePokemonName": "gastly",
     "defaultVarietyId": 94,
     "defaultVarietyName": "gengar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10039": {
     "id": 10039,
@@ -30053,13 +29013,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10039.png",
+    "sprite": "10039.png",
     "basePokemonId": 115,
     "basePokemonName": "kangaskhan",
     "defaultVarietyId": 115,
     "defaultVarietyName": "kangaskhan",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10040": {
     "id": 10040,
@@ -30075,13 +29034,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10040.png",
+    "sprite": "10040.png",
     "basePokemonId": 127,
     "basePokemonName": "pinsir",
     "defaultVarietyId": 127,
     "defaultVarietyName": "pinsir",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10041": {
     "id": 10041,
@@ -30097,13 +29055,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10041.png",
+    "sprite": "10041.png",
     "basePokemonId": 129,
     "basePokemonName": "magikarp",
     "defaultVarietyId": 130,
     "defaultVarietyName": "gyarados",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10042": {
     "id": 10042,
@@ -30119,13 +29076,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10042.png",
+    "sprite": "10042.png",
     "basePokemonId": 142,
     "basePokemonName": "aerodactyl",
     "defaultVarietyId": 142,
     "defaultVarietyName": "aerodactyl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10043": {
     "id": 10043,
@@ -30141,13 +29097,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10043.png",
+    "sprite": "10043.png",
     "basePokemonId": 150,
     "basePokemonName": "mewtwo",
     "defaultVarietyId": 150,
     "defaultVarietyName": "mewtwo",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10044": {
     "id": 10044,
@@ -30162,13 +29117,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10044.png",
+    "sprite": "10044.png",
     "basePokemonId": 150,
     "basePokemonName": "mewtwo",
     "defaultVarietyId": 150,
     "defaultVarietyName": "mewtwo",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10045": {
     "id": 10045,
@@ -30184,13 +29138,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10045.png",
+    "sprite": "10045.png",
     "basePokemonId": 179,
     "basePokemonName": "mareep",
     "defaultVarietyId": 181,
     "defaultVarietyName": "ampharos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10046": {
     "id": 10046,
@@ -30206,13 +29159,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10046.png",
+    "sprite": "10046.png",
     "basePokemonId": 123,
     "basePokemonName": "scyther",
     "defaultVarietyId": 212,
     "defaultVarietyName": "scizor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10047": {
     "id": 10047,
@@ -30228,13 +29180,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10047.png",
+    "sprite": "10047.png",
     "basePokemonId": 214,
     "basePokemonName": "heracross",
     "defaultVarietyId": 214,
     "defaultVarietyName": "heracross",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10048": {
     "id": 10048,
@@ -30250,13 +29201,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10048.png",
+    "sprite": "10048.png",
     "basePokemonId": 228,
     "basePokemonName": "houndour",
     "defaultVarietyId": 229,
     "defaultVarietyName": "houndoom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10049": {
     "id": 10049,
@@ -30272,13 +29222,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10049.png",
+    "sprite": "10049.png",
     "basePokemonId": 246,
     "basePokemonName": "larvitar",
     "defaultVarietyId": 248,
     "defaultVarietyName": "tyranitar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10050": {
     "id": 10050,
@@ -30294,13 +29243,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10050.png",
+    "sprite": "10050.png",
     "basePokemonId": 255,
     "basePokemonName": "torchic",
     "defaultVarietyId": 257,
     "defaultVarietyName": "blaziken",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10051": {
     "id": 10051,
@@ -30316,13 +29264,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10051.png",
+    "sprite": "10051.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 282,
     "defaultVarietyName": "gardevoir",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10052": {
     "id": 10052,
@@ -30338,13 +29285,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10052.png",
+    "sprite": "10052.png",
     "basePokemonId": 303,
     "basePokemonName": "mawile",
     "defaultVarietyId": 303,
     "defaultVarietyName": "mawile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10053": {
     "id": 10053,
@@ -30359,13 +29305,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10053.png",
+    "sprite": "10053.png",
     "basePokemonId": 304,
     "basePokemonName": "aron",
     "defaultVarietyId": 306,
     "defaultVarietyName": "aggron",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10054": {
     "id": 10054,
@@ -30381,13 +29326,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10054.png",
+    "sprite": "10054.png",
     "basePokemonId": 307,
     "basePokemonName": "meditite",
     "defaultVarietyId": 308,
     "defaultVarietyName": "medicham",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10055": {
     "id": 10055,
@@ -30402,13 +29346,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10055.png",
+    "sprite": "10055.png",
     "basePokemonId": 309,
     "basePokemonName": "electrike",
     "defaultVarietyId": 310,
     "defaultVarietyName": "manectric",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10056": {
     "id": 10056,
@@ -30423,13 +29366,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10056.png",
+    "sprite": "10056.png",
     "basePokemonId": 353,
     "basePokemonName": "shuppet",
     "defaultVarietyId": 354,
     "defaultVarietyName": "banette",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10057": {
     "id": 10057,
@@ -30444,13 +29386,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10057.png",
+    "sprite": "10057.png",
     "basePokemonId": 359,
     "basePokemonName": "absol",
     "defaultVarietyId": 359,
     "defaultVarietyName": "absol",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10058": {
     "id": 10058,
@@ -30466,13 +29407,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10058.png",
+    "sprite": "10058.png",
     "basePokemonId": 443,
     "basePokemonName": "gible",
     "defaultVarietyId": 445,
     "defaultVarietyName": "garchomp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10059": {
     "id": 10059,
@@ -30488,13 +29428,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10059.png",
+    "sprite": "10059.png",
     "basePokemonId": 447,
     "basePokemonName": "riolu",
     "defaultVarietyId": 448,
     "defaultVarietyName": "lucario",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10060": {
     "id": 10060,
@@ -30510,13 +29449,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10060.png",
+    "sprite": "10060.png",
     "basePokemonId": 459,
     "basePokemonName": "snover",
     "defaultVarietyId": 460,
     "defaultVarietyName": "abomasnow",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10061": {
     "id": 10061,
@@ -30536,13 +29474,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10061.png",
+    "sprite": "10061.png",
     "basePokemonId": 669,
     "basePokemonName": "flabebe",
     "defaultVarietyId": 670,
     "defaultVarietyName": "floette",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10062": {
     "id": 10062,
@@ -30558,13 +29495,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10062.png",
+    "sprite": "10062.png",
     "basePokemonId": 380,
     "basePokemonName": "latias",
     "defaultVarietyId": 380,
     "defaultVarietyName": "latias",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10063": {
     "id": 10063,
@@ -30580,13 +29516,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10063.png",
+    "sprite": "10063.png",
     "basePokemonId": 381,
     "basePokemonName": "latios",
     "defaultVarietyId": 381,
     "defaultVarietyName": "latios",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10064": {
     "id": 10064,
@@ -30602,13 +29537,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10064.png",
+    "sprite": "10064.png",
     "basePokemonId": 258,
     "basePokemonName": "mudkip",
     "defaultVarietyId": 260,
     "defaultVarietyName": "swampert",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10065": {
     "id": 10065,
@@ -30624,13 +29558,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10065.png",
+    "sprite": "10065.png",
     "basePokemonId": 252,
     "basePokemonName": "treecko",
     "defaultVarietyId": 254,
     "defaultVarietyName": "sceptile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10066": {
     "id": 10066,
@@ -30646,13 +29579,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10066.png",
+    "sprite": "10066.png",
     "basePokemonId": 302,
     "basePokemonName": "sableye",
     "defaultVarietyId": 302,
     "defaultVarietyName": "sableye",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10067": {
     "id": 10067,
@@ -30668,13 +29600,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10067.png",
+    "sprite": "10067.png",
     "basePokemonId": 333,
     "basePokemonName": "swablu",
     "defaultVarietyId": 334,
     "defaultVarietyName": "altaria",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10068": {
     "id": 10068,
@@ -30690,13 +29621,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10068.png",
+    "sprite": "10068.png",
     "basePokemonId": 280,
     "basePokemonName": "ralts",
     "defaultVarietyId": 475,
     "defaultVarietyName": "gallade",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10069": {
     "id": 10069,
@@ -30712,13 +29642,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10069.png",
+    "sprite": "10069.png",
     "basePokemonId": 531,
     "basePokemonName": "audino",
     "defaultVarietyId": 531,
     "defaultVarietyName": "audino",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10070": {
     "id": 10070,
@@ -30734,13 +29663,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10070.png",
+    "sprite": "10070.png",
     "basePokemonId": 318,
     "basePokemonName": "carvanha",
     "defaultVarietyId": 319,
     "defaultVarietyName": "sharpedo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10071": {
     "id": 10071,
@@ -30756,13 +29684,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10071.png",
+    "sprite": "10071.png",
     "basePokemonId": 79,
     "basePokemonName": "slowpoke",
     "defaultVarietyId": 80,
     "defaultVarietyName": "slowbro",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10072": {
     "id": 10072,
@@ -30778,13 +29705,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10072.png",
+    "sprite": "10072.png",
     "basePokemonId": 95,
     "basePokemonName": "onix",
     "defaultVarietyId": 208,
     "defaultVarietyName": "steelix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10073": {
     "id": 10073,
@@ -30800,13 +29726,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10073.png",
+    "sprite": "10073.png",
     "basePokemonId": 16,
     "basePokemonName": "pidgey",
     "defaultVarietyId": 18,
     "defaultVarietyName": "pidgeot",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10074": {
     "id": 10074,
@@ -30821,13 +29746,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10074.png",
+    "sprite": "10074.png",
     "basePokemonId": 361,
     "basePokemonName": "snorunt",
     "defaultVarietyId": 362,
     "defaultVarietyName": "glalie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10075": {
     "id": 10075,
@@ -30843,13 +29767,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10075.png",
+    "sprite": "10075.png",
     "basePokemonId": 719,
     "basePokemonName": "diancie",
     "defaultVarietyId": 719,
     "defaultVarietyName": "diancie",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10076": {
     "id": 10076,
@@ -30865,13 +29788,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10076.png",
+    "sprite": "10076.png",
     "basePokemonId": 374,
     "basePokemonName": "beldum",
     "defaultVarietyId": 376,
     "defaultVarietyName": "metagross",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10077": {
     "id": 10077,
@@ -30886,13 +29808,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10077.png",
+    "sprite": "10077.png",
     "basePokemonId": 382,
     "basePokemonName": "kyogre",
     "defaultVarietyId": 382,
     "defaultVarietyName": "kyogre",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10078": {
     "id": 10078,
@@ -30908,13 +29829,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10078.png",
+    "sprite": "10078.png",
     "basePokemonId": 383,
     "basePokemonName": "groudon",
     "defaultVarietyId": 383,
     "defaultVarietyName": "groudon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10079": {
     "id": 10079,
@@ -30930,13 +29850,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10079.png",
+    "sprite": "10079.png",
     "basePokemonId": 384,
     "basePokemonName": "rayquaza",
     "defaultVarietyId": 384,
     "defaultVarietyName": "rayquaza",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10080": {
     "id": 10080,
@@ -30956,13 +29875,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10080.png",
+    "sprite": "10080.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10081": {
     "id": 10081,
@@ -30982,13 +29900,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10081.png",
+    "sprite": "10081.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10082": {
     "id": 10082,
@@ -31008,13 +29925,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10082.png",
+    "sprite": "10082.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10083": {
     "id": 10083,
@@ -31034,13 +29950,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10083.png",
+    "sprite": "10083.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10084": {
     "id": 10084,
@@ -31060,13 +29975,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10084.png",
+    "sprite": "10084.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10085": {
     "id": 10085,
@@ -31086,13 +30000,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10085.png",
+    "sprite": "10085.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10086": {
     "id": 10086,
@@ -31108,13 +30021,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10086.png",
+    "sprite": "10086.png",
     "basePokemonId": 720,
     "basePokemonName": "hoopa",
     "defaultVarietyId": 720,
     "defaultVarietyName": "hoopa",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10087": {
     "id": 10087,
@@ -31130,13 +30042,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10087.png",
+    "sprite": "10087.png",
     "basePokemonId": 322,
     "basePokemonName": "numel",
     "defaultVarietyId": 323,
     "defaultVarietyName": "camerupt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10088": {
     "id": 10088,
@@ -31152,13 +30063,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10088.png",
+    "sprite": "10088.png",
     "basePokemonId": 427,
     "basePokemonName": "buneary",
     "defaultVarietyId": 428,
     "defaultVarietyName": "lopunny",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10089": {
     "id": 10089,
@@ -31174,13 +30084,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10089.png",
+    "sprite": "10089.png",
     "basePokemonId": 371,
     "basePokemonName": "bagon",
     "defaultVarietyId": 373,
     "defaultVarietyName": "salamence",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10090": {
     "id": 10090,
@@ -31196,13 +30105,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10090.png",
+    "sprite": "10090.png",
     "basePokemonId": 13,
     "basePokemonName": "weedle",
     "defaultVarietyId": 15,
     "defaultVarietyName": "beedrill",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10091": {
     "id": 10091,
@@ -31228,13 +30136,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10091.png",
+    "sprite": "10091.png",
     "basePokemonId": 10091,
     "basePokemonName": "rattata-alola",
     "defaultVarietyId": 19,
     "defaultVarietyName": "rattata",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10092": {
     "id": 10092,
@@ -31260,13 +30168,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10092.png",
+    "sprite": "10092.png",
     "basePokemonId": 10091,
     "basePokemonName": "rattata-alola",
     "defaultVarietyId": 20,
     "defaultVarietyName": "raticate",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10093": {
     "id": 10093,
@@ -31292,13 +30200,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10093.png",
+    "sprite": "10093.png",
     "basePokemonId": 19,
     "basePokemonName": "rattata",
     "defaultVarietyId": 20,
     "defaultVarietyName": "raticate",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "totem-alola"
   },
   "10094": {
     "id": 10094,
@@ -31318,13 +30226,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10094.png",
+    "sprite": "10094.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10095": {
     "id": 10095,
@@ -31344,13 +30251,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10095.png",
+    "sprite": "10095.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10096": {
     "id": 10096,
@@ -31370,13 +30276,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10096.png",
+    "sprite": "10096.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10097": {
     "id": 10097,
@@ -31396,13 +30301,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10097.png",
+    "sprite": "10097.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10098": {
     "id": 10098,
@@ -31422,13 +30326,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10098.png",
+    "sprite": "10098.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10099": {
     "id": 10099,
@@ -31448,13 +30351,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10099.png",
+    "sprite": "10099.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola-cap"
   },
   "10100": {
     "id": 10100,
@@ -31470,13 +30373,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10100.png",
+    "sprite": "10100.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 26,
     "defaultVarietyName": "raichu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10101": {
     "id": 10101,
@@ -31497,13 +30400,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10101.png",
+    "sprite": "10101.png",
     "basePokemonId": 10101,
     "basePokemonName": "sandshrew-alola",
     "defaultVarietyId": 27,
     "defaultVarietyName": "sandshrew",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10102": {
     "id": 10102,
@@ -31524,13 +30427,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10102.png",
+    "sprite": "10102.png",
     "basePokemonId": 10101,
     "basePokemonName": "sandshrew-alola",
     "defaultVarietyId": 28,
     "defaultVarietyName": "sandslash",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10103": {
     "id": 10103,
@@ -31550,13 +30453,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10103.png",
+    "sprite": "10103.png",
     "basePokemonId": 10103,
     "basePokemonName": "vulpix-alola",
     "defaultVarietyId": 37,
     "defaultVarietyName": "vulpix",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10104": {
     "id": 10104,
@@ -31577,13 +30480,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10104.png",
+    "sprite": "10104.png",
     "basePokemonId": 10103,
     "basePokemonName": "vulpix-alola",
     "defaultVarietyId": 38,
     "defaultVarietyName": "ninetales",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10105": {
     "id": 10105,
@@ -31609,13 +30512,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10105.png",
+    "sprite": "10105.png",
     "basePokemonId": 10105,
     "basePokemonName": "diglett-alola",
     "defaultVarietyId": 50,
     "defaultVarietyName": "diglett",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10106": {
     "id": 10106,
@@ -31641,13 +30544,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10106.png",
+    "sprite": "10106.png",
     "basePokemonId": 10105,
     "basePokemonName": "diglett-alola",
     "defaultVarietyId": 51,
     "defaultVarietyName": "dugtrio",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10107": {
     "id": 10107,
@@ -31672,13 +30575,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10107.png",
+    "sprite": "10107.png",
     "basePokemonId": 10107,
     "basePokemonName": "meowth-alola",
     "defaultVarietyId": 52,
     "defaultVarietyName": "meowth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10108": {
     "id": 10108,
@@ -31703,13 +30606,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10108.png",
+    "sprite": "10108.png",
     "basePokemonId": 10107,
     "basePokemonName": "meowth-alola",
     "defaultVarietyId": 53,
     "defaultVarietyName": "persian",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10109": {
     "id": 10109,
@@ -31735,13 +30638,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10109.png",
+    "sprite": "10109.png",
     "basePokemonId": 10109,
     "basePokemonName": "geodude-alola",
     "defaultVarietyId": 74,
     "defaultVarietyName": "geodude",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10110": {
     "id": 10110,
@@ -31767,13 +30670,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10110.png",
+    "sprite": "10110.png",
     "basePokemonId": 10109,
     "basePokemonName": "geodude-alola",
     "defaultVarietyId": 75,
     "defaultVarietyName": "graveler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10111": {
     "id": 10111,
@@ -31799,13 +30702,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10111.png",
+    "sprite": "10111.png",
     "basePokemonId": 10109,
     "basePokemonName": "geodude-alola",
     "defaultVarietyId": 76,
     "defaultVarietyName": "golem",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10112": {
     "id": 10112,
@@ -31831,13 +30734,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10112.png",
+    "sprite": "10112.png",
     "basePokemonId": 10112,
     "basePokemonName": "grimer-alola",
     "defaultVarietyId": 88,
     "defaultVarietyName": "grimer",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10113": {
     "id": 10113,
@@ -31863,13 +30766,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10113.png",
+    "sprite": "10113.png",
     "basePokemonId": 10112,
     "basePokemonName": "grimer-alola",
     "defaultVarietyId": 89,
     "defaultVarietyName": "muk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10114": {
     "id": 10114,
@@ -31890,13 +30793,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10114.png",
+    "sprite": "10114.png",
     "basePokemonId": 102,
     "basePokemonName": "exeggcute",
     "defaultVarietyId": 103,
     "defaultVarietyName": "exeggutor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10115": {
     "id": 10115,
@@ -31922,13 +30825,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10115.png",
+    "sprite": "10115.png",
     "basePokemonId": 104,
     "basePokemonName": "cubone",
     "defaultVarietyId": 105,
     "defaultVarietyName": "marowak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "alola"
   },
   "10116": {
     "id": 10116,
@@ -31944,13 +30847,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10116.png",
+    "sprite": "10116.png",
     "basePokemonId": 656,
     "basePokemonName": "froakie",
     "defaultVarietyId": 658,
     "defaultVarietyName": "greninja",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10117": {
     "id": 10117,
@@ -31966,13 +30868,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10117.png",
+    "sprite": "10117.png",
     "basePokemonId": 656,
     "basePokemonName": "froakie",
     "defaultVarietyId": 658,
     "defaultVarietyName": "greninja",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10118": {
     "id": 10118,
@@ -31988,13 +30889,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10118.png",
+    "sprite": "10118.png",
     "basePokemonId": 718,
     "basePokemonName": "zygarde",
     "defaultVarietyId": 718,
     "defaultVarietyName": "zygarde-50",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10119": {
     "id": 10119,
@@ -32010,13 +30910,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10119.png",
+    "sprite": "10119.png",
     "basePokemonId": 718,
     "basePokemonName": "zygarde",
     "defaultVarietyId": 718,
     "defaultVarietyName": "zygarde-50",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10120": {
     "id": 10120,
@@ -32032,13 +30931,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10120.png",
+    "sprite": "10120.png",
     "basePokemonId": 718,
     "basePokemonName": "zygarde",
     "defaultVarietyId": 718,
     "defaultVarietyName": "zygarde-50",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10121": {
     "id": 10121,
@@ -32063,13 +30961,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10121.png",
+    "sprite": "10121.png",
     "basePokemonId": 734,
     "basePokemonName": "yungoos",
     "defaultVarietyId": 735,
     "defaultVarietyName": "gumshoos",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10122": {
     "id": 10122,
@@ -32085,13 +30982,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10122.png",
+    "sprite": "10122.png",
     "basePokemonId": 736,
     "basePokemonName": "grubbin",
     "defaultVarietyId": 738,
     "defaultVarietyName": "vikavolt",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10123": {
     "id": 10123,
@@ -32107,13 +31003,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10123.png",
+    "sprite": "10123.png",
     "basePokemonId": 741,
     "basePokemonName": "oricorio",
     "defaultVarietyId": 741,
     "defaultVarietyName": "oricorio-baile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10124": {
     "id": 10124,
@@ -32129,13 +31024,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10124.png",
+    "sprite": "10124.png",
     "basePokemonId": 741,
     "basePokemonName": "oricorio",
     "defaultVarietyId": 741,
     "defaultVarietyName": "oricorio-baile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10125": {
     "id": 10125,
@@ -32151,13 +31045,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10125.png",
+    "sprite": "10125.png",
     "basePokemonId": 741,
     "basePokemonName": "oricorio",
     "defaultVarietyId": 741,
     "defaultVarietyName": "oricorio-baile",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10126": {
     "id": 10126,
@@ -32182,13 +31075,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10126.png",
+    "sprite": "10126.png",
     "basePokemonId": 744,
     "basePokemonName": "rockruff",
     "defaultVarietyId": 745,
     "defaultVarietyName": "lycanroc-midday",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10127": {
     "id": 10127,
@@ -32203,13 +31095,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10127.png",
+    "sprite": "10127.png",
     "basePokemonId": 746,
     "basePokemonName": "wishiwashi",
     "defaultVarietyId": 746,
     "defaultVarietyName": "wishiwashi-solo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10128": {
     "id": 10128,
@@ -32229,13 +31120,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "753.png",
     "basePokemonId": 753,
     "basePokemonName": "fomantis",
     "defaultVarietyId": 754,
     "defaultVarietyName": "lurantis",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10129": {
     "id": 10129,
@@ -32256,13 +31146,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "757.png",
     "basePokemonId": 757,
     "basePokemonName": "salandit",
     "defaultVarietyId": 758,
     "defaultVarietyName": "salazzle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10130": {
     "id": 10130,
@@ -32278,13 +31167,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10130.png",
+    "sprite": "10130.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10131": {
     "id": 10131,
@@ -32300,13 +31188,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10131.png",
+    "sprite": "10131.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10132": {
     "id": 10132,
@@ -32322,13 +31209,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10132.png",
+    "sprite": "10132.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10133": {
     "id": 10133,
@@ -32344,13 +31230,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10133.png",
+    "sprite": "10133.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10134": {
     "id": 10134,
@@ -32366,13 +31251,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10134.png",
+    "sprite": "10134.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10135": {
     "id": 10135,
@@ -32388,13 +31272,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10135.png",
+    "sprite": "10135.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10136": {
     "id": 10136,
@@ -32410,13 +31293,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10136.png",
+    "sprite": "10136.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10137": {
     "id": 10137,
@@ -32432,13 +31314,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10137.png",
+    "sprite": "10137.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10138": {
     "id": 10138,
@@ -32454,13 +31335,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10138.png",
+    "sprite": "10138.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10139": {
     "id": 10139,
@@ -32476,13 +31356,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10139.png",
+    "sprite": "10139.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10140": {
     "id": 10140,
@@ -32498,13 +31377,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10140.png",
+    "sprite": "10140.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10141": {
     "id": 10141,
@@ -32520,13 +31398,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10141.png",
+    "sprite": "10141.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10142": {
     "id": 10142,
@@ -32542,13 +31419,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10142.png",
+    "sprite": "10142.png",
     "basePokemonId": 774,
     "basePokemonName": "minior",
     "defaultVarietyId": 774,
     "defaultVarietyName": "minior-red-meteor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10143": {
     "id": 10143,
@@ -32564,13 +31440,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10143.png",
+    "sprite": "10143.png",
     "basePokemonId": 778,
     "basePokemonName": "mimikyu",
     "defaultVarietyId": 778,
     "defaultVarietyName": "mimikyu-disguised",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10144": {
     "id": 10144,
@@ -32586,13 +31461,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10144.png",
+    "sprite": "10144.png",
     "basePokemonId": 778,
     "basePokemonName": "mimikyu",
     "defaultVarietyId": 778,
     "defaultVarietyName": "mimikyu-disguised",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10145": {
     "id": 10145,
@@ -32608,13 +31482,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10145.png",
+    "sprite": "10145.png",
     "basePokemonId": 778,
     "basePokemonName": "mimikyu",
     "defaultVarietyId": 778,
     "defaultVarietyName": "mimikyu-disguised",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10146": {
     "id": 10146,
@@ -32640,13 +31513,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "782.png",
     "basePokemonId": 782,
     "basePokemonName": "jangmo-o",
     "defaultVarietyId": 784,
     "defaultVarietyName": "kommo-o",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10147": {
     "id": 10147,
@@ -32662,13 +31534,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10147.png",
+    "sprite": "10147.png",
     "basePokemonId": 801,
     "basePokemonName": "magearna",
     "defaultVarietyId": 801,
     "defaultVarietyName": "magearna",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10148": {
     "id": 10148,
@@ -32688,13 +31559,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10148.png",
+    "sprite": "10148.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10149": {
     "id": 10149,
@@ -32720,13 +31590,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10149.png",
+    "sprite": "10149.png",
     "basePokemonId": 104,
     "basePokemonName": "cubone",
     "defaultVarietyId": 105,
     "defaultVarietyName": "marowak",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10150": {
     "id": 10150,
@@ -32752,13 +31621,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10150.png",
+    "sprite": "10150.png",
     "basePokemonId": 742,
     "basePokemonName": "cutiefly",
     "defaultVarietyId": 743,
     "defaultVarietyName": "ribombee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10151": {
     "id": 10151,
@@ -32773,13 +31641,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10151.png",
+    "sprite": "10151.png",
     "basePokemonId": 744,
     "basePokemonName": "rockruff",
     "defaultVarietyId": 744,
     "defaultVarietyName": "rockruff",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10152": {
     "id": 10152,
@@ -32794,13 +31661,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10152.png",
+    "sprite": "10152.png",
     "basePokemonId": 744,
     "basePokemonName": "rockruff",
     "defaultVarietyId": 745,
     "defaultVarietyName": "lycanroc-midday",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10153": {
     "id": 10153,
@@ -32821,13 +31687,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "751.png",
     "basePokemonId": 751,
     "basePokemonName": "dewpider",
     "defaultVarietyId": 752,
     "defaultVarietyName": "araquanid",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10154": {
     "id": 10154,
@@ -32853,13 +31718,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "777.png",
     "basePokemonId": 777,
     "basePokemonName": "togedemaru",
     "defaultVarietyId": 777,
     "defaultVarietyName": "togedemaru",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10155": {
     "id": 10155,
@@ -32875,13 +31739,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10155.png",
+    "sprite": "10155.png",
     "basePokemonId": 800,
     "basePokemonName": "necrozma",
     "defaultVarietyId": 800,
     "defaultVarietyName": "necrozma",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10156": {
     "id": 10156,
@@ -32897,13 +31760,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10156.png",
+    "sprite": "10156.png",
     "basePokemonId": 800,
     "basePokemonName": "necrozma",
     "defaultVarietyId": 800,
     "defaultVarietyName": "necrozma",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10157": {
     "id": 10157,
@@ -32919,13 +31781,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10157.png",
+    "sprite": "10157.png",
     "basePokemonId": 800,
     "basePokemonName": "necrozma",
     "defaultVarietyId": 800,
     "defaultVarietyName": "necrozma",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10158": {
     "id": 10158,
@@ -32945,13 +31806,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "172.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10159": {
     "id": 10159,
@@ -32976,13 +31836,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "133.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 133,
     "defaultVarietyName": "eevee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10160": {
     "id": 10160,
@@ -33002,13 +31861,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "172.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10161": {
     "id": 10161,
@@ -33033,13 +31891,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10161.png",
+    "sprite": "10161.png",
     "basePokemonId": 10161,
     "basePokemonName": "meowth-galar",
     "defaultVarietyId": 52,
     "defaultVarietyName": "meowth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10162": {
     "id": 10162,
@@ -33064,13 +31922,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10162.png",
+    "sprite": "10162.png",
     "basePokemonId": 10162,
     "basePokemonName": "ponyta-galar",
     "defaultVarietyId": 77,
     "defaultVarietyName": "ponyta",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10163": {
     "id": 10163,
@@ -33096,13 +31954,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10163.png",
+    "sprite": "10163.png",
     "basePokemonId": 10162,
     "basePokemonName": "ponyta-galar",
     "defaultVarietyId": 78,
     "defaultVarietyName": "rapidash",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10164": {
     "id": 10164,
@@ -33127,13 +31985,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10164.png",
+    "sprite": "10164.png",
     "basePokemonId": 10164,
     "basePokemonName": "slowpoke-galar",
     "defaultVarietyId": 79,
     "defaultVarietyName": "slowpoke",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10165": {
     "id": 10165,
@@ -33159,13 +32017,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10165.png",
+    "sprite": "10165.png",
     "basePokemonId": 10164,
     "basePokemonName": "slowpoke-galar",
     "defaultVarietyId": 80,
     "defaultVarietyName": "slowbro",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10166": {
     "id": 10166,
@@ -33185,13 +32043,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10166.png",
+    "sprite": "10166.png",
     "basePokemonId": 10166,
     "basePokemonName": "farfetchd-galar",
     "defaultVarietyId": 83,
     "defaultVarietyName": "farfetchd",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10167": {
     "id": 10167,
@@ -33217,13 +32075,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10167.png",
+    "sprite": "10167.png",
     "basePokemonId": 109,
     "basePokemonName": "koffing",
     "defaultVarietyId": 110,
     "defaultVarietyName": "weezing",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10168": {
     "id": 10168,
@@ -33249,13 +32107,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10168.png",
+    "sprite": "10168.png",
     "basePokemonId": 439,
     "basePokemonName": "mime-jr",
     "defaultVarietyId": 122,
     "defaultVarietyName": "mr-mime",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "mime-galar"
   },
   "10169": {
     "id": 10169,
@@ -33271,13 +32129,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10169.png",
+    "sprite": "10169.png",
     "basePokemonId": 10169,
     "basePokemonName": "articuno-galar",
     "defaultVarietyId": 144,
     "defaultVarietyName": "articuno",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary",
+    "region": "galar"
   },
   "10170": {
     "id": 10170,
@@ -33293,13 +32151,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10170.png",
+    "sprite": "10170.png",
     "basePokemonId": 10170,
     "basePokemonName": "zapdos-galar",
     "defaultVarietyId": 145,
     "defaultVarietyName": "zapdos",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary",
+    "region": "galar"
   },
   "10171": {
     "id": 10171,
@@ -33315,13 +32173,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10171.png",
+    "sprite": "10171.png",
     "basePokemonId": 10171,
     "basePokemonName": "moltres-galar",
     "defaultVarietyId": 146,
     "defaultVarietyName": "moltres",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary",
+    "region": "galar"
   },
   "10172": {
     "id": 10172,
@@ -33347,13 +32205,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10172.png",
+    "sprite": "10172.png",
     "basePokemonId": 10164,
     "basePokemonName": "slowpoke-galar",
     "defaultVarietyId": 199,
     "defaultVarietyName": "slowking",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10173": {
     "id": 10173,
@@ -33373,13 +32231,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10173.png",
+    "sprite": "10173.png",
     "basePokemonId": 10173,
     "basePokemonName": "corsola-galar",
     "defaultVarietyId": 222,
     "defaultVarietyName": "corsola",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10174": {
     "id": 10174,
@@ -33405,13 +32263,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10174.png",
+    "sprite": "10174.png",
     "basePokemonId": 10174,
     "basePokemonName": "zigzagoon-galar",
     "defaultVarietyId": 263,
     "defaultVarietyName": "zigzagoon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10175": {
     "id": 10175,
@@ -33437,13 +32295,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10175.png",
+    "sprite": "10175.png",
     "basePokemonId": 10174,
     "basePokemonName": "zigzagoon-galar",
     "defaultVarietyId": 264,
     "defaultVarietyName": "linoone",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10176": {
     "id": 10176,
@@ -33463,13 +32321,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10176.png",
+    "sprite": "10176.png",
     "basePokemonId": 10176,
     "basePokemonName": "darumaka-galar",
     "defaultVarietyId": 554,
     "defaultVarietyName": "darumaka",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10177": {
     "id": 10177,
@@ -33489,13 +32347,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10177.png",
+    "sprite": "10177.png",
     "basePokemonId": 554,
     "basePokemonName": "darumaka",
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar-standard"
   },
   "10178": {
     "id": 10178,
@@ -33516,13 +32374,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10178.png",
+    "sprite": "10178.png",
     "basePokemonId": 554,
     "basePokemonName": "darumaka",
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar-zen"
   },
   "10179": {
     "id": 10179,
@@ -33538,13 +32396,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10179.png",
+    "sprite": "10179.png",
     "basePokemonId": 10179,
     "basePokemonName": "yamask-galar",
     "defaultVarietyId": 562,
     "defaultVarietyName": "yamask",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10180": {
     "id": 10180,
@@ -33560,13 +32418,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10180.png",
+    "sprite": "10180.png",
     "basePokemonId": 10180,
     "basePokemonName": "stunfisk-galar",
     "defaultVarietyId": 618,
     "defaultVarietyName": "stunfisk",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "galar"
   },
   "10181": {
     "id": 10181,
@@ -33582,13 +32440,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": null,
+    "sprite": "718.png",
     "basePokemonId": 718,
     "basePokemonName": "zygarde",
     "defaultVarietyId": 718,
     "defaultVarietyName": "zygarde-50",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10182": {
     "id": 10182,
@@ -33604,13 +32461,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": null,
+    "sprite": "845.png",
     "basePokemonId": 845,
     "basePokemonName": "cramorant",
     "defaultVarietyId": 845,
     "defaultVarietyName": "cramorant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10183": {
     "id": 10183,
@@ -33626,13 +32482,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": null,
+    "sprite": "845.png",
     "basePokemonId": 845,
     "basePokemonName": "cramorant",
     "defaultVarietyId": 845,
     "defaultVarietyName": "cramorant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10184": {
     "id": 10184,
@@ -33658,13 +32513,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10184.png",
+    "sprite": "10184.png",
     "basePokemonId": 848,
     "basePokemonName": "toxel",
     "defaultVarietyId": 849,
     "defaultVarietyName": "toxtricity-amped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10185": {
     "id": 10185,
@@ -33679,13 +32533,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10185.png",
+    "sprite": "10185.png",
     "basePokemonId": 875,
     "basePokemonName": "eiscue",
     "defaultVarietyId": 875,
     "defaultVarietyName": "eiscue-ice",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10186": {
     "id": 10186,
@@ -33711,13 +32564,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10186.png",
+    "sprite": "10186.png",
     "basePokemonId": 876,
     "basePokemonName": "indeedee",
     "defaultVarietyId": 876,
     "defaultVarietyName": "indeedee-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10187": {
     "id": 10187,
@@ -33733,13 +32585,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": null,
+    "sprite": "877.png",
     "basePokemonId": 877,
     "basePokemonName": "morpeko",
     "defaultVarietyId": 877,
     "defaultVarietyName": "morpeko-full-belly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10188": {
     "id": 10188,
@@ -33755,13 +32606,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10188.png",
+    "sprite": "10188.png",
     "basePokemonId": 888,
     "basePokemonName": "zacian",
     "defaultVarietyId": 888,
     "defaultVarietyName": "zacian",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10189": {
     "id": 10189,
@@ -33777,13 +32627,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10189.png",
+    "sprite": "10189.png",
     "basePokemonId": 889,
     "basePokemonName": "zamazenta",
     "defaultVarietyId": 889,
     "defaultVarietyName": "zamazenta",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10190": {
     "id": 10190,
@@ -33799,13 +32648,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10190.png",
+    "sprite": "10190.png",
     "basePokemonId": 890,
     "basePokemonName": "eternatus",
     "defaultVarietyId": 890,
     "defaultVarietyName": "eternatus",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10191": {
     "id": 10191,
@@ -33821,13 +32669,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10191.png",
+    "sprite": "10191.png",
     "basePokemonId": 891,
     "basePokemonName": "kubfu",
     "defaultVarietyId": 892,
     "defaultVarietyName": "urshifu-single-strike",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10192": {
     "id": 10192,
@@ -33843,13 +32690,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": null,
+    "sprite": "893.png",
     "basePokemonId": 893,
     "basePokemonName": "zarude",
     "defaultVarietyId": 893,
     "defaultVarietyName": "zarude",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10193": {
     "id": 10193,
@@ -33865,13 +32711,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10193.png",
+    "sprite": "10193.png",
     "basePokemonId": 898,
     "basePokemonName": "calyrex",
     "defaultVarietyId": 898,
     "defaultVarietyName": "calyrex",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10194": {
     "id": 10194,
@@ -33887,13 +32732,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10194.png",
+    "sprite": "10194.png",
     "basePokemonId": 898,
     "basePokemonName": "calyrex",
     "defaultVarietyId": 898,
     "defaultVarietyName": "calyrex",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10195": {
     "id": 10195,
@@ -33914,13 +32758,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10195.png",
+    "sprite": "10195.png",
     "basePokemonId": 1,
     "basePokemonName": "bulbasaur",
     "defaultVarietyId": 3,
     "defaultVarietyName": "venusaur",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10196": {
     "id": 10196,
@@ -33941,13 +32784,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10196.png",
+    "sprite": "10196.png",
     "basePokemonId": 4,
     "basePokemonName": "charmander",
     "defaultVarietyId": 6,
     "defaultVarietyName": "charizard",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10197": {
     "id": 10197,
@@ -33967,13 +32809,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10197.png",
+    "sprite": "10197.png",
     "basePokemonId": 7,
     "basePokemonName": "squirtle",
     "defaultVarietyId": 9,
     "defaultVarietyName": "blastoise",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10198": {
     "id": 10198,
@@ -33994,13 +32835,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10198.png",
+    "sprite": "10198.png",
     "basePokemonId": 10,
     "basePokemonName": "caterpie",
     "defaultVarietyId": 12,
     "defaultVarietyName": "butterfree",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10199": {
     "id": 10199,
@@ -34020,13 +32860,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10199.png",
+    "sprite": "10199.png",
     "basePokemonId": 172,
     "basePokemonName": "pichu",
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10200": {
     "id": 10200,
@@ -34051,13 +32890,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10200.png",
+    "sprite": "10200.png",
     "basePokemonId": 52,
     "basePokemonName": "meowth",
     "defaultVarietyId": 52,
     "defaultVarietyName": "meowth",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10201": {
     "id": 10201,
@@ -34082,13 +32920,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10201.png",
+    "sprite": "10201.png",
     "basePokemonId": 66,
     "basePokemonName": "machop",
     "defaultVarietyId": 68,
     "defaultVarietyName": "machamp",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10202": {
     "id": 10202,
@@ -34104,13 +32941,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10202.png",
+    "sprite": "10202.png",
     "basePokemonId": 92,
     "basePokemonName": "gastly",
     "defaultVarietyId": 94,
     "defaultVarietyName": "gengar",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10203": {
     "id": 10203,
@@ -34135,13 +32971,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10203.png",
+    "sprite": "10203.png",
     "basePokemonId": 98,
     "basePokemonName": "krabby",
     "defaultVarietyId": 99,
     "defaultVarietyName": "kingler",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10204": {
     "id": 10204,
@@ -34167,13 +33002,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10204.png",
+    "sprite": "10204.png",
     "basePokemonId": 131,
     "basePokemonName": "lapras",
     "defaultVarietyId": 131,
     "defaultVarietyName": "lapras",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10205": {
     "id": 10205,
@@ -34198,13 +33032,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10205.png",
+    "sprite": "10205.png",
     "basePokemonId": 133,
     "basePokemonName": "eevee",
     "defaultVarietyId": 133,
     "defaultVarietyName": "eevee",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10206": {
     "id": 10206,
@@ -34229,13 +33062,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10206.png",
+    "sprite": "10206.png",
     "basePokemonId": 446,
     "basePokemonName": "munchlax",
     "defaultVarietyId": 143,
     "defaultVarietyName": "snorlax",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10207": {
     "id": 10207,
@@ -34260,13 +33092,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10207.png",
+    "sprite": "10207.png",
     "basePokemonId": 568,
     "basePokemonName": "trubbish",
     "defaultVarietyId": 569,
     "defaultVarietyName": "garbodor",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10208": {
     "id": 10208,
@@ -34281,13 +33112,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10208.png",
+    "sprite": "10208.png",
     "basePokemonId": 809,
     "basePokemonName": "melmetal",
     "defaultVarietyId": 809,
     "defaultVarietyName": "melmetal",
-    "isLegendary": false,
-    "isMythical": true
+    "rarity": "mythical"
   },
   "10209": {
     "id": 10209,
@@ -34307,13 +33137,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10209.png",
+    "sprite": "10209.png",
     "basePokemonId": 810,
     "basePokemonName": "grookey",
     "defaultVarietyId": 812,
     "defaultVarietyName": "rillaboom",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10210": {
     "id": 10210,
@@ -34333,13 +33162,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10210.png",
+    "sprite": "10210.png",
     "basePokemonId": 813,
     "basePokemonName": "scorbunny",
     "defaultVarietyId": 815,
     "defaultVarietyName": "cinderace",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10211": {
     "id": 10211,
@@ -34359,13 +33187,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10211.png",
+    "sprite": "10211.png",
     "basePokemonId": 816,
     "basePokemonName": "sobble",
     "defaultVarietyId": 818,
     "defaultVarietyName": "inteleon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10212": {
     "id": 10212,
@@ -34391,13 +33218,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10212.png",
+    "sprite": "10212.png",
     "basePokemonId": 821,
     "basePokemonName": "rookidee",
     "defaultVarietyId": 823,
     "defaultVarietyName": "corviknight",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10213": {
     "id": 10213,
@@ -34423,13 +33249,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10213.png",
+    "sprite": "10213.png",
     "basePokemonId": 824,
     "basePokemonName": "blipbug",
     "defaultVarietyId": 826,
     "defaultVarietyName": "orbeetle",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10214": {
     "id": 10214,
@@ -34455,13 +33280,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10214.png",
+    "sprite": "10214.png",
     "basePokemonId": 833,
     "basePokemonName": "chewtle",
     "defaultVarietyId": 834,
     "defaultVarietyName": "drednaw",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10215": {
     "id": 10215,
@@ -34487,13 +33311,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10215.png",
+    "sprite": "10215.png",
     "basePokemonId": 837,
     "basePokemonName": "rolycoly",
     "defaultVarietyId": 839,
     "defaultVarietyName": "coalossal",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10216": {
     "id": 10216,
@@ -34519,13 +33342,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10216.png",
+    "sprite": "10216.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 841,
     "defaultVarietyName": "flapple",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10217": {
     "id": 10217,
@@ -34551,13 +33373,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10217.png",
+    "sprite": "10217.png",
     "basePokemonId": 840,
     "basePokemonName": "applin",
     "defaultVarietyId": 842,
     "defaultVarietyName": "appletun",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10218": {
     "id": 10218,
@@ -34582,13 +33403,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10218.png",
+    "sprite": "10218.png",
     "basePokemonId": 843,
     "basePokemonName": "silicobra",
     "defaultVarietyId": 844,
     "defaultVarietyName": "sandaconda",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10219": {
     "id": 10219,
@@ -34614,13 +33434,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10219.png",
+    "sprite": "10219.png",
     "basePokemonId": 848,
     "basePokemonName": "toxel",
     "defaultVarietyId": 849,
     "defaultVarietyName": "toxtricity-amped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10220": {
     "id": 10220,
@@ -34646,13 +33465,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10220.png",
+    "sprite": "10220.png",
     "basePokemonId": 850,
     "basePokemonName": "sizzlipede",
     "defaultVarietyId": 851,
     "defaultVarietyName": "centiskorch",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10221": {
     "id": 10221,
@@ -34678,13 +33496,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10221.png",
+    "sprite": "10221.png",
     "basePokemonId": 856,
     "basePokemonName": "hatenna",
     "defaultVarietyId": 858,
     "defaultVarietyName": "hatterene",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10222": {
     "id": 10222,
@@ -34710,13 +33527,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10222.png",
+    "sprite": "10222.png",
     "basePokemonId": 859,
     "basePokemonName": "impidimp",
     "defaultVarietyId": 861,
     "defaultVarietyName": "grimmsnarl",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10223": {
     "id": 10223,
@@ -34736,13 +33552,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10223.png",
+    "sprite": "10223.png",
     "basePokemonId": 868,
     "basePokemonName": "milcery",
     "defaultVarietyId": 869,
     "defaultVarietyName": "alcremie",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10224": {
     "id": 10224,
@@ -34762,13 +33577,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10224.png",
+    "sprite": "10224.png",
     "basePokemonId": 878,
     "basePokemonName": "cufant",
     "defaultVarietyId": 879,
     "defaultVarietyName": "copperajah",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10225": {
     "id": 10225,
@@ -34794,13 +33608,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10225.png",
+    "sprite": "10225.png",
     "basePokemonId": 884,
     "basePokemonName": "duraludon",
     "defaultVarietyId": 884,
     "defaultVarietyName": "duraludon",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10226": {
     "id": 10226,
@@ -34816,13 +33629,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10226.png",
+    "sprite": "10226.png",
     "basePokemonId": 891,
     "basePokemonName": "kubfu",
     "defaultVarietyId": 892,
     "defaultVarietyName": "urshifu-single-strike",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10227": {
     "id": 10227,
@@ -34838,13 +33650,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10227.png",
+    "sprite": "10227.png",
     "basePokemonId": 891,
     "basePokemonName": "kubfu",
     "defaultVarietyId": 892,
     "defaultVarietyName": "urshifu-single-strike",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10228": {
     "id": 10228,
@@ -34870,13 +33681,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10228.png",
+    "sprite": "10228.png",
     "basePokemonId": 848,
     "basePokemonName": "toxel",
     "defaultVarietyId": 849,
     "defaultVarietyName": "toxtricity-amped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10229": {
     "id": 10229,
@@ -34902,13 +33712,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10229.png",
+    "sprite": "10229.png",
     "basePokemonId": 10229,
     "basePokemonName": "growlithe-hisui",
     "defaultVarietyId": 58,
     "defaultVarietyName": "growlithe",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10230": {
     "id": 10230,
@@ -34934,13 +33744,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10230.png",
+    "sprite": "10230.png",
     "basePokemonId": 10229,
     "basePokemonName": "growlithe-hisui",
     "defaultVarietyId": 59,
     "defaultVarietyName": "arcanine",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10231": {
     "id": 10231,
@@ -34966,13 +33776,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10231.png",
+    "sprite": "10231.png",
     "basePokemonId": 10231,
     "basePokemonName": "voltorb-hisui",
     "defaultVarietyId": 100,
     "defaultVarietyName": "voltorb",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10232": {
     "id": 10232,
@@ -34998,13 +33808,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10232.png",
+    "sprite": "10232.png",
     "basePokemonId": 10231,
     "basePokemonName": "voltorb-hisui",
     "defaultVarietyId": 101,
     "defaultVarietyName": "electrode",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10233": {
     "id": 10233,
@@ -35025,13 +33835,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10233.png",
+    "sprite": "10233.png",
     "basePokemonId": 155,
     "basePokemonName": "cyndaquil",
     "defaultVarietyId": 157,
     "defaultVarietyName": "typhlosion",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10234": {
     "id": 10234,
@@ -35057,13 +33867,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10234.png",
+    "sprite": "10234.png",
     "basePokemonId": 10234,
     "basePokemonName": "qwilfish-hisui",
     "defaultVarietyId": 211,
     "defaultVarietyName": "qwilfish",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10235": {
     "id": 10235,
@@ -35089,13 +33899,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10235.png",
+    "sprite": "10235.png",
     "basePokemonId": 10235,
     "basePokemonName": "sneasel-hisui",
     "defaultVarietyId": 215,
     "defaultVarietyName": "sneasel",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10236": {
     "id": 10236,
@@ -35116,13 +33926,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10236.png",
+    "sprite": "10236.png",
     "basePokemonId": 501,
     "basePokemonName": "oshawott",
     "defaultVarietyId": 503,
     "defaultVarietyName": "samurott",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10237": {
     "id": 10237,
@@ -35148,13 +33958,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10237.png",
+    "sprite": "10237.png",
     "basePokemonId": 548,
     "basePokemonName": "petilil",
     "defaultVarietyId": 549,
     "defaultVarietyName": "lilligant",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10238": {
     "id": 10238,
@@ -35170,13 +33980,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10238.png",
+    "sprite": "10238.png",
     "basePokemonId": 10238,
     "basePokemonName": "zorua-hisui",
     "defaultVarietyId": 570,
     "defaultVarietyName": "zorua",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10239": {
     "id": 10239,
@@ -35192,13 +34002,13 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10239.png",
+    "sprite": "10239.png",
     "basePokemonId": 10238,
     "basePokemonName": "zorua-hisui",
     "defaultVarietyId": 571,
     "defaultVarietyName": "zoroark",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10240": {
     "id": 10240,
@@ -35224,13 +34034,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10240.png",
+    "sprite": "10240.png",
     "basePokemonId": 627,
     "basePokemonName": "rufflet",
     "defaultVarietyId": 628,
     "defaultVarietyName": "braviary",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10241": {
     "id": 10241,
@@ -35256,13 +34066,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10241.png",
+    "sprite": "10241.png",
     "basePokemonId": 704,
     "basePokemonName": "goomy",
     "defaultVarietyId": 705,
     "defaultVarietyName": "sliggoo",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10242": {
     "id": 10242,
@@ -35288,13 +34098,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10242.png",
+    "sprite": "10242.png",
     "basePokemonId": 704,
     "basePokemonName": "goomy",
     "defaultVarietyId": 706,
     "defaultVarietyName": "goodra",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10243": {
     "id": 10243,
@@ -35320,13 +34130,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10243.png",
+    "sprite": "10243.png",
     "basePokemonId": 712,
     "basePokemonName": "bergmite",
     "defaultVarietyId": 713,
     "defaultVarietyName": "avalugg",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10244": {
     "id": 10244,
@@ -35347,13 +34157,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10244.png",
+    "sprite": "10244.png",
     "basePokemonId": 722,
     "basePokemonName": "rowlet",
     "defaultVarietyId": 724,
     "defaultVarietyName": "decidueye",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "hisui"
   },
   "10245": {
     "id": 10245,
@@ -35374,13 +34184,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10245.png",
+    "sprite": "10245.png",
     "basePokemonId": 483,
     "basePokemonName": "dialga",
     "defaultVarietyId": 483,
     "defaultVarietyName": "dialga",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10246": {
     "id": 10246,
@@ -35401,13 +34210,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10246.png",
+    "sprite": "10246.png",
     "basePokemonId": 484,
     "basePokemonName": "palkia",
     "defaultVarietyId": 484,
     "defaultVarietyName": "palkia",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10247": {
     "id": 10247,
@@ -35432,13 +34240,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10247.png",
+    "sprite": "10247.png",
     "basePokemonId": 550,
     "basePokemonName": "basculin",
     "defaultVarietyId": 550,
     "defaultVarietyName": "basculin-red-striped",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10248": {
     "id": 10248,
@@ -35464,13 +34271,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10248.png",
+    "sprite": "10248.png",
     "basePokemonId": 550,
     "basePokemonName": "basculin",
     "defaultVarietyId": 902,
     "defaultVarietyName": "basculegion-male",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10249": {
     "id": 10249,
@@ -35486,13 +34292,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10249.png",
+    "sprite": "10249.png",
     "basePokemonId": 905,
     "basePokemonName": "enamorus",
     "defaultVarietyId": 905,
     "defaultVarietyName": "enamorus-incarnate",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10250": {
     "id": 10250,
@@ -35517,13 +34322,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10250.png",
+    "sprite": "10250.png",
     "basePokemonId": 10250,
     "basePokemonName": "tauros-paldea-combat-breed",
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "paldea-combat-breed"
   },
   "10251": {
     "id": 10251,
@@ -35549,13 +34354,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10251.png",
+    "sprite": "10251.png",
     "basePokemonId": 10251,
     "basePokemonName": "tauros-paldea-blaze-breed",
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "paldea-blaze-breed"
   },
   "10252": {
     "id": 10252,
@@ -35581,13 +34386,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10252.png",
+    "sprite": "10252.png",
     "basePokemonId": 10252,
     "basePokemonName": "tauros-paldea-aqua-breed",
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "paldea-aqua-breed"
   },
   "10253": {
     "id": 10253,
@@ -35613,13 +34418,13 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10253.png",
+    "sprite": "10253.png",
     "basePokemonId": 10253,
     "basePokemonName": "wooper-paldea",
     "defaultVarietyId": 194,
     "defaultVarietyName": "wooper",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null,
+    "region": "paldea"
   },
   "10254": {
     "id": 10254,
@@ -35644,13 +34449,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10254.png",
+    "sprite": "10254.png",
     "basePokemonId": 915,
     "basePokemonName": "lechonk",
     "defaultVarietyId": 916,
     "defaultVarietyName": "oinkologne",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10255": {
     "id": 10255,
@@ -35675,13 +34479,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10255.png",
+    "sprite": "10255.png",
     "basePokemonId": 206,
     "basePokemonName": "dunsparce",
     "defaultVarietyId": 982,
     "defaultVarietyName": "dudunsparce",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10256": {
     "id": 10256,
@@ -35701,13 +34504,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10256.png",
+    "sprite": "10256.png",
     "basePokemonId": 963,
     "basePokemonName": "finizen",
     "defaultVarietyId": 964,
     "defaultVarietyName": "palafin",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10257": {
     "id": 10257,
@@ -35732,13 +34534,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10257.png",
+    "sprite": "10257.png",
     "basePokemonId": 924,
     "basePokemonName": "tandemaus",
     "defaultVarietyId": 925,
     "defaultVarietyName": "maushold",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10258": {
     "id": 10258,
@@ -35759,13 +34560,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10258.png",
+    "sprite": "10258.png",
     "basePokemonId": 978,
     "basePokemonName": "tatsugiri",
     "defaultVarietyId": 978,
     "defaultVarietyName": "tatsugiri",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10259": {
     "id": 10259,
@@ -35786,13 +34586,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10259.png",
+    "sprite": "10259.png",
     "basePokemonId": 978,
     "basePokemonName": "tatsugiri",
     "defaultVarietyId": 978,
     "defaultVarietyName": "tatsugiri",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10260": {
     "id": 10260,
@@ -35818,13 +34617,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10260.png",
+    "sprite": "10260.png",
     "basePokemonId": 931,
     "basePokemonName": "squawkabilly",
     "defaultVarietyId": 931,
     "defaultVarietyName": "squawkabilly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10261": {
     "id": 10261,
@@ -35850,13 +34648,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10261.png",
+    "sprite": "10261.png",
     "basePokemonId": 931,
     "basePokemonName": "squawkabilly",
     "defaultVarietyId": 931,
     "defaultVarietyName": "squawkabilly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10262": {
     "id": 10262,
@@ -35882,13 +34679,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10262.png",
+    "sprite": "10262.png",
     "basePokemonId": 931,
     "basePokemonName": "squawkabilly",
     "defaultVarietyId": 931,
     "defaultVarietyName": "squawkabilly",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10263": {
     "id": 10263,
@@ -35908,13 +34704,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10263.png",
+    "sprite": "10263.png",
     "basePokemonId": 999,
     "basePokemonName": "gimmighoul",
     "defaultVarietyId": 999,
     "defaultVarietyName": "gimmighoul",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10264": {
     "id": 10264,
@@ -35935,13 +34730,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1007.png",
     "basePokemonId": 1007,
     "basePokemonName": "koraidon",
     "defaultVarietyId": 1007,
     "defaultVarietyName": "koraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10265": {
     "id": 10265,
@@ -35962,13 +34756,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1007.png",
     "basePokemonId": 1007,
     "basePokemonName": "koraidon",
     "defaultVarietyId": 1007,
     "defaultVarietyName": "koraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10266": {
     "id": 10266,
@@ -35989,13 +34782,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1007.png",
     "basePokemonId": 1007,
     "basePokemonName": "koraidon",
     "defaultVarietyId": 1007,
     "defaultVarietyName": "koraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10267": {
     "id": 10267,
@@ -36016,13 +34808,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1007.png",
     "basePokemonId": 1007,
     "basePokemonName": "koraidon",
     "defaultVarietyId": 1007,
     "defaultVarietyName": "koraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10268": {
     "id": 10268,
@@ -36043,13 +34834,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1008.png",
     "basePokemonId": 1008,
     "basePokemonName": "miraidon",
     "defaultVarietyId": 1008,
     "defaultVarietyName": "miraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10269": {
     "id": 10269,
@@ -36070,13 +34860,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1008.png",
     "basePokemonId": 1008,
     "basePokemonName": "miraidon",
     "defaultVarietyId": 1008,
     "defaultVarietyName": "miraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10270": {
     "id": 10270,
@@ -36097,13 +34886,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1008.png",
     "basePokemonId": 1008,
     "basePokemonName": "miraidon",
     "defaultVarietyId": 1008,
     "defaultVarietyName": "miraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10271": {
     "id": 10271,
@@ -36124,13 +34912,12 @@ window.__pokemonList = {
         "slot": 3
       }
     ],
-    "sprite": null,
+    "sprite": "1008.png",
     "basePokemonId": 1008,
     "basePokemonName": "miraidon",
     "defaultVarietyId": 1008,
     "defaultVarietyName": "miraidon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10272": {
     "id": 10272,
@@ -36146,13 +34933,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10272.png",
+    "sprite": "10272.png",
     "basePokemonId": 216,
     "basePokemonName": "teddiursa",
     "defaultVarietyId": 901,
     "defaultVarietyName": "ursaluna",
-    "isLegendary": false,
-    "isMythical": false
+    "rarity": null
   },
   "10273": {
     "id": 10273,
@@ -36168,13 +34954,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10273.png",
+    "sprite": "10273.png",
     "basePokemonId": 1017,
     "basePokemonName": "ogerpon",
     "defaultVarietyId": 1017,
     "defaultVarietyName": "ogerpon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10274": {
     "id": 10274,
@@ -36190,13 +34975,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10274.png",
+    "sprite": "10274.png",
     "basePokemonId": 1017,
     "basePokemonName": "ogerpon",
     "defaultVarietyId": 1017,
     "defaultVarietyName": "ogerpon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10275": {
     "id": 10275,
@@ -36212,13 +34996,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10275.png",
+    "sprite": "10275.png",
     "basePokemonId": 1017,
     "basePokemonName": "ogerpon",
     "defaultVarietyId": 1017,
     "defaultVarietyName": "ogerpon",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10276": {
     "id": 10276,
@@ -36233,13 +35016,12 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10276.png",
+    "sprite": "10276.png",
     "basePokemonId": 1024,
     "basePokemonName": "terapagos",
     "defaultVarietyId": 1024,
     "defaultVarietyName": "terapagos",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   },
   "10277": {
     "id": 10277,
@@ -36254,12 +35036,11 @@ window.__pokemonList = {
         "slot": 1
       }
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10277.png",
+    "sprite": "10277.png",
     "basePokemonId": 1024,
     "basePokemonName": "terapagos",
     "defaultVarietyId": 1024,
     "defaultVarietyName": "terapagos",
-    "isLegendary": true,
-    "isMythical": false
+    "rarity": "legendary"
   }
 };

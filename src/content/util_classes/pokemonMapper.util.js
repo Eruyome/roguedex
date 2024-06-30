@@ -14,6 +14,7 @@ class PokemonMapperClass{
         this.MoveList = window.__moveList;
         this.AbilityList = window.__abilityList;
         this.PokemonList = window.__pokemonList;
+        this.PokemonSpriteBaseUrl = window.__pokemonSpriteBaseUrl;
         this.IdConversionList = null;
         PokemonMapperClass.#init(this);
     }
@@ -481,7 +482,9 @@ class PokemonMapperClass{
 
             const fusionPokemon = $this.PokemonList[fusionSpeciesId]?.name;
             const name = $this.getPokemonName(pokemonName, fusionPokemon, basePokemon);
-            const pokemonSprite = $this.PokemonList[speciesId].sprite;
+
+            const pokemonSprite = PokemonMapperClass.#getPokemonSpriteUrl($this, speciesId);
+            const fusionPokemonSprite = fusionSpeciesId ? PokemonMapperClass.#getPokemonSpriteUrl($this, fusionSpeciesId) : null; 
 
             return {
                 id: speciesId,
@@ -500,9 +503,10 @@ class PokemonMapperClass{
                 basePokemon: $this.capitalizeFirstLetter(basePokemon),
                 baseId: parseInt($this.PokemonList[speciesId].basePokemonId),
                 basePokemonIdPreConversion,
-                sprite: pokemonSprite,
+                sprite: pokemonSprite, 
                 fusionId: fusionSpeciesId,
                 fusionPokemon: ( fusionPokemon ? $this.capitalizeFirstLetter(fusionPokemon) : null ),
+                fusionPokemonSprite,
                 moveset,
                 rarity,
                 boss: pokemon.boss,
@@ -640,13 +644,11 @@ class PokemonMapperClass{
      * @private
      * @param {Object} $this - The instance of the PokemonMapperClass.
      * @param {string} speciesId - The ID of the species to retrieve the rarity of.
-     * @returns {string} The rarity of the Pokémon species.
+     * @returns {string} The rarity of the Pokémon species (legendary, mythical, ultra).
      */
     static #getPokemonRarity($this, speciesId) {
-        const legendary = $this.PokemonList[speciesId]?.isLegendary;
-        const mythical = $this.PokemonList[speciesId]?.isMythical;
-        const rarity = ( legendary ? 'legendary' : (mythical ? 'mythical' : '') );
-        return rarity
+        let rarity = $this.PokemonList[speciesId]?.rarity;
+        return rarity ? rarity : '';
     }
 
     /**
@@ -666,6 +668,75 @@ class PokemonMapperClass{
         } else {
             // otherwise use the converted id     
             return PokemonMapperClass.#convertPokemonId($this, speciesId);
+        }
+    }
+
+    /**
+     * Gets the URL for the Pokémon sprite based on its ID.
+     * @param {Object} $this - The current instance of the class.
+     * @param {number} id - The ID of the Pokémon.
+     * @returns {string|null} The URL of the Pokémon sprite or null if not found.
+     */
+    static #getPokemonSpriteUrl($this, id) {
+        const spriteBaseUrl = $this.PokemonSpriteBaseUrl;
+        const u = $this.PokemonList[id].sprite;
+        const r = PokemonMapperClass.#classifyImageUrl(u);
+        if (r === "fileUrl") {
+            return u
+        }
+        else if (r === "file") {
+            return spriteBaseUrl + u;
+        }
+        else if (r === "invalid") {
+            return spriteBaseUrl + id + '.png';
+        }
+        else if (r === "baseUrl") {
+            return u + id + '.png';
+        }
+        return null
+    }
+
+    /**
+     * Classifies the type of URL based on regex patterns.
+     * @param {string|null|undefined} url - The URL to classify.
+     * @returns {'fileUrl'|'file'|'baseUrl'|'invalid'} The classification of the URL.
+     */
+    static #classifyImageUrl(url) {
+        if (!url) {
+            return 'invalid';
+        }
+    
+        // Regex patterns for classification
+        const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w \.-]*)*\/?$/;
+        const filenameWithExtensionRegex = /^[^/]+\.[^/]+$/; // Updated regex pattern
+    
+        // Check if it's just a filename + filetype
+        if (filenameWithExtensionRegex.test(url)) {
+            return 'file';
+        }
+    
+        // Check if it's a valid URL
+        if (urlRegex.test(url)) {
+            // Extract path from the URL
+            const pathStartIndex = url.indexOf('//') > -1 ? url.indexOf('/', url.indexOf('//') + 2) : -1;
+            const path = pathStartIndex > -1 ? url.slice(pathStartIndex) : '';
+    
+            // Split path into segments
+            const segments = path.split('/').filter(segment => segment.trim() !== '');
+    
+            // If there are segments, check the last one for filename + extension
+            if (segments.length > 0) {
+                const lastSegment = segments[segments.length - 1];
+                if (filenameWithExtensionRegex.test(lastSegment)) {
+                    return 'fileUrl';
+                } else {
+                    return 'baseUrl';
+                }
+            } else {
+                return 'baseUrl';
+            }
+        } else {
+            return 'invalid';
         }
     }
 

@@ -70,7 +70,7 @@ function scriptInjector() {
     const raritySparklesUrl = browserApi.runtime.getURL('/images/sparkles.gif');
     const rarityHoloUrl = browserApi.runtime.getURL('/images/holo.png'); 
     document.documentElement.style.setProperty('--extension-rarity-bg-image-sparkles', `url(${raritySparklesUrl})`);
-    document.documentElement.style.setProperty('-extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
+    document.documentElement.style.setProperty('--extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
 }
 
 /**

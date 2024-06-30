@@ -63,7 +63,7 @@
                     const saveDataId = pokemon.basePokemonIdPreConversion;
                     const ivSaveData = dexData[saveDataId].ivs || dexData[pokemon.baseId].ivs || {};
                     const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every(num => num === 0);
-                    const rarityClass = pokemon.rarity.length ? 'pokemon-rarity-' + pokemon.rarity : '';
+                    const rarityClass = (pokemon.rarity.length && (partyID.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
 
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">

@@ -40,6 +40,8 @@
     window.lit.createPokemonCardContent = (cardId, pokemon, opacitySliderTemplate, typeEffectivenessHTML, weather) => {
         const Stat = window.lit.getStatList();
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+        const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
+        const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element is shown
 
         return html`
             <div class="pokemon-cards">
@@ -48,6 +50,23 @@
                     <div style="display: flex;">
                         <div class="${rarityClass}" style="position: relative;">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
+                            ${cardId === 'enemies' ? html`
+                                <div class="card-pokemon-info enemies tooltip">
+                                    ${window.lit.createPokemonTooltipDiv(pokemon)}
+                                    ${pokemon.gen ? html`
+                                        <span class="card-pokemon-info-generation">${generationLabel}</span>
+                                    ` : '' }
+                                    ${pokemon.rarity ? html`
+                                        <span class="card-pokemon-info-rarity ${pokemon.rarity}">${pokemon.rarityLabel || ''}</span>
+                                    ` : '' }
+                                    ${pokemon.paradox ? html`
+                                        <span class="card-pokemon-info-paradox">Par</span>
+                                    ` : '' }
+                                    ${pokemon.region ? html`
+                                        <span class="card-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></span>
+                                    ` : '' }
+                                </div>
+                            ` : '' }
                         </div>
                         ${typeEffectivenessHTML}
                     </div>

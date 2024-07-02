@@ -203,16 +203,9 @@ body.sidebar-Bottom {
     vertical-align: top;
 }
 .pokemon-entry .pokemon-entry-image {
-    padding: 0.5em 0;
+    padding: 0.5em 0.5em;
     vertical-align: middle;
     position: relative;
-}
-.sidebar-pokemon-info {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding-left: 0.5em;
 }
 .pokemon-entry-image.tooltip .tooltiptext {
     padding: 0.3em 0.4em 0.3em 0.4em;
@@ -969,6 +962,107 @@ body.sidebar-Bottom {
 }
 
 /* legendary, mystical effects end */
+
+/* sidebar + card pokemon info overlay */
+
+.sidebar-pokemon-info {
+    display: block;
+    position: absolute;
+    left: 0.3em;
+    top: 0.3em;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.sidebar-pokemon-info.enemies span {
+    --size: 1.1em;
+    --border-size: 0px;
+    --margin: 0;
+    height: var(--size);
+    line-height: calc(var(--size) - ( 2 * var(--border-size)) );
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.sidebar-pokemon-info.enemies span.sidebar-pokemon-info-region {
+    --size: 1.1em;
+    width: var(--size);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.sidebar-pokemon-info.enemies span.sidebar-pokemon-info-paradox,
+.sidebar-pokemon-info.enemies span.sidebar-pokemon-info-generation,
+.sidebar-pokemon-info.enemies span.sidebar-pokemon-info-rarity {
+    padding: 0 0.3em;
+    background:
+    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 0, 
+    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 0 0, 
+    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
+    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
+    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
+    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
+    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 100%, 
+    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0.25em 0.25em;
+}
+.card-pokemon-info {
+    display: block;
+    position: absolute;
+    left: 0.1em;
+    top: 0.1em;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-family: var(--overlay-font);
+}
+.card-pokemon-info.enemies span {
+    --size: 0.8em;
+    --border-size: 0px;
+    --margin: 0;
+    height: var(--size);
+    line-height: calc(var(--size) - ( 2 * var(--border-size)) );
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.card-pokemon-info.enemies span.card-pokemon-info-region {
+    --size: 0.8em;
+    width: var(--size);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card-pokemon-info.enemies span.card-pokemon-info-paradox,
+.card-pokemon-info.enemies span.card-pokemon-info-generation,
+.card-pokemon-info.enemies span.card-pokemon-info-rarity {
+    padding: 0 0.2em;
+    background:
+    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 0, 
+    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 0 0, 
+    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
+    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
+    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
+    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
+    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 100%, 
+    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0.15em 0.15em;
+}
+
+.card-pokemon-info.tooltip {
+    z-index: 4; /* hover not possible otherwise because of foil/holo elements */
+}
+.card-pokemon-info.tooltip .tooltiptext {
+    padding: 0.3em 0.4em 0.3em 0.4em;
+    font-size: 1.3em;
+    text-align: left;
+    width: max-content;
+}
+.card-pokemon-info.tooltip .tooltiptext span {
+    display: contents;
+    text-shadow: none;
+}
+
+/* sidebar + card pokemon info overlay END */
 
 .allies-team {
     margin: 0 auto;

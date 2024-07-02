@@ -256,13 +256,13 @@ async function getPokemonDetails() {
             if (nameParts.length > 1) {
                 const suffix = nameParts.slice(1).join('-');
                 const basePokemon = allPokemonDetails[detail.basePokemonId];
-                const regionalSuffixMatch = regionals.some(region => suffix.includes(region));
-
-                if (regionalSuffixMatch) {
-                    detail.region = suffix;
+                
+                const matchedRegion = regionals.find(region => suffix.includes(region));
+                if (matchedRegion) {
+                    detail.region = matchedRegion;
                 }
 
-                if (basePokemon && (regionalSuffixMatch || (compareTypes && !basePokemon.types.every(type => detail.types.includes(type))))) {
+                if (basePokemon && (matchedRegion || (compareTypes && !basePokemon.types.every(type => detail.types.includes(type))))) {
                     const regionalBaseName = `${detail.basePokemonName}-${suffix}`;
                     const regionalBase = allPokemonDetailsArray.find(pokemon => pokemon.name === regionalBaseName);
                     if (regionalBase && regionalBase.id !== detail.basePokemonId) {

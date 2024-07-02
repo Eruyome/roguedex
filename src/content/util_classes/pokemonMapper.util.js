@@ -467,8 +467,9 @@ class PokemonMapperClass{
             const fusionSpeciesId = PokemonMapperClass.#getSpeciesId($this, pokemon.fusionSpecies);
 
             const moveset = await PokemonMapperClass.#getPokemonTypeMoveset($this.MoveList, pokemon.moveset);            
-            const rarity = PokemonMapperClass.#getPokemonRarity($this, pokemon.species);
+            const [rarity, rarityLabel] = PokemonMapperClass.#getPokemonRarity($this, pokemon.species);            
             const region = $this.PokemonList[speciesId].region || null;
+            const generation = PokemonMapperClass.#getPokemonGeneration(speciesId);
 
             const baseTypes = $this.PokemonList[speciesId]?.types;
             const fusionTypes = $this.PokemonList[fusionSpeciesId]?.types;            
@@ -510,7 +511,10 @@ class PokemonMapperClass{
                 fusionPokemonSprite,
                 moveset,
                 rarity,
+                rarityLabel,
                 region,
+                paradox : $this.PokemonList[speciesId].paradox || null,
+                gen: generation,
                 boss: pokemon.boss,
                 friendship: pokemon.friendship,
                 level: pokemon.level,
@@ -639,18 +643,34 @@ class PokemonMapperClass{
     }
 
     /**
-     * Retrieves the rarity (legendary, mythical, none) of a Pokémon from the Pokémon list.
+     * Retrieves the rarity (legendary, mythical, ultra) of a Pokémon from the Pokémon list.
      * 
      * @function
      * @memberof PokemonMapperClass
      * @private
      * @param {Object} $this - The instance of the PokemonMapperClass.
      * @param {string} speciesId - The ID of the species to retrieve the rarity of.
-     * @returns {string} The rarity of the Pokémon species (legendary, mythical, ultra).
+     * @returns {[string, string]} An array containing the rarity and the corresponding label (for UI) of the Pokémon species.
      */
     static #getPokemonRarity($this, speciesId) {
         const rarity = $this.PokemonList[speciesId]?.rarity || '';
-        return rarity;
+        let rarityLabel = '';
+
+        switch (rarity.toLowerCase()) {
+            case 'legendary':
+                rarityLabel = 'Legend';
+                break;
+            case 'mythical':
+                rarityLabel = 'Myth';
+                break;
+            case 'ultra':
+                rarityLabel = 'Ultra';
+                break;
+            default:
+                rarityLabel = '';
+        }
+
+        return [rarity, rarityLabel];
     }
 
     /**
@@ -782,6 +802,35 @@ class PokemonMapperClass{
     }
 
     /**
+     * Retrieves the generation number for a given Pokémon ID based on predefined generation ID ranges and additional IDs.
+     * @param {number} id - The Pokémon ID to determine the generation for.
+     * @returns {number|null} The generation number (1, 2, etc.) if found, or null if the ID does not belong to any known generation.
+     */
+    static #getPokemonGeneration(id) {
+        const genIdList = PokemonMapperClass.#getGenerationIDList();
+
+        // Iterate over each generation in genIdList
+        for (const genNum in genIdList) {
+            const genData = genIdList[genNum];
+            const idRange = genData.idRange;
+            const additionalIDs = genData.additionalIDs;
+
+            // Check if the id is within the idRange of the current generation
+            if (id >= idRange[0] && id <= idRange[1]) {
+                return parseInt(genNum, 10); // Convert generation number to integer
+            }
+
+            // Check if the id is in the additionalIDs of the current generation
+            if (additionalIDs.includes(id)) {
+                return parseInt(genNum, 10); // Convert generation number to integer
+            }
+        }
+
+        // Return null if ID does not belong to any known generation
+        return null;
+    }
+
+    /**
      * Pokémon ID conversion list. This is needed to get the "correct" IDs for some
      * Pokémon, for example all Alolan and Galar Pokémon (regional).
      * 
@@ -848,6 +897,360 @@ class PokemonMapperClass{
             8194: 10253,
             8901: 10272
         };
+    }
+
+    static #getGenerationIDList() {
+        return {
+            "1": {
+                "idRange": [
+                    1,
+                    151
+                ],
+                "additionalIDs": [
+                    10033,
+                    10034,
+                    10035,
+                    10036,
+                    10037,
+                    10038,
+                    10039,
+                    10040,
+                    10041,
+                    10042,
+                    10043,
+                    10044,
+                    10071,
+                    10073,
+                    10080,
+                    10081,
+                    10082,
+                    10083,
+                    10084,
+                    10085,
+                    10090,
+                    10094,
+                    10095,
+                    10096,
+                    10097,
+                    10098,
+                    10148,
+                    10149,
+                    10158,
+                    10159,
+                    10160,
+                    10195,
+                    10196,
+                    10197,
+                    10198,
+                    10199,
+                    10200,
+                    10201,
+                    10202,
+                    10203,
+                    10204,
+                    10205,
+                    10206
+                ]
+            },
+            "2": {
+                "idRange": [
+                    152,
+                    251
+                ],
+                "additionalIDs": [
+                    10045,
+                    10046,
+                    10047,
+                    10048,
+                    10049,
+                    10072
+                ]
+            },
+            "3": {
+                "idRange": [
+                    252,
+                    386
+                ],
+                "additionalIDs": [
+                    10001,
+                    10002,
+                    10003,
+                    10013,
+                    10014,
+                    10015,
+                    10050,
+                    10051,
+                    10052,
+                    10053,
+                    10054,
+                    10055,
+                    10056,
+                    10057,
+                    10062,
+                    10063,
+                    10064,
+                    10065,
+                    10066,
+                    10067,
+                    10070,
+                    10074,
+                    10076,
+                    10077,
+                    10078,
+                    10079,
+                    10087,
+                    10089
+                ]
+            },
+            "4": {
+                "idRange": [
+                    387,
+                    493
+                ],
+                "additionalIDs": [
+                    10004,
+                    10005,
+                    10006,
+                    10007,
+                    10008,
+                    10009,
+                    10010,
+                    10011,
+                    10012,
+                    10058,
+                    10059,
+                    10060,
+                    10068,
+                    10088,
+                    10229,
+                    10230,
+                    10231,
+                    10232,
+                    10233,
+                    10234,
+                    10235,
+                    10236,
+                    10237,
+                    10238,
+                    10239,
+                    10240,
+                    10241,
+                    10242,
+                    10243,
+                    10244,
+                    10245,
+                    10246
+                ]
+            },
+            "5": {
+                "idRange": [
+                    494,
+                    649
+                ],
+                "additionalIDs": [
+                    10016,
+                    10017,
+                    10018,
+                    10019,
+                    10020,
+                    10021,
+                    10022,
+                    10023,
+                    10024,
+                    10069,
+                    10207,
+                    10247
+                ]
+            },
+            "6": {
+                "idRange": [
+                    650,
+                    721
+                ],
+                "additionalIDs": [
+                    10025,
+                    10026,
+                    10027,
+                    10028,
+                    10029,
+                    10030,
+                    10031,
+                    10032,
+                    10061,
+                    10075,
+                    10086,
+                    10116,
+                    10117,
+                    10118,
+                    10119,
+                    10120,
+                    10181
+                ]
+            },
+            "7": {
+                "idRange": [
+                    722,
+                    809
+                ],
+                "additionalIDs": [
+                    10091,
+                    10092,
+                    10093,
+                    10099,
+                    10100,
+                    10101,
+                    10102,
+                    10103,
+                    10104,
+                    10105,
+                    10106,
+                    10107,
+                    10108,
+                    10109,
+                    10110,
+                    10111,
+                    10112,
+                    10113,
+                    10114,
+                    10115,
+                    10121,
+                    10122,
+                    10123,
+                    10124,
+                    10125,
+                    10126,
+                    10127,
+                    10128,
+                    10129,
+                    10130,
+                    10131,
+                    10132,
+                    10133,
+                    10134,
+                    10135,
+                    10136,
+                    10137,
+                    10138,
+                    10139,
+                    10140,
+                    10141,
+                    10142,
+                    10143,
+                    10144,
+                    10145,
+                    10146,
+                    10147,
+                    10150,
+                    10151,
+                    10152,
+                    10153,
+                    10154,
+                    10155,
+                    10156,
+                    10157,
+                    10208
+                ]
+            },
+            "8": {
+                "idRange": [
+                    810,
+                    905
+                ],
+                "additionalIDs": [
+                    10161,
+                    10162,
+                    10163,
+                    10164,
+                    10165,
+                    10166,
+                    10167,
+                    10168,
+                    10169,
+                    10170,
+                    10171,
+                    10172,
+                    10173,
+                    10174,
+                    10175,
+                    10176,
+                    10177,
+                    10178,
+                    10179,
+                    10180,
+                    10182,
+                    10183,
+                    10184,
+                    10185,
+                    10186,
+                    10187,
+                    10188,
+                    10189,
+                    10190,
+                    10191,
+                    10192,
+                    10193,
+                    10194,
+                    10209,
+                    10210,
+                    10211,
+                    10212,
+                    10213,
+                    10214,
+                    10215,
+                    10216,
+                    10217,
+                    10218,
+                    10219,
+                    10220,
+                    10221,
+                    10222,
+                    10223,
+                    10224,
+                    10225,
+                    10226,
+                    10227,
+                    10228,
+                    10248,
+                    10249,
+                    10272
+                ]
+            },
+            "9": {
+                "idRange": [
+                    906,
+                    1025
+                ],
+                "additionalIDs": [
+                    10250,
+                    10251,
+                    10252,
+                    10253,
+                    10254,
+                    10255,
+                    10256,
+                    10257,
+                    10258,
+                    10259,
+                    10260,
+                    10261,
+                    10262,
+                    10263,
+                    10264,
+                    10265,
+                    10266,
+                    10267,
+                    10268,
+                    10269,
+                    10270,
+                    10271,
+                    10273,
+                    10274,
+                    10275,
+                    10276,
+                    10277
+                ]
+            }
+        }
     }
 }
 

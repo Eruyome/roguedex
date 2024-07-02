@@ -64,17 +64,37 @@
                     const ivSaveData = dexData[saveDataId].ivs || dexData[pokemon.baseId].ivs || {};
                     const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every(num => num === 0);
                     const rarityClass = (pokemon.rarity.length && (partyID.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+                    const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
+                    const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element as most is shown
 
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                             <div class="pokemon-entry-image tooltip ${rarityClass}">
-                                <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
                                 ${window.lit.createPokemonTooltipDiv(pokemon)}
-                                <div class="sidebar-pokemon-info" style="position: absolute; ${partyID === 'enemies' ? 'display: none;' : ''}">
-                                    <span class="sidebar-pokemon-level">L ${pokemon.level}</span>
-                                    <span class="sidebar-pokemon-shiny">${pokemon.shiny ? '☀' : ''}</span>
-                                    <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
-                                </div>
+                                <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>                                
+                                ${partyID === 'allies' ? html`
+                                    <div class="sidebar-pokemon-info allies">
+                                        <span class="sidebar-pokemon-level">L ${pokemon.level}</span>
+                                        <span class="sidebar-pokemon-shiny">${pokemon.shiny ? '☀' : ''}</span>
+                                        <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
+                                    </div>
+                                ` : '' }
+                                ${partyID === 'enemies' ? html`
+                                    <div class="sidebar-pokemon-info enemies">
+                                        ${pokemon.gen ? html`
+                                            <span class="sidebar-pokemon-info-generation">${generationLabel}</span>
+                                        ` : '' }
+                                        ${pokemon.rarity ? html`
+                                            <span class="sidebar-pokemon-info-rarity ${pokemon.rarity}">${pokemon.rarityLabel || ''}</span>
+                                        ` : '' }
+                                        ${pokemon.paradox ? html`
+                                            <span class="sidebar-pokemon-info-paradox">Par</span>
+                                        ` : '' }
+                                        ${pokemon.region ? html`
+                                            <span class="sidebar-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></span>
+                                        ` : '' }
+                                    </div>
+                                ` : '' }
                             </div>
                             <div class="pokemon-type-effectiveness-wrapper compact">
                                 ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 5, 3)}
@@ -109,44 +129,6 @@
             </div>
         `;
     }
-    
-    /**
-     * Creates a tooltip HTML template for an individual Pokémon.
-     * 
-     * @function createPokemonTooltipDiv
-     * @param {Object} pokemon - The data object for the Pokémon.
-     * @param {string} pokemon.name - The name of the Pokémon.
-     * @param {string} pokemon.speciesName - The base Pokémon of the fusion.
-     * @param {string} pokemon.fusionPokemon - The fusion Pokémon.
-     * @param {string[]} pokemon.currentTypes - An array of the current types of the Pokémon.
-     * @param {number} pokemon.level - The level of the Pokémon.
-     * @param {boolean} pokemon.shiny - Indicates if the Pokémon is shiny.
-     * @param {number} pokemon.luck - The luck value of the Pokémon.
-     * @param {number} pokemon.fusionLuck - The luck value of the fusion Pokémon.
-     * @param {number} pokemon.friendship - The friendship experience of the Pokémon.
-     * @returns {Lit-HTML-Template} - The HTML template for the Pokémon tooltip.
-     */
-    window.lit.createPokemonTooltipDiv = (pokemon) => html`
-        <div class="text-base tooltiptext">
-            <span>Name: ${pokemon.name}</span></br>
-            ${ pokemon.fusionId ? html`
-                <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
-                <span>Fused with : ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
-                <span> </span></br>
-            `: ''}
-            ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
-                <span>Starter: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
-                <span> </span></br>
-            `: ''}
-            <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
-            <span>Level: ${pokemon.level}</span></br>
-            ${ pokemon.shiny ? html`
-                <span>Shiny: ${pokemon.shiny ? 'Yes' : 'No'}</span></br>
-                <span>Luck bonus: ${pokemon.luck + pokemon.fusionLuck}</span></br>
-            `: ''}
-            <span>Friendship EXP: ${pokemon.friendship}</span>
-        </div>
-    `;
 
     /**
      * Decides whether to show the default or a condensed view of the pokemon type effectivenesses,

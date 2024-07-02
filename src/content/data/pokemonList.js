@@ -30206,7 +30206,7 @@ window.__pokemonList = {
     "defaultVarietyId": 20,
     "defaultVarietyName": "raticate",
     "rarity": null,
-    "region": "totem-alola"
+    "region": "alola"
   },
   "10094": {
     "id": 10094,
@@ -30357,7 +30357,7 @@ window.__pokemonList = {
     "defaultVarietyId": 25,
     "defaultVarietyName": "pikachu",
     "rarity": null,
-    "region": "alola-cap"
+    "region": "alola"
   },
   "10100": {
     "id": 10100,
@@ -32113,7 +32113,7 @@ window.__pokemonList = {
     "defaultVarietyId": 122,
     "defaultVarietyName": "mr-mime",
     "rarity": null,
-    "region": "mime-galar"
+    "region": "galar"
   },
   "10169": {
     "id": 10169,
@@ -32353,7 +32353,7 @@ window.__pokemonList = {
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
     "rarity": null,
-    "region": "galar-standard"
+    "region": "galar"
   },
   "10178": {
     "id": 10178,
@@ -32380,7 +32380,7 @@ window.__pokemonList = {
     "defaultVarietyId": 555,
     "defaultVarietyName": "darmanitan-standard",
     "rarity": null,
-    "region": "galar-zen"
+    "region": "galar"
   },
   "10179": {
     "id": 10179,
@@ -34328,7 +34328,7 @@ window.__pokemonList = {
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
     "rarity": null,
-    "region": "paldea-combat-breed"
+    "region": "paldea"
   },
   "10251": {
     "id": 10251,
@@ -34360,7 +34360,7 @@ window.__pokemonList = {
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
     "rarity": null,
-    "region": "paldea-blaze-breed"
+    "region": "paldea"
   },
   "10252": {
     "id": 10252,
@@ -34392,7 +34392,7 @@ window.__pokemonList = {
     "defaultVarietyId": 128,
     "defaultVarietyName": "tauros",
     "rarity": null,
-    "region": "paldea-aqua-breed"
+    "region": "paldea"
   },
   "10253": {
     "id": 10253,

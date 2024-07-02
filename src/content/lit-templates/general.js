@@ -42,6 +42,60 @@
         `;
     }
 
+        
+    /**
+     * Creates a tooltip HTML template for an individual Pokémon.
+     * 
+     * @function createPokemonTooltipDiv
+     * @param {Object} pokemon - The data object for the Pokémon.
+     * @param {string} pokemon.name - The name of the Pokémon.
+     * @param {string} pokemon.speciesName - The base Pokémon of the fusion.
+     * @param {string} pokemon.fusionPokemon - The fusion Pokémon.
+     * @param {string[]} pokemon.currentTypes - An array of the current types of the Pokémon.
+     * @param {number} pokemon.level - The level of the Pokémon.
+     * @param {boolean} pokemon.shiny - Indicates if the Pokémon is shiny.
+     * @param {number} pokemon.luck - The luck value of the Pokémon.
+     * @param {number} pokemon.fusionLuck - The luck value of the fusion Pokémon.
+     * @param {number} pokemon.friendship - The friendship experience of the Pokémon.
+     * @returns {Lit-HTML-Template} - The HTML template for the Pokémon tooltip.
+     */
+    window.lit.createPokemonTooltipDiv = (pokemon) => {
+        let variant = ( pokemon.paradox ? `Paradox (${window.lit.capitalizeFirstLetter(pokemon.paradox)})` : '' );
+        variant += ( pokemon.paradox && pokemon.region ? ' | ' : '' );
+        variant += ( pokemon.region ? `(${window.lit.capitalizeFirstLetter(pokemon.region)}) Region` : '' );
+
+        return html`
+            <div class="text-base tooltiptext">
+                <span>Name: ${pokemon.name} [Gen ${pokemon.gen}]</span></br>
+                ${ pokemon.rarity ? html`
+                    <span>Rare: ${window.lit.capitalizeFirstLetter(pokemon.rarity)}</span></br>
+                `: ''}
+                ${ pokemon.variant ? html`
+                    <span>Variant: ${variant}</span></br>
+                `: ''}
+                ${ pokemon.variant || pokemon.rarity ? html`
+                    <span> </span></br>
+                `: ''}
+                ${ pokemon.fusionId ? html`
+                    <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
+                    <span>Fused with : ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
+                    <span> </span></br>
+                `: ''}
+                ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
+                    <span>Starter: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
+                    <span> </span></br>
+                `: ''}
+                <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
+                <span>Level: ${pokemon.level}</span></br>
+                ${ pokemon.shiny ? html`
+                    <span>Shiny: ${pokemon.shiny ? 'Yes' : 'No'}</span></br>
+                    <span>Luck bonus: ${pokemon.luck + pokemon.fusionLuck}</span></br>
+                `: ''}
+                <span>Friendship EXP: ${pokemon.friendship}</span>
+            </div>
+        `;
+    }
+
     /**
      * Retrieves an object mapping Pokémon types to their respective numeric identifiers.
      * @memberof lit
@@ -102,8 +156,20 @@
             fairy: "https://archives.bulbagarden.net/media/upload/f/fa/FairyIC_Masters.png",
             stellar: "https://archives.bulbagarden.net/media/upload/4/4e/Stellar_icon_SV.png"
         };
-    
+
         return Urls;
+    };
+
+    window.lit.getVariantSymbol = (name) => {
+        const urls = {
+            alola : 'https://archives.bulbagarden.net/media/upload/0/04/Black_clover_HOME.png',
+            hisui: 'https://archives.bulbagarden.net/media/upload/6/6e/Arceus_mark_HOME.png',
+            galar: 'https://archives.bulbagarden.net/media/upload/6/6e/Galar_symbol_HOME.png',
+            paldea: 'https://archives.bulbagarden.net/media/upload/f/fe/Paldea_icon_HOME.png',
+            paradox: 'https://archives.bulbagarden.net/media/upload/archive/f/fa/20240123090536%21SetSymbolParadox_Rift.png'
+        };
+
+        return urls[name] || null;
     };
 
     /**

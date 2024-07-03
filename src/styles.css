@@ -1,17 +1,15 @@
-/*:root {*/
-/*  --font-size: min(3vh, 2vw);*/
-/*  --icon-size: min(10vh, 6vw);*/
-/*}*/
-
 @font-face {
     font-family: 'pokemon-emerald-pro';
     src: url('../fonts/pokemon-emerald-pro.ttf') format('truetype');
 }
 
 :root {
+    /*--font-size: min(3vh, 2vw);*/
+    /*--icon-size: min(10vh, 6vw);*/
     --icon-size: min(1.5em);
     --type-effectiveness-border-width: 2px;
     --type-effectiveness-item-margin: 0.1em;
+
     /* needs media query for bigger screens  */
     --sidebar-img-max-height: max(90px);
     --sidebar-borders-color: rgb(59, 59, 59);
@@ -38,7 +36,8 @@
 
 /* pokerogue overwrites  */
 body {
-    display: flex;
+    display: flex;    
+    /*font-size: var(--font-size);*/
 }
 #app {
     display: block;

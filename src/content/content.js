@@ -24,13 +24,13 @@ uiDataGlobals.isMobile = window.lit.mobileCheck();
 uiDataGlobals.wrapperDivPositions = {
     'enemies': {
         'top': '5px',
-        'left': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`,
+        'left': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth * 1.5 : '25'}px`,
         'opacity': '100'
     },
     'allies': {
         'top': '5px',
         'left': 'auto',
-        'right': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`,
+        'right': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth * 1.5 : '25'}px`,
         'opacity': '100'
     }
 }
@@ -442,7 +442,8 @@ function setElementProperties(element, properties) {
 async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
-    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData);
+    const simpleDisplay = cardId.toLowerCase() === 'allies';
+    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
         html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather)
@@ -653,9 +654,9 @@ async function scaleElements() {
     const enemiesDiv = document.getElementById('enemies');
     const alliesDiv = document.getElementById('allies');
     
-    scaleFont(enemiesDiv, scaleFactor, scaleFactorMulti, 16);
-    scaleFont(alliesDiv, scaleFactor, scaleFactorMulti, 16);
-    // console.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 16);
+    scaleFont(enemiesDiv, scaleFactor, scaleFactorMulti);
+    scaleFont(alliesDiv, scaleFactor, scaleFactorMulti);
+    // console.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -668,8 +669,8 @@ async function scaleSidebarElements() {
     const scaleFactor = await calculateScaleFactor();
 
     const sidebarDiv = document.getElementById('roguedex-sidebar');
-    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti, 12);   
-    // console.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 12);
+    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti);   
+    // console.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -682,8 +683,8 @@ async function scaleBottomPanelElements() {
     const scaleFactor = await calculateScaleFactor();
 
     const bottomPanelDiv = document.getElementById('roguedex-bottom-panel');
-    scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti, 18);
-    // console.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti, "baseSize (px): ", 18);
+    scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti);
+    // console.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -707,8 +708,15 @@ async function getScaleFactor(storageKey, defaultValue) {
  * @param {number} scaleFactorMulti - The scale factor multiplier.
  * @param {number} baseSize - The base font size.
  */
-function scaleFont(element, scaleFactor, scaleFactorMulti, baseSize) {
-    element.style.fontSize = `${baseSize * scaleFactor * scaleFactorMulti}px`;
+function scaleFont(element, scaleFactor, scaleFactorMulti) {
+    const bodyElement = document.body;
+    const computedStyle = window.getComputedStyle(bodyElement);
+    const baseFontSize = computedStyle.fontSize;
+    const baseFontSizeNumber = Math.round(parseFloat(baseFontSize));
+    let newFontSize = baseFontSizeNumber * scaleFactor * scaleFactorMulti;
+    newFontSize = Math.round(newFontSize);
+
+    element.style.fontSize = `${newFontSize}px`;
 }
 
 /**
@@ -718,13 +726,26 @@ function scaleFont(element, scaleFactor, scaleFactorMulti, baseSize) {
  * @returns {Promise<number>} - The calculated scale factor.
  */
 async function calculateScaleFactor() {
-    const baseWidth = 1920; // Assume a base width of 1920 pixels
-    const baseHeight = 1080; // Assume a base height of 1080 pixels
+    const baseWidth = window.screen.width ;
+    const baseHeight = window.screen.height;
     const currentWidth = window.innerWidth;
     const currentHeight = window.innerHeight;
     const scaleFactorWidth = currentWidth / baseWidth;
     const scaleFactorHeight = currentHeight / baseHeight;
-    return Math.min(scaleFactorWidth, scaleFactorHeight);
+    
+    // Calculate the minimum scale factor
+    let scaleFactor = Math.min(scaleFactorWidth, scaleFactorHeight);
+
+    // Round to the nearest decimal
+    scaleFactor = Math.round(scaleFactor * 10) / 10;
+
+    // Check if within 0.15 of any full integer
+    const roundedToNearestInteger = Math.round(scaleFactor);
+    if (Math.abs(scaleFactor - roundedToNearestInteger) <= 0.15) {
+        scaleFactor = roundedToNearestInteger;
+    }
+
+    return scaleFactor;
 }
 
 /**

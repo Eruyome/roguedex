@@ -4,14 +4,15 @@
 }
 
 :root {
-    /*--font-size: min(3vh, 2vw);*/
-    /*--icon-size: min(10vh, 6vw);*/
-    --icon-size: min(1.5em);
-    --type-effectiveness-border-width: 2px;
+    --root-font-size: 62.5%;
+    --icon-size: 2.4em;
+    --card-icon-size: 3.5em;
+    --type-effectiveness-border-width: 0.2em;
     --type-effectiveness-item-margin: 0.1em;
 
-    /* needs media query for bigger screens  */
-    --sidebar-img-max-height: max(90px);
+    --sidebar-img-max-height: 9em;
+    --card-img-max-height: 15em;
+    --card-img-mini-max-height: 8em;
     --sidebar-borders-color: rgb(59, 59, 59);
     --sidebar-bg-color: #2b2d31;
     --sidebar-font: 'pokemon-emerald-pro';
@@ -34,11 +35,15 @@
     --extension-rarity-bg-image-holo: url('__EXTENSION_IMAGE_2_URL__');
 }
 
-/* pokerogue overwrites  */
-body {
-    display: flex;    
-    /*font-size: var(--font-size);*/
+html {
+    font-size: var(--root-font-size);
 }
+
+body {    
+    font-size: 1rem;    /* 10px, default font-size, but percentage based calculation */
+    display: flex;      /* pokerogue css overwrite  */
+}
+
 #app {
     display: block;
     height: fit-content;
@@ -71,7 +76,7 @@ body {
     width: 30%;
     max-width: 30%;
     background-color: var(--sidebar-bg-color);
-    border: 1px solid var(--sidebar-borders-color);
+    border: 0.1em solid var(--sidebar-borders-color);
     overflow-y: auto;
     overflow-x: hidden;
     display: none;
@@ -79,6 +84,7 @@ body {
     position: relative;
     font-family: var(--sidebar-font);
     line-height: 100%;
+    font-size: 1em;    /* base font size for all em values in sidebar */
 }
 .roguedex-sidebar.active {
     display: block;
@@ -101,49 +107,64 @@ body.sidebar-Bottom {
 }
 #sidebar-switch-iv-moves {
     position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 1em;
-    min-height: 1em;
-    font-size: 1.5em;
+    padding: 0;
+    height: 2.4em;
+    width: 2.4em;
+    font-size: inherit;
+    top: 0.3em;
+    left: 0.3em;
     line-height: 100%;
-    margin: 0.19em 0px 0px 0.19em;
+    margin: 0;
     background-color: #5c5c5c;
     color: white;
-    border-radius: 3px;
-    border: 1 px solid var(--sidebar-borders-color);
+    border-radius: 0.3em;
+    border: 0.1em solid var(--sidebar-borders-color);
+}
+#sidebar-switch-iv-moves span {
+    font-size: 1.8em;
 }
 #go-to-options {
     position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 1em;
-    min-height: 1em;
-    font-size: 1.5em;
-    margin: 0.14em 0.15em 0 0;
+    font-size: 1.8em;
+    padding: 0;
+    width: 2.4em;
+    height: 2.4em;
+    top: 0.3em;
+    right: 0.3em;
+    margin: 0;
     background-color: #5c5c5c;
     color: white;
-    border-radius: 3px;
-    border: 1 px solid var(--sidebar-borders-color);
+    border-radius: 0.3em;
+    border: 0.1em solid var(--sidebar-borders-color);
 }
 .roguedex-sidebar .sidebar-header {
     color: white;
-    font-size: 2em;
-    padding: 0.3em 0 0.3em 0;
     width: 100%;
     text-align: center;
-    font-family: inherit;
+    font-family: inherit;    
+    height: 3em;
+    line-height: 3em;
+}
+.roguedex-sidebar .sidebar-header span {
+    font-size: 3em;
 }
 .roguedex-sidebar .sidebar-header-trainer-battle {
     color: #ff7e7e;
-    font-size: 0.8em;
+    font-size: 2.2em;
+    padding-left: 1em;
 }
+.roguedex-sidebar .tooltip .tooltiptext span {
+    font-size: 2em !important;
+    line-height: 0.8 !important;
+    padding: 0 0.3em !important;
+}
+
 .enemies-party,
 .allies-party {
     display: table;
     color: white;
     font-family: inherit;
-    border-top: 1px solid var(--sidebar-borders-color);
+    border-top: 0.1em solid var(--sidebar-borders-color);
     margin: 0;
     width: 100%;
     box-sizing: border-box;
@@ -197,8 +218,8 @@ body.sidebar-Bottom {
 .pokemon-type-effectiveness-wrapper,
 .pokemon-info-text-wrapper {
     display: table-cell;
-    border-bottom: 1px solid var(--sidebar-borders-color);
-    padding: 0.3em 0.5em 0.3em 0;
+    border-bottom: 0.1em solid var(--sidebar-borders-color);
+    padding: 0.5em 0.5em 0.5em 0;
     vertical-align: top;
 }
 .pokemon-entry .pokemon-entry-image {
@@ -207,10 +228,10 @@ body.sidebar-Bottom {
     position: relative;
 }
 .pokemon-entry-image.tooltip .tooltiptext {
-    padding: 0.3em 0.4em 0.3em 0.4em;
-    font-size: 1.3em;
+    padding: 0.4em 0.6em;
     text-align: left;
-    width: max-content;
+    width: max-content;    
+    z-index: 10;
 }
 .pokemon-entry-image.tooltip .tooltiptext span {
     display: contents;
@@ -219,24 +240,7 @@ body.sidebar-Bottom {
 .pokemon-entry:last-child.div {
     border-bottom: none;
 }
-.pokemon-entry-icon {
-    max-height: 5em;
-}
 .roguedex-sidebar .pokemon-type-icon {
-    max-width: calc(
-        (
-                var(--sidebar-img-max-height) -
-                    (var(--type-effectiveness-border-width) * 2) -
-                    (var(--type-effectiveness-item-margin) * 6)
-            ) / 3
-    );
-    max-height: calc(
-        (
-                var(--sidebar-img-max-height) -
-                    (var(--type-effectiveness-border-width) * 2) -
-                    (var(--type-effectiveness-item-margin) * 6)
-            ) / 3
-    );
     width: var(--icon-size);
     height: var(--icon-size);
     background-size: cover;
@@ -251,9 +255,9 @@ body.sidebar-Bottom {
     border-radius: 50%;
     margin: 0.1em 0.1em;
 
-    -webkit-box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
-    -moz-box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
-    box-shadow: 0px 0px 2px 2px rgba(36, 36, 36, 0.9);
+    -webkit-box-shadow: 0px 0px 0.2em 0.2em rgba(36, 36, 36, 0.9);
+    -moz-box-shadow: 0px 0px 0.2em 0.2em rgba(36, 36, 36, 0.9);
+    box-shadow: 0px 0px 0.2em 0.2em rgba(36, 36, 36, 0.9);
 
     overflow: hidden;
 }
@@ -267,10 +271,10 @@ body.sidebar-Bottom {
     flex-wrap: wrap;
     min-height: calc(var(--icon-size) * 1);
     min-width: calc(var(--icon-size) * 3);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
 
     position: relative;
     padding: 0.1em 0.1em 0.1em 0.1em;
@@ -284,7 +288,7 @@ body.sidebar-Bottom {
         rgba(154, 2, 2, 1) 12%,
         rgba(255, 0, 0, 0.17) 100%
     );
-    border: 1px solid rgb(192, 2, 2);
+    border: 0.1em solid rgb(192, 2, 2);
 }
 .roguedex-sidebar .pokemon-type-resistances {
     background: rgb(0, 36, 7);
@@ -294,7 +298,7 @@ body.sidebar-Bottom {
         rgba(13, 154, 2, 1) 12%,
         rgba(1, 255, 0, 0.17) 100%
     );
-    border: 1px solid rgb(14, 207, 1);
+    border: 0.1em solid rgb(14, 207, 1);
 }
 .roguedex-sidebar .pokemon-type-immunities {
     background: rgb(68, 68, 68);
@@ -304,7 +308,7 @@ body.sidebar-Bottom {
         rgba(115, 115, 115, 1) 12%,
         rgba(161, 161, 161, 0.17) 100%
     );
-    border: 1px solid rgb(148, 148, 148);
+    border: 0.1em solid rgb(148, 148, 148);
 }
 .roguedex-sidebar .pokemon-type-weaknesses::before,
 .roguedex-sidebar .pokemon-type-resistances::before,
@@ -314,8 +318,8 @@ body.sidebar-Bottom {
     margin-right: 1em;
     vertical-align: middle;
     text-align: center;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
 
     position: absolute;
     top: 0;
@@ -325,39 +329,50 @@ body.sidebar-Bottom {
 .roguedex-sidebar .pokemon-type-weaknesses::before {
     content: ' ';
     background-color: rgb(36, 0, 0);
-    border: 1px solid rgb(192, 2, 2);
+    border: 0.1em solid rgb(192, 2, 2);
 }
 .roguedex-sidebar .pokemon-type-resistances::before {
     content: ' ';
     background-color: rgb(0, 36, 7);
-    border: 1px solid rgb(14, 207, 1);
+    border: 0.1em solid rgb(14, 207, 1);
 }
 .roguedex-sidebar .pokemon-type-immunities::before {
     content: ' ';
     background-color: rgb(68, 68, 68);
-    border: 1px solid rgb(148, 148, 148);
+    border: 0.1em solid rgb(148, 148, 148);
 }
 .roguedex-sidebar .pokemon-entry-image canvas {
-    max-height: var(--sidebar-img-max-height);
-    max-width: var(--sidebar-img-max-height);
     height: var(--sidebar-img-max-height);
     width: var(--sidebar-img-max-height);
 }
 .canvas-fallback-text {
+    /* todo */
     display: list-item;
     padding: 0.3em;
     position: absolute;
     top: 20px;
     font-size: 1.3em;
     box-sizing: border-box;
-    max-width: 90px;
+    max-width: var(--sidebar-img-max-height);
     left: 0px;
     color: rgb(184, 184, 184);
 }
+
 .pokemon-info-text-wrapper {
-    padding: 0.2em 0.2m 0.2em 0px !important;
-    font-size: 1.5em;
+    padding: 0.2em 0.2em 0.2em 0;
+    line-height: 0.9;
 }
+.pokemon-info-text-wrapper .pokemon-ability-description,
+.pokemon-info-text-wrapper .pokemon-nature-description,
+.pokemon-info-text-wrapper .pokemon-ability-value,
+.pokemon-info-text-wrapper .pokemon-nature-value,
+.pokemon-info-text-wrapper .text-base .tooltiptext,
+.pokemon-info-text-wrapper .stat-p span,
+.pokemon-info-text-wrapper .pokemon-move-name {
+    /* set font-sizes on lowest child elements to not mess up em scaling */
+    font-size: 2.5em;
+}
+
 .roguedex-sidebar.hideIVs .allies-party .pokemon-ivs,
 .roguedex-sidebar.hideMoveset .allies-party .pokemon-moveset-wrapper {
     display: none;
@@ -370,15 +385,28 @@ body.sidebar-Bottom {
 .roguedex-sidebar .pokemon-ability,
 .roguedex-sidebar .pokemon-nature {
     display: flex;
+    padding: 0 1em 0 0;
 }
 .roguedex-sidebar .stat-p {
     display: flex;
-    padding-right: 0.3em;
-    padding-top: 0.3em;
+    padding: 0 1em 0 0;
+    position: relative;
+}
+.roguedex-sidebar .stat-p span {
+    display: inline-block;
+    padding: 0 0.3em 0 0;
 }
 .roguedex-sidebar .stat-c {
+    padding-right: 0.4em;
     position: relative;
     text-shadow: var(--text-shadow-dark);
+}
+.roguedex-sidebar .stat-icon {
+    padding: 0;
+    position: absolute;
+    top: -0.2em;
+    right: -0.15em;
+    opacity: 0.7 !important;
 }
 .roguedex-sidebar .stat-p.stat-p-colors {
     color: #adadad;
@@ -386,12 +414,7 @@ body.sidebar-Bottom {
 .roguedex-sidebar .stat-c.stat-c-colors {
     color: white;
 }
-.roguedex-sidebar .stat-icon {
-    position: absolute;
-    top: -0.3em;
-    right: -0.5em;
-    opacity: 0.8 !important;
-}
+
 .roguedex-sidebar .pokemon-ability-description,
 .roguedex-sidebar .pokemon-nature-description {
     color: #adadad;
@@ -399,10 +422,10 @@ body.sidebar-Bottom {
 .roguedex-sidebar .pokemon-ability-value,
 .roguedex-sidebar .pokemon-nature-value {
     color: white;
-    padding: 0 0.2em;
+    padding: 0 0 0 0.4em;
 }
 .roguedex-sidebar .pokemon-ability.hidden-ability .pokemon-ability-value {
-    color: rgb(247, 0, 255);
+    color: rgb(249 79 255);
 }
 .pokemon-type-icon.super-dmg,
 .pokemon-type-icon.super-resist {
@@ -435,14 +458,14 @@ body.sidebar-Bottom {
     }
 }
 .pokemon-moveset-wrapper {
-    margin-top: 0.2em;
-    border: 1px solid #2a2a2a;
+    margin: 0.3em 0 0 -0.1em;
+    border: 0.1em solid #2a2a2a;
     display: flex;
     flex-wrap: wrap;
     background-color: #1a1a1a;
 }
 .pokemon-moveset-wrapper .pokemon-move {
-    padding: 0.1em 0.2em 0.1em 0.2em;
+    padding: 0 0 0 0.5em;
     flex-basis: 50%;
     box-sizing: border-box;
     text-shadow: var(--text-shadow-dark);
@@ -534,41 +557,42 @@ body.sidebar-Bottom {
     border-radius: 0;
 
     position: relative;
-    padding: 0.1em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.2em 0.2em 0.2em;
 
     min-width: fit-content;
     width: fit-content;
-    border-width: 1px;
+    border-width: 0.1em;
     border-style: solid;
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-weaknesses {
     background: #810e0e;
-    border: 1px solid rgb(192, 2, 2);
+    border: 0.1em solid rgb(192, 2, 2);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-resistances {
     background: rgba(76, 185, 68, 1);
-    border: 1px solid rgb(92, 229, 82, 1);
+    border: 0.1em solid rgb(92, 229, 82, 1);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-immunities {
     background: rgb(97, 96, 96);
-    border: 1px solid rgb(148, 148, 148);
+    border: 0.1em solid rgb(148, 148, 148);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .type-effectiveness-category:before {
+    /* todo, still used? */
     display: none;
     width: 1em;
     margin-right: 1em;
     vertical-align: middle;
     text-align: center;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
 
     position: absolute;
     top: 0;
@@ -578,23 +602,26 @@ body.sidebar-Bottom {
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-weaknesses::before {
+        /* todo, still used? */
     content: ' ';
     background-color: rgb(36, 0, 0);
-    border-color: 1px solid rgb(192, 2, 2);
+    border-color: 0.1em solid rgb(192, 2, 2);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-resistances::before {
+        /* todo, still used? */
     content: ' ';
     background-color: rgb(0, 36, 7);
-    border-color: 1px solid rgb(14, 207, 1);
+    border-color: 0.1em solid rgb(14, 207, 1);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-immunities::before {
+        /* todo, still used? */
     content: ' ';
     background-color: rgb(68, 68, 68);
-    border-color: 1px solid rgb(148, 148, 148);
+    border-color: 0.1em solid rgb(148, 148, 148);
 }
 .roguedex-sidebar
     .pokemon-type-effectiveness-wrapper.compact
@@ -640,7 +667,7 @@ body.sidebar-Bottom {
 /* change view for trainer battles */
 .pokemon-entry.condensed {
     display: table-cell;
-    border: 1px solid black;
+    border: 0.1em solid black;
 }
 .pokemon-entry.condensed .pokemon-type-effectiveness-wrapper.compact {
     display: none !important;
@@ -669,7 +696,6 @@ body.sidebar-Bottom {
 /* bottom panel */
 
 .roguedex-bottom-panel {
-    font-size: 1.5em;
     line-height: 100%;
     bottom: 0;
     position: absolute;
@@ -679,9 +705,10 @@ body.sidebar-Bottom {
     height: 100%;
     box-sizing: content-box;
     display: none;
-    border-bottom: 1px solid var(--sidebar-borders-color);
+    border-bottom: 0.1em solid var(--sidebar-borders-color);
     font-family: var(--sidebar-font);
     overflow: hidden;
+    font-size: 1em;    /* base font size for all em values in sidebar */
 }
 .roguedex-bottom-panel.sidebar-active {
     display: block;
@@ -697,11 +724,9 @@ body.sidebar-Bottom {
     height: -webkit-fill-available;
     color: white;
     font-family: inherit;
-    /*font-size: 1em;*/
     font-size: inherit;
 }
 .roguedex-bottom-panel-header {
-    /*font-size: 1em;*/
     font-size: inherit;
 }
 .bottom-panel-weather-box {
@@ -710,7 +735,9 @@ body.sidebar-Bottom {
 .bottom-panel-party-modifiers td,
 .bottom-panel-enemy-modifiers td,
 .bottom-panel-pokemon-modifiers td {
-    padding: 0 0.1em;
+    font-size: 2.5em;
+    padding: 0 0.2em;
+    line-height: 0.9;
 }
 .bottom-panel-party-modifiers td:nth-child(2n),
 .bottom-panel-enemy-modifiers td:nth-child(2n),
@@ -727,7 +754,7 @@ body.sidebar-Bottom {
 .bottom-panel-pokemon-modifiers {
     text-align: left;
     background-color: #25272b;
-    border: 1px solid rgb(26, 25, 25);
+    border: 0.1em solid rgb(26, 25, 25);
     float: left;
 }
 .bottom-panel-party-modifiers,
@@ -740,7 +767,7 @@ body.sidebar-Bottom {
     color: rgb(104, 104, 104);
 }
 .bottom-panel-party-modifiers {
-    border-width: 0.2em;
+    border-width: 0.4em;
     border-style: solid;
     border-top-style: solid;
     border-right-style: solid;
@@ -755,7 +782,7 @@ body.sidebar-Bottom {
     inset: 0px -1px;
     content: '';
     background: transparent;
-    border-width: 0.2em;
+    border-width: 0.3em;
     border-style: solid;
     border-image: linear-gradient(to left, #0095ff, var(--sidebar-bg-color)) 1;
     border-image-slice: 1;
@@ -765,7 +792,7 @@ body.sidebar-Bottom {
     width: -moz-available;
 }
 .bottom-panel-enemy-modifiers {
-    border-width: 0.2em;
+    border-width: 0.4em;
     border-style: solid;
     border-top-style: solid;
     border-left-style: solid;
@@ -780,7 +807,7 @@ body.sidebar-Bottom {
     inset: 0px -1px;
     content: '';
     background: transparent;
-    border-width: 0.2em;
+    border-width: 0.3em;
     border-style: solid;
     border-image: linear-gradient(to right, #b30a21, var(--sidebar-bg-color)) 1;
     border-image-slice: 1;
@@ -800,7 +827,7 @@ body.sidebar-Bottom {
 
 .bottom-panel-tab-buttons {
     display: flex;
-    border-bottom: 1px solid var(--sidebar-borders-color);
+    border-bottom: 0.05em solid var(--sidebar-borders-color);
 }
 
 .bottom-panel-tab-button {
@@ -812,11 +839,10 @@ body.sidebar-Bottom {
     transition: background-color 0.3s;
     color: white;
     font-family: inherit;
-    /*/font-size: 1em;    */
-    line-height: 100%;
-
-    border: 1px solid var(--sidebar-borders-color);
+    border: 0.05em solid var(--sidebar-borders-color);
     background-color: rgb(30, 31, 34);
+    font-size: 2.5em;
+    line-height: 100%;
 }
 
 .bottom-panel-tab-button:hover {
@@ -824,7 +850,7 @@ body.sidebar-Bottom {
 }
 
 .bottom-panel-tab-button.active {
-    border-bottom: 2px solid #007bff;
+    border-bottom: 0.1em solid #007bff;
     background-color: rgb(39, 40, 44);
 }
 
@@ -967,65 +993,70 @@ body.sidebar-Bottom {
 .sidebar-pokemon-info {
     display: block;
     position: absolute;
-    left: 0.3em;
-    top: 0.3em;
-    background-color: rgba(0, 0, 0, 0.4);
+    left: 0.5em;
+    top: 0.5em;
+}
+.sidebar-pokemon-info.allies span {
+    display: inline-block;
+    vertical-align: top; 
+    font-size: 1.6em;
 }
 .sidebar-pokemon-info.enemies span {
-    --size: 1.1em;
-    --border-size: 0px;
-    --margin: 0;
-    height: var(--size);
-    line-height: calc(var(--size) - ( 2 * var(--border-size)) );
+    line-height: 100%;
     text-align: center;
     display: inline-block;
     vertical-align: top;
+    font-size: 1.6em;
 }
-.sidebar-pokemon-info.enemies span.sidebar-pokemon-info-region {
-    --size: 1.1em;
+.sidebar-pokemon-info.enemies div.sidebar-pokemon-info-region {
+    --size: 1.6em;
     width: var(--size);
+    height: var(--size);
+    display: inline-block;
+    vertical-align: top;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 .sidebar-pokemon-info.enemies span.sidebar-pokemon-info-paradox,
 .sidebar-pokemon-info.enemies span.sidebar-pokemon-info-generation,
 .sidebar-pokemon-info.enemies span.sidebar-pokemon-info-rarity {
     padding: 0 0.3em;
     background:
-    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 0, 
-    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 0 0, 
-    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
-    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
-    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
-    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
-    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 100%, 
-    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 0 100%;
+        linear-gradient(to right, #a6afc0 0.1rem, transparent 0.1rem) 0 0, 
+        linear-gradient(to bottom, #a6afc0 0.1rem, transparent 0.1rem) 0 0, 
+        linear-gradient(to left, #a6afc0 0.1rem, transparent 0.1rem) 100% 0, 
+        linear-gradient(to bottom, #a6afc0 0.1rem, transparent 0.1rem) 100% 0, 
+        linear-gradient(to left, #a6afc0 0.1rem, transparent 0.1rem) 100% 100%, 
+        linear-gradient(to top, #a6afc0 0.1rem, transparent 0.1rem) 100% 100%, 
+        linear-gradient(to right, #a6afc0 0.1rem, transparent 0.1rem) 0 100%, 
+        linear-gradient(to top, #a6afc0 0.1rem, transparent 0.1rem) 0 100%;
     background-repeat: no-repeat;
-    background-size: 0.25em 0.25em;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 0.4em 0.3em;
 }
+
 .card-pokemon-info {
     display: block;
     position: absolute;
-    left: 0.1em;
-    top: 0.1em;
+    left: 0.4em;
+    top: 0.4em;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     font-family: var(--overlay-font);
 }
 .card-pokemon-info.enemies span {
-    --size: 0.8em;
-    --border-size: 0px;
-    --margin: 0;
-    height: var(--size);
-    line-height: calc(var(--size) - ( 2 * var(--border-size)) );
+    font-size: 2em;
+    line-height: 1;
     text-align: center;
     display: inline-block;
     vertical-align: top;
 }
 .card-pokemon-info.enemies span.card-pokemon-info-region {
-    --size: 0.8em;
+    --size: 2em;
     width: var(--size);
+    height: var(--size);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1033,18 +1064,18 @@ body.sidebar-Bottom {
 .card-pokemon-info.enemies span.card-pokemon-info-paradox,
 .card-pokemon-info.enemies span.card-pokemon-info-generation,
 .card-pokemon-info.enemies span.card-pokemon-info-rarity {
-    padding: 0 0.2em;
+    padding: 0 0.3em;
     background:
-    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 0, 
-    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 0 0, 
-    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
-    linear-gradient(to bottom, #a6afc0 0.05em, transparent 0.05em) 100% 0, 
-    linear-gradient(to left, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
-    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 100% 100%, 
-    linear-gradient(to right, #a6afc0 0.05em, transparent 0.05em) 0 100%, 
-    linear-gradient(to top, #a6afc0 0.05em, transparent 0.05em) 0 100%;
+        linear-gradient(to right, #a6afc0 0.1rem, transparent 0.1rem) 0 0, 
+        linear-gradient(to bottom, #a6afc0 0.1rem, transparent 0.1rem) 0 0, 
+        linear-gradient(to left, #a6afc0 0.1rem, transparent 0.1rem) 100% 0, 
+        linear-gradient(to bottom, #a6afc0 0.1rem, transparent 0.1rem) 100% 0, 
+        linear-gradient(to left, #a6afc0 0.1rem, transparent 0.1rem) 100% 100%, 
+        linear-gradient(to top, #a6afc0 0.1rem, transparent 0.1rem) 100% 100%, 
+        linear-gradient(to right, #a6afc0 0.1rem, transparent 0.1rem) 0 100%, 
+        linear-gradient(to top, #a6afc0 0.1rem, transparent 0.1rem) 0 100%;
     background-repeat: no-repeat;
-    background-size: 0.15em 0.15em;
+    background-size: 0.4em 0.3em;
 }
 
 .card-pokemon-info.tooltip {
@@ -1052,34 +1083,35 @@ body.sidebar-Bottom {
 }
 .card-pokemon-info.tooltip .tooltiptext {
     padding: 0.3em 0.4em 0.3em 0.4em;
-    font-size: 1.3em;
     text-align: left;
     width: max-content;
+    z-index: 10;
+    font-size: unset;
 }
 .card-pokemon-info.tooltip .tooltiptext span {
     display: contents;
     text-shadow: none;
+    font-size: 2.5em;
 }
 
 /* sidebar + card pokemon info overlay END */
 
-.allies-team {
+.allies-team, .enemy-team {    
+    font-size: 1em;     /* base font size for all em values in overlay cards */
+    display: flex;
+    z-index: 1;
     margin: 0 auto;
     padding: 0 auto;
     position: absolute;
+}
+
+.allies-team {
     top: 0;
     right: 0;
-    z-index: 1;
-    display: flex;
 }
 
 .enemy-team {
-    margin: 0 auto;
-    padding: 0 auto;
-    position: absolute;
     top: 0;
-    z-index: 1;
-    display: flex;
 }
 
 .pokemon-cards {
@@ -1090,31 +1122,35 @@ body.sidebar-Bottom {
 
 .pokemon-card {
     background-color: #333333b8;
-    border: 2px solid #555;
-    border-radius: 8px;
+    border: 0.2em solid #555;
+    border-radius: 0.8em;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-.pokemon-icon img {
-    width: 5em;
-    height: 5em;
+.pokemon-icon {
+    width: var(--card-img-max-height);
+    height: var(--card-img-max-height);
+}
+.pokemon-icon.minified {
+    width: var(--card-img-mini-max-height);
+    height: var(--card-img-mini-max-height);
 }
 
 .pokemon-info {
-    margin-top: 10px;
+    margin-top: 1em;
 }
 
 .pokemon-types {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 }
 
 .pokemon-type-icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
+    width: var(--card-icon-size);
+    height: var(--card-icon-size);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left;
@@ -1126,27 +1162,27 @@ body.sidebar-Bottom {
 .pokemon-weaknesses,
 .pokemon-resistances,
 .pokemon-immunities {
-    min-width: var(--icon-size);
+    min-width: var(--card-icon-size);
     display: flex;
     min-height: 5em;
 }
 
 .pokemon-weaknesses {
     background-color: #6a1f1f;
-    border: 2px solid red;
-    border-radius: 10px;
+    border: 0.2em solid red;
+    border-radius: 1em;
 }
 
 .pokemon-resistances {
     background-color: #216a1f;
-    border: 2px solid green;
-    border-radius: 10px;
+    border: 0.2em solid green;
+    border-radius: 1em;
 }
 
 .pokemon-immunities {
     background-color: #484848;
-    border: 2px solid white;
-    border-radius: 10px;
+    border: 0.2em solid white;
+    border-radius: 1em;
 }
 
 .pokemon-weaknesses .pokemon-type-icon,
@@ -1155,20 +1191,19 @@ body.sidebar-Bottom {
     opacity: 1;
 }
 
+.pokemon-card-text-wrapper {
+    padding: 0.3em 0.5em 0.5em 0.5em;
+}
+
 .text-base {
     display: flex;
-    font-family: var(--overlay-font);
-    font-size: 1em;
-    text-shadow:
-        0.1em 0 #fff,
-        -0.1em 0 #fff,
-        0 0.1em #fff,
-        0 -0.1em #fff,
-        0.05em 0.05em #fff,
-        -0.05em -0.05em #fff,
-        0.05em -0.05em #fff,
-        -0.05em 0.05em #fff;
-    color: black;
+    font-family: var(--overlay-font);    
+}
+.text-base span {
+    font-size: 2.5em;
+    line-height: 1;
+    text-shadow: var(--text-shadow-dark);
+    color: white;
 }
 
 #enemies .text-base,
@@ -1178,14 +1213,16 @@ body.sidebar-Bottom {
 
 .arrow-button-wrapper {
     display: block;
-    font-size: 1.5em;
 }
-.arrow-button-wrapper.minified {
-    font-size: 1em;
-}
-.arrow-button-wrapper.mobile {
-    display: grid;
+.arrow-button-wrapper button {
     font-size: 2.5em;
+}
+.arrow-button-wrapper.minified button {
+    font-size: 2em;
+}
+.arrow-button-wrapper.mobile button {
+    display: grid;
+    font-size: 3.5em;
 }
 
 .centered-flex {
@@ -1196,68 +1233,38 @@ body.sidebar-Bottom {
 .tooltip .tooltiptext {
     visibility: hidden;
     text-align: center;
-    border-radius: 6px;
-    padding: 0.25em 0;
-    font-size: 1em;
+    border-radius: 0.6em;
     position: absolute;
-    z-index: 1;
     font-family: var(--overlay-font);
     background-color: white;
+    color: black;
+    text-shadow: none;
+    padding: 0.3em 0.4em 0.3em 0.4em;
+    z-index: 10;
 }
-
+.tooltip .tooltiptext span {
+    font-size: 2.5em;
+    color: black;
+    text-shadow: none;
+}
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
 
 .image-overlay {
     position: absolute;
-    left: 20px;
-    top: -30px;
-    width: 96px;
-    height: 96px;
+    left: 2em;
+    top: -3em;
+    width: 9.6em;
+    height: 9.6em;
 }
-
-/* Slider settings */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    input[type='range'] {
-        overflow: hidden;
-        width: 4em;
-        -webkit-appearance: none;
-        appearance: none;
-    }
-
-    /*input[type='range']::-webkit-slider-runnable-track {*/
-    /*  height: 0.1em;*/
-    /*  -webkit-appearance: none;*/
-    /*  color: #13bba4;*/
-    /*  margin-top: -1px;*/
-    /*}*/
-
-    /*input[type='range']::-webkit-slider-thumb {*/
-    /*  width: .1em;*/
-    /*  -webkit-appearance: none;*/
-    /*  height: 1vh;*/
-    /*  cursor: ew-resize;*/
-    /*  box-shadow: -.8em 0 0 .8em #b3462c;*/
-    /*}*/
-}
-/** FF*/
-input[type='range']::-moz-range-progress {
-    background-color: #b3462c;
-}
-input[type='range']::-moz-range-track {
-    background-color: #fff;
-}
-input[type='range'] {
-    background-color: transparent;
-}
-
-.slider-wrapper {
-    display: flex;
+.image-overlay.minified {
+    width: fit-content;
+    height: fit-content;
 }
 
 .hidden-ability {
-    color: #f700ff;
+    color: rgb(249 79 255)!important;
 }
 
 #extension-status {
@@ -1270,7 +1277,10 @@ input[type='range'] {
     background-color: #ffffff50;
 }
 #extension-status span {
+    text-shadow: var(--text-shadow-light);
     padding: 0 0.5em;
+    font-size: 2em;
+    line-height: 1;
 }
 #extension-status .rd-status-text {
     color: blue;
@@ -1294,31 +1304,30 @@ input[type='range'] {
     font-size: 1.5em;
 }
 
-.stat-p {
+.pokemon-card .stat-cont {
+    padding: 0.2em 0.5em;
+}
+.pokemon-card .stat-cont .stat-p {
     display: flex;
-    padding-right: 0.3em;
-    padding-top: 0.3em;
-}
-
-.stat-c {
+    padding: 0 1.5em 0 0;
     position: relative;
-    text-shadow:
-        0.1em 0 rgba(255, 255, 255, 0),
-        -0.1em 0 rgba(255, 255, 255, 0),
-        0 0.1em rgba(255, 255, 255, 0),
-        0 -0.1em rgba(255, 255, 255, 0),
-        0.05em 0.05em rgba(255, 255, 255, 0),
-        -0.05em -0.05em rgba(255, 255, 255, 0),
-        0.05em -0.05em rgba(255, 255, 255, 0),
-        -0.05em 0.05em rgba(255, 255, 255, 0);
+}
+.pokemon-card .stat-cont .stat-p span {
+    display: inline-block;
+    padding: 0 0.1em 0 0;
+    color: white;
+    text-shadow: var(--text-shadow-dark);
 }
 
-.stat-icon {
+.pokemon-card .stat-cont .stat-c {
+    padding-right: 0.4em;
+    position: relative;    
+    text-shadow: var(--text-shadow-dark);
+}
+
+.pokemon-card .stat-cont .stat-icon {
+    padding: 0;
     position: absolute;
-    top: -0.3em;
-    right: -0.5em;
-}
-
-.op-slider {
-    width: 100% !important;
+    top: -0.2em;
+    right: 0.2em;
 }

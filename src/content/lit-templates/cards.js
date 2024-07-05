@@ -24,7 +24,7 @@
         return html`
             <div id="${partyID}" class="${classes}"></div>
         `;
-    };    
+    };
 
     /**
      * Creates a div element and it's content for a Pokémon card.
@@ -46,7 +46,6 @@
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
-                    ${opacitySliderTemplate}
                     <div style="display: flex;">
                         <div class="${rarityClass}" style="position: relative;">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
@@ -70,26 +69,32 @@
                         </div>
                         ${typeEffectivenessHTML}
                     </div>
-                    <div class="text-base">
-                        <div class="tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
-                            Ability: ${pokemon.ability.name}
-                            ${window.lit.createTooltipDiv(pokemon.ability.description)}
+                    <div class="pokemon-card-text-wrapper">
+                        <div class="text-base">
+                            <div class="tooltip">
+                                <span>Ability: </span>
+                                <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
+                                ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                            </div>
+                            ${ pokemon.nature ? html`
+                                <div class="tooltip">
+                                    <span>&nbsp;-&nbsp;Nature: ${pokemon.nature}</span>
+                                    ${window.lit.createTooltipDiv("")}
+                                </div>
+                            ` : '' }
                         </div>
-                        &nbsp-&nbsp 
-                        <div class="tooltip">
-                            Nature: ${pokemon.nature}
-                            ${window.lit.createTooltipDiv("")}
+                        <div class="text-base">
+                            <span>HP: ${pokemon.ivs[Stat.HP]}, ATK: ${pokemon.ivs[Stat.ATK]}, DEF: ${pokemon.ivs[Stat.DEF]}</span>
                         </div>
+                        <div class="text-base">
+                            <span>SPE: ${pokemon.ivs[Stat.SPD]}, SPD: ${pokemon.ivs[Stat.SPDEF]}, SPA: ${pokemon.ivs[Stat.SPATK]}</span>
+                        </div>
+                        ${weather?.type && weather?.turnsLeft ? html`
+                            <div class="text-base">
+                                <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
+                            </div>
+                        ` : ''}
                     </div>
-                    <div class="text-base">
-                        HP: ${pokemon.ivs[Stat.HP]}, ATK: ${pokemon.ivs[Stat.ATK]}, DEF: ${pokemon.ivs[Stat.DEF]}
-                    </div>
-                    <div class="text-base">
-                        SPE: ${pokemon.ivs[Stat.SPD]}, SPD: ${pokemon.ivs[Stat.SPDEF]}, SPA: ${pokemon.ivs[Stat.SPATK]}
-                    </div>
-                    ${weather?.type && weather?.turnsLeft ? html`
-                        <div class="text-base">Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</div>
-                    ` : ''}
                 </div>
             </div>
         `;
@@ -113,24 +118,29 @@
                 <div class="pokemon-card">
                     <div class="text-base centered-flex">${pokemon.name}</div>
                     <div class="text-base centered-flex">
-                        <div class="image-overlay ${rarityClass}">
-                            <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
+                        <div class="image-overlay minified ${rarityClass}">
+                            <canvas id="pokemon-icon_${cardId}" class="pokemon-icon minified"></canvas>
                         </div>
-                        <div class="tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
-                            Ability: ${pokemon.ability.name} 
-                            ${window.lit.createTooltipDiv(pokemon.ability.description)}
-                        </div>
-                        &nbsp-&nbsp 
                         <div class="tooltip">
-                            Nature: ${pokemon.nature}
-                            ${window.lit.createTooltipDiv("")}
+                            <span>Ability: </span>
+                            <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
+                            ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                         </div>
+                        ${ pokemon.nature ? html`
+                            <div class="tooltip">
+                                <span>&nbsp;-&nbsp;Nature: ${pokemon.nature}</span>
+                                ${window.lit.createTooltipDiv("")}
+                            </div>
+                        ` : '' }
                     </div>
                     <div class="text-base stat-cont">
                         ${unsafeHTML(ivsGeneratedHTML)}
                     </div>
-                    ${(weather?.type && weather?.turnsLeft) ?
-                        html`<div class="text-base">Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</div>` : ''}
+                    ${weather?.type && weather?.turnsLeft ? html`
+                        <div class="text-base">
+                            <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
+                        </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -182,12 +192,14 @@
                                 })}
                             </div>
                         `)}
-                        ${window.lit.createTooltipDiv(tooltipMap[effectiveness] || "")}
+                        ${ tooltipMap[effectiveness] ? html`
+                            ${window.lit.createTooltipDiv(`<span>${tooltipMap[effectiveness]}</span>`)}
+                        ` : ''}
                     </div>
                 `;
             })}
         `;
-    };   
+    };
 
     /**
      * Generates HTML for displaying IVs.
@@ -233,7 +245,7 @@
                 iconA = "-";
                 colorS = "#FFFF00";
             }
-            return `<div class="stat-icon" style="color: ${colorS} !important; opacity: 0.3">${iconA}</div>`;
+            return `<span class="stat-icon" style="color: ${colorS} !important; opacity: 0.7">${iconA}</span>`;
         };
     
         let fullHTML = '';
@@ -247,19 +259,19 @@
             }
     
             if (simpleDisplay && !addStyleClasses) {
-                fullHTML += `<div class="stat-p">${Stat[i]}:&nbsp;<div class="stat-c">${curIV}</div>&nbsp;&nbsp;</div>`;
+                fullHTML += `<div class="stat-p"><span>${Stat[i]}: </span><span class="stat-c">${curIV}</span></div>`;
             } else if (simpleDisplay && addStyleClasses) {
-                fullHTML += `<div class="stat-p stat-p-colors">${Stat[i]}:&nbsp;<div class="stat-c stat-c-colors">${curIV}</div>&nbsp;&nbsp;</div>`;
+                fullHTML += `<div class="stat-p stat-p-colors"><span>${Stat[i]}: </span><span class="stat-c stat-c-colors">${curIV}</span></div>`;
             } else if (!simpleDisplay && addStyleClasses) {
-                fullHTML += `<div class="stat-p stat-p-colors">${Stat[i]}:&nbsp;<div class="stat-c stat-c-colors">${curIV}</div>&nbsp;&nbsp;</div>`;
+                fullHTML += `<div class="stat-p stat-p-colors"><span>${Stat[i]}: </span><span class="stat-c stat-c-colors">${curIV}</span></div>`;
             } else {
-                fullHTML += `<div class="stat-p">${Stat[i]}:&nbsp;<div class="stat-c" style="color: ${getColor(curIV)}">${curIV}${ivComparison(curIV, dexIv)}</div>&nbsp;&nbsp;</div>`;
+                fullHTML += `<div class="stat-p"><span>${Stat[i]}: </span><span class="stat-c" style="color: ${getColor(curIV)}">${curIV}</span>${ivComparison(curIV, dexIv)}</div>`;
             }
         }
     
         if (fullHTML === '') {
             // Default HTML if there are no valid IVs to display
-            fullHTML = `<div class="stat-p">No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
+            fullHTML = `<div class="stat-p"><span>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</span></div>`;
         }
     
         return fullHTML;
@@ -335,7 +347,7 @@
         // Removing temporary elements from the DOM
         outer.parentNode.removeChild(outer);
       
-        return scrollbarWidth;          
+        return scrollbarWidth;
     }
 
 })(window);

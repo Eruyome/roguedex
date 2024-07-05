@@ -41,7 +41,7 @@ const settingsTemplate = {
     },
     4: {
         text: "Overlay Scale",
-        options: ["0.5", "1.0", "1.5", "2.0","2.5","3.0"],
+        options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "scaleFactor",
         type: "Float"
@@ -66,7 +66,7 @@ const settingsTemplate = {
     },
     8: {
         text: "Sidebar Scale",
-        options: ["0.5", "1.0", "1.5", "2.0","2.5","3.0"],
+        options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "sidebarScaleFactor",
         type: "Float"
@@ -91,7 +91,7 @@ const settingsTemplate = {
     },
     12: {
         text: "Bottom Panel Scale",
-        options: ["0.5", "1.0", "1.5", "2.0","2.5","3.0"],
+        options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "bottompanelScaleFactor",
         type: "Float"

@@ -18,8 +18,12 @@
     window.lit.createSidebarTemplate = () => {
         return html`
             <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets">        
-                <button id="sidebar-switch-iv-moves" class="tooltip">&#8644; ${window.lit.createTooltipDiv('Switch between showing ally IVs and movesets.')}</button>
-                <div class="sidebar-header" id="sidebar-header"></div>                
+                
+                <div class="sidebar-header" id="sidebar-header">
+                    <button id="sidebar-switch-iv-moves" class="tooltip"><span>&#8644;</span>
+                        ${window.lit.createTooltipDiv('<span>Switch between showing ally IVs and movesets.</span>')}
+                    </button>
+                </div>
                 <div class="sidebar-enemies-box visible" id="sidebar-enemies-box"></div>
                 <div class="sidebar-allies-box visible" id="sidebar-allies-box"></div>
             </div>
@@ -91,7 +95,7 @@
                                             <span class="sidebar-pokemon-info-paradox">Par</span>
                                         ` : '' }
                                         ${pokemon.region ? html`
-                                            <span class="sidebar-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></span>
+                                            <div class="sidebar-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></div>
                                         ` : '' }
                                     </div>
                                 ` : '' }
@@ -107,7 +111,7 @@
                                     <span class="pokemon-ability tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
                                         <span class="pokemon-ability-description">Ability:</span>
                                         <span class="pokemon-ability-value">${pokemon.ability.name}</span>
-                                        ${window.lit.createTooltipDiv(pokemon.ability.description)}
+                                        ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                                     </span>
                                     <span class="pokemon-nature tooltip">
                                         <span class="pokemon-nature-description">Nature:</span>
@@ -179,14 +183,18 @@
                 const icon = isBetter ? '↑' : (isWorse ? '↓' : '-');
                 const color = isBetter ? '#00FF00' : (isWorse ? '#FF0000' : '#FFFF00');
                 const colorStyle = !simpleDisplay && !addStyleClasses ? { color } : {};
-                const ivValue = simpleDisplay ? curIV : html`${curIV}${icon}`;
                 const statClass = addStyleClasses ? `stat-p-colors` : '';
                 const valueClass = addStyleClasses ? `stat-c-colors` : '';
 
                 return html`
                     <div class="stat-p ${statClass}">
-                        ${Stat[i]}:&nbsp;
-                        <div class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>${ivValue}</div>&nbsp;&nbsp;
+                        <span>${Stat[i]}:</span>
+                        <span class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>
+                            ${curIV}
+                        </span>
+                        ${ simpleDisplay ? '' : html`
+                            <span class="stat-icon">${icon}</span>
+                        `}
                     </div>
                 `;
             }) : defaultHtml}
@@ -416,18 +424,20 @@
     */
     window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses) => html`
         ${Object.keys(typeEffectivenesses).map(effectiveness => {
-            const Types = window.lit.getTypeList();
+            const TypeIconUrls = window.lit.getTypeIconUrls();
             const effectivenessObj = typeEffectivenesses[effectiveness];
             if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) || effectiveness === 'cssClasses') {
                 return '';
             }
 
             const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
-            
+
             return html`
                 <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
                     ${allTypes.map(type => html`
-                    <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/${Types[type]}.png')"></div>
+                        <div class="pokemon-type-icon-wrapper">
+                            <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
+                        </div>
                     `)}
                 </div>
             `;

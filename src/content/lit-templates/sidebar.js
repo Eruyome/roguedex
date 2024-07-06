@@ -17,12 +17,9 @@
      */
     window.lit.createSidebarTemplate = () => {
         return html`
-            <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets">        
-                
+            <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets"> 
                 <div class="sidebar-header" id="sidebar-header">
-                    <button id="sidebar-switch-iv-moves" class="tooltip"><span>&#8644;</span>
-                        ${window.lit.createTooltipDiv('<span>Switch between showing ally IVs and movesets.</span>')}
-                    </button>
+                    <button id="sidebar-switch-iv-moves" class="tooltip"><span>&#8644;</span></button>
                 </div>
                 <div class="sidebar-enemies-box visible" id="sidebar-enemies-box"></div>
                 <div class="sidebar-allies-box visible" id="sidebar-allies-box"></div>
@@ -70,17 +67,24 @@
                     const rarityClass = (pokemon.rarity.length && (partyID.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
                     const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
                     const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element as most is shown
+                    const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+                    const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
 
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                             <div class="pokemon-entry-image tooltip ${rarityClass}">
                                 ${window.lit.createPokemonTooltipDiv(pokemon)}
-                                <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>                                
+                                <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
+
                                 ${partyID === 'allies' ? html`
                                     <div class="sidebar-pokemon-info allies">
-                                        <span class="sidebar-pokemon-level">L ${pokemon.level}</span>
-                                        <span class="sidebar-pokemon-shiny">${pokemon.shiny ? '☀' : ''}</span>
-                                        <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
+                                        <span class="sidebar-pokemon-level">L ${pokemon.level}</span>                                        
+                                        ${pokemon.shiny ? html`
+                                            <div class="four-pointed-star"></div>
+                                        ` : ''}
+                                        ${pokemon.luck || pokemon.fusionLuck ? html`
+                                            <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
+                                        ` : ''}
                                     </div>
                                 ` : '' }
                                 ${partyID === 'enemies' ? html`
@@ -108,14 +112,19 @@
                             </div>
                             <div class="pokemon-info-text-wrapper">
                                 <div class="pokemon-ability-nature">
-                                    <span class="pokemon-ability tooltip ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
+                                    <span class="pokemon-ability  ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
                                         <span class="pokemon-ability-description">Ability:</span>
-                                        <span class="pokemon-ability-value">${pokemon.ability.name}</span>
-                                        ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                                        <div class="tooltip" style="display:inline;">
+                                            <span class="pokemon-ability-value">${pokemon.ability.name}</span>
+                                            ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                                        </div>                                                                                
                                     </span>
-                                    <span class="pokemon-nature tooltip">
+                                    <span class="pokemon-nature">
                                         <span class="pokemon-nature-description">Nature:</span>
-                                        <span class="pokemon-nature-value">${pokemon.nature}</span>
+                                        <div class="tooltip" style="display:inline;">
+                                            <span class="pokemon-nature-value">${pokemon.nature}</span>
+                                            ${window.lit.createTooltipDiv(natureDescriptionHTML)}
+                                        </div>
                                     </span>
                                 </div>
                                 <div class="pokemon-ivs stat-cont ${allZeroStarterIVs ? 'warn-zeroIVs' : ''}">

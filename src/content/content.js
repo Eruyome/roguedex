@@ -832,6 +832,10 @@ async function toggleSidebarPartyDisplay(partyID, state) {
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
     sidebarPartyElement.classList.toggle('visible', state);
     sidebarPartyElement.classList.toggle('hidden', !state);
+
+    const moveIvSwitchElement = document.getElementById('sidebar-switch-iv-moves');
+    moveIvSwitchElement.classList.toggle('visible', state);
+    moveIvSwitchElement.classList.toggle('hidden', !state);
 }
 
 /**

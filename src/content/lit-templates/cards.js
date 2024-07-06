@@ -42,6 +42,8 @@
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
         const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
         const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element is shown
+        const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+        const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
 
         return html`
             <div class="pokemon-cards">
@@ -79,7 +81,7 @@
                             ${ pokemon.nature ? html`
                                 <div class="tooltip">
                                     <span>&nbsp;-&nbsp;Nature: ${pokemon.nature}</span>
-                                    ${window.lit.createTooltipDiv("")}
+                                    ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                                 </div>
                             ` : '' }
                         </div>

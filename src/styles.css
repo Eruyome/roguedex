@@ -15,6 +15,8 @@
     --card-img-mini-max-height: 8em;
     --sidebar-borders-color: rgb(59, 59, 59);
     --sidebar-bg-color: #2b2d31;
+    --enemy-border-color: #b30a21;
+    --ally-border-color: #0095ff;
     --sidebar-font: 'pokemon-emerald-pro';
     --overlay-font: 'pokemon-emerald-pro';
     --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0),
@@ -42,6 +44,27 @@ html {
 body {    
     font-size: 1rem;    /* 10px, default font-size, but percentage based calculation */
     display: flex;      /* pokerogue css overwrite  */
+}
+@media screen and (max-width: 7680px) {
+    body { font-size: 4rem; }
+}
+@media screen and (max-width: 5120px) {
+    body { font-size: 2.5rem; }
+}
+@media screen and (max-width: 3840px) {
+    body { font-size: 2rem; }
+}
+@media screen and (max-width: 2560px) {
+    body { font-size: 1.4rem; }
+}
+@media screen and (max-width: 1920px) {
+    body { font-size: 1rem; }
+}
+@media screen and (max-width: 1440px) {
+    body { font-size: 0.8rem; }
+}
+@media screen and (max-width: 1024px) {
+    body { font-size: 0.55rem; }
 }
 
 #app {
@@ -86,6 +109,7 @@ body {
     line-height: 100%;
     font-size: 1em;    /* base font size for all em values in sidebar */
 }
+
 .roguedex-sidebar.active {
     display: block;
     overflow-y: clip;
@@ -108,21 +132,40 @@ body.sidebar-Bottom {
 #sidebar-switch-iv-moves {
     position: absolute;
     padding: 0;
-    height: 2.4em;
-    width: 2.4em;
     font-size: inherit;
-    top: 0.3em;
-    left: 0.3em;
     line-height: 100%;
     margin: 0;
     background-color: #5c5c5c;
     color: white;
-    border-radius: 0.3em;
-    border: 0.1em solid var(--sidebar-borders-color);
+
+    top: -0.1em;
+    left: -0.1em;
+    width: 3.1em;
+    height: 3em;
+    line-height: 1.0;
+    border-radius: 0;
+    border: 0.1em solid rgba(88, 88, 88, 0.859);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#sidebar-switch-iv-moves:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: var(--ally-border-color);
+    cursor: pointer;
+}
+#sidebar-switch-iv-moves:active {
+    transform: scale(0.95);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 #sidebar-switch-iv-moves span {
     font-size: 1.8em;
 }
+#sidebar-switch-iv-moves.hidden {
+    display: none;
+}
+#sidebar-switch-iv-moves.visible {
+    display: block;
+}
+
 #go-to-options {
     position: absolute;
     font-size: 1.8em;
@@ -137,6 +180,7 @@ body.sidebar-Bottom {
     border-radius: 0.3em;
     border: 0.1em solid var(--sidebar-borders-color);
 }
+
 .roguedex-sidebar .sidebar-header {
     color: white;
     width: 100%;
@@ -173,7 +217,7 @@ body.sidebar-Bottom {
     --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
-    border-image: linear-gradient(to right, #b30a21, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to right, var(--enemy-border-color), var(--sidebar-bg-color)) 1;
     border-top: none;
     border-right: none;
 }
@@ -181,7 +225,7 @@ body.sidebar-Bottom {
     --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
-    border-image: linear-gradient(to right, #0095ff, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to right, var(--ally-border-color), var(--sidebar-bg-color)) 1;
     border-bottom: none;
     border-right: none;
 }
@@ -193,7 +237,7 @@ body.sidebar-Bottom {
     --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
-    border-image: linear-gradient(to left, #b30a21, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to left, var(--enemy-border-color), var(--sidebar-bg-color)) 1;
     border-top: none;
     border-left: none;
 }
@@ -201,7 +245,7 @@ body.sidebar-Bottom {
     --party-border-width: 0.3em;
     border-width: var(--party-border-width);
     border-style: solid;
-    border-image: linear-gradient(to left, #0095ff, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to left, var(--ally-border-color), var(--sidebar-bg-color)) 1;
     border-bottom: none;
     border-left: none;
 }
@@ -221,6 +265,9 @@ body.sidebar-Bottom {
     border-bottom: 0.1em solid var(--sidebar-borders-color);
     padding: 0.5em 0.5em 0.5em 0;
     vertical-align: top;
+}
+.pokemon-type-effectiveness-wrapper {
+    padding-right: 0.7em !important;
 }
 .pokemon-entry .pokemon-entry-image {
     padding: 0.5em 0.5em;
@@ -458,14 +505,17 @@ body.sidebar-Bottom {
     }
 }
 .pokemon-moveset-wrapper {
-    margin: 0.3em 0 0 -0.1em;
-    border: 0.1em solid #2a2a2a;
     display: flex;
     flex-wrap: wrap;
-    background-color: #1a1a1a;
+    margin: 0.3em 0.3em 0 0;
+    /*
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0.3em 0.3em 0 -0.1em;
+    border: 0.1em solid rgb(48 48 48);
+    */
 }
 .pokemon-moveset-wrapper .pokemon-move {
-    padding: 0 0 0 0.5em;
+    padding: 0 0.5em 0 0;
     flex-basis: 50%;
     box-sizing: border-box;
     text-shadow: var(--text-shadow-dark);
@@ -771,7 +821,7 @@ body.sidebar-Bottom {
     border-style: solid;
     border-top-style: solid;
     border-right-style: solid;
-    border-image: linear-gradient(to bottom, #0095ff, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to bottom, var(--ally-border-color), var(--sidebar-bg-color)) 1;
     border-bottom: none;
     border-left: none;
     border-top: none;
@@ -784,7 +834,7 @@ body.sidebar-Bottom {
     background: transparent;
     border-width: 0.3em;
     border-style: solid;
-    border-image: linear-gradient(to left, #0095ff, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to left, var(--ally-border-color), var(--sidebar-bg-color)) 1;
     border-image-slice: 1;
     border-bottom: none;
     border-left: none;
@@ -796,7 +846,7 @@ body.sidebar-Bottom {
     border-style: solid;
     border-top-style: solid;
     border-left-style: solid;
-    border-image: linear-gradient(to bottom, #b30a21, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to bottom, var(--enemy-border-color), var(--sidebar-bg-color)) 1;
     border-bottom: none;
     border-right: none;
     border-top: none;
@@ -809,7 +859,7 @@ body.sidebar-Bottom {
     background: transparent;
     border-width: 0.3em;
     border-style: solid;
-    border-image: linear-gradient(to right, #b30a21, var(--sidebar-bg-color)) 1;
+    border-image: linear-gradient(to right, var(--enemy-border-color), var(--sidebar-bg-color)) 1;
     border-image-slice: 1;
     border-bottom: none;
     border-left: none;
@@ -988,6 +1038,42 @@ body.sidebar-Bottom {
 
 /* legendary, mystical effects end */
 
+
+/* shiny star, pure css */
+
+.four-pointed-star {
+    position: relative;
+    margin: 0 auto;
+    width: 1.4em;
+    height: 1.4em;
+    display: inline-block;
+}
+.four-pointed-star:before {
+    content: "";
+    position: absolute;
+    /* background: rgba(245, 196, 39, 0.9); */
+    background: white;
+    width: 0.5em;
+    height: 0.575em;
+    top: 0.4em;
+    left: 0.4em;
+    transform: rotate(-40deg) skewX(32.5deg) skewY(32.5deg);
+}
+.four-pointed-star:after {
+    content: "";
+    position: absolute;
+    /* background: rgba(245, 196, 39, 0.9); */
+    background: white;
+    width: 0.5em;
+    height: 0.575em;
+    top: 0.4em;
+    left: 0.4em;
+    transform: rotate(50deg) skewX(32.5deg) skewY(32.5deg);
+}
+  
+/* shiny star, pure css end */
+
+
 /* sidebar + card pokemon info overlay */
 
 .sidebar-pokemon-info {
@@ -995,6 +1081,7 @@ body.sidebar-Bottom {
     position: absolute;
     left: 0.5em;
     top: 0.5em;
+    line-height: 1;
 }
 .sidebar-pokemon-info.allies span {
     display: inline-block;
@@ -1241,6 +1328,10 @@ body.sidebar-Bottom {
     text-shadow: none;
     padding: 0.3em 0.4em 0.3em 0.4em;
     z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .tooltip .tooltiptext span {
     font-size: 2.5em;
@@ -1249,6 +1340,9 @@ body.sidebar-Bottom {
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+.tooltip:hover {
+    cursor: help;
 }
 
 .image-overlay {

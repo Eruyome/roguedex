@@ -78,7 +78,7 @@
                 `: ''}
                 ${ pokemon.fusionId ? html`
                     <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
-                    <span>Fused with : ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
+                    <span>Fused with: ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
                     <span> </span></br>
                 `: ''}
                 ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
@@ -159,6 +159,38 @@
 
         return Urls;
     };
+
+    window.lit.getNatureStatChange = (nature) => {
+        const natures = {
+            "hardy": { inc: "ATK", dec: "ATK" },
+            "lonely": { inc: "ATK", dec: "DEF" },
+            "brave": { inc: "ATK", dec: "SPD" },
+            "adamant": { inc: "ATK", dec: "Sp.ATK" },
+            "naughty": { inc: "ATK", dec: "Sp.DEF" },
+            "bold": { inc: "DEF", dec: "ATK" },
+            "docile": { inc: "DEF", dec: "DEF" },
+            "relaxed": { inc: "DEF", dec: "SPD" },
+            "impish": { inc: "DEF", dec: "Sp.ATK" },
+            "lax": { inc: "DEF", dec: "Sp.DEF" },
+            "timid": { inc: "SPD", dec: "ATK" },
+            "hasty": { inc: "SPD", dec: "DEF" },
+            "serious": { inc: "SPD", dec: "SPD" },
+            "jolly": { inc: "SPD", dec: "Sp.ATK" },
+            "naive": { inc: "SPD", dec: "Sp.DEF" },
+            "modest": { inc: "Sp.ATK", dec: "ATK" },
+            "mild": { inc: "Sp.ATK", dec: "DEF" },
+            "quiet": { inc: "Sp.ATK", dec: "SPD" },
+            "bashful": { inc: "Sp.ATK", dec: "Sp.ATK" },
+            "rash": { inc: "Sp.ATK", dec: "Sp.DEF" },
+            "calm": { inc: "Sp.DEF", dec: "ATK" },
+            "gentle": { inc: "Sp.DEF", dec: "DEF" },
+            "sassy": { inc: "Sp.DEF", dec: "SPD" },
+            "careful": { inc: "Sp.DEF", dec: "Sp.ATK" },
+            "quirky": { inc: "Sp.DEF", dec: "Sp.DEF" }
+        };
+        const natureObj = natures[nature.toLowerCase()];
+        return [ natureObj.inc || '', natureObj.dec || '' ]
+    }
 
     window.lit.getVariantSymbol = (name) => {
         const urls = {

@@ -73,6 +73,7 @@
                     </div>
                     <div class="pokemon-card-text-wrapper">
                         <div class="text-base">
+                            <span>${pokemon.name}&nbsp;-&nbsp;</span>
                             <div class="tooltip">
                                 <span>Ability: </span>
                                 <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
@@ -80,16 +81,16 @@
                             </div>
                             ${ pokemon.nature ? html`
                                 <div class="tooltip">
-                                    <span>&nbsp;-&nbsp;Nature: ${pokemon.nature}</span>
+                                    <span>&nbsp;-&nbsp;${pokemon.nature}</span>
                                     ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                                 </div>
                             ` : '' }
                         </div>
                         <div class="text-base">
-                            <span>HP: ${pokemon.ivs[Stat.HP]}, ATK: ${pokemon.ivs[Stat.ATK]}, DEF: ${pokemon.ivs[Stat.DEF]}</span>
+                            <span>HP: ${pokemon.ivs[Stat.HP]}  ATK: ${pokemon.ivs[Stat.ATK]}  DEF: ${pokemon.ivs[Stat.DEF]}</span>
                         </div>
                         <div class="text-base">
-                            <span>SPE: ${pokemon.ivs[Stat.SPD]}, SPD: ${pokemon.ivs[Stat.SPDEF]}, SPA: ${pokemon.ivs[Stat.SPATK]}</span>
+                            <span>SPE: ${pokemon.ivs[Stat.SPD]}  SPD: ${pokemon.ivs[Stat.SPDEF]}  SPA: ${pokemon.ivs[Stat.SPATK]}</span>
                         </div>
                         ${weather?.type && weather?.turnsLeft ? html`
                             <div class="text-base">
@@ -114,15 +115,17 @@
      */
     window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather) => {
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+        const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+        const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
 
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
-                    <div class="text-base centered-flex">${pokemon.name}</div>
-                    <div class="text-base centered-flex">
+                    <div class="text-base card-minified-info">
                         <div class="image-overlay minified ${rarityClass}">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon minified"></canvas>
                         </div>
+                        <span>${pokemon.name}&nbsp;-&nbsp;</span>
                         <div class="tooltip">
                             <span>Ability: </span>
                             <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
@@ -130,8 +133,8 @@
                         </div>
                         ${ pokemon.nature ? html`
                             <div class="tooltip">
-                                <span>&nbsp;-&nbsp;Nature: ${pokemon.nature}</span>
-                                ${window.lit.createTooltipDiv("")}
+                                <span>&nbsp;-&nbsp;${pokemon.nature}</span>
+                                ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                             </div>
                         ` : '' }
                     </div>
@@ -301,8 +304,12 @@
 
         result.html = html`
             <div class="arrow-button-wrapper ${isMobileDevice} ${isMinified}">
-                <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idUp}">${upString}</button>
-                <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idDown}">${downString}</button>
+                <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idUp}">
+                    ${upString}
+                </button>
+                <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idDown}">
+                    ${downString}
+                </button>
             </div>
         `;
         return result;

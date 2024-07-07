@@ -135,7 +135,6 @@ body.sidebar-Bottom {
     font-size: inherit;
     line-height: 100%;
     margin: 0;
-    background-color: #5c5c5c;
     color: white;
 
     top: -0.1em;
@@ -1204,16 +1203,51 @@ body.sidebar-Bottom {
 .pokemon-cards {
     display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .pokemon-card {
-    background-color: #333333b8;
+    background-color: rgb(50 50 50 / 70%);
     border: 0.2em solid #555;
-    border-radius: 0.8em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0.8em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0.8em;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+#enemies .pokemon-card {
+    border-left-color: var(--enemy-border-color);
+}
+#enemies .pokemon-card::before, #enemies .pokemon-card::after {
+    border-image: linear-gradient(to right, var(--enemy-border-color), rgba(85, 85, 85, 0)) 1;
+}
+#allies .pokemon-card {
+    border-left-color: var(--ally-border-color);
+}
+#allies .pokemon-card::before, #allies .pokemon-card::after {
+    border-image: linear-gradient(to right, var(--ally-border-color), rgba(85, 85, 85, 0)) 1;
+}
+.pokemon-card::before, .pokemon-card::after {
+    position: absolute;
+    inset: 0px -1px;
+    height: 0;
+    content: '';
+    background: transparent;
+    border-width: 0.2em;
+    border-style: solid;    
+    border-image-slice: 1;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: -moz-available;
+    top: -0.2em;
+}
+.pokemon-card::after {
+    top: unset;
+    bottom: -0.2em;
 }
 
 .pokemon-icon {
@@ -1303,18 +1337,50 @@ body.sidebar-Bottom {
 }
 .arrow-button-wrapper button {
     font-size: 2.5em;
+    background-color: rgb(30, 31, 34);
+    color: white;
+    line-height: 1;
+    border: 0.05em solid rgb(80, 80, 81);
+    border-right: none;
 }
 .arrow-button-wrapper.minified button {
-    font-size: 2em;
+    font-size: 2.2em;
+}
+.arrow-button-wrapper.mobile button {
+    font-size: 3.5em;
 }
 .arrow-button-wrapper.mobile button {
     display: grid;
-    font-size: 3.5em;
+}
+.arrow-button-wrapper button:first-child {
+    border-top-left-radius: 0.4em;
+}
+.arrow-button-wrapper button:last-child {
+    border-bottom-left-radius: 0.4em;
+}
+.arrow-button-wrapper button:hover {
+    background-color: rgb(21, 22, 24);
+    cursor: pointer;
+}
+#enemies .arrow-button-wrapper button:hover {
+    border-color: var(--enemy-border-color);
+}
+#allies .arrow-button-wrapper button:hover {
+    border-color: var(--ally-border-color);
+}
+.arrow-button-wrapper button:active {
+    transform: scale(0.95);
+    background-color: rgb(26, 27, 29);
 }
 
 .centered-flex {
     display: flex;
     justify-content: center;
+}
+.card-minified-info {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8.5em;
 }
 
 .tooltip .tooltiptext {
@@ -1347,8 +1413,8 @@ body.sidebar-Bottom {
 
 .image-overlay {
     position: absolute;
-    left: 2em;
-    top: -3em;
+    left: -0.2em;
+    top: -4em;
     width: 9.6em;
     height: 9.6em;
 }

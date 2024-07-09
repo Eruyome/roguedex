@@ -16,10 +16,20 @@
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function createTooltipDiv
      */
-    window.lit.createTooltipDiv = (tip) => html`
-        <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
-    `;
+    window.lit.createTooltipDiv = (tip) => {
+        return html`
+            <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
+        `;
+    }
 
+    /**
+     * Capitalizes the first letter of any string.
+     * 
+     * @param {string} string - Any input string.
+     * @memberof lit
+     * @returns {string} The capitalized string.
+     * @function capitalizeFirstLetter
+     */
     window.lit.capitalizeFirstLetter = (string) => {
         string = string.toLowerCase();
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -34,14 +44,41 @@
      * @function updateExtensionStatusElement
      */
     window.lit.updateExtensionStatusElement = (properties) => {
-        return html`            
+        return html`
             <span class="rd-status-text">${properties.text}</span>
             ${!properties.sessionState ? html`
                 <span class="rd-status-session">Session data not loaded yet! UI might not work (try reloading if it persists).</span>
-            ` : '' }            
+            ` : '' }
         `;
     }
 
+    /**
+     * Generates HTML for an exclamation icon that give a hint/reminder to open the settings menu and how to.
+     * 
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+     * @function createSettingsHintElement
+     */
+    window.lit.createSettingsHintElement = () => {
+        let tooltipContent = '';
+        tooltipContent += `<span>Make sure to take a look at the <b>Settings Menu</b>! (You can disable this hint there)</span>`;
+        tooltipContent += `<br>`;
+        tooltipContent += `<span>If the extension icon shows in your <b>browsers extension area</b> (top right corner),</span>`;
+        tooltipContent += `<span>click the icon.</span>`;
+        tooltipContent += `<span>If it doesn't, you have to pin the extension:</span>`;
+        tooltipContent += `<span>1. Click the <b>Puzzle Piece Icon</b> in the top-right corner of your browser.</span>`;
+        tooltipContent += `<span>2. Find the <b>RogueDex extension</b> in the list that appears.</span>`;
+        tooltipContent += `<span>3. Pin the Extension:</span>`;
+        tooltipContent += `<span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Chrome</b>: Click the pin icon next to the extension's name.</span>`;
+        tooltipContent += `<span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Firefox</b>: Click the pin icon next to the extension's name or select "Pin to Toolbar".</span>`;
+
+        return html`
+            <div id="rd-settings-hint" class="tooltip">
+                <span class="rd-hint-icon">&#8505;</span>
+                ${window.lit.createTooltipDiv(tooltipContent)}
+            </div>
+        `;
+    }
         
     /**
      * Creates a tooltip HTML template for an individual Pokémon.
@@ -98,6 +135,7 @@
 
     /**
      * Retrieves an object mapping Pokémon types to their respective numeric identifiers.
+     * 
      * @memberof lit
      * @returns {Object} An object where keys are type names and values are numeric identifiers.
      * @function getTypeList
@@ -129,6 +167,13 @@
         return Types
     }
 
+    /**
+     * Retrieves an object mapping Pokémon types to their respective icon urls.
+     * 
+     * @memberof lit
+     * @returns {Object} An object where keys are type names and values are url strings.
+     * @function getTypeList
+     */
     window.lit.getTypeIconUrls = () => {
         const prefix1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/';
         const prefix2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/brilliant-diamond-and-shining-pearl/';
@@ -160,6 +205,14 @@
         return Urls;
     };
 
+    /**
+     * Retrieves the stat changes associated with a given Pokémon nature.
+     * 
+     * @param {string} nature - The name of the nature.
+     * @returns {[string, string]} An array containing the increased and decreased stats.
+     * - The first element is the stat that increases.
+     * - The second element is the stat that decreases.
+     */
     window.lit.getNatureStatChange = (nature) => {
         const natures = {
             "hardy": { inc: "ATK", dec: "ATK" },
@@ -192,6 +245,13 @@
         return [ natureObj.inc || '', natureObj.dec || '' ]
     }
 
+    /**
+     * Retrieves an object mapping Pokémon region names to their respective icon urls.
+     * 
+     * @memberof lit
+     * @returns {Object} An object where keys are type names and values are url strings.
+     * @function getTypeList
+     */
     window.lit.getVariantSymbol = (name) => {
         const urls = {
             alola : 'https://archives.bulbagarden.net/media/upload/0/04/Black_clover_HOME.png',
@@ -206,6 +266,7 @@
 
     /**
      * Retrieves an object mapping Pokémon stats to their respective names.
+     * 
      * @memberof lit
      * @returns {Object} An object where keys are stat identifiers and values are stat names.
      * @function getStatList
@@ -225,9 +286,10 @@
     }
 
     /**
+     * Checks if the current device is a mobile device based on the user agent.
+     * 
      * @function mobileCheck
      * @memberof lit
-     * @description Checks if the current device is a mobile device based on the user agent.
      * @returns {boolean} True if the device is a mobile device, false otherwise.
      */
     window.lit.mobileCheck = () => {

@@ -62,7 +62,7 @@ class OptionsManager {
                     }
                 
                     // Check if the current option should be selected
-                    const isSelected = data[setting] === parsedValue || (setting === 'sidebarPosition' && data[setting] === value);
+                    const isSelected = data[setting] === parsedValue || ( (setting === 'sidebarPosition' || setting === 'statusbarPosition' ) && data[setting] === value);
                     
                     // Add the 'selected' class if the option matches the setting value
                     if (isSelected) {
@@ -99,11 +99,13 @@ class OptionsManager {
      * Saves options to storage.
      */
     saveOptions() {
+        const disableSettingsHint = document.querySelector('.option[data-setting="disableSettingsHint"].selected').getAttribute('data-value') === 'true';
         const showMin = document.querySelector('.option[data-setting="showMinified"].selected').getAttribute('data-value') === 'true';
         const overlayOpacity = parseInt(document.querySelector('.option[data-setting="overlayOpacity"].selected').getAttribute('data-value'), 10);
         const showEnemy = document.querySelector('.option[data-setting="showEnemies"].selected').getAttribute('data-value') === 'true';
         const showParty = document.querySelector('.option[data-setting="showParty"].selected').getAttribute('data-value') === 'true';
         const scaleFactor = document.getElementById('scaleSlider').value;
+        const statusbarPosition = document.querySelector('.option[data-setting="statusbarPosition"].selected').getAttribute('data-value') === 'true';
         const menuType = parseInt(document.querySelector('.option[data-setting="menuType"].selected').getAttribute('data-value'), 10);
         const showSidebar = document.querySelector('.option[data-setting="showSidebar"].selected').getAttribute('data-value') === 'true';
         const sidebarPosition = document.querySelector('.option[data-setting="sidebarPosition"].selected').getAttribute('data-value') === 'true';
@@ -114,11 +116,13 @@ class OptionsManager {
         const sidebarHideAlliesBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarHideAlliesBreakpoint"].selected').getAttribute('data-value'), 10);
 
         this.browserApi.storage.sync.set({
+            disableSettingsHint,
             showMinified: showMin,
             overlayOpacity,
             scaleFactor,
             showEnemies: showEnemy,
             showParty,
+            statusbarPosition,
             menuType,
             showSidebar,
             sidebarPosition,

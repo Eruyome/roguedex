@@ -13,98 +13,101 @@
  * 
  * @type {Object<number, Setting>}
  */
-
 const settingsTemplate = {
     0: {
+        text: "Disable Settings Menu Hint",
+        options: ["Yes", "No"],
+        localStorage: "disableSettingsHint",
+        type: "Bool",
+
+    },
+    1: {
         text: "Use Minified Overlay Cards",
         options: ["No", "Yes"],
         localStorage: "showMinified",
         type: "Bool"
     },
-    1: {
+    2: {
         text: "Overlay Opacity",
         options: ["100", "80", "70", "60", "50", "40", "25"],
         localStorage: "overlayOpacity",
         type: "Int"
     },
-    2: {
+    3: {
         text: "Show Enemy Party",
         options: ["No", "Yes"],
         localStorage: "showEnemies",
         type: "Bool"
     },
-    3: {
+    4: {
         text: "Show Ally Party",
         options: ["No", "Yes"],
         localStorage: "showParty",
         type: "Bool"
     },
-    4: {
+    5: {
         text: "Overlay Scale",
         options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "scaleFactor",
         type: "Float"
     },
-    5: {
+    6: {
+        text: "Status Bar Position",
+        options: ["Top", "Bottom"],
+        localStorage: "statusbarPosition",
+        type: "String"
+    },
+    7: {
         text: "Menu Type",
         options: ["1", "2", "3", "4", "5"],
         localStorage: "menuType",
         type: "Int"
     },
-    6: {
+    8: {
         text: "Show Sidebar",
         options: ["No", "Yes"],
         localStorage: "showSidebar",
         type: "Bool"
     },
-    7: {
+    9: {
         text: "Sidebar Position",
         options: ["Left", "Right"],
         localStorage: "sidebarPosition",
         type: "String"
     },
-    8: {
+    10: {
         text: "Sidebar Scale",
         options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "sidebarScaleFactor",
         type: "Float"
     },
-    9: {
+    11: {
         text: "Side: Compact TypeEffectiveness ",
         options: ["No", "Yes"],
         localStorage: "sidebarCompactTypes",
         type: "Bool"
     },
-    10: {
+    12: {
         text: "Side: Small view at # of Pokemon",
         options: ["9", "11", "12", "100"],
         localStorage: "sidebarCondenseBreakpoint",
         type: "Int"
     },
-    11: {
+    13: {
         text: "Side: Hide Allies at # of Pokemon",
         options: ["9", "11", "12", "100"],
         localStorage: "sidebarHideAlliesBreakpoint",
         type: "Int"
     },
-    12: {
+    14: {
         text: "Bottom Panel Scale",
         options: ["0.4", "0.6", "0.8", "1.0", "1.25", "1.5", "2.0"],
         appendText: "x",
         localStorage: "bottompanelScaleFactor",
         type: "Float"
     }
-    /*,
-    13: {
-        text: "Sidebar Width",
-        options: ["20", "25", "30", "35", "40"],
-        appendText: "%",
-        localStorage: "sidebarWidth",
-        type: "Int"
-    }
-    */
 };
 
 export default settingsTemplate;

@@ -40,7 +40,6 @@ uiDataGlobals.pages = {
 }
 
 scriptInjector();
-updateExtensionStatus();
 listenForDataUiModeChange();
 
 /**
@@ -71,6 +70,13 @@ function scriptInjector() {
     const rarityHoloUrl = browserApi.runtime.getURL('/images/holo.png'); 
     document.documentElement.style.setProperty('--extension-rarity-bg-image-sparkles', `url(${raritySparklesUrl})`);
     document.documentElement.style.setProperty('--extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
+    
+    const filename = 'localStorage.util.js';
+    const scriptSelector = `script[src*="${filename}"]`;
+    onElementAvailable(scriptSelector, () => {
+        updateExtensionStatus();
+        window.Utils.LocalStorage.deleteExtensionSettings(['statusbarPosition', 'sidebarPosition']);
+    });
 }
 
 /**
@@ -111,13 +117,15 @@ function initUtilities() {
 }
 
 /**
- * Updates the status display of the extension.
+ * Updates the status display of the extension and draws the settings hint icon.
  * @function updateExtensionStatus
  * @param {Object} properties - The properties to update the status.
  * @memberof window
  */
-function updateExtensionStatus(properties) {
+async function updateExtensionStatus(properties) {
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
     let wrapper = document.getElementById('extension-status');
+
     if (!wrapper) {
         render(html`<div class="text-base running-status" id="extension-status"></div>`, document.body, { renderBefore: document.body.firstChild });
         wrapper = document.getElementById('extension-status');
@@ -128,7 +136,22 @@ function updateExtensionStatus(properties) {
     const sessionState = properties?.sessionState ?? 'dont-show';
 
     const extensionStatusHTML = window.lit.updateExtensionStatusElement({ text, sessionState });
-    render(extensionStatusHTML, wrapper)
+    render(extensionStatusHTML, wrapper);    
+    changeStatusbarPosition();
+
+    if (extensionSettings.disableSettingsHint === false) {
+        createSettingsHint();
+        toggleSettingsHint(false);
+    }
+}
+
+/**
+ * Creates an icon that serves as a hint/reminder to open the settings menu, and how.
+ * @function createSettingsHint
+ */
+async function createSettingsHint() {    
+    const settingsHintElement = window.lit.createSettingsHintElement();
+    render(settingsHintElement, document.body);
 }
 
 /**
@@ -807,18 +830,19 @@ async function toggleSidebar() {
  * @async
  */
 async function changeSidebarPosition() {
-    const { sidebarPosition } = await browserApi.storage.sync.get('sidebarPosition');
+    const { sidebarPosition: newPosition } = await browserApi.storage.sync.get('sidebarPosition');
     const sidebarParentElement = document.body;
     const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
 
-    const positions = ['Left', 'Right', 'Top', 'Bottom'];
-    positions.forEach(position => {
-        sidebarParentElement.classList.remove(`sidebar-${position}`);
-        bottomPanelElement.classList.remove(`sidebar-${position}`);
+    // Remove old positions
+    ['Left', 'Right'].forEach(oldPosition => {
+        sidebarParentElement?.classList.remove(`sidebar-${oldPosition}`);
+        bottomPanelElement?.classList.remove(`sidebar-${oldPosition}`);
     });
 
-    sidebarParentElement.classList.add(`sidebar-${sidebarPosition}`);
-    bottomPanelElement.classList.add(`sidebar-${sidebarPosition}`);
+    // Add new position
+    sidebarParentElement?.classList.add(`sidebar-${newPosition}`);
+    bottomPanelElement?.classList.add(`sidebar-${newPosition}`);
 }
 
 /**
@@ -830,12 +854,12 @@ async function changeSidebarPosition() {
  */
 async function toggleSidebarPartyDisplay(partyID, state) {
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
-    sidebarPartyElement.classList.toggle('visible', state);
-    sidebarPartyElement.classList.toggle('hidden', !state);
+    sidebarPartyElement?.classList.toggle('visible', state);
+    sidebarPartyElement?.classList.toggle('hidden', !state);
 
     const moveIvSwitchElement = document.getElementById('sidebar-switch-iv-moves');
-    moveIvSwitchElement.classList.toggle('visible', state);
-    moveIvSwitchElement.classList.toggle('hidden', !state);
+    moveIvSwitchElement?.classList.toggle('visible', state);
+    moveIvSwitchElement?.classList.toggle('hidden', !state);
 }
 
 /**
@@ -847,8 +871,8 @@ async function toggleSidebarPartyDisplay(partyID, state) {
  */
 async function togglePokemonCardDisplay(partyID, state) {
     const pokemonCardElement = document.getElementById(`${partyID}`);
-    pokemonCardElement.classList.toggle('visible', state); // no css apllied, added for clarity
-    pokemonCardElement.classList.toggle('disabled', !state);
+    pokemonCardElement?.classList.toggle('visible', state); // no css apllied, added for clarity
+    pokemonCardElement?.classList.toggle('disabled', !state);
 }
 
 /**
@@ -859,8 +883,42 @@ async function togglePokemonCardDisplay(partyID, state) {
  */
 async function switchSidebarTypesDisplay(state) {
     const sidebarElement = document.getElementById('roguedex-sidebar');
-    sidebarElement.classList.toggle('compactTypeDisplay', state);
-    sidebarElement.classList.toggle('defaultTypeDisplay', !state);
+    sidebarElement?.classList.toggle('compactTypeDisplay', state);
+    sidebarElement?.classList.toggle('defaultTypeDisplay', !state);
+}
+
+/**
+ * Changes the position of the extension statusbar (top, bottom).
+ * @function changeStatusbarPosition
+ * @async
+ */
+async function changeStatusbarPosition() {
+    const { statusbarPosition: newPosition } = await browserApi.storage.sync.get('statusbarPosition');
+    const statusbarElement = document.getElementById('extension-status');
+
+    // Remove old position
+    ['Top', 'Bottom'].forEach(oldPosition => {
+        statusbarElement?.classList.remove(`statusbar-${oldPosition}`);
+    });
+    // Add new position
+    statusbarElement?.classList.add(`statusbar-${newPosition}`);
+}
+
+/**
+ * Toggles the display of the settings hint icon.
+ * @function toggleSettingsHint
+ * @async
+ * @param {boolean} state - The desired display state; false = shown; true = hidden.
+ */
+async function toggleSettingsHint(state) {
+    const settingsHintElement = document.getElementById('rd-settings-hint');
+    if (!settingsHintElement && state === false) {
+        await createSettingsHint();
+    }
+    if (settingsHintElement) {
+        settingsHintElement.classList.toggle('visible', !state); // no css apllied, added for clarity
+        settingsHintElement.classList.toggle('disabled', state);
+    }
 }
 
 /**
@@ -981,7 +1039,7 @@ function extensionSettingsListener() {
                     await initCreation(sessionData);    // lazy way to make sure that all canvases are drawn
                     break;
                 case 'sidebarPosition':
-                    await changeSidebarPosition(sessionData);
+                    await changeSidebarPosition();
                     break;
                 case 'sidebarScaleFactor':
                     await scaleSidebarElements();
@@ -997,6 +1055,12 @@ function extensionSettingsListener() {
                     break;
                 case 'sidebarHideAlliesBreakpoint':
                     toggleCondensedSidebarView(adjustSidebarView(null, newValue));
+                    break;
+                case 'disableSettingsHint':
+                    toggleSettingsHint(newValue);
+                    break;
+                case 'statusbarPosition':
+                    changeStatusbarPosition();
                     break;
                 case 'menuType':
                     // do nothing?
@@ -1097,13 +1161,25 @@ function listenForDataUiModeChange() {
  * @param {Function} callback - The callback function to execute when the element becomes available.
  */
 function onElementAvailable(selector, callback) {
-    const observer = new MutationObserver(() => {
-        if (document.querySelector(selector)) {
-            observer.disconnect();
-            callback();
-        }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+    const element = document.querySelector(selector);
+    if (element) {
+        callback(element);
+    } else {
+        const observer = new MutationObserver((mutations, observerInstance) => {
+            mutations.forEach((mutation) => {
+                const nodes = Array.from(mutation.addedNodes);
+                for (let node of nodes) {
+                    if (node.matches && node.matches(selector)) {
+                        callback(node);
+                        observerInstance.disconnect();
+                        return;
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
 }
 
 /**

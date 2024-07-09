@@ -97,11 +97,13 @@ class LocalStorageClass {
         return new Promise((resolve) => {
             // List of settings to retrieve and their default values
             const settingsDefaults = {
+                disableSettingsHint: false,
                 showMinified: false,
                 overlayOpacity: 100,
                 scaleFactor: 1,
                 showEnemies: true,
                 showParty: true,
+                statusbarPosition: 'Top',
                 menuType: 1,
                 showSidebar: false,
                 sidebarPosition: 'Left',

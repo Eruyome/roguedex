@@ -77,6 +77,33 @@ body {
     float: right;
 }
 
+#rd-settings-hint {
+    position: absolute;
+    left: 5em;
+    top: 0.1em;
+    font-size: 1em;
+    padding: 0.2em;
+    border-radius: 50%;
+    border: 0.1em solid black;
+    background-color: white;
+    z-index: 20;
+}
+#rd-settings-hint.disabled {
+    display: none;
+}
+#rd-settings-hint .rd-hint-icon {
+    font-size: 3em;
+    line-height: 0.8;
+}
+#rd-settings-hint .tooltiptext {
+    width: max-content;
+    padding: 1.5em;
+}
+#rd-settings-hint .tooltiptext span {
+    font-family: verdana, arial, serif;
+    font-size: 1.5em;
+}
+
 /*  Pokemon Cards (Overlay) display state handling 
     .active-because-sidebar-hidden + .disabled = sidebar not shown but card hidden by user choice
     .hidden-because-sidebar-active = all cards hidden because sidebar is active
@@ -1435,6 +1462,14 @@ body.sidebar-Bottom {
     text-align: center;
     color: blue;
     background-color: #ffffff50;
+}
+#extension-status.statusbar-Top {
+    top: 0;
+    bottom: unset;
+}
+#extension-status.statusbar-Bottom {
+    top: unset;
+    bottom: 0;
 }
 #extension-status span {
     text-shadow: var(--text-shadow-light);

@@ -357,11 +357,12 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
  * @param {boolean} minified - Flag indicating if the card should be minified.
+ * @param {boolean} showMiniCardTypes - Flag indicating if the minified cards type effectivenesses should be shown.
  * @returns {Promise<Lit-HTML-Template>} - The created Pokemon card template.
  */
-async function chooseCardType(divId, pokemon, weather, minified) {
+async function chooseCardType(divId, pokemon, weather, minified, showMiniCardTypes) {
     if (minified) {
-        return await createPokemonCardDivMinified(divId, pokemon, weather);
+        return await createPokemonCardDivMinified(divId, pokemon, weather, showMiniCardTypes);
     } else {
         return await createPokemonCardDiv(divId, pokemon, weather);
     }
@@ -385,7 +386,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const opacity = `${Number(uiDataGlobals.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
     const weather = pokemonData.weather;
 
-    return chooseCardType(divId, pokemon, weather, extensionSettings.showMinified).then(async (cardObj) => {
+    return chooseCardType(divId, pokemon, weather, extensionSettings.showMinified, extensionSettings.showMiniCardTypes).then(async (cardObj) => {
         const additionalParams = [divId, pokemonData];
         const buttonsObj = window.lit.createArrowButtonsDiv(divId, "↑", "↓", extensionSettings.showMinified, changePokemonCardPage, ...additionalParams);
 
@@ -469,7 +470,7 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
     const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
-        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather)
+        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather, )
     };
 }
 
@@ -863,7 +864,7 @@ async function toggleSidebarPartyDisplay(partyID, state) {
 }
 
 /**
- * Toggles the display of a sidebar party (enemies/allies).
+ * Toggles the display of a card overlay party (enemies/allies).
  * @function togglePokemonCardDisplay
  * @async
  * @param {string} partyID - The ID of the party ('enemies' or 'allies').
@@ -873,6 +874,24 @@ async function togglePokemonCardDisplay(partyID, state) {
     const pokemonCardElement = document.getElementById(`${partyID}`);
     pokemonCardElement?.classList.toggle('visible', state); // no css apllied, added for clarity
     pokemonCardElement?.classList.toggle('disabled', !state);
+}
+
+/**
+ * Toggles the display of a minified card overlays type effectivenesses.
+ * @function toggleMiniCardTypes
+ * @param {boolean} state - The desired display state.
+ */
+function toggleMiniCardTypes(state) {
+    const cardTypeWrapperElements = document.querySelectorAll('.pokemon-card .pokemon-type-effectiveness-wrapper');
+    cardTypeWrapperElements.forEach(element => {
+        if (state) {
+            element.classList.add('visible');   // no css apllied, added for clarity
+            element.classList.remove('disabled');
+        } else {
+            element.classList.add('disabled');  // no css apllied, added for clarity
+            element.classList.remove('visible');
+        }
+    });
 }
 
 /**
@@ -1017,6 +1036,9 @@ function extensionSettingsListener() {
             switch (key) {
                 case 'showMinified':
                     await initCreation(sessionData);
+                    break;
+                case 'showMiniCardTypes':
+                    toggleMiniCardTypes(newValue);
                     break;
                 case 'overlayOpacity':
                     changePokemonCardOpacity(['enemies', 'allies'], newValue);
@@ -1168,7 +1190,7 @@ function onElementAvailable(selector, callback) {
         const observer = new MutationObserver((mutations, observerInstance) => {
             mutations.forEach((mutation) => {
                 const nodes = Array.from(mutation.addedNodes);
-                for (let node of nodes) {
+                for (const node of nodes) {
                     if (node.matches && node.matches(selector)) {
                         callback(node);
                         observerInstance.disconnect();

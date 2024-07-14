@@ -99,6 +99,7 @@ class LocalStorageClass {
             const settingsDefaults = {
                 disableSettingsHint: false,
                 showMinified: false,
+                showMiniCardTypes: false,
                 overlayOpacity: 100,
                 scaleFactor: 1,
                 showEnemies: true,

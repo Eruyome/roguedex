@@ -109,17 +109,18 @@
      * @param {Object} pokemon - The Pokémon object.
      * @param {string} ivsGeneratedHTML - Pre-generated html string for pokemon IVs.
      * @param {Object} weather - The weather object.
+     * @param {boolean} showTypeEffectiveness - Flag indicating if the minified cards type effectivenesses should be shown.
      * @returns {Lit-HTML-Template} The div element for the minified Pokémon card.
      * @memberof lit
      * @function createPokemonCardContentMinified
      */
-    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather) => {
+    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather, showTypeEffectiveness) => {
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
         const natureStats = window.lit.getNatureStatChange(pokemon.nature);
         const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
 
         return html`
-            <div class="pokemon-cards">
+            <div class="pokemon-cards minified">
                 <div class="pokemon-card">
                     <div class="text-base card-minified-info">
                         <div class="image-overlay minified ${rarityClass}">
@@ -146,6 +147,9 @@
                             <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
                         </div>
                     ` : ''}
+                    <div class="pokemon-type-effectiveness-wrapper compact ${ showTypeEffectiveness ? 'visible' : 'disabled' }">
+                        ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 15, 2)}
+                    </div>
                 </div>
             </div>
         `;

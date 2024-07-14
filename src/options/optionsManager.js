@@ -101,6 +101,7 @@ class OptionsManager {
     saveOptions() {
         const disableSettingsHint = document.querySelector('.option[data-setting="disableSettingsHint"].selected').getAttribute('data-value') === 'true';
         const showMin = document.querySelector('.option[data-setting="showMinified"].selected').getAttribute('data-value') === 'true';
+        const showMiniCardTypes = document.querySelector('.option[data-setting="showMiniCardTypes"].selected').getAttribute('data-value') === 'true';
         const overlayOpacity = parseInt(document.querySelector('.option[data-setting="overlayOpacity"].selected').getAttribute('data-value'), 10);
         const showEnemy = document.querySelector('.option[data-setting="showEnemies"].selected').getAttribute('data-value') === 'true';
         const showParty = document.querySelector('.option[data-setting="showParty"].selected').getAttribute('data-value') === 'true';
@@ -118,6 +119,7 @@ class OptionsManager {
         this.browserApi.storage.sync.set({
             disableSettingsHint,
             showMinified: showMin,
+            showMiniCardTypes,
             overlayOpacity,
             scaleFactor,
             showEnemies: showEnemy,

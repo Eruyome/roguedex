@@ -956,6 +956,7 @@ async function initCreation(sessionData) {
     if (extensionSettings.showParty) {
         await dataMapping("party", "allies", sessionData);
     }
+    toggleMiniCardTypes(extensionSettings.showMiniCardTypes);
 
     if (extensionSettings.showSidebar) {
         await toggleSidebar(sessionData);

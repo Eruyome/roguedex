@@ -131,6 +131,7 @@ class UtilsClass {
         } else if (targetScript.includes("/content/util_classes/localStorage.util.js")) {
             this.classesReady["localStorage.util.js"] = true;
             this.LocalStorage = new LocalStorageClass();
+            this.dispatchEvent('localStorageClassReady');
         } else if (targetScript.includes("/content/util_classes/pokemonIconDrawer.util.js")) {
             this.classesReady["pokemonIconDrawer.util.js"] = true;
             this.PokemonIconDrawer = new PokemonIconDrawer();

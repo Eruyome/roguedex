@@ -18,20 +18,22 @@ const initStates = { panelsInitialized : false, cardsInitialized: false, resizeO
 
 const uiDataGlobals = {}
 uiDataGlobals.activePokemonParties = { "enemies" : {}, "allies" : {} };
-// positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars.
+// Positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars (which is bad).
+// This issue could also be solved by setting the body overflow to none, may have unintended consequences though.
 uiDataGlobals.scrollbarWidth = window.lit.getScrollbarWidth();
 uiDataGlobals.isMobile = window.lit.mobileCheck();
 uiDataGlobals.wrapperDivPositions = {
-    'enemies': {
-        'top': '5px',
-        'left': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth * 1.5 : '25'}px`,
-        'opacity': '100'
+    enemies: {
+        top: '0',
+        left: '0',
+        right: 'auto',
+        opacity: '100'
     },
-    'allies': {
-        'top': '5px',
-        'left': 'auto',
-        'right': `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth * 1.5 : '25'}px`,
-        'opacity': '100'
+    allies: {
+        top: '0',
+        left: 'auto',
+        right: '0',
+        opacity: '100'
     }
 }
 uiDataGlobals.pages = {
@@ -70,13 +72,6 @@ function scriptInjector() {
     const rarityHoloUrl = browserApi.runtime.getURL('/images/holo.png'); 
     document.documentElement.style.setProperty('--extension-rarity-bg-image-sparkles', `url(${raritySparklesUrl})`);
     document.documentElement.style.setProperty('--extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
-    
-    const filename = 'localStorage.util.js';
-    const scriptSelector = `script[src*="${filename}"]`;
-    onElementAvailable(scriptSelector, () => {
-        updateExtensionStatus();
-        window.Utils.LocalStorage.deleteExtensionSettings(['statusbarPosition', 'sidebarPosition']);
-    });
 }
 
 /**
@@ -94,6 +89,8 @@ function isUtilsProperlyInitialized() {
 
 /**
  * Initializes utility functions after the injected script is loaded.
+ * Initializes some element states.
+ * 
  * @function initUtilities
  * @memberof scriptInjector
  */
@@ -111,9 +108,56 @@ function initUtilities() {
 
         // Call UtilsClass.init() to start the initialization process
         window.Utils.init();
+        window.Utils.on('localStorageClassReady', () => {
+            updateExtensionStatus();
+            setInitialPokemonCardPosition('allies', 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
+            setInitialPokemonCardPosition('enemies', 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
+        });
     } else {
         console.error("UtilsClass is not properly initialized.");
     }
+}
+
+/**
+ * Sets the initial position of a Pokemon card based on the card ID and various position parameters.
+ * 
+ * @function setInitialPokemonCardPosition
+ * @param {string} cardId - The ID of the Pokemon card.
+ * @param {number} defaultYPos - The default Y position (top) of the card in pixels.
+ * @param {number} scrollbarWidth - The width of the scrollbar in pixels.
+ * @param {number} scrollbarMulti - A multiplier for the scrollbar width.
+ * @param {number} scrollbarWidthFallback - A fallback width for the scrollbar in case the actual width is not provided.
+ * 
+ * @returns {void}
+ */
+function setInitialPokemonCardPosition(cardId, defaultYPos, scrollbarWidth, scrollbarMulti, scrollbarWidthFallback) {
+    console.log(uiDataGlobals.wrapperDivPositions[cardId])
+    let storedPos;
+    try {
+        storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
+    } catch (e) { console.error(e) }
+
+    if (!storedPos?.x || !storedPos?.y) {        
+        uiDataGlobals.wrapperDivPositions[cardId].top = `${defaultYPos}px`;
+
+        const horizontalPos = `${scrollbarWidth ? scrollbarWidth * scrollbarMulti : scrollbarWidthFallback}px`;
+        if (cardId.toLowerCase() === 'allies') {
+            uiDataGlobals.wrapperDivPositions[cardId].right = horizontalPos;
+            uiDataGlobals.wrapperDivPositions[cardId].left = 'auto';
+        } else {
+            uiDataGlobals.wrapperDivPositions[cardId].right = 'auto';
+            uiDataGlobals.wrapperDivPositions[cardId].left = horizontalPos;
+        }        
+    }
+    else {
+        // should be numbers, convert them to be sure
+        const xPos = parseFloat(storedPos.x);
+        const yPos = parseFloat(storedPos.y);
+        uiDataGlobals.wrapperDivPositions[cardId].top = `${yPos}px`;
+        uiDataGlobals.wrapperDivPositions[cardId].left = `${xPos}px`;
+        uiDataGlobals.wrapperDivPositions[cardId].right = 'auto';
+    }
+    console.log(uiDataGlobals.wrapperDivPositions[cardId])
 }
 
 /**
@@ -156,10 +200,10 @@ async function createSettingsHint() {
 
 /**
  * Enables dragging functionality for pokemon cards.
- * @function enableDragElement
+ * @function enableDragCardElement
  * @param {HTMLElement} elmnt - The element to enable dragging for.
  */
-function enableDragElement(elmnt) {
+function enableDragCardElement(elmnt) {
     let pos1 = 0; 
     let pos2 = 0;
     let pos3 = 0;
@@ -191,8 +235,63 @@ function enableDragElement(elmnt) {
     function stopDragging() {
         document.onpointerup = null;
         document.onpointermove = null;
-        saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : elmnt.style.right });
+        updateCardElementPosition(elmnt)
     }
+}
+
+/**
+ * Makes sure that the element is fully visible in the viewport and saves it's position to a temporary object and to local storage.
+ * 
+ * @function updateElementPosition
+ * @param {HTMLElement} element - The element to be repositioned and saved.
+ */
+function updateCardElementPosition(elmnt) {
+    repositionElementWithinViewport(elmnt, uiDataGlobals.scrollbarWidth * 1.5);
+    saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : elmnt.style.right });
+}
+
+/**
+ * Repositions the specified element within the browser viewport while maintaining a specified margin from the right and bottom edges (to avoid scrollbars).
+ * 
+ * @function repositionElementWithinViewport
+ * @param {HTMLElement} element - The element to be repositioned.
+ * @param {number} [marginFromEdge=0] - The margin in pixels to maintain from the bottom and right edges of the viewport.
+ */
+function repositionElementWithinViewport(element, marginFromEdge = 0) {
+    // Get element's bounding rectangle
+    const rect = element.getBoundingClientRect();
+
+    // Calculate necessary adjustments based on viewport size and element dimensions
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // Calculate new position to keep the margin from the viewport edge
+    let newTop = rect.top;
+    let newLeft = rect.left;
+
+    // Adjust top position if element is partially or fully above the viewport
+    if (rect.top < 0) {
+        newTop = 0;
+    }
+
+    // Adjust left position if element is partially or fully to the left of the viewport
+    if (rect.left < 0) {
+        newLeft = 0;
+    }
+
+    // Adjust bottom position if element is partially or fully below the viewport
+    if (rect.bottom > viewportHeight) {
+        newTop = viewportHeight - rect.height - marginFromEdge;
+    }
+
+    // Adjust right position if element is partially or fully to the right of the viewport
+    if (rect.right > viewportWidth) {
+        newLeft = viewportWidth - rect.width - marginFromEdge;
+    }
+
+    // Apply new position to the element
+    element.style.top = `${newTop}px`;
+    element.style.left = `${newLeft}px`;
 }
 
 /**
@@ -229,10 +328,10 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
             const newWrapper1 = document.getElementById(id1);
             const newWrapper2 = document.getElementById(id2);
             if (newWrapper1) {
-                enableDragElement(newWrapper1);
+                enableDragCardElement(newWrapper1);
             }
             if (newWrapper2) {
-                enableDragElement(newWrapper2);
+                enableDragCardElement(newWrapper2);
             }
 
             // Optional console logs
@@ -426,6 +525,8 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
         setElementProperties(existingWrapper, { top, left, right, opacity });
         render(content, newWrapper);
     }
+    const updatedWrapper = document.getElementById(divId);
+    updateCardElementPosition(updatedWrapper);
 }
 
 /**
@@ -438,6 +539,9 @@ function saveCardWrapperPositions(divId, properties) {
     Object.keys(properties).forEach(prop => {
         uiDataGlobals.wrapperDivPositions[divId][prop] = properties[prop];
     });
+
+    window.Utils.LocalStorage.savePokemonCardPosToStorage(divId, parseFloat(properties.left), parseFloat(properties.top));
+    console.log(window.Utils.LocalStorage.getPokemonCardPosFromStorage(divId));
 }
 
 /**
@@ -1192,7 +1296,7 @@ function onElementAvailable(selector, callback) {
             mutations.forEach((mutation) => {
                 const nodes = Array.from(mutation.addedNodes);
                 for (const node of nodes) {
-                    if (node.matches && node.matches(selector)) {
+                    if (node.nodeType === 1 && node.matches(selector)) {
                         callback(node);
                         observerInstance.disconnect();
                         return;

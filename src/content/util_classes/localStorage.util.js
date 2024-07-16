@@ -43,7 +43,7 @@ class LocalStorageClass {
     /**
      * Retrieves an image from the local storage cache.
      * @param {string} key - The key to identify the cached image.
-     * @returns {string|null} The base64-encoded image data, or null if not found.
+     * @returns {string|null} - The base64-encoded image data, or null if not found.
      */
     getImageFromCache(key) {
         return window.localStorage.getItem(`img_cache_${key}`);
@@ -59,6 +59,36 @@ class LocalStorageClass {
                 window.localStorage.removeItem(key);
             }
         });
+    }
+
+    /**
+     * Saves a pokemon cards (overlay) position to local storage.
+     * @param {string} cardId - The id to identify the card (enemies/allies).
+     * @param {string} xPos - The x position (css "left") of the card.
+     * @param {string} yPos - The y position (css "top") of the card.
+     */
+    savePokemonCardPosToStorage(cardId, xPos, yPos) {
+        const position = { x : xPos, y : yPos };
+        try {
+            window.localStorage.setItem(`overlay_card_position_${cardId}`, JSON.stringify(position));
+        } catch (e) {
+            console.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
+        }
+    }
+
+    /**
+     * Retrieves a pokemon cards (overlay) position from local storage.
+     * @param {string} cardId - The id to identify the card (enemies/allies).
+     * @returns {object|null} - The position object (x/y), or null if not found.
+     */
+    getPokemonCardPosFromStorage(cardId) {
+        let position;
+        try {
+            position = JSON.parse(window.localStorage.getItem(`overlay_card_position_${cardId}`));
+        } catch (e) {
+            console.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
+        }
+        return position || null
     }
 
     /**

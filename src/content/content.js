@@ -131,7 +131,6 @@ function initUtilities() {
  * @returns {void}
  */
 function setInitialPokemonCardPosition(cardId, defaultYPos, scrollbarWidth, scrollbarMulti, scrollbarWidthFallback) {
-    console.log(uiDataGlobals.wrapperDivPositions[cardId])
     let storedPos;
     try {
         storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
@@ -157,7 +156,6 @@ function setInitialPokemonCardPosition(cardId, defaultYPos, scrollbarWidth, scro
         uiDataGlobals.wrapperDivPositions[cardId].left = `${xPos}px`;
         uiDataGlobals.wrapperDivPositions[cardId].right = 'auto';
     }
-    console.log(uiDataGlobals.wrapperDivPositions[cardId])
 }
 
 /**
@@ -525,8 +523,11 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
         setElementProperties(existingWrapper, { top, left, right, opacity });
         render(content, newWrapper);
     }
+
     const updatedWrapper = document.getElementById(divId);
-    updateCardElementPosition(updatedWrapper);
+    if (window.getComputedStyle(updatedWrapper).display !== "none") {
+        updateCardElementPosition(updatedWrapper);
+    }
 }
 
 /**
@@ -541,7 +542,6 @@ function saveCardWrapperPositions(divId, properties) {
     });
 
     window.Utils.LocalStorage.savePokemonCardPosToStorage(divId, parseFloat(properties.left), parseFloat(properties.top));
-    console.log(window.Utils.LocalStorage.getPokemonCardPosFromStorage(divId));
 }
 
 /**
@@ -771,11 +771,25 @@ async function updateBottomPanel(sessionData, pokemonData) {
 }
 
 /**
- * Scales elements based on the window size.
- * @function scaleElements
+ * Calls all scaling functions (overlay, sidebar, bottom panel).
+ * @function scaleAllElements
+ * @param {boolean} overlay - Flag that indicates whether the overlay should be scaled.
+ * @param {boolean} sidebar - Flag that indicates whether the sidebar should be scaled.
+ * @param {boolean} bottomPanel - Flag that indicates whether the bottomPanel should be scaled.
  * @async
  */
-async function scaleElements() {
+async function scaleAllElements(overlay = true, sidebar = true, bottomPanel = true) {
+    if (overlay) { scaleOverlayElements(); }
+    if (sidebar) { scaleSidebarElements(); }
+    if (bottomPanel) { scaleBottomPanelElements(); }   
+}
+
+/**
+ * Scales elements based on the window size.
+ * @function scaleOverlayElements
+ * @async
+ */
+async function scaleOverlayElements() {
     const scaleFactorMulti = await getScaleFactor('scaleFactor', 1);
     const scaleFactor = await calculateScaleFactor();
     
@@ -1049,16 +1063,17 @@ async function toggleSettingsHint(state) {
  * @function initCreation
  * @async
  * @param {Object} sessionData - The session data.
+ * @param {boolean} scaleUI - Whether the UI scaling function should be triggered, true by default.
  */
-async function initCreation(sessionData) {
+async function initCreation(sessionData, scaleUI = true) {
     const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
 
     await initPokemonCardWrappers(extensionSettings.showSidebar);
     if (extensionSettings.showEnemies) {
-        await dataMapping("enemyParty", "enemies", sessionData);
+        await dataMapping("enemyParty", "enemies", sessionData, scaleUI);
     }
     if (extensionSettings.showParty) {
-        await dataMapping("party", "allies", sessionData);
+        await dataMapping("party", "allies", sessionData, scaleUI);
     }
     toggleMiniCardTypes(extensionSettings.showMiniCardTypes);
 
@@ -1078,7 +1093,7 @@ async function initCreation(sessionData) {
  * @param {string} divId - The ID of the div.
  * @param {Object} sessionData - The session data.
  */
-async function dataMapping(pokemonLocation, divId, sessionData) {
+async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
     const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
     try {
@@ -1092,7 +1107,6 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
             createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]);
             resolve();
         });
-        scaleElements();
 
         if (!initStates.panelsInitialized) {
             initStates.panelsInitialized = true;
@@ -1100,11 +1114,14 @@ async function dataMapping(pokemonLocation, divId, sessionData) {
         }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
-        scaleSidebarElements();
 
         if (initStates.panelsInitialized) {
             await updateBottomPanel(sessionData, pokemonData);
             scaleBottomPanelElements();
+        }
+
+        if (scaleUI) {
+            scaleAllElements(true, true, initStates.panelsInitialized);
         }
     } catch (error) {
         console.error("Error occurred during pokemon data mapping:", error);
@@ -1138,6 +1155,9 @@ function extensionSettingsListener() {
 
         // eslint-disable-next-line no-unused-vars
         for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
+            if ( oldValue === newValue ) {
+                continue
+            }
             switch (key) {
                 case 'showMinified':
                     await initCreation(sessionData);
@@ -1149,7 +1169,7 @@ function extensionSettingsListener() {
                     changePokemonCardOpacity(['enemies', 'allies'], newValue);
                     break;
                 case 'scaleFactor':
-                    await scaleElements();
+                    await scaleOverlayElements();
                     break;
                 case 'showEnemies':
                     await initCreation(sessionData);
@@ -1163,7 +1183,7 @@ function extensionSettingsListener() {
                     break;
                 case 'showSidebar':
                     await toggleSidebar();                    
-                    await initCreation(sessionData);    // lazy way to make sure that all canvases are drawn
+                    await initCreation(sessionData, false);    // lazy way to make sure that all canvases are drawn
                     break;
                 case 'sidebarPosition':
                     await changeSidebarPosition();
@@ -1321,24 +1341,43 @@ async function observeGameCanvasResize() {
 
     const sidebarElement = document.getElementById("roguedex-sidebar");
     const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
+    const overlayCardEnemiesElement = document.getElementById('enemies');
+    const overlayCardAlliesElement = document.getElementById('allies');
 
     // Function to check if the sidebar is visible
     function isSidebarVisible() {
         return window.getComputedStyle(sidebarElement).display !== "none";
     }
 
-    // Function to resize the UI bottom panel
-    function resizeUI(entries) {
+    // Function to show the bottom panel and resize it's container
+    function showBottomPanelAndResize(entries) {
         for (const entry of entries) {
             const { right, width, height } = entry.contentRect;
             resizeUIBottomPanel(right, width, height);
         }
+        bottomPanelElement.style.display = ''; // Set it back to default display value after resizing
     }
 
-    // Function to show the bottom panel and resize the UI bottom panel
-    function showBottomPanelAndResize(entries) {
-        resizeUI(entries);
-        bottomPanelElement.style.display = ''; // Set it back to default display value after resizing
+    // Function to make sure the pokemon overlay cards are inside the viewport on resizing
+    function checkOverlayCardPositions(showSidebar) {
+        try {
+            if (showSidebar) {
+                overlayCardEnemiesElement.style.visibility = "";
+                overlayCardEnemiesElement.style.display = "flex";
+                overlayCardAlliesElement.style.visibility = "";
+                overlayCardAlliesElement.style.display = "flex";
+                updateCardElementPosition(overlayCardEnemiesElement);
+                updateCardElementPosition(overlayCardAlliesElement);
+                overlayCardEnemiesElement.style.display = "";
+                overlayCardAlliesElement.style.display = "";
+                overlayCardEnemiesElement.style.visibility = "";
+                overlayCardAlliesElement.style.visibility = "";
+            }
+            else {
+                updateCardElementPosition(overlayCardEnemiesElement);
+                updateCardElementPosition(overlayCardAlliesElement);
+            }
+        } catch (e) {}
     }
 
     // Initially hide the bottom panel if the sidebar is not visible
@@ -1346,9 +1385,11 @@ async function observeGameCanvasResize() {
         bottomPanelElement.style.display = 'none';
     }
 
-    // ResizeObserver to observe canvas resize
+    // ResizeObserver to observe game app canvas element resize
     const resizeObserver = new ResizeObserver(async (entries) => {
         const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+        scaleAllElements();
+
         if (extensionSettings.showSidebar) {
             if (isSidebarVisible()) {
                 showBottomPanelAndResize(entries);
@@ -1357,12 +1398,13 @@ async function observeGameCanvasResize() {
                 useMutationObserver(entries, extensionSettings);
             }
         }
+        checkOverlayCardPositions(extensionSettings.showSidebar);
     });
 
-    // Observe the canvas element
+    // Observe the game canvas element
     resizeObserver.observe(document.getElementById('app').getElementsByTagName('canvas')[0]);
 
-    // Function to handle MutationObserver logic
+    // Wait for the sidebar to become visible before showing and resizing the bottom panel
     function useMutationObserver(entries) {
         // MutationObserver to detect changes in the sidebar's display property
         const mutationObserver = new MutationObserver((mutationsList) => {

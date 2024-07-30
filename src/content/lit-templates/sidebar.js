@@ -218,16 +218,28 @@
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function 
      */
-    window.lit.generateMovesetHTML = (pokemon) => html`
-        ${Object.keys(pokemon.moveset).map(i => {
-            const move = pokemon.moveset[i];
-            return html`
-                <div class="pokemon-move">
-                    <span class="pokemon-move-name move-${move.type.toLowerCase()}">${move.name}</span>
-                </div>
-            `;
-        })}
-    `;
+    window.lit.generateMovesetHTML = (pokemon) => {
+        return html`
+            ${Object.keys(pokemon.moveset).map(i => {
+                const move = pokemon.moveset[i];
+                let moveTipHTML = '';  
+                moveTipHTML += `<span>Name: ${move.name}</span>`;
+                moveTipHTML += `<span>Type: ${move.type}</span>`;
+                moveTipHTML += `<span>Category: ${move.category}</span>`;
+                moveTipHTML += `<span>Power: ${move.power}</span>`;
+                moveTipHTML += `<span>Accuracy: ${move.accuracy}</span>`;                
+
+                return html`
+                    <div class="pokemon-move">
+                        <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip">
+                            ${move.name}
+                            ${window.lit.createTooltipDiv(moveTipHTML)}
+                        </span>
+                    </div>
+                `;
+            })}
+        `;
+    }
 
     /**
      * Creates the HTML template for the compact sidebar type effectiveness wrapper.
@@ -287,7 +299,8 @@
                 const tempListItem = {
                     iconCssClasses: iconCssClass,
                     typeEffectiveness: effectiveness,
-                    iconUrl: `${TypeIconUrls[type]}`,
+                    type,
+                    iconUrl: `${TypeIconUrls[type]}`,                    
                     wrapperCssClasses: `type-effectiveness-category pokemon-type-${effectiveness}`,
                     additionalStyles : ( type.toLowerCase() === 'dragon' ? 'transform: scaleX(-1) scaleY(-1); background-blend-mode: multiply; filter: contrast(0.7) hue-rotate(24deg);' : '' ),
                     order: (globalCounter % itemsPerRow) + 1
@@ -322,10 +335,13 @@
                         }
 
                         const transparencyClasses = window.lit.determineTransparencyClasses(item, Math.floor(i / itemsPerRow) + 1, itemsPerRow, firstOfType, lastOfType);
+                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(item.typeEffectiveness, item.iconCssClasses, item.type);
+
                         return html`
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
-                                <div class="pokemon-type-icon-wrapper">
+                                <div class="pokemon-type-icon-wrapper tooltip">
                                     <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'), url('${item.iconUrl}'); ${item.additionalStyles}"></div>
+                                    ${window.lit.createTooltipDiv(typeToolTipHTML)}
                                 </div>
                             </div>
                         `;
@@ -340,6 +356,34 @@
             </div>
         `;
     };
+
+    /**
+     * Creates a tooltip that shows which element (type) the type icon represents, whether the pokemon is weak, resistant or immune to the type
+     * and what dmg multiplier applies.
+     * 
+     * @param {string} typeEffectiveness - Type effectiveness category (immunities / resistances / weaknesses).
+     * @param {string} iconCssClasses - Type icon css classes string.
+     * @param {string} type
+     * @memberof lit
+     * @returns {string} - The HTML as a string.
+     * @function getTypeIconToolTipHTML
+     */
+    window.lit.getTypeIconToolTipHTML = (typeEffectiveness, iconCssClasses, type) => {
+        const weakLabel = 'Weak';
+        const resistLabel = 'Resistant';
+        const immuneLabel = 'Immune';
+        let effectivenessLabel = typeEffectiveness.toLowerCase() === 'resistances' ? resistLabel : (typeEffectiveness.toLowerCase() === 'weaknesses' ? weakLabel : immuneLabel);
+        effectivenessLabel = iconCssClasses.includes('super') ? 'Very ' + effectivenessLabel : effectivenessLabel;                        
+
+        const dmgMultiObj = {'no-dmg': 0, 'double-dmg': 2, 'super-dmg': 4, 'resist': 0.5, 'super-resist': 0.25};
+        const dmgMultiKey = Object.keys(dmgMultiObj)    // searches for the keys as substrings in iconCssClasses
+            .sort((a, b) => b.length - a.length)        // sort by length first to make sure to find "super-resist" before "resist"
+            .find(key => iconCssClasses.includes(key)) || '';
+        const dmgMulti = dmgMultiKey ? 'x' + dmgMultiObj[dmgMultiKey] : 'unknown';
+        const typeToolTipHTML = `<span>${window.lit.capitalizeFirstLetter(type)}</span><span>${effectivenessLabel}</span><span>DMG: <b>${dmgMulti}</b></span>`;
+
+        return typeToolTipHTML
+    }
 
     /**
      * Determines the transparency classes for sidebar type effectiveness items.
@@ -443,11 +487,16 @@
 
             return html`
                 <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
-                    ${allTypes.map(type => html`
-                        <div class="pokemon-type-icon-wrapper">
-                            <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
-                        </div>
-                    `)}
+                    ${allTypes.map((type) => {
+                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
+
+                        return html`                    
+                            <div class="pokemon-type-icon-wrapper tooltip">
+                                <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
+                                ${window.lit.createTooltipDiv(typeToolTipHTML)}
+                            </div>
+                        `;
+                    })}
                 </div>
             `;
         })}

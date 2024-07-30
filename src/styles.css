@@ -42,6 +42,23 @@ html {
     font-size: var(--root-font-size);
 }
 
+html body #tnc-links {
+    /* pokerogue css overwrite  */
+    display: block !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 10 !important;
+}
+html body #tnc-links.sidebar-Left {
+    left: 30% !important;
+    right: unset !important;
+}
+html body #tnc-links.sidebar-Right {    
+    right: 30% !important;
+    left: unset !important; 
+}
+
 body {
     font-size: 1rem; /* 10px, default font-size, but percentage based calculation */
     display: flex; /* pokerogue css overwrite  */
@@ -137,7 +154,7 @@ body {
 /* roguedex sidebar  */
 .roguedex-sidebar {
     float: left;
-    height: auto;
+    height: 100%;
     width: 30%;
     max-width: 30%;
     background-color: var(--sidebar-bg-color);
@@ -335,7 +352,7 @@ body.sidebar-Bottom {
     vertical-align: middle;
     position: relative;
 }
-.pokemon-entry-image.tooltip .tooltiptext {
+.pokemon-entry-image.tooltip .tooltiptext, .pokemon-type-icon-wrapper.tooltip .tooltiptext {
     padding: 0.4em 0.6em;
     text-align: left;
     width: max-content;
@@ -569,11 +586,6 @@ body.sidebar-Bottom {
     display: flex;
     flex-wrap: wrap;
     margin: 0.3em 0.3em 0 0;
-    /*
-    background: rgba(0, 0, 0, 0.2);
-    margin: 0.3em 0.3em 0 -0.1em;
-    border: 0.1em solid rgb(48 48 48);
-    */
 }
 .pokemon-moveset-wrapper .pokemon-move {
     padding: 0 0.5em 0 0;
@@ -581,6 +593,10 @@ body.sidebar-Bottom {
     box-sizing: border-box;
     text-shadow: var(--text-shadow-dark);
 }
+.pokemon-moveset-wrapper .pokemon-move .tooltip .tooltiptext {
+    font-size: 0.4em;
+}
+
 .pokemon-moveset-wrapper .pokemon-move-name.move-normal {
     color: rgb(170 170 153);
 }

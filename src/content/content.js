@@ -952,16 +952,19 @@ async function changeSidebarPosition() {
     const { sidebarPosition: newPosition } = await browserApi.storage.sync.get('sidebarPosition');
     const sidebarParentElement = document.body;
     const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
+    const pokerogueTncLinksElement = document.getElementById('tnc-links');  // not part of this extension, added by pokerogue
 
     // Remove old positions
     ['Left', 'Right'].forEach(oldPosition => {
         sidebarParentElement?.classList.remove(`sidebar-${oldPosition}`);
         bottomPanelElement?.classList.remove(`sidebar-${oldPosition}`);
+        pokerogueTncLinksElement?.classList.remove(`sidebar-${oldPosition}`);        
     });
 
     // Add new position
     sidebarParentElement?.classList.add(`sidebar-${newPosition}`);
     bottomPanelElement?.classList.add(`sidebar-${newPosition}`);
+    pokerogueTncLinksElement?.classList.add(`sidebar-${newPosition}`);
 }
 
 /**

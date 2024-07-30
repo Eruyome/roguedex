@@ -1,6 +1,8 @@
 /**
- * UIController class manages UI interactions by binding mouse click, keyboard hotkey, and gamepad button events,
+ * @fileoverview UIController class manages UI interactions by binding mouse click, keyboard hotkey, and gamepad button events,
  * and triggering an external function when these events occur.
+ * @file 'src/content/util_classes/uIController.utils.js'
+ * @class UIController
  * 
  * Example usages:
  * // Initialize a UIController with only keyboard and gamepad bindings
@@ -16,9 +18,9 @@
  * 
  * // Initialize a UIController with all bindings
  * const uiController4 = new UIController(externalFunction, '#myElement', { bindMouse: true, bindKeyboard: true, bindGamepad: true });
- * uiController4.setBindings(document.getElementById('myElement'), ['AltLeft', 'KeyB', 'KeyC'], [2, 3]); // Assuming these are valid button indices
- * 
+ * uiController4.setBindings(document.getElementById('myElement'), ['AltLeft', 'KeyB', 'KeyC'], [2, 3]); // Assuming these are valid button indices * 
  */
+
 class UIController {    // eslint-disable-line no-unused-vars
      /**
      * Set of assigned keyboard hotkeys and gamepad button combinations to ensure uniqueness.

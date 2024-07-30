@@ -11,7 +11,7 @@
     /**
      * Creates the template for the bottom panel.
      * @function createBottomPanelTemplate
-     * @returns {TemplateResult} The HTML template for the bottom panel.
+     * @returns {Lit-HTML-Template} The HTML template for the bottom panel.
      */
     window.lit.createBottomPanelTemplate = () => {
         return html`
@@ -38,10 +38,11 @@
     };
 
     /**
-     * Returns which tab is active, or null if none is.
+     * Retrieves the ID of the active tab in the bottom panel.
      * 
-     * @function updateActiveTab
-     * @param {string} tabId - The ID of the tab to make active.
+     * @function getActiveTab
+     * @memberof lit
+     * @returns {string|null} The ID of the active tab, or null if no tab is active.
      */
     window.lit.getActiveTab = () => {
         const activeTab = document.querySelector('.bottom-panel-tab-content.active');
@@ -54,7 +55,8 @@
      * @param {Object} sessionData - The session data.
      * @param {Object} pokemonData - The data for the Pokémon.
      * @param {Function} showTab - The function to show a specific tab.
-     * @returns {TemplateResult} The HTML template for the content of the bottom panel.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} The HTML template for the content of the bottom panel.
      */
     window.lit.createBottomPanelContentTemplate = (sessionData, pokemonData, showTab) => {
         const activeTab = 'bottom-panel-global'; // Default to showing the global tab initially
@@ -82,7 +84,7 @@
                         `)}
                     </div>
                     <div class="bottom-panel-tab-content" id="bottom-panel-global">
-                        ${weatherHtml ? weatherHtml : ''}
+                        ${weatherHtml || ''}
                         ${modifierHtml}
                     </div>
                     ${pokemonTabsHtml}
@@ -97,7 +99,8 @@
      * @param {Object} weather - The weather data object.
      * @param {string} weather.type - The type of weather.
      * @param {number} weather.turnsLeft - The number of turns left for the weather.
-     * @returns {TemplateResult|null} - The HTML template for the weather or null if no weather data.
+     * @memberof lit
+     * @returns {Lit-HTML-Template|null} - The HTML template for the weather or null if no weather data.
      */
     window.lit.createWeatherHtml = (weather) => {
         if (weather.type && weather.turnsLeft) {
@@ -117,7 +120,8 @@
      * @function createPokemonTabsHtml
      * @param {Array<Object>} pokemonArray - An array of Pokémon data objects.
      * @param {string} activeTab - The ID of the active tab.
-     * @returns {Array<TemplateResult>} An array of HTML templates for the Pokémon tabs.
+     * @memberof lit
+     * @returns {Array<Lit-HTML-Template>} An array of HTML templates for the Pokémon tabs.
      */
     window.lit.createPokemonTabsHtml = (pokemonArray, activeTab) => {
         return pokemonArray.map((pokemon, index) => html`
@@ -132,7 +136,8 @@
      * Adds tables which list and summarize data of all kinds of pokemon specific modifers that are currently active.
      * 
      * @param {Object} pokemon - The data object for the Pokémon.
-     * @returns {TemplateResult} - The HTML template for the Pokémon data table.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template for the Pokémon data table.
      */
     window.lit.createPokemonTable = (pokemon) => {
         const modifiers = {
@@ -258,7 +263,8 @@
      * @function generateBattleModifierHtml
      * @param {Object} sessionData - The session data containing various modifiers.
      * @param {number} luckTotal - The total luck value from the party.
-     * @returns {TemplateResult} The HTML template for the battle modifiers.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} The HTML template for the battle modifiers.
      */
     window.lit.generateBattleModifierHtml = (sessionData, luckTotal) => {
         const modifiers = {
@@ -316,23 +322,26 @@
          * @param {string} caption - The caption for the table.
          * @param {string} cssTag - The CSS tag for the table.
          * @param {Array} data - The data array to populate the table rows.
-         * @returns {TemplateResult} - The HTML template for the table.
+         * @memberof lit
+         * @returns {Lit-HTML-Template} - The HTML template for the table.
          */
-        const createTable = (caption, cssTag, data) => html`
-            <table class="bottom-panel-${cssTag}-modifiers">
-                <caption>${caption}</caption>
-                ${data.map((item, index) => index % 2 === 0 ? html`
-                    <tr>
-                        <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.label}</td>
-                        <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.value}${item.unit}</td>
-                        ${data[index + 1] ? html`
-                            <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].label}</td>
-                            <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].value}${data[index + 1].unit}</td>
-                        ` : html`<td></td><td></td>`}
-                    </tr>
-                ` : '')}
-            </table>
-        `;
+        const createTable = (caption, cssTag, data) => {
+            // <caption>${caption}</caption>
+            return html`
+                <table class="bottom-panel-${cssTag}-modifiers">                    
+                    ${data.map((item, index) => index % 2 === 0 ? html`
+                        <tr>
+                            <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.label}</td>
+                            <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.value}${item.unit}</td>
+                            ${data[index + 1] ? html`
+                                <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].label}</td>
+                                <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].value}${data[index + 1].unit}</td>
+                            ` : html`<td></td><td></td>`}
+                        </tr>
+                    ` : '')}
+                </table>
+            `;
+        }
 
         return html`
             <div class="bottom-panel-modifiers-wrapper">
@@ -347,6 +356,7 @@
      * @function getModifier
      * @param {Array} modifiers - The array of modifier objects.
      * @param {string} typeId - The ID of the type to retrieve the modifier for.
+     * @memberof lit
      * @returns {Object} The modifier object for the given type.
      */
     window.lit.getModifier = (modifiers, typeId) => {

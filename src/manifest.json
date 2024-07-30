@@ -13,10 +13,10 @@
     "https://if.daena.me/*",
     "https://cdn.daena.me/*"
   ],
-  "options_page": "options/options.html",
   "options_ui": {
     "page": "options/options.html",
-    "open_in_tab": false
+    "open_in_tab": false,
+    "browser_style": false
   },
   "action": {
     "default_popup": "options/options.html"
@@ -55,7 +55,6 @@
 		"content/maps/moveList.js",
 		"content/data/abilityList.js",
 		"content/data/pokemonList.js",
-		"content/data/speciesData.js",
         "content/util_classes/pokemonMapper.util.js",
         "content/util_classes/localStorage.util.js",
 		"content/util_classes/uiController.util.js",

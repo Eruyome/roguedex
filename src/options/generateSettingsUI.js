@@ -1,5 +1,14 @@
+/**
+ * @fileoverview
+ * This module generates the settings user interface based on the settings template provided.
+ * @file 'src/options/generateSettingsUI.js'
+ */
+
 import settingsTemplate from './settingsTemplate.js';
 
+/**
+ * Generates the settings user interface dynamically based on the settings template.
+ */
 const generateSettingsUI = () => {
     const container = document.getElementById('input-container');
 

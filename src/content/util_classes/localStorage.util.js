@@ -1,6 +1,13 @@
-// const browserApi = typeof browser !== "undefined" ? browser : chrome;
-// import CryptoJS from '../libs/crypto-js.min';
+/**
+ * @fileoverview Utility class for handling local storage operations, including session data management, image caching, 
+ *      and retrieving extension settings. This file provides methods for saving, retrieving, and clearing session data 
+ *      and cached images, as well as methods to get and set extension settings from synchronized storage.
+ *      Retrieves player data (save data).
+ * @file 'src/content/util_classes/localStorage.utils.js'
+ * @class LocalStorageClass
+ */
 
+// eslint-disable-next-line no-unused-vars
 class LocalStorageClass {
     constructor() {
         this.slotId = -1;
@@ -9,6 +16,9 @@ class LocalStorageClass {
         this.setSessionData();
     }
 
+    /**
+     * Clears all session data from local storage.
+     */
     clearAllSessionData() {
         setTimeout(() => {
             for (const key in window.localStorage) {
@@ -17,6 +27,11 @@ class LocalStorageClass {
         }, 1000);
     }
 
+    /**
+     * Saves an image to the local storage cache.
+     * @param {string} key - The key to identify the cached image.
+     * @param {string} imageData - The base64-encoded image data to be saved.
+     */
     saveImageToCache(key, imageData) {
         try {
             window.localStorage.setItem(`img_cache_${key}`, imageData);
@@ -25,10 +40,18 @@ class LocalStorageClass {
         }
     }
 
+    /**
+     * Retrieves an image from the local storage cache.
+     * @param {string} key - The key to identify the cached image.
+     * @returns {string|null} - The base64-encoded image data, or null if not found.
+     */
     getImageFromCache(key) {
         return window.localStorage.getItem(`img_cache_${key}`);
     }
 
+    /**
+     * Clears all cached images from local storage.
+     */
     clearImageCache() {
         const keys = Object.keys(window.localStorage);
         keys.forEach(key => {
@@ -38,6 +61,39 @@ class LocalStorageClass {
         });
     }
 
+    /**
+     * Saves a pokemon cards (overlay) position to local storage.
+     * @param {string} cardId - The id to identify the card (enemies/allies).
+     * @param {string} xPos - The x position (css "left") of the card.
+     * @param {string} yPos - The y position (css "top") of the card.
+     */
+    savePokemonCardPosToStorage(cardId, xPos, yPos) {
+        const position = { x : xPos, y : yPos };
+        try {
+            window.localStorage.setItem(`overlay_card_position_${cardId}`, JSON.stringify(position));
+        } catch (e) {
+            console.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
+        }
+    }
+
+    /**
+     * Retrieves a pokemon cards (overlay) position from local storage.
+     * @param {string} cardId - The id to identify the card (enemies/allies).
+     * @returns {object|null} - The position object (x/y), or null if not found.
+     */
+    getPokemonCardPosFromStorage(cardId) {
+        let position;
+        try {
+            position = JSON.parse(window.localStorage.getItem(`overlay_card_position_${cardId}`));
+        } catch (e) {
+            console.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
+        }
+        return position || null
+    }
+
+    /**
+     * Sets the session data by decrypting the data stored in local storage.
+     */
     setSessionData() {
         let currentSessionData = null;
         for (const key in window.localStorage) {
@@ -48,59 +104,76 @@ class LocalStorageClass {
         }
         if (currentSessionData) {
             this.sessionData = JSON.parse(CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8));
-            console.log("Got session data", this.sessionData, "for slot id", this.slotId);
+            console.debug("Got session data", this.sessionData, "for slot id", this.slotId);
         } else {
             this.sessionData = {};
         }
     }
 
+    /**
+     * Gets the current session data.
+     * @returns {object} The current session data.
+     */
     getSessionData() {
         this.setSessionData();
         return this.sessionData;
     }
 
+    /**
+     * Retrieves the extension settings from synchronized storage.
+     * @returns {Promise<object>} A promise that resolves to the extension settings.
+     */
     async getExtensionSettings() {
         return new Promise((resolve) => {
-            browserApi.storage.sync.get(['showMinified', 'scaleFactor', 'showEnemies', 'showParty', 'showSidebar', 'sidebarPosition', 'sidebarScaleFactor', 'sidebarCompactTypes'], (data) => {
-                if (data.showMinified === undefined) {
-                    browserApi.storage.sync.set({ 'showMinified': false });
-                    data.showMinified = false;
-                }
-                if (data.scaleFactor === undefined) {
-                    browserApi.storage.sync.set({ 'scaleFactor': 1 });
-                    data.scaleFactor = 1;
-                }
-                if (data.showEnemies === undefined) {
-                    browserApi.storage.sync.set({ 'showEnemies': true });
-                    data.showEnemies = true;
-                }
-                if (data.showParty === undefined) {
-                    browserApi.storage.sync.set({ 'showParty': true });
-                    data.showParty = true;
-                }
-                if (data.showSidebar === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarPosition': 'Left' });
-                    data.sidebarPosition = 'Left';
-                }
-                if (data.sidebarScaleFactor === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarScaleFactor': 1 });
-                    data.sidebarScaleFactor = 1;
-                }
-                if (data.sidebarCompactTypes === undefined) {
-                    browserApi.storage.sync.set({ 'sidebarCompactTypes': false });
-                    data.sidebarCompactTypes = false;
+            // List of settings to retrieve and their default values
+            const settingsDefaults = {
+                disableSettingsHint: false,
+                showMinified: false,
+                showMiniCardTypes: false,
+                overlayOpacity: 100,
+                scaleFactor: 1,
+                showEnemies: true,
+                showParty: true,
+                statusbarPosition: 'Top',
+                menuType: 1,
+                showSidebar: false,
+                sidebarPosition: 'Left',
+                sidebarScaleFactor: 1,
+                sidebarCompactTypes: false,
+                bottompanelScaleFactor: 1,
+                sidebarCondenseBreakpoint: 100,
+                sidebarHideAlliesBreakpoint: 100
+            };
+    
+            // Retrieve the settings from browser storage
+            browserApi.storage.sync.get(Object.keys(settingsDefaults), (data) => {
+                // Check and set default values if any setting is undefined
+                for (const [key, defaultValue] of Object.entries(settingsDefaults)) {
+                    if (data[key] === undefined) {
+                        browserApi.storage.sync.set({ [key]: defaultValue });
+                        data[key] = defaultValue;
+                    }
                 }
                 resolve(data);
             });
         });
     }
 
+    /**
+     * Gets player data from local storage.
+     * @returns {object} The decrypted player data.
+     */
     getPlayerData() {
         const localStorageData = window.localStorage.getItem(this.getDataKey('data_'));
         const decryptedString = CryptoJS.AES.decrypt(localStorageData, this.saveKey).toString(CryptoJS.enc.Utf8);
         return JSON.parse(decryptedString);
     }
 
+    /**
+     * Retrieves the key for a given data type from local storage.
+     * @param {string} matchString - The string to match the key.
+     * @returns {string} The matching key.
+     */
     getDataKey(matchString) {
         const keys = Object.keys(window.localStorage);
         for (const key of keys) {

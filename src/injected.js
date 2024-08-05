@@ -30,7 +30,10 @@
      * Overrides the send method of XMLHttpRequest to capture the response.
      * @param {*} postData - The data to send with the request.
      */
-    xhrPrototype.send = function (postData) {   // eslint-disable-line no-unused-vars
+    /* eslint-disable */
+    xhrPrototype.send = function (postData) {
+    /* eslint-enable */
+
         // Uncomment if you need to log the request details
         // console.log('Injected script XHR request:', this._method, this._url, this.getAllResponseHeaders(), postData);
         this.addEventListener('load', function () {

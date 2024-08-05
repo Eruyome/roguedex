@@ -3,3 +3,4 @@
 node_modules/*
 jsdoc-out/*
 fetch_scripts/node_modules/*
+dist/*

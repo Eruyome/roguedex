@@ -11,9 +11,9 @@
  * Template rendering.
  * templates and helper functions are prefixed with `window.lit.`
  */
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable */
 const { html, render, ref, unsafeHTML, unsafeSVG, templateContent, asyncAppend, asyncReplace, until, live, guard, cache, keyed, ifDefined, range, repeat, join, map, choose, when, classMap, styleMap } = window.LitHtml;
-
+/* eslint-enable */
 const initStates = { panelsInitialized : false, cardsInitialized: false, resizeObserverInitialized : false, sessionIntialized : false };
 
 const uiDataGlobals = {}
@@ -678,35 +678,35 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
     // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
 
     let condensedView = '';
-    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
-     * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
-     * Reset previously set temporary states, uses defaults according to user settings.
-    */
     if ( (overridePartyDisplayState === false) && (totalPartySize <= maxPokemonForDetailedView) ) {
+        /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+         * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
+         * Reset previously set temporary states, uses defaults according to user settings.
+        */
         await toggleSidebarPartyDisplay('allies', showParty);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
         condensedView = '';
     }
-    // too many pokemon, no override to hide allies; change to defaultView + condensed
-    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
-     * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
-    */
     else if ( (overridePartyDisplayState === false) && (totalPartySize > maxPokemonForDetailedView) ) {
+        // too many pokemon, no override to hide allies; change to defaultView + condensed
+        /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+         * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
+        */
         switchSidebarTypesDisplay(false);
         await toggleSidebarPartyDisplay('allies', showParty);
         condensedView = 'condensed';
     }
-    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
-     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
-    */
     else if ( (overridePartyDisplayState === true) && (displayedPartySize > maxPokemonForDetailedView) ) {
+        /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+         * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
+        */
         await toggleSidebarPartyDisplay('allies', false);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
     }
-    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
-     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
-    */
     else if ( (overridePartyDisplayState === true) && (displayedPartySize < maxPokemonForDetailedView) ) {
+        /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+         * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
+        */
         await toggleSidebarPartyDisplay('allies', false);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
         condensedView = '';
@@ -1156,7 +1156,7 @@ function extensionSettingsListener() {
     browserApi.storage.onChanged.addListener(async function (changes) {
         const sessionData = window.Utils.LocalStorage.getSessionData();
 
-        // eslint-disable-next-line no-unused-vars
+         
         for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
             if ( oldValue === newValue ) {
                 continue
@@ -1380,7 +1380,7 @@ async function observeGameCanvasResize() {
                 updateCardElementPosition(overlayCardEnemiesElement);
                 updateCardElementPosition(overlayCardAlliesElement);
             }
-        } catch (e) {}
+        } catch {}
     }
 
     // Initially hide the bottom panel if the sidebar is not visible

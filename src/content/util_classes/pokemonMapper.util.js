@@ -311,37 +311,38 @@ class PokemonMapperClass{
                 const defenderType1 = genDefault[i][primaryIndex]
                 const defenderType2 = genDefault[i][secondaryIndex]
 
-                // at least 1 type is immune => immune
+                
                 if (defenderType1 === 0 || defenderType2 === 0) {
+                    // at least 1 type is immune => immune
                     immunities.normal.push(attackerType)
                     cssClasses[attackerType] = 'no-dmg'
                     
                 }
-                // both types are weak => quadrupel dmg
                 else if ((defenderType1 === 2 && defenderType2 === 2)) {
+                    // both types are weak => quadrupel dmg
                     weaknesses.double.push(attackerType)
                     cssClasses[attackerType] = 'super-dmg'
                 }
-                // one type is weak, the other takes normal dmg => double dmg
                 else if ((defenderType1 === 2 && defenderType2 === 1) || (defenderType2 === 2 && defenderType1 === 1)) {
+                    // one type is weak, the other takes normal dmg => double dmg
                     weaknesses.normal.push(attackerType)
                     cssClasses[attackerType] = 'double-dmg'
                 }
-                // one type is weak, the other resists (half) => normal dmg
                 else if ((defenderType1 === 2 && defenderType2 === h) || (defenderType2 === 2 && defenderType1 === h)) {
+                    // one type is weak, the other resists (half) => normal dmg
                     // for the moment don't return, default dmg not being used
                 }
-                // both types take normal dmg => normal dmg
                 else if (defenderType1 === _ && defenderType2 === _) {
+                    // both types take normal dmg => normal dmg
                     // for the moment don't return, default dmg not being used
                 }
-                // one type resists, the other takes normal dmg => half dmg
                 else if ((defenderType1 === h && defenderType2 === _) || (defenderType2 === h && defenderType1 === _)) {
+                    // one type resists, the other takes normal dmg => half dmg
                     resistances.normal.push(attackerType)
                     cssClasses[attackerType] = 'resist'
                 }
-                // both types resist (half) => quarter dmg
                 else if (defenderType1 === h && defenderType2 === h) {
+                    // both types resist (half) => quarter dmg
                     resistances.double.push(attackerType)
                     cssClasses[attackerType] = 'super-resist'
                 }
@@ -389,7 +390,7 @@ class PokemonMapperClass{
                 'isHidden': pokemonAbilityData[abilityIndex].is_hidden
             }
 
-        } catch (error) {
+        } catch {
             return {
                 'name': 'null',
                 'description': 'null',

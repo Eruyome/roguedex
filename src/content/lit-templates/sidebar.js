@@ -265,7 +265,7 @@
 
         try {
             totalNumberOfTypes = Object.keys(typeEffectivenesses.cssClasses).length;
-        } catch (err) {}
+        } catch {}
 
         // Adjust the number of items per row or number of rows if needed
         while (totalNumberOfTypes / itemsPerRow > numberOfRows) {
@@ -291,7 +291,7 @@
                 const iconCssClass = (() => {
                     try {
                         return `pokemon-type-icon ${typeEffectivenesses.cssClasses[type]}`;
-                    } catch (error) {
+                    } catch {
                         return 'pokemon-type-icon';
                     }
                 })();
@@ -405,56 +405,57 @@
         *   Create a "snaking" flow of items, (left to right => right to left => repeat)
         */
 
-        /* First and last (only) item of category. */
+        
         if (firstOfType && lastOfType) {
+            /* First and last (only) item of category. */
             transparencyClasses += '';
         }
-        /* Even row, end of row item, continue category into next row. */
         else if (!lastOfType && !firstOfType && item.order === itemsPerRow && (rowCounter % 2 === 0)) {
+            /* Even row, end of row item, continue category into next row. */
             transparencyClasses += ' transp-bottom transp-right ';
         }
-        /* Continue category into next row. */
         else if (!lastOfType && !firstOfType && item.order === itemsPerRow) {
+            /* Continue category into next row. */
             transparencyClasses += ' transp-bottom transp-left ';
         }
-        /* Unven row, don't continue category into next row. */
         else if (lastOfType && item.order === itemsPerRow && (rowCounter % 2 === 1)) {
+            /* Unven row, don't continue category into next row. */
             transparencyClasses += ' transp-left ';
         }
-        /* Even row, don't continue category into next row. */
         else if (lastOfType && item.order === itemsPerRow && (rowCounter % 2 === 0)) {
+            /* Even row, don't continue category into next row. */
             transparencyClasses += ' transp-right ';
         }
-        /* Start category, continue it into next row. */
         else if (firstOfType && item.order === itemsPerRow) {
+            /* Start category, continue it into next row. */
             transparencyClasses += ' transp-bottom ';
         }
-        /* End category with multiple items in this row. */
         else if (lastOfType && !firstOfType && item.order === itemsPerRow) {
+            /* End category with multiple items in this row. */
             transparencyClasses += ' transp-left ';
         }
-        /* Inbetween items that don't start or end a category. */
         else if (!lastOfType && !firstOfType && item.order > 1 && item.order < itemsPerRow) {
+            /* Inbetween items that don't start or end a category. */
             transparencyClasses = ' transp-left transp-right ';
         }
-        /* Unven row, end of row item, don't continue into next row. */
         else if (item.order === itemsPerRow && (rowCounter % 2 === 1)) {
+            /* Unven row, end of row item, don't continue into next row. */
             transparencyClasses += ' transp-left ';
         }
-        /* Even row, start of row item, continue category. */
         else if (!lastOfType && item.order === 1 && (rowCounter % 2 === 0)) {
+            /* Even row, start of row item, continue category. */
             transparencyClasses += ' transp-left ';
         }
-        /* Unven row, inbetween items that end a category. */
         else if (lastOfType && item.order > 1 && item.order < itemsPerRow && (rowCounter % 2 === 1)) {
+            /* Unven row, inbetween items that end a category. */
             transparencyClasses = ' transp-left ';
         }
-        /* Even row, inbetween items that end a category. */
         else if (lastOfType && item.order > 1 && item.order < itemsPerRow && (rowCounter % 2 === 0)) {
+            /* Even row, inbetween items that end a category. */
             transparencyClasses = ' transp-right ';
         }
-        /* Unven row, first of row, continue category. */
         else if (!lastOfType && !firstOfType && item.order === 1 && (rowCounter % 2 === 1)) {
+            /* Unven row, first of row, continue category. */
             transparencyClasses = ' transp-right ';
         }
         else if (firstOfType && (rowCounter % 2 === 1)) {

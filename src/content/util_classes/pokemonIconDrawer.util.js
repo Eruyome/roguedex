@@ -173,8 +173,8 @@ class PokemonIconDrawer {
             let before;
             try {
                 before = ctx.getImageData(destX, destY, destWidth, destHeight);
-            } catch (error) {
-                // console.error("Canvas (Pokemon Icon): Failed to get image data before drawing:", error);
+            } catch {
+                // "Canvas (Pokemon Icon): Failed to get image data before drawing"
                 return false;
             }
         
@@ -186,8 +186,8 @@ class PokemonIconDrawer {
             let after;
             try {
                 after = ctx.getImageData(destX, destY, destWidth, destHeight);
-            } catch (error) {
-                // console.error("Canvas (Pokemon Icon): Failed to get image data after drawing:", error);
+            } catch {
+                // "Canvas (Pokemon Icon): Failed to get image data after drawing"
                 return false;
             }
         

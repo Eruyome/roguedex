@@ -66,14 +66,14 @@
         "content/content.js"
       ],
       "css": [
-        "styles.css"
+        "styles/css-built/styles.css"
       ]
     }
   ],
   "icons": {
-    "16": "RogueDex.png",
-    "48": "RogueDex.png",
-    "128": "RogueDex.png"
+    "16": "images/RogueDex.png",
+    "48": "images/RogueDex.png",
+    "128": "images/RogueDex.png"
   },
   "web_accessible_resources": [
     {

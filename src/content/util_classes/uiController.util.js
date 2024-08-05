@@ -21,7 +21,9 @@
  * uiController4.setBindings(document.getElementById('myElement'), ['AltLeft', 'KeyB', 'KeyC'], [2, 3]); // Assuming these are valid button indices * 
  */
 
-class UIController {    // eslint-disable-line no-unused-vars
+/* eslint-disable */
+class UIController {
+/* eslint-enable */
      /**
      * Set of assigned keyboard hotkeys and gamepad button combinations to ensure uniqueness.
      */

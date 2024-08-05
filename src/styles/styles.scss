@@ -34,7 +34,7 @@
         -0.05em 0.05em rgba(255, 255, 255, 0.9);
 
     /* PLACEHOLDERS, set programmatically  */
-    --extension-rarity-bg-image-sparkles: url('__EXTENSION_IMAGE_1_URL__');
+    --extension-rarity-bg-image-holo-fade: url('__EXTENSION_IMAGE_1_URL__');
     --extension-rarity-bg-image-holo: url('__EXTENSION_IMAGE_2_URL__');
 }
 
@@ -1232,40 +1232,8 @@ body {
 */
 
 .pokemon-entry-image {
-    &.pokemon-rarity-legendary {
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            background-repeat: no-repeat;
-            opacity: 0.5;
-            mix-blend-mode: color-dodge;
-            transition: all 0.33s ease;
-            border-radius: 0.5em;
-        }
-    }
-
-    &.pokemon-rarity-mythical {
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            background-repeat: no-repeat;
-            opacity: 0.5;
-            mix-blend-mode: color-dodge;
-            transition: all 0.33s ease;
-            border-radius: 0.5em;
-        }
-    }
-
+    &.pokemon-rarity-legendary,
+    &.pokemon-rarity-mythical,
     &.pokemon-rarity-ultra {
         &:before,
         &:after {
@@ -1285,40 +1253,8 @@ body {
 }
 
 .pokemon-card {
-    .pokemon-rarity-legendary {
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            background-repeat: no-repeat;
-            opacity: 0.5;
-            mix-blend-mode: color-dodge;
-            transition: all 0.33s ease;
-            border-radius: 0.5em;
-        }
-    }
-
-    .pokemon-rarity-ultra {
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            background-repeat: no-repeat;
-            opacity: 0.5;
-            mix-blend-mode: color-dodge;
-            transition: all 0.33s ease;
-            border-radius: 0.5em;
-        }
-    }
-
+    .pokemon-rarity-legendary,
+    .pokemon-rarity-ultra,
     .pokemon-rarity-mythical {
         &:before,
         &:after {
@@ -1402,8 +1338,8 @@ body {
     &.pokemon-rarity-mythical:after,
     &.pokemon-rarity-ultra:after {
         opacity: 1;
-        background-image: var(--extension-rarity-bg-image-sparkles),
-            var(--extension-rarity-bg-image-sparkles),
+        background-image: var(--extension-rarity-bg-image-holo-fade),
+            var(--extension-rarity-bg-image-holo-fade),
             var(--extension-rarity-bg-image-holo),
             linear-gradient(
                 125deg,
@@ -1414,14 +1350,15 @@ body {
                 #00cfff40 70%,
                 #cc4cfa50 85%
             );
-        background-position: 50% 50%;
-        background-size: 360%;
+        background-size: 260%;
         background-blend-mode: overlay;
         z-index: 2;
         filter: brightness(1) contrast(1);
         transition: all 0.33s ease;
         mix-blend-mode: color-dodge;
         opacity: 0.75;
+        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        animation: spin-background 120s linear infinite;
     }
 }
 
@@ -1430,8 +1367,8 @@ body {
     .pokemon-rarity-mythical:after,
     .pokemon-rarity-ultra:after {
         opacity: 1;
-        background-image: var(--extension-rarity-bg-image-sparkles),
-            var(--extension-rarity-bg-image-sparkles),
+        background-image: var(--extension-rarity-bg-image-holo-fade),
+            var(--extension-rarity-bg-image-holo-fade),
             var(--extension-rarity-bg-image-holo),
             linear-gradient(
                 125deg,
@@ -1442,14 +1379,33 @@ body {
                 #00cfff40 70%,
                 #cc4cfa50 85%
             );
-        background-position: 50% 50%;
-        background-size: 360%;
+        background-size: 260%;
         background-blend-mode: overlay;
         z-index: 2;
         filter: brightness(1) contrast(1);
         transition: all 0.33s ease;
         mix-blend-mode: color-dodge;
         opacity: 0.75;
+        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        animation: spin-background 120s linear infinite;
+    }
+}
+
+@keyframes spin-background {
+    0% {
+        background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Top center */
+    }
+    25% {
+        background-position: 100% 50%, 50% 50%, 50% 50%, 50% 50%; /* Right center */
+    }
+    50% {
+        background-position: 50% 100%, 50% 50%, 50% 50%, 50% 50%; /* Bottom center */
+    }
+    75% {
+        background-position: 0% 50%, 50% 50%, 50% 50%, 50% 50%; /* Left center */
+    }
+    100% {
+        background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Back to top center */
     }
 }
 

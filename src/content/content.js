@@ -68,9 +68,9 @@ function scriptInjector() {
     }
 
     // Set CSS url variables in the :root pseudo-class
-    const raritySparklesUrl = browserApi.runtime.getURL('/images/sparkles.gif');
-    const rarityHoloUrl = browserApi.runtime.getURL('/images/holo.png'); 
-    document.documentElement.style.setProperty('--extension-rarity-bg-image-sparkles', `url(${raritySparklesUrl})`);
+    const rarityHoloFadeUrl = browserApi.runtime.getURL('/images/foil/compressed/holo-fade.gif');
+    const rarityHoloUrl = browserApi.runtime.getURL('/images/foil/compressed/holo.png'); 
+    document.documentElement.style.setProperty('--extension-rarity-bg-image-holo-fade', `url(${rarityHoloFadeUrl})`);
     document.documentElement.style.setProperty('--extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
 }
 

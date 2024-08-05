@@ -32,7 +32,7 @@
       0.05em -0.05em rgba(255, 255, 255, 0.9),
       -0.05em 0.05em rgba(255, 255, 255, 0.9);
   /* PLACEHOLDERS, set programmatically  */
-  --extension-rarity-bg-image-sparkles: url("__EXTENSION_IMAGE_1_URL__");
+  --extension-rarity-bg-image-holo-fade: url("__EXTENSION_IMAGE_1_URL__");
   --extension-rarity-bg-image-holo: url("__EXTENSION_IMAGE_2_URL__");
 }
 
@@ -1008,33 +1008,7 @@ body.sidebar-Bottom {
     https://codepen.io/simeydotme/pen/PrQKgo
     https://github.com/simeydotme/pokemon-cards-css
 */
-.pokemon-entry-image.pokemon-rarity-legendary:before, .pokemon-entry-image.pokemon-rarity-legendary:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: color-dodge;
-  transition: all 0.33s ease;
-  border-radius: 0.5em;
-}
-.pokemon-entry-image.pokemon-rarity-mythical:before, .pokemon-entry-image.pokemon-rarity-mythical:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: color-dodge;
-  transition: all 0.33s ease;
-  border-radius: 0.5em;
-}
-.pokemon-entry-image.pokemon-rarity-ultra:before, .pokemon-entry-image.pokemon-rarity-ultra:after {
+.pokemon-entry-image.pokemon-rarity-legendary:before, .pokemon-entry-image.pokemon-rarity-legendary:after, .pokemon-entry-image.pokemon-rarity-mythical:before, .pokemon-entry-image.pokemon-rarity-mythical:after, .pokemon-entry-image.pokemon-rarity-ultra:before, .pokemon-entry-image.pokemon-rarity-ultra:after {
   content: "";
   position: absolute;
   left: 0;
@@ -1048,33 +1022,11 @@ body.sidebar-Bottom {
   border-radius: 0.5em;
 }
 
-.pokemon-card .pokemon-rarity-legendary:before, .pokemon-card .pokemon-rarity-legendary:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: color-dodge;
-  transition: all 0.33s ease;
-  border-radius: 0.5em;
-}
-.pokemon-card .pokemon-rarity-ultra:before, .pokemon-card .pokemon-rarity-ultra:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: color-dodge;
-  transition: all 0.33s ease;
-  border-radius: 0.5em;
-}
-.pokemon-card .pokemon-rarity-mythical:before, .pokemon-card .pokemon-rarity-mythical:after {
+.pokemon-card .pokemon-rarity-legendary:before, .pokemon-card .pokemon-rarity-legendary:after,
+.pokemon-card .pokemon-rarity-ultra:before,
+.pokemon-card .pokemon-rarity-ultra:after,
+.pokemon-card .pokemon-rarity-mythical:before,
+.pokemon-card .pokemon-rarity-mythical:after {
   content: "";
   position: absolute;
   left: 0;
@@ -1129,9 +1081,8 @@ body.sidebar-Bottom {
 
 .pokemon-entry-image.pokemon-rarity-legendary:after, .pokemon-entry-image.pokemon-rarity-mythical:after, .pokemon-entry-image.pokemon-rarity-ultra:after {
   opacity: 1;
-  background-image: var(--extension-rarity-bg-image-sparkles), var(--extension-rarity-bg-image-sparkles), var(--extension-rarity-bg-image-holo), linear-gradient(125deg, rgba(255, 0, 132, 0.3137254902) 15%, rgba(252, 164, 0, 0.2509803922) 30%, rgba(255, 255, 0, 0.1882352941) 40%, rgba(0, 255, 138, 0.1254901961) 60%, rgba(0, 207, 255, 0.2509803922) 70%, rgba(204, 76, 250, 0.3137254902) 85%);
-  background-position: 50% 50%;
-  background-size: 360%;
+  background-image: var(--extension-rarity-bg-image-holo-fade), var(--extension-rarity-bg-image-holo-fade), var(--extension-rarity-bg-image-holo), linear-gradient(125deg, rgba(255, 0, 132, 0.3137254902) 15%, rgba(252, 164, 0, 0.2509803922) 30%, rgba(255, 255, 0, 0.1882352941) 40%, rgba(0, 255, 138, 0.1254901961) 60%, rgba(0, 207, 255, 0.2509803922) 70%, rgba(204, 76, 250, 0.3137254902) 85%);
+  background-size: 260%;
   background-blend-mode: overlay;
   z-index: 2;
   -webkit-filter: brightness(1) contrast(1);
@@ -1139,15 +1090,16 @@ body.sidebar-Bottom {
   transition: all 0.33s ease;
   mix-blend-mode: color-dodge;
   opacity: 0.75;
+  background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+  animation: spin-background 120s linear infinite;
 }
 
 .pokemon-card .pokemon-rarity-legendary:after,
 .pokemon-card .pokemon-rarity-mythical:after,
 .pokemon-card .pokemon-rarity-ultra:after {
   opacity: 1;
-  background-image: var(--extension-rarity-bg-image-sparkles), var(--extension-rarity-bg-image-sparkles), var(--extension-rarity-bg-image-holo), linear-gradient(125deg, rgba(255, 0, 132, 0.3137254902) 15%, rgba(252, 164, 0, 0.2509803922) 30%, rgba(255, 255, 0, 0.1882352941) 40%, rgba(0, 255, 138, 0.1254901961) 60%, rgba(0, 207, 255, 0.2509803922) 70%, rgba(204, 76, 250, 0.3137254902) 85%);
-  background-position: 50% 50%;
-  background-size: 360%;
+  background-image: var(--extension-rarity-bg-image-holo-fade), var(--extension-rarity-bg-image-holo-fade), var(--extension-rarity-bg-image-holo), linear-gradient(125deg, rgba(255, 0, 132, 0.3137254902) 15%, rgba(252, 164, 0, 0.2509803922) 30%, rgba(255, 255, 0, 0.1882352941) 40%, rgba(0, 255, 138, 0.1254901961) 60%, rgba(0, 207, 255, 0.2509803922) 70%, rgba(204, 76, 250, 0.3137254902) 85%);
+  background-size: 260%;
   background-blend-mode: overlay;
   z-index: 2;
   -webkit-filter: brightness(1) contrast(1);
@@ -1155,8 +1107,27 @@ body.sidebar-Bottom {
   transition: all 0.33s ease;
   mix-blend-mode: color-dodge;
   opacity: 0.75;
+  background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+  animation: spin-background 120s linear infinite;
 }
 
+@keyframes spin-background {
+  0% {
+    background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Top center */
+  }
+  25% {
+    background-position: 100% 50%, 50% 50%, 50% 50%, 50% 50%; /* Right center */
+  }
+  50% {
+    background-position: 50% 100%, 50% 50%, 50% 50%, 50% 50%; /* Bottom center */
+  }
+  75% {
+    background-position: 0% 50%, 50% 50%, 50% 50%, 50% 50%; /* Left center */
+  }
+  100% {
+    background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Back to top center */
+  }
+}
 /* legendary, mystical effects end */
 /* shiny star, pure css */
 .four-pointed-star {

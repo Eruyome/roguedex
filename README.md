@@ -33,7 +33,19 @@ Rogue Dex is a browser extension that connects to Pokerogue and uses PokeAPI to 
 Feel free to contribute to this project by forking the repository, making changes, and submitting pull requests.
 
 ## Credits
-[PokeAPI](https://github.com/PokeAPI/pokeapi) for various pokemon-related assets 
+- [PokeAPI](https://github.com/PokeAPI/pokeapi) for various pokemon-related assets.
+- [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page) for various pokemon-related assets.
+- Galaxy Holo image from [aschefield101](https://www.deviantart.com/aschefield101/art/HoloSheet-2012-313543843).
 
 ## Policy
 No user data is transferred to any external servers by this extension. All the traffic is analyzed on each browser only and there is no server component that acts upon this data.
+
+## Contributors
+
+- [Eruyome](https://github.com/Eruyome)
+- [roguedex-dev](https://github.com/roguedex-dev)
+- [devingearing](https://github.com/devingearing)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

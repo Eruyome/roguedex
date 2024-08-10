@@ -649,7 +649,7 @@ body {
 
 @keyframes pulsate {
     0% {
-        -webkit-transform: scale(0.9, 0.9);
+        -webkit-transform: scale(0.95, 0.95);
         opacity: 0.8;
     }
 
@@ -852,7 +852,7 @@ body {
 .pokemon-card
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-immunities {
-    background: rgb(97, 96, 96);
+    background: rgb(135, 132, 132);
     border: 0.1em solid rgb(148, 148, 148);
 }
 
@@ -1908,11 +1908,16 @@ body {
         }
     }
 
-    &:hover {
+    // Apply hover effect only if .tooltip does NOT have the 'mobile' class
+    &:not(.mobile):hover {
         cursor: help;
         .tooltiptext {
             visibility: visible;
         }
+    }
+    // Show tooltip using the element focus state.
+    &.mobile:focus .tooltiptext {
+        visibility: visible;
     }
 }
 

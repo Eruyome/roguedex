@@ -188,11 +188,11 @@ async function updateExtensionStatus(properties) {
 }
 
 /**
- * Creates an icon that serves as a hint/reminder to open the settings menu, and how.
+ * Creates an icon that serves as a hint/reminder to open the settings menu, and how to.
  * @function createSettingsHint
  */
 async function createSettingsHint() {    
-    const settingsHintElement = window.lit.createSettingsHintElement();
+    const settingsHintElement = window.lit.createSettingsHintElement(uiDataGlobals.isMobile);
     render(settingsHintElement, document.body);
 }
 
@@ -375,26 +375,7 @@ async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
 
 /**
  * Changes the opacity of pokemon cards.
- * @function changeOpacity
- * @param {Event} e - The event triggering the opacity change.
- */
-function changeOpacity(e) {
-    const { id } = e.target;
-    const divId = id.split("-")[0];
-    const div = document.getElementById(divId);
-
-    if (div) {
-        const opacity = e.target.value / 100;
-        uiDataGlobals.wrapperDivPositions[divId].opacity = e.target.value;
-        div.style.opacity = `${opacity}`;
-    } else {
-        console.error(`Element with ID '${divId}' not found.`);
-    }
-}
-
-/**
- * Changes the opacity of pokemon cards.
- * @function changeOpacity
+ * @function changePokemonCardOpacity
  * @param {Array} elementIds - Id list of target elements.
  * @param {Integer} value - Value to change opacity to (0 - 100%).
  */
@@ -565,16 +546,17 @@ function setElementProperties(element, properties) {
  * @param {string} cardId - The ID of the card.
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
+ * @param {boolean} showMiniCardTypes - Flag indicating whether the type effectivenesses should be shown.
  * @returns {Promise<Lit-HTML-Template>} - The created minified Pokemon card template.
  */
-async function createPokemonCardDivMinified(cardId, pokemon, weather) {
+async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCardTypes) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
     const simpleDisplay = cardId.toLowerCase() === 'allies';
     const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
-        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather, )
+        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather, showMiniCardTypes, uiDataGlobals.isMobile)
     };
 }
 
@@ -588,14 +570,10 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    let opacitySlider = html``; // empty lit-html template
-    if (uiDataGlobals.isMobile) {
-        opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "25", "100");
-    }    
     const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
-        html: window.lit.createPokemonCardContent(cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather)
+        html: window.lit.createPokemonCardContent(cardId, pokemon, typeEffectivenessHTML, weather, uiDataGlobals.isMobile)
     };
 }
 
@@ -605,7 +583,7 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
  * @function createPanels
  */
 function createPanels() {
-    const sidebarTemplate = window.lit.createSidebarTemplate();
+    const sidebarTemplate = window.lit.createSidebarTemplate(uiDataGlobals.isMobile);
     const bottomPanelTemplate = window.lit.createBottomPanelTemplate();
 
     render(sidebarTemplate, document.body, { renderBefore: document.body.firstChild });
@@ -637,7 +615,7 @@ async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDet
 
     if (pokeData?.pokemon?.length) {
         const condensedView = await adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay);
-        const partyTemplate = window.lit.createSidebarPartyTemplate(pokeData, partyID, savedData.dexData, sessionData, condensedView);
+        const partyTemplate = window.lit.createSidebarPartyTemplate(pokeData, partyID, savedData.dexData, sessionData, condensedView, uiDataGlobals.isMobile);
         render(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
@@ -928,6 +906,7 @@ async function toggleSidebar() {
         toggleClasses(sidebarElement, true, true);
         gameAppElement.classList.add('sidebar-active');
         runningStatusElement.classList.add('sidebar-active');
+        changeStatusbarPosition("Bottom");
         bottomPanelElement.classList.add('sidebar-active');
         toggleClasses(allyCardDiv, false);
         toggleClasses(enemyCardDiv, false);
@@ -936,6 +915,7 @@ async function toggleSidebar() {
         toggleClasses(sidebarElement, false, true);
         gameAppElement.classList.remove('sidebar-active');
         runningStatusElement.classList.remove('sidebar-active');
+        changeStatusbarPosition();
         bottomPanelElement.classList.remove('sidebar-active');
         toggleClasses(allyCardDiv, true);
         toggleClasses(enemyCardDiv, true);
@@ -1030,10 +1010,19 @@ async function switchSidebarTypesDisplay(state) {
 /**
  * Changes the position of the extension statusbar (top, bottom).
  * @function changeStatusbarPosition
+ * @param {string} forcePosition - Force top or bottom position, no matter the user settings.
  * @async
  */
 async function changeStatusbarPosition() {
-    const { statusbarPosition: newPosition } = await browserApi.storage.sync.get('statusbarPosition');
+    let { statusbarPosition: newPosition } = await browserApi.storage.sync.get('statusbarPosition');
+
+    const sidebarElement = document.getElementById("roguedex-sidebar");
+    try {
+        const sidebarVisible = window.getComputedStyle(sidebarElement).display !== "none";
+        if (sidebarVisible) {
+            newPosition = "Bottom";
+        }
+    } catch {}
     const statusbarElement = document.getElementById('extension-status');
 
     // Remove old position

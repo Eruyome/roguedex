@@ -1,3 +1,7 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              Imports                                               */
+/*----------------------------------------------------------------------------------------------------*/
+
 import gulp from 'gulp';
 import autoprefixer from 'autoprefixer';
 import postcss from 'gulp-postcss';
@@ -14,7 +18,9 @@ import { exec } from 'gulp-execa';
 import jsonTransform from 'gulp-json-transform';
 import fs from 'fs';
 
-/*---------------------------------------------- Configs ---------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              Configs                                               */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Read the version from package.json
 const packageJson = JSON.parse(fs.readFileSync('./package.json'));
@@ -33,13 +39,17 @@ const paths = {
   cssGlob: 'styles/css-built/**/*.css',
   sassSrc: 'styles',
   cssDest: 'styles/css-built',
+  distChrome: 'roguedex-chrome',
+  distFirefox: 'roguedex-firefox',
   chromeManifest: 'manifest.json',
   firefoxManifest: 'manifest_firefox.json',
   defaultManifestName: 'manifest.json',
   uncompressedImages: `images/foil/uncompressed`
 };
 
-/*------------------------------------------ Version Syncing -----------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                            Version Sync                                            */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Task to update the version in both manifest files
 gulp.task('sync-manifest-version', function() {
@@ -54,21 +64,26 @@ gulp.task('sync-manifest-version', function() {
     .pipe(gulp.dest('./src'));
 });
 
-/*--------------------------------------- File / Folder Cleaning -------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                       File / Folder Cleaning                                       */
+/*----------------------------------------------------------------------------------------------------*/
 
-// Clean task
-gulp.task('clean', async () => {
-  await rimraf(paths.dist);
-  await rimraf(paths.temp);
+gulp.task('clean', () => {
+  return Promise.all([
+    rimraf(paths.dist),
+    rimraf(paths.temp)
+  ]);
 });
 
 // Cleanup temp folder
 gulp.task('clean-temp', () => rimraf(paths.temp));
 
-/*----------------------------------------------- Sass -----------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                                Sass                                                */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Process SCSS files in temp directory and output to specific directories
-gulp.task('process-sass', (done) => {
+gulp.task('process-sass', () => {
   const isWatch = process.env.NODE_ENV === 'watch';
   const destPath = isWatch ? `${paths.src}/${paths.cssDest}` : `${paths.temp}/${paths.cssDest}`;
   const srcGlob = isWatch ? `${paths.src}/${paths.sassGlob}` : `${paths.temp}/${paths.sassGlob}`;
@@ -76,23 +91,23 @@ gulp.task('process-sass', (done) => {
   return gulp.src(srcGlob)
     .pipe(sassCompilerInstance().on('error', sassCompilerInstance.logError))
     .pipe(postcss([autoprefixer()]))
-    .pipe(gulp.dest(destPath))
-    .on('end', done);
+    .pipe(gulp.dest(destPath));
 });
 
 // Process CSS files (autoprefixing and minifying)
-gulp.task('process-css', (done) => {
+gulp.task('process-css', () => {
   const isWatch = process.env.NODE_ENV === 'watch';
-  if (isWatch) return done(); // Skip minification in watch mode
+  if (isWatch) return Promise.resolve(); // Skip minification in watch mode
 
   return gulp.src(`${paths.temp}/${paths.cssGlob}`)
     .pipe(postcss([autoprefixer()]))
     .pipe(cleanCSS())
-    .pipe(gulp.dest(`${paths.temp}/${paths.cssDest}`))
-    .on('end', done);
+    .pipe(gulp.dest(`${paths.temp}/${paths.cssDest}`));
 });
 
-/*--------------------------------------------- Prettier ---------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              Prettier                                              */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Run Prettier in check mode only (for watch task)
 gulp.task('prettier-check', () => {
@@ -125,7 +140,9 @@ gulp.task('prettier', () => {
     .pipe(gulp.dest((file) => file.base));
 });
 
-/*---------------------------------------------- ESLint ----------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                               ESLint                                               */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Function to run ESLint
 const runEslint = async (files, options) => {
@@ -152,11 +169,13 @@ gulp.task('eslint', () => {
 gulp.task('eslint-watch', () => {
   watch(`${paths.src}/**/*.js`, (done) => {
     runEslint(`${paths.src}/**/*.js`, '');
-    done(); // Signal completion of the task
+    done();
   });
 });
 
-/*-------------------------------------------- Stylelint --------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                             Stylelint                                              */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Run Stylelint with limited auto-fix for watch task
 gulp.task('stylelint-watch', () => {
@@ -168,7 +187,9 @@ gulp.task('stylelint-watch', () => {
     }));
 });
 
-/*-------------------------------------------- File Move --------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                             File Move                                              */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Copy all files to temp directory
 gulp.task('copy-files-to-temp', () => {
@@ -176,8 +197,8 @@ gulp.task('copy-files-to-temp', () => {
     .pipe(gulp.dest(paths.temp));
 });
 
-// Move files from temp to dist folders, handling manifests separately
-gulp.task('move-files-to-dist', () => {
+// Function to move files and rename manifest
+function moveFilesToDist(distPath, manifestPath) {
   const globPatterns = [
     `${paths.temp}/**/*`,
     `!${paths.temp}/${paths.chromeManifest}`,
@@ -186,40 +207,60 @@ gulp.task('move-files-to-dist', () => {
     `!${paths.temp}/**/Thumbs.db`
   ];
 
-  return gulp.src(globPatterns)
-    .pipe(gulp.dest(`${paths.dist}/chrome`))
-    .pipe(gulp.src(globPatterns)
-    .pipe(gulp.dest(`${paths.dist}/firefox`)))
-    .on('end', () => {
-      gulp.src(`${paths.temp}/${paths.chromeManifest}`)
-        .pipe(rename(paths.defaultManifestName))
-        .pipe(gulp.dest(`${paths.dist}/chrome`));
-      gulp.src(`${paths.temp}/${paths.firefoxManifest}`)
-        .pipe(rename(paths.defaultManifestName))
-        .pipe(gulp.dest(`${paths.dist}/firefox`));
+  return new Promise((resolve, reject) => {
+    gulp.src(globPatterns)
+      .pipe(gulp.dest(distPath))
+      .on('end', () => {
+        gulp.src(manifestPath)
+          .pipe(rename(paths.defaultManifestName))
+          .pipe(gulp.dest(distPath))
+          .on('end', resolve)
+          .on('error', reject);
+      })
+      .on('error', reject);
+  });
+}
 
-      rimraf(`${paths.dist}/chrome/images/foil/uncompressed`);
-      rimraf(`${paths.dist}/firefox/images/foil/uncompressed`);
-    });
+// Move files to dist task
+gulp.task('move-files-to-dist', async () => {
+  try {
+    await Promise.all([
+      moveFilesToDist(`${paths.dist}/${paths.distChrome}`, `${paths.temp}/${paths.chromeManifest}`),
+      moveFilesToDist(`${paths.dist}/${paths.distFirefox}`, `${paths.temp}/${paths.firefoxManifest}`)
+    ]);
+
+    // Remove the uncompressed images folders after the move
+    await Promise.all([
+      rimraf(`${paths.dist}/${paths.distChrome}/images/foil/uncompressed`),
+      rimraf(`${paths.dist}/${paths.distFirefox}/images/foil/uncompressed`)
+    ]);
+  } catch (err) {
+    console.error('Error during move-files-to-dist:', err);
+    throw err;
+  }
 });
 
-/*--------------------------------------------- Folder Zip -------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                             Folder Zip                                             */
+/*----------------------------------------------------------------------------------------------------*/
 
 // Zip the dist folders
 gulp.task('zip', () => {
   return Promise.all([
-    gulp.src('dist/chrome/**/*')
+    gulp.src(`${paths.dist}/${paths.distChrome}/**/*`)
       .pipe(zip('chrome-extension.zip'))
-      .pipe(gulp.dest('dist')),
-    gulp.src('dist/firefox/**/*')
+      .pipe(gulp.dest(`${paths.dist}`)),
+    gulp.src(`${paths.dist}/${paths.distFirefox}/**/*`)
       .pipe(zip('firefox-extension.zip'))
-      .pipe(gulp.dest('dist'))
+      .pipe(gulp.dest(`${paths.dist}`))
   ]);
 });
 
-/*--------------------------------------------- Main Tasks -------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*                                             Main Tasks                                             */
+/*----------------------------------------------------------------------------------------------------*/
 
-// Watch tasks
+/*---------- Watch Tasks ----------*/
 gulp.task('watch-styles', () => {
   process.env.NODE_ENV = 'watch';
   gulp.watch(`${paths.src}/${paths.sassGlob}`, gulp.series('process-sass', 'stylelint-watch'));
@@ -232,52 +273,44 @@ gulp.task('watch-code', () => {
 
 gulp.task('watch', gulp.parallel('watch-styles', 'watch-code'));
 
+/*---------- One Time Tasks ----------*/
+
 // One-time lint and css build/processing task (alternative for watching)
 gulp.task('lint-and-convert-once', (done) => {
   process.env.NODE_ENV = 'watch';
-
-  gulp.series(
-    gulp.series('process-sass', 'stylelint-watch'), // Process SCSS and run Stylelint
-    gulp.series('prettier', 'eslint-watch') // Run Prettier check and ESLint
-  )(done);
+  gulp.series(gulp.series('process-sass', 'stylelint-watch'), gulp.series('prettier', 'eslint-watch'))(done);
 });
 
 // One-time sass conversion of src folder styles
 gulp.task('process-css-once', (done) => {
   process.env.NODE_ENV = 'watch';
-
-  gulp.series(
-    gulp.series('process-sass')
-  )(done);
+  gulp.series(gulp.series('process-sass'))(done);
 });
 
 // Build-dist task ( use "gulp build-dist --skip-cleanup" to skip the folder deletions)
-gulp.task('build-dist', (done) => {
+gulp.task('build-dist', async () => {
   const skipCleanup = process.argv.includes('--skip-cleanup');
 
-  gulp.series(
-    'sync-manifest-version',
-    'clean',
-    'copy-files-to-temp',
-    'process-sass',
-    'process-css',
-    //'prettier',
-    //'eslint',
-    'move-files-to-dist',
-    'zip',
-    'clean-temp'
-  )(function (err) {
-    if (err) {
-      console.error('Error during build:', err.message);
-      if (!skipCleanup) {
-        gulp.series('clean')(done);
-      } else {
-        done(err);
-      }
-    } else {
-      done();
+  try {
+    await gulp.series(
+      'sync-manifest-version',
+      'clean',
+      'copy-files-to-temp',
+      'process-sass',
+      'process-css',
+      'prettier',
+      'eslint',
+      'move-files-to-dist',
+      'zip',
+      'clean-temp'
+    )();
+  } catch (err) {
+    console.error('Error during build:', err.message);
+    if (!skipCleanup) {
+      await gulp.series('clean')();
     }
-  });
+    throw err;
+  }
 });
 
 // Default task for one-time processing

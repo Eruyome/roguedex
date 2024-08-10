@@ -6,7 +6,7 @@
 	"type": "module",
 	"config": {
 		"code_paths": "./src/**/*.{js,jsx,json,ts}",
-		"style_paths": "./src/**/*.{css,less,scss}",
+		"style_paths": "./src/styles/**/*.{css,less,scss}",
 		"html_paths": "./src/**/*.{html,htm}",
 		"all_paths": "./src/**/*"
 	},
@@ -15,7 +15,7 @@
 		"jsdoc": "jsdoc -r ./src/ -d ./jsdoc-out",
 		"clean-dist": "npx rimraf 'dist/*' --glob",
 		"build-dist": "npx gulp build-dist",
-		"package": "npm run build",
+		"package": "npx gulp build-dist",
 		"check-lint:code": "npx eslint %npm_package_config_code_paths% --config eslint.config.mjs",
 		"check-format:code": "npx prettier %npm_package_config_code_paths% --config .prettierrc --check",
 		"check-lint:style": "npx stylelint %npm_package_config_style_paths% --config .stylelint.config.mjs",
@@ -30,6 +30,8 @@
 		"fix:all": "npm run format:code && npm run format:style && npm run format:html",
 		"process-src-files": "npx gulp lint-and-convert-once",
 		"process-src-css": "npx gulp process-css-once",
+		"watch-styles": "npx gulp watch-styles",
+		"watch-code": "npx gulp watch-code",
 		"watch": "npx gulp watch",
 		"start": "npx gulp watch",
 		"test": "echo Pre-commit hook test (\".husky/pre-commit\"); edit me to enable \"lint-staged\""

@@ -543,7 +543,7 @@ body.sidebar-Bottom {
 
 @keyframes pulsate {
   0% {
-    -webkit-transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.95, 0.95);
     opacity: 0.8;
   }
   50% {
@@ -702,7 +702,7 @@ body.sidebar-Bottom {
 
 .roguedex-sidebar .pokemon-type-effectiveness-wrapper.compact .pokemon-type-immunities,
 .pokemon-card .pokemon-type-effectiveness-wrapper.compact .pokemon-type-immunities {
-  background: rgb(97, 96, 96);
+  background: rgb(135, 132, 132);
   border: 0.1em solid rgb(148, 148, 148);
 }
 
@@ -1515,10 +1515,13 @@ body.sidebar-Bottom {
   color: black;
   text-shadow: none;
 }
-.tooltip:hover {
+.tooltip:not(.mobile):hover {
   cursor: help;
 }
-.tooltip:hover .tooltiptext {
+.tooltip:not(.mobile):hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip.mobile:focus .tooltiptext {
   visibility: visible;
 }
 

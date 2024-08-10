@@ -11,15 +11,17 @@
     /**
      * Creates the HTML template for the sidebar.
      * 
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @memberof lit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTemplate
      */
-    window.lit.createSidebarTemplate = () => {
+    window.lit.createSidebarTemplate = (isMobile) => {
+        const mobileTag = isMobile ? 'mobile' : '';
         return html`
             <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets"> 
                 <div class="sidebar-header" id="sidebar-header">
-                    <button id="sidebar-switch-iv-moves" class="tooltip"><span>&#8644;</span></button>
+                    <button id="sidebar-switch-iv-moves" class="tooltip ${mobileTag}"><span>&#8644;</span></button>
                 </div>
                 <div class="sidebar-enemies-box visible" id="sidebar-enemies-box"></div>
                 <div class="sidebar-allies-box visible" id="sidebar-allies-box"></div>
@@ -53,11 +55,15 @@
      * @param {Object} pokemonData - The Pokémon data object.
      * @param {string} partyID - The ID of the party ('allies' or 'enemies').
      * @param {Object} dexData - The Pokédex data.
+     * @param {Object} sessionData
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
+     * @param {boolean} condensedView - Flag that indicates whether the condensed party display should be used.
      * @memberof lit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarPartyTemplate
      */
-    window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, condensedView) => {
+    window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, condensedView, isMobile) => {
+        const mobileTag = isMobile ? 'mobile' : '';
         return html`
             <div class="${partyID}-party">
                 ${pokemonData.pokemon.map((pokemon, counter) => {
@@ -72,7 +78,7 @@
 
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
-                            <div class="pokemon-entry-image tooltip ${rarityClass}">
+                            <div class="pokemon-entry-image tooltip ${mobileTag} ${rarityClass}">
                                 ${window.lit.createPokemonTooltipDiv(pokemon)}
                                 <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
 
@@ -105,23 +111,23 @@
                                 ` : '' }
                             </div>
                             <div class="pokemon-type-effectiveness-wrapper compact">
-                                ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 5, 3)}
+                                ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 5, 3)}
                             </div>
                             <div class="pokemon-type-effectiveness-wrapper default">
-                                ${window.lit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness)}
+                                ${window.lit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness, isMobile)}
                             </div>
                             <div class="pokemon-info-text-wrapper">
                                 <div class="pokemon-ability-nature">
                                     <span class="pokemon-ability  ${pokemon.ability.isHidden ? 'hidden-ability' : ''}">
                                         <span class="pokemon-ability-description">Ability:</span>
-                                        <div class="tooltip" style="display:inline;">
+                                        <div class="tooltip ${mobileTag}" style="display:inline;">
                                             <span class="pokemon-ability-value">${pokemon.ability.name}</span>
                                             ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                                         </div>                                                                                
                                     </span>
                                     <span class="pokemon-nature">
                                         <span class="pokemon-nature-description">Nature:</span>
-                                        <div class="tooltip" style="display:inline;">
+                                        <div class="tooltip ${mobileTag}" style="display:inline;">
                                             <span class="pokemon-nature-value">${pokemon.nature}</span>
                                             ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                                         </div>
@@ -132,7 +138,7 @@
                                 </div>
                                 ${partyID === 'enemies' ? '' : html`
                                     <div class="pokemon-moveset-wrapper">
-                                        ${window.lit.generateMovesetHTML(pokemon)}
+                                        ${window.lit.generateMovesetHTML(pokemon, isMobile)}
                                     </div>
                                 `}                       
                             </div>
@@ -214,11 +220,13 @@
      * Generates HTML for displaying a Pokemon's moveset.
      * 
      * @param {object} pokemon - Object representing all data known about this current Pokémon.
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @memberof lit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function 
      */
-    window.lit.generateMovesetHTML = (pokemon) => {
+    window.lit.generateMovesetHTML = (pokemon, isMobile) => {
+        const mobileTag = isMobile ? 'mobile' : '';
         return html`
             ${Object.keys(pokemon.moveset).map(i => {
                 const move = pokemon.moveset[i];
@@ -231,7 +239,7 @@
 
                 return html`
                     <div class="pokemon-move">
-                        <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip">
+                        <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip ${mobileTag}">
                             ${move.name}
                             ${window.lit.createTooltipDiv(moveTipHTML)}
                         </span>
@@ -248,6 +256,7 @@
      * in multiple rows.
      * 
      * @param {Object} typeEffectivenesses - The type effectiveness data object.
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @param {number} maxItemsPerRow - The maximum number of items per row.
      * @param {number} maxRows - The maximum number of rows.
      * @param {boolean} growRowLength - Whether to grow the row length.
@@ -255,7 +264,8 @@
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTypeEffectivenessWrapperCompact
      */
-    window.lit.createSidebarTypeEffectivenessWrapperCompact = (typeEffectivenesses, maxItemsPerRow = 5, maxRows = 4, growRowLength = true) => {
+    window.lit.createSidebarTypeEffectivenessWrapperCompact = (typeEffectivenesses, isMobile, maxItemsPerRow = 5, maxRows = 4, growRowLength = true) => {
+        const mobileTag = isMobile ? 'mobile' : '';
         const TypeIconUrls = window.lit.getTypeIconUrls();
         const typeItemList = [];
         let globalCounter = 0;
@@ -302,7 +312,7 @@
                     type,
                     iconUrl: `${TypeIconUrls[type]}`,                    
                     wrapperCssClasses: `type-effectiveness-category pokemon-type-${effectiveness}`,
-                    additionalStyles : ( type.toLowerCase() === 'dragon' ? 'transform: scaleX(-1) scaleY(-1); background-blend-mode: multiply; filter: contrast(0.7) hue-rotate(24deg);' : '' ),
+                    additionalStyles : '',
                     order: (globalCounter % itemsPerRow) + 1
                 };
 
@@ -339,8 +349,8 @@
 
                         return html`
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
-                                <div class="pokemon-type-icon-wrapper tooltip">
-                                    <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'), url('${item.iconUrl}'); ${item.additionalStyles}"></div>
+                                <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
+                                    <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'); ${item.additionalStyles}"></div>
                                     ${window.lit.createTooltipDiv(typeToolTipHTML)}
                                 </div>
                             </div>
@@ -472,34 +482,39 @@
     * Template function for rendering the non-compact sidebar type effectiveness wrapper.
     * 
     * @param {Object} typeEffectivenesses - The type effectiveness data object.
+    * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
     * @memberof lit
     * @returns {Lit-HTML-Template} - The HTML template result.
     * @function createSidebarTypeEffectivenessWrapper
     */
-    window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses) => html`
-        ${Object.keys(typeEffectivenesses).map(effectiveness => {
-            const TypeIconUrls = window.lit.getTypeIconUrls();
-            const effectivenessObj = typeEffectivenesses[effectiveness];
-            if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) || effectiveness === 'cssClasses') {
-                return '';
-            }
+    window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses, isMobile) => {
+        const mobileTag = isMobile ? 'mobile' : '';
+        return html`
+            ${Object.keys(typeEffectivenesses).map(effectiveness => {
+                const TypeIconUrls = window.lit.getTypeIconUrls();
+                const effectivenessObj = typeEffectivenesses[effectiveness];
+                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) || effectiveness === 'cssClasses') {
+                    return '';
+                }
 
-            const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
+                const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
 
-            return html`
-                <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
-                    ${allTypes.map((type) => {
-                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
+                return html`
+                    <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
+                        ${allTypes.map((type) => {
+                            const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
 
-                        return html`                    
-                            <div class="pokemon-type-icon-wrapper tooltip">
-                                <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
-                                ${window.lit.createTooltipDiv(typeToolTipHTML)}
-                            </div>
-                        `;
-                    })}
-                </div>
-            `;
-        })}
-    `;
+                            return html`                    
+                                <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
+                                    <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
+                                    ${window.lit.createTooltipDiv(typeToolTipHTML)}
+                                </div>
+                            `;
+                        })}
+                    </div>
+                `;
+            })}
+        `;
+    }
+
 })(window);

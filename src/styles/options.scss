@@ -1,6 +1,10 @@
-$color_1: var(--white-main);
-$color_2: var(--red-main);
-$color_3: var(--yellow-main);
+$color_1: rgb(248, 248, 248);   // white-main
+$color_1b: rgb(107, 90, 115);   // white-sub
+$color_2: rgb(248, 136, 128);   // red-main
+$color_2b: rgb(248, 48, 24);    // red-sub
+$color_3: rgb(248, 176, 90);    // yellow-main
+$color_3b: rgb(192, 120, 0);    // yellow-sub
+$color_4: rgb(0, 0, 0);         // black
 $font-family_1: 'PKMNems';
 $background-color_1: transparent;
 
@@ -9,23 +13,27 @@ $background-color_1: transparent;
     src: url('../../fonts/pkmnems.ttf') format('truetype');
 }
 :root {
-    --corner-size: 32px;
+    --corner-size: 24px;
+    /*
     --red-main: rgb(248, 136, 128);
     --red-sub: rgb(248, 48, 24);
     --yellow-main: rgb(248, 176, 90);
     --yellow-sub: rgb(192, 120, 0);
     --white-main: rgb(248, 248, 248);
     --white-sub: rgb(107, 90, 115);
-    --setting-text-size: 30px;
+    --black: rgb(0, 0, 0);
+    */
+    --setting-text-size: 25px;
 }
 body {
     margin: 0;
     position: relative;
-    width: 800px;
-    overflow: hidden;
+    /*width: 800px;*/
+    width: max-content;
     background: rgb(55, 45, 62);
     background-size: cover;
     background-repeat: no-repeat;
+    padding: calc( var(--corner-size) - 0.6em );
 }
 .background-container {
     position: absolute;
@@ -134,11 +142,19 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    padding: calc( var(--corner-size) - 0.6em );
     position: relative;
     z-index: 1;
     box-sizing: border-box;
     background: transparent;
+}
+.heading {
+    text-align: center;
+}
+.heading span {
+    font-weight: 700;
+    font-size: var(--setting-text-size);
+    color: $color_1;
+    font-family: $font-family_1;
 }
 .main-settings-block {
     display: flex;
@@ -150,16 +166,57 @@ body {
 }
 .input-item {
     display: flex;
-    align-items: center;
-    padding-left: 10px;
+    flex-direction: column;
+    padding-left: 5px;
     font-size: var(--setting-text-size);
+}
+.input-item:nth-child(2n) {
+    background: rgba(0,0,0,0.1);
+}
+.setting-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.setting-desc-wrapper {
+    max-width: 650px;
+    display: none;
+    padding-left: 1em;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+.input-item.open .setting-desc-wrapper {
+    display: flex;
+}
+.setting-desc {
+    font-size: calc(var(--setting-text-size) * 0.8);
+    color: $color_1;
+    font-family: $font-family_1;
 }
 .setting-label {
     margin-right: 10px;
     flex-grow: 1;
     color: $color_3;
-    text-shadow: 2px 2px 0 var(--white-sub);
     font-family: $font-family_1;
+
+    padding-left: calc(var(--setting-text-size) * 0.8);
+    position: relative;
+}
+.setting-label span {
+    cursor: pointer;
+}
+.setting-label::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+.input-item.open .setting-label::before {
+    transform: translateY(-45%) rotate(90deg);
+    color: darken($color_3, 15%);
 }
 .bool-label {
     width: 160px !important;
@@ -174,16 +231,15 @@ body {
         cursor: pointer;
         text-align: center;
         color: $color_1;
-        text-shadow: 2px 2px 0 var(--white-sub);
     }
     .option.selected {
         color: $color_2;
-        text-shadow: 2px 2px 0 var(--red-sub);
+        text-shadow: 1px 1px 0 $color_2b;
     }
 }
 .setting-label.focus {
     color: $color_3;
-    text-shadow: 2px 2px 0 var(--red-sub);
+    text-shadow: 1px 1px 0 $color_2b;
     font-family: $font-family_1;
 }
 #scaleValue {

@@ -30,20 +30,21 @@
      * Creates a div element and it's content for a Pokémon card.
      * @param {string} cardId - The ID of the Pokémon card.
      * @param {Object} pokemon - The Pokémon object.
-     * @param {Lit-HTML-Template} opacitySliderTemplate - lit-html object containing the opactiy slider HTML.
      * @param {Lit-HTML-Template} typeEffectivenessHTML - lit-html object containing the type effectiveness HTML.
      * @param {Object} weather - The weather object.
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @returns {Lit-HTML-Template} The div element for the Pokémon card.
      * @memberof lit
      * @function createPokemonCardContent
      */
-    window.lit.createPokemonCardContent = (cardId, pokemon, opacitySliderTemplate, typeEffectivenessHTML, weather) => {
+    window.lit.createPokemonCardContent = (cardId, pokemon, typeEffectivenessHTML, weather, isMobile) => {
         const Stat = window.lit.getStatList();
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
         const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
         const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element is shown
         const natureStats = window.lit.getNatureStatChange(pokemon.nature);
         const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
+        const mobileTag = isMobile ? 'mobile' : '';
 
         return html`
             <div class="pokemon-cards">
@@ -52,7 +53,7 @@
                         <div class="${rarityClass}" style="position: relative;">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
                             ${cardId === 'enemies' ? html`
-                                <div class="card-pokemon-info enemies tooltip">
+                                <div class="card-pokemon-info enemies tooltip ${mobileTag}">
                                     ${window.lit.createPokemonTooltipDiv(pokemon)}
                                     ${pokemon.gen ? html`
                                         <span class="card-pokemon-info-generation">${generationLabel}</span>
@@ -74,13 +75,13 @@
                     <div class="pokemon-card-text-wrapper">
                         <div class="text-base">
                             <span>${pokemon.name}&nbsp;-&nbsp;</span>
-                            <div class="tooltip">
+                            <div class="tooltip ${mobileTag}">
                                 <span>Ability: </span>
                                 <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
                                 ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                             </div>
                             ${ pokemon.nature ? html`
-                                <div class="tooltip">
+                                <div class="tooltip ${mobileTag}">
                                     <span>&nbsp;-&nbsp;${pokemon.nature}</span>
                                     ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                                 </div>
@@ -110,14 +111,16 @@
      * @param {string} ivsGeneratedHTML - Pre-generated html string for pokemon IVs.
      * @param {Object} weather - The weather object.
      * @param {boolean} showTypeEffectiveness - Flag indicating if the minified cards type effectivenesses should be shown.
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @returns {Lit-HTML-Template} The div element for the minified Pokémon card.
      * @memberof lit
      * @function createPokemonCardContentMinified
      */
-    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather, showTypeEffectiveness) => {
+    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather, showTypeEffectiveness, isMobile) => {
         const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
         const natureStats = window.lit.getNatureStatChange(pokemon.nature);
         const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
+        const mobileTag = isMobile ? 'mobile' : '';
 
         return html`
             <div class="pokemon-cards minified">
@@ -127,13 +130,13 @@
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon minified"></canvas>
                         </div>
                         <span>${pokemon.name}&nbsp;-&nbsp;</span>
-                        <div class="tooltip">
+                        <div class="tooltip ${mobileTag}">
                             <span>Ability: </span>
                             <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
                             ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                         </div>
                         ${ pokemon.nature ? html`
-                            <div class="tooltip">
+                            <div class="tooltip ${mobileTag}">
                                 <span>&nbsp;-&nbsp;${pokemon.nature}</span>
                                 ${window.lit.createTooltipDiv(natureDescriptionHTML)}
                             </div>
@@ -148,7 +151,7 @@
                         </div>
                     ` : ''}
                     <div class="pokemon-type-effectiveness-wrapper compact ${ showTypeEffectiveness ? 'visible' : 'disabled' }">
-                        ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, 15, 2)}
+                        ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 15, 2)}
                     </div>
                 </div>
             </div>
@@ -163,6 +166,7 @@
      * @function createTypeEffectivenessWrapper
      */
     window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
+        const mobileTag = window.lit.mobileCheck() ? 'mobile' : '';
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const TypeIconUrls = window.lit.getTypeIconUrls();
@@ -188,7 +192,7 @@
                 }
 
                 return html`
-                    <div class="pokemon-${effectiveness} tooltip">
+                    <div class="pokemon-${effectiveness} tooltip ${mobileTag}">
                         ${groupedTypes.map((group) => html`
                             <div>
                                 ${group.map((type) => {
@@ -329,6 +333,8 @@
      * @returns {Object} Contains the slider element id and lit-html object.
      * @memberof lit
      * @function createOpacitySliderDiv
+     * 
+     * currently not used
      */
     window.lit.createOpacitySliderDiv = (divId, changeOpacity, initialValue = "100", min = "10", max = "100") => {
         const result = {};

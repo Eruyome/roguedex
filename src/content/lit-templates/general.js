@@ -5,12 +5,12 @@
  * @file 'src/content/lit-templates/general.js'
  */
 
-(function(window) {
+(function (window) {
     window.lit = window.lit || {};
 
     /**
      * Generates HTML for a small tooltip.
-     * 
+     *
      * @param {string} tip - Tooltip contents.
      * @memberof lit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
@@ -20,11 +20,11 @@
         return html`
             <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
         `;
-    }
+    };
 
     /**
      * Capitalizes the first letter of any string.
-     * 
+     *
      * @param {string} string - Any input string.
      * @memberof lit
      * @returns {string} The capitalized string.
@@ -33,11 +33,11 @@
     window.lit.capitalizeFirstLetter = (string) => {
         string = string.toLowerCase();
         return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    };
 
     /**
      * Generates HTML for a status bar, showing certain info about the running extension.
-     * 
+     *
      * @param {object} properties
      * @memberof lit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
@@ -52,20 +52,20 @@
                 <span class="rd-status-session">Save Data not loaded yet! UI might not work (try refreshing if it persists).</span>
             ` : '' }
         `;
-    }
+    };
 
     /**
      * Generates HTML for an exclamation icon that give a hint/reminder to open the settings menu and how to.
-     * 
+     *
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @memberof lit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function createSettingsHintElement
      */
     window.lit.createSettingsHintElement = (isMobile) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+        const mobileTag = isMobile ? "mobile" : "";
 
-        let tooltipContent = '';
+        let tooltipContent = "";
         tooltipContent += `<span>Make sure to take a look at the <b>Settings Menu</b>! (You can disable this hint there)</span>`;
         tooltipContent += `<br>`;
         tooltipContent += `<span>If the extension icon shows in your <b>browsers extension area</b> (top right corner),</span>`;
@@ -83,7 +83,7 @@
             tooltipContent += `<span>3. Pin the Extension:</span>`;
             tooltipContent += `<span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Chrome</b>: Click the pin icon next to the extension's name.</span>`;
             tooltipContent += `<span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Firefox</b>: Click the pin icon next to the extension's name or select "Pin to Toolbar".</span>`;
-        }     
+        }
 
         // prettier-ignore
         return html`
@@ -92,11 +92,11 @@
                 ${window.lit.createTooltipDiv(tooltipContent)}
             </div>
         `;
-    }
-        
+    };
+
     /**
      * Creates a tooltip HTML template for an individual Pokémon.
-     * 
+     *
      * @function createPokemonTooltipDiv
      * @param {Object} pokemon - The data object for the Pokémon.
      * @param {string} pokemon.name - The name of the Pokémon.
@@ -111,9 +111,9 @@
      * @returns {Lit-HTML-Template} - The HTML template for the Pokémon tooltip.
      */
     window.lit.createPokemonTooltipDiv = (pokemon) => {
-        let variant = ( pokemon.paradox ? `Paradox (${window.lit.capitalizeFirstLetter(pokemon.paradox)})` : '' );
-        variant += ( pokemon.paradox && pokemon.region ? ' | ' : '' );
-        variant += ( pokemon.region ? `(${window.lit.capitalizeFirstLetter(pokemon.region)}) Region` : '' );
+        let variant = pokemon.paradox ? `Paradox (${window.lit.capitalizeFirstLetter(pokemon.paradox)})` : "";
+        variant += pokemon.paradox && pokemon.region ? " | " : "";
+        variant += pokemon.region ? `(${window.lit.capitalizeFirstLetter(pokemon.region)}) Region` : "";
 
         // prettier-ignore
         return html`
@@ -146,71 +146,71 @@
                 <span>Friendship EXP: ${pokemon.friendship}</span>
             </div>
         `;
-    }
+    };
 
     /**
      * Retrieves an object mapping Pokémon types to their respective numeric identifiers.
-     * 
+     *
      * @memberof lit
      * @returns {Object} An object where keys are type names and values are numeric identifiers.
      * @function getTypeList
      */
     window.lit.getTypeList = () => {
-        let Types
+        let Types;
         (function (Types) {
-            Types[Types.normal = 1] = 1;
-            Types[Types.fighting = 2] = 2;
-            Types[Types.flying = 3] = 3;
-            Types[Types.poison = 4] = 4;
-            Types[Types.ground = 5] = 5;
-            Types[Types.rock = 6] = 6;
-            Types[Types.bug = 7] = 7;
-            Types[Types.ghost = 8] = 8;
-            Types[Types.steel = 9] = 9;
-            Types[Types.fire = 10] = 10;
-            Types[Types.water = 11] = 11;
-            Types[Types.grass = 12] = 12;
-            Types[Types.electric = 13] = 13;
-            Types[Types.psychic = 14] = 14;
-            Types[Types.ice = 15] = 15;
-            Types[Types.dragon = 16] = 16;
-            Types[Types.dark = 17] = 17;
-            Types[Types.fairy = 18] = 18;
-            Types[Types.stellar = 19] = 19;
+            Types[(Types.normal = 1)] = 1;
+            Types[(Types.fighting = 2)] = 2;
+            Types[(Types.flying = 3)] = 3;
+            Types[(Types.poison = 4)] = 4;
+            Types[(Types.ground = 5)] = 5;
+            Types[(Types.rock = 6)] = 6;
+            Types[(Types.bug = 7)] = 7;
+            Types[(Types.ghost = 8)] = 8;
+            Types[(Types.steel = 9)] = 9;
+            Types[(Types.fire = 10)] = 10;
+            Types[(Types.water = 11)] = 11;
+            Types[(Types.grass = 12)] = 12;
+            Types[(Types.electric = 13)] = 13;
+            Types[(Types.psychic = 14)] = 14;
+            Types[(Types.ice = 15)] = 15;
+            Types[(Types.dragon = 16)] = 16;
+            Types[(Types.dark = 17)] = 17;
+            Types[(Types.fairy = 18)] = 18;
+            Types[(Types.stellar = 19)] = 19;
         })(Types || (Types = {}));
 
-        return Types
-    }
+        return Types;
+    };
 
     /**
      * Retrieves an object mapping Pokémon types to their respective icon urls.
-     * 
+     *
      * @memberof lit
      * @returns {Object} An object where keys are type names and values are url strings.
      * @function getTypeList
      */
     window.lit.getTypeIconUrls = () => {
-        const extensionUrl = browserApi.runtime.getURL('/images/types/');
+        const extensionUrl = browserApi.runtime.getURL("/images/types/");
         const typeMap = {
-            1: 'normal',
-            2: 'fighting',
-            3: 'flying',
-            4: 'poison',
-            5: 'ground',
-            6: 'rock',
-            7: 'bug',
-            8: 'ghost',
-            9: 'steel',
-            10: 'fire',
-            11: 'water',
-            12: 'grass',
-            13: 'electric',
-            14: 'psychic',
-            15: 'ice',
-            16: 'dragon',
-            17: 'dark',
-            18: 'fairy',
-            19: 'stellar'
+            1: "normal",
+            2: "fighting",
+            3: "flying",
+            4: "poison",
+            5: "ground",
+            6: "rock",
+            7: "bug",
+            8: "ghost",
+            9: "steel",
+            10: "fire",
+            11: "water",
+            12: "grass",
+            13: "electric",
+            14: "psychic",
+            15: "ice",
+            16: "dragon",
+            17: "dark",
+            18: "fairy",
+            19: "stellar",
         };
 
         const Urls = Object.entries(typeMap).reduce((acc, [index, typeName]) => {
@@ -223,7 +223,7 @@
 
     /**
      * Retrieves the stat changes associated with a given Pokémon nature.
-     * 
+     *
      * @param {string} nature - The name of the nature.
      * @returns {[string, string]} An array containing the increased and decreased stats.
      * - The first element is the stat that increases.
@@ -231,52 +231,52 @@
      */
     window.lit.getNatureStatChange = (nature) => {
         const natures = {
-            "hardy": { inc: "ATK", dec: "ATK" },
-            "lonely": { inc: "ATK", dec: "DEF" },
-            "brave": { inc: "ATK", dec: "SPD" },
-            "adamant": { inc: "ATK", dec: "Sp.ATK" },
-            "naughty": { inc: "ATK", dec: "Sp.DEF" },
-            "bold": { inc: "DEF", dec: "ATK" },
-            "docile": { inc: "DEF", dec: "DEF" },
-            "relaxed": { inc: "DEF", dec: "SPD" },
-            "impish": { inc: "DEF", dec: "Sp.ATK" },
-            "lax": { inc: "DEF", dec: "Sp.DEF" },
-            "timid": { inc: "SPD", dec: "ATK" },
-            "hasty": { inc: "SPD", dec: "DEF" },
-            "serious": { inc: "SPD", dec: "SPD" },
-            "jolly": { inc: "SPD", dec: "Sp.ATK" },
-            "naive": { inc: "SPD", dec: "Sp.DEF" },
-            "modest": { inc: "Sp.ATK", dec: "ATK" },
-            "mild": { inc: "Sp.ATK", dec: "DEF" },
-            "quiet": { inc: "Sp.ATK", dec: "SPD" },
-            "bashful": { inc: "Sp.ATK", dec: "Sp.ATK" },
-            "rash": { inc: "Sp.ATK", dec: "Sp.DEF" },
-            "calm": { inc: "Sp.DEF", dec: "ATK" },
-            "gentle": { inc: "Sp.DEF", dec: "DEF" },
-            "sassy": { inc: "Sp.DEF", dec: "SPD" },
-            "careful": { inc: "Sp.DEF", dec: "Sp.ATK" },
-            "quirky": { inc: "Sp.DEF", dec: "Sp.DEF" }
+            hardy: { inc: "ATK", dec: "ATK" },
+            lonely: { inc: "ATK", dec: "DEF" },
+            brave: { inc: "ATK", dec: "SPD" },
+            adamant: { inc: "ATK", dec: "Sp.ATK" },
+            naughty: { inc: "ATK", dec: "Sp.DEF" },
+            bold: { inc: "DEF", dec: "ATK" },
+            docile: { inc: "DEF", dec: "DEF" },
+            relaxed: { inc: "DEF", dec: "SPD" },
+            impish: { inc: "DEF", dec: "Sp.ATK" },
+            lax: { inc: "DEF", dec: "Sp.DEF" },
+            timid: { inc: "SPD", dec: "ATK" },
+            hasty: { inc: "SPD", dec: "DEF" },
+            serious: { inc: "SPD", dec: "SPD" },
+            jolly: { inc: "SPD", dec: "Sp.ATK" },
+            naive: { inc: "SPD", dec: "Sp.DEF" },
+            modest: { inc: "Sp.ATK", dec: "ATK" },
+            mild: { inc: "Sp.ATK", dec: "DEF" },
+            quiet: { inc: "Sp.ATK", dec: "SPD" },
+            bashful: { inc: "Sp.ATK", dec: "Sp.ATK" },
+            rash: { inc: "Sp.ATK", dec: "Sp.DEF" },
+            calm: { inc: "Sp.DEF", dec: "ATK" },
+            gentle: { inc: "Sp.DEF", dec: "DEF" },
+            sassy: { inc: "Sp.DEF", dec: "SPD" },
+            careful: { inc: "Sp.DEF", dec: "Sp.ATK" },
+            quirky: { inc: "Sp.DEF", dec: "Sp.DEF" },
         };
         const natureObj = natures[nature.toLowerCase()];
-        return [ natureObj.inc || '', natureObj.dec || '' ]
-    }
+        return [natureObj.inc || "", natureObj.dec || ""];
+    };
 
     /**
      * Retrieves an object mapping Pokémon region names to their respective icon urls.
-     * 
+     *
      * @memberof lit
      * @returns {Object} An object where keys are type names and values are url strings.
      * @function getTypeList
      */
     window.lit.getVariantSymbol = (name) => {
-        const extensionUrl = browserApi.runtime.getURL('/images/variants/');
+        const extensionUrl = browserApi.runtime.getURL("/images/variants/");
 
         const urls = {
-            alola: extensionUrl + 'alola.png',
-            hisui: extensionUrl + 'hisui.png',
-            galar: extensionUrl + 'galar.png',
-            paldea: extensionUrl + 'paldea.png',
-            paradox: extensionUrl + 'paradox.png'
+            alola: extensionUrl + "alola.png",
+            hisui: extensionUrl + "hisui.png",
+            galar: extensionUrl + "galar.png",
+            paldea: extensionUrl + "paldea.png",
+            paradox: extensionUrl + "paradox.png",
         };
 
         return urls[name] || null;
@@ -288,7 +288,7 @@
 
     /**
      * Retrieves an object mapping Pokémon stats to their respective names.
-     * 
+     *
      * @memberof lit
      * @returns {Object} An object where keys are stat identifiers and values are stat names.
      * @function getStatList
@@ -296,64 +296,62 @@
     window.lit.getStatList = () => {
         let Stat;
         (function (Stat) {
-            Stat[Stat.HP = 0] = "HP";
-            Stat[Stat.ATK = 1] = "ATK";
-            Stat[Stat.DEF = 2] = "DEF";
-            Stat[Stat.SPATK = 3] = "SPATK";
-            Stat[Stat.SPDEF = 4] = "SPDEF";
-            Stat[Stat.SPD = 5] = "SPD";
+            Stat[(Stat.HP = 0)] = "HP";
+            Stat[(Stat.ATK = 1)] = "ATK";
+            Stat[(Stat.DEF = 2)] = "DEF";
+            Stat[(Stat.SPATK = 3)] = "SPATK";
+            Stat[(Stat.SPDEF = 4)] = "SPDEF";
+            Stat[(Stat.SPD = 5)] = "SPD";
         })(Stat || (Stat = {}));
 
-        return Stat
-    }
+        return Stat;
+    };
 
     /**
      * Returns the browsers scrollbar width in pixels.
-     * 
+     *
      * @function getScrollbarWidth
      * @memberof lit
      * @returns {number} Scrollbar width.
      */
     window.lit.getScrollbarWidth = () => {
         // Creating invisible container
-        const outer = document.createElement('div');
-        outer.style.visibility = 'hidden';
-        outer.style.overflow = 'scroll'; // forcing scrollbar to appear
-        outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+        const outer = document.createElement("div");
+        outer.style.visibility = "hidden";
+        outer.style.overflow = "scroll"; // forcing scrollbar to appear
+        outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
         document.body.appendChild(outer);
-      
+
         // Creating inner element and placing it in the container
-        const inner = document.createElement('div');
+        const inner = document.createElement("div");
         outer.appendChild(inner);
-        
+
         // Calculating difference between container's full width and the child width
-        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-      
+        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
         // Removing temporary elements from the DOM
         outer.parentNode.removeChild(outer);
-      
+
         return scrollbarWidth;
-    }
+    };
 
     /**
      * Checks if the current device is a mobile device based on the user agent.
-     * 
+     *
      * @function mobileCheck
      * @memberof lit
      * @returns {boolean} True if the device is a mobile device, false otherwise.
      */
     window.lit.mobileCheck = () => {
-        const isTouchDevice = () => 
-            'ontouchstart' in window || 
-            navigator.maxTouchPoints > 0 || 
-            navigator.msMaxTouchPoints > 0;
+        const isTouchDevice = () =>
+            "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 
         /**
          * @function
          * @description Self-invoking function to check the user agent for mobile devices.
          * @param {string} userAgent - The user agent string to test against the mobile device regex.
          * https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
-         */        
+         */
         let isMobileDevice = false;
         /* eslint-disable */
         // prettier-ignore
@@ -366,5 +364,4 @@
 
         return isMobileDevice && isTouchDevice();
     };
-
 })(window);

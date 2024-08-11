@@ -20,7 +20,7 @@ const contentInjectables = [
     "/content/util_classes/pokemonMapper.util.js",
     "/content/util_classes/localStorage.util.js",
     "/content/util_classes/pokemonIconDrawer.util.js",
-    "/content/util_classes/uiController.util.js"
+    "/content/util_classes/uiController.util.js",
 ];
 
 class UtilsClass {
@@ -58,7 +58,7 @@ class UtilsClass {
      */
     dispatchEvent(event) {
         if (this.eventListeners[event]) {
-            this.eventListeners[event].forEach(listener => listener());
+            this.eventListeners[event].forEach((listener) => listener());
         }
     }
 
@@ -77,7 +77,7 @@ class UtilsClass {
     set isReady(value) {
         if (this._isReady !== value) {
             this._isReady = value;
-            this.dispatchEvent('isReadyChange');
+            this.dispatchEvent("isReadyChange");
         }
     }
 
@@ -89,7 +89,7 @@ class UtilsClass {
         this.injectScripts();
     }
 
-     /**
+    /**
      * Injects utility scripts into the content page.
      * @private
      */
@@ -131,7 +131,7 @@ class UtilsClass {
         } else if (targetScript.includes("/content/util_classes/localStorage.util.js")) {
             this.classesReady["localStorage.util.js"] = true;
             this.LocalStorage = new LocalStorageClass();
-            this.dispatchEvent('localStorageClassReady');
+            this.dispatchEvent("localStorageClassReady");
         } else if (targetScript.includes("/content/util_classes/pokemonIconDrawer.util.js")) {
             this.classesReady["pokemonIconDrawer.util.js"] = true;
             this.PokemonIconDrawer = new PokemonIconDrawer();
@@ -147,7 +147,7 @@ class UtilsClass {
      * @private
      */
     checkIfReady() {
-        const allReady = Object.values(this.classesReady).every(value => value);
+        const allReady = Object.values(this.classesReady).every((value) => value);
         if (allReady) {
             this.isReady = true;
         }
@@ -159,9 +159,17 @@ class UtilsClass {
      * @readonly
      */
     get browserApi() {
-        if (typeof browser !== "undefined" && typeof browser.runtime !== "undefined" && typeof browser.runtime.getURL === "function") {
+        if (
+            typeof browser !== "undefined" &&
+            typeof browser.runtime !== "undefined" &&
+            typeof browser.runtime.getURL === "function"
+        ) {
             return browser; // Firefox or compatible
-        } else if (typeof chrome !== "undefined" && typeof chrome.runtime !== "undefined" && typeof chrome.runtime.getURL === "function") {
+        } else if (
+            typeof chrome !== "undefined" &&
+            typeof chrome.runtime !== "undefined" &&
+            typeof chrome.runtime.getURL === "function"
+        ) {
             return chrome; // Chrome or compatible
         } else {
             console.error("Browser API not found or unsupported browser");
@@ -173,4 +181,3 @@ class UtilsClass {
 // Attach an instance of UtilsClass to the window object
 window.Utils = new UtilsClass();
 console.debug("UtilsClass instance created and assigned to window.Utils:", window.Utils);
-    

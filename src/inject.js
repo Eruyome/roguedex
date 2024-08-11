@@ -5,16 +5,24 @@
  * @file 'src/inject.js'
  */
 
-console.info('RogueDex content script start.');
+console.info("RogueDex content script start.");
 
 /**
  * Initializes the browser API based on the browser environment.
  * @returns {object|null} The browser API object or null if unsupported browser.
  */
 const browserApi = (() => {
-    if (typeof browser !== "undefined" && typeof browser.runtime !== "undefined" && typeof browser.runtime.getURL === "function") {
+    if (
+        typeof browser !== "undefined" &&
+        typeof browser.runtime !== "undefined" &&
+        typeof browser.runtime.getURL === "function"
+    ) {
         return browser; // Firefox or compatible
-    } else if (typeof chrome !== "undefined" && typeof chrome.runtime !== "undefined" && typeof chrome.runtime.getURL === "function") {
+    } else if (
+        typeof chrome !== "undefined" &&
+        typeof chrome.runtime !== "undefined" &&
+        typeof chrome.runtime.getURL === "function"
+    ) {
         return chrome; // Chrome or compatible
     } else {
         console.error("Browser API not found or unsupported browser"); // Unsupported browser or environment
@@ -23,10 +31,9 @@ const browserApi = (() => {
 })();
 
 // inject injected script
-const s = document.createElement('script');
-s.src = browserApi.runtime.getURL('injected.js');
+const s = document.createElement("script");
+s.src = browserApi.runtime.getURL("injected.js");
 s.onload = function () {
     this.remove();
 };
 (document.head || document.documentElement).appendChild(s);
- 

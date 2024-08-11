@@ -97,25 +97,15 @@ function scriptInjector() {
     }
 
     // Set CSS url variables in the :root pseudo-class
-    const rarityHoloFadeUrl = browserApi.runtime.getURL(
-        "/images/foil/compressed/holo-fade.gif"
-    );
-    const rarityHoloUrl = browserApi.runtime.getURL(
-        "/images/foil/compressed/holo.png"
-    );
+    const rarityHoloFadeUrl = browserApi.runtime.getURL("/images/foil/compressed/holo-fade.gif");
+    const rarityHoloUrl = browserApi.runtime.getURL("/images/foil/compressed/holo.png");
     const extensionIcon = browserApi.runtime.getURL("/images/RogueDexIcon.png");
     document.documentElement.style.setProperty(
         "--extension-rarity-bg-image-holo-fade",
         `url(${rarityHoloFadeUrl})`
     );
-    document.documentElement.style.setProperty(
-        "--extension-rarity-bg-image-holo",
-        `url(${rarityHoloUrl})`
-    );
-    document.documentElement.style.setProperty(
-        "--extension-icon",
-        `url(${extensionIcon})`
-    );
+    document.documentElement.style.setProperty("--extension-rarity-bg-image-holo", `url(${rarityHoloUrl})`);
+    document.documentElement.style.setProperty("--extension-icon", `url(${extensionIcon})`);
 }
 
 /**
@@ -125,10 +115,7 @@ function scriptInjector() {
 function isUtilsProperlyInitialized() {
     if (window.Utils && window.Utils instanceof UtilsClass) {
         // Check for expected properties and methods
-        return (
-            typeof window.Utils.init === "function" &&
-            typeof window.Utils.injectScripts === "function"
-        );
+        return typeof window.Utils.init === "function" && typeof window.Utils.injectScripts === "function";
     }
     return false;
 }
@@ -156,20 +143,8 @@ function initUtilities() {
         window.Utils.init();
         window.Utils.on("localStorageClassReady", () => {
             updateExtensionStatus();
-            setInitialPokemonCardPosition(
-                "allies",
-                5,
-                uiDataGlobals.scrollbarWidth,
-                1.5,
-                25
-            );
-            setInitialPokemonCardPosition(
-                "enemies",
-                5,
-                uiDataGlobals.scrollbarWidth,
-                1.5,
-                25
-            );
+            setInitialPokemonCardPosition("allies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
+            setInitialPokemonCardPosition("enemies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
         });
     } else {
         console.error("UtilsClass is not properly initialized.");
@@ -197,8 +172,7 @@ function setInitialPokemonCardPosition(
 ) {
     let storedPos;
     try {
-        storedPos =
-            window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
+        storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
     } catch (e) {
         console.error(e);
     }
@@ -231,8 +205,7 @@ function setInitialPokemonCardPosition(
  * @memberof window
  */
 async function updateExtensionStatus(properties) {
-    const extensionSettings =
-        await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
     let wrapper = document.getElementById("extension-status");
 
     if (!wrapper) {
@@ -247,8 +220,7 @@ async function updateExtensionStatus(properties) {
         wrapper = document.getElementById("extension-status");
     }
     // Use an empty string if properties.text is '', a default value if null/undefined, otherwise use the provided value.
-    const text =
-        properties?.text === "" ? "" : (properties?.text ?? "RogueDex");
+    const text = properties?.text === "" ? "" : (properties?.text ?? "RogueDex");
     // Uses 'unknown' when 'properties.sessionState' is null or undefined.
     const sessionState = properties?.sessionState ?? "dont-show";
 
@@ -270,9 +242,7 @@ async function updateExtensionStatus(properties) {
  * @function createSettingsHint
  */
 async function createSettingsHint() {
-    const settingsHintElement = window.lit.createSettingsHintElement(
-        uiDataGlobals.isMobile
-    );
+    const settingsHintElement = window.lit.createSettingsHintElement(uiDataGlobals.isMobile);
     render(settingsHintElement, document.body);
 }
 
@@ -344,10 +314,8 @@ function repositionElementWithinViewport(element, marginFromEdge = 0) {
     const rect = element.getBoundingClientRect();
 
     // Calculate necessary adjustments based on viewport size and element dimensions
-    const viewportWidth =
-        window.innerWidth || document.documentElement.clientWidth;
-    const viewportHeight =
-        window.innerHeight || document.documentElement.clientHeight;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
     // Calculate new position to keep the margin from the viewport edge
     let newTop = rect.top;
@@ -385,30 +353,16 @@ function repositionElementWithinViewport(element, marginFromEdge = 0) {
  * @param {string} [id1="enemies"] - The ID of the first wrapper.
  * @param {string} [id2="allies"] - The ID of the second wrapper.
  */
-function initPokemonCardWrappers(
-    showSidebar = false,
-    id1 = "enemies",
-    id2 = "allies"
-) {
+function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "allies") {
     return new Promise((resolve) => {
         const initialize = async () => {
-            if (
-                initStates.cardsInitialized &&
-                document.getElementById(id1) &&
-                document.getElementById(id2)
-            ) {
+            if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
                 resolve();
                 return;
             }
 
-            const enemiesWrapper = window.lit.createCardWrapper(
-                id1,
-                showSidebar
-            );
-            const alliesWrapper = window.lit.createCardWrapper(
-                id2,
-                showSidebar
-            );
+            const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
+            const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
 
             const body = document.body;
 
@@ -435,14 +389,8 @@ function initPokemonCardWrappers(
             // Optional console logs
             const debug = false;
             if (debug) {
-                console.log(
-                    `${id1} pokemon card wrapper created:`,
-                    newWrapper1
-                );
-                console.log(
-                    `${id2} pokemon card wrapper created:`,
-                    newWrapper2
-                );
+                console.log(`${id1} pokemon card wrapper created:`, newWrapper1);
+                console.log(`${id2} pokemon card wrapper created:`, newWrapper2);
             }
 
             initStates.cardsInitialized = true;
@@ -494,9 +442,7 @@ function changePokemonCardOpacity(elementIds, value) {
             uiDataGlobals.wrapperDivPositions[divId].opacity = value;
             div.style.opacity = `${opacity}`;
         } else {
-            console.error(
-                `Change Pokemon Card Opacity: Element with ID '${divId}' not found.`
-            );
+            console.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
         }
     });
 }
@@ -513,8 +459,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
     const { id } = click.target;
     const [divId, direction] = id.split("-"); // Destructuring for clarity
 
-    const partySize =
-        uiDataGlobals.activePokemonParties[partyId].pokemon.length;
+    const partySize = uiDataGlobals.activePokemonParties[partyId].pokemon.length;
 
     // If no Pokemon in the party, initialize creation
     if (partySize === 0) {
@@ -552,20 +497,9 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
  * @param {boolean} showMiniCardTypes - Flag indicating if the minified cards type effectivenesses should be shown.
  * @returns {Promise<Lit-HTML-Template>} - The created Pokemon card template.
  */
-async function chooseCardType(
-    divId,
-    pokemon,
-    weather,
-    minified,
-    showMiniCardTypes
-) {
+async function chooseCardType(divId, pokemon, weather, minified, showMiniCardTypes) {
     if (minified) {
-        return await createPokemonCardDivMinified(
-            divId,
-            pokemon,
-            weather,
-            showMiniCardTypes
-        );
+        return await createPokemonCardDivMinified(divId, pokemon, weather, showMiniCardTypes);
     } else {
         return await createPokemonCardDiv(divId, pokemon, weather);
     }
@@ -582,8 +516,7 @@ async function chooseCardType(
  */
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
-    const extensionSettings =
-        await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
     const top = uiDataGlobals.wrapperDivPositions[divId]?.top || "10px";
     const left =
         uiDataGlobals.wrapperDivPositions[divId]?.left ||
@@ -611,15 +544,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
 
         const content = html` ${buttonsObj.html} ${cardObj.html} `;
 
-        await updateCardWrapper(
-            divId,
-            top,
-            left,
-            right,
-            opacity,
-            content,
-            extensionSettings.showSidebar
-        );
+        await updateCardWrapper(divId, top, left, right, opacity, content, extensionSettings.showSidebar);
         window.Utils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
         return document.getElementById(divId);
     });
@@ -637,15 +562,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
  * @param {Lit-HTML-Template} content - The content to render in the wrapper.
  * @param {boolean} [showSidebar=false] - Flag indicating if the sidebar should be shown.
  */
-async function updateCardWrapper(
-    divId,
-    top,
-    left,
-    right,
-    opacity,
-    content,
-    showSidebar = false
-) {
+async function updateCardWrapper(divId, top, left, right, opacity, content, showSidebar = false) {
     const existingWrapper = document.getElementById(divId);
 
     if (existingWrapper) {
@@ -712,20 +629,11 @@ function setElementProperties(element, properties) {
  * @param {boolean} showMiniCardTypes - Flag indicating whether the type effectivenesses should be shown.
  * @returns {Promise<Lit-HTML-Template>} - The created minified Pokemon card template.
  */
-async function createPokemonCardDivMinified(
-    cardId,
-    pokemon,
-    weather,
-    showMiniCardTypes
-) {
+async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCardTypes) {
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
     const simpleDisplay = cardId.toLowerCase() === "allies";
-    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(
-        pokemon,
-        dexData,
-        simpleDisplay
-    );
+    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
         html: window.lit.createPokemonCardContentMinified(
@@ -749,9 +657,7 @@ async function createPokemonCardDivMinified(
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(
-        pokemon.typeEffectiveness
-    );
+    const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
         html: window.lit.createPokemonCardContent(
@@ -770,9 +676,7 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
  * @function createPanels
  */
 function createPanels() {
-    const sidebarTemplate = window.lit.createSidebarTemplate(
-        uiDataGlobals.isMobile
-    );
+    const sidebarTemplate = window.lit.createSidebarTemplate(uiDataGlobals.isMobile);
     const bottomPanelTemplate = window.lit.createBottomPanelTemplate();
 
     render(sidebarTemplate, document.body, {
@@ -811,9 +715,7 @@ async function renderSidebarPartyTemplate(
 ) {
     const savedData = window.Utils.LocalStorage.getPlayerData();
     const pokeData = uiDataGlobals.activePokemonParties[partyID];
-    const sidebarPartyElement = document.getElementById(
-        `sidebar-${partyID}-box`
-    );
+    const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
 
     if (pokeData?.pokemon?.length) {
         const condensedView = await adjustSidebarView(
@@ -831,10 +733,7 @@ async function renderSidebarPartyTemplate(
         render(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
-            window.Utils.PokemonIconDrawer.getPokemonIcon(
-                value,
-                `sidebar_${partyID}_${i}`
-            );
+            window.Utils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
         }
     }
 
@@ -850,12 +749,8 @@ async function renderSidebarPartyTemplate(
  * @param {number|null} breakpointOverridePartyDisplay - The breakpoint of Pokémon in the sidebar at which the ally party should be hidden. If null, the value is fetched from the extension settings.
  * @returns {Promise<string>} - Returns a promise that resolves to a string indicating the condensed view state, will be used as css slass in some cases.
  */
-async function adjustSidebarView(
-    maxPokemonForDetailedView,
-    breakpointOverridePartyDisplay
-) {
-    const extensionSettings =
-        await window.Utils.LocalStorage.getExtensionSettings();
+async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay) {
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
     const showParty = extensionSettings.showParty;
 
     if (maxPokemonForDetailedView === null) {
@@ -864,29 +759,21 @@ async function adjustSidebarView(
     }
     if (breakpointOverridePartyDisplay === null) {
         // breakpoint of pokemon in the sidebar at which the ally party should be hidden.
-        breakpointOverridePartyDisplay =
-            extensionSettings.sidebarHideAlliesBreakpoint;
+        breakpointOverridePartyDisplay = extensionSettings.sidebarHideAlliesBreakpoint;
     }
     // console.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
 
-    const enemyCount =
-        uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
-    const allyCount =
-        uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
+    const enemyCount = uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
+    const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
 
     const totalPartySize = enemyCount + allyCount;
-    const overridePartyDisplayState =
-        totalPartySize >= breakpointOverridePartyDisplay; // returns a boolean value (true/false)
+    const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay; // returns a boolean value (true/false)
     const displayedPartySize =
-        enemyCount +
-        (showParty && overridePartyDisplayState === false ? allyCount : 0);
+        enemyCount + (showParty && overridePartyDisplayState === false ? allyCount : 0);
     // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
 
     let condensedView = "";
-    if (
-        overridePartyDisplayState === false &&
-        totalPartySize <= maxPokemonForDetailedView
-    ) {
+    if (overridePartyDisplayState === false && totalPartySize <= maxPokemonForDetailedView) {
         /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
          * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
          * Reset previously set temporary states, uses defaults according to user settings.
@@ -894,10 +781,7 @@ async function adjustSidebarView(
         await toggleSidebarPartyDisplay("allies", showParty);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
         condensedView = "";
-    } else if (
-        overridePartyDisplayState === false &&
-        totalPartySize > maxPokemonForDetailedView
-    ) {
+    } else if (overridePartyDisplayState === false && totalPartySize > maxPokemonForDetailedView) {
         // too many pokemon, no override to hide allies; change to defaultView + condensed
         /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
          * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
@@ -905,19 +789,13 @@ async function adjustSidebarView(
         switchSidebarTypesDisplay(false);
         await toggleSidebarPartyDisplay("allies", showParty);
         condensedView = "condensed";
-    } else if (
-        overridePartyDisplayState === true &&
-        displayedPartySize > maxPokemonForDetailedView
-    ) {
+    } else if (overridePartyDisplayState === true && displayedPartySize > maxPokemonForDetailedView) {
         /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
          * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
          */
         await toggleSidebarPartyDisplay("allies", false);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
-    } else if (
-        overridePartyDisplayState === true &&
-        displayedPartySize < maxPokemonForDetailedView
-    ) {
+    } else if (overridePartyDisplayState === true && displayedPartySize < maxPokemonForDetailedView) {
         /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
          * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
          */
@@ -937,10 +815,7 @@ async function adjustSidebarView(
 function toggleCondensedSidebarView(condensedView) {
     const pokemonEntries = document.querySelectorAll(".pokemon-entry");
     pokemonEntries.forEach((entry) => {
-        entry.classList.toggle(
-            "condensed",
-            condensedView.toLowerCase() === "condensed"
-        );
+        entry.classList.toggle("condensed", condensedView.toLowerCase() === "condensed");
     });
 }
 
@@ -978,11 +853,7 @@ async function updateBottomPanel(sessionData, pokemonData) {
     const showTab = (tabId) => {
         window.lit.updateActiveTab(tabId);
     };
-    const template = window.lit.createBottomPanelContentTemplate(
-        sessionData,
-        pokemonData,
-        showTab
-    );
+    const template = window.lit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
     render(template, bottomPanelElement);
     const activeTabId = window.lit.getActiveTab();
 
@@ -999,11 +870,7 @@ async function updateBottomPanel(sessionData, pokemonData) {
  * @param {boolean} bottomPanel - Flag that indicates whether the bottomPanel should be scaled.
  * @async
  */
-async function scaleAllElements(
-    overlay = true,
-    sidebar = true,
-    bottomPanel = true
-) {
+async function scaleAllElements(overlay = true, sidebar = true, bottomPanel = true) {
     if (overlay) {
         scaleOverlayElements();
     }
@@ -1140,23 +1007,14 @@ async function toggleSidebar() {
         try {
             if (!element) {
                 // throw new Error("Element does not exist");
-                console.error(
-                    "toggleSidebar(): Element does not exist:",
-                    element
-                );
+                console.error("toggleSidebar(): Element does not exist:", element);
             }
             if (isSidebar) {
                 element.classList.toggle("active", active);
                 element.classList.toggle("hidden", !active);
             } else {
-                element.classList.toggle(
-                    "active-because-sidebar-hidden",
-                    active
-                );
-                element.classList.toggle(
-                    "hidden-because-sidebar-active",
-                    !active
-                );
+                element.classList.toggle("active-because-sidebar-hidden", active);
+                element.classList.toggle("hidden-because-sidebar-active", !active);
             }
         } catch (error) {
             console.error("Error toggling classes:", error.message, error);
@@ -1194,8 +1052,7 @@ async function toggleSidebar() {
  * @async
  */
 async function changeSidebarPosition() {
-    const { sidebarPosition: newPosition } =
-        await browserApi.storage.sync.get("sidebarPosition");
+    const { sidebarPosition: newPosition } = await browserApi.storage.sync.get("sidebarPosition");
     const sidebarParentElement = document.body;
     const bottomPanelElement = document.getElementById("roguedex-bottom-panel");
     const pokerogueTncLinksElement = document.getElementById("tnc-links"); // not part of this extension, added by pokerogue
@@ -1221,15 +1078,11 @@ async function changeSidebarPosition() {
  * @param {boolean} state - The desired display state.
  */
 async function toggleSidebarPartyDisplay(partyID, state) {
-    const sidebarPartyElement = document.getElementById(
-        `sidebar-${partyID}-box`
-    );
+    const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
     sidebarPartyElement?.classList.toggle("visible", state);
     sidebarPartyElement?.classList.toggle("hidden", !state);
 
-    const moveIvSwitchElement = document.getElementById(
-        "sidebar-switch-iv-moves"
-    );
+    const moveIvSwitchElement = document.getElementById("sidebar-switch-iv-moves");
     moveIvSwitchElement?.classList.toggle("visible", state);
     moveIvSwitchElement?.classList.toggle("hidden", !state);
 }
@@ -1286,13 +1139,11 @@ async function switchSidebarTypesDisplay(state) {
  * @async
  */
 async function changeStatusbarPosition() {
-    let { statusbarPosition: newPosition } =
-        await browserApi.storage.sync.get("statusbarPosition");
+    let { statusbarPosition: newPosition } = await browserApi.storage.sync.get("statusbarPosition");
 
     const sidebarElement = document.getElementById("roguedex-sidebar");
     try {
-        const sidebarVisible =
-            window.getComputedStyle(sidebarElement).display !== "none";
+        const sidebarVisible = window.getComputedStyle(sidebarElement).display !== "none";
         if (sidebarVisible) {
             newPosition = "Bottom";
         }
@@ -1332,8 +1183,7 @@ async function toggleSettingsHint(state) {
  * @param {boolean} scaleUI - Whether the UI scaling function should be triggered, true by default.
  */
 async function initCreation(sessionData, scaleUI = true) {
-    const extensionSettings =
-        await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
 
     await initPokemonCardWrappers(extensionSettings.showSidebar);
     if (extensionSettings.showEnemies) {
@@ -1361,10 +1211,7 @@ async function initCreation(sessionData, scaleUI = true) {
  * @param {Object} sessionData - The session data.
  */
 async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
-    const modifiers =
-        pokemonLocation === "enemyParty"
-            ? sessionData.enemyModifiers
-            : sessionData.modifiers;
+    const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
     try {
         const pokemonData = await window.Utils.PokeMapper.getPokemonArray(
@@ -1382,11 +1229,7 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
         );
 
         await new Promise((resolve) => {
-            createCardsDiv(
-                divId,
-                pokemonData.pokemon,
-                uiDataGlobals.pages[divId]
-            );
+            createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]);
             resolve();
         });
 
@@ -1479,14 +1322,10 @@ function extensionSettingsListener() {
                     await scaleBottomPanelElements();
                     break;
                 case "sidebarCondenseBreakpoint":
-                    toggleCondensedSidebarView(
-                        adjustSidebarView(newValue, null)
-                    );
+                    toggleCondensedSidebarView(adjustSidebarView(newValue, null));
                     break;
                 case "sidebarHideAlliesBreakpoint":
-                    toggleCondensedSidebarView(
-                        adjustSidebarView(null, newValue)
-                    );
+                    toggleCondensedSidebarView(adjustSidebarView(null, newValue));
                     break;
                 case "disableSettingsHint":
                     toggleSettingsHint(newValue);
@@ -1498,9 +1337,7 @@ function extensionSettingsListener() {
                     // do nothing?
                     break;
                 default:
-                    console.error(
-                        `Unhandled key in extensionSettingsListener(): ${key}`
-                    );
+                    console.error(`Unhandled key in extensionSettingsListener(): ${key}`);
                     break;
             }
         }
@@ -1537,10 +1374,7 @@ function listenForDataUiModeChange() {
                     break;
             }
         } catch (err) {
-            console.error(
-                "An error occurred while handling data-ui-mode change:",
-                err
-            );
+            console.error("An error occurred while handling data-ui-mode change:", err);
         }
     }
 
@@ -1577,12 +1411,8 @@ function listenForDataUiModeChange() {
         if (touchControlsElement) {
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
-                    if (
-                        mutation.type === "attributes" &&
-                        mutation.attributeName === "data-ui-mode"
-                    ) {
-                        const newValue =
-                            touchControlsElement.getAttribute("data-ui-mode");
+                    if (mutation.type === "attributes" && mutation.attributeName === "data-ui-mode") {
+                        const newValue = touchControlsElement.getAttribute("data-ui-mode");
                         console.info("[data-ui-mode] new value:", newValue);
                         handleDataUIModeChange(newValue);
                     }
@@ -1684,8 +1514,7 @@ async function observeGameCanvasResize() {
 
     // ResizeObserver to observe game app canvas element resize
     const resizeObserver = new ResizeObserver(async (entries) => {
-        const extensionSettings =
-            await window.Utils.LocalStorage.getExtensionSettings();
+        const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
         scaleAllElements();
 
         if (extensionSettings.showSidebar) {
@@ -1700,19 +1529,14 @@ async function observeGameCanvasResize() {
     });
 
     // Observe the game canvas element
-    resizeObserver.observe(
-        document.getElementById("app").getElementsByTagName("canvas")[0]
-    );
+    resizeObserver.observe(document.getElementById("app").getElementsByTagName("canvas")[0]);
 
     // Wait for the sidebar to become visible before showing and resizing the bottom panel
     function useMutationObserver(entries) {
         // MutationObserver to detect changes in the sidebar's display property
         const mutationObserver = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
-                if (
-                    mutation.attributeName === "style" ||
-                    mutation.attributeName === "class"
-                ) {
+                if (mutation.attributeName === "style" || mutation.attributeName === "class") {
                     if (isSidebarVisible()) {
                         // If sidebar becomes visible, disconnect the MutationObserver
                         mutationObserver.disconnect();

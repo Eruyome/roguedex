@@ -15,11 +15,11 @@ import settingsTemplate from "./settingsTemplate.js";
 const createOptionHTML = (setting, option) => {
     const appended = setting.appendText || "";
     const value =
-        setting.type === "Bool"
-            ? option === "Yes"
-                ? "true"
-                : "false"
-            : option;
+        setting.type === "Bool" ?
+            option === "Yes" ?
+                "true"
+            :   "false"
+        :   option;
 
     return `
         <span class="option" 
@@ -38,9 +38,7 @@ const generateSettingsUI = () => {
 
     const settingsHTML = Object.values(settingsTemplate)
         .map((setting) => {
-            const optionsHTML = setting.options
-                .map((option) => createOptionHTML(setting, option))
-                .join("");
+            const optionsHTML = setting.options.map((option) => createOptionHTML(setting, option)).join("");
 
             const boolLabelClass = setting.type === "Bool" ? "bool-label" : "";
 
@@ -62,8 +60,7 @@ const generateSettingsUI = () => {
         })
         .join("");
 
-    const settingsHeadingHTML =
-        '<div class="heading"><span>RogueDex Settings</span></div>';
+    const settingsHeadingHTML = '<div class="heading"><span>RogueDex Settings</span></div>';
     const html = settingsHeadingHTML + settingsHTML;
     container.innerHTML = html;
 

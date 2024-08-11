@@ -1,12 +1,12 @@
 /**
- * @fileoverview Contains lit-html templates and helper functions that are being used to create 
+ * @fileoverview Contains lit-html templates and helper functions that are being used to create
  *          and update pokemon cards.
  *          Functions and templates are added to the window as properties.
  *          Accessible with the 'window.lit.' prefix.
  * @file 'src/content/lit-templates/cards.js'
  */
 
-(function(window) {
+(function (window) {
     window.lit = window.lit || {};
 
     /**
@@ -18,8 +18,8 @@
      * @function createCardWrapper
      */
     window.lit.createCardWrapper = (partyID, showSidebar) => {
-        const displayClass = showSidebar ? 'hidden-because-sidebar-active' : 'active-because-sidebar-hidden';
-        const classes = `${partyID.toLowerCase() === 'enemies' ? 'enemy-team' : 'allies-team'} ${displayClass}`;
+        const displayClass = showSidebar ? "hidden-because-sidebar-active" : "active-because-sidebar-hidden";
+        const classes = `${partyID.toLowerCase() === "enemies" ? "enemy-team" : "allies-team"} ${displayClass}`;
 
         // prettier-ignore
         return html`
@@ -40,12 +40,17 @@
      */
     window.lit.createPokemonCardContent = (cardId, pokemon, typeEffectivenessHTML, weather, isMobile) => {
         const Stat = window.lit.getStatList();
-        const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+        const rarityClass =
+            pokemon.rarity.length && cardId.toLowerCase() === "enemies" ?
+                "pokemon-rarity-" + pokemon.rarity
+            :   "";
         const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
-        const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element is shown
+        const generationLabel = maxOneTrue ? "Gen " + pokemon.gen : pokemon.gen; // add some more text when only one other element is shown
         const natureStats = window.lit.getNatureStatChange(pokemon.nature);
-        const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
-        const mobileTag = isMobile ? 'mobile' : '';
+        const natureDescriptionHTML =
+            (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
+            (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
+        const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
         return html`
@@ -118,11 +123,23 @@
      * @memberof lit
      * @function createPokemonCardContentMinified
      */
-    window.lit.createPokemonCardContentMinified = (cardId, pokemon, ivsGeneratedHTML, weather, showTypeEffectiveness, isMobile) => {
-        const rarityClass = (pokemon.rarity.length && (cardId.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
+    window.lit.createPokemonCardContentMinified = (
+        cardId,
+        pokemon,
+        ivsGeneratedHTML,
+        weather,
+        showTypeEffectiveness,
+        isMobile
+    ) => {
+        const rarityClass =
+            pokemon.rarity.length && cardId.toLowerCase() === "enemies" ?
+                "pokemon-rarity-" + pokemon.rarity
+            :   "";
         const natureStats = window.lit.getNatureStatChange(pokemon.nature);
-        const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
-        const mobileTag = isMobile ? 'mobile' : '';
+        const natureDescriptionHTML =
+            (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
+            (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
+        const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
         return html`
@@ -169,24 +186,25 @@
      * @function createTypeEffectivenessWrapper
      */
     window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
-        const mobileTag = window.lit.mobileCheck() ? 'mobile' : '';
+        const mobileTag = window.lit.mobileCheck() ? "mobile" : "";
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const TypeIconUrls = window.lit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
-                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return null;
+                if (
+                    !effectivenessObj ||
+                    (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)
+                )
+                    return null;
                 if (effectiveness === "cssClasses") return null;
 
                 const tooltipMap = {
                     weaknesses: "Weak to",
                     resistances: "Resists",
-                    immunities: "Immune to"
+                    immunities: "Immune to",
                 };
 
-                const allTypes = [
-                    ...(effectivenessObj.double || []),
-                    ...(effectivenessObj.normal || [])
-                ];
+                const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
 
                 // Group types into arrays of 3.
                 const groupedTypes = [];
@@ -232,23 +250,23 @@
         const Stat = window.lit.getStatList();
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const dexIvs = dexData[saveDataId]?.ivs || dexData[pokemon.baseId]?.ivs || {};
-    
+
         const getColor = (num) => {
             if (num < 0 || num > 31) {
-                throw new Error('Number must be between 0 and 31');
+                throw new Error("Number must be between 0 and 31");
             }
-    
+
             const red = Math.floor(255 * (1 - num / 31));
             const green = Math.floor(255 * (num / 31));
             const blue = 0;
-    
-            const redHex = red.toString(16).padStart(2, '0');
-            const greenHex = green.toString(16).padStart(2, '0');
-            const blueHex = blue.toString(16).padStart(2, '0');
-    
+
+            const redHex = red.toString(16).padStart(2, "0");
+            const greenHex = green.toString(16).padStart(2, "0");
+            const blueHex = blue.toString(16).padStart(2, "0");
+
             return `#${redHex}${greenHex}${blueHex}`;
         };
-    
+
         const ivComparison = (pokeIv, dexIv) => {
             let iconA = "";
             let colorS = "#00FF00";
@@ -264,17 +282,17 @@
             }
             return `<span class="stat-icon" style="color: ${colorS} !important; opacity: 0.7">${iconA}</span>`;
         };
-    
-        let fullHTML = '';
+
+        let fullHTML = "";
         for (const i in pokemon.ivs) {
             const curIV = pokemon.ivs[i];
             const dexIv = dexIvs[i];
-    
-            if (typeof dexIv !== 'number') {
+
+            if (typeof dexIv !== "number") {
                 // Handle case where dexIv is not a number (null, undefined, or other non-numeric value)
                 continue; // Skip this iteration if dexIv is not valid
             }
-    
+
             if (simpleDisplay && !addStyleClasses) {
                 fullHTML += `<div class="stat-p"><span>${Stat[i]}: </span><span class="stat-c">${curIV}</span></div>`;
             } else if (simpleDisplay && addStyleClasses) {
@@ -285,15 +303,14 @@
                 fullHTML += `<div class="stat-p"><span>${Stat[i]}: </span><span class="stat-c" style="color: ${getColor(curIV)}">${curIV}</span>${ivComparison(curIV, dexIv)}</div>`;
             }
         }
-    
-        if (fullHTML === '') {
+
+        if (fullHTML === "") {
             // Default HTML if there are no valid IVs to display
             fullHTML = `<div class="stat-p"><span>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</span></div>`;
         }
-    
+
         return fullHTML;
     };
-    
 
     /**
      * Creates a div element for arrow buttons.
@@ -307,9 +324,16 @@
      * @memberof lit
      * @function createArrowButtonsDiv
      */
-    window.lit.createArrowButtonsDiv = (divId, upString, downString, showMinified, clickFunction, ...additionalParams) => {
-        const isMinified = (showMinified ? 'minified' : '');
-        const isMobileDevice = window.lit.mobileCheck() ? 'mobile' : 'desktop' ;    // 'desktop' added for clarity, no css needed
+    window.lit.createArrowButtonsDiv = (
+        divId,
+        upString,
+        downString,
+        showMinified,
+        clickFunction,
+        ...additionalParams
+    ) => {
+        const isMinified = showMinified ? "minified" : "";
+        const isMobileDevice = window.lit.mobileCheck() ? "mobile" : "desktop"; // 'desktop' added for clarity, no css needed
         const result = {};
         result.idUp = `${divId}-up`;
         result.idDown = `${divId}-down`;
@@ -338,10 +362,16 @@
      * @returns {Object} Contains the slider element id and lit-html object.
      * @memberof lit
      * @function createOpacitySliderDiv
-     * 
+     *
      * currently not used
      */
-    window.lit.createOpacitySliderDiv = (divId, changeOpacity, initialValue = "100", min = "10", max = "100") => {
+    window.lit.createOpacitySliderDiv = (
+        divId,
+        changeOpacity,
+        initialValue = "100",
+        min = "10",
+        max = "100"
+    ) => {
         const result = {};
         result.id = `${divId}-slider`;
 
@@ -357,23 +387,22 @@
 
     window.lit.getScrollbarWidth = () => {
         // Creating invisible container
-        const outer = document.createElement('div');
-        outer.style.visibility = 'hidden';
-        outer.style.overflow = 'scroll'; // forcing scrollbar to appear
-        outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+        const outer = document.createElement("div");
+        outer.style.visibility = "hidden";
+        outer.style.overflow = "scroll"; // forcing scrollbar to appear
+        outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
         document.body.appendChild(outer);
-      
+
         // Creating inner element and placing it in the container
-        const inner = document.createElement('div');
+        const inner = document.createElement("div");
         outer.appendChild(inner);
-        
+
         // Calculating difference between container's full width and the child width
-        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-      
+        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
         // Removing temporary elements from the DOM
         outer.parentNode.removeChild(outer);
-      
-        return scrollbarWidth;
-    }
 
+        return scrollbarWidth;
+    };
 })(window);

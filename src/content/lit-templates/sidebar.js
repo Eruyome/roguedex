@@ -5,19 +5,21 @@
  * @file 'src/content/lit-templates/sidebar.js'
  */
 
-(function(window) {
+(function (window) {
     window.lit = window.lit || {};
 
     /**
      * Creates the HTML template for the sidebar.
-     * 
+     *
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @memberof lit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTemplate
      */
     window.lit.createSidebarTemplate = (isMobile) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+        const mobileTag = isMobile ? "mobile" : "";
+
+        // prettier-ignore
         return html`
             <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets"> 
                 <div class="sidebar-header" id="sidebar-header">
@@ -31,7 +33,7 @@
 
     /**
      * Updates the sidebar header based on the session data.
-     * 
+     *
      * @param {Object} sessionData - The session data object.
      * @memberof lit
      * @returns {Lit-HTML-Template} - The HTML template result.
@@ -39,8 +41,9 @@
      */
     window.lit.updateSidebarHeader = (sessionData) => {
         const trainer = sessionData.trainer;
-        const isTrainerBattle = (trainer != null);
-    
+        const isTrainerBattle = trainer != null;
+
+        // prettier-ignore
         return html`
             <span>RogueDex</span>
             ${!isTrainerBattle ? '' : html`
@@ -51,7 +54,7 @@
 
     /**
      * Template function for rendering the party entries in the sidebar.
-     * 
+     *
      * @param {Object} pokemonData - The Pokémon data object.
      * @param {string} partyID - The ID of the party ('allies' or 'enemies').
      * @param {Object} dexData - The Pokédex data.
@@ -62,19 +65,32 @@
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarPartyTemplate
      */
-    window.lit.createSidebarPartyTemplate = (pokemonData, partyID, dexData, sessionData, condensedView, isMobile) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+    window.lit.createSidebarPartyTemplate = (
+        pokemonData,
+        partyID,
+        dexData,
+        sessionData,
+        condensedView,
+        isMobile
+    ) => {
+        const mobileTag = isMobile ? "mobile" : "";
         return html`
             <div class="${partyID}-party">
                 ${pokemonData.pokemon.map((pokemon, counter) => {
                     const saveDataId = pokemon.basePokemonIdPreConversion;
                     const ivSaveData = dexData[saveDataId].ivs || dexData[pokemon.baseId].ivs || {};
-                    const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every(num => num === 0);
-                    const rarityClass = (pokemon.rarity.length && (partyID.toLowerCase() === 'enemies') ? 'pokemon-rarity-' + pokemon.rarity : '');
-                    const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
-                    const generationLabel = (maxOneTrue ? 'Gen ' + pokemon.gen : pokemon.gen);   // add some more text when only one other element as most is shown
+                    const allZeroStarterIVs = dexData[saveDataId]?.ivs?.every((num) => num === 0);
+                    const rarityClass =
+                        pokemon.rarity.length && partyID.toLowerCase() === "enemies" ?
+                            "pokemon-rarity-" + pokemon.rarity
+                        :   "";
+                    const maxOneTrue =
+                        [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
+                    const generationLabel = maxOneTrue ? "Gen " + pokemon.gen : pokemon.gen; // add some more text when only one other element as most is shown
                     const natureStats = window.lit.getNatureStatChange(pokemon.nature);
-                    const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
+                    const natureDescriptionHTML =
+                        (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
+                        (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
 
                     // prettier-ignore
                     return html`
@@ -148,12 +164,12 @@
                 })}            
             </div>
         `;
-    }
+    };
 
     /**
      * Decides whether to show the default or a condensed view of the pokemon type effectivenesses,
      * based on how many poekmon are participating in the battle.
-     * 
+     *
      * @param {Object} sessionData - The session data object.
      * @param {number} maxPokemonForDetailedView - The maximum number of Pokémon for detailed view.
      * @memberof lit
@@ -164,32 +180,33 @@
         const totalPartySize = sessionData.enemyParty.length + sessionData.party.length;
 
         if (maxPokemonForDetailedView !== null && totalPartySize > maxPokemonForDetailedView) {
-            return 'condensed';
+            return "condensed";
         }
-        return '';
-    }
+        return "";
+    };
 
     /**
-    * Generates HTML for a multiline display of a pokemons IVs.
-    * 
-    * This function generates HTML markup representing the IVs (Individual Values) of a Pokémon. 
-    * It can show color gradients and icons to indicate how good the IVs are and whether they are an 
-    * upgrade over the user's starter Pokémon IVs.
-    * 
-    * @param {object} pokemon - Object representing all data know about this current pokemon.
-    * @param {object} dexIvs - IV values of the base Pokémon, taken from the user's save file.
-    * @param {boolean} simpleDisplay - Whether default or simplified version is returned.
-    * @param {boolean} addStyleClasses - Whether colors and indicators should be shown.
-    * @memberof lit
-    * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
-    * @function generateIVsHTML
-    */
+     * Generates HTML for a multiline display of a pokemons IVs.
+     *
+     * This function generates HTML markup representing the IVs (Individual Values) of a Pokémon.
+     * It can show color gradients and icons to indicate how good the IVs are and whether they are an
+     * upgrade over the user's starter Pokémon IVs.
+     *
+     * @param {object} pokemon - Object representing all data know about this current pokemon.
+     * @param {object} dexIvs - IV values of the base Pokémon, taken from the user's save file.
+     * @param {boolean} simpleDisplay - Whether default or simplified version is returned.
+     * @param {boolean} addStyleClasses - Whether colors and indicators should be shown.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
+     * @function generateIVsHTML
+     */
     window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
         const Stat = window.lit.getStatList();
         const ivs = pokemon.ivs || {};
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const defaultHtml = html`<div>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
 
+        // prettier-ignore
         return html`
             ${Object.keys(ivs).length > 0 ? Object.keys(ivs).map(i => {
                 const curIV = ivs[i];
@@ -202,7 +219,6 @@
                 const statClass = addStyleClasses ? `stat-p-colors` : '';
                 const valueClass = addStyleClasses ? `stat-c-colors` : '';
 
-                // prettier-ignore
                 return html`
                     <div class="stat-p ${statClass}">
                         <span>${Stat[i]}:</span>
@@ -216,28 +232,28 @@
                 `;
             }) : defaultHtml}
         `;
-    }
+    };
 
     /**
      * Generates HTML for displaying a Pokemon's moveset.
-     * 
+     *
      * @param {object} pokemon - Object representing all data known about this current Pokémon.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @memberof lit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
-     * @function 
+     * @function
      */
     window.lit.generateMovesetHTML = (pokemon, isMobile) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+        const mobileTag = isMobile ? "mobile" : "";
         return html`
-            ${Object.keys(pokemon.moveset).map(i => {
+            ${Object.keys(pokemon.moveset).map((i) => {
                 const move = pokemon.moveset[i];
-                let moveTipHTML = '';  
+                let moveTipHTML = "";
                 moveTipHTML += `<span>Name: ${move.name}</span>`;
                 moveTipHTML += `<span>Type: ${move.type}</span>`;
                 moveTipHTML += `<span>Category: ${move.category}</span>`;
                 moveTipHTML += `<span>Power: ${move.power}</span>`;
-                moveTipHTML += `<span>Accuracy: ${move.accuracy}</span>`;                
+                moveTipHTML += `<span>Accuracy: ${move.accuracy}</span>`;
 
                 // prettier-ignore
                 return html`
@@ -250,14 +266,14 @@
                 `;
             })}
         `;
-    }
+    };
 
     /**
      * Creates the HTML template for the compact sidebar type effectiveness wrapper.
      * Type categories are directly chained after each other, continuing rows in a
      * "snaking" manner, with type icons being shown flowing right to left, left to right
      * in multiple rows.
-     * 
+     *
      * @param {Object} typeEffectivenesses - The type effectiveness data object.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @param {number} maxItemsPerRow - The maximum number of items per row.
@@ -267,8 +283,14 @@
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTypeEffectivenessWrapperCompact
      */
-    window.lit.createSidebarTypeEffectivenessWrapperCompact = (typeEffectivenesses, isMobile, maxItemsPerRow = 5, maxRows = 4, growRowLength = true) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+    window.lit.createSidebarTypeEffectivenessWrapperCompact = (
+        typeEffectivenesses,
+        isMobile,
+        maxItemsPerRow = 5,
+        maxRows = 4,
+        growRowLength = true
+    ) => {
+        const mobileTag = isMobile ? "mobile" : "";
         const TypeIconUrls = window.lit.getTypeIconUrls();
         const typeItemList = [];
         let globalCounter = 0;
@@ -292,20 +314,18 @@
         // Populate the typeItemList with items containing type effectiveness data
         Object.keys(typeEffectivenesses).forEach((effectiveness) => {
             const effectivenessObj = typeEffectivenesses[effectiveness];
-            if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length)) return;
+            if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length))
+                return;
             if (effectiveness === "cssClasses") return;
 
-            const allTypes = [
-                ...(effectivenessObj.double || []),
-                ...(effectivenessObj.normal || [])
-            ];
+            const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
 
             allTypes.forEach((type) => {
                 const iconCssClass = (() => {
                     try {
                         return `pokemon-type-icon ${typeEffectivenesses.cssClasses[type]}`;
                     } catch {
-                        return 'pokemon-type-icon';
+                        return "pokemon-type-icon";
                     }
                 })();
 
@@ -313,10 +333,10 @@
                     iconCssClasses: iconCssClass,
                     typeEffectiveness: effectiveness,
                     type,
-                    iconUrl: `${TypeIconUrls[type]}`,                    
+                    iconUrl: `${TypeIconUrls[type]}`,
                     wrapperCssClasses: `type-effectiveness-category pokemon-type-${effectiveness}`,
-                    additionalStyles : '',
-                    order: (globalCounter % itemsPerRow) + 1
+                    additionalStyles: "",
+                    order: (globalCounter % itemsPerRow) + 1,
                 };
 
                 typeItemList.push(tempListItem);
@@ -336,19 +356,37 @@
             rows.push(html`
                 <div class="type-effectiveness-row">
                     ${rowItems.map((item, counter) => {
-                        const firstOfType = counter === 0 || rowItems[counter - 1].typeEffectiveness !== item.typeEffectiveness ? ' ' + 'first-of-type-category' : '';
+                        const firstOfType =
+                            (
+                                counter === 0 ||
+                                rowItems[counter - 1].typeEffectiveness !== item.typeEffectiveness
+                            ) ?
+                                " " + "first-of-type-category"
+                            :   "";
 
-                        let lastOfType = '';
-                        const hasNextItem = ( i + counter + 1 < typeItemList.length );
-                        const nextItemTypeDifferent = hasNextItem && typeItemList[i + counter + 1].typeEffectiveness !== item.typeEffectiveness;
-                        const isLastItem = ( i + counter + 1 === typeItemList.length );
+                        let lastOfType = "";
+                        const hasNextItem = i + counter + 1 < typeItemList.length;
+                        const nextItemTypeDifferent =
+                            hasNextItem &&
+                            typeItemList[i + counter + 1].typeEffectiveness !== item.typeEffectiveness;
+                        const isLastItem = i + counter + 1 === typeItemList.length;
 
                         if (nextItemTypeDifferent || isLastItem) {
-                            lastOfType = ' ' + 'last-of-type-category';
+                            lastOfType = " " + "last-of-type-category";
                         }
 
-                        const transparencyClasses = window.lit.determineTransparencyClasses(item, Math.floor(i / itemsPerRow) + 1, itemsPerRow, firstOfType, lastOfType);
-                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(item.typeEffectiveness, item.iconCssClasses, item.type);
+                        const transparencyClasses = window.lit.determineTransparencyClasses(
+                            item,
+                            Math.floor(i / itemsPerRow) + 1,
+                            itemsPerRow,
+                            firstOfType,
+                            lastOfType
+                        );
+                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(
+                            item.typeEffectiveness,
+                            item.iconCssClasses,
+                            item.type
+                        );
 
                         // prettier-ignore
                         return html`
@@ -375,7 +413,7 @@
     /**
      * Creates a tooltip that shows which element (type) the type icon represents, whether the pokemon is weak, resistant or immune to the type
      * and what dmg multiplier applies.
-     * 
+     *
      * @param {string} typeEffectiveness - Type effectiveness category (immunities / resistances / weaknesses).
      * @param {string} iconCssClasses - Type icon css classes string.
      * @param {string} type
@@ -384,27 +422,38 @@
      * @function getTypeIconToolTipHTML
      */
     window.lit.getTypeIconToolTipHTML = (typeEffectiveness, iconCssClasses, type) => {
-        const weakLabel = 'Weak';
-        const resistLabel = 'Resistant';
-        const immuneLabel = 'Immune';
-        let effectivenessLabel = typeEffectiveness.toLowerCase() === 'resistances' ? resistLabel : (typeEffectiveness.toLowerCase() === 'weaknesses' ? weakLabel : immuneLabel);
-        effectivenessLabel = iconCssClasses.includes('super') ? 'Very ' + effectivenessLabel : effectivenessLabel;                        
+        const weakLabel = "Weak";
+        const resistLabel = "Resistant";
+        const immuneLabel = "Immune";
+        let effectivenessLabel =
+            typeEffectiveness.toLowerCase() === "resistances" ? resistLabel
+            : typeEffectiveness.toLowerCase() === "weaknesses" ? weakLabel
+            : immuneLabel;
+        effectivenessLabel =
+            iconCssClasses.includes("super") ? "Very " + effectivenessLabel : effectivenessLabel;
 
-        const dmgMultiObj = {'no-dmg': 0, 'double-dmg': 2, 'super-dmg': 4, 'resist': 0.5, 'super-resist': 0.25};
-        const dmgMultiKey = Object.keys(dmgMultiObj)    // searches for the keys as substrings in iconCssClasses
-            .sort((a, b) => b.length - a.length)        // sort by length first to make sure to find "super-resist" before "resist"
-            .find(key => iconCssClasses.includes(key)) || '';
-        const dmgMulti = dmgMultiKey ? 'x' + dmgMultiObj[dmgMultiKey] : 'unknown';
+        const dmgMultiObj = {
+            "no-dmg": 0,
+            "double-dmg": 2,
+            "super-dmg": 4,
+            resist: 0.5,
+            "super-resist": 0.25,
+        };
+        const dmgMultiKey =
+            Object.keys(dmgMultiObj) // searches for the keys as substrings in iconCssClasses
+                .sort((a, b) => b.length - a.length) // sort by length first to make sure to find "super-resist" before "resist"
+                .find((key) => iconCssClasses.includes(key)) || "";
+        const dmgMulti = dmgMultiKey ? "x" + dmgMultiObj[dmgMultiKey] : "unknown";
         const typeToolTipHTML = `<span>${window.lit.capitalizeFirstLetter(type)}</span><span>${effectivenessLabel}</span><span>DMG: <b>${dmgMulti}</b></span>`;
 
-        return typeToolTipHTML
-    }
+        return typeToolTipHTML;
+    };
 
     /**
      * Determines the transparency classes for sidebar type effectiveness items.
      * These classes are needed to properly draw the borders of the type categories
      * to wrap all types of a category within a "snaking" wrapper.
-     * 
+     *
      * @param {Object} item - The item data object.
      * @param {number} rowCounter - The row counter.
      * @param {number} itemsPerRow - The number of items per row.
@@ -415,91 +464,80 @@
      * @function determineTransparencyClasses
      */
     window.lit.determineTransparencyClasses = (item, rowCounter, itemsPerRow, firstOfType, lastOfType) => {
-        let transparencyClasses = '';
-        /* 
-        *   Create a "snaking" flow of items, (left to right => right to left => repeat)
-        */
+        let transparencyClasses = "";
+        /*
+         *   Create a "snaking" flow of items, (left to right => right to left => repeat)
+         */
 
-        
         if (firstOfType && lastOfType) {
             /* First and last (only) item of category. */
-            transparencyClasses += '';
-        }
-        else if (!lastOfType && !firstOfType && item.order === itemsPerRow && (rowCounter % 2 === 0)) {
+            transparencyClasses += "";
+        } else if (!lastOfType && !firstOfType && item.order === itemsPerRow && rowCounter % 2 === 0) {
             /* Even row, end of row item, continue category into next row. */
-            transparencyClasses += ' transp-bottom transp-right ';
-        }
-        else if (!lastOfType && !firstOfType && item.order === itemsPerRow) {
+            transparencyClasses += " transp-bottom transp-right ";
+        } else if (!lastOfType && !firstOfType && item.order === itemsPerRow) {
             /* Continue category into next row. */
-            transparencyClasses += ' transp-bottom transp-left ';
-        }
-        else if (lastOfType && item.order === itemsPerRow && (rowCounter % 2 === 1)) {
+            transparencyClasses += " transp-bottom transp-left ";
+        } else if (lastOfType && item.order === itemsPerRow && rowCounter % 2 === 1) {
             /* Unven row, don't continue category into next row. */
-            transparencyClasses += ' transp-left ';
-        }
-        else if (lastOfType && item.order === itemsPerRow && (rowCounter % 2 === 0)) {
+            transparencyClasses += " transp-left ";
+        } else if (lastOfType && item.order === itemsPerRow && rowCounter % 2 === 0) {
             /* Even row, don't continue category into next row. */
-            transparencyClasses += ' transp-right ';
-        }
-        else if (firstOfType && item.order === itemsPerRow) {
+            transparencyClasses += " transp-right ";
+        } else if (firstOfType && item.order === itemsPerRow) {
             /* Start category, continue it into next row. */
-            transparencyClasses += ' transp-bottom ';
-        }
-        else if (lastOfType && !firstOfType && item.order === itemsPerRow) {
+            transparencyClasses += " transp-bottom ";
+        } else if (lastOfType && !firstOfType && item.order === itemsPerRow) {
             /* End category with multiple items in this row. */
-            transparencyClasses += ' transp-left ';
-        }
-        else if (!lastOfType && !firstOfType && item.order > 1 && item.order < itemsPerRow) {
+            transparencyClasses += " transp-left ";
+        } else if (!lastOfType && !firstOfType && item.order > 1 && item.order < itemsPerRow) {
             /* Inbetween items that don't start or end a category. */
-            transparencyClasses = ' transp-left transp-right ';
-        }
-        else if (item.order === itemsPerRow && (rowCounter % 2 === 1)) {
+            transparencyClasses = " transp-left transp-right ";
+        } else if (item.order === itemsPerRow && rowCounter % 2 === 1) {
             /* Unven row, end of row item, don't continue into next row. */
-            transparencyClasses += ' transp-left ';
-        }
-        else if (!lastOfType && item.order === 1 && (rowCounter % 2 === 0)) {
+            transparencyClasses += " transp-left ";
+        } else if (!lastOfType && item.order === 1 && rowCounter % 2 === 0) {
             /* Even row, start of row item, continue category. */
-            transparencyClasses += ' transp-left ';
-        }
-        else if (lastOfType && item.order > 1 && item.order < itemsPerRow && (rowCounter % 2 === 1)) {
+            transparencyClasses += " transp-left ";
+        } else if (lastOfType && item.order > 1 && item.order < itemsPerRow && rowCounter % 2 === 1) {
             /* Unven row, inbetween items that end a category. */
-            transparencyClasses = ' transp-left ';
-        }
-        else if (lastOfType && item.order > 1 && item.order < itemsPerRow && (rowCounter % 2 === 0)) {
+            transparencyClasses = " transp-left ";
+        } else if (lastOfType && item.order > 1 && item.order < itemsPerRow && rowCounter % 2 === 0) {
             /* Even row, inbetween items that end a category. */
-            transparencyClasses = ' transp-right ';
-        }
-        else if (!lastOfType && !firstOfType && item.order === 1 && (rowCounter % 2 === 1)) {
+            transparencyClasses = " transp-right ";
+        } else if (!lastOfType && !firstOfType && item.order === 1 && rowCounter % 2 === 1) {
             /* Unven row, first of row, continue category. */
-            transparencyClasses = ' transp-right ';
-        }
-        else if (firstOfType && (rowCounter % 2 === 1)) {
-            transparencyClasses += ' transp-right ';
-        }
-        else if (firstOfType && (rowCounter % 2 === 0)) {
-            transparencyClasses += ' transp-left ';
+            transparencyClasses = " transp-right ";
+        } else if (firstOfType && rowCounter % 2 === 1) {
+            transparencyClasses += " transp-right ";
+        } else if (firstOfType && rowCounter % 2 === 0) {
+            transparencyClasses += " transp-left ";
         }
 
         return transparencyClasses;
     };
 
     /**
-    * Template function for rendering the non-compact sidebar type effectiveness wrapper.
-    * 
-    * @param {Object} typeEffectivenesses - The type effectiveness data object.
-    * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
-    * @memberof lit
-    * @returns {Lit-HTML-Template} - The HTML template result.
-    * @function createSidebarTypeEffectivenessWrapper
-    */
+     * Template function for rendering the non-compact sidebar type effectiveness wrapper.
+     *
+     * @param {Object} typeEffectivenesses - The type effectiveness data object.
+     * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
+     * @memberof lit
+     * @returns {Lit-HTML-Template} - The HTML template result.
+     * @function createSidebarTypeEffectivenessWrapper
+     */
     window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses, isMobile) => {
-        const mobileTag = isMobile ? 'mobile' : '';
+        const mobileTag = isMobile ? "mobile" : "";
         return html`
-            ${Object.keys(typeEffectivenesses).map(effectiveness => {
+            ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const TypeIconUrls = window.lit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
-                if (!effectivenessObj || (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) || effectiveness === 'cssClasses') {
-                    return '';
+                if (
+                    !effectivenessObj ||
+                    (!effectivenessObj.normal?.length && !effectivenessObj.double?.length) ||
+                    effectiveness === "cssClasses"
+                ) {
+                    return "";
                 }
 
                 const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
@@ -521,6 +559,5 @@
                 `;
             })}
         `;
-    }
-
+    };
 })(window);

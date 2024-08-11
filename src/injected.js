@@ -32,11 +32,11 @@
      */
     /* eslint-disable */
     xhrPrototype.send = function (postData) {
-    /* eslint-enable */
+        /* eslint-enable */
 
         // Uncomment if you need to log the request details
         // console.log('Injected script XHR request:', this._method, this._url, this.getAllResponseHeaders(), postData);
-        this.addEventListener('load', function () {
+        this.addEventListener("load", function () {
             // Uncomment if you need to send the response to content script
             // window.postMessage({ type: 'xhr', data: this.response }, '*');
         });

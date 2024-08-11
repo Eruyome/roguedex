@@ -1,16 +1,16 @@
-$color_1: rgb(248, 248, 248);   // white-main
-$color_1b: rgb(107, 90, 115);   // white-sub
-$color_2: rgb(248, 136, 128);   // red-main
-$color_2b: rgb(248, 48, 24);    // red-sub
-$color_3: rgb(248, 176, 90);    // yellow-main
-$color_3b: rgb(192, 120, 0);    // yellow-sub
-$color_4: rgb(0, 0, 0);         // black
-$font-family_1: 'PKMNems';
+$color_1: rgb(248, 248, 248); // white-main
+$color_1b: rgb(107, 90, 115); // white-sub
+$color_2: rgb(248, 136, 128); // red-main
+$color_2b: rgb(248, 48, 24); // red-sub
+$color_3: rgb(248, 176, 90); // yellow-main
+$color_3b: rgb(192, 120, 0); // yellow-sub
+$color_4: rgb(0, 0, 0); // black
+$font-family_1: "PKMNems";
 $background-color_1: transparent;
 
 @font-face {
-    font-family: 'PKMNems';
-    src: url('../../fonts/pkmnems.ttf') format('truetype');
+    font-family: "PKMNems";
+    src: url("../../fonts/pkmnems.ttf") format("truetype");
 }
 :root {
     --corner-size: 24px;
@@ -33,7 +33,7 @@ body {
     background: rgb(55, 45, 62);
     background-size: cover;
     background-repeat: no-repeat;
-    padding: calc( var(--corner-size) - 0.6em );
+    padding: calc(var(--corner-size) - 0.6em);
 }
 .background-container {
     position: absolute;
@@ -44,7 +44,7 @@ body {
     z-index: 0;
     pointer-events: none;
     background: transparent;
-    >div {
+    > div {
         position: absolute;
         background-size: contain;
         image-rendering: pixelated;
@@ -171,7 +171,7 @@ body {
     font-size: var(--setting-text-size);
 }
 .input-item:nth-child(2n) {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 .setting-wrapper {
     flex-direction: row;
@@ -207,7 +207,7 @@ body {
     cursor: pointer;
 }
 .setting-label::before {
-    content: '>';
+    content: ">";
     position: absolute;
     left: 0;
     top: 50%;

@@ -5,7 +5,7 @@
  * @file 'src/content/lit-templates/bottompanel.js'
  */
 
-(function(window) {
+(function (window) {
     window.lit = window.lit || {};
 
     /**
@@ -22,31 +22,31 @@
 
     /**
      * Changes which tab contents are displayed in the bottom panel.
-     * 
+     *
      * @function updateActiveTab
      * @param {string} tabId - The ID of the tab to make active.
      */
     window.lit.updateActiveTab = (tabId) => {
-        const tabs = document.querySelectorAll('.bottom-panel-tab-content');
-        tabs.forEach(tab => {
-            tab.classList.toggle('active', tab.id === tabId);
+        const tabs = document.querySelectorAll(".bottom-panel-tab-content");
+        tabs.forEach((tab) => {
+            tab.classList.toggle("active", tab.id === tabId);
         });
 
-        const buttons = document.querySelectorAll('.bottom-panel-tab-button');
-        buttons.forEach(button => {
-            button.classList.toggle('active', button.getAttribute('data-tab') === tabId);
+        const buttons = document.querySelectorAll(".bottom-panel-tab-button");
+        buttons.forEach((button) => {
+            button.classList.toggle("active", button.getAttribute("data-tab") === tabId);
         });
     };
 
     /**
      * Retrieves the ID of the active tab in the bottom panel.
-     * 
+     *
      * @function getActiveTab
      * @memberof lit
      * @returns {string|null} The ID of the active tab, or null if no tab is active.
      */
     window.lit.getActiveTab = () => {
-        const activeTab = document.querySelector('.bottom-panel-tab-content.active');
+        const activeTab = document.querySelector(".bottom-panel-tab-content.active");
         return activeTab ? activeTab.id : null;
     };
 
@@ -60,11 +60,14 @@
      * @returns {Lit-HTML-Template} The HTML template for the content of the bottom panel.
      */
     window.lit.createBottomPanelContentTemplate = (sessionData, pokemonData, showTab) => {
-        const activeTab = 'bottom-panel-global'; // Default to showing the global tab initially
+        const activeTab = "bottom-panel-global"; // Default to showing the global tab initially
 
         let luckTotal = 0;
-        if (pokemonData.partyId === 'allies') {
-            luckTotal = pokemonData.pokemon.reduce((total, pokemon) => total + pokemon.luck + pokemon.fusionLuck, 0);
+        if (pokemonData.partyId === "allies") {
+            luckTotal = pokemonData.pokemon.reduce(
+                (total, pokemon) => total + pokemon.luck + pokemon.fusionLuck,
+                0
+            );
         }
 
         const weatherHtml = window.lit.createWeatherHtml(pokemonData.weather);
@@ -97,7 +100,7 @@
 
     /**
      * Creates the HTML for the weather information if applicable.
-     * 
+     *
      * @param {Object} weather - The weather data object.
      * @param {string} weather.type - The type of weather.
      * @param {number} weather.turnsLeft - The number of turns left for the weather.
@@ -106,7 +109,6 @@
      */
     window.lit.createWeatherHtml = (weather) => {
         if (weather.type && weather.turnsLeft) {
-            
             return html`
                 <div class="bottom-panel-weather-box">
                     <div class="text-base">
@@ -138,12 +140,13 @@
     /**
      * Creates a table HTML template for an individual Pokémon's data.
      * Adds tables which list and summarize data of all kinds of pokemon specific modifers that are currently active.
-     * 
+     *
      * @param {Object} pokemon - The data object for the Pokémon.
      * @memberof lit
      * @returns {Lit-HTML-Template} - The HTML template for the Pokémon data table.
      */
     window.lit.createPokemonTable = (pokemon) => {
+        // prettier-ignore
         const modifiers = {
             leftOvers: window.lit.getModifier(pokemon?.modifiers?.others, 'LEFTOVERS'),
             wideLens: window.lit.getModifier(pokemon?.modifiers?.others, 'WIDE_LENS'),
@@ -180,6 +183,7 @@
             typeBooster_fairy: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'FAIRY_FEATHER')
         };
 
+        // prettier-ignore
         const modifiersList = [
             { label: 'Accuracy Up (Wide Lens)', value: modifiers.wideLens.stackCount * 5, unit: '' },
             { label: 'Flinch chance (King\'s Rock)', value: modifiers.kingsRock.stackCount * 10, unit: '%' },
@@ -217,8 +221,8 @@
 
         const createModifiersTable = (modifiersList) => {
             // Filter out modifiers with value 0, undefined, or null
-            const filteredModifiers = modifiersList.filter(modifier => modifier.value);
-        
+            const filteredModifiers = modifiersList.filter((modifier) => modifier.value);
+
             // If no modifiers are present, return a single row with the fallback message
             if (filteredModifiers.length === 0) {
                 // prettier-ignore
@@ -230,13 +234,13 @@
                     </table>
                 `;
             }
-        
+
             // Split the filteredModifiers into groups of 12 modifiers per table (6 rows, 2 cells per row)
             const tables = [];
             for (let i = 0; i < filteredModifiers.length; i += 12) {
                 tables.push(filteredModifiers.slice(i, i + 12));
             }
-        
+
             // prettier-ignore
             return html`
                 ${tables.map(table => html`
@@ -265,7 +269,7 @@
     /**
      * Generates the HTML for the battle modifiers (general modifiers that affect pokemon
      * but are non-specific to each one).
-     * 
+     *
      * @function generateBattleModifierHtml
      * @param {Object} sessionData - The session data containing various modifiers.
      * @param {number} luckTotal - The total luck value from the party.
@@ -273,6 +277,7 @@
      * @returns {Lit-HTML-Template} The HTML template for the battle modifiers.
      */
     window.lit.generateBattleModifierHtml = (sessionData, luckTotal) => {
+        // prettier-ignore
         const modifiers = {
             expCharmGold: window.lit.getModifier(sessionData?.modifiers, 'GOLDEN_EXP_CHARM'),
             expCharmNormal: window.lit.getModifier(sessionData?.modifiers, 'EXP_CHARM'),
@@ -285,6 +290,7 @@
             abilityCharms: window.lit.getModifier(sessionData?.modifiers, 'ABILITY_CHARM')
         };
 
+        // prettier-ignore
         const enemyModifiers = {
             statusHealChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_STATUS_EFFECT_HEAL_CHANCE'),
             dmgReduction: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_DAMAGE_REDUCTION'),
@@ -298,6 +304,7 @@
             heal: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_HEAL')
         };
 
+        // prettier-ignore
         const partyModifiers = [
             { label: 'Total Party XP multiplier', value: (modifiers.expCharmNormal.stackCount * 25) + (modifiers.expCharmSuper.stackCount * 60) + (modifiers.expCharmGold.stackCount * 100), unit: '%' },
             { label: 'Total Shiny Charms', value: modifiers.shiningCharms.stackCount, unit: '' },
@@ -309,6 +316,7 @@
             { label: 'Party Luck (shinies)', value: luckTotal, unit: '' }
         ];
 
+        // prettier-ignore
         const enemyModifiersList = [
             { label: 'Status heal chance', value: enemyModifiers.statusHealChance.stackCount * 10, unit: '%' },
             { label: 'Attack sleep chance', value: enemyModifiers.attackSleepChance.stackCount * 10, unit: '%' },
@@ -324,7 +332,7 @@
 
         /**
          * Creates a table HTML template for the given data.
-         * 
+         *
          * @param {string} caption - The caption for the table.
          * @param {string} cssTag - The CSS tag for the table.
          * @param {Array} data - The data array to populate the table rows.
@@ -347,7 +355,7 @@
                     ` : '')}
                 </table>
             `;
-        }
+        };
 
         // prettier-ignore
         return html`
@@ -356,7 +364,7 @@
                 ${createTable('Enemy:', 'enemy', enemyModifiersList)}
             </div>
         `;
-    }
+    };
 
     /**
      * Retrieves the modifier object for a given type from an array of modifiers.
@@ -367,7 +375,6 @@
      * @returns {Object} The modifier object for the given type.
      */
     window.lit.getModifier = (modifiers, typeId) => {
-        return (modifiers ?? []).find(item => item.typeId === typeId) ?? { stackCount: 0 };
-    }
-
+        return (modifiers ?? []).find((item) => item.typeId === typeId) ?? { stackCount: 0 };
+    };
 })(window);

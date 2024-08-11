@@ -3,28 +3,28 @@
  * and triggering an external function when these events occur.
  * @file 'src/content/util_classes/uIController.utils.js'
  * @class UIController
- * 
+ *
  * Example usages:
  * // Initialize a UIController with only keyboard and gamepad bindings
  * const uiController1 = new UIController(externalFunction, '', { bindMouse: false, bindKeyboard: true, bindGamepad: true });
  * uiController1.setBindings();
- * 
+ *
  * // Initialize a UIController with only mouse binding
  * const uiController2 = new UIController(externalFunction, '#myElement', { bindMouse: true, bindKeyboard: false, bindGamepad: false });
- * 
+ *
  * // Attempt to set the same hotkey or button combination for another instance, which should log an error
  * const uiController3 = new UIController(externalFunction, '', { bindMouse: false, bindKeyboard: true, bindGamepad: true });
  * uiController3.setBindings(null, ['ShiftLeft', 'ControlLeft', 'KeyA'], [0, 1]); // This should log an error
- * 
+ *
  * // Initialize a UIController with all bindings
  * const uiController4 = new UIController(externalFunction, '#myElement', { bindMouse: true, bindKeyboard: true, bindGamepad: true });
- * uiController4.setBindings(document.getElementById('myElement'), ['AltLeft', 'KeyB', 'KeyC'], [2, 3]); // Assuming these are valid button indices * 
+ * uiController4.setBindings(document.getElementById('myElement'), ['AltLeft', 'KeyB', 'KeyC'], [2, 3]); // Assuming these are valid button indices *
  */
 
 /* eslint-disable */
 class UIController {
-/* eslint-enable */
-     /**
+    /* eslint-enable */
+    /**
      * Set of assigned keyboard hotkeys and gamepad button combinations to ensure uniqueness.
      */
     static assignedKeyboardHotkeys = new Set();
@@ -37,18 +37,27 @@ class UIController {
      * @param {object} options Options for binding UI events (default: all true).
      */
     constructor(externalFunction, mouseElement, options = {}) {
-        if (typeof externalFunction !== 'function') {
-            throw new Error('An external function must be provided');
+        if (typeof externalFunction !== "function") {
+            throw new Error("An external function must be provided");
         }
 
         this.externalFunction = externalFunction;
         this.pressedKeys = new Set();
         this.gamepadButtonsPressed = new Set();
         this.keyboardCombination = [];
-        this.gamepadCombination = [];        
+        this.gamepadCombination = [];
         this.validKeyCodes = new Set([
-            'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight',
-            'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight', 'KeyA', 'KeyB', 'KeyC',
+            "ShiftLeft",
+            "ShiftRight",
+            "ControlLeft",
+            "ControlRight",
+            "AltLeft",
+            "AltRight",
+            "MetaLeft",
+            "MetaRight",
+            "KeyA",
+            "KeyB",
+            "KeyC",
             // Add all other valid key codes here...
             // https://www.freecodecamp.org/news/javascript-keycode-list-keypress-event-key-codes/
         ]);
@@ -58,7 +67,7 @@ class UIController {
         if (bindMouse || bindKeyboard || bindGamepad) {
             this.init(bindMouse, bindKeyboard, bindGamepad, mouseElement);
         } else {
-            throw new Error('At least one binding option must be true');
+            throw new Error("At least one binding option must be true");
         }
     }
 
@@ -87,9 +96,11 @@ class UIController {
      */
     bindMouseClick() {
         if (!this.mouseElement) {
-            throw new Error('A DOM element reference or css selector string must be provided for mouse click binding');
+            throw new Error(
+                "A DOM element reference or css selector string must be provided for mouse click binding"
+            );
         }
-        this.mouseElement.addEventListener('click', this.handleMouseClick.bind(this));
+        this.mouseElement.addEventListener("click", this.handleMouseClick.bind(this));
     }
 
     /**
@@ -98,7 +109,7 @@ class UIController {
      */
     handleMouseClick(event) {
         // console.log('Mouse clicked:', event);
-        this.externalFunction('mouse', event);
+        this.externalFunction("mouse", event);
     }
 
     /**
@@ -106,13 +117,13 @@ class UIController {
      * @param {HTMLElement} element The DOM element reference to bind mouse click event (or css selector pointing to it).
      */
     setMouseElement(element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
             const tempElement = document.querySelector(element);
             if (tempElement === null) {
                 throw new Error("Provided DOM element doesn't exist. Selector (string): ", element);
             } else {
                 this.mouseElement = tempElement;
-            }            
+            }
         } else if (!!element && !!element.nodeType) {
             throw new Error("Provided DOM element doesn't exist. Element: ", element);
         } else {
@@ -124,8 +135,8 @@ class UIController {
      * Binds keyboard hotkey events.
      */
     bindKeyboardHotkey() {
-        document.addEventListener('keydown', this.handleKeyDown.bind(this));
-        document.addEventListener('keyup', this.handleKeyUp.bind(this));
+        document.addEventListener("keydown", this.handleKeyDown.bind(this));
+        document.addEventListener("keyup", this.handleKeyUp.bind(this));
     }
 
     /**
@@ -151,9 +162,9 @@ class UIController {
      * Checks if the keyboard combination is pressed.
      */
     checkKeyboardCombination() {
-        if (this.keyboardCombination.every(code => this.pressedKeys.has(code))) {
-            console.log('Keyboard combination pressed:', this.keyboardCombination);
-            this.externalFunction('keyboard', this.keyboardCombination);
+        if (this.keyboardCombination.every((code) => this.pressedKeys.has(code))) {
+            console.log("Keyboard combination pressed:", this.keyboardCombination);
+            this.externalFunction("keyboard", this.keyboardCombination);
         }
     }
 
@@ -171,7 +182,7 @@ class UIController {
      * @param {GamepadEvent} event The gamepad connected event object.
      */
     handleGamepadConnected(event) {
-        console.log('Gamepad connected:', event.gamepad);
+        console.log("Gamepad connected:", event.gamepad);
     }
 
     /**
@@ -179,7 +190,7 @@ class UIController {
      * @param {GamepadEvent} event The gamepad disconnected event object.
      */
     handleGamepadDisconnected(event) {
-        console.log('Gamepad disconnected:', event.gamepad);
+        console.log("Gamepad disconnected:", event.gamepad);
     }
 
     /**
@@ -211,9 +222,9 @@ class UIController {
      * Checks if the gamepad combination is pressed.
      */
     checkGamepadCombination() {
-        if (this.gamepadCombination.every(index => this.gamepadButtonsPressed.has(index))) {
-            console.log('Gamepad combination pressed:', this.gamepadCombination);
-            this.externalFunction('gamepad', this.gamepadCombination);
+        if (this.gamepadCombination.every((index) => this.gamepadButtonsPressed.has(index))) {
+            console.log("Gamepad combination pressed:", this.gamepadCombination);
+            this.externalFunction("gamepad", this.gamepadCombination);
         }
     }
 
@@ -223,17 +234,17 @@ class UIController {
      * @returns {boolean} True if the combination is unique, otherwise false.
      */
     static isUniqueKeyboardHotkey(combination) {
-        const key = combination.sort().join(',');
+        const key = combination.sort().join(",");
         return !UIController.assignedKeyboardHotkeys.has(key);
     }
 
-     /**
+    /**
      * Checks if the provided gamepad combination is unique.
      * @param {number[]} combination The gamepad combination to check.
      * @returns {boolean} True if the combination is unique, otherwise false.
      */
     static isUniqueGamepadCombination(combination) {
-        const key = combination.sort().join(',');
+        const key = combination.sort().join(",");
         return !UIController.assignedGamepadButtons.has(key);
     }
 
@@ -242,17 +253,17 @@ class UIController {
      * @param {string[]} combination The keyboard combination to set.
      */
     setKeyboardHotkey(combination) {
-        if (combination.every(key => this.validKeyCodes.has(key))) {
-            const key = combination.sort().join(',');
+        if (combination.every((key) => this.validKeyCodes.has(key))) {
+            const key = combination.sort().join(",");
             if (UIController.isUniqueKeyboardHotkey(combination)) {
                 this.keyboardCombination = combination;
                 UIController.assignedKeyboardHotkeys.add(key);
-                console.log('Keyboard hotkey set to:', this.keyboardCombination);
+                console.log("Keyboard hotkey set to:", this.keyboardCombination);
             } else {
-                console.error('Keyboard combination already in use:', combination);
+                console.error("Keyboard combination already in use:", combination);
             }
         } else {
-            console.error('Invalid keyboard combination:', combination);
+            console.error("Invalid keyboard combination:", combination);
         }
     }
 
@@ -261,17 +272,17 @@ class UIController {
      * @param {number[]} combination The gamepad combination to set.
      */
     setGamepadButtons(combination) {
-        if (combination.every(index => Number.isInteger(index) && index >= 0)) {
-            const key = combination.sort().join(',');
+        if (combination.every((index) => Number.isInteger(index) && index >= 0)) {
+            const key = combination.sort().join(",");
             if (UIController.isUniqueGamepadCombination(combination)) {
                 this.gamepadCombination = combination;
                 UIController.assignedGamepadButtons.add(key);
-                console.log('Gamepad buttons set to:', this.gamepadCombination);
+                console.log("Gamepad buttons set to:", this.gamepadCombination);
             } else {
-                console.error('Gamepad combination already in use:', combination);
+                console.error("Gamepad combination already in use:", combination);
             }
         } else {
-            console.error('Invalid gamepad combination:', combination);
+            console.error("Invalid gamepad combination:", combination);
         }
     }
 
@@ -282,7 +293,7 @@ class UIController {
      */
     setBindings(keyboardCombination, gamepadCombination) {
         if (!keyboardCombination && !gamepadCombination) {
-            throw new Error('At least one binding must be provided');
+            throw new Error("At least one binding must be provided");
         }
 
         if (keyboardCombination) {

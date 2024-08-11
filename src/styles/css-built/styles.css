@@ -18,19 +18,14 @@
   --ally-border-color: #0095ff;
   --sidebar-font: "pokemon-emerald-pro";
   --overlay-font: "pokemon-emerald-pro";
-  --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0),
-      -0.1em 0 rgba(255, 255, 255, 0), 0 0.1em rgba(255, 255, 255, 0),
-      0 -0.1em rgba(255, 255, 255, 0), 0.05em 0.05em rgba(255, 255, 255, 0),
-      -0.05em -0.05em rgba(255, 255, 255, 0),
-      0.05em -0.05em rgba(255, 255, 255, 0),
+  --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0), -0.1em 0 rgba(255, 255, 255, 0),
+      0 0.1em rgba(255, 255, 255, 0), 0 -0.1em rgba(255, 255, 255, 0), 0.05em 0.05em rgba(255, 255, 255, 0),
+      -0.05em -0.05em rgba(255, 255, 255, 0), 0.05em -0.05em rgba(255, 255, 255, 0),
       -0.05em 0.05em rgba(255, 255, 255, 0);
-  --text-shadow-light: 0.1em 0 rgba(255, 255, 255, 0.9),
-      -0.1em 0 rgba(255, 255, 255, 0.9), 0 0.1em rgba(255, 255, 255, 0.9),
-      0 -0.1em rgba(255, 255, 255, 0.9),
-      0.05em 0.05em rgba(255, 255, 255, 0.9),
-      -0.05em -0.05em rgba(255, 255, 255, 0.9),
-      0.05em -0.05em rgba(255, 255, 255, 0.9),
-      -0.05em 0.05em rgba(255, 255, 255, 0.9);
+  --text-shadow-light: 0.1em 0 rgba(255, 255, 255, 0.9), -0.1em 0 rgba(255, 255, 255, 0.9),
+      0 0.1em rgba(255, 255, 255, 0.9), 0 -0.1em rgba(255, 255, 255, 0.9),
+      0.05em 0.05em rgba(255, 255, 255, 0.9), -0.05em -0.05em rgba(255, 255, 255, 0.9),
+      0.05em -0.05em rgba(255, 255, 255, 0.9), -0.05em 0.05em rgba(255, 255, 255, 0.9);
   /* PLACEHOLDERS, set programmatically  */
   --extension-rarity-bg-image-holo-fade: url("__EXTENSION_IMAGE_1_URL__");
   --extension-rarity-bg-image-holo: url("__EXTENSION_IMAGE_2_URL__");

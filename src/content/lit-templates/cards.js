@@ -2,22 +2,22 @@
  * @fileoverview Contains lit-html templates and helper functions that are being used to create
  *          and update pokemon cards.
  *          Functions and templates are added to the window as properties.
- *          Accessible with the 'window.lit.' prefix.
+ *          Accessible with the 'window.roguedexLit.' prefix.
  * @file 'src/content/lit-templates/cards.js'
  */
 
 (function (window) {
-    window.lit = window.lit || {};
+    window.roguedexLit = window.roguedexLit || {};
 
     /**
      * Creates a wrapper element for Pokémon cards.
      * @param {string} partyID - The ID of the party ('enemies' or 'allies').
      * @param {boolean} [showSidebar=false] - Flag indicating whether the sidebar is shown.
      * @returns {Lit-HTML-Template} The wrapper element for Pokémon cards.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createCardWrapper
      */
-    window.lit.createCardWrapper = (partyID, showSidebar) => {
+    window.roguedexLit.createCardWrapper = (partyID, showSidebar) => {
         const displayClass = showSidebar ? "hidden-because-sidebar-active" : "active-because-sidebar-hidden";
         const classes = `${partyID.toLowerCase() === "enemies" ? "enemy-team" : "allies-team"} ${displayClass}`;
 
@@ -35,18 +35,18 @@
      * @param {Object} weather - The weather object.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @returns {Lit-HTML-Template} The div element for the Pokémon card.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createPokemonCardContent
      */
-    window.lit.createPokemonCardContent = (cardId, pokemon, typeEffectivenessHTML, weather, isMobile) => {
-        const Stat = window.lit.getStatList();
+    window.roguedexLit.createPokemonCardContent = (cardId, pokemon, typeEffectivenessHTML, weather, isMobile) => {
+        const Stat = window.roguedexLit.getStatList();
         const rarityClass =
             pokemon.rarity.length && cardId.toLowerCase() === "enemies" ?
                 "pokemon-rarity-" + pokemon.rarity
             :   "";
         const maxOneTrue = [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
         const generationLabel = maxOneTrue ? "Gen " + pokemon.gen : pokemon.gen; // add some more text when only one other element is shown
-        const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+        const natureStats = window.roguedexLit.getNatureStatChange(pokemon.nature);
         const natureDescriptionHTML =
             (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
             (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
@@ -61,7 +61,7 @@
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
                             ${cardId === 'enemies' ? html`
                                 <div class="card-pokemon-info enemies tooltip ${mobileTag}">
-                                    ${window.lit.createPokemonTooltipDiv(pokemon)}
+                                    ${window.roguedexLit.createPokemonTooltipDiv(pokemon)}
                                     ${pokemon.gen ? html`
                                         <span class="card-pokemon-info-generation">${generationLabel}</span>
                                     ` : '' }
@@ -72,7 +72,7 @@
                                         <span class="card-pokemon-info-paradox">Par</span>
                                     ` : '' }
                                     ${pokemon.region ? html`
-                                        <span class="card-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></span>
+                                        <span class="card-pokemon-info-region" style="background-image: url(${window.roguedexLit.getVariantSymbol(pokemon.region)})"></span>
                                     ` : '' }
                                 </div>
                             ` : '' }
@@ -85,12 +85,12 @@
                             <div class="tooltip ${mobileTag}">
                                 <span>Ability: </span>
                                 <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
-                                ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                                ${window.roguedexLit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                             </div>
                             ${ pokemon.nature ? html`
                                 <div class="tooltip ${mobileTag}">
                                     <span>&nbsp;-&nbsp;${pokemon.nature}</span>
-                                    ${window.lit.createTooltipDiv(natureDescriptionHTML)}
+                                    ${window.roguedexLit.createTooltipDiv(natureDescriptionHTML)}
                                 </div>
                             ` : '' }
                         </div>
@@ -120,10 +120,10 @@
      * @param {boolean} showTypeEffectiveness - Flag indicating if the minified cards type effectivenesses should be shown.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @returns {Lit-HTML-Template} The div element for the minified Pokémon card.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createPokemonCardContentMinified
      */
-    window.lit.createPokemonCardContentMinified = (
+    window.roguedexLit.createPokemonCardContentMinified = (
         cardId,
         pokemon,
         ivsGeneratedHTML,
@@ -135,7 +135,7 @@
             pokemon.rarity.length && cardId.toLowerCase() === "enemies" ?
                 "pokemon-rarity-" + pokemon.rarity
             :   "";
-        const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+        const natureStats = window.roguedexLit.getNatureStatChange(pokemon.nature);
         const natureDescriptionHTML =
             (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
             (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
@@ -153,12 +153,12 @@
                         <div class="tooltip ${mobileTag}">
                             <span>Ability: </span>
                             <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
-                            ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                            ${window.roguedexLit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                         </div>
                         ${ pokemon.nature ? html`
                             <div class="tooltip ${mobileTag}">
                                 <span>&nbsp;-&nbsp;${pokemon.nature}</span>
-                                ${window.lit.createTooltipDiv(natureDescriptionHTML)}
+                                ${window.roguedexLit.createTooltipDiv(natureDescriptionHTML)}
                             </div>
                         ` : '' }
                     </div>
@@ -171,7 +171,7 @@
                         </div>
                     ` : ''}
                     <div class="pokemon-type-effectiveness-wrapper compact ${ showTypeEffectiveness ? 'visible' : 'disabled' }">
-                        ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 15, 2)}
+                        ${window.roguedexLit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 15, 2)}
                     </div>
                 </div>
             </div>
@@ -182,14 +182,14 @@
      * Creates a wrapper element for type effectiveness.
      * @param {Object} typeEffectivenesses - The type effectiveness object.
      * @returns {Lit-HTML-Template} The wrapper element for type effectivenesses.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createTypeEffectivenessWrapper
      */
-    window.lit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
-        const mobileTag = window.lit.mobileCheck() ? "mobile" : "";
+    window.roguedexLit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
+        const mobileTag = window.roguedexLit.mobileCheck() ? "mobile" : "";
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
-                const TypeIconUrls = window.lit.getTypeIconUrls();
+                const TypeIconUrls = window.roguedexLit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
                 if (
                     !effectivenessObj ||
@@ -228,7 +228,7 @@
                             </div>
                         `)}
                         ${ tooltipMap[effectiveness] ? html`
-                            ${window.lit.createTooltipDiv(`<span>${tooltipMap[effectiveness]}</span>`)}
+                            ${window.roguedexLit.createTooltipDiv(`<span>${tooltipMap[effectiveness]}</span>`)}
                         ` : ''}
                     </div>
                 `;
@@ -243,11 +243,11 @@
      * @param {boolean} [simpleDisplay=false] - Flag indicating whether to display in a simple format.
      * @param {boolean} [addStyleClasses=false] - Flag indicating whether to add style classes.
      * @returns {string} The HTML for displaying IVs.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function generateCardIVsHTML
      */
-    window.lit.generateCardIVsHTML = (pokemon, dexData, simpleDisplay = false, addStyleClasses = false) => {
-        const Stat = window.lit.getStatList();
+    window.roguedexLit.generateCardIVsHTML = (pokemon, dexData, simpleDisplay = false, addStyleClasses = false) => {
+        const Stat = window.roguedexLit.getStatList();
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const dexIvs = dexData[saveDataId]?.ivs || dexData[pokemon.baseId]?.ivs || {};
 
@@ -321,10 +321,10 @@
      * @param {Function} clickFunction - The function to be called on click.
      * @param {Array} additionalParams - Additional parameters for the click function.
      * @returns {Lit-HTML-Template} The div element for the arrow buttons.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createArrowButtonsDiv
      */
-    window.lit.createArrowButtonsDiv = (
+    window.roguedexLit.createArrowButtonsDiv = (
         divId,
         upString,
         downString,
@@ -333,7 +333,7 @@
         ...additionalParams
     ) => {
         const isMinified = showMinified ? "minified" : "";
-        const isMobileDevice = window.lit.mobileCheck() ? "mobile" : "desktop"; // 'desktop' added for clarity, no css needed
+        const isMobileDevice = window.roguedexLit.mobileCheck() ? "mobile" : "desktop"; // 'desktop' added for clarity, no css needed
         const result = {};
         result.idUp = `${divId}-up`;
         result.idDown = `${divId}-down`;
@@ -360,12 +360,12 @@
      * @param {string} [min="10"] - The minimum value of the slider.
      * @param {string} [max="100"] - The maximum value of the slider.
      * @returns {Object} Contains the slider element id and lit-html object.
-     * @memberof lit
+     * @memberof roguedexLit
      * @function createOpacitySliderDiv
      *
      * currently not used
      */
-    window.lit.createOpacitySliderDiv = (
+    window.roguedexLit.createOpacitySliderDiv = (
         divId,
         changeOpacity,
         initialValue = "100",
@@ -385,7 +385,7 @@
         return result;
     };
 
-    window.lit.getScrollbarWidth = () => {
+    window.roguedexLit.getScrollbarWidth = () => {
         // Creating invisible container
         const outer = document.createElement("div");
         outer.style.visibility = "hidden";

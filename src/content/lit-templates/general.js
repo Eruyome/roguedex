@@ -1,22 +1,22 @@
 /**
  * @fileoverview Contains general-use lit-html templates and helper functions.
  *          Functions and templates are added to the window as properties.
- *          Accessible with the 'window.lit.' prefix.
+ *          Accessible with the 'window.roguedexLit.' prefix.
  * @file 'src/content/lit-templates/general.js'
  */
 
 (function (window) {
-    window.lit = window.lit || {};
+    window.roguedexLit = window.roguedexLit || {};
 
     /**
      * Generates HTML for a small tooltip.
      *
      * @param {string} tip - Tooltip contents.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function createTooltipDiv
      */
-    window.lit.createTooltipDiv = (tip) => {
+    window.roguedexLit.createTooltipDiv = (tip) => {
         return html`
             <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
         `;
@@ -26,11 +26,11 @@
      * Capitalizes the first letter of any string.
      *
      * @param {string} string - Any input string.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {string} The capitalized string.
      * @function capitalizeFirstLetter
      */
-    window.lit.capitalizeFirstLetter = (string) => {
+    window.roguedexLit.capitalizeFirstLetter = (string) => {
         string = string.toLowerCase();
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
@@ -39,11 +39,11 @@
      * Generates HTML for a status bar, showing certain info about the running extension.
      *
      * @param {object} properties
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function updateExtensionStatusElement
      */
-    window.lit.updateExtensionStatusElement = (properties) => {
+    window.roguedexLit.updateExtensionStatusElement = (properties) => {
         const hasSiblingClass = properties.sessionState ? "" : "no-radius";
         // prettier-ignore
         return html`
@@ -58,11 +58,11 @@
      * Generates HTML for an exclamation icon that give a hint/reminder to open the settings menu and how to.
      *
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function createSettingsHintElement
      */
-    window.lit.createSettingsHintElement = (isMobile) => {
+    window.roguedexLit.createSettingsHintElement = (isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
 
         let tooltipContent = "";
@@ -89,7 +89,7 @@
         return html`
             <div id="rd-settings-hint" class="tooltip ${mobileTag}">
                 <span class="rd-hint-icon">&#8505;</span>
-                ${window.lit.createTooltipDiv(tooltipContent)}
+                ${window.roguedexLit.createTooltipDiv(tooltipContent)}
             </div>
         `;
     };
@@ -110,17 +110,17 @@
      * @param {number} pokemon.friendship - The friendship experience of the Pokémon.
      * @returns {Lit-HTML-Template} - The HTML template for the Pokémon tooltip.
      */
-    window.lit.createPokemonTooltipDiv = (pokemon) => {
-        let variant = pokemon.paradox ? `Paradox (${window.lit.capitalizeFirstLetter(pokemon.paradox)})` : "";
+    window.roguedexLit.createPokemonTooltipDiv = (pokemon) => {
+        let variant = pokemon.paradox ? `Paradox (${window.roguedexLit.capitalizeFirstLetter(pokemon.paradox)})` : "";
         variant += pokemon.paradox && pokemon.region ? " | " : "";
-        variant += pokemon.region ? `(${window.lit.capitalizeFirstLetter(pokemon.region)}) Region` : "";
+        variant += pokemon.region ? `(${window.roguedexLit.capitalizeFirstLetter(pokemon.region)}) Region` : "";
 
         // prettier-ignore
         return html`
             <div class="text-base tooltiptext">
                 <span>Name: ${pokemon.name} [Gen ${pokemon.gen}]</span></br>
                 ${ pokemon.rarity ? html`
-                    <span>Rare: ${window.lit.capitalizeFirstLetter(pokemon.rarity)}</span></br>
+                    <span>Rare: ${window.roguedexLit.capitalizeFirstLetter(pokemon.rarity)}</span></br>
                 `: ''}
                 ${ pokemon.variant ? html`
                     <span>Variant: ${variant}</span></br>
@@ -129,12 +129,12 @@
                     <span> </span></br>
                 `: ''}
                 ${ pokemon.fusionId ? html`
-                    <span>Fusion Base: ${window.lit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
-                    <span>Fused with: ${window.lit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
+                    <span>Fusion Base: ${window.roguedexLit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
+                    <span>Fused with: ${window.roguedexLit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
                     <span> </span></br>
                 `: ''}
                 ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
-                    <span>Starter: ${window.lit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
+                    <span>Starter: ${window.roguedexLit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
                     <span> </span></br>
                 `: ''}
                 <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
@@ -151,11 +151,11 @@
     /**
      * Retrieves an object mapping Pokémon types to their respective numeric identifiers.
      *
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Object} An object where keys are type names and values are numeric identifiers.
      * @function getTypeList
      */
-    window.lit.getTypeList = () => {
+    window.roguedexLit.getTypeList = () => {
         let Types;
         (function (Types) {
             Types[(Types.normal = 1)] = 1;
@@ -185,11 +185,11 @@
     /**
      * Retrieves an object mapping Pokémon types to their respective icon urls.
      *
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Object} An object where keys are type names and values are url strings.
      * @function getTypeList
      */
-    window.lit.getTypeIconUrls = () => {
+    window.roguedexLit.getTypeIconUrls = () => {
         const extensionUrl = browserApi.runtime.getURL("/images/types/");
         const typeMap = {
             1: "normal",
@@ -229,7 +229,7 @@
      * - The first element is the stat that increases.
      * - The second element is the stat that decreases.
      */
-    window.lit.getNatureStatChange = (nature) => {
+    window.roguedexLit.getNatureStatChange = (nature) => {
         const natures = {
             hardy: { inc: "ATK", dec: "ATK" },
             lonely: { inc: "ATK", dec: "DEF" },
@@ -264,11 +264,11 @@
     /**
      * Retrieves an object mapping Pokémon region names to their respective icon urls.
      *
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Object} An object where keys are type names and values are url strings.
      * @function getTypeList
      */
-    window.lit.getVariantSymbol = (name) => {
+    window.roguedexLit.getVariantSymbol = (name) => {
         const extensionUrl = browserApi.runtime.getURL("/images/variants/");
 
         const urls = {
@@ -289,11 +289,11 @@
     /**
      * Retrieves an object mapping Pokémon stats to their respective names.
      *
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Object} An object where keys are stat identifiers and values are stat names.
      * @function getStatList
      */
-    window.lit.getStatList = () => {
+    window.roguedexLit.getStatList = () => {
         let Stat;
         (function (Stat) {
             Stat[(Stat.HP = 0)] = "HP";
@@ -311,10 +311,10 @@
      * Returns the browsers scrollbar width in pixels.
      *
      * @function getScrollbarWidth
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {number} Scrollbar width.
      */
-    window.lit.getScrollbarWidth = () => {
+    window.roguedexLit.getScrollbarWidth = () => {
         // Creating invisible container
         const outer = document.createElement("div");
         outer.style.visibility = "hidden";
@@ -339,10 +339,10 @@
      * Checks if the current device is a mobile device based on the user agent.
      *
      * @function mobileCheck
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {boolean} True if the device is a mobile device, false otherwise.
      */
-    window.lit.mobileCheck = () => {
+    window.roguedexLit.mobileCheck = () => {
         const isTouchDevice = () =>
             "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 

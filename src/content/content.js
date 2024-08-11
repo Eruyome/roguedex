@@ -9,7 +9,7 @@
 /* Ideally only bundle/import what is used.
  * lit-html: https://lit.dev/
  * Template rendering.
- * templates and helper functions are prefixed with `window.lit.`
+ * templates and helper functions are prefixed with `window.roguedexLit.`
  */
 /* eslint-disable */
 const {
@@ -35,8 +35,10 @@ const {
     when,
     classMap,
     styleMap,
-} = window.LitHtml;
+} = window.roguedexLitHtml;
 /* eslint-enable */
+window.roguedex = { developmentENV : false }
+initCustomLogger();
 
 const initStates = {
     panelsInitialized: false,
@@ -47,10 +49,10 @@ const initStates = {
 
 const uiDataGlobals = {};
 uiDataGlobals.activePokemonParties = { enemies: {}, allies: {} };
-// Positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars (which is bad).
+// Positioning a ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars (which is bad).
 // This issue could also be solved by setting the body overflow to none, may have unintended consequences though.
-uiDataGlobals.scrollbarWidth = window.lit.getScrollbarWidth();
-uiDataGlobals.isMobile = window.lit.mobileCheck();
+uiDataGlobals.scrollbarWidth = window.roguedexLit.getScrollbarWidth();
+uiDataGlobals.isMobile = window.roguedexLit.mobileCheck();
 uiDataGlobals.wrapperDivPositions = {
     enemies: {
         top: "0",
@@ -134,6 +136,7 @@ function initUtilities() {
             if (window.Utils.isReady) {
                 console.info("All Scripts Loaded!");
                 extensionSettingsListener();
+                setDevEnv();
             } else {
                 console.info("Error Loading Scripts :(");
             }
@@ -149,6 +152,77 @@ function initUtilities() {
     } else {
         console.error("UtilsClass is not properly initialized.");
     }
+}
+
+/**
+ * @function initCustomLogger
+ * @description Initializes the `roguedexLogger` object that wraps standard console methods and conditionally logs messages 
+ * based on the value of the `window.roguedex.developmentENV` flag.
+ * Use it like the default "console" logger.
+ * 
+ * @namespace roguedexLogger
+ * @property {Function} log - Logs a message to the console if `developerENV` is true.
+ * @property {Function} warn - Logs a warning to the console if `developerENV` is true.
+ * @property {Function} debug - Logs a debug message to the console if `developerENV` is true.
+ * @property {Function} error - Logs an error message to the console if `developerENV` is true.
+ * @property {Function} info - Logs an info message to the console if `developerENV` is true.
+ */
+function initCustomLogger() {
+    (function(global) {
+        // Define a custom logger object
+        const roguedexLogger = {};
+    
+        // List of supported logging methods
+        const methods = ['log', 'warn', 'debug', 'error', 'info'];
+    
+        // Utility function to get the stack trace file information
+        function getFileInfo() {
+            const stack = new Error().stack;
+            const stackLines = stack.split('\n');
+            
+            if (stackLines.length > 2) {
+                // Extract relevant part of the stack trace using regex
+                const match = stackLines[2].match(/([^\s]+:\d+:\d+)/);
+                return match ? match[0] : '';
+            }
+            return '';
+        }
+    
+        // Iterate over each method and create a custom function
+        methods.forEach(method => {
+            roguedexLogger[method] = function(...args) {
+                // Check if developmentENV is true before logging
+                if (global.roguedex && global.roguedex.developmentENV) {
+                    // Add prefix
+                    const prefix = '[RogueDex] ';
+                    const fileInfo = getFileInfo();
+    
+                    // Add the prefix to the first argument if it's a string
+                    if (typeof args[0] === 'string') {
+                        args[0] = prefix + args[0];
+                    } else {
+                        // Insert prefix if the first argument is not a string
+                        args.unshift(prefix);
+                    }
+    
+                    // Add file info as the last argument if there's at least one argument
+                    if (args.length > 0) {
+                        args.push(fileInfo);
+                    } else {
+                        // If no arguments, create a new list with just fileInfo
+                        args = [prefix, fileInfo];
+                    }
+    
+                    // Use the original console method with the provided arguments
+                    console[method](...args);
+                }
+            };
+        });
+    
+        // Attach the custom logger to the global scope with a unique name
+        global.roguedexLogger = roguedexLogger;
+    
+    })(typeof window !== "undefined" ? window : global);
 }
 
 /**
@@ -224,7 +298,7 @@ async function updateExtensionStatus(properties) {
     // Uses 'unknown' when 'properties.sessionState' is null or undefined.
     const sessionState = properties?.sessionState ?? "dont-show";
 
-    const extensionStatusHTML = window.lit.updateExtensionStatusElement({
+    const extensionStatusHTML = window.roguedexLit.updateExtensionStatusElement({
         text,
         sessionState,
     });
@@ -242,7 +316,7 @@ async function updateExtensionStatus(properties) {
  * @function createSettingsHint
  */
 async function createSettingsHint() {
-    const settingsHintElement = window.lit.createSettingsHintElement(uiDataGlobals.isMobile);
+    const settingsHintElement = window.roguedexLit.createSettingsHintElement(uiDataGlobals.isMobile);
     render(settingsHintElement, document.body);
 }
 
@@ -361,8 +435,8 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
                 return;
             }
 
-            const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
-            const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
+            const enemiesWrapper = window.roguedexLit.createCardWrapper(id1, showSidebar);
+            const alliesWrapper = window.roguedexLit.createCardWrapper(id2, showSidebar);
 
             const body = document.body;
 
@@ -533,7 +607,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
         extensionSettings.showMiniCardTypes
     ).then(async (cardObj) => {
         const additionalParams = [divId, pokemonData];
-        const buttonsObj = window.lit.createArrowButtonsDiv(
+        const buttonsObj = window.roguedexLit.createArrowButtonsDiv(
             divId,
             "↑",
             "↓",
@@ -633,10 +707,10 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCa
     const savedData = await window.Utils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
     const simpleDisplay = cardId.toLowerCase() === "allies";
-    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
+    const ivsGeneratedHTML = window.roguedexLit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
-        html: window.lit.createPokemonCardContentMinified(
+        html: window.roguedexLit.createPokemonCardContentMinified(
             cardId,
             pokemon,
             ivsGeneratedHTML,
@@ -657,10 +731,10 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCa
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
+    const typeEffectivenessHTML = window.roguedexLit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
-        html: window.lit.createPokemonCardContent(
+        html: window.roguedexLit.createPokemonCardContent(
             cardId,
             pokemon,
             typeEffectivenessHTML,
@@ -676,8 +750,8 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
  * @function createPanels
  */
 function createPanels() {
-    const sidebarTemplate = window.lit.createSidebarTemplate(uiDataGlobals.isMobile);
-    const bottomPanelTemplate = window.lit.createBottomPanelTemplate();
+    const sidebarTemplate = window.roguedexLit.createSidebarTemplate(uiDataGlobals.isMobile);
+    const bottomPanelTemplate = window.roguedexLit.createBottomPanelTemplate();
 
     render(sidebarTemplate, document.body, {
         renderBefore: document.body.firstChild,
@@ -722,7 +796,7 @@ async function renderSidebarPartyTemplate(
             maxPokemonForDetailedView,
             breakpointOverridePartyDisplay
         );
-        const partyTemplate = window.lit.createSidebarPartyTemplate(
+        const partyTemplate = window.roguedexLit.createSidebarPartyTemplate(
             pokeData,
             partyID,
             savedData.dexData,
@@ -738,7 +812,7 @@ async function renderSidebarPartyTemplate(
     }
 
     const headerElement = document.getElementById(`sidebar-header`);
-    const headerTemplate = window.lit.updateSidebarHeader(sessionData);
+    const headerTemplate = window.roguedexLit.updateSidebarHeader(sessionData);
     render(headerTemplate, headerElement);
 }
 
@@ -851,11 +925,11 @@ async function updateBottomPanel(sessionData, pokemonData) {
     const bottomPanelElement = document.getElementById("roguedex-bottom-panel");
 
     const showTab = (tabId) => {
-        window.lit.updateActiveTab(tabId);
+        window.roguedexLit.updateActiveTab(tabId);
     };
-    const template = window.lit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
+    const template = window.roguedexLit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
     render(template, bottomPanelElement);
-    const activeTabId = window.lit.getActiveTab();
+    const activeTabId = window.roguedexLit.getActiveTab();
 
     if (!activeTabId) {
         showTab("bottom-panel-global");
@@ -1333,6 +1407,9 @@ function extensionSettingsListener() {
                 case "statusbarPosition":
                     changeStatusbarPosition();
                     break;
+                case "enableDevLogs": 
+                    setDevEnv();
+                    break
                 case "menuType":
                     // do nothing?
                     break;
@@ -1343,6 +1420,18 @@ function extensionSettingsListener() {
         }
     });
     console.debug("Extension settings listener activated.");
+}
+
+/**
+ * Sets the global developmentENV variable according to the user settings.
+ * @function setDevEnv
+ * @async
+ */
+async function setDevEnv() {
+    const { enableDevLogs } = await browserApi.storage.sync.get("enableDevLogs");
+    if (enableDevLogs !== undefined && enableDevLogs !== null) {
+        window.roguedex.developmentENV = enableDevLogs;
+    }
 }
 
 /**

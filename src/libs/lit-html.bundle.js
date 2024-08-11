@@ -71,7 +71,7 @@ const Et=tt(class extends et{constructor(t){if(super(t),t.type!==F||"class"!==t.
 	 * @license
 	 * Copyright 2018 Google LLC
 	 * SPDX-License-Identifier: BSD-3-Clause
-	 */window.LitHtml={html:g,render:V,ref:dt,unsafeHTML:gt,unsafeSVG:Ct,templateContent:xt,asyncAppend:vt,asyncReplace:At,until:ft,live:wt,guard:Ht,cache:Tt,keyed:Mt,ifDefined:t=>t??C
+	 */window.roguedexLitHtml={html:g,render:V,ref:dt,unsafeHTML:gt,unsafeSVG:Ct,templateContent:xt,asyncAppend:vt,asyncReplace:At,until:ft,live:wt,guard:Ht,cache:Tt,keyed:Mt,ifDefined:t=>t??C
 /**
 	 * @license
 	 * Copyright 2021 Google LLC

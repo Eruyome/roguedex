@@ -1,19 +1,19 @@
 /**
  * @fileoverview Contains lit-html templates and helper functions that are being used to create and update the bottompanel.
  *          Functions and templates are added to the window as properties.
- *          Accessible with the 'window.lit.' prefix.
+ *          Accessible with the 'window.roguedexLit.' prefix.
  * @file 'src/content/lit-templates/bottompanel.js'
  */
 
 (function (window) {
-    window.lit = window.lit || {};
+    window.roguedexLit = window.roguedexLit || {};
 
     /**
      * Creates the template for the bottom panel.
      * @function createBottomPanelTemplate
      * @returns {Lit-HTML-Template} The HTML template for the bottom panel.
      */
-    window.lit.createBottomPanelTemplate = () => {
+    window.roguedexLit.createBottomPanelTemplate = () => {
         // prettier-ignore
         return html`
             <div class="roguedex-bottom-panel sidebar-Left" id="roguedex-bottom-panel"></div>
@@ -26,7 +26,7 @@
      * @function updateActiveTab
      * @param {string} tabId - The ID of the tab to make active.
      */
-    window.lit.updateActiveTab = (tabId) => {
+    window.roguedexLit.updateActiveTab = (tabId) => {
         const tabs = document.querySelectorAll(".bottom-panel-tab-content");
         tabs.forEach((tab) => {
             tab.classList.toggle("active", tab.id === tabId);
@@ -42,10 +42,10 @@
      * Retrieves the ID of the active tab in the bottom panel.
      *
      * @function getActiveTab
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {string|null} The ID of the active tab, or null if no tab is active.
      */
-    window.lit.getActiveTab = () => {
+    window.roguedexLit.getActiveTab = () => {
         const activeTab = document.querySelector(".bottom-panel-tab-content.active");
         return activeTab ? activeTab.id : null;
     };
@@ -56,10 +56,10 @@
      * @param {Object} sessionData - The session data.
      * @param {Object} pokemonData - The data for the Pokémon.
      * @param {Function} showTab - The function to show a specific tab.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} The HTML template for the content of the bottom panel.
      */
-    window.lit.createBottomPanelContentTemplate = (sessionData, pokemonData, showTab) => {
+    window.roguedexLit.createBottomPanelContentTemplate = (sessionData, pokemonData, showTab) => {
         const activeTab = "bottom-panel-global"; // Default to showing the global tab initially
 
         let luckTotal = 0;
@@ -70,9 +70,9 @@
             );
         }
 
-        const weatherHtml = window.lit.createWeatherHtml(pokemonData.weather);
-        const modifierHtml = window.lit.generateBattleModifierHtml(sessionData, luckTotal);
-        const pokemonTabsHtml = window.lit.createPokemonTabsHtml(pokemonData.pokemon, activeTab);
+        const weatherHtml = window.roguedexLit.createWeatherHtml(pokemonData.weather);
+        const modifierHtml = window.roguedexLit.generateBattleModifierHtml(sessionData, luckTotal);
+        const pokemonTabsHtml = window.roguedexLit.createPokemonTabsHtml(pokemonData.pokemon, activeTab);
 
         // prettier-ignore
         return html`
@@ -104,10 +104,10 @@
      * @param {Object} weather - The weather data object.
      * @param {string} weather.type - The type of weather.
      * @param {number} weather.turnsLeft - The number of turns left for the weather.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template|null} - The HTML template for the weather or null if no weather data.
      */
-    window.lit.createWeatherHtml = (weather) => {
+    window.roguedexLit.createWeatherHtml = (weather) => {
         if (weather.type && weather.turnsLeft) {
             return html`
                 <div class="bottom-panel-weather-box">
@@ -125,14 +125,14 @@
      * @function createPokemonTabsHtml
      * @param {Array<Object>} pokemonArray - An array of Pokémon data objects.
      * @param {string} activeTab - The ID of the active tab.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Array<Lit-HTML-Template>} An array of HTML templates for the Pokémon tabs.
      */
-    window.lit.createPokemonTabsHtml = (pokemonArray, activeTab) => {
+    window.roguedexLit.createPokemonTabsHtml = (pokemonArray, activeTab) => {
         // prettier-ignore
         return pokemonArray.map((pokemon, index) => html`
             <div class="bottom-panel-tab-content ${activeTab === 'bottom-panel-pokemon-' + index ? 'active' : ''}" id="bottom-panel-pokemon-${index}">
-                ${window.lit.createPokemonTable(pokemon)}
+                ${window.roguedexLit.createPokemonTable(pokemon)}
             </div>
         `);
     };
@@ -142,45 +142,45 @@
      * Adds tables which list and summarize data of all kinds of pokemon specific modifers that are currently active.
      *
      * @param {Object} pokemon - The data object for the Pokémon.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template for the Pokémon data table.
      */
-    window.lit.createPokemonTable = (pokemon) => {
+    window.roguedexLit.createPokemonTable = (pokemon) => {
         // prettier-ignore
         const modifiers = {
-            leftOvers: window.lit.getModifier(pokemon?.modifiers?.others, 'LEFTOVERS'),
-            wideLens: window.lit.getModifier(pokemon?.modifiers?.others, 'WIDE_LENS'),
-            kingsRock: window.lit.getModifier(pokemon?.modifiers?.others, 'KINGS_ROCK'),
-            focusBand: window.lit.getModifier(pokemon?.modifiers?.others, 'FOCUS_BAND'),
-            gripClaw: window.lit.getModifier(pokemon?.modifiers?.others, 'GRIP_CLAW'),
-            soulDew: window.lit.getModifier(pokemon?.modifiers?.others, 'SOUL_DEW'),
-            goldenPunch: window.lit.getModifier(pokemon?.modifiers?.others, 'GOLDEN_PUNCH'),
-            shellBell: window.lit.getModifier(pokemon?.modifiers?.others, 'SHELL_BELL'),
-            goldenEgg: window.lit.getModifier(pokemon?.modifiers?.others, 'GOLDEN_EGG'),
-            reviverSeed: window.lit.getModifier(pokemon?.modifiers?.others, 'REVIVER_SEED'),
-            sootheBell: window.lit.getModifier(pokemon?.modifiers?.others, 'SOOTHE_BELL'),
-            baton: window.lit.getModifier(pokemon?.modifiers?.others, 'BATON'),
-            luckEgg: window.lit.getModifier(pokemon?.modifiers?.others, 'LUCKY_EGG'),
-            minyBlackhole: window.lit.getModifier(pokemon?.modifiers?.others, 'MINI_BLACK_HOLE'),
+            leftOvers: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'LEFTOVERS'),
+            wideLens: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'WIDE_LENS'),
+            kingsRock: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'KINGS_ROCK'),
+            focusBand: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'FOCUS_BAND'),
+            gripClaw: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'GRIP_CLAW'),
+            soulDew: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'SOUL_DEW'),
+            goldenPunch: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'GOLDEN_PUNCH'),
+            shellBell: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'SHELL_BELL'),
+            goldenEgg: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'GOLDEN_EGG'),
+            reviverSeed: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'REVIVER_SEED'),
+            sootheBell: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'SOOTHE_BELL'),
+            baton: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'BATON'),
+            luckEgg: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'LUCKY_EGG'),
+            minyBlackhole: window.roguedexLit.getModifier(pokemon?.modifiers?.others, 'MINI_BLACK_HOLE'),
         
-            typeBooster_normal: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'SILK_SCARF'),
-            typeBooster_fight: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'BLACK_BELT'),
-            typeBooster_flying: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'SHARP_BEAK'),
-            typeBooster_poison: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'POISON_BARB'),
-            typeBooster_ground: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'SOFT_SAND'),
-            typeBooster_rock: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'HARD_STONE'),
-            typeBooster_bug: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'SILVER_POWDER'),
-            typeBooster_ghost: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'SPELL_TAG'),
-            typeBooster_steel: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'METAL_COAT'),
-            typeBooster_fire: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'CHARCOAL'),
-            typeBooster_water: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'MYSTIC_WATER'),
-            typeBooster_grass: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'MIRACLE_SEED'),
-            typeBooster_electric: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'MAGNET'),
-            typeBooster_psychic: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'TWISTED_SPOON'),
-            typeBooster_ice: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'NEVER_MELT_ICE'),
-            typeBooster_dragon: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'DRAGON_FANG'),
-            typeBooster_dark: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'BLACK_GLASSES'),
-            typeBooster_fairy: window.lit.getModifier(pokemon?.modifiers?.attackBoosts, 'FAIRY_FEATHER')
+            typeBooster_normal: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'SILK_SCARF'),
+            typeBooster_fight: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'BLACK_BELT'),
+            typeBooster_flying: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'SHARP_BEAK'),
+            typeBooster_poison: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'POISON_BARB'),
+            typeBooster_ground: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'SOFT_SAND'),
+            typeBooster_rock: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'HARD_STONE'),
+            typeBooster_bug: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'SILVER_POWDER'),
+            typeBooster_ghost: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'SPELL_TAG'),
+            typeBooster_steel: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'METAL_COAT'),
+            typeBooster_fire: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'CHARCOAL'),
+            typeBooster_water: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'MYSTIC_WATER'),
+            typeBooster_grass: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'MIRACLE_SEED'),
+            typeBooster_electric: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'MAGNET'),
+            typeBooster_psychic: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'TWISTED_SPOON'),
+            typeBooster_ice: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'NEVER_MELT_ICE'),
+            typeBooster_dragon: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'DRAGON_FANG'),
+            typeBooster_dark: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'BLACK_GLASSES'),
+            typeBooster_fairy: window.roguedexLit.getModifier(pokemon?.modifiers?.attackBoosts, 'FAIRY_FEATHER')
         };
 
         // prettier-ignore
@@ -273,35 +273,35 @@
      * @function generateBattleModifierHtml
      * @param {Object} sessionData - The session data containing various modifiers.
      * @param {number} luckTotal - The total luck value from the party.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} The HTML template for the battle modifiers.
      */
-    window.lit.generateBattleModifierHtml = (sessionData, luckTotal) => {
+    window.roguedexLit.generateBattleModifierHtml = (sessionData, luckTotal) => {
         // prettier-ignore
         const modifiers = {
-            expCharmGold: window.lit.getModifier(sessionData?.modifiers, 'GOLDEN_EXP_CHARM'),
-            expCharmNormal: window.lit.getModifier(sessionData?.modifiers, 'EXP_CHARM'),
-            expCharmSuper: window.lit.getModifier(sessionData?.modifiers, 'SUPER_EXP_CHARM'),
-            expShare: window.lit.getModifier(sessionData?.modifiers, 'EXP_SHARE'),
-            candyJars: window.lit.getModifier(sessionData?.modifiers, 'CANDY_JAR'),
-            amuletCoins: window.lit.getModifier(sessionData?.modifiers, 'AMULET_COIN'),
-            shiningCharms: window.lit.getModifier(sessionData?.modifiers, 'SHINY_CHARM'),
-            healingCharms: window.lit.getModifier(sessionData?.modifiers, 'HEALING_CHARM'),
-            abilityCharms: window.lit.getModifier(sessionData?.modifiers, 'ABILITY_CHARM')
+            expCharmGold: window.roguedexLit.getModifier(sessionData?.modifiers, 'GOLDEN_EXP_CHARM'),
+            expCharmNormal: window.roguedexLit.getModifier(sessionData?.modifiers, 'EXP_CHARM'),
+            expCharmSuper: window.roguedexLit.getModifier(sessionData?.modifiers, 'SUPER_EXP_CHARM'),
+            expShare: window.roguedexLit.getModifier(sessionData?.modifiers, 'EXP_SHARE'),
+            candyJars: window.roguedexLit.getModifier(sessionData?.modifiers, 'CANDY_JAR'),
+            amuletCoins: window.roguedexLit.getModifier(sessionData?.modifiers, 'AMULET_COIN'),
+            shiningCharms: window.roguedexLit.getModifier(sessionData?.modifiers, 'SHINY_CHARM'),
+            healingCharms: window.roguedexLit.getModifier(sessionData?.modifiers, 'HEALING_CHARM'),
+            abilityCharms: window.roguedexLit.getModifier(sessionData?.modifiers, 'ABILITY_CHARM')
         };
 
         // prettier-ignore
         const enemyModifiers = {
-            statusHealChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_STATUS_EFFECT_HEAL_CHANCE'),
-            dmgReduction: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_DAMAGE_REDUCTION'),
-            attackSleepChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_SLEEP_CHANCE'),
-            endureChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ENDURE_CHANCE'),
-            attackBurnChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_BURN_CHANCE'),
-            dmgBoost: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_DAMAGE_BOOSTER'),
-            attackPoisonChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_POISON_CHANCE'),
-            attackFreezeChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_FREEZE_CHANCE'),
-            attackParalyzeChance: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_PARALYZE_CHANCE'),
-            heal: window.lit.getModifier(sessionData?.enemyModifiers, 'ENEMY_HEAL')
+            statusHealChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_STATUS_EFFECT_HEAL_CHANCE'),
+            dmgReduction: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_DAMAGE_REDUCTION'),
+            attackSleepChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_SLEEP_CHANCE'),
+            endureChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ENDURE_CHANCE'),
+            attackBurnChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_BURN_CHANCE'),
+            dmgBoost: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_DAMAGE_BOOSTER'),
+            attackPoisonChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_POISON_CHANCE'),
+            attackFreezeChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_FREEZE_CHANCE'),
+            attackParalyzeChance: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_ATTACK_PARALYZE_CHANCE'),
+            heal: window.roguedexLit.getModifier(sessionData?.enemyModifiers, 'ENEMY_HEAL')
         };
 
         // prettier-ignore
@@ -336,7 +336,7 @@
          * @param {string} caption - The caption for the table.
          * @param {string} cssTag - The CSS tag for the table.
          * @param {Array} data - The data array to populate the table rows.
-         * @memberof lit
+         * @memberof roguedexLit
          * @returns {Lit-HTML-Template} - The HTML template for the table.
          */
         const createTable = (caption, cssTag, data) => {
@@ -371,10 +371,10 @@
      * @function getModifier
      * @param {Array} modifiers - The array of modifier objects.
      * @param {string} typeId - The ID of the type to retrieve the modifier for.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Object} The modifier object for the given type.
      */
-    window.lit.getModifier = (modifiers, typeId) => {
+    window.roguedexLit.getModifier = (modifiers, typeId) => {
         return (modifiers ?? []).find((item) => item.typeId === typeId) ?? { stackCount: 0 };
     };
 })(window);

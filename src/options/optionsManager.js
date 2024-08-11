@@ -96,24 +96,6 @@ class OptionsManager {
     }
 
     /**
-     * Updates scale UI elements.
-     * @param {number} value - The scale value.
-     */
-    updateScale(value) {
-        const scaleFactor = parseFloat(value);
-        document.getElementById("scaleValue").textContent = scaleFactor;
-        // Update any other necessary elements based on scale factor
-    }
-
-    /**
-     * Scales UI elements.
-     */
-    scaleElements() {
-        const manualScaleFactor = document.getElementById("scaleSlider").value;
-        document.getElementById("scaleValue").textContent = manualScaleFactor;
-    }
-
-    /**
      * Saves options to storage.
      */
     // prettier-ignore
@@ -134,6 +116,7 @@ class OptionsManager {
         const bottompanelScaleFactor = parseFloat(document.querySelector('.option[data-setting="bottompanelScaleFactor"].selected').getAttribute('data-value'));
         const sidebarCondenseBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarCondenseBreakpoint"].selected').getAttribute('data-value'), 10);
         const sidebarHideAlliesBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarHideAlliesBreakpoint"].selected').getAttribute('data-value'), 10);
+        const enableDevLogs = document.querySelector('.option[data-setting="enableDevLogs"].selected').getAttribute('data-value') === 'true';
 
         this.browserApi.storage.sync.set({
             disableSettingsHint,
@@ -152,6 +135,7 @@ class OptionsManager {
             bottompanelScaleFactor,
             sidebarCondenseBreakpoint,
             sidebarHideAlliesBreakpoint,
+            enableDevLogs,
         }, () => {
             if (this.browserApi.runtime.lastError) {
                 console.error('Error saving options:', this.browserApi.runtime.lastError);

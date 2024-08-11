@@ -1,22 +1,22 @@
 /**
  * @fileoverview Contains lit-html templates and helper functions that are being used to create and update the sidebar.
  *          Functions and templates are added to the window as properties.
- *          Accessible with the 'window.lit.' prefix.
+ *          Accessible with the 'window.roguedexLit.' prefix.
  * @file 'src/content/lit-templates/sidebar.js'
  */
 
 (function (window) {
-    window.lit = window.lit || {};
+    window.roguedexLit = window.roguedexLit || {};
 
     /**
      * Creates the HTML template for the sidebar.
      *
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTemplate
      */
-    window.lit.createSidebarTemplate = (isMobile) => {
+    window.roguedexLit.createSidebarTemplate = (isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
@@ -35,11 +35,11 @@
      * Updates the sidebar header based on the session data.
      *
      * @param {Object} sessionData - The session data object.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function updateSidebarHeader
      */
-    window.lit.updateSidebarHeader = (sessionData) => {
+    window.roguedexLit.updateSidebarHeader = (sessionData) => {
         const trainer = sessionData.trainer;
         const isTrainerBattle = trainer != null;
 
@@ -61,11 +61,11 @@
      * @param {Object} sessionData
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
      * @param {boolean} condensedView - Flag that indicates whether the condensed party display should be used.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarPartyTemplate
      */
-    window.lit.createSidebarPartyTemplate = (
+    window.roguedexLit.createSidebarPartyTemplate = (
         pokemonData,
         partyID,
         dexData,
@@ -87,7 +87,7 @@
                     const maxOneTrue =
                         [pokemon.region, pokemon.rarity, pokemon.variant].filter(Boolean).length <= 1;
                     const generationLabel = maxOneTrue ? "Gen " + pokemon.gen : pokemon.gen; // add some more text when only one other element as most is shown
-                    const natureStats = window.lit.getNatureStatChange(pokemon.nature);
+                    const natureStats = window.roguedexLit.getNatureStatChange(pokemon.nature);
                     const natureDescriptionHTML =
                         (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : "") +
                         (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
@@ -96,7 +96,7 @@
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                             <div class="pokemon-entry-image tooltip ${mobileTag} ${rarityClass}">
-                                ${window.lit.createPokemonTooltipDiv(pokemon)}
+                                ${window.roguedexLit.createPokemonTooltipDiv(pokemon)}
                                 <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
 
                                 ${partyID === 'allies' ? html`
@@ -122,16 +122,16 @@
                                             <span class="sidebar-pokemon-info-paradox">Par</span>
                                         ` : '' }
                                         ${pokemon.region ? html`
-                                            <div class="sidebar-pokemon-info-region" style="background-image: url(${window.lit.getVariantSymbol(pokemon.region)})"></div>
+                                            <div class="sidebar-pokemon-info-region" style="background-image: url(${window.roguedexLit.getVariantSymbol(pokemon.region)})"></div>
                                         ` : '' }
                                     </div>
                                 ` : '' }
                             </div>
                             <div class="pokemon-type-effectiveness-wrapper compact">
-                                ${window.lit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 5, 3)}
+                                ${window.roguedexLit.createSidebarTypeEffectivenessWrapperCompact(pokemon.typeEffectiveness, isMobile, 5, 3)}
                             </div>
                             <div class="pokemon-type-effectiveness-wrapper default">
-                                ${window.lit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness, isMobile)}
+                                ${window.roguedexLit.createSidebarTypeEffectivenessWrapper(pokemon.typeEffectiveness, isMobile)}
                             </div>
                             <div class="pokemon-info-text-wrapper">
                                 <div class="pokemon-ability-nature">
@@ -139,23 +139,23 @@
                                         <span class="pokemon-ability-description">Ability:</span>
                                         <div class="tooltip ${mobileTag}" style="display:inline;">
                                             <span class="pokemon-ability-value">${pokemon.ability.name}</span>
-                                            ${window.lit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
+                                            ${window.roguedexLit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                                         </div>                                                                                
                                     </span>
                                     <span class="pokemon-nature">
                                         <span class="pokemon-nature-description">Nature:</span>
                                         <div class="tooltip ${mobileTag}" style="display:inline;">
                                             <span class="pokemon-nature-value">${pokemon.nature}</span>
-                                            ${window.lit.createTooltipDiv(natureDescriptionHTML)}
+                                            ${window.roguedexLit.createTooltipDiv(natureDescriptionHTML)}
                                         </div>
                                     </span>
                                 </div>
                                 <div class="pokemon-ivs stat-cont ${allZeroStarterIVs ? 'warn-zeroIVs' : ''}">
-                                    ${window.lit.generateIVsHTML(pokemon, ivSaveData, partyID === 'allies', partyID === 'allies')}
+                                    ${window.roguedexLit.generateIVsHTML(pokemon, ivSaveData, partyID === 'allies', partyID === 'allies')}
                                 </div>
                                 ${partyID === 'enemies' ? '' : html`
                                     <div class="pokemon-moveset-wrapper">
-                                        ${window.lit.generateMovesetHTML(pokemon, isMobile)}
+                                        ${window.roguedexLit.generateMovesetHTML(pokemon, isMobile)}
                                     </div>
                                 `}                       
                             </div>
@@ -172,11 +172,11 @@
      *
      * @param {Object} sessionData - The session data object.
      * @param {number} maxPokemonForDetailedView - The maximum number of Pokémon for detailed view.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {string} - The CSS class.
      * @function getCssClassCondensed
      */
-    window.lit.getCssClassCondensed = (sessionData, maxPokemonForDetailedView) => {
+    window.roguedexLit.getCssClassCondensed = (sessionData, maxPokemonForDetailedView) => {
         const totalPartySize = sessionData.enemyParty.length + sessionData.party.length;
 
         if (maxPokemonForDetailedView !== null && totalPartySize > maxPokemonForDetailedView) {
@@ -196,12 +196,12 @@
      * @param {object} dexIvs - IV values of the base Pokémon, taken from the user's save file.
      * @param {boolean} simpleDisplay - Whether default or simplified version is returned.
      * @param {boolean} addStyleClasses - Whether colors and indicators should be shown.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function generateIVsHTML
      */
-    window.lit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
-        const Stat = window.lit.getStatList();
+    window.roguedexLit.generateIVsHTML = (pokemon, dexIvs, simpleDisplay = false, addStyleClasses = false) => {
+        const Stat = window.roguedexLit.getStatList();
         const ivs = pokemon.ivs || {};
         const saveDataId = pokemon.basePokemonIdPreConversion;
         const defaultHtml = html`<div>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
@@ -239,11 +239,11 @@
      *
      * @param {object} pokemon - Object representing all data known about this current Pokémon.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - A lit-html template result representing the HTML markup.
      * @function
      */
-    window.lit.generateMovesetHTML = (pokemon, isMobile) => {
+    window.roguedexLit.generateMovesetHTML = (pokemon, isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
         return html`
             ${Object.keys(pokemon.moveset).map((i) => {
@@ -260,7 +260,7 @@
                     <div class="pokemon-move">
                         <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip ${mobileTag}">
                             ${move.name}
-                            ${window.lit.createTooltipDiv(moveTipHTML)}
+                            ${window.roguedexLit.createTooltipDiv(moveTipHTML)}
                         </span>
                     </div>
                 `;
@@ -279,11 +279,11 @@
      * @param {number} maxItemsPerRow - The maximum number of items per row.
      * @param {number} maxRows - The maximum number of rows.
      * @param {boolean} growRowLength - Whether to grow the row length.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTypeEffectivenessWrapperCompact
      */
-    window.lit.createSidebarTypeEffectivenessWrapperCompact = (
+    window.roguedexLit.createSidebarTypeEffectivenessWrapperCompact = (
         typeEffectivenesses,
         isMobile,
         maxItemsPerRow = 5,
@@ -291,7 +291,7 @@
         growRowLength = true
     ) => {
         const mobileTag = isMobile ? "mobile" : "";
-        const TypeIconUrls = window.lit.getTypeIconUrls();
+        const TypeIconUrls = window.roguedexLit.getTypeIconUrls();
         const typeItemList = [];
         let globalCounter = 0;
         let itemsPerRow = maxItemsPerRow;
@@ -375,14 +375,14 @@
                             lastOfType = " " + "last-of-type-category";
                         }
 
-                        const transparencyClasses = window.lit.determineTransparencyClasses(
+                        const transparencyClasses = window.roguedexLit.determineTransparencyClasses(
                             item,
                             Math.floor(i / itemsPerRow) + 1,
                             itemsPerRow,
                             firstOfType,
                             lastOfType
                         );
-                        const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(
+                        const typeToolTipHTML = window.roguedexLit.getTypeIconToolTipHTML(
                             item.typeEffectiveness,
                             item.iconCssClasses,
                             item.type
@@ -393,7 +393,7 @@
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
                                 <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
                                     <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'); ${item.additionalStyles}"></div>
-                                    ${window.lit.createTooltipDiv(typeToolTipHTML)}
+                                    ${window.roguedexLit.createTooltipDiv(typeToolTipHTML)}
                                 </div>
                             </div>
                         `;
@@ -417,11 +417,11 @@
      * @param {string} typeEffectiveness - Type effectiveness category (immunities / resistances / weaknesses).
      * @param {string} iconCssClasses - Type icon css classes string.
      * @param {string} type
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {string} - The HTML as a string.
      * @function getTypeIconToolTipHTML
      */
-    window.lit.getTypeIconToolTipHTML = (typeEffectiveness, iconCssClasses, type) => {
+    window.roguedexLit.getTypeIconToolTipHTML = (typeEffectiveness, iconCssClasses, type) => {
         const weakLabel = "Weak";
         const resistLabel = "Resistant";
         const immuneLabel = "Immune";
@@ -444,7 +444,7 @@
                 .sort((a, b) => b.length - a.length) // sort by length first to make sure to find "super-resist" before "resist"
                 .find((key) => iconCssClasses.includes(key)) || "";
         const dmgMulti = dmgMultiKey ? "x" + dmgMultiObj[dmgMultiKey] : "unknown";
-        const typeToolTipHTML = `<span>${window.lit.capitalizeFirstLetter(type)}</span><span>${effectivenessLabel}</span><span>DMG: <b>${dmgMulti}</b></span>`;
+        const typeToolTipHTML = `<span>${window.roguedexLit.capitalizeFirstLetter(type)}</span><span>${effectivenessLabel}</span><span>DMG: <b>${dmgMulti}</b></span>`;
 
         return typeToolTipHTML;
     };
@@ -459,11 +459,11 @@
      * @param {number} itemsPerRow - The number of items per row.
      * @param {string} firstOfType - The first-of-type class.
      * @param {string} lastOfType - The last-of-type class.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {string} - The transparency classes.
      * @function determineTransparencyClasses
      */
-    window.lit.determineTransparencyClasses = (item, rowCounter, itemsPerRow, firstOfType, lastOfType) => {
+    window.roguedexLit.determineTransparencyClasses = (item, rowCounter, itemsPerRow, firstOfType, lastOfType) => {
         let transparencyClasses = "";
         /*
          *   Create a "snaking" flow of items, (left to right => right to left => repeat)
@@ -522,15 +522,15 @@
      *
      * @param {Object} typeEffectivenesses - The type effectiveness data object.
      * @param {boolean} isMobile - Flag that indicates whether the extension runs on a mobile (touch) device.
-     * @memberof lit
+     * @memberof roguedexLit
      * @returns {Lit-HTML-Template} - The HTML template result.
      * @function createSidebarTypeEffectivenessWrapper
      */
-    window.lit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses, isMobile) => {
+    window.roguedexLit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses, isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
         return html`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
-                const TypeIconUrls = window.lit.getTypeIconUrls();
+                const TypeIconUrls = window.roguedexLit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
                 if (
                     !effectivenessObj ||
@@ -546,12 +546,12 @@
                 return html`
                     <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
                         ${allTypes.map((type) => {
-                            const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
+                            const typeToolTipHTML = window.roguedexLit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
 
                             return html`                    
                                 <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
                                     <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
-                                    ${window.lit.createTooltipDiv(typeToolTipHTML)}
+                                    ${window.roguedexLit.createTooltipDiv(typeToolTipHTML)}
                                 </div>
                             `;
                         })}

@@ -5,11 +5,14 @@
  * @property {string} localStorage - The key used for storing the setting in local storage.
  * @property {string} type - The data type of the setting's value.
  * @property {string} [appendText] - Optional text to append to the option value when displayed.
+ * @property {string} [desc] - Details on what the specific setting does.
  */
+
 
 /**
  * A template for settings configuration. Each key represents a setting with its
  * description, options, and other relevant information.
+ * Default values are defined in "src/content/util_classes/localStotage.util.js". Maybe change that?
  *
  * @type {Object<number, Setting>}
  */
@@ -128,6 +131,13 @@ const settingsTemplate = {
         localStorage: "bottompanelScaleFactor",
         type: "Float",
         desc: "Changes the scale (text, icon and other element sizes) of the bottom panel.",
+    },
+    16: {
+        text: "Enable development logs",
+        options: ["Yes", "No"],
+        localStorage: "enableDevLogs",
+        type: "Bool",
+        desc: "Enables the output of some development logs in the browser inspector console. Only useful for troubleshooting. Ignore otherwise.",
     },
 };
 

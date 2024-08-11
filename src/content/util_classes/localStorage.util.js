@@ -148,6 +148,7 @@ class LocalStorageClass {
                 bottompanelScaleFactor: 1,
                 sidebarCondenseBreakpoint: 100,
                 sidebarHideAlliesBreakpoint: 100,
+                enableDevLogs: false,
             };
 
             // Retrieve the settings from browser storage

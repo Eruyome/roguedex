@@ -9,9 +9,7 @@
   ],
   "host_permissions": [
     "https://pokerogue.net/*",
-    "https://api.pokerogue.net/*",
-    "https://if.daena.me/*",
-    "https://cdn.daena.me/*"
+    "https://api.pokerogue.net/*"
   ],
   "browser_specific_settings": {
     "gecko": {

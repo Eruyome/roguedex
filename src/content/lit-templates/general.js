@@ -44,10 +44,11 @@
      * @function updateExtensionStatusElement
      */
     window.lit.updateExtensionStatusElement = (properties) => {
+        const hasSiblingClass = properties.sessionState ? "" : "no-radius";
         return html`
-            <span class="rd-status-text">${properties.text}</span>
+            <span class="rd-status-text ${hasSiblingClass}">${properties.text}</span>
             ${!properties.sessionState ? html`
-                <span class="rd-status-session">Session data not loaded yet! UI might not work (try reloading if it persists).</span>
+                <span class="rd-status-session">Save Data not loaded yet! UI might not work (try refreshing if it persists).</span>
             ` : '' }
         `;
     }

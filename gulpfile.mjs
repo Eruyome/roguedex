@@ -167,7 +167,7 @@ gulp.task('eslint', () => {
 
 // Watch task for ESLint
 gulp.task('eslint-watch', () => {
-  watch(`${paths.src}/**/*.js`, (done) => {
+  gulp.watch(`${paths.src}/**/*.js`, (done) => {
     runEslint(`${paths.src}/**/*.js`, '');
     done();
   });
@@ -278,7 +278,7 @@ gulp.task('watch', gulp.parallel('watch-styles', 'watch-code'));
 // One-time lint and css build/processing task (alternative for watching)
 gulp.task('lint-and-convert-once', (done) => {
   process.env.NODE_ENV = 'watch';
-  gulp.series(gulp.series('process-sass', 'stylelint-watch'), gulp.series('prettier', 'eslint-watch'))(done);
+  gulp.series(gulp.series('process-sass', 'stylelint-watch'), gulp.series('prettier', 'eslint'))(done);
 });
 
 // One-time sass conversion of src folder styles

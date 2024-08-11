@@ -71,9 +71,9 @@
     }
   ],
   "icons": {
-    "16": "images/RogueDex.png",
-    "48": "images/RogueDex.png",
-    "128": "images/RogueDex.png"
+    "16": "images/RogueDexIcon.png",
+    "48": "images/RogueDexIcon.png",
+    "128": "images/RogueDexIcon.png"
   },
   "web_accessible_resources": [
     {

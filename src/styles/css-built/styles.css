@@ -34,6 +34,7 @@
   /* PLACEHOLDERS, set programmatically  */
   --extension-rarity-bg-image-holo-fade: url("__EXTENSION_IMAGE_1_URL__");
   --extension-rarity-bg-image-holo: url("__EXTENSION_IMAGE_2_URL__");
+  --extension-icon: url("__EXTENSION_IMAGE_3_URL__");
 }
 
 html {
@@ -123,6 +124,10 @@ body {
 }
 #rd-settings-hint.disabled {
   display: none;
+}
+#rd-settings-hint.mobile {
+  background: none;
+  border: none;
 }
 #rd-settings-hint .rd-hint-icon {
   font-size: 3em;
@@ -1515,13 +1520,10 @@ body.sidebar-Bottom {
   color: black;
   text-shadow: none;
 }
-.tooltip:not(.mobile):hover {
+.tooltip:hover {
   cursor: help;
 }
-.tooltip:not(.mobile):hover .tooltiptext {
-  visibility: visible;
-}
-.tooltip.mobile:focus .tooltiptext {
+.tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
@@ -1546,13 +1548,12 @@ body.sidebar-Bottom {
 }
 
 #extension-status {
-  font-family: var(--overlay-font);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   position: absolute;
   width: 100%;
   justify-content: center;
   text-align: center;
-  color: blue;
-  background-color: rgba(255, 255, 255, 0.3137254902);
+  margin: 0.1em 0;
 }
 #extension-status.statusbar-Top {
   top: 0;
@@ -1563,16 +1564,53 @@ body.sidebar-Bottom {
   bottom: 0;
 }
 #extension-status span {
-  text-shadow: var(--text-shadow-light);
+  text-shadow: 0.1em 0.1em 0.4em #ffffff;
   padding: 0 0.5em;
-  font-size: 2em;
-  line-height: 1;
+  font-size: 1.3em;
+  line-height: 1.7;
+  background-color: rgba(255, 255, 255, 0.3);
+  background: rgba(186, 186, 186, 0.7882352941);
+  border-radius: 0.5em;
+  border: 0.1em solid black;
+  border-left: none;
 }
 #extension-status .rd-status-text {
-  color: blue;
+  background: rgba(186, 186, 186, 0.7882352941);
+  color: black;
+  position: relative;
+  padding-left: 0.6em;
+  margin-left: 2.7em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+#extension-status .rd-status-text.no-radius {
+  border-radius: 0;
+}
+#extension-status .rd-status-text::before {
+  content: "";
+  width: 2.3em;
+  height: 1.5em;
+  background-size: 2em;
+  left: -2.4em;
+  top: -0.1em;
+  position: absolute;
+  background-image: var(--extension-icon);
+  background-position: center;
+  background-size: contain;
+  border: 0.2em solid black;
+  border-radius: 0.5em;
+  background-repeat: no-repeat;
+  background-color: white;
 }
 #extension-status .rd-status-session {
-  color: rgb(156, 2, 2);
+  color: rgb(86, 3, 3);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -0.1em;
 }
 #extension-status.sidebar-active {
   background-color: rgba(0, 0, 0, 0.3137254902);

@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'pokemon-emerald-pro';
-    src: url('../../fonts/pokemon-emerald-pro.ttf') format('truetype');
+    font-family: "pokemon-emerald-pro";
+    src: url("../../fonts/pokemon-emerald-pro.ttf") format("truetype");
 }
 
 :root {
@@ -17,8 +17,8 @@
     --sidebar-bg-color: #2b2d31;
     --enemy-border-color: #b30a21;
     --ally-border-color: #0095ff;
-    --sidebar-font: 'pokemon-emerald-pro';
-    --overlay-font: 'pokemon-emerald-pro';
+    --sidebar-font: "pokemon-emerald-pro";
+    --overlay-font: "pokemon-emerald-pro";
     --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0),
         -0.1em 0 rgba(255, 255, 255, 0), 0 0.1em rgba(255, 255, 255, 0),
         0 -0.1em rgba(255, 255, 255, 0), 0.05em 0.05em rgba(255, 255, 255, 0),
@@ -34,8 +34,9 @@
         -0.05em 0.05em rgba(255, 255, 255, 0.9);
 
     /* PLACEHOLDERS, set programmatically  */
-    --extension-rarity-bg-image-holo-fade: url('__EXTENSION_IMAGE_1_URL__');
-    --extension-rarity-bg-image-holo: url('__EXTENSION_IMAGE_2_URL__');
+    --extension-rarity-bg-image-holo-fade: url("__EXTENSION_IMAGE_1_URL__");
+    --extension-rarity-bg-image-holo: url("__EXTENSION_IMAGE_2_URL__");
+    --extension-icon: url("__EXTENSION_IMAGE_3_URL__");
 }
 
 html {
@@ -137,6 +138,11 @@ body {
 
     &.disabled {
         display: none;
+    }
+
+    &.mobile {
+        background: none;
+        border: none;
     }
 
     .rd-hint-icon {
@@ -519,19 +525,19 @@ body {
     }
 
     .pokemon-type-weaknesses::before {
-        content: ' ';
+        content: " ";
         background-color: rgb(36, 0, 0);
         border: 0.1em solid rgb(192, 2, 2);
     }
 
     .pokemon-type-resistances::before {
-        content: ' ';
+        content: " ";
         background-color: rgb(0, 36, 7);
         border: 0.1em solid rgb(14, 207, 1);
     }
 
     .pokemon-type-immunities::before {
-        content: ' ';
+        content: " ";
         background-color: rgb(68, 68, 68);
         border: 0.1em solid rgb(148, 148, 148);
     }
@@ -883,7 +889,7 @@ body {
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-weaknesses::before {
     /* todo, still used? */
-    content: ' ';
+    content: " ";
     background-color: rgb(36, 0, 0);
     border-color: 0.1em solid rgb(192, 2, 2);
 }
@@ -895,7 +901,7 @@ body {
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-resistances::before {
     /* todo, still used? */
-    content: ' ';
+    content: " ";
     background-color: rgb(0, 36, 7);
     border-color: 0.1em solid rgb(14, 207, 1);
 }
@@ -907,7 +913,7 @@ body {
     .pokemon-type-effectiveness-wrapper.compact
     .pokemon-type-immunities::before {
     /* todo, still used? */
-    content: ' ';
+    content: " ";
     background-color: rgb(68, 68, 68);
     border-color: 0.1em solid rgb(148, 148, 148);
 }
@@ -1118,7 +1124,7 @@ body {
     &::before {
         position: absolute;
         inset: 0px -1px;
-        content: '';
+        content: "";
         background: transparent;
         border-width: 0.3em;
         border-style: solid;
@@ -1155,7 +1161,7 @@ body {
     &::before {
         position: absolute;
         inset: 0px -1px;
-        content: '';
+        content: "";
         background: transparent;
         border-width: 0.3em;
         border-style: solid;
@@ -1237,7 +1243,7 @@ body {
     &.pokemon-rarity-ultra {
         &:before,
         &:after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             right: 0;
@@ -1258,7 +1264,7 @@ body {
     .pokemon-rarity-mythical {
         &:before,
         &:after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             right: 0;
@@ -1357,7 +1363,11 @@ body {
         transition: all 0.33s ease;
         mix-blend-mode: color-dodge;
         opacity: 0.75;
-        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        background-position:
+            50% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%;
         animation: spin-background 120s linear infinite;
     }
 }
@@ -1386,26 +1396,50 @@ body {
         transition: all 0.33s ease;
         mix-blend-mode: color-dodge;
         opacity: 0.75;
-        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        background-position:
+            50% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%;
         animation: spin-background 120s linear infinite;
     }
 }
 
 @keyframes spin-background {
     0% {
-        background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Top center */
+        background-position:
+            50% 0%,
+            50% 50%,
+            50% 50%,
+            50% 50%; /* Top center */
     }
     25% {
-        background-position: 100% 50%, 50% 50%, 50% 50%, 50% 50%; /* Right center */
+        background-position:
+            100% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%; /* Right center */
     }
     50% {
-        background-position: 50% 100%, 50% 50%, 50% 50%, 50% 50%; /* Bottom center */
+        background-position:
+            50% 100%,
+            50% 50%,
+            50% 50%,
+            50% 50%; /* Bottom center */
     }
     75% {
-        background-position: 0% 50%, 50% 50%, 50% 50%, 50% 50%; /* Left center */
+        background-position:
+            0% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%; /* Left center */
     }
     100% {
-        background-position: 50% 0%, 50% 50%, 50% 50%, 50% 50%; /* Back to top center */
+        background-position:
+            50% 0%,
+            50% 50%,
+            50% 50%,
+            50% 50%; /* Back to top center */
     }
 }
 
@@ -1421,7 +1455,7 @@ body {
     display: inline-block;
 
     &:before {
-        content: '';
+        content: "";
         position: absolute;
 
         /* background: rgba(245, 196, 39, 0.9); */
@@ -1434,7 +1468,7 @@ body {
     }
 
     &:after {
-        content: '';
+        content: "";
         position: absolute;
 
         /* background: rgba(245, 196, 39, 0.9); */
@@ -1678,7 +1712,7 @@ body {
         position: absolute;
         inset: 0px -1px;
         height: 0;
-        content: '';
+        content: "";
         background: transparent;
         border-width: 0.2em;
         border-style: solid;
@@ -1694,7 +1728,7 @@ body {
         position: absolute;
         inset: 0px -1px;
         height: 0;
-        content: '';
+        content: "";
         background: transparent;
         border-width: 0.2em;
         border-style: solid;
@@ -1908,16 +1942,11 @@ body {
         }
     }
 
-    // Apply hover effect only if .tooltip does NOT have the 'mobile' class
-    &:not(.mobile):hover {
+    &:hover {
         cursor: help;
         .tooltiptext {
             visibility: visible;
         }
-    }
-    // Show tooltip using the element focus state.
-    &.mobile:focus .tooltiptext {
-        visibility: visible;
     }
 }
 
@@ -1939,13 +1968,12 @@ body {
 }
 
 #extension-status {
-    font-family: var(--overlay-font);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: absolute;
     width: 100%;
     justify-content: center;
     text-align: center;
-    color: blue;
-    background-color: #ffffff50;
+    margin: 0.1em 0;
 
     &.statusbar-Top {
         top: 0;
@@ -1956,20 +1984,57 @@ body {
         top: unset;
         bottom: 0;
     }
+    $statusBorderWidth: 0.1em;
 
     span {
-        text-shadow: var(--text-shadow-light);
+        text-shadow: 0.1em 0.1em 0.4em #ffffff;
         padding: 0 0.5em;
-        font-size: 2em;
-        line-height: 1;
+        font-size: 1.3em;
+        line-height: 1.7;
+        background-color: rgba(255, 255, 255, 0.3);
+        background: #bababac9;
+        border-radius: 0.5em;
+        border: $statusBorderWidth solid black;
+        border-left: none;
     }
 
     .rd-status-text {
-        color: blue;
+        background: #bababac9;
+        color: black;
+        position: relative;
+        padding-left: 0.6em;
+        margin-left: 2.7em;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        user-select: none;
+
+        &.no-radius {
+            border-radius: 0;
+        }
+
+        &::before {
+            content: "";
+            width: 2.3em;
+            height: 1.5em;
+            background-size: 2em;
+            left: -2.4em;
+            top: -$statusBorderWidth;
+            position: absolute;
+            background-image: var(--extension-icon);
+            background-position: center;
+            background-size: contain;
+            border: 0.2em solid black;
+            border-radius: 0.5em;
+            background-repeat: no-repeat;
+            background-color: white;
+        }
     }
 
     .rd-status-session {
-        color: rgb(156, 2, 2);
+        color: rgb(86, 3, 3);
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -$statusBorderWidth;
     }
 
     &.sidebar-active {

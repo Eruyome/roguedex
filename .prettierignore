@@ -2,3 +2,5 @@ README.md
 package.json
 .gitignore
 src/libs/*
+src/content/data/*
+src/content/maps/*

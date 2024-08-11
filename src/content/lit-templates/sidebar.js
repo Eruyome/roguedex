@@ -76,6 +76,7 @@
                     const natureStats = window.lit.getNatureStatChange(pokemon.nature);
                     const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
 
+                    // prettier-ignore
                     return html`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                             <div class="pokemon-entry-image tooltip ${mobileTag} ${rarityClass}">
@@ -201,6 +202,7 @@
                 const statClass = addStyleClasses ? `stat-p-colors` : '';
                 const valueClass = addStyleClasses ? `stat-c-colors` : '';
 
+                // prettier-ignore
                 return html`
                     <div class="stat-p ${statClass}">
                         <span>${Stat[i]}:</span>
@@ -237,6 +239,7 @@
                 moveTipHTML += `<span>Power: ${move.power}</span>`;
                 moveTipHTML += `<span>Accuracy: ${move.accuracy}</span>`;                
 
+                // prettier-ignore
                 return html`
                     <div class="pokemon-move">
                         <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip ${mobileTag}">
@@ -347,6 +350,7 @@
                         const transparencyClasses = window.lit.determineTransparencyClasses(item, Math.floor(i / itemsPerRow) + 1, itemsPerRow, firstOfType, lastOfType);
                         const typeToolTipHTML = window.lit.getTypeIconToolTipHTML(item.typeEffectiveness, item.iconCssClasses, item.type);
 
+                        // prettier-ignore
                         return html`
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
                                 <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
@@ -360,6 +364,7 @@
             `);
         }
 
+        // prettier-ignore
         return html`
             <div class="type-effectiveness-block">
                 ${rows}
@@ -499,6 +504,7 @@
 
                 const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
 
+                // prettier-ignore
                 return html`
                     <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
                         ${allTypes.map((type) => {

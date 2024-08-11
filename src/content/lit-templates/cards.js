@@ -21,6 +21,7 @@
         const displayClass = showSidebar ? 'hidden-because-sidebar-active' : 'active-because-sidebar-hidden';
         const classes = `${partyID.toLowerCase() === 'enemies' ? 'enemy-team' : 'allies-team'} ${displayClass}`;
 
+        // prettier-ignore
         return html`
             <div id="${partyID}" class="${classes}"></div>
         `;
@@ -46,6 +47,7 @@
         const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
         const mobileTag = isMobile ? 'mobile' : '';
 
+        // prettier-ignore
         return html`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
@@ -122,6 +124,7 @@
         const natureDescriptionHTML = (natureStats[0] ? `<span>+ ${natureStats[0]}</span>` : '') + (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : '');
         const mobileTag = isMobile ? 'mobile' : '';
 
+        // prettier-ignore
         return html`
             <div class="pokemon-cards minified">
                 <div class="pokemon-card">
@@ -191,6 +194,7 @@
                     groupedTypes.push(allTypes.slice(i, i + 3));
                 }
 
+                // prettier-ignore
                 return html`
                     <div class="pokemon-${effectiveness} tooltip ${mobileTag}">
                         ${groupedTypes.map((group) => html`
@@ -310,6 +314,7 @@
         result.idUp = `${divId}-up`;
         result.idDown = `${divId}-down`;
 
+        // prettier-ignore
         result.html = html`
             <div class="arrow-button-wrapper ${isMobileDevice} ${isMinified}">
                 <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idUp}">
@@ -339,6 +344,8 @@
     window.lit.createOpacitySliderDiv = (divId, changeOpacity, initialValue = "100", min = "10", max = "100") => {
         const result = {};
         result.id = `${divId}-slider`;
+
+        // prettier-ignore
         result.html = html`
             <div class="slider-wrapper">
                 <div class="text-base">Opacity:</div>

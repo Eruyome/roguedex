@@ -109,35 +109,33 @@ gulp.task('process-css', () => {
 /*                                              Prettier                                              */
 /*----------------------------------------------------------------------------------------------------*/
 
-// Run Prettier in check mode only (for watch task)
-gulp.task('prettier-check', () => {
-  const isWatch = process.env.NODE_ENV === 'watch';
-  const root = isWatch ? `${paths.src}` : `${paths.temp}`;
-
-  return gulp.src([
-    `${root}/**/*.js`,
-    `${root}/**/*.scss`,
-    `${root}/**/*.html`
-  ])
-    .pipe(prettier.check())
-    .on('error', function (err) {
-      console.error('Prettier check failed:', err.message);
-      this.emit('end');
-    });
-});
+// Function to run Prettier
+const runPrettier = async (files, options) => {
+  const command = `npx prettier "${files}" --config .prettierrc ${options}`;
+  try {
+    const { stdout, stderr } = await exec(command, { shell: true });
+    //console.log('Prettier output:', stdout);
+    if (stderr) {
+      console.error('Prettier stderr:', stderr);
+    }
+  } catch (error) {
+    console.error('Error running Prettier:', error.message);
+  }
+};
 
 // Run Prettier on files (default task)
 gulp.task('prettier', () => {
   const isWatch = process.env.NODE_ENV === 'watch';
   const root = isWatch ? `${paths.src}` : `${paths.temp}`;
 
-  return gulp.src([
-    `${root}/**/*.js`,
-    `${root}/**/*.scss`,
-    `${root}/**/*.html`
-  ])
-    .pipe(prettier())
-    .pipe(gulp.dest((file) => file.base));
+  const files = `${root}/**/*.{js,scss,html}`;
+  return runPrettier(files, '--write --ignore-unknown');
+});
+
+// Run Prettier in check mode only
+gulp.task('prettier-check', (done) => {
+  const files = `${paths.src}/**/*.js`;
+  runPrettier(files, '--check --ignore-unknown').then(() => done());
 });
 
 /*----------------------------------------------------------------------------------------------------*/
@@ -149,7 +147,7 @@ const runEslint = async (files, options) => {
   const command = `npx eslint "${files}" --config eslint.config.mjs ${options}`;
   try {
     const { stdout, stderr } = await exec(command, { shell: true });
-    console.log('ESLint output:', stdout);
+    //console.log('ESLint output:', stdout);
     if (stderr) {
       console.error('ESLint stderr:', stderr);
     }
@@ -159,18 +157,22 @@ const runEslint = async (files, options) => {
   }
 };
 
-// One-time ESLint task
+// One-time ESLint task, fix
 gulp.task('eslint', () => {
-  const files = `${paths.temp}/**/*.js`;
-  return runEslint(files, '--no-cache --fix');
+  const isWatch = process.env.NODE_ENV === 'watch';
+  const root = isWatch ? `${paths.src}` : `${paths.temp}`;
+
+  const files = `${root}/**/*.js`;
+  return runEslint(files, '--fix');
 });
 
-// Watch task for ESLint
+// ESLint watcher, check only
 gulp.task('eslint-watch', () => {
-  gulp.watch(`${paths.src}/**/*.js`, (done) => {
-    runEslint(`${paths.src}/**/*.js`, '');
-    done();
-  });
+  const isWatch = process.env.NODE_ENV === 'watch';
+  const root = isWatch ? `${paths.src}` : `${paths.temp}`;
+
+  const files = `${root}/**/*.js`;
+  return runEslint(files, '');
 });
 
 /*----------------------------------------------------------------------------------------------------*/
@@ -248,10 +250,10 @@ gulp.task('move-files-to-dist', async () => {
 gulp.task('zip', () => {
   return Promise.all([
     gulp.src(`${paths.dist}/${paths.distChrome}/**/*`)
-      .pipe(zip('chrome-extension.zip'))
+      .pipe(zip('roguedex-chrome.zip'))
       .pipe(gulp.dest(`${paths.dist}`)),
     gulp.src(`${paths.dist}/${paths.distFirefox}/**/*`)
-      .pipe(zip('firefox-extension.zip'))
+      .pipe(zip('roguedex-firefox.zip'))
       .pipe(gulp.dest(`${paths.dist}`))
   ]);
 });
@@ -268,7 +270,7 @@ gulp.task('watch-styles', () => {
 
 gulp.task('watch-code', () => {
   process.env.NODE_ENV = 'watch';
-  gulp.watch([`${paths.src}/**/*.js`, `${paths.src}/**/*.html`], gulp.series('prettier-check', 'eslint-watch'));
+  gulp.watch(`${paths.src}/**/*.js`, gulp.series('eslint-watch'));
 });
 
 gulp.task('watch', gulp.parallel('watch-styles', 'watch-code'));

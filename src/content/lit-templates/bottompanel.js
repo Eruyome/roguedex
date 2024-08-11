@@ -14,6 +14,7 @@
      * @returns {Lit-HTML-Template} The HTML template for the bottom panel.
      */
     window.lit.createBottomPanelTemplate = () => {
+        // prettier-ignore
         return html`
             <div class="roguedex-bottom-panel sidebar-Left" id="roguedex-bottom-panel"></div>
         `;
@@ -70,6 +71,7 @@
         const modifierHtml = window.lit.generateBattleModifierHtml(sessionData, luckTotal);
         const pokemonTabsHtml = window.lit.createPokemonTabsHtml(pokemonData.pokemon, activeTab);
 
+        // prettier-ignore
         return html`
             <div class="roguedex-bottom-panel-content">
                 <div class="bottom-panel-tabs">
@@ -104,6 +106,7 @@
      */
     window.lit.createWeatherHtml = (weather) => {
         if (weather.type && weather.turnsLeft) {
+            
             return html`
                 <div class="bottom-panel-weather-box">
                     <div class="text-base">
@@ -124,6 +127,7 @@
      * @returns {Array<Lit-HTML-Template>} An array of HTML templates for the Pokémon tabs.
      */
     window.lit.createPokemonTabsHtml = (pokemonArray, activeTab) => {
+        // prettier-ignore
         return pokemonArray.map((pokemon, index) => html`
             <div class="bottom-panel-tab-content ${activeTab === 'bottom-panel-pokemon-' + index ? 'active' : ''}" id="bottom-panel-pokemon-${index}">
                 ${window.lit.createPokemonTable(pokemon)}
@@ -217,6 +221,7 @@
         
             // If no modifiers are present, return a single row with the fallback message
             if (filteredModifiers.length === 0) {
+                // prettier-ignore
                 return html`
                     <table class="bottom-panel-enemy-modifiers">
                         <tr>
@@ -232,6 +237,7 @@
                 tables.push(filteredModifiers.slice(i, i + 12));
             }
         
+            // prettier-ignore
             return html`
                 ${tables.map(table => html`
                     <table class="bottom-panel-pokemon-modifiers">
@@ -326,7 +332,7 @@
          * @returns {Lit-HTML-Template} - The HTML template for the table.
          */
         const createTable = (caption, cssTag, data) => {
-            // <caption>${caption}</caption>
+            // prettier-ignore
             return html`
                 <table class="bottom-panel-${cssTag}-modifiers">                    
                     ${data.map((item, index) => index % 2 === 0 ? html`
@@ -343,6 +349,7 @@
             `;
         }
 
+        // prettier-ignore
         return html`
             <div class="bottom-panel-modifiers-wrapper">
                 ${createTable('Ally party:', 'party', partyModifiers)}

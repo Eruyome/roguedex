@@ -82,18 +82,18 @@ function scriptInjector() {
     if (!isUtilsProperlyInitialized()) {
         const scriptElem = document.createElement("script");
         scriptElem.src = browserApi.runtime.getURL("/content/utils.js");
-        console.debug("Browser api :", browserApi);
-        console.debug("UtilsClass url:", scriptElem.src);
+        console.debug("[RogueDex] Browser api :", browserApi);
+        console.debug("[RogueDex] UtilsClass url:", scriptElem.src);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.debug("window.Utils:", window.Utils);
+            console.debug("[RogueDex] window.Utils:", window.Utils);
             initUtilities();
-            console.debug("Utils script loaded.");
+            console.debug("[RogueDex] Utils script loaded.");
         });
     } else {
-        console.debug("Utils class is properly initialized.");
+        console.debug("[RogueDex] Utils class is properly initialized.");
         // Call initUtilities directly if UtilsClass is already initialized
         initUtilities();
     }
@@ -133,12 +133,12 @@ function initUtilities() {
     if (window.Utils && window.Utils instanceof UtilsClass) {
         // Listen for 'isReadyChange' event to determine when all scripts are loaded
         window.Utils.on("isReadyChange", () => {
-            if (window.Utils.isReady) {
-                console.info("All Scripts Loaded!");
+            if (window.Utils.isReady) {                
                 extensionSettingsListener();
                 setDevEnv();
+                roguedexLogger.info("All Scripts Loaded!");
             } else {
-                console.info("Error Loading Scripts :(");
+                console.info("[RogueDex] Error Loading Scripts :(");
             }
         });
 
@@ -150,7 +150,7 @@ function initUtilities() {
             setInitialPokemonCardPosition("enemies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
         });
     } else {
-        console.error("UtilsClass is not properly initialized.");
+        console.error("[RogueDex] UtilsClass is not properly initialized.");
     }
 }
 
@@ -160,6 +160,14 @@ function initUtilities() {
  * based on the value of the `window.roguedex.developmentENV` flag.
  * Use it like the default "console" logger.
  * 
+ * The logger adds a "[RogueDex]" prefix to messages for all methods but only outputs `log`, `warn`, `debug`, `time`, `timeEnd`
+ * when the `window.roguedex.developmentENV` flag is true.
+ * 
+ * Note: The `window.roguedex.developmentENV` flag is only set after loading the user settings. Some logs have to use the 
+ * normal `console` logger instead because they run too early (before the whole Util classes init process).
+ * Alternatively set the flag to true on declaration, use the custom logger and have it potentially set to false again
+ * because of the chosen user settings.
+ * 
  * @namespace roguedexLogger
  * @property {Function} log - Logs a message to the console if `developerENV` is true.
  * @property {Function} warn - Logs a warning to the console if `developerENV` is true.
@@ -167,14 +175,18 @@ function initUtilities() {
  * @property {Function} error - Logs an error message to the console if `developerENV` is true.
  * @property {Function} info - Logs an info message to the console if `developerENV` is true.
  */
+
 function initCustomLogger() {
     (function(global) {
         // Define a custom logger object
         const roguedexLogger = {};
-    
-        // List of supported logging methods
-        const methods = ['log', 'warn', 'debug', 'error', 'info'];
-    
+
+        // List of logging methods with conditional behavior
+        const conditionalMethods = ['log', 'warn', 'debug', 'time', 'timeEnd'];
+
+        // List of logging methods with always-on behavior
+        const alwaysOnMethods = ['error', 'info'];
+
         // Utility function to get the stack trace file information
         function getFileInfo() {
             const stack = new Error().stack;
@@ -187,16 +199,16 @@ function initCustomLogger() {
             }
             return '';
         }
-    
-        // Iterate over each method and create a custom function
-        methods.forEach(method => {
+
+        // Create custom logger functions for conditional methods
+        conditionalMethods.forEach(method => {
             roguedexLogger[method] = function(...args) {
                 // Check if developmentENV is true before logging
                 if (global.roguedex && global.roguedex.developmentENV) {
                     // Add prefix
                     const prefix = '[RogueDex] ';
                     const fileInfo = getFileInfo();
-    
+
                     // Add the prefix to the first argument if it's a string
                     if (typeof args[0] === 'string') {
                         args[0] = prefix + args[0];
@@ -204,24 +216,43 @@ function initCustomLogger() {
                         // Insert prefix if the first argument is not a string
                         args.unshift(prefix);
                     }
-    
+
                     // Add file info as the last argument if there's at least one argument
                     if (args.length > 0) {
                         args.push(fileInfo);
                     } else {
-                        // If no arguments, create a new list with just fileInfo
+                        // If no arguments, create a new list with just prefix and fileInfo
                         args = [prefix, fileInfo];
                     }
-    
+
                     // Use the original console method with the provided arguments
                     console[method](...args);
                 }
             };
         });
-    
+
+        // Create custom logger functions for always-on methods
+        alwaysOnMethods.forEach(method => {
+            roguedexLogger[method] = function(...args) {
+                // Add prefix
+                const prefix = '[RogueDex] ';
+
+                // Add the prefix to the first argument if it's a string
+                if (typeof args[0] === 'string') {
+                    args[0] = prefix + args[0];
+                } else {
+                    // Insert prefix if the first argument is not a string
+                    args.unshift(prefix);
+                }
+
+                // Use the original console method with the provided arguments
+                console[method](...args);
+            };
+        });
+
         // Attach the custom logger to the global scope with a unique name
         global.roguedexLogger = roguedexLogger;
-    
+
     })(typeof window !== "undefined" ? window : global);
 }
 
@@ -248,7 +279,7 @@ function setInitialPokemonCardPosition(
     try {
         storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
     } catch (e) {
-        console.error(e);
+        roguedexLogger.error(e);
     }
 
     if (!storedPos?.x || !storedPos?.y) {
@@ -463,8 +494,8 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
             // Optional console logs
             const debug = false;
             if (debug) {
-                console.log(`${id1} pokemon card wrapper created:`, newWrapper1);
-                console.log(`${id2} pokemon card wrapper created:`, newWrapper2);
+                roguedexLogger.log(`${id1} pokemon card wrapper created:`, newWrapper1);
+                roguedexLogger.log(`${id2} pokemon card wrapper created:`, newWrapper2);
             }
 
             initStates.cardsInitialized = true;
@@ -489,13 +520,13 @@ async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
     if (enemiesWrapper) {
         enemiesWrapper.remove();
     } else {
-        console.warn(`Tried to delete element with id ${id1}, not found.`);
+        roguedexLogger.warn(`Tried to delete element with id ${id1}, not found.`);
     }
 
     if (alliesWrapper) {
         alliesWrapper.remove();
     } else {
-        console.warn(`Tried to delete element with id ${id2}, not found.`);
+        roguedexLogger.warn(`Tried to delete element with id ${id2}, not found.`);
     }
 
     initStates.cardsInitialized = false;
@@ -516,7 +547,7 @@ function changePokemonCardOpacity(elementIds, value) {
             uiDataGlobals.wrapperDivPositions[divId].opacity = value;
             div.style.opacity = `${opacity}`;
         } else {
-            console.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
+            roguedexLogger.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
         }
     });
 }
@@ -553,7 +584,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
             direction === "up" ? -1 : 1
         );
     } else {
-        console.error(`Invalid direction: ${direction}`);
+        roguedexLogger.error(`Invalid direction: ${direction}`);
         return;
     }
 
@@ -835,7 +866,7 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
         // breakpoint of pokemon in the sidebar at which the ally party should be hidden.
         breakpointOverridePartyDisplay = extensionSettings.sidebarHideAlliesBreakpoint;
     }
-    // console.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
+    // roguedexLogger.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
 
     const enemyCount = uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
     const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
@@ -844,7 +875,7 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
     const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay; // returns a boolean value (true/false)
     const displayedPartySize =
         enemyCount + (showParty && overridePartyDisplayState === false ? allyCount : 0);
-    // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
+    // roguedexLogger.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
 
     let condensedView = "";
     if (overridePartyDisplayState === false && totalPartySize <= maxPokemonForDetailedView) {
@@ -970,7 +1001,7 @@ async function scaleOverlayElements() {
 
     scaleFont(enemiesDiv, scaleFactor, scaleFactorMulti);
     scaleFont(alliesDiv, scaleFactor, scaleFactorMulti);
-    // console.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    // roguedexLogger.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -984,7 +1015,7 @@ async function scaleSidebarElements() {
 
     const sidebarDiv = document.getElementById("roguedex-sidebar");
     scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti);
-    // console.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    // roguedexLogger.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -998,7 +1029,7 @@ async function scaleBottomPanelElements() {
 
     const bottomPanelDiv = document.getElementById("roguedex-bottom-panel");
     scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti);
-    // console.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    // roguedexLogger.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -1081,7 +1112,7 @@ async function toggleSidebar() {
         try {
             if (!element) {
                 // throw new Error("Element does not exist");
-                console.error("toggleSidebar(): Element does not exist:", element);
+                roguedexLogger.error("toggleSidebar(): Element does not exist:", element);
             }
             if (isSidebar) {
                 element.classList.toggle("active", active);
@@ -1091,7 +1122,7 @@ async function toggleSidebar() {
                 element.classList.toggle("hidden-because-sidebar-active", !active);
             }
         } catch (error) {
-            console.error("Error toggling classes:", error.message, error);
+            roguedexLogger.error("Error toggling classes:", error.message, error);
         }
     };
 
@@ -1103,7 +1134,7 @@ async function toggleSidebar() {
         bottomPanelElement.classList.add("sidebar-active");
         toggleClasses(allyCardDiv, false);
         toggleClasses(enemyCardDiv, false);
-        console.debug(
+        roguedexLogger.debug(
             "SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes."
         );
     } else {
@@ -1114,7 +1145,7 @@ async function toggleSidebar() {
         bottomPanelElement.classList.remove("sidebar-active");
         toggleClasses(allyCardDiv, true);
         toggleClasses(enemyCardDiv, true);
-        console.debug(
+        roguedexLogger.debug(
             "SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes."
         );
     }
@@ -1323,7 +1354,7 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
             scaleAllElements(true, true, initStates.panelsInitialized);
         }
     } catch (error) {
-        console.error("Error occurred during pokemon data mapping:", error);
+        roguedexLogger.error("Error occurred during pokemon data mapping:", error);
     }
 }
 
@@ -1414,12 +1445,12 @@ function extensionSettingsListener() {
                     // do nothing?
                     break;
                 default:
-                    console.error(`Unhandled key in extensionSettingsListener(): ${key}`);
+                    roguedexLogger.error(`Unhandled key in extensionSettingsListener(): ${key}`);
                     break;
             }
         }
     });
-    console.debug("Extension settings listener activated.");
+    roguedexLogger.debug("Extension settings listener activated.");
 }
 
 /**
@@ -1459,11 +1490,11 @@ function listenForDataUiModeChange() {
                     // do nothing?
                     break;
                 default:
-                    console.warn("Unhandled data-ui-mode:", newValue);
+                    roguedexLogger.warn("Unhandled data-ui-mode:", newValue);
                     break;
             }
         } catch (err) {
-            console.error("An error occurred while handling data-ui-mode change:", err);
+            roguedexLogger.error("An error occurred while handling data-ui-mode change:", err);
         }
     }
 
@@ -1477,7 +1508,7 @@ function listenForDataUiModeChange() {
             });
             initCreation(sessionData);
         } else {
-            console.warn("SessionData empty. UI won't work for the moment.");
+            roguedexLogger.warn("SessionData empty. UI won't work for the moment.");
             initStates.sessionIntialized = false;
             updateExtensionStatus({
                 sessionState: initStates.sessionIntialized,
@@ -1502,7 +1533,7 @@ function listenForDataUiModeChange() {
                 mutations.forEach((mutation) => {
                     if (mutation.type === "attributes" && mutation.attributeName === "data-ui-mode") {
                         const newValue = touchControlsElement.getAttribute("data-ui-mode");
-                        console.info("[data-ui-mode] new value:", newValue);
+                        roguedexLogger.debug("[data-ui-mode] new value:", newValue);
                         handleDataUIModeChange(newValue);
                     }
                 });
@@ -1510,7 +1541,7 @@ function listenForDataUiModeChange() {
 
             observer.observe(touchControlsElement, { attributes: true });
         } else {
-            console.error('Element with ID "touchControls" not found.');
+            roguedexLogger.error('Element with ID "touchControls" not found.');
             setTimeout(observeTouchControls, 1000); // Retry after a short delay
         }
     }

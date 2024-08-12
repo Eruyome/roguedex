@@ -5,7 +5,7 @@
  * @file 'src/inject.js'
  */
 
-console.info("RogueDex content script start.");
+console.info("[RogueDex] Extension active. Script starting.");
 
 /**
  * Initializes the browser API based on the browser environment.
@@ -25,7 +25,7 @@ const browserApi = (() => {
     ) {
         return chrome; // Chrome or compatible
     } else {
-        console.error("Browser API not found or unsupported browser"); // Unsupported browser or environment
+        console.error("[RogueDex] Browser API not found or unsupported browser!"); // Unsupported browser or environment
         return null;
     }
 })();

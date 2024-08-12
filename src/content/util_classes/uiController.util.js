@@ -108,7 +108,7 @@ class UIController {
      * @param {MouseEvent} event The mouse click event object.
      */
     handleMouseClick(event) {
-        // console.log('Mouse clicked:', event);
+        // roguedexLogger.log('Mouse clicked:', event);
         this.externalFunction("mouse", event);
     }
 
@@ -163,7 +163,7 @@ class UIController {
      */
     checkKeyboardCombination() {
         if (this.keyboardCombination.every((code) => this.pressedKeys.has(code))) {
-            console.log("Keyboard combination pressed:", this.keyboardCombination);
+            roguedexLogger.log("Keyboard combination pressed:", this.keyboardCombination);
             this.externalFunction("keyboard", this.keyboardCombination);
         }
     }
@@ -182,7 +182,7 @@ class UIController {
      * @param {GamepadEvent} event The gamepad connected event object.
      */
     handleGamepadConnected(event) {
-        console.log("Gamepad connected:", event.gamepad);
+        roguedexLogger.log("Gamepad connected:", event.gamepad);
     }
 
     /**
@@ -190,7 +190,7 @@ class UIController {
      * @param {GamepadEvent} event The gamepad disconnected event object.
      */
     handleGamepadDisconnected(event) {
-        console.log("Gamepad disconnected:", event.gamepad);
+        roguedexLogger.log("Gamepad disconnected:", event.gamepad);
     }
 
     /**
@@ -223,7 +223,7 @@ class UIController {
      */
     checkGamepadCombination() {
         if (this.gamepadCombination.every((index) => this.gamepadButtonsPressed.has(index))) {
-            console.log("Gamepad combination pressed:", this.gamepadCombination);
+            roguedexLogger.log("Gamepad combination pressed:", this.gamepadCombination);
             this.externalFunction("gamepad", this.gamepadCombination);
         }
     }
@@ -258,12 +258,12 @@ class UIController {
             if (UIController.isUniqueKeyboardHotkey(combination)) {
                 this.keyboardCombination = combination;
                 UIController.assignedKeyboardHotkeys.add(key);
-                console.log("Keyboard hotkey set to:", this.keyboardCombination);
+                roguedexLogger.log("Keyboard hotkey set to:", this.keyboardCombination);
             } else {
-                console.error("Keyboard combination already in use:", combination);
+                roguedexLogger.error("Keyboard combination already in use:", combination);
             }
         } else {
-            console.error("Invalid keyboard combination:", combination);
+            roguedexLogger.error("Invalid keyboard combination:", combination);
         }
     }
 
@@ -277,12 +277,12 @@ class UIController {
             if (UIController.isUniqueGamepadCombination(combination)) {
                 this.gamepadCombination = combination;
                 UIController.assignedGamepadButtons.add(key);
-                console.log("Gamepad buttons set to:", this.gamepadCombination);
+                roguedexLogger.log("Gamepad buttons set to:", this.gamepadCombination);
             } else {
-                console.error("Gamepad combination already in use:", combination);
+                roguedexLogger.error("Gamepad combination already in use:", combination);
             }
         } else {
-            console.error("Invalid gamepad combination:", combination);
+            roguedexLogger.error("Invalid gamepad combination:", combination);
         }
     }
 

@@ -216,7 +216,7 @@ class PokemonMapperClass {
                 cssClasses,
             };
         } catch (error) {
-            console.error(error);
+            roguedexLogger.error(error);
         }
         return {};
     }

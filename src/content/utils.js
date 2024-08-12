@@ -85,7 +85,7 @@ class UtilsClass {
      * Initializes the UtilsClass by injecting scripts.
      */
     init() {
-        console.debug("UtilsClass init called.");
+        console.debug("[RogueDex] UtilsClass init() called.");
         this.injectScripts();
     }
 
@@ -95,27 +95,27 @@ class UtilsClass {
      */
     injectScripts() {
         if (this.index >= contentInjectables.length) {
-            console.log("All scripts injected.");
+            console.info("[RogueDex] All scripts injected.");
             this.checkIfReady();
             return;
         }
 
         const targetScript = contentInjectables[this.index];
-        console.log(`Injecting script: ${targetScript}`);
+        console.debug(`[RogueDex] Injecting script: ${targetScript}`);
         const scriptElem = document.createElement("script");
         scriptElem.src = this.browserApi.runtime.getURL(targetScript);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.log(`${targetScript} loaded.`);
+            console.debug(`[RogueDex] ${targetScript} loaded.`);
             this.handleScriptLoaded(targetScript);
             this.index += 1;
             this.injectScripts();
         });
 
         scriptElem.addEventListener("error", (e) => {
-            console.error(`Failed to load script: ${targetScript}`, e);
+            console.error(`[RogueDex] Failed to load script: ${targetScript}`, e);
         });
     }
 
@@ -172,7 +172,7 @@ class UtilsClass {
         ) {
             return chrome; // Chrome or compatible
         } else {
-            console.error("Browser API not found or unsupported browser");
+            console.error("[RogueDex] Browser API not found or unsupported browser!");
             return null;
         }
     }
@@ -180,4 +180,4 @@ class UtilsClass {
 
 // Attach an instance of UtilsClass to the window object
 window.Utils = new UtilsClass();
-console.debug("UtilsClass instance created and assigned to window.Utils:", window.Utils);
+console.debug("[RogueDex] UtilsClass instance created and assigned to window.Utils:", window.Utils);

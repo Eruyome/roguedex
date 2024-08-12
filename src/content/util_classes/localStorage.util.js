@@ -36,7 +36,7 @@ class LocalStorageClass {
         try {
             window.localStorage.setItem(`img_cache_${key}`, imageData);
         } catch (e) {
-            console.error("Failed to save image to cache", e);
+            roguedexLogger.error("Failed to save image to cache", e);
         }
     }
 
@@ -72,7 +72,7 @@ class LocalStorageClass {
         try {
             window.localStorage.setItem(`overlay_card_position_${cardId}`, JSON.stringify(position));
         } catch (e) {
-            console.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
+            roguedexLogger.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
         }
     }
 
@@ -86,7 +86,7 @@ class LocalStorageClass {
         try {
             position = JSON.parse(window.localStorage.getItem(`overlay_card_position_${cardId}`));
         } catch (e) {
-            console.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
+            roguedexLogger.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
         }
         return position || null;
     }
@@ -109,7 +109,11 @@ class LocalStorageClass {
             this.sessionData = JSON.parse(
                 CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8)
             );
-            console.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+            if (roguedex.developmentENV) {
+                roguedexLogger.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+            } else {
+                console.debug("[RogueDex] Got session data", this.sessionData, "for slot id", this.slotId);
+            }        
         } else {
             this.sessionData = {};
         }

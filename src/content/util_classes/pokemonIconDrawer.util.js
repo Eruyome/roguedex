@@ -46,14 +46,14 @@ class PokemonIconDrawer {
         }
 
         if (!this.timers.has(cacheKeys.join("-"))) {
-            // console.time(`getPokemonIcon_${ cacheKeys.join('-') }`);
+            // roguedexLogger.time(`getPokemonIcon_${ cacheKeys.join('-') }`);
             this.timers.add(cacheKeys.join("-"));
         }
 
         const canvas = document.getElementById(`pokemon-icon_${divId}`);
         const canvasShown = canvas.offsetParent !== null; // parents cannot have position: fixed
         if (!canvas) {
-            console.error(`Canvas element with ID pokemon-icon_${divId} not found.`);
+            roguedexLogger.error(`Canvas element with ID pokemon-icon_${divId} not found.`);
             return;
         }
 
@@ -177,13 +177,13 @@ class PokemonIconDrawer {
         ) => {
             // Ensure the image is fully loaded
             if (!image.complete || image.naturalWidth === 0) {
-                // console.error("Canvas (Pokemon Icon): Image not loaded");
+                // roguedexLogger.error("Canvas (Pokemon Icon): Image not loaded");
                 return false;
             }
 
             // Validate dimensions
             if (destWidth <= 0 || destHeight <= 0) {
-                // console.error("Canvas (Pokemon Icon): Invalid destination dimensions.");
+                // roguedexLogger.error("Canvas (Pokemon Icon): Invalid destination dimensions.");
                 return false;
             }
 
@@ -222,12 +222,12 @@ class PokemonIconDrawer {
             // Compare before and after pixel data
             for (let i = 0; i < before.data.length; i++) {
                 if (before.data[i] !== after.data[i]) {
-                    // console.log("Canvas (Pokemon Icon): Image was drawn (at least some pixel data changed)");
+                    // roguedexLogger.log("Canvas (Pokemon Icon): Image was drawn (at least some pixel data changed)");
                     return true; // Image was drawn (at least some pixel data changed)
                 }
             }
 
-            // console.error("Canvas (Pokemon Icon): Image draw failed");
+            // roguedexLogger.error("Canvas (Pokemon Icon): Image draw failed");
             return false; // No change detected in the pixel data
         };
 
@@ -240,7 +240,7 @@ class PokemonIconDrawer {
                 await waitForImageLoadAndCanvas(image);
                 drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
             } catch (error) {
-                console.error("Failed to draw single image:", error);
+                roguedexLogger.error("Failed to draw single image:", error);
                 drawFallbackText();
             }
         };
@@ -277,7 +277,7 @@ class PokemonIconDrawer {
                     canvas.height / 2
                 );
             } catch (error) {
-                console.error("Failed to draw combined images:", error);
+                roguedexLogger.error("Failed to draw combined images:", error);
                 drawFallbackText();
             }
         };
@@ -320,7 +320,7 @@ class PokemonIconDrawer {
                         const image = new Image();
                         image.onload = () => {
                             if (image.width === 0 || image.height === 0) {
-                                console.warn(`Image dimensions are zero for URL: ${url}`);
+                                roguedexLogger.warn(`Image dimensions are zero for URL: ${url}`);
                                 resolve({
                                     success: false,
                                     errorMessage: "Image dimensions are zero",
@@ -333,7 +333,7 @@ class PokemonIconDrawer {
                             }
                         };
                         image.onerror = () => {
-                            console.warn(`Failed to load image from URL: ${url}`);
+                            roguedexLogger.warn(`Failed to load image from URL: ${url}`);
                             resolve({ success: false, errorMessage: "Failed to load image" });
                         };
                         image.src = blobUrl;
@@ -393,7 +393,7 @@ class PokemonIconDrawer {
 
                 await drawCombinedImages(image1, image2);
             } catch (error) {
-                console.error("Error in fetchCombineFusionImages:", error.message);
+                roguedexLogger.error("Error in fetchCombineFusionImages:", error.message);
             }
         };
 
@@ -438,19 +438,19 @@ class PokemonIconDrawer {
                         await loadImageFromBlobUrl(imageBase, response.dataUrl);
                         await drawSingleImage(imageBase);
                     } else {
-                        console.error("Failed to fetch or draw image:", response.errorMessage);
+                        roguedexLogger.error("Failed to fetch or draw image:", response.errorMessage);
                         drawFallbackText();
                     }
                 }
             }
         } catch (error) {
-            console.error("Error fetching or drawing image:", error);
+            roguedexLogger.error("Error fetching or drawing image:", error);
             drawFallbackText();
         }
 
         // Stop timer after completion
         if (this.timers.has(cacheKeys.join("-"))) {
-            // console.timeEnd(`getPokemonIcon_${ cacheKeys.join('-') }`);
+            // roguedexLogger.timeEnd(`getPokemonIcon_${ cacheKeys.join('-') }`);
             this.timers.delete(cacheKeys.join("-"));
         }
     }

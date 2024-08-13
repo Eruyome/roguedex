@@ -17,8 +17,8 @@
     --sidebar-bg-color: #2b2d31;
     --enemy-border-color: #b30a21;
     --ally-border-color: #0095ff;
-    --sidebar-font: "pokemon-emerald-pro";
-    --overlay-font: "pokemon-emerald-pro";
+    --sidebar-font: "pokemon-emerald-pro", "Verdana", "Geneva", "Tahoma", sans-serif;
+    --overlay-font: "pokemon-emerald-pro", "Verdana", "Geneva", "Tahoma", sans-serif;
     --text-shadow-dark: 0.1em 0 rgba(255, 255, 255, 0), -0.1em 0 rgba(255, 255, 255, 0),
         0 0.1em rgba(255, 255, 255, 0), 0 -0.1em rgba(255, 255, 255, 0), 0.05em 0.05em rgba(255, 255, 255, 0),
         -0.05em -0.05em rgba(255, 255, 255, 0), 0.05em -0.05em rgba(255, 255, 255, 0),
@@ -150,7 +150,7 @@ body {
         padding: 1.5em;
 
         span {
-            font-family: verdana, arial, serif;
+            font-family: "verdana", "arial", serif;
             font-size: 1.5em;
         }
     }
@@ -1837,7 +1837,7 @@ body {
 }
 
 #extension-status {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
     position: absolute;
     width: 100%;
     justify-content: center;

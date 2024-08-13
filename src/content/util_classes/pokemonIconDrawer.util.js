@@ -328,7 +328,7 @@ class PokemonIconDrawer {
                             } else {
                                 // Only cache if the image dimensions are valid
                                 this.imageCache[cacheKey] = blobUrl;
-                                window.Utils.LocalStorage.saveImageToCache(cacheKey, blobUrl);
+                                window.RoguedexUtils.LocalStorage.saveImageToCache(cacheKey, blobUrl);
                                 resolve({ success: true, dataUrl: blobUrl });
                             }
                         };
@@ -401,13 +401,13 @@ class PokemonIconDrawer {
         const debug = false;
         const debugConfirmation = false;
         if (debug && debugConfirmation) {
-            window.Utils.LocalStorage.clearImageCache();
+            window.RoguedexUtils.LocalStorage.clearImageCache();
         }
 
         try {
             // Check if the base image is already cached
             const cachedImageBase =
-                this.imageCache[cacheKeys[0]] || window.Utils.LocalStorage.getImageFromCache(cacheKeys[0]);
+                this.imageCache[cacheKeys[0]] || window.RoguedexUtils.LocalStorage.getImageFromCache(cacheKeys[0]);
 
             if (cachedImageBase) {
                 const imageBase = new Image();
@@ -417,7 +417,7 @@ class PokemonIconDrawer {
                     // Check if the fusion image is already cached
                     const cachedImageFusion =
                         this.imageCache[cacheKeys[1]] ||
-                        window.Utils.LocalStorage.getImageFromCache(cacheKeys[1]);
+                        window.RoguedexUtils.LocalStorage.getImageFromCache(cacheKeys[1]);
                     if (cachedImageFusion) {
                         const imageFusion = new Image();
                         await loadImageFromBlobUrl(imageFusion, cachedImageFusion);

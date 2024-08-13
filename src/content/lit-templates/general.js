@@ -47,7 +47,7 @@
         const hasSiblingClass = properties.sessionState ? "" : "no-radius";
         // prettier-ignore
         return html`
-            <span class="rd-status-text ${hasSiblingClass}">${properties.text}</span>
+            <span id="rd-status-text" class="rd-status-text ${hasSiblingClass}">${properties.text}</span>
             ${!properties.sessionState ? html`
                 <span class="rd-status-session">Save Data not loaded yet! UI might not work (try refreshing if it persists).</span>
             ` : '' }

@@ -179,5 +179,5 @@ class UtilsClass {
 }
 
 // Attach an instance of UtilsClass to the window object
-window.Utils = new UtilsClass();
-console.debug("[RogueDex] UtilsClass instance created and assigned to window.Utils:", window.Utils);
+window.RoguedexUtils = new UtilsClass();
+console.debug("[RogueDex] UtilsClass instance created and assigned to window.RoguedexUtils:", window.RoguedexUtils);

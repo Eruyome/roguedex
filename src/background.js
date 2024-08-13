@@ -27,7 +27,7 @@ const browserApi = (() => {
     ) {
         return chrome; // Chrome or compatible
     } else {
-        console.error("Browser API not found or unsupported browser"); // Unsupported browser or environment
+        console.error("[RogueDex] Browser API not found or unsupported browser"); // Unsupported browser or environment
         return null;
     }
 })();
@@ -47,12 +47,18 @@ if (browserApi) {
                 type: "popup",
                 height: 800,
                 width: 710,
+            }).then(() => {
+                sendResponse({ success: true });
+            }).catch((error) => {
+                sendResponse({ success: false, error: error.message });
             });
+
+            return true;    // Return true to indicate that you'll send a response asynchronously
         } else if (request.action === "fetchImage") {
             fetch(request.url)
                 .then((response) => {
                     if (!response.ok) {
-                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                        throw new Error(`[RogueDex] Network response was not ok. Status: ${response.status}`);
                     }
                     return response.blob();
                 })
@@ -67,11 +73,11 @@ if (browserApi) {
                     reader.readAsDataURL(blob);
                 })
                 .catch((error) => {
-                    console.error("Error fetching image:", error);
+                    console.error("[RogueDex] Error fetching image:", error);
                     sendResponse({ success: false, error: error.message || "Unknown fetch error" });
                 });
 
-            return true; // Will respond asynchronously
+            return true;    // Will respond asynchronously
         }
     });
 }

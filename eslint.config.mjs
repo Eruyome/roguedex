@@ -63,6 +63,7 @@ export default [
                 "classMap": "readonly",
                 "styleMap": "readonly",
 				"browserApi": "readonly",
+				"roguedexLogger": "readonly",
 			}
 		}
 	}

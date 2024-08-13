@@ -88,7 +88,7 @@ function scriptInjector() {
         document.head.appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.debug("[RogueDex] window.Utils:", window.Utils);
+            console.debug("[RogueDex] window.RoguedexUtils:", window.RoguedexUtils);
             initUtilities();
             console.debug("[RogueDex] Utils script loaded.");
         });
@@ -115,9 +115,9 @@ function scriptInjector() {
  * @returns {boolean} True if UtilsClass is properly initialized, false otherwise.
  */
 function isUtilsProperlyInitialized() {
-    if (window.Utils && window.Utils instanceof UtilsClass) {
+    if (window.RoguedexUtils && window.RoguedexUtils instanceof UtilsClass) {
         // Check for expected properties and methods
-        return typeof window.Utils.init === "function" && typeof window.Utils.injectScripts === "function";
+        return typeof window.RoguedexUtils.init === "function" && typeof window.RoguedexUtils.injectScripts === "function";
     }
     return false;
 }
@@ -130,10 +130,10 @@ function isUtilsProperlyInitialized() {
  * @memberof scriptInjector
  */
 function initUtilities() {
-    if (window.Utils && window.Utils instanceof UtilsClass) {
+    if (window.RoguedexUtils && window.RoguedexUtils instanceof UtilsClass) {
         // Listen for 'isReadyChange' event to determine when all scripts are loaded
-        window.Utils.on("isReadyChange", () => {
-            if (window.Utils.isReady) {                
+        window.RoguedexUtils.on("isReadyChange", () => {
+            if (window.RoguedexUtils.isReady) {                
                 extensionSettingsListener();
                 setDevEnv();
                 roguedexLogger.info("All Scripts Loaded!");
@@ -143,8 +143,8 @@ function initUtilities() {
         });
 
         // Call UtilsClass.init() to start the initialization process
-        window.Utils.init();
-        window.Utils.on("localStorageClassReady", () => {
+        window.RoguedexUtils.init();
+        window.RoguedexUtils.on("localStorageClassReady", () => {
             updateExtensionStatus();
             setInitialPokemonCardPosition("allies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
             setInitialPokemonCardPosition("enemies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
@@ -277,7 +277,7 @@ function setInitialPokemonCardPosition(
 ) {
     let storedPos;
     try {
-        storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
+        storedPos = window.RoguedexUtils.LocalStorage.getPokemonCardPosFromStorage(cardId);
     } catch (e) {
         roguedexLogger.error(e);
     }
@@ -305,12 +305,13 @@ function setInitialPokemonCardPosition(
 
 /**
  * Updates the status display of the extension and draws the settings hint icon.
+ * Sets a click eventListener that opens the settings menu on mobile.
  * @function updateExtensionStatus
  * @param {Object} properties - The properties to update the status.
  * @memberof window
  */
 async function updateExtensionStatus(properties) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
     let wrapper = document.getElementById("extension-status");
 
     if (!wrapper) {
@@ -339,6 +340,46 @@ async function updateExtensionStatus(properties) {
     if (extensionSettings.disableSettingsHint === false) {
         createSettingsHint();
         toggleSettingsHint(false);
+    }
+
+    // Add eventlistener to open the settings menu in a popup window. Mobile only.
+    if (uiDataGlobals.isMobile) {
+        const openOptions = document.getElementById('rd-status-text');
+        if (openOptions && !openOptions.hasAttribute('data-listener-added')) {
+            openOptions.addEventListener('click', () => {
+                sendMessage({ action: 'showOptions' });
+            });
+            openOptions.setAttribute('data-listener-added', 'true'); // Mark the listener as added
+        }
+
+        function sendMessage(message) {
+            if (typeof browser !== "undefined") {
+                return browser.runtime.sendMessage(message)
+                    .catch(error => {
+                        roguedexLogger.error("Error sending message in Firefox:", error);
+                        return {
+                            success: false,
+                            error,
+                            errorMessage: error.message || "Unknown error"
+                        };
+                    });
+            } else if (typeof chrome !== "undefined") {
+                return new Promise((resolve, reject) => {
+                    chrome.runtime.sendMessage(message, (response) => {
+                        if (chrome.runtime.lastError) {
+                            const error = new Error(chrome.runtime.lastError.message || "Unknown error");
+                            error.details = chrome.runtime.lastError;
+                            roguedexLogger.error("Error sending message in Chrome:", error);
+                            reject(error);  // Rejecting with an Error instance
+                        } else {
+                            resolve(response);
+                        }
+                    });
+                });
+            } else {
+                roguedexLogger.error("Unsupported browser environment!");
+            }
+        }
     }
 }
 
@@ -568,7 +609,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
 
     // If no Pokemon in the party, initialize creation
     if (partySize === 0) {
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
         await initCreation(sessionData);
     } else if (partySize <= 1) {
         // Skip if only one Pokemon in the party
@@ -621,7 +662,7 @@ async function chooseCardType(divId, pokemon, weather, minified, showMiniCardTyp
  */
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
     const top = uiDataGlobals.wrapperDivPositions[divId]?.top || "10px";
     const left =
         uiDataGlobals.wrapperDivPositions[divId]?.left ||
@@ -650,7 +691,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
         const content = html` ${buttonsObj.html} ${cardObj.html} `;
 
         await updateCardWrapper(divId, top, left, right, opacity, content, extensionSettings.showSidebar);
-        window.Utils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
+        window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
         return document.getElementById(divId);
     });
 }
@@ -703,7 +744,7 @@ function saveCardWrapperPositions(divId, properties) {
         uiDataGlobals.wrapperDivPositions[divId][prop] = properties[prop];
     });
 
-    window.Utils.LocalStorage.savePokemonCardPosToStorage(
+    window.RoguedexUtils.LocalStorage.savePokemonCardPosToStorage(
         divId,
         parseFloat(properties.left),
         parseFloat(properties.top)
@@ -735,7 +776,7 @@ function setElementProperties(element, properties) {
  * @returns {Promise<Lit-HTML-Template>} - The created minified Pokemon card template.
  */
 async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCardTypes) {
-    const savedData = await window.Utils.LocalStorage.getPlayerData();
+    const savedData = await window.RoguedexUtils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
     const simpleDisplay = cardId.toLowerCase() === "allies";
     const ivsGeneratedHTML = window.roguedexLit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
@@ -818,7 +859,7 @@ async function renderSidebarPartyTemplate(
     maxPokemonForDetailedView = null,
     breakpointOverridePartyDisplay = null
 ) {
-    const savedData = window.Utils.LocalStorage.getPlayerData();
+    const savedData = window.RoguedexUtils.LocalStorage.getPlayerData();
     const pokeData = uiDataGlobals.activePokemonParties[partyID];
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
 
@@ -838,7 +879,7 @@ async function renderSidebarPartyTemplate(
         render(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
-            window.Utils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
+            window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
         }
     }
 
@@ -855,7 +896,7 @@ async function renderSidebarPartyTemplate(
  * @returns {Promise<string>} - Returns a promise that resolves to a string indicating the condensed view state, will be used as css slass in some cases.
  */
 async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
     const showParty = extensionSettings.showParty;
 
     if (maxPokemonForDetailedView === null) {
@@ -1288,7 +1329,7 @@ async function toggleSettingsHint(state) {
  * @param {boolean} scaleUI - Whether the UI scaling function should be triggered, true by default.
  */
 async function initCreation(sessionData, scaleUI = true) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
 
     await initPokemonCardWrappers(extensionSettings.showSidebar);
     if (extensionSettings.showEnemies) {
@@ -1308,7 +1349,7 @@ async function initCreation(sessionData, scaleUI = true) {
 
 /**
  * Creates arrays of pokemon objects for either the enemy or ally party. Data is taken from sessionData and processed
- * by the class window.Utils.PokeMapper.
+ * by the class window.RoguedexUtils.PokeMapper.
  * @function dataMapping
  * @async
  * @param {string} pokemonLocation - The location of the Pokémon data ('enemyParty' or 'party').
@@ -1319,7 +1360,7 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
     const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
     try {
-        const pokemonData = await window.Utils.PokeMapper.getPokemonArray(
+        const pokemonData = await window.RoguedexUtils.PokeMapper.getPokemonArray(
             sessionData[pokemonLocation],
             sessionData.arena,
             modifiers,
@@ -1381,7 +1422,7 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
  */
 function extensionSettingsListener() {
     browserApi.storage.onChanged.addListener(async function (changes) {
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
 
         for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
             if (oldValue === newValue) {
@@ -1499,8 +1540,8 @@ function listenForDataUiModeChange() {
     }
 
     function handleSessionInitialization() {
-        window.Utils.LocalStorage.setSessionData();
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        window.RoguedexUtils.LocalStorage.setSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
         if (sessionData && Object.keys(sessionData).length > 0) {
             initStates.sessionIntialized = true;
             updateExtensionStatus({
@@ -1517,7 +1558,7 @@ function listenForDataUiModeChange() {
     }
 
     function handleSaveSlotMode() {
-        window.Utils.LocalStorage.clearAllSessionData();
+        window.RoguedexUtils.LocalStorage.clearAllSessionData();
         initStates.sessionIntialized = false;
         updateExtensionStatus({ sessionState: initStates.sessionIntialized });
     }
@@ -1634,7 +1675,7 @@ async function observeGameCanvasResize() {
 
     // ResizeObserver to observe game app canvas element resize
     const resizeObserver = new ResizeObserver(async (entries) => {
-        const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+        const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
         scaleAllElements();
 
         if (extensionSettings.showSidebar) {

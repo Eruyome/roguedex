@@ -6,74 +6,85 @@
  * @file 'src/content/content.js'
  */
 
-/* Ideally only bundle/import what is used.
- * lit-html: https://lit.dev/
- * Template rendering.
- * templates and helper functions are prefixed with `window.roguedexLit.`
- */
-/* eslint-disable */
-const {
-    html,
-    render,
-    ref,
-    unsafeHTML,
-    unsafeSVG,
-    templateContent,
-    asyncAppend,
-    asyncReplace,
-    until,
-    live,
-    guard,
-    cache,
-    keyed,
-    ifDefined,
-    range,
-    repeat,
-    join,
-    map,
-    choose,
-    when,
-    classMap,
-    styleMap,
-} = window.roguedexLitHtml;
-/* eslint-enable */
-window.roguedex = { developmentENV : false }
-initCustomLogger();
-
-const initStates = {
-    panelsInitialized: false,
-    cardsInitialized: false,
-    resizeObserverInitialized: false,
-    sessionIntialized: false,
-};
-
-const uiDataGlobals = {};
-uiDataGlobals.activePokemonParties = { enemies: {}, allies: {} };
-// Positioning a ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars (which is bad).
-// This issue could also be solved by setting the body overflow to none, may have unintended consequences though.
-uiDataGlobals.scrollbarWidth = window.roguedexLit.getScrollbarWidth();
-uiDataGlobals.isMobile = window.roguedexLit.mobileCheck();
-uiDataGlobals.wrapperDivPositions = {
-    enemies: {
-        top: "0",
-        left: "0",
-        right: "auto",
-        opacity: "100",
-    },
-    allies: {
-        top: "0",
-        left: "auto",
-        right: "0",
-        opacity: "100",
-    },
-};
-uiDataGlobals.pages = {
-    enemies: 0,
-    allies: 0,
-};
-
 scriptInjector();
-listenForDataUiModeChange();
+
+function initializeRogueDex() {
+    // Create and initialize the global `window.roguedex` object
+    window.roguedex = {
+        /* Ideally only bundle/import what is used.
+         * lit-html: https://lit.dev/
+         * Template rendering.
+         * Templates and helper functions are prefixed with `window.roguedexLit.`, defined in "src/content/lit-templates/*.js".
+        */
+        /* eslint-disable */
+        // Assign lit-html functions to roguedex object
+        litHtml: window.roguedexLitHtml.html,
+        litRender: window.roguedexLitHtml.render,
+        litUnsafeHTML: window.roguedexLitHtml.unsafeHTML,
+        litStyleMap: window.roguedexLitHtml.styleMap,
+        
+        /*  Add the rest when needed:
+        litRef: window.roguedexLitHtml.ref,
+        litUnsafeSVG: window.roguedexLitHtml.unsafeSVG,
+        litTemplateContent: window.roguedexLitHtml.templateContent,
+        litAsyncAppend: window.roguedexLitHtml.asyncAppend,
+        litAsyncReplace: window.roguedexLitHtml.asyncReplace,
+        litUntil: window.roguedexLitHtml.until,
+        litLive: window.roguedexLitHtml.live,
+        litGuard: window.roguedexLitHtml.guard,
+        litCache: window.roguedexLitHtml.cache,
+        litKeyed: window.roguedexLitHtml.keyed,
+        litIfDefined: window.roguedexLitHtml.ifDefined,
+        litRange: window.roguedexLitHtml.range,
+        litRepeat: window.roguedexLitHtml.repeat,
+        litJoin: window.roguedexLitHtml.join,
+        litMap: window.roguedexLitHtml.map,
+        litChoose: window.roguedexLitHtml.choose,
+        litWhen: window.roguedexLitHtml.when,
+        litClassMap: window.roguedexLitHtml.classMap,
+        */
+        /* eslint-enable */
+
+        // Set initial environment and state data
+        developmentENV: false,
+        initStates: {
+            panelsInitialized: false,
+            cardsInitialized: false,
+            resizeObserverInitialized: false,
+            sessionIntialized: false,
+        },
+
+        // Initialize global UI state data
+        uiData: {
+            activePokemonParties: { enemies: {}, allies: {} },
+            scrollbarWidth: window.roguedexLit.getScrollbarWidth(),
+            isMobile: window.roguedexLit.mobileCheck(),
+            wrapperDivPositions: {
+                enemies: {
+                    top: "0",
+                    left: "0",
+                    right: "auto",
+                    opacity: "100",
+                },
+                allies: {
+                    top: "0",
+                    left: "auto",
+                    right: "0",
+                    opacity: "100",
+                },
+            },
+            pages: {
+                enemies: 0,
+                allies: 0,
+            },
+        }
+    };
+
+    initCustomLogger();
+    listenForDataUiModeChange();
+    extensionSettingsListener();
+    setDevEnv();
+}
 
 /**
  * Injects the utils.js script if it is not properly initialized.
@@ -85,7 +96,7 @@ function scriptInjector() {
         console.debug("[RogueDex] Browser api :", browserApi);
         console.debug("[RogueDex] UtilsClass url:", scriptElem.src);
         scriptElem.type = "module";
-        document.head.appendChild(scriptElem);
+        (document.head || document.documentElement).appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
             console.debug("[RogueDex] window.RoguedexUtils:", window.RoguedexUtils);
@@ -134,9 +145,13 @@ function initUtilities() {
         // Listen for 'isReadyChange' event to determine when all scripts are loaded
         window.RoguedexUtils.on("isReadyChange", () => {
             if (window.RoguedexUtils.isReady) {                
-                extensionSettingsListener();
-                setDevEnv();
+                initializeRogueDex();
                 roguedexLogger.info("All Scripts Loaded!");
+
+                // TODO: make sure this always works (formerly executed on localStorageClassReady)
+                updateExtensionStatus();
+                setInitialPokemonCardPosition("allies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
+                setInitialPokemonCardPosition("enemies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
             } else {
                 console.info("[RogueDex] Error Loading Scripts :(");
             }
@@ -145,9 +160,9 @@ function initUtilities() {
         // Call UtilsClass.init() to start the initialization process
         window.RoguedexUtils.init();
         window.RoguedexUtils.on("localStorageClassReady", () => {
-            updateExtensionStatus();
-            setInitialPokemonCardPosition("allies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
-            setInitialPokemonCardPosition("enemies", 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
+           // updateExtensionStatus();
+           // setInitialPokemonCardPosition("allies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
+           // setInitialPokemonCardPosition("enemies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
         });
     } else {
         console.error("[RogueDex] UtilsClass is not properly initialized.");
@@ -204,7 +219,7 @@ function initCustomLogger() {
         conditionalMethods.forEach(method => {
             roguedexLogger[method] = function(...args) {
                 // Check if developmentENV is true before logging
-                if (global.roguedex && global.roguedex.developmentENV) {
+                if (window.roguedex && window.roguedex.developmentENV) {
                     // Add prefix
                     const prefix = '[RogueDex] ';
                     const fileInfo = getFileInfo();
@@ -283,23 +298,23 @@ function setInitialPokemonCardPosition(
     }
 
     if (!storedPos?.x || !storedPos?.y) {
-        uiDataGlobals.wrapperDivPositions[cardId].top = `${defaultYPos}px`;
+        roguedex.uiData.wrapperDivPositions[cardId].top = `${defaultYPos}px`;
 
         const horizontalPos = `${scrollbarWidth ? scrollbarWidth * scrollbarMulti : scrollbarWidthFallback}px`;
         if (cardId.toLowerCase() === "allies") {
-            uiDataGlobals.wrapperDivPositions[cardId].right = horizontalPos;
-            uiDataGlobals.wrapperDivPositions[cardId].left = "auto";
+            roguedex.uiData.wrapperDivPositions[cardId].right = horizontalPos;
+            roguedex.uiData.wrapperDivPositions[cardId].left = "auto";
         } else {
-            uiDataGlobals.wrapperDivPositions[cardId].right = "auto";
-            uiDataGlobals.wrapperDivPositions[cardId].left = horizontalPos;
+            roguedex.uiData.wrapperDivPositions[cardId].right = "auto";
+            roguedex.uiData.wrapperDivPositions[cardId].left = horizontalPos;
         }
     } else {
         // should be numbers, convert them to be sure
         const xPos = parseFloat(storedPos.x);
         const yPos = parseFloat(storedPos.y);
-        uiDataGlobals.wrapperDivPositions[cardId].top = `${yPos}px`;
-        uiDataGlobals.wrapperDivPositions[cardId].left = `${xPos}px`;
-        uiDataGlobals.wrapperDivPositions[cardId].right = "auto";
+        roguedex.uiData.wrapperDivPositions[cardId].top = `${yPos}px`;
+        roguedex.uiData.wrapperDivPositions[cardId].left = `${xPos}px`;
+        roguedex.uiData.wrapperDivPositions[cardId].right = "auto";
     }
 }
 
@@ -315,8 +330,8 @@ async function updateExtensionStatus(properties) {
     let wrapper = document.getElementById("extension-status");
 
     if (!wrapper) {
-        render(
-            html`<div
+        roguedex.litRender(
+            roguedex.litHtml`<div
                 class="text-base running-status"
                 id="extension-status"
             ></div>`,
@@ -334,7 +349,7 @@ async function updateExtensionStatus(properties) {
         text,
         sessionState,
     });
-    render(extensionStatusHTML, wrapper);
+    roguedex.litRender(extensionStatusHTML, wrapper);
     changeStatusbarPosition();
 
     if (extensionSettings.disableSettingsHint === false) {
@@ -343,7 +358,7 @@ async function updateExtensionStatus(properties) {
     }
 
     // Add eventlistener to open the settings menu in a popup window. Mobile only.
-    if (uiDataGlobals.isMobile) {
+    if (roguedex.uiData.isMobile) {
         const openOptions = document.getElementById('rd-status-text');
         if (openOptions && !openOptions.hasAttribute('data-listener-added')) {
             openOptions.addEventListener('click', () => {
@@ -388,8 +403,8 @@ async function updateExtensionStatus(properties) {
  * @function createSettingsHint
  */
 async function createSettingsHint() {
-    const settingsHintElement = window.roguedexLit.createSettingsHintElement(uiDataGlobals.isMobile);
-    render(settingsHintElement, document.body);
+    const settingsHintElement = window.roguedexLit.createSettingsHintElement(roguedex.uiData.isMobile);
+    roguedex.litRender(settingsHintElement, document.body);
 }
 
 /**
@@ -440,7 +455,7 @@ function enableDragCardElement(elmnt) {
  * @param {HTMLElement} element - The element to be repositioned and saved.
  */
 function updateCardElementPosition(elmnt) {
-    repositionElementWithinViewport(elmnt, uiDataGlobals.scrollbarWidth * 1.5);
+    repositionElementWithinViewport(elmnt, roguedex.uiData.scrollbarWidth * 1.5);
     saveCardWrapperPositions(elmnt.id, {
         top: elmnt.style.top,
         left: elmnt.style.left,
@@ -502,7 +517,7 @@ function repositionElementWithinViewport(element, marginFromEdge = 0) {
 function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "allies") {
     return new Promise((resolve) => {
         const initialize = async () => {
-            if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
+            if (roguedex.initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
                 resolve();
                 return;
             }
@@ -513,8 +528,8 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
             const body = document.body;
 
             // Render the elements
-            render(enemiesWrapper, body, { renderBefore: body.firstChild });
-            render(alliesWrapper, body, { renderBefore: body.firstChild });
+            roguedex.litRender(enemiesWrapper, body, { renderBefore: body.firstChild });
+            roguedex.litRender(alliesWrapper, body, { renderBefore: body.firstChild });
 
             // Move the rendered elements to be the last children of the body
             const enemies = body.querySelector(`#${id1}`);
@@ -539,7 +554,7 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
                 roguedexLogger.log(`${id2} pokemon card wrapper created:`, newWrapper2);
             }
 
-            initStates.cardsInitialized = true;
+            roguedex.initStates.cardsInitialized = true;
 
             resolve();
         };
@@ -570,7 +585,7 @@ async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
         roguedexLogger.warn(`Tried to delete element with id ${id2}, not found.`);
     }
 
-    initStates.cardsInitialized = false;
+    roguedex.initStates.cardsInitialized = false;
 }
 
 /**
@@ -585,7 +600,7 @@ function changePokemonCardOpacity(elementIds, value) {
     elementIds.forEach((divId) => {
         const div = document.getElementById(divId);
         if (div) {
-            uiDataGlobals.wrapperDivPositions[divId].opacity = value;
+            roguedex.uiData.wrapperDivPositions[divId].opacity = value;
             div.style.opacity = `${opacity}`;
         } else {
             roguedexLogger.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
@@ -605,7 +620,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
     const { id } = click.target;
     const [divId, direction] = id.split("-"); // Destructuring for clarity
 
-    const partySize = uiDataGlobals.activePokemonParties[partyId].pokemon.length;
+    const partySize = roguedex.uiData.activePokemonParties[partyId].pokemon.length;
 
     // If no Pokemon in the party, initialize creation
     if (partySize === 0) {
@@ -619,8 +634,8 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
 
     // Update page index based on direction
     if (direction === "up" || direction === "down") {
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(
-            uiDataGlobals.pages[divId],
+        roguedex.uiData.pages[divId] = getCyclicPageIndex(
+            roguedex.uiData.pages[divId],
             partySize,
             direction === "up" ? -1 : 1
         );
@@ -629,7 +644,7 @@ async function changePokemonCardPage(click, partyId, pokemonData) {
         return;
     }
 
-    await createCardsDiv(partyId, pokemonData, uiDataGlobals.pages[divId]);
+    await createCardsDiv(partyId, pokemonData, roguedex.uiData.pages[divId]);
 }
 
 /**
@@ -663,12 +678,12 @@ async function chooseCardType(divId, pokemon, weather, minified, showMiniCardTyp
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
     const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
-    const top = uiDataGlobals.wrapperDivPositions[divId]?.top || "10px";
+    const top = roguedex.uiData.wrapperDivPositions[divId]?.top || "10px";
     const left =
-        uiDataGlobals.wrapperDivPositions[divId]?.left ||
-        `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : "18"}px`;
-    const right = uiDataGlobals.wrapperDivPositions[divId]?.right || "auto";
-    const opacity = `${Number(uiDataGlobals.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
+        roguedex.uiData.wrapperDivPositions[divId]?.left ||
+        `${roguedex.uiData.scrollbarWidth ? roguedex.uiData.scrollbarWidth : "18"}px`;
+    const right = roguedex.uiData.wrapperDivPositions[divId]?.right || "auto";
+    const opacity = `${Number(roguedex.uiData.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
     const weather = pokemonData.weather;
 
     return chooseCardType(
@@ -688,7 +703,7 @@ async function createCardsDiv(divId, pokemonData, pokemonIndex) {
             ...additionalParams
         );
 
-        const content = html` ${buttonsObj.html} ${cardObj.html} `;
+        const content = roguedex.litHtml` ${buttonsObj.html} ${cardObj.html} `;
 
         await updateCardWrapper(divId, top, left, right, opacity, content, extensionSettings.showSidebar);
         window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
@@ -718,13 +733,13 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
             right: right || "auto",
             opacity,
         });
-        render(content, existingWrapper);
+        roguedex.litRender(content, existingWrapper);
     } else {
         await initPokemonCardWrappers(showSidebar);
         const newWrapper = document.getElementById(divId);
         newWrapper.style.position = "absolute";
         setElementProperties(existingWrapper, { top, left, right, opacity });
-        render(content, newWrapper);
+        roguedex.litRender(content, newWrapper);
     }
 
     const updatedWrapper = document.getElementById(divId);
@@ -741,7 +756,7 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
  */
 function saveCardWrapperPositions(divId, properties) {
     Object.keys(properties).forEach((prop) => {
-        uiDataGlobals.wrapperDivPositions[divId][prop] = properties[prop];
+        roguedex.uiData.wrapperDivPositions[divId][prop] = properties[prop];
     });
 
     window.RoguedexUtils.LocalStorage.savePokemonCardPosToStorage(
@@ -788,7 +803,7 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCa
             ivsGeneratedHTML,
             weather,
             showMiniCardTypes,
-            uiDataGlobals.isMobile
+            roguedex.uiData.isMobile
         ),
     };
 }
@@ -811,7 +826,7 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
             pokemon,
             typeEffectivenessHTML,
             weather,
-            uiDataGlobals.isMobile
+            roguedex.uiData.isMobile
         ),
     };
 }
@@ -822,13 +837,13 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
  * @function createPanels
  */
 function createPanels() {
-    const sidebarTemplate = window.roguedexLit.createSidebarTemplate(uiDataGlobals.isMobile);
+    const sidebarTemplate = window.roguedexLit.createSidebarTemplate(roguedex.uiData.isMobile);
     const bottomPanelTemplate = window.roguedexLit.createBottomPanelTemplate();
 
-    render(sidebarTemplate, document.body, {
+    roguedex.litRender(sidebarTemplate, document.body, {
         renderBefore: document.body.firstChild,
     });
-    render(bottomPanelTemplate, document.body, { renderBefore: null });
+    roguedex.litRender(bottomPanelTemplate, document.body, { renderBefore: null });
 
     onElementAvailable("#roguedex-bottom-panel", () => {
         observeGameCanvasResize();
@@ -860,7 +875,7 @@ async function renderSidebarPartyTemplate(
     breakpointOverridePartyDisplay = null
 ) {
     const savedData = window.RoguedexUtils.LocalStorage.getPlayerData();
-    const pokeData = uiDataGlobals.activePokemonParties[partyID];
+    const pokeData = roguedex.uiData.activePokemonParties[partyID];
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
 
     if (pokeData?.pokemon?.length) {
@@ -874,9 +889,9 @@ async function renderSidebarPartyTemplate(
             savedData.dexData,
             sessionData,
             condensedView,
-            uiDataGlobals.isMobile
+            roguedex.uiData.isMobile
         );
-        render(partyTemplate, sidebarPartyElement);
+        roguedex.litRender(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
             window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
@@ -885,7 +900,7 @@ async function renderSidebarPartyTemplate(
 
     const headerElement = document.getElementById(`sidebar-header`);
     const headerTemplate = window.roguedexLit.updateSidebarHeader(sessionData);
-    render(headerTemplate, headerElement);
+    roguedex.litRender(headerTemplate, headerElement);
 }
 
 /**
@@ -909,8 +924,8 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
     }
     // roguedexLogger.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
 
-    const enemyCount = uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
-    const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
+    const enemyCount = roguedex.uiData.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
+    const allyCount = roguedex.uiData.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
 
     const totalPartySize = enemyCount + allyCount;
     const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay; // returns a boolean value (true/false)
@@ -1000,7 +1015,7 @@ async function updateBottomPanel(sessionData, pokemonData) {
         window.roguedexLit.updateActiveTab(tabId);
     };
     const template = window.roguedexLit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
-    render(template, bottomPanelElement);
+    roguedex.litRender(template, bottomPanelElement);
     const activeTabId = window.roguedexLit.getActiveTab();
 
     if (!activeTabId) {
@@ -1368,31 +1383,31 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
         );
         const partyID = pokemonLocation === "enemyParty" ? "enemies" : "allies";
 
-        uiDataGlobals.activePokemonParties[partyID] = pokemonData;
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(
-            uiDataGlobals.pages[divId],
+        roguedex.uiData.activePokemonParties[partyID] = pokemonData;
+        roguedex.uiData.pages[divId] = getCyclicPageIndex(
+            roguedex.uiData.pages[divId],
             pokemonData.pokemon.length
         );
 
         await new Promise((resolve) => {
-            createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]);
+            createCardsDiv(divId, pokemonData.pokemon, roguedex.uiData.pages[divId]);
             resolve();
         });
 
-        if (!initStates.panelsInitialized) {
-            initStates.panelsInitialized = true;
+        if (!roguedex.initStates.panelsInitialized) {
+            roguedex.initStates.panelsInitialized = true;
             createPanels();
         }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
 
-        if (initStates.panelsInitialized) {
+        if (roguedex.initStates.panelsInitialized) {
             await updateBottomPanel(sessionData, pokemonData);
             scaleBottomPanelElements();
         }
 
         if (scaleUI) {
-            scaleAllElements(true, true, initStates.panelsInitialized);
+            scaleAllElements(true, true, roguedex.initStates.panelsInitialized);
         }
     } catch (error) {
         roguedexLogger.error("Error occurred during pokemon data mapping:", error);
@@ -1468,10 +1483,10 @@ function extensionSettingsListener() {
                     await scaleBottomPanelElements();
                     break;
                 case "sidebarCondenseBreakpoint":
-                    toggleCondensedSidebarView(adjustSidebarView(newValue, null));
+                    toggleCondensedSidebarView(await adjustSidebarView(newValue, null));
                     break;
                 case "sidebarHideAlliesBreakpoint":
-                    toggleCondensedSidebarView(adjustSidebarView(null, newValue));
+                    toggleCondensedSidebarView(await adjustSidebarView(null, newValue));
                     break;
                 case "disableSettingsHint":
                     toggleSettingsHint(newValue);
@@ -1530,6 +1545,9 @@ function listenForDataUiModeChange() {
                 case "MODIFIER_SELECT":
                     // do nothing?
                     break;
+                case "LOADING":
+                    roguedexLogger.info("Unhandled data-ui-mode: LOADING");
+                    break;
                 default:
                     roguedexLogger.warn("Unhandled data-ui-mode:", newValue);
                     break;
@@ -1543,24 +1561,24 @@ function listenForDataUiModeChange() {
         window.RoguedexUtils.LocalStorage.setSessionData();
         const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
         if (sessionData && Object.keys(sessionData).length > 0) {
-            initStates.sessionIntialized = true;
+            roguedex.initStates.sessionIntialized = true;
             updateExtensionStatus({
-                sessionState: initStates.sessionIntialized,
+                sessionState: roguedex.initStates.sessionIntialized,
             });
             initCreation(sessionData);
         } else {
             roguedexLogger.warn("SessionData empty. UI won't work for the moment.");
-            initStates.sessionIntialized = false;
+            roguedex.initStates.sessionIntialized = false;
             updateExtensionStatus({
-                sessionState: initStates.sessionIntialized,
+                sessionState: roguedex.initStates.sessionIntialized,
             });
         }
     }
 
     function handleSaveSlotMode() {
         window.RoguedexUtils.LocalStorage.clearAllSessionData();
-        initStates.sessionIntialized = false;
-        updateExtensionStatus({ sessionState: initStates.sessionIntialized });
+        roguedex.initStates.sessionIntialized = false;
+        updateExtensionStatus({ sessionState: roguedex.initStates.sessionIntialized });
     }
 
     function handleModeWithPokemonCards() {
@@ -1623,10 +1641,10 @@ function onElementAvailable(selector, callback) {
  * @function observeGameCanvasResize
  */
 async function observeGameCanvasResize() {
-    if (initStates.resizeObserverInitialized) {
+    if (roguedex.initStates.resizeObserverInitialized) {
         return;
     }
-    initStates.resizeObserverInitialized = true;
+    roguedex.initStates.resizeObserverInitialized = true;
 
     const sidebarElement = document.getElementById("roguedex-sidebar");
     const bottomPanelElement = document.getElementById("roguedex-bottom-panel");

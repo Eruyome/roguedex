@@ -11,6 +11,11 @@
  * @type {string[]}
  */
 const contentInjectables = [
+    "/libs/lit-html.bundle.js",
+    "/content/lit-templates/general.js",
+    "/content/lit-templates/bottompanel.js",
+    "/content/lit-templates/sidebar.js",
+    "/content/lit-templates/cards.js",
     "/content/maps/natureMap.js",
     "/content/maps/weatherMap.js",
     "/content/maps/moveList.js",

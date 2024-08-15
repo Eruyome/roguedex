@@ -5,7 +5,7 @@
  * @file 'src/inject.js'
  */
 
-console.info("[RogueDex] Extension active. Script starting.");
+console.info("[RogueDex] Extension active. Script initialization starting.");
 
 /**
  * Initializes the browser API based on the browser environment.
@@ -30,10 +30,18 @@ const browserApi = (() => {
     }
 })();
 
-// inject injected script
-const s = document.createElement("script");
-s.src = browserApi.runtime.getURL("injected.js");
-s.onload = function () {
-    this.remove();
+/**
+ * Injects a script into the current web page.
+ * @param {string} scriptName - The name of the script to inject.
+ */
+const injectScript = (scriptName) => {
+    const scriptElement = document.createElement("script");
+    scriptElement.src = browserApi.runtime.getURL(scriptName);
+    scriptElement.onload = function () {
+        this.remove();
+    };
+    (document.head || document.documentElement).appendChild(scriptElement);
 };
-(document.head || document.documentElement).appendChild(s);
+
+// Inject the 'injected.js' script for all browsers
+injectScript("injected.js");

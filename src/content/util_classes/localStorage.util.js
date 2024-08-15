@@ -109,11 +109,13 @@ class LocalStorageClass {
             this.sessionData = JSON.parse(
                 CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8)
             );
-            if (window.roguedex.developmentENV) {
-                roguedexLogger.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+            if (window.roguedex) {
+                if (window.roguedex.developmentENV) {
+                    roguedexLogger.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+                }
             } else {
                 console.debug("[RogueDex] Got session data", this.sessionData, "for slot id", this.slotId);
-            }        
+            }
         } else {
             this.sessionData = {};
         }

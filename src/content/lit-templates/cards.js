@@ -22,7 +22,7 @@
         const classes = `${partyID.toLowerCase() === "enemies" ? "enemy-team" : "allies-team"} ${displayClass}`;
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div id="${partyID}" class="${classes}"></div>
         `;
     };
@@ -53,25 +53,25 @@
         const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="pokemon-cards">
                 <div class="pokemon-card">
                     <div style="display: flex;">
                         <div class="${rarityClass}" style="position: relative;">
                             <canvas id="pokemon-icon_${cardId}" class="pokemon-icon"></canvas>
-                            ${cardId === 'enemies' ? html`
+                            ${cardId === 'enemies' ? roguedex.litHtml`
                                 <div class="card-pokemon-info enemies tooltip ${mobileTag}">
                                     ${window.roguedexLit.createPokemonTooltipDiv(pokemon)}
-                                    ${pokemon.gen ? html`
+                                    ${pokemon.gen ? roguedex.litHtml`
                                         <span class="card-pokemon-info-generation">${generationLabel}</span>
                                     ` : '' }
-                                    ${pokemon.rarity ? html`
+                                    ${pokemon.rarity ? roguedex.litHtml`
                                         <span class="card-pokemon-info-rarity ${pokemon.rarity}">${pokemon.rarityLabel || ''}</span>
                                     ` : '' }
-                                    ${pokemon.paradox ? html`
+                                    ${pokemon.paradox ? roguedex.litHtml`
                                         <span class="card-pokemon-info-paradox">Par</span>
                                     ` : '' }
-                                    ${pokemon.region ? html`
+                                    ${pokemon.region ? roguedex.litHtml`
                                         <span class="card-pokemon-info-region" style="background-image: url(${window.roguedexLit.getVariantSymbol(pokemon.region)})"></span>
                                     ` : '' }
                                 </div>
@@ -87,7 +87,7 @@
                                 <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
                                 ${window.roguedexLit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                             </div>
-                            ${ pokemon.nature ? html`
+                            ${ pokemon.nature ? roguedex.litHtml`
                                 <div class="tooltip ${mobileTag}">
                                     <span>&nbsp;-&nbsp;${pokemon.nature}</span>
                                     ${window.roguedexLit.createTooltipDiv(natureDescriptionHTML)}
@@ -100,7 +100,7 @@
                         <div class="text-base">
                             <span>SPE: ${pokemon.ivs[Stat.SPD]}  SPD: ${pokemon.ivs[Stat.SPDEF]}  SPA: ${pokemon.ivs[Stat.SPATK]}</span>
                         </div>
-                        ${weather?.type && weather?.turnsLeft ? html`
+                        ${weather?.type && weather?.turnsLeft ? roguedex.litHtml`
                             <div class="text-base">
                                 <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
                             </div>
@@ -142,7 +142,7 @@
         const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="pokemon-cards minified">
                 <div class="pokemon-card">
                     <div class="text-base card-minified-info">
@@ -155,7 +155,7 @@
                             <span class="${pokemon.ability.isHidden ? 'hidden-ability' : ''}">${pokemon.ability.name}</span>
                             ${window.roguedexLit.createTooltipDiv(`<span>${pokemon.ability.description}</span>`)}
                         </div>
-                        ${ pokemon.nature ? html`
+                        ${ pokemon.nature ? roguedex.litHtml`
                             <div class="tooltip ${mobileTag}">
                                 <span>&nbsp;-&nbsp;${pokemon.nature}</span>
                                 ${window.roguedexLit.createTooltipDiv(natureDescriptionHTML)}
@@ -163,9 +163,9 @@
                         ` : '' }
                     </div>
                     <div class="text-base stat-cont">
-                        ${unsafeHTML(ivsGeneratedHTML)}
+                        ${roguedex.litUnsafeHTML(ivsGeneratedHTML)}
                     </div>
-                    ${weather?.type && weather?.turnsLeft ? html`
+                    ${weather?.type && weather?.turnsLeft ? roguedex.litHtml`
                         <div class="text-base">
                             <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
                         </div>
@@ -187,7 +187,7 @@
      */
     window.roguedexLit.createTypeEffectivenessWrapper = (typeEffectivenesses) => {
         const mobileTag = window.roguedexLit.mobileCheck() ? "mobile" : "";
-        return html`
+        return roguedex.litHtml`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const TypeIconUrls = window.roguedexLit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
@@ -213,13 +213,13 @@
                 }
 
                 // prettier-ignore
-                return html`
+                return roguedex.litHtml`
                     <div class="pokemon-${effectiveness} tooltip ${mobileTag}">
-                        ${groupedTypes.map((group) => html`
+                        ${groupedTypes.map((group) => roguedex.litHtml`
                             <div>
                                 ${group.map((type) => {
                                     const cssClass = typeEffectivenesses.cssClasses[type];
-                                    return html`
+                                    return roguedex.litHtml`
                                         <div class="pokemon-type-icon ${cssClass}" 
                                             style="background-image: url(${TypeIconUrls[type]})">
                                         </div>
@@ -227,7 +227,7 @@
                                 })}
                             </div>
                         `)}
-                        ${ tooltipMap[effectiveness] ? html`
+                        ${ tooltipMap[effectiveness] ? roguedex.litHtml`
                             ${window.roguedexLit.createTooltipDiv(`<span>${tooltipMap[effectiveness]}</span>`)}
                         ` : ''}
                     </div>
@@ -339,7 +339,7 @@
         result.idDown = `${divId}-down`;
 
         // prettier-ignore
-        result.html = html`
+        result.html = roguedex.litHtml`
             <div class="arrow-button-wrapper ${isMobileDevice} ${isMinified}">
                 <button class="text-base arrow-button" @click=${(e) => clickFunction(e, ...additionalParams)} id="${result.idUp}">
                     ${upString}
@@ -376,7 +376,7 @@
         result.id = `${divId}-slider`;
 
         // prettier-ignore
-        result.html = html`
+        result.html = roguedex.litHtml`
             <div class="slider-wrapper">
                 <div class="text-base">Opacity:</div>
                 <input class="op-slider" @input=${changeOpacity} type="range" min="${min}" max="${max}" value="${initialValue}" id="${result.id}">

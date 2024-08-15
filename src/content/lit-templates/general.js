@@ -17,8 +17,8 @@
      * @function createTooltipDiv
      */
     window.roguedexLit.createTooltipDiv = (tip) => {
-        return html`
-            <div class="text-base tooltiptext">${unsafeHTML(tip)}</div>
+        return roguedex.litHtml`
+            <div class="text-base tooltiptext">${roguedex.litUnsafeHTML(tip)}</div>
         `;
     };
 
@@ -46,9 +46,9 @@
     window.roguedexLit.updateExtensionStatusElement = (properties) => {
         const hasSiblingClass = properties.sessionState ? "" : "no-radius";
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <span id="rd-status-text" class="rd-status-text ${hasSiblingClass}">${properties.text}</span>
-            ${!properties.sessionState ? html`
+            ${!properties.sessionState ? roguedex.litHtml`
                 <span class="rd-status-session">Save Data not loaded yet! UI might not work (try refreshing if it persists).</span>
             ` : '' }
         `;
@@ -86,7 +86,7 @@
         }
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div id="rd-settings-hint" class="tooltip ${mobileTag}">
                 <span class="rd-hint-icon">&#8505;</span>
                 ${window.roguedexLit.createTooltipDiv(tooltipContent)}
@@ -116,30 +116,30 @@
         variant += pokemon.region ? `(${window.roguedexLit.capitalizeFirstLetter(pokemon.region)}) Region` : "";
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="text-base tooltiptext">
                 <span>Name: ${pokemon.name} [Gen ${pokemon.gen}]</span></br>
-                ${ pokemon.rarity ? html`
+                ${ pokemon.rarity ? roguedex.litHtml`
                     <span>Rare: ${window.roguedexLit.capitalizeFirstLetter(pokemon.rarity)}</span></br>
                 `: ''}
-                ${ pokemon.variant ? html`
+                ${ pokemon.variant ? roguedex.litHtml`
                     <span>Variant: ${variant}</span></br>
                 `: ''}
-                ${ pokemon.variant || pokemon.rarity ? html`
+                ${ pokemon.variant || pokemon.rarity ? roguedex.litHtml`
                     <span> </span></br>
                 `: ''}
-                ${ pokemon.fusionId ? html`
+                ${ pokemon.fusionId ? roguedex.litHtml`
                     <span>Fusion Base: ${window.roguedexLit.capitalizeFirstLetter(pokemon.speciesName)}</span></br>
                     <span>Fused with: ${window.roguedexLit.capitalizeFirstLetter(pokemon.fusionPokemon)}</span></br>
                     <span> </span></br>
                 `: ''}
-                ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? html`
+                ${( !pokemon.fusionId && ( pokemon.baseId !== pokemon.id ) ) ? roguedex.litHtml`
                     <span>Starter: ${window.roguedexLit.capitalizeFirstLetter(pokemon.basePokemon)}</span></br>
                     <span> </span></br>
                 `: ''}
                 <span>Types: ${pokemon.currentTypes.join(', ')}</span></br>
                 <span>Level: ${pokemon.level}</span></br>
-                ${ pokemon.shiny ? html`
+                ${ pokemon.shiny ? roguedex.litHtml`
                     <span>Shiny: ${pokemon.shiny ? 'Yes' : 'No'}</span></br>
                     <span>Luck bonus: ${pokemon.luck + pokemon.fusionLuck}</span></br>
                 `: ''}

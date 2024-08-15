@@ -20,7 +20,7 @@
         const mobileTag = isMobile ? "mobile" : "";
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="roguedex-sidebar hideIVs" id="roguedex-sidebar" data-shown-pokemon-text-info="movesets"> 
                 <div class="sidebar-header" id="sidebar-header">
                     <button id="sidebar-switch-iv-moves" class="tooltip ${mobileTag}"><span>&#8644;</span></button>
@@ -44,9 +44,9 @@
         const isTrainerBattle = trainer != null;
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <span>RogueDex</span>
-            ${!isTrainerBattle ? '' : html`
+            ${!isTrainerBattle ? '' : roguedex.litHtml`
                 <span class=sidebar-header-trainer-battle>(Trainer Battle)</span>
             `}
         `;
@@ -74,7 +74,7 @@
         isMobile
     ) => {
         const mobileTag = isMobile ? "mobile" : "";
-        return html`
+        return roguedex.litHtml`
             <div class="${partyID}-party">
                 ${pokemonData.pokemon.map((pokemon, counter) => {
                     const saveDataId = pokemon.basePokemonIdPreConversion;
@@ -93,35 +93,35 @@
                         (natureStats[1] ? `<span>- ${natureStats[1]}</span>` : "");
 
                     // prettier-ignore
-                    return html`
+                    return roguedex.litHtml`
                         <div class="pokemon-entry ${condensedView}" id="sidebar_${partyID}_${counter}">
                             <div class="pokemon-entry-image tooltip ${mobileTag} ${rarityClass}">
                                 ${window.roguedexLit.createPokemonTooltipDiv(pokemon)}
                                 <canvas id="pokemon-icon_sidebar_${partyID}_${counter}" class="pokemon-entry-icon"></canvas>
 
-                                ${partyID === 'allies' ? html`
+                                ${partyID === 'allies' ? roguedex.litHtml`
                                     <div class="sidebar-pokemon-info allies">
                                         <span class="sidebar-pokemon-level">L ${pokemon.level}</span>                                        
-                                        ${pokemon.shiny ? html`
+                                        ${pokemon.shiny ? roguedex.litHtml`
                                             <div class="four-pointed-star"></div>
                                         ` : ''}
-                                        ${pokemon.luck || pokemon.fusionLuck ? html`
+                                        ${pokemon.luck || pokemon.fusionLuck ? roguedex.litHtml`
                                             <span class="sidebar-pokemon-luck">☘ ${pokemon.luck + pokemon.fusionLuck}</span>
                                         ` : ''}
                                     </div>
                                 ` : '' }
-                                ${partyID === 'enemies' ? html`
+                                ${partyID === 'enemies' ? roguedex.litHtml`
                                     <div class="sidebar-pokemon-info enemies">
-                                        ${pokemon.gen ? html`
+                                        ${pokemon.gen ? roguedex.litHtml`
                                             <span class="sidebar-pokemon-info-generation">${generationLabel}</span>
                                         ` : '' }
-                                        ${pokemon.rarity ? html`
+                                        ${pokemon.rarity ? roguedex.litHtml`
                                             <span class="sidebar-pokemon-info-rarity ${pokemon.rarity}">${pokemon.rarityLabel || ''}</span>
                                         ` : '' }
-                                        ${pokemon.paradox ? html`
+                                        ${pokemon.paradox ? roguedex.litHtml`
                                             <span class="sidebar-pokemon-info-paradox">Par</span>
                                         ` : '' }
-                                        ${pokemon.region ? html`
+                                        ${pokemon.region ? roguedex.litHtml`
                                             <div class="sidebar-pokemon-info-region" style="background-image: url(${window.roguedexLit.getVariantSymbol(pokemon.region)})"></div>
                                         ` : '' }
                                     </div>
@@ -153,7 +153,7 @@
                                 <div class="pokemon-ivs stat-cont ${allZeroStarterIVs ? 'warn-zeroIVs' : ''}">
                                     ${window.roguedexLit.generateIVsHTML(pokemon, ivSaveData, partyID === 'allies', partyID === 'allies')}
                                 </div>
-                                ${partyID === 'enemies' ? '' : html`
+                                ${partyID === 'enemies' ? '' : roguedex.litHtml`
                                     <div class="pokemon-moveset-wrapper">
                                         ${window.roguedexLit.generateMovesetHTML(pokemon, isMobile)}
                                     </div>
@@ -204,10 +204,10 @@
         const Stat = window.roguedexLit.getStatList();
         const ivs = pokemon.ivs || {};
         const saveDataId = pokemon.basePokemonIdPreConversion;
-        const defaultHtml = html`<div>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
+        const defaultHtml = roguedex.litHtml`<div>No IVs found for base/starter pokemon: ${pokemon.basePokemon}, id: ${saveDataId}</div>`;
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             ${Object.keys(ivs).length > 0 ? Object.keys(ivs).map(i => {
                 const curIV = ivs[i];
                 const dexIv = dexIvs[i];
@@ -219,13 +219,13 @@
                 const statClass = addStyleClasses ? `stat-p-colors` : '';
                 const valueClass = addStyleClasses ? `stat-c-colors` : '';
 
-                return html`
+                return roguedex.litHtml`
                     <div class="stat-p ${statClass}">
                         <span>${Stat[i]}:</span>
-                        <span class="stat-c ${valueClass}" style=${styleMap(colorStyle)}>
+                        <span class="stat-c ${valueClass}" style=${roguedex.litStyleMap(colorStyle)}>
                             ${curIV}
                         </span>
-                        ${ simpleDisplay ? '' : html`
+                        ${ simpleDisplay ? '' : roguedex.litHtml`
                             <span class="stat-icon">${icon}</span>
                         `}
                     </div>
@@ -245,7 +245,7 @@
      */
     window.roguedexLit.generateMovesetHTML = (pokemon, isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
-        return html`
+        return roguedex.litHtml`
             ${Object.keys(pokemon.moveset).map((i) => {
                 const move = pokemon.moveset[i];
                 let moveTipHTML = "";
@@ -256,7 +256,7 @@
                 moveTipHTML += `<span>Accuracy: ${move.accuracy}</span>`;
 
                 // prettier-ignore
-                return html`
+                return roguedex.litHtml`
                     <div class="pokemon-move">
                         <span class="pokemon-move-name move-${move.type.toLowerCase()} tooltip ${mobileTag}">
                             ${move.name}
@@ -353,7 +353,7 @@
         const rows = [];
         for (let i = 0; i < typeItemList.length; i += itemsPerRow) {
             const rowItems = typeItemList.slice(i, i + itemsPerRow);
-            rows.push(html`
+            rows.push(roguedex.litHtml`
                 <div class="type-effectiveness-row">
                     ${rowItems.map((item, counter) => {
                         const firstOfType =
@@ -389,7 +389,7 @@
                         );
 
                         // prettier-ignore
-                        return html`
+                        return roguedex.litHtml`
                             <div class="${item.wrapperCssClasses}${firstOfType}${lastOfType} ${transparencyClasses}" data-order="${item.order}">
                                 <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
                                     <div class="${item.iconCssClasses}" style="background-image: url('${item.iconUrl}'); ${item.additionalStyles}"></div>
@@ -403,7 +403,7 @@
         }
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="type-effectiveness-block">
                 ${rows}
             </div>
@@ -528,7 +528,7 @@
      */
     window.roguedexLit.createSidebarTypeEffectivenessWrapper = (typeEffectivenesses, isMobile) => {
         const mobileTag = isMobile ? "mobile" : "";
-        return html`
+        return roguedex.litHtml`
             ${Object.keys(typeEffectivenesses).map((effectiveness) => {
                 const TypeIconUrls = window.roguedexLit.getTypeIconUrls();
                 const effectivenessObj = typeEffectivenesses[effectiveness];
@@ -543,12 +543,12 @@
                 const allTypes = [...(effectivenessObj.double || []), ...(effectivenessObj.normal || [])];
 
                 // prettier-ignore
-                return html`
+                return roguedex.litHtml`
                     <div class="pokemon-type-effectiveness-category pokemon-type-${effectiveness}">
                         ${allTypes.map((type) => {
                             const typeToolTipHTML = window.roguedexLit.getTypeIconToolTipHTML(effectiveness, typeEffectivenesses.cssClasses[type], type);
 
-                            return html`                    
+                            return roguedex.litHtml`                    
                                 <div class="pokemon-type-icon-wrapper tooltip ${mobileTag}">
                                     <div class="pokemon-type-icon ${typeEffectivenesses.cssClasses[type] || ''}" style="background-image: url('${TypeIconUrls[type]}'), url('${TypeIconUrls[type]}');"></div>
                                     ${window.roguedexLit.createTooltipDiv(typeToolTipHTML)}

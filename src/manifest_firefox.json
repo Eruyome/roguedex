@@ -37,9 +37,12 @@
         "https://pokerogue.net/*"
       ],
       "js": [
-        "inject.js"
+        "inject.js",
+        "libs/crypto-js.min.js",
+        "content/utils.js",
+        "content/content.js"
       ],
-      "run_at": "document_start",
+      "run_at": "document_idle",
       "all_frames": true
     },
     {
@@ -47,8 +50,6 @@
         "https://pokerogue.net/*"
       ],
       "js": [
-        "content/utils.js",
-        "libs/crypto-js.min.js",
         "libs/lit-html.bundle.js",
         "content/maps/abilityMap.js",
         "content/maps/natureMap.js",
@@ -65,11 +66,10 @@
         "content/lit-templates/general.js",
         "content/lit-templates/bottompanel.js",
         "content/lit-templates/sidebar.js",
-        "content/lit-templates/cards.js",
-        "content/content.js"
+        "content/lit-templates/cards.js"
       ],
       "css": [
-        "styles.css"
+        "styles/css-built/styles.css"
       ]
     }
   ],

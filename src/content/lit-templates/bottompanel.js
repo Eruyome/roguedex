@@ -15,7 +15,7 @@
      */
     window.roguedexLit.createBottomPanelTemplate = () => {
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="roguedex-bottom-panel sidebar-Left" id="roguedex-bottom-panel"></div>
         `;
     };
@@ -75,12 +75,12 @@
         const pokemonTabsHtml = window.roguedexLit.createPokemonTabsHtml(pokemonData.pokemon, activeTab);
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="roguedex-bottom-panel-content">
                 <div class="bottom-panel-tabs">
                     <div class="bottom-panel-tab-buttons">
                         <button class="bottom-panel-tab-button active" data-tab="bottom-panel-global" @click=${() => showTab('bottom-panel-global')}>Global</button>
-                        ${pokemonData.pokemon.map((pokemon, index) => html`
+                        ${pokemonData.pokemon.map((pokemon, index) => roguedex.litHtml`
                             <button class="bottom-panel-tab-button ${activeTab === 'bottom-panel-pokemon-' + index ? 'active' : ''}" 
                                 @click=${() => showTab(`bottom-panel-pokemon-${index}`)}
                                 data-tab="bottom-panel-pokemon-${index}"
@@ -109,7 +109,7 @@
      */
     window.roguedexLit.createWeatherHtml = (weather) => {
         if (weather.type && weather.turnsLeft) {
-            return html`
+            return roguedex.litHtml`
                 <div class="bottom-panel-weather-box">
                     <div class="text-base">
                         <span>Weather: ${weather.type}, Turns Left: ${weather.turnsLeft}</span>
@@ -130,7 +130,7 @@
      */
     window.roguedexLit.createPokemonTabsHtml = (pokemonArray, activeTab) => {
         // prettier-ignore
-        return pokemonArray.map((pokemon, index) => html`
+        return pokemonArray.map((pokemon, index) => roguedex.litHtml`
             <div class="bottom-panel-tab-content ${activeTab === 'bottom-panel-pokemon-' + index ? 'active' : ''}" id="bottom-panel-pokemon-${index}">
                 ${window.roguedexLit.createPokemonTable(pokemon)}
             </div>
@@ -226,7 +226,7 @@
             // If no modifiers are present, return a single row with the fallback message
             if (filteredModifiers.length === 0) {
                 // prettier-ignore
-                return html`
+                return roguedex.litHtml`
                     <table class="bottom-panel-enemy-modifiers">
                         <tr>
                             <td colspan="4">This pokemon currently has none of the chosen modifiers.</td>
@@ -242,17 +242,17 @@
             }
 
             // prettier-ignore
-            return html`
-                ${tables.map(table => html`
+            return roguedex.litHtml`
+                ${tables.map(table => roguedex.litHtml`
                     <table class="bottom-panel-pokemon-modifiers">
-                        ${table.map((modifier, index) => index % 2 === 0 ? html`
+                        ${table.map((modifier, index) => index % 2 === 0 ? roguedex.litHtml`
                             <tr>
                                 <td class="modifier-label">${modifier.label}</td>
                                 <td class="modifier-value">${modifier.value}${modifier.unit}</td>
-                                ${table[index + 1] ? html`
+                                ${table[index + 1] ? roguedex.litHtml`
                                     <td class="modifier-label">${table[index + 1].label}</td>
                                     <td class="modifier-value">${table[index + 1].value}${table[index + 1].unit}</td>
-                                ` : html`
+                                ` : roguedex.litHtml`
                                     <td class="modifier-label"></td>
                                     <td class="modifier-value"></td>
                                 `}
@@ -341,16 +341,16 @@
          */
         const createTable = (caption, cssTag, data) => {
             // prettier-ignore
-            return html`
+            return roguedex.litHtml`
                 <table class="bottom-panel-${cssTag}-modifiers">                    
-                    ${data.map((item, index) => index % 2 === 0 ? html`
+                    ${data.map((item, index) => index % 2 === 0 ? roguedex.litHtml`
                         <tr>
                             <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.label}</td>
                             <td class="${item.value === 0 ? 'bottom-panel-zeroValue' : ''}">${item.value}${item.unit}</td>
-                            ${data[index + 1] ? html`
+                            ${data[index + 1] ? roguedex.litHtml`
                                 <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].label}</td>
                                 <td class="${data[index + 1].value === 0 ? 'bottom-panel-zeroValue' : ''}">${data[index + 1].value}${data[index + 1].unit}</td>
-                            ` : html`<td></td><td></td>`}
+                            ` : roguedex.litHtml`<td></td><td></td>`}
                         </tr>
                     ` : '')}
                 </table>
@@ -358,7 +358,7 @@
         };
 
         // prettier-ignore
-        return html`
+        return roguedex.litHtml`
             <div class="bottom-panel-modifiers-wrapper">
                 ${createTable('Ally party:', 'party', partyModifiers)}
                 ${createTable('Enemy:', 'enemy', enemyModifiersList)}

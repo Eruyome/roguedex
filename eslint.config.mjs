@@ -64,6 +64,7 @@ export default [
                 "styleMap": "readonly",
 				"browserApi": "readonly",
 				"roguedexLogger": "readonly",
+				"roguedex": "readonly",
 			}
 		}
 	}

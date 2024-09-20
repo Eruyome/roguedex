@@ -1,0 +1,248 @@
+$color_1: rgb(248, 248, 248); // white-main
+$color_1b: rgb(107, 90, 115); // white-sub
+$color_2: rgb(248, 136, 128); // red-main
+$color_2b: rgb(248, 48, 24); // red-sub
+$color_3: rgb(248, 176, 90); // yellow-main
+$color_3b: rgb(192, 120, 0); // yellow-sub
+$color_4: rgb(0, 0, 0); // black
+$font-family_1: "PKMNems", "Verdana", "Geneva", "Tahoma", sans-serif;
+$background-color_1: transparent;
+
+@font-face {
+    font-family: "PKMNems";
+    src: url("../../fonts/pkmnems.ttf") format("truetype");
+}
+:root {
+    --corner-size: 24px;
+    /*
+    --red-main: rgb(248, 136, 128);
+    --red-sub: rgb(248, 48, 24);
+    --yellow-main: rgb(248, 176, 90);
+    --yellow-sub: rgb(192, 120, 0);
+    --white-main: rgb(248, 248, 248);
+    --white-sub: rgb(107, 90, 115);
+    --black: rgb(0, 0, 0);
+    */
+    --setting-text-size: 25px;
+}
+body {
+    margin: 0;
+    position: relative;
+    /*width: 800px;*/
+    width: max-content;
+    background: rgb(55, 45, 62);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: calc(var(--corner-size) - 0.6em);
+}
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: transparent;
+    > div {
+        position: absolute;
+        background-size: contain;
+        image-rendering: pixelated;
+        background-color: $background-color_1;
+    }
+}
+.corner-top-left {
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    top: 0;
+    left: 0;
+}
+.corner-top-right {
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    top: 0;
+    right: 0;
+}
+.corner-bottom-left {
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    bottom: 0;
+    left: 0;
+}
+.corner-bottom-right {
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    bottom: 0;
+    right: 0;
+}
+.edge-top {
+    left: var(--corner-size);
+    right: var(--corner-size);
+    height: var(--corner-size);
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    top: 0;
+}
+.edge-bottom {
+    left: var(--corner-size);
+    right: var(--corner-size);
+    height: var(--corner-size);
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    bottom: 0;
+}
+.edge-left {
+    top: var(--corner-size);
+    bottom: var(--corner-size);
+    width: var(--corner-size);
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    left: 0;
+}
+.edge-right {
+    top: var(--corner-size);
+    bottom: var(--corner-size);
+    width: var(--corner-size);
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+    right: 0;
+}
+.center {
+    top: var(--corner-size);
+    bottom: var(--corner-size);
+    left: var(--corner-size);
+    right: var(--corner-size);
+    background-size: contain;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    background-color: $background-color_1;
+}
+#input-container {
+    font-family: $font-family_1;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    background: transparent;
+}
+.heading {
+    text-align: center;
+}
+.heading span {
+    font-weight: 700;
+    font-size: var(--setting-text-size);
+    color: $color_1;
+    font-family: $font-family_1;
+}
+.main-settings-block {
+    display: flex;
+    flex-direction: column;
+}
+.settings-title {
+    font-weight: 700;
+    font-size: 18px;
+}
+.input-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    font-size: var(--setting-text-size);
+}
+.input-item:nth-child(2n) {
+    background: rgba(0, 0, 0, 0.1);
+}
+.setting-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.setting-desc-wrapper {
+    max-width: 650px;
+    display: none;
+    padding-left: 1em;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+.input-item.open .setting-desc-wrapper {
+    display: flex;
+}
+.setting-desc {
+    font-size: calc(var(--setting-text-size) * 0.8);
+    color: $color_1;
+    font-family: $font-family_1;
+}
+.setting-label {
+    margin-right: 10px;
+    flex-grow: 1;
+    color: $color_3;
+    font-family: $font-family_1;
+
+    padding-left: calc(var(--setting-text-size) * 0.8);
+    position: relative;
+}
+.setting-label span {
+    cursor: pointer;
+}
+.setting-label::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+.input-item.open .setting-label::before {
+    transform: translateY(-45%) rotate(90deg);
+    color: darken($color_3, 15%);
+}
+.bool-label {
+    width: 160px !important;
+}
+.setting-options {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    .option {
+        width: 100%;
+        margin: 0 5px;
+        cursor: pointer;
+        text-align: center;
+        color: $color_1;
+    }
+    .option.selected {
+        color: $color_2;
+        text-shadow: 1px 1px 0 $color_2b;
+    }
+}
+.setting-label.focus {
+    color: $color_3;
+    text-shadow: 1px 1px 0 $color_2b;
+    font-family: $font-family_1;
+}
+#scaleValue {
+    font-family: $font-family_1;
+    font-size: 16px;
+}

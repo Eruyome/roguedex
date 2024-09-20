@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Rogue Dex",
-  "version": "2.6",
+  "version": "3.0.0",
   "permissions": [
     "activeTab",
     "webRequest",
@@ -9,9 +9,7 @@
   ],
   "host_permissions": [
     "https://pokerogue.net/*",
-    "https://api.pokerogue.net/*",
-    "https://if.daena.me/*",
-    "https://cdn.daena.me/*"
+    "https://api.pokerogue.net/*"
   ],
   "options_ui": {
     "page": "options/options.html",
@@ -23,7 +21,7 @@
   },
   "background": {
     "service_worker": "background.js",
-	"type": "module"
+    "type": "module"
   },
   "content_scripts": [
     {
@@ -32,10 +30,13 @@
         "https://pokerogue.net/*"
       ],
       "js": [
-        "inject.js"
-      ],	  
+        "inject.js",
+        "libs/crypto-js.min.js",
+        "content/utils.js",
+        "content/content.js"
+      ],
       "type": "module",
-      "run_at": "document_start",
+      "run_at": "document_idle",
       "all_frames": true
     },
     {
@@ -44,36 +45,33 @@
       ],
       "type": "module",
       "js": [
-        "content/utils.js",
-        "libs/crypto-js.min.js",
-		"libs/lit-html.bundle.js",
+        "libs/lit-html.bundle.js",
         "content/maps/abilityMap.js",
         "content/maps/natureMap.js",
         "content/maps/Pokemon_To_Id.js",
         "content/maps/weatherMap.js",
         "content/maps/PokemonEvolutions.js",
-		"content/maps/moveList.js",
-		"content/data/abilityList.js",
-		"content/data/pokemonList.js",
+        "content/maps/moveList.js",
+        "content/data/abilityList.js",
+        "content/data/pokemonList.js",
         "content/util_classes/pokemonMapper.util.js",
         "content/util_classes/localStorage.util.js",
-		"content/util_classes/uiController.util.js",
-		"content/util_classes/pokemonIconDrawer.util.js",
-		"content/lit-templates/general.js",
-		"content/lit-templates/bottompanel.js",
-		"content/lit-templates/sidebar.js",
-		"content/lit-templates/cards.js",
-        "content/content.js"
+        "content/util_classes/uiController.util.js",
+        "content/util_classes/pokemonIconDrawer.util.js",
+        "content/lit-templates/general.js",
+        "content/lit-templates/bottompanel.js",
+        "content/lit-templates/sidebar.js",
+        "content/lit-templates/cards.js"
       ],
       "css": [
-        "styles.css"
+        "styles/css-built/styles.css"
       ]
     }
   ],
   "icons": {
-    "16": "RogueDex.png",
-    "48": "RogueDex.png",
-    "128": "RogueDex.png"
+    "16": "images/RogueDexIcon.png",
+    "48": "images/RogueDexIcon.png",
+    "128": "images/RogueDexIcon.png"
   },
   "web_accessible_resources": [
     {
@@ -83,7 +81,7 @@
         "content/*",
         "images/*",
         "fonts/*",
-		"libs/*"
+        "libs/*"
       ],
       "matches": [
         "<all_urls>"

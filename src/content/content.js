@@ -6,43 +6,85 @@
  * @file 'src/content/content.js'
  */
 
-/* Ideally only bundle/import what is used. 
- * lit-html: https://lit.dev/
- * Template rendering.
- * templates and helper functions are prefixed with `window.lit.`
- */
-// eslint-disable-next-line no-unused-vars
-const { html, render, ref, unsafeHTML, unsafeSVG, templateContent, asyncAppend, asyncReplace, until, live, guard, cache, keyed, ifDefined, range, repeat, join, map, choose, when, classMap, styleMap } = window.LitHtml;
-
-const initStates = { panelsInitialized : false, cardsInitialized: false, resizeObserverInitialized : false, sessionIntialized : false };
-
-const uiDataGlobals = {}
-uiDataGlobals.activePokemonParties = { "enemies" : {}, "allies" : {} };
-// Positioning an ui element at right = (0 to scrollbar width) slightly resizes the page, creating scrollbars (which is bad).
-// This issue could also be solved by setting the body overflow to none, may have unintended consequences though.
-uiDataGlobals.scrollbarWidth = window.lit.getScrollbarWidth();
-uiDataGlobals.isMobile = window.lit.mobileCheck();
-uiDataGlobals.wrapperDivPositions = {
-    enemies: {
-        top: '0',
-        left: '0',
-        right: 'auto',
-        opacity: '100'
-    },
-    allies: {
-        top: '0',
-        left: 'auto',
-        right: '0',
-        opacity: '100'
-    }
-}
-uiDataGlobals.pages = {
-    "enemies": 0,
-    "allies": 0,
-}
-
 scriptInjector();
-listenForDataUiModeChange();
+
+function initializeRogueDex() {
+    // Create and initialize the global `window.roguedex` object
+    window.roguedex = {
+        /* Ideally only bundle/import what is used.
+         * lit-html: https://lit.dev/
+         * Template rendering.
+         * Templates and helper functions are prefixed with `window.roguedexLit.`, defined in "src/content/lit-templates/*.js".
+        */
+        /* eslint-disable */
+        // Assign lit-html functions to roguedex object
+        litHtml: window.roguedexLitHtml.html,
+        litRender: window.roguedexLitHtml.render,
+        litUnsafeHTML: window.roguedexLitHtml.unsafeHTML,
+        litStyleMap: window.roguedexLitHtml.styleMap,
+        
+        /*  Add the rest when needed:
+        litRef: window.roguedexLitHtml.ref,
+        litUnsafeSVG: window.roguedexLitHtml.unsafeSVG,
+        litTemplateContent: window.roguedexLitHtml.templateContent,
+        litAsyncAppend: window.roguedexLitHtml.asyncAppend,
+        litAsyncReplace: window.roguedexLitHtml.asyncReplace,
+        litUntil: window.roguedexLitHtml.until,
+        litLive: window.roguedexLitHtml.live,
+        litGuard: window.roguedexLitHtml.guard,
+        litCache: window.roguedexLitHtml.cache,
+        litKeyed: window.roguedexLitHtml.keyed,
+        litIfDefined: window.roguedexLitHtml.ifDefined,
+        litRange: window.roguedexLitHtml.range,
+        litRepeat: window.roguedexLitHtml.repeat,
+        litJoin: window.roguedexLitHtml.join,
+        litMap: window.roguedexLitHtml.map,
+        litChoose: window.roguedexLitHtml.choose,
+        litWhen: window.roguedexLitHtml.when,
+        litClassMap: window.roguedexLitHtml.classMap,
+        */
+        /* eslint-enable */
+
+        // Set initial environment and state data
+        developmentENV: false,
+        initStates: {
+            panelsInitialized: false,
+            cardsInitialized: false,
+            resizeObserverInitialized: false,
+            sessionIntialized: false,
+        },
+
+        // Initialize global UI state data
+        uiData: {
+            activePokemonParties: { enemies: {}, allies: {} },
+            scrollbarWidth: window.roguedexLit.getScrollbarWidth(),
+            isMobile: window.roguedexLit.mobileCheck(),
+            wrapperDivPositions: {
+                enemies: {
+                    top: "0",
+                    left: "0",
+                    right: "auto",
+                    opacity: "100",
+                },
+                allies: {
+                    top: "0",
+                    left: "auto",
+                    right: "0",
+                    opacity: "100",
+                },
+            },
+            pages: {
+                enemies: 0,
+                allies: 0,
+            },
+        }
+    };
+
+    initCustomLogger();
+    listenForDataUiModeChange();
+    extensionSettingsListener();
+    setDevEnv();
+}
 
 /**
  * Injects the utils.js script if it is not properly initialized.
@@ -51,27 +93,32 @@ function scriptInjector() {
     if (!isUtilsProperlyInitialized()) {
         const scriptElem = document.createElement("script");
         scriptElem.src = browserApi.runtime.getURL("/content/utils.js");
-        console.debug("Browser api :", browserApi);
-        console.debug("UtilsClass url:", scriptElem.src);
+        console.debug("[RogueDex] Browser api :", browserApi);
+        console.debug("[RogueDex] UtilsClass url:", scriptElem.src);
         scriptElem.type = "module";
-        document.head.appendChild(scriptElem);
+        (document.head || document.documentElement).appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.debug("window.Utils:", window.Utils);
+            console.debug("[RogueDex] window.RoguedexUtils:", window.RoguedexUtils);
             initUtilities();
-            console.debug("Utils script loaded.");
+            console.debug("[RogueDex] Utils script loaded.");
         });
     } else {
-        console.debug("Utils class is properly initialized.");
+        console.debug("[RogueDex] Utils class is properly initialized.");
         // Call initUtilities directly if UtilsClass is already initialized
         initUtilities();
     }
 
     // Set CSS url variables in the :root pseudo-class
-    const raritySparklesUrl = browserApi.runtime.getURL('/images/sparkles.gif');
-    const rarityHoloUrl = browserApi.runtime.getURL('/images/holo.png'); 
-    document.documentElement.style.setProperty('--extension-rarity-bg-image-sparkles', `url(${raritySparklesUrl})`);
-    document.documentElement.style.setProperty('--extension-rarity-bg-image-holo', `url(${rarityHoloUrl})`);
+    const rarityHoloFadeUrl = browserApi.runtime.getURL("/images/foil/compressed/holo-fade.gif");
+    const rarityHoloUrl = browserApi.runtime.getURL("/images/foil/compressed/holo.png");
+    const extensionIcon = browserApi.runtime.getURL("/images/RogueDexIcon.png");
+    document.documentElement.style.setProperty(
+        "--extension-rarity-bg-image-holo-fade",
+        `url(${rarityHoloFadeUrl})`
+    );
+    document.documentElement.style.setProperty("--extension-rarity-bg-image-holo", `url(${rarityHoloUrl})`);
+    document.documentElement.style.setProperty("--extension-icon", `url(${extensionIcon})`);
 }
 
 /**
@@ -79,10 +126,9 @@ function scriptInjector() {
  * @returns {boolean} True if UtilsClass is properly initialized, false otherwise.
  */
 function isUtilsProperlyInitialized() {
-    if (window.Utils && window.Utils instanceof UtilsClass) {
+    if (window.RoguedexUtils && window.RoguedexUtils instanceof UtilsClass) {
         // Check for expected properties and methods
-        return typeof window.Utils.init === 'function' &&
-               typeof window.Utils.injectScripts === 'function';
+        return typeof window.RoguedexUtils.init === "function" && typeof window.RoguedexUtils.injectScripts === "function";
     }
     return false;
 }
@@ -90,110 +136,275 @@ function isUtilsProperlyInitialized() {
 /**
  * Initializes utility functions after the injected script is loaded.
  * Initializes some element states.
- * 
+ *
  * @function initUtilities
  * @memberof scriptInjector
  */
 function initUtilities() {
-    if (window.Utils && window.Utils instanceof UtilsClass) {
+    if (window.RoguedexUtils && window.RoguedexUtils instanceof UtilsClass) {
         // Listen for 'isReadyChange' event to determine when all scripts are loaded
-        window.Utils.on('isReadyChange', () => {
-            if (window.Utils.isReady) {
-                console.info("All Scripts Loaded!");
-                extensionSettingsListener();
+        window.RoguedexUtils.on("isReadyChange", () => {
+            if (window.RoguedexUtils.isReady) {                
+                initializeRogueDex();
+                roguedexLogger.info("All Scripts Loaded!");
+
+                // TODO: make sure this always works (formerly executed on localStorageClassReady)
+                updateExtensionStatus();
+                setInitialPokemonCardPosition("allies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
+                setInitialPokemonCardPosition("enemies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
             } else {
-                console.info("Error Loading Scripts :(");
+                console.info("[RogueDex] Error Loading Scripts :(");
             }
         });
 
         // Call UtilsClass.init() to start the initialization process
-        window.Utils.init();
-        window.Utils.on('localStorageClassReady', () => {
-            updateExtensionStatus();
-            setInitialPokemonCardPosition('allies', 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
-            setInitialPokemonCardPosition('enemies', 5, uiDataGlobals.scrollbarWidth, 1.5, 25);
+        window.RoguedexUtils.init();
+        window.RoguedexUtils.on("localStorageClassReady", () => {
+           // updateExtensionStatus();
+           // setInitialPokemonCardPosition("allies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
+           // setInitialPokemonCardPosition("enemies", 5, roguedex.uiData.scrollbarWidth, 1.5, 25);
         });
     } else {
-        console.error("UtilsClass is not properly initialized.");
+        console.error("[RogueDex] UtilsClass is not properly initialized.");
     }
 }
 
 /**
- * Sets the initial position of a Pokemon card based on the card ID and various position parameters.
+ * @function initCustomLogger
+ * @description Initializes the `roguedexLogger` object that wraps standard console methods and conditionally logs messages 
+ * based on the value of the `window.roguedex.developmentENV` flag.
+ * Use it like the default "console" logger.
  * 
+ * The logger adds a "[RogueDex]" prefix to messages for all methods but only outputs `log`, `warn`, `debug`, `time`, `timeEnd`
+ * when the `window.roguedex.developmentENV` flag is true.
+ * 
+ * Note: The `window.roguedex.developmentENV` flag is only set after loading the user settings. Some logs have to use the 
+ * normal `console` logger instead because they run too early (before the whole Util classes init process).
+ * Alternatively set the flag to true on declaration, use the custom logger and have it potentially set to false again
+ * because of the chosen user settings.
+ * 
+ * @namespace roguedexLogger
+ * @property {Function} log - Logs a message to the console if `developerENV` is true.
+ * @property {Function} warn - Logs a warning to the console if `developerENV` is true.
+ * @property {Function} debug - Logs a debug message to the console if `developerENV` is true.
+ * @property {Function} error - Logs an error message to the console if `developerENV` is true.
+ * @property {Function} info - Logs an info message to the console if `developerENV` is true.
+ */
+
+function initCustomLogger() {
+    (function(global) {
+        // Define a custom logger object
+        const roguedexLogger = {};
+
+        // List of logging methods with conditional behavior
+        const conditionalMethods = ['log', 'warn', 'debug', 'time', 'timeEnd'];
+
+        // List of logging methods with always-on behavior
+        const alwaysOnMethods = ['error', 'info'];
+
+        // Utility function to get the stack trace file information
+        function getFileInfo() {
+            const stack = new Error().stack;
+            const stackLines = stack.split('\n');
+            
+            if (stackLines.length > 2) {
+                // Extract relevant part of the stack trace using regex
+                const match = stackLines[2].match(/([^\s]+:\d+:\d+)/);
+                return match ? match[0] : '';
+            }
+            return '';
+        }
+
+        // Create custom logger functions for conditional methods
+        conditionalMethods.forEach(method => {
+            roguedexLogger[method] = function(...args) {
+                // Check if developmentENV is true before logging
+                if (window.roguedex && window.roguedex.developmentENV) {
+                    // Add prefix
+                    const prefix = '[RogueDex] ';
+                    const fileInfo = getFileInfo();
+
+                    // Add the prefix to the first argument if it's a string
+                    if (typeof args[0] === 'string') {
+                        args[0] = prefix + args[0];
+                    } else {
+                        // Insert prefix if the first argument is not a string
+                        args.unshift(prefix);
+                    }
+
+                    // Add file info as the last argument if there's at least one argument
+                    if (args.length > 0) {
+                        args.push(fileInfo);
+                    } else {
+                        // If no arguments, create a new list with just prefix and fileInfo
+                        args = [prefix, fileInfo];
+                    }
+
+                    // Use the original console method with the provided arguments
+                    console[method](...args);
+                }
+            };
+        });
+
+        // Create custom logger functions for always-on methods
+        alwaysOnMethods.forEach(method => {
+            roguedexLogger[method] = function(...args) {
+                // Add prefix
+                const prefix = '[RogueDex] ';
+
+                // Add the prefix to the first argument if it's a string
+                if (typeof args[0] === 'string') {
+                    args[0] = prefix + args[0];
+                } else {
+                    // Insert prefix if the first argument is not a string
+                    args.unshift(prefix);
+                }
+
+                // Use the original console method with the provided arguments
+                console[method](...args);
+            };
+        });
+
+        // Attach the custom logger to the global scope with a unique name
+        global.roguedexLogger = roguedexLogger;
+
+    })(typeof window !== "undefined" ? window : global);
+}
+
+/**
+ * Sets the initial position of a Pokemon card based on the card ID and various position parameters.
+ *
  * @function setInitialPokemonCardPosition
  * @param {string} cardId - The ID of the Pokemon card.
  * @param {number} defaultYPos - The default Y position (top) of the card in pixels.
  * @param {number} scrollbarWidth - The width of the scrollbar in pixels.
  * @param {number} scrollbarMulti - A multiplier for the scrollbar width.
  * @param {number} scrollbarWidthFallback - A fallback width for the scrollbar in case the actual width is not provided.
- * 
+ *
  * @returns {void}
  */
-function setInitialPokemonCardPosition(cardId, defaultYPos, scrollbarWidth, scrollbarMulti, scrollbarWidthFallback) {
+function setInitialPokemonCardPosition(
+    cardId,
+    defaultYPos,
+    scrollbarWidth,
+    scrollbarMulti,
+    scrollbarWidthFallback
+) {
     let storedPos;
     try {
-        storedPos = window.Utils.LocalStorage.getPokemonCardPosFromStorage(cardId);
-    } catch (e) { console.error(e) }
+        storedPos = window.RoguedexUtils.LocalStorage.getPokemonCardPosFromStorage(cardId);
+    } catch (e) {
+        roguedexLogger.error(e);
+    }
 
-    if (!storedPos?.x || !storedPos?.y) {        
-        uiDataGlobals.wrapperDivPositions[cardId].top = `${defaultYPos}px`;
+    if (!storedPos?.x || !storedPos?.y) {
+        roguedex.uiData.wrapperDivPositions[cardId].top = `${defaultYPos}px`;
 
         const horizontalPos = `${scrollbarWidth ? scrollbarWidth * scrollbarMulti : scrollbarWidthFallback}px`;
-        if (cardId.toLowerCase() === 'allies') {
-            uiDataGlobals.wrapperDivPositions[cardId].right = horizontalPos;
-            uiDataGlobals.wrapperDivPositions[cardId].left = 'auto';
+        if (cardId.toLowerCase() === "allies") {
+            roguedex.uiData.wrapperDivPositions[cardId].right = horizontalPos;
+            roguedex.uiData.wrapperDivPositions[cardId].left = "auto";
         } else {
-            uiDataGlobals.wrapperDivPositions[cardId].right = 'auto';
-            uiDataGlobals.wrapperDivPositions[cardId].left = horizontalPos;
-        }        
-    }
-    else {
+            roguedex.uiData.wrapperDivPositions[cardId].right = "auto";
+            roguedex.uiData.wrapperDivPositions[cardId].left = horizontalPos;
+        }
+    } else {
         // should be numbers, convert them to be sure
         const xPos = parseFloat(storedPos.x);
         const yPos = parseFloat(storedPos.y);
-        uiDataGlobals.wrapperDivPositions[cardId].top = `${yPos}px`;
-        uiDataGlobals.wrapperDivPositions[cardId].left = `${xPos}px`;
-        uiDataGlobals.wrapperDivPositions[cardId].right = 'auto';
+        roguedex.uiData.wrapperDivPositions[cardId].top = `${yPos}px`;
+        roguedex.uiData.wrapperDivPositions[cardId].left = `${xPos}px`;
+        roguedex.uiData.wrapperDivPositions[cardId].right = "auto";
     }
 }
 
 /**
  * Updates the status display of the extension and draws the settings hint icon.
+ * Sets a click eventListener that opens the settings menu on mobile.
  * @function updateExtensionStatus
  * @param {Object} properties - The properties to update the status.
  * @memberof window
  */
 async function updateExtensionStatus(properties) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
-    let wrapper = document.getElementById('extension-status');
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
+    let wrapper = document.getElementById("extension-status");
 
     if (!wrapper) {
-        render(html`<div class="text-base running-status" id="extension-status"></div>`, document.body, { renderBefore: document.body.firstChild });
-        wrapper = document.getElementById('extension-status');
+        roguedex.litRender(
+            roguedex.litHtml`<div
+                class="text-base running-status"
+                id="extension-status"
+            ></div>`,
+            document.body,
+            { renderBefore: document.body.firstChild }
+        );
+        wrapper = document.getElementById("extension-status");
     }
     // Use an empty string if properties.text is '', a default value if null/undefined, otherwise use the provided value.
-    const text = properties?.text === '' ? '' : (properties?.text ?? 'RogueDex is running!');
+    const text = properties?.text === "" ? "" : (properties?.text ?? "RogueDex");
     // Uses 'unknown' when 'properties.sessionState' is null or undefined.
-    const sessionState = properties?.sessionState ?? 'dont-show';
+    const sessionState = properties?.sessionState ?? "dont-show";
 
-    const extensionStatusHTML = window.lit.updateExtensionStatusElement({ text, sessionState });
-    render(extensionStatusHTML, wrapper);    
+    const extensionStatusHTML = window.roguedexLit.updateExtensionStatusElement({
+        text,
+        sessionState,
+    });
+    roguedex.litRender(extensionStatusHTML, wrapper);
     changeStatusbarPosition();
 
     if (extensionSettings.disableSettingsHint === false) {
         createSettingsHint();
         toggleSettingsHint(false);
     }
+
+    // Add eventlistener to open the settings menu in a popup window. Mobile only.
+    if (roguedex.uiData.isMobile) {
+        const openOptions = document.getElementById('rd-status-text');
+        if (openOptions && !openOptions.hasAttribute('data-listener-added')) {
+            openOptions.addEventListener('click', () => {
+                sendMessage({ action: 'showOptions' });
+            });
+            openOptions.setAttribute('data-listener-added', 'true'); // Mark the listener as added
+        }
+
+        function sendMessage(message) {
+            if (typeof browser !== "undefined") {
+                return browser.runtime.sendMessage(message)
+                    .catch(error => {
+                        roguedexLogger.error("Error sending message in Firefox:", error);
+                        return {
+                            success: false,
+                            error,
+                            errorMessage: error.message || "Unknown error"
+                        };
+                    });
+            } else if (typeof chrome !== "undefined") {
+                return new Promise((resolve, reject) => {
+                    chrome.runtime.sendMessage(message, (response) => {
+                        if (chrome.runtime.lastError) {
+                            const error = new Error(chrome.runtime.lastError.message || "Unknown error");
+                            error.details = chrome.runtime.lastError;
+                            roguedexLogger.error("Error sending message in Chrome:", error);
+                            reject(error);  // Rejecting with an Error instance
+                        } else {
+                            resolve(response);
+                        }
+                    });
+                });
+            } else {
+                roguedexLogger.error("Unsupported browser environment!");
+            }
+        }
+    }
 }
 
 /**
- * Creates an icon that serves as a hint/reminder to open the settings menu, and how.
+ * Creates an icon that serves as a hint/reminder to open the settings menu, and how to.
  * @function createSettingsHint
  */
-async function createSettingsHint() {    
-    const settingsHintElement = window.lit.createSettingsHintElement();
-    render(settingsHintElement, document.body);
+async function createSettingsHint() {
+    const settingsHintElement = window.roguedexLit.createSettingsHintElement(roguedex.uiData.isMobile);
+    roguedex.litRender(settingsHintElement, document.body);
 }
 
 /**
@@ -202,7 +413,7 @@ async function createSettingsHint() {
  * @param {HTMLElement} elmnt - The element to enable dragging for.
  */
 function enableDragCardElement(elmnt) {
-    let pos1 = 0; 
+    let pos1 = 0;
     let pos2 = 0;
     let pos3 = 0;
     let pos4 = 0;
@@ -211,7 +422,7 @@ function enableDragCardElement(elmnt) {
     elmnt.onpointerdown = dragMouseDown;
 
     function dragMouseDown(e) {
-        if (e.target.type === 'submit' || e.target.type === 'range') return;
+        if (e.target.type === "submit" || e.target.type === "range") return;
         e.preventDefault();
         pos3 = e.clientX;
         pos4 = e.clientY;
@@ -225,32 +436,36 @@ function enableDragCardElement(elmnt) {
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
         elmnt.style.right = "auto";
     }
 
     function stopDragging() {
         document.onpointerup = null;
         document.onpointermove = null;
-        updateCardElementPosition(elmnt)
+        updateCardElementPosition(elmnt);
     }
 }
 
 /**
  * Makes sure that the element is fully visible in the viewport and saves it's position to a temporary object and to local storage.
- * 
+ *
  * @function updateElementPosition
  * @param {HTMLElement} element - The element to be repositioned and saved.
  */
 function updateCardElementPosition(elmnt) {
-    repositionElementWithinViewport(elmnt, uiDataGlobals.scrollbarWidth * 1.5);
-    saveCardWrapperPositions(elmnt.id, { top : elmnt.style.top, left : elmnt.style.left, right : elmnt.style.right });
+    repositionElementWithinViewport(elmnt, roguedex.uiData.scrollbarWidth * 1.5);
+    saveCardWrapperPositions(elmnt.id, {
+        top: elmnt.style.top,
+        left: elmnt.style.left,
+        right: elmnt.style.right,
+    });
 }
 
 /**
  * Repositions the specified element within the browser viewport while maintaining a specified margin from the right and bottom edges (to avoid scrollbars).
- * 
+ *
  * @function repositionElementWithinViewport
  * @param {HTMLElement} element - The element to be repositioned.
  * @param {number} [marginFromEdge=0] - The margin in pixels to maintain from the bottom and right edges of the viewport.
@@ -302,19 +517,19 @@ function repositionElementWithinViewport(element, marginFromEdge = 0) {
 function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "allies") {
     return new Promise((resolve) => {
         const initialize = async () => {
-            if (initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
+            if (roguedex.initStates.cardsInitialized && document.getElementById(id1) && document.getElementById(id2)) {
                 resolve();
                 return;
             }
 
-            const enemiesWrapper = window.lit.createCardWrapper(id1, showSidebar);
-            const alliesWrapper = window.lit.createCardWrapper(id2, showSidebar);
+            const enemiesWrapper = window.roguedexLit.createCardWrapper(id1, showSidebar);
+            const alliesWrapper = window.roguedexLit.createCardWrapper(id2, showSidebar);
 
             const body = document.body;
 
             // Render the elements
-            render(enemiesWrapper, body, { renderBefore: body.firstChild });
-            render(alliesWrapper, body, { renderBefore: body.firstChild });
+            roguedex.litRender(enemiesWrapper, body, { renderBefore: body.firstChild });
+            roguedex.litRender(alliesWrapper, body, { renderBefore: body.firstChild });
 
             // Move the rendered elements to be the last children of the body
             const enemies = body.querySelector(`#${id1}`);
@@ -335,11 +550,11 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
             // Optional console logs
             const debug = false;
             if (debug) {
-                console.log(`${id1} pokemon card wrapper created:`, newWrapper1);
-                console.log(`${id2} pokemon card wrapper created:`, newWrapper2);
+                roguedexLogger.log(`${id1} pokemon card wrapper created:`, newWrapper1);
+                roguedexLogger.log(`${id2} pokemon card wrapper created:`, newWrapper2);
             }
 
-            initStates.cardsInitialized = true;
+            roguedex.initStates.cardsInitialized = true;
 
             resolve();
         };
@@ -357,57 +572,38 @@ function initPokemonCardWrappers(showSidebar = false, id1 = "enemies", id2 = "al
 async function deletePokemonCardWrappers(id1 = "enemies", id2 = "allies") {
     const enemiesWrapper = document.getElementById(id1);
     const alliesWrapper = document.getElementById(id2);
-    
+
     if (enemiesWrapper) {
         enemiesWrapper.remove();
     } else {
-        console.warn(`Tried to delete element with id ${id1}, not found.`);
+        roguedexLogger.warn(`Tried to delete element with id ${id1}, not found.`);
     }
 
     if (alliesWrapper) {
         alliesWrapper.remove();
     } else {
-        console.warn(`Tried to delete element with id ${id2}, not found.`);
+        roguedexLogger.warn(`Tried to delete element with id ${id2}, not found.`);
     }
 
-    initStates.cardsInitialized = false;
+    roguedex.initStates.cardsInitialized = false;
 }
 
 /**
  * Changes the opacity of pokemon cards.
- * @function changeOpacity
- * @param {Event} e - The event triggering the opacity change.
- */
-function changeOpacity(e) {
-    const { id } = e.target;
-    const divId = id.split("-")[0];
-    const div = document.getElementById(divId);
-
-    if (div) {
-        const opacity = e.target.value / 100;
-        uiDataGlobals.wrapperDivPositions[divId].opacity = e.target.value;
-        div.style.opacity = `${opacity}`;
-    } else {
-        console.error(`Element with ID '${divId}' not found.`);
-    }
-}
-
-/**
- * Changes the opacity of pokemon cards.
- * @function changeOpacity
+ * @function changePokemonCardOpacity
  * @param {Array} elementIds - Id list of target elements.
  * @param {Integer} value - Value to change opacity to (0 - 100%).
  */
 function changePokemonCardOpacity(elementIds, value) {
     const opacity = value / 100;
 
-    elementIds.forEach(divId => {
+    elementIds.forEach((divId) => {
         const div = document.getElementById(divId);
-        if (div) {            
-            uiDataGlobals.wrapperDivPositions[divId].opacity = value;
+        if (div) {
+            roguedex.uiData.wrapperDivPositions[divId].opacity = value;
             div.style.opacity = `${opacity}`;
         } else {
-            console.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
+            roguedexLogger.error(`Change Pokemon Card Opacity: Element with ID '${divId}' not found.`);
         }
     });
 }
@@ -423,27 +619,32 @@ function changePokemonCardOpacity(elementIds, value) {
 async function changePokemonCardPage(click, partyId, pokemonData) {
     const { id } = click.target;
     const [divId, direction] = id.split("-"); // Destructuring for clarity
-    
-    const partySize = uiDataGlobals.activePokemonParties[partyId].pokemon.length;
+
+    const partySize = roguedex.uiData.activePokemonParties[partyId].pokemon.length;
 
     // If no Pokemon in the party, initialize creation
     if (partySize === 0) {
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
         await initCreation(sessionData);
-    } else if (partySize <= 1) { // Skip if only one Pokemon in the party
+    } else if (partySize <= 1) {
+        // Skip if only one Pokemon in the party
         // No need to change the page
         return;
     }
 
     // Update page index based on direction
-    if (direction === 'up' || direction === 'down') {
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], partySize, direction === 'up' ? -1 : 1);
+    if (direction === "up" || direction === "down") {
+        roguedex.uiData.pages[divId] = getCyclicPageIndex(
+            roguedex.uiData.pages[divId],
+            partySize,
+            direction === "up" ? -1 : 1
+        );
     } else {
-        console.error(`Invalid direction: ${direction}`);
+        roguedexLogger.error(`Invalid direction: ${direction}`);
         return;
     }
 
-    await createCardsDiv(partyId, pokemonData, uiDataGlobals.pages[divId]);
+    await createCardsDiv(partyId, pokemonData, roguedex.uiData.pages[divId]);
 }
 
 /**
@@ -476,24 +677,36 @@ async function chooseCardType(divId, pokemon, weather, minified, showMiniCardTyp
  */
 async function createCardsDiv(divId, pokemonData, pokemonIndex) {
     const pokemon = pokemonData[pokemonIndex];
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
-    const top = uiDataGlobals.wrapperDivPositions[divId]?.top || '10px';
-    const left = uiDataGlobals.wrapperDivPositions[divId]?.left || `${uiDataGlobals.scrollbarWidth ? uiDataGlobals.scrollbarWidth : '18'}px`;
-    const right = uiDataGlobals.wrapperDivPositions[divId]?.right || 'auto';
-    const opacity = `${Number(uiDataGlobals.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
+    const top = roguedex.uiData.wrapperDivPositions[divId]?.top || "10px";
+    const left =
+        roguedex.uiData.wrapperDivPositions[divId]?.left ||
+        `${roguedex.uiData.scrollbarWidth ? roguedex.uiData.scrollbarWidth : "18"}px`;
+    const right = roguedex.uiData.wrapperDivPositions[divId]?.right || "auto";
+    const opacity = `${Number(roguedex.uiData.wrapperDivPositions[divId]?.opacity || 100) / 100}`;
     const weather = pokemonData.weather;
 
-    return chooseCardType(divId, pokemon, weather, extensionSettings.showMinified, extensionSettings.showMiniCardTypes).then(async (cardObj) => {
+    return chooseCardType(
+        divId,
+        pokemon,
+        weather,
+        extensionSettings.showMinified,
+        extensionSettings.showMiniCardTypes
+    ).then(async (cardObj) => {
         const additionalParams = [divId, pokemonData];
-        const buttonsObj = window.lit.createArrowButtonsDiv(divId, "↑", "↓", extensionSettings.showMinified, changePokemonCardPage, ...additionalParams);
+        const buttonsObj = window.roguedexLit.createArrowButtonsDiv(
+            divId,
+            "↑",
+            "↓",
+            extensionSettings.showMinified,
+            changePokemonCardPage,
+            ...additionalParams
+        );
 
-        const content = html`
-            ${buttonsObj.html}
-            ${cardObj.html}
-        `;
+        const content = roguedex.litHtml` ${buttonsObj.html} ${cardObj.html} `;
 
         await updateCardWrapper(divId, top, left, right, opacity, content, extensionSettings.showSidebar);
-        window.Utils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
+        window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(pokemon, divId);
         return document.getElementById(divId);
     });
 }
@@ -514,14 +727,19 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
     const existingWrapper = document.getElementById(divId);
 
     if (existingWrapper) {
-        setElementProperties(existingWrapper, { top, left, right: right || "auto", opacity });
-        render(content, existingWrapper);
+        setElementProperties(existingWrapper, {
+            top,
+            left,
+            right: right || "auto",
+            opacity,
+        });
+        roguedex.litRender(content, existingWrapper);
     } else {
         await initPokemonCardWrappers(showSidebar);
         const newWrapper = document.getElementById(divId);
-        newWrapper.style.position = 'absolute';
+        newWrapper.style.position = "absolute";
         setElementProperties(existingWrapper, { top, left, right, opacity });
-        render(content, newWrapper);
+        roguedex.litRender(content, newWrapper);
     }
 
     const updatedWrapper = document.getElementById(divId);
@@ -537,11 +755,15 @@ async function updateCardWrapper(divId, top, left, right, opacity, content, show
  * @param {Object} properties - The position properties to save.
  */
 function saveCardWrapperPositions(divId, properties) {
-    Object.keys(properties).forEach(prop => {
-        uiDataGlobals.wrapperDivPositions[divId][prop] = properties[prop];
+    Object.keys(properties).forEach((prop) => {
+        roguedex.uiData.wrapperDivPositions[divId][prop] = properties[prop];
     });
 
-    window.Utils.LocalStorage.savePokemonCardPosToStorage(divId, parseFloat(properties.left), parseFloat(properties.top));
+    window.RoguedexUtils.LocalStorage.savePokemonCardPosToStorage(
+        divId,
+        parseFloat(properties.left),
+        parseFloat(properties.top)
+    );
 }
 
 /**
@@ -552,10 +774,10 @@ function saveCardWrapperPositions(divId, properties) {
  */
 function setElementProperties(element, properties) {
     if (element) {
-        Object.keys(properties).forEach(prop => {
+        Object.keys(properties).forEach((prop) => {
             element.style[prop] = properties[prop];
         });
-    }    
+    }
 }
 
 /**
@@ -565,16 +787,24 @@ function setElementProperties(element, properties) {
  * @param {string} cardId - The ID of the card.
  * @param {Object} pokemon - The Pokemon data.
  * @param {string} weather - The weather condition.
+ * @param {boolean} showMiniCardTypes - Flag indicating whether the type effectivenesses should be shown.
  * @returns {Promise<Lit-HTML-Template>} - The created minified Pokemon card template.
  */
-async function createPokemonCardDivMinified(cardId, pokemon, weather) {
-    const savedData = await window.Utils.LocalStorage.getPlayerData();
+async function createPokemonCardDivMinified(cardId, pokemon, weather, showMiniCardTypes) {
+    const savedData = await window.RoguedexUtils.LocalStorage.getPlayerData();
     const dexData = savedData.dexData;
-    const simpleDisplay = cardId.toLowerCase() === 'allies';
-    const ivsGeneratedHTML = window.lit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
+    const simpleDisplay = cardId.toLowerCase() === "allies";
+    const ivsGeneratedHTML = window.roguedexLit.generateCardIVsHTML(pokemon, dexData, simpleDisplay);
 
     return {
-        html: window.lit.createPokemonCardContentMinified(cardId, pokemon, ivsGeneratedHTML, weather, )
+        html: window.roguedexLit.createPokemonCardContentMinified(
+            cardId,
+            pokemon,
+            ivsGeneratedHTML,
+            weather,
+            showMiniCardTypes,
+            roguedex.uiData.isMobile
+        ),
     };
 }
 
@@ -588,14 +818,16 @@ async function createPokemonCardDivMinified(cardId, pokemon, weather) {
  * @returns {Promise<Lit-HTML-Template>} - The created full-size Pokemon card template.
  */
 async function createPokemonCardDiv(cardId, pokemon, weather) {
-    let opacitySlider = html``; // empty lit-html template
-    if (uiDataGlobals.isMobile) {
-        opacitySlider = window.lit.createOpacitySliderDiv(cardId, changeOpacity, uiDataGlobals.wrapperDivPositions[cardId].opacity, "25", "100");
-    }    
-    const typeEffectivenessHTML = window.lit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
+    const typeEffectivenessHTML = window.roguedexLit.createTypeEffectivenessWrapper(pokemon.typeEffectiveness);
 
     return {
-        html: window.lit.createPokemonCardContent(cardId, pokemon, opacitySlider, typeEffectivenessHTML, weather)
+        html: window.roguedexLit.createPokemonCardContent(
+            cardId,
+            pokemon,
+            typeEffectivenessHTML,
+            weather,
+            roguedex.uiData.isMobile
+        ),
     };
 }
 
@@ -605,21 +837,27 @@ async function createPokemonCardDiv(cardId, pokemon, weather) {
  * @function createPanels
  */
 function createPanels() {
-    const sidebarTemplate = window.lit.createSidebarTemplate();
-    const bottomPanelTemplate = window.lit.createBottomPanelTemplate();
+    const sidebarTemplate = window.roguedexLit.createSidebarTemplate(roguedex.uiData.isMobile);
+    const bottomPanelTemplate = window.roguedexLit.createBottomPanelTemplate();
 
-    render(sidebarTemplate, document.body, { renderBefore: document.body.firstChild });
-    render(bottomPanelTemplate, document.body, { renderBefore: null });
-    
+    roguedex.litRender(sidebarTemplate, document.body, {
+        renderBefore: document.body.firstChild,
+    });
+    roguedex.litRender(bottomPanelTemplate, document.body, { renderBefore: null });
+
     onElementAvailable("#roguedex-bottom-panel", () => {
         observeGameCanvasResize();
     });
 
     onElementAvailable("#sidebar-switch-iv-moves", () => {
         // eslint-disable-next-line no-unused-vars
-        const uiControllerSwitchIVsMovesetDisplay = new UIController(sidebarSwitchBetweenIVsAndMoveset, '#sidebar-switch-iv-moves', { bindMouse: true, bindKeyboard: false, bindGamepad: false });
+        const uiControllerSwitchIVsMovesetDisplay = new UIController(
+            sidebarSwitchBetweenIVsAndMoveset,
+            "#sidebar-switch-iv-moves",
+            { bindMouse: true, bindKeyboard: false, bindGamepad: false }
+        );
         // uiControllerSwitchIVsMovesetDisplay.setBindings(null, [6, 5]) // xbox lt + rb
-    });    
+    });
 }
 
 /**
@@ -630,24 +868,39 @@ function createPanels() {
  * @param {string} partyID - The ID of the party ('allies' or 'enemies').
  * @param {number} [maxPokemonForDetailedView=8] - The maximum number of Pokémon for detailed view.
  */
-async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDetailedView = null, breakpointOverridePartyDisplay = null) {
-    const savedData = window.Utils.LocalStorage.getPlayerData();
-    const pokeData = uiDataGlobals.activePokemonParties[partyID];
+async function renderSidebarPartyTemplate(
+    sessionData,
+    partyID,
+    maxPokemonForDetailedView = null,
+    breakpointOverridePartyDisplay = null
+) {
+    const savedData = window.RoguedexUtils.LocalStorage.getPlayerData();
+    const pokeData = roguedex.uiData.activePokemonParties[partyID];
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
 
     if (pokeData?.pokemon?.length) {
-        const condensedView = await adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay);
-        const partyTemplate = window.lit.createSidebarPartyTemplate(pokeData, partyID, savedData.dexData, sessionData, condensedView);
-        render(partyTemplate, sidebarPartyElement);
+        const condensedView = await adjustSidebarView(
+            maxPokemonForDetailedView,
+            breakpointOverridePartyDisplay
+        );
+        const partyTemplate = window.roguedexLit.createSidebarPartyTemplate(
+            pokeData,
+            partyID,
+            savedData.dexData,
+            sessionData,
+            condensedView,
+            roguedex.uiData.isMobile
+        );
+        roguedex.litRender(partyTemplate, sidebarPartyElement);
 
         for (const [i, value] of pokeData.pokemon.entries()) {
-            window.Utils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
+            window.RoguedexUtils.PokemonIconDrawer.getPokemonIcon(value, `sidebar_${partyID}_${i}`);
         }
     }
 
     const headerElement = document.getElementById(`sidebar-header`);
-    const headerTemplate = window.lit.updateSidebarHeader(sessionData);
-    render(headerTemplate, headerElement);
+    const headerTemplate = window.roguedexLit.updateSidebarHeader(sessionData);
+    roguedex.litRender(headerTemplate, headerElement);
 }
 
 /**
@@ -658,61 +911,61 @@ async function renderSidebarPartyTemplate(sessionData, partyID, maxPokemonForDet
  * @returns {Promise<string>} - Returns a promise that resolves to a string indicating the condensed view state, will be used as css slass in some cases.
  */
 async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePartyDisplay) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
     const showParty = extensionSettings.showParty;
 
-    if (maxPokemonForDetailedView === null) { // breakpoint of pokemon in the sidebar at both party views should be switched to a more condensed/smaller one.
+    if (maxPokemonForDetailedView === null) {
+        // breakpoint of pokemon in the sidebar at both party views should be switched to a more condensed/smaller one.
         maxPokemonForDetailedView = extensionSettings.sidebarCondenseBreakpoint;
     }
-    if (breakpointOverridePartyDisplay === null) { // breakpoint of pokemon in the sidebar at which the ally party should be hidden.
+    if (breakpointOverridePartyDisplay === null) {
+        // breakpoint of pokemon in the sidebar at which the ally party should be hidden.
         breakpointOverridePartyDisplay = extensionSettings.sidebarHideAlliesBreakpoint;
     }
-    // console.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
+    // roguedexLogger.log('maxPokemonForDetailedView: ', maxPokemonForDetailedView, 'breakpointOverridePartyDisplay: ', breakpointOverridePartyDisplay)
 
-    const enemyCount = uiDataGlobals.activePokemonParties.enemies?.pokemon?.length ?? 0;    // return 0 if undefined
-    const allyCount = uiDataGlobals.activePokemonParties.allies?.pokemon?.length ?? 0;      // return 0 if undefined
+    const enemyCount = roguedex.uiData.activePokemonParties.enemies?.pokemon?.length ?? 0; // return 0 if undefined
+    const allyCount = roguedex.uiData.activePokemonParties.allies?.pokemon?.length ?? 0; // return 0 if undefined
 
     const totalPartySize = enemyCount + allyCount;
-    const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay;     // returns a boolean value (true/false)
-    const displayedPartySize = enemyCount + ( (showParty && overridePartyDisplayState === false) ? allyCount : 0 );
-    // console.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
+    const overridePartyDisplayState = totalPartySize >= breakpointOverridePartyDisplay; // returns a boolean value (true/false)
+    const displayedPartySize =
+        enemyCount + (showParty && overridePartyDisplayState === false ? allyCount : 0);
+    // roguedexLogger.log('totalPartySize: ', totalPartySize, 'displayedPartySize: ', displayedPartySize, 'showParty: ', showParty, 'overridePartyDisplayState: ', overridePartyDisplayState)
 
-    let condensedView = '';
-    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
-     * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
-     * Reset previously set temporary states, uses defaults according to user settings.
-    */
-    if ( (overridePartyDisplayState === false) && (totalPartySize <= maxPokemonForDetailedView) ) {
-        await toggleSidebarPartyDisplay('allies', showParty);
+    let condensedView = "";
+    if (overridePartyDisplayState === false && totalPartySize <= maxPokemonForDetailedView) {
+        /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+         * Total number of currently displayed pokemon is fine; breakpoint to switch to condensed view not reached.
+         * Reset previously set temporary states, uses defaults according to user settings.
+         */
+        await toggleSidebarPartyDisplay("allies", showParty);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
-        condensedView = '';
-    }
-    // too many pokemon, no override to hide allies; change to defaultView + condensed
-    /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
-     * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
-    */
-    else if ( (overridePartyDisplayState === false) && (totalPartySize > maxPokemonForDetailedView) ) {
+        condensedView = "";
+    } else if (overridePartyDisplayState === false && totalPartySize > maxPokemonForDetailedView) {
+        // too many pokemon, no override to hide allies; change to defaultView + condensed
+        /* Don't forcefully hide ally party; breakpoint not reached (total number of pokemon in the sidebar).
+         * Total number of currently displayed pokemon too high; breakpoint to switch to condensed reached.
+         */
         switchSidebarTypesDisplay(false);
-        await toggleSidebarPartyDisplay('allies', showParty);
-        condensedView = 'condensed';
-    }
-    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
-     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
-    */
-    else if ( (overridePartyDisplayState === true) && (displayedPartySize > maxPokemonForDetailedView) ) {
-        await toggleSidebarPartyDisplay('allies', false);
+        await toggleSidebarPartyDisplay("allies", showParty);
+        condensedView = "condensed";
+    } else if (overridePartyDisplayState === true && displayedPartySize > maxPokemonForDetailedView) {
+        /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+         * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed reached despite of that.
+         */
+        await toggleSidebarPartyDisplay("allies", false);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
-    }
-    /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
-     * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
-    */
-    else if ( (overridePartyDisplayState === true) && (displayedPartySize < maxPokemonForDetailedView) ) {
-        await toggleSidebarPartyDisplay('allies', false);
+    } else if (overridePartyDisplayState === true && displayedPartySize < maxPokemonForDetailedView) {
+        /* Forcefully hide ally party because breakpoint reached (total number of pokemon in the sidebar).
+         * This reduces the number of currently displayed pokemon; breakpoint to switch to condensed view not reached because of that.
+         */
+        await toggleSidebarPartyDisplay("allies", false);
         switchSidebarTypesDisplay(extensionSettings.sidebarCompactTypes);
-        condensedView = '';
+        condensedView = "";
     }
 
-    return condensedView
+    return condensedView;
 }
 
 /**
@@ -721,9 +974,9 @@ async function adjustSidebarView(maxPokemonForDetailedView, breakpointOverridePa
  * @param {string} condensedView - The view state indicating whether to apply the condensed class. If the value is 'condensed', the class will be added; otherwise, it will be removed.
  */
 function toggleCondensedSidebarView(condensedView) {
-    const pokemonEntries = document.querySelectorAll('.pokemon-entry');
-    pokemonEntries.forEach(entry => {
-        entry.classList.toggle('condensed', condensedView.toLowerCase() === 'condensed');
+    const pokemonEntries = document.querySelectorAll(".pokemon-entry");
+    pokemonEntries.forEach((entry) => {
+        entry.classList.toggle("condensed", condensedView.toLowerCase() === "condensed");
     });
 }
 
@@ -733,14 +986,14 @@ function toggleCondensedSidebarView(condensedView) {
  * @async
  */
 async function sidebarSwitchBetweenIVsAndMoveset() {
-    const sidebarElement = document.getElementById('roguedex-sidebar');
+    const sidebarElement = document.getElementById("roguedex-sidebar");
 
-    const currentInfo = sidebarElement.dataset.shownPokemonTextInfo || 'ivs';
-    const newInfo = currentInfo === 'ivs' ? 'movesets' : 'ivs';
+    const currentInfo = sidebarElement.dataset.shownPokemonTextInfo || "ivs";
+    const newInfo = currentInfo === "ivs" ? "movesets" : "ivs";
 
     sidebarElement.dataset.shownPokemonTextInfo = newInfo;
-    sidebarElement.classList.toggle('hideIVs', newInfo !== 'ivs');
-    sidebarElement.classList.toggle('hideMoveset', newInfo !== 'movesets');
+    sidebarElement.classList.toggle("hideIVs", newInfo !== "ivs");
+    sidebarElement.classList.toggle("hideMoveset", newInfo !== "movesets");
 }
 
 /**
@@ -756,17 +1009,17 @@ async function updateBottomPanel(sessionData, pokemonData) {
         return;
     }
 
-    const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
+    const bottomPanelElement = document.getElementById("roguedex-bottom-panel");
 
     const showTab = (tabId) => {
-        window.lit.updateActiveTab(tabId);
+        window.roguedexLit.updateActiveTab(tabId);
     };
-    const template = window.lit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
-    render(template, bottomPanelElement);
-    const activeTabId = window.lit.getActiveTab();
+    const template = window.roguedexLit.createBottomPanelContentTemplate(sessionData, pokemonData, showTab);
+    roguedex.litRender(template, bottomPanelElement);
+    const activeTabId = window.roguedexLit.getActiveTab();
 
     if (!activeTabId) {
-        showTab('bottom-panel-global');
+        showTab("bottom-panel-global");
     }
 }
 
@@ -779,9 +1032,15 @@ async function updateBottomPanel(sessionData, pokemonData) {
  * @async
  */
 async function scaleAllElements(overlay = true, sidebar = true, bottomPanel = true) {
-    if (overlay) { scaleOverlayElements(); }
-    if (sidebar) { scaleSidebarElements(); }
-    if (bottomPanel) { scaleBottomPanelElements(); }   
+    if (overlay) {
+        scaleOverlayElements();
+    }
+    if (sidebar) {
+        scaleSidebarElements();
+    }
+    if (bottomPanel) {
+        scaleBottomPanelElements();
+    }
 }
 
 /**
@@ -790,15 +1049,15 @@ async function scaleAllElements(overlay = true, sidebar = true, bottomPanel = tr
  * @async
  */
 async function scaleOverlayElements() {
-    const scaleFactorMulti = await getScaleFactor('scaleFactor', 1);
+    const scaleFactorMulti = await getScaleFactor("scaleFactor", 1);
     const scaleFactor = await calculateScaleFactor();
-    
-    const enemiesDiv = document.getElementById('enemies');
-    const alliesDiv = document.getElementById('allies');
-    
+
+    const enemiesDiv = document.getElementById("enemies");
+    const alliesDiv = document.getElementById("allies");
+
     scaleFont(enemiesDiv, scaleFactor, scaleFactorMulti);
     scaleFont(alliesDiv, scaleFactor, scaleFactorMulti);
-    // console.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    // roguedexLogger.debug("POKEMON CARDS scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -807,12 +1066,12 @@ async function scaleOverlayElements() {
  * @async
  */
 async function scaleSidebarElements() {
-    const scaleFactorMulti = await getScaleFactor('sidebarScaleFactor', 1);
+    const scaleFactorMulti = await getScaleFactor("sidebarScaleFactor", 1);
     const scaleFactor = await calculateScaleFactor();
 
-    const sidebarDiv = document.getElementById('roguedex-sidebar');
-    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti);   
-    // console.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    const sidebarDiv = document.getElementById("roguedex-sidebar");
+    scaleFont(sidebarDiv, scaleFactor, scaleFactorMulti);
+    // roguedexLogger.debug("SIDEBAR scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -821,12 +1080,12 @@ async function scaleSidebarElements() {
  * @async
  */
 async function scaleBottomPanelElements() {
-    const scaleFactorMulti = await getScaleFactor('bottompanelScaleFactor', 1);
+    const scaleFactorMulti = await getScaleFactor("bottompanelScaleFactor", 1);
     const scaleFactor = await calculateScaleFactor();
 
-    const bottomPanelDiv = document.getElementById('roguedex-bottom-panel');
+    const bottomPanelDiv = document.getElementById("roguedex-bottom-panel");
     scaleFont(bottomPanelDiv, scaleFactor, scaleFactorMulti);
-    // console.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
+    // roguedexLogger.debug("BOTTOM PANEL scaled.", "scaleFactor: ", scaleFactorMulti, "scaleFactor: ", scaleFactorMulti);
 }
 
 /**
@@ -868,13 +1127,13 @@ function scaleFont(element, scaleFactor, scaleFactorMulti) {
  * @returns {Promise<number>} - The calculated scale factor.
  */
 async function calculateScaleFactor() {
-    const baseWidth = window.screen.width ;
+    const baseWidth = window.screen.width;
     const baseHeight = window.screen.height;
     const currentWidth = window.innerWidth;
     const currentHeight = window.innerHeight;
     const scaleFactorWidth = currentWidth / baseWidth;
     const scaleFactorHeight = currentHeight / baseHeight;
-    
+
     // Calculate the minimum scale factor
     let scaleFactor = Math.min(scaleFactorWidth, scaleFactorHeight);
 
@@ -897,49 +1156,54 @@ async function calculateScaleFactor() {
  * @async
  */
 async function toggleSidebar() {
-    const { showSidebar } = await browserApi.storage.sync.get('showSidebar');
-    const sidebarElement = document.querySelector('#roguedex-sidebar');
-    const bottomPanelElement = document.querySelector('#roguedex-bottom-panel');
-    const gameAppElement = document.querySelector('#app');
-    const runningStatusElement = document.querySelector('.running-status');
-    const enemyCardDiv = document.querySelector('#enemies');
-    const allyCardDiv = document.querySelector('#allies');
-    
+    const { showSidebar } = await browserApi.storage.sync.get("showSidebar");
+    const sidebarElement = document.querySelector("#roguedex-sidebar");
+    const bottomPanelElement = document.querySelector("#roguedex-bottom-panel");
+    const gameAppElement = document.querySelector("#app");
+    const runningStatusElement = document.querySelector(".running-status");
+    const enemyCardDiv = document.querySelector("#enemies");
+    const allyCardDiv = document.querySelector("#allies");
+
     const toggleClasses = (element, active, isSidebar = false) => {
         try {
             if (!element) {
                 // throw new Error("Element does not exist");
-                console.error("toggleSidebar(): Element does not exist:", element);
+                roguedexLogger.error("toggleSidebar(): Element does not exist:", element);
             }
             if (isSidebar) {
-                element.classList.toggle('active', active);
-                element.classList.toggle('hidden', !active);
-            }
-            else {
-                element.classList.toggle('active-because-sidebar-hidden', active);
-                element.classList.toggle('hidden-because-sidebar-active', !active);
+                element.classList.toggle("active", active);
+                element.classList.toggle("hidden", !active);
+            } else {
+                element.classList.toggle("active-because-sidebar-hidden", active);
+                element.classList.toggle("hidden-because-sidebar-active", !active);
             }
         } catch (error) {
-            console.error("Error toggling classes:", error.message, error);
+            roguedexLogger.error("Error toggling classes:", error.message, error);
         }
     };
 
     if (showSidebar) {
         toggleClasses(sidebarElement, true, true);
-        gameAppElement.classList.add('sidebar-active');
-        runningStatusElement.classList.add('sidebar-active');
-        bottomPanelElement.classList.add('sidebar-active');
+        gameAppElement.classList.add("sidebar-active");
+        runningStatusElement.classList.add("sidebar-active");
+        changeStatusbarPosition("Bottom");
+        bottomPanelElement.classList.add("sidebar-active");
         toggleClasses(allyCardDiv, false);
         toggleClasses(enemyCardDiv, false);
-        console.debug("SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes.");
+        roguedexLogger.debug(
+            "SIDEBAR toggled ON, #enemies and #allies DOM elements (pokemon cards) have been hidden via css classes."
+        );
     } else {
         toggleClasses(sidebarElement, false, true);
-        gameAppElement.classList.remove('sidebar-active');
-        runningStatusElement.classList.remove('sidebar-active');
-        bottomPanelElement.classList.remove('sidebar-active');
+        gameAppElement.classList.remove("sidebar-active");
+        runningStatusElement.classList.remove("sidebar-active");
+        changeStatusbarPosition();
+        bottomPanelElement.classList.remove("sidebar-active");
         toggleClasses(allyCardDiv, true);
         toggleClasses(enemyCardDiv, true);
-        console.debug("SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes.");
+        roguedexLogger.debug(
+            "SIDEBAR toggled OFF, #enemies and #allies DOM elements (pokemon cards) have been shown again via css classes."
+        );
     }
 }
 
@@ -949,16 +1213,16 @@ async function toggleSidebar() {
  * @async
  */
 async function changeSidebarPosition() {
-    const { sidebarPosition: newPosition } = await browserApi.storage.sync.get('sidebarPosition');
+    const { sidebarPosition: newPosition } = await browserApi.storage.sync.get("sidebarPosition");
     const sidebarParentElement = document.body;
-    const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
-    const pokerogueTncLinksElement = document.getElementById('tnc-links');  // not part of this extension, added by pokerogue
+    const bottomPanelElement = document.getElementById("roguedex-bottom-panel");
+    const pokerogueTncLinksElement = document.getElementById("tnc-links"); // not part of this extension, added by pokerogue
 
     // Remove old positions
-    ['Left', 'Right'].forEach(oldPosition => {
+    ["Left", "Right"].forEach((oldPosition) => {
         sidebarParentElement?.classList.remove(`sidebar-${oldPosition}`);
         bottomPanelElement?.classList.remove(`sidebar-${oldPosition}`);
-        pokerogueTncLinksElement?.classList.remove(`sidebar-${oldPosition}`);        
+        pokerogueTncLinksElement?.classList.remove(`sidebar-${oldPosition}`);
     });
 
     // Add new position
@@ -976,12 +1240,12 @@ async function changeSidebarPosition() {
  */
 async function toggleSidebarPartyDisplay(partyID, state) {
     const sidebarPartyElement = document.getElementById(`sidebar-${partyID}-box`);
-    sidebarPartyElement?.classList.toggle('visible', state);
-    sidebarPartyElement?.classList.toggle('hidden', !state);
+    sidebarPartyElement?.classList.toggle("visible", state);
+    sidebarPartyElement?.classList.toggle("hidden", !state);
 
-    const moveIvSwitchElement = document.getElementById('sidebar-switch-iv-moves');
-    moveIvSwitchElement?.classList.toggle('visible', state);
-    moveIvSwitchElement?.classList.toggle('hidden', !state);
+    const moveIvSwitchElement = document.getElementById("sidebar-switch-iv-moves");
+    moveIvSwitchElement?.classList.toggle("visible", state);
+    moveIvSwitchElement?.classList.toggle("hidden", !state);
 }
 
 /**
@@ -993,8 +1257,8 @@ async function toggleSidebarPartyDisplay(partyID, state) {
  */
 async function togglePokemonCardDisplay(partyID, state) {
     const pokemonCardElement = document.getElementById(`${partyID}`);
-    pokemonCardElement?.classList.toggle('visible', state); // no css apllied, added for clarity
-    pokemonCardElement?.classList.toggle('disabled', !state);
+    pokemonCardElement?.classList.toggle("visible", state); // no css apllied, added for clarity
+    pokemonCardElement?.classList.toggle("disabled", !state);
 }
 
 /**
@@ -1003,14 +1267,16 @@ async function togglePokemonCardDisplay(partyID, state) {
  * @param {boolean} state - The desired display state.
  */
 function toggleMiniCardTypes(state) {
-    const cardTypeWrapperElements = document.querySelectorAll('.pokemon-card .pokemon-type-effectiveness-wrapper');
-    cardTypeWrapperElements.forEach(element => {
+    const cardTypeWrapperElements = document.querySelectorAll(
+        ".pokemon-card .pokemon-type-effectiveness-wrapper"
+    );
+    cardTypeWrapperElements.forEach((element) => {
         if (state) {
-            element.classList.add('visible');   // no css apllied, added for clarity
-            element.classList.remove('disabled');
+            element.classList.add("visible"); // no css apllied, added for clarity
+            element.classList.remove("disabled");
         } else {
-            element.classList.add('disabled');  // no css apllied, added for clarity
-            element.classList.remove('visible');
+            element.classList.add("disabled"); // no css apllied, added for clarity
+            element.classList.remove("visible");
         }
     });
 }
@@ -1022,22 +1288,31 @@ function toggleMiniCardTypes(state) {
  * @param {boolean} state - The desired display state.
  */
 async function switchSidebarTypesDisplay(state) {
-    const sidebarElement = document.getElementById('roguedex-sidebar');
-    sidebarElement?.classList.toggle('compactTypeDisplay', state);
-    sidebarElement?.classList.toggle('defaultTypeDisplay', !state);
+    const sidebarElement = document.getElementById("roguedex-sidebar");
+    sidebarElement?.classList.toggle("compactTypeDisplay", state);
+    sidebarElement?.classList.toggle("defaultTypeDisplay", !state);
 }
 
 /**
  * Changes the position of the extension statusbar (top, bottom).
  * @function changeStatusbarPosition
+ * @param {string} forcePosition - Force top or bottom position, no matter the user settings.
  * @async
  */
 async function changeStatusbarPosition() {
-    const { statusbarPosition: newPosition } = await browserApi.storage.sync.get('statusbarPosition');
-    const statusbarElement = document.getElementById('extension-status');
+    let { statusbarPosition: newPosition } = await browserApi.storage.sync.get("statusbarPosition");
+
+    const sidebarElement = document.getElementById("roguedex-sidebar");
+    try {
+        const sidebarVisible = window.getComputedStyle(sidebarElement).display !== "none";
+        if (sidebarVisible) {
+            newPosition = "Bottom";
+        }
+    } catch {}
+    const statusbarElement = document.getElementById("extension-status");
 
     // Remove old position
-    ['Top', 'Bottom'].forEach(oldPosition => {
+    ["Top", "Bottom"].forEach((oldPosition) => {
         statusbarElement?.classList.remove(`statusbar-${oldPosition}`);
     });
     // Add new position
@@ -1051,13 +1326,13 @@ async function changeStatusbarPosition() {
  * @param {boolean} state - The desired display state; false = shown; true = hidden.
  */
 async function toggleSettingsHint(state) {
-    const settingsHintElement = document.getElementById('rd-settings-hint');
+    const settingsHintElement = document.getElementById("rd-settings-hint");
     if (!settingsHintElement && state === false) {
         await createSettingsHint();
     }
     if (settingsHintElement) {
-        settingsHintElement.classList.toggle('visible', !state); // no css apllied, added for clarity
-        settingsHintElement.classList.toggle('disabled', state);
+        settingsHintElement.classList.toggle("visible", !state); // no css apllied, added for clarity
+        settingsHintElement.classList.toggle("disabled", state);
     }
 }
 
@@ -1069,7 +1344,7 @@ async function toggleSettingsHint(state) {
  * @param {boolean} scaleUI - Whether the UI scaling function should be triggered, true by default.
  */
 async function initCreation(sessionData, scaleUI = true) {
-    const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+    const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
 
     await initPokemonCardWrappers(extensionSettings.showSidebar);
     if (extensionSettings.showEnemies) {
@@ -1089,7 +1364,7 @@ async function initCreation(sessionData, scaleUI = true) {
 
 /**
  * Creates arrays of pokemon objects for either the enemy or ally party. Data is taken from sessionData and processed
- * by the class window.Utils.PokeMapper.
+ * by the class window.RoguedexUtils.PokeMapper.
  * @function dataMapping
  * @async
  * @param {string} pokemonLocation - The location of the Pokémon data ('enemyParty' or 'party').
@@ -1100,34 +1375,42 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
     const modifiers = pokemonLocation === "enemyParty" ? sessionData.enemyModifiers : sessionData.modifiers;
 
     try {
-        const pokemonData = await window.Utils.PokeMapper.getPokemonArray(sessionData[pokemonLocation], sessionData.arena, modifiers, pokemonLocation);
+        const pokemonData = await window.RoguedexUtils.PokeMapper.getPokemonArray(
+            sessionData[pokemonLocation],
+            sessionData.arena,
+            modifiers,
+            pokemonLocation
+        );
         const partyID = pokemonLocation === "enemyParty" ? "enemies" : "allies";
 
-        uiDataGlobals.activePokemonParties[partyID] = pokemonData;
-        uiDataGlobals.pages[divId] = getCyclicPageIndex(uiDataGlobals.pages[divId], pokemonData.pokemon.length);
+        roguedex.uiData.activePokemonParties[partyID] = pokemonData;
+        roguedex.uiData.pages[divId] = getCyclicPageIndex(
+            roguedex.uiData.pages[divId],
+            pokemonData.pokemon.length
+        );
 
-        await new Promise(resolve => {
-            createCardsDiv(divId, pokemonData.pokemon, uiDataGlobals.pages[divId]);
+        await new Promise((resolve) => {
+            createCardsDiv(divId, pokemonData.pokemon, roguedex.uiData.pages[divId]);
             resolve();
         });
 
-        if (!initStates.panelsInitialized) {
-            initStates.panelsInitialized = true;
+        if (!roguedex.initStates.panelsInitialized) {
+            roguedex.initStates.panelsInitialized = true;
             createPanels();
         }
 
         await renderSidebarPartyTemplate(sessionData, partyID);
 
-        if (initStates.panelsInitialized) {
+        if (roguedex.initStates.panelsInitialized) {
             await updateBottomPanel(sessionData, pokemonData);
             scaleBottomPanelElements();
         }
 
         if (scaleUI) {
-            scaleAllElements(true, true, initStates.panelsInitialized);
+            scaleAllElements(true, true, roguedex.initStates.panelsInitialized);
         }
     } catch (error) {
-        console.error("Error occurred during pokemon data mapping:", error);
+        roguedexLogger.error("Error occurred during pokemon data mapping:", error);
     }
 }
 
@@ -1140,12 +1423,12 @@ async function dataMapping(pokemonLocation, divId, sessionData, scaleUI) {
  * @returns {number} - The cyclic page index.
  */
 function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
-    /* 
+    /*
      *  Uses the modulo operator %. It gives you the remainder of a division operation,
      *  which can be used to wrap the number back to 0 when it exceeds the maximum value.
      *  Expects an array.length as maxLength, accounts for this length not being 0-based.
-    */
-    return (currentIndex + maxLength + increment) % maxLength
+     */
+    return (currentIndex + maxLength + increment) % maxLength;
 }
 
 /**
@@ -1154,74 +1437,88 @@ function getCyclicPageIndex(currentIndex, maxLength, increment = 0) {
  */
 function extensionSettingsListener() {
     browserApi.storage.onChanged.addListener(async function (changes) {
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
 
-        // eslint-disable-next-line no-unused-vars
         for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
-            if ( oldValue === newValue ) {
-                continue
+            if (oldValue === newValue) {
+                continue;
             }
             switch (key) {
-                case 'showMinified':
+                case "showMinified":
                     await initCreation(sessionData);
                     break;
-                case 'showMiniCardTypes':
+                case "showMiniCardTypes":
                     toggleMiniCardTypes(newValue);
                     break;
-                case 'overlayOpacity':
-                    changePokemonCardOpacity(['enemies', 'allies'], newValue);
+                case "overlayOpacity":
+                    changePokemonCardOpacity(["enemies", "allies"], newValue);
                     break;
-                case 'scaleFactor':
+                case "scaleFactor":
                     await scaleOverlayElements();
                     break;
-                case 'showEnemies':
+                case "showEnemies":
                     await initCreation(sessionData);
-                    await toggleSidebarPartyDisplay('enemies', newValue);
-                    await togglePokemonCardDisplay('enemies', newValue);
+                    await toggleSidebarPartyDisplay("enemies", newValue);
+                    await togglePokemonCardDisplay("enemies", newValue);
                     break;
-                case 'showParty':
+                case "showParty":
                     await initCreation(sessionData);
-                    await toggleSidebarPartyDisplay('allies', newValue);
-                    await togglePokemonCardDisplay('allies', newValue);
+                    await toggleSidebarPartyDisplay("allies", newValue);
+                    await togglePokemonCardDisplay("allies", newValue);
                     break;
-                case 'showSidebar':
-                    await toggleSidebar();                    
-                    await initCreation(sessionData, false);    // lazy way to make sure that all canvases are drawn
+                case "showSidebar":
+                    await toggleSidebar();
+                    await initCreation(sessionData, false); // lazy way to make sure that all canvases are drawn
                     break;
-                case 'sidebarPosition':
+                case "sidebarPosition":
                     await changeSidebarPosition();
                     break;
-                case 'sidebarScaleFactor':
+                case "sidebarScaleFactor":
                     await scaleSidebarElements();
                     break;
-                case 'sidebarCompactTypes':
+                case "sidebarCompactTypes":
                     await switchSidebarTypesDisplay(newValue);
                     break;
-                case 'bottompanelScaleFactor':
+                case "bottompanelScaleFactor":
                     await scaleBottomPanelElements();
                     break;
-                case 'sidebarCondenseBreakpoint':
-                    toggleCondensedSidebarView(adjustSidebarView(newValue, null));
+                case "sidebarCondenseBreakpoint":
+                    toggleCondensedSidebarView(await adjustSidebarView(newValue, null));
                     break;
-                case 'sidebarHideAlliesBreakpoint':
-                    toggleCondensedSidebarView(adjustSidebarView(null, newValue));
+                case "sidebarHideAlliesBreakpoint":
+                    toggleCondensedSidebarView(await adjustSidebarView(null, newValue));
                     break;
-                case 'disableSettingsHint':
+                case "disableSettingsHint":
                     toggleSettingsHint(newValue);
                     break;
-                case 'statusbarPosition':
+                case "statusbarPosition":
                     changeStatusbarPosition();
                     break;
-                case 'menuType':
+                case "enableDevLogs": 
+                    setDevEnv();
+                    break
+                case "menuType":
                     // do nothing?
                     break;
                 default:
-                    console.error(`Unhandled key in extensionSettingsListener(): ${key}`);
+                    roguedexLogger.error(`Unhandled key in extensionSettingsListener(): ${key}`);
                     break;
             }
         }
     });
-    console.debug("Extension settings listener activated.");
+    roguedexLogger.debug("Extension settings listener activated.");
+}
+
+/**
+ * Sets the global developmentENV variable according to the user settings.
+ * @function setDevEnv
+ * @async
+ */
+async function setDevEnv() {
+    const { enableDevLogs } = await browserApi.storage.sync.get("enableDevLogs");
+    if (enableDevLogs !== undefined && enableDevLogs !== null) {
+        window.roguedex.developmentENV = enableDevLogs;
+    }
 }
 
 /**
@@ -1247,34 +1544,41 @@ function listenForDataUiModeChange() {
                     break;
                 case "MODIFIER_SELECT":
                     // do nothing?
-                    break
+                    break;
+                case "LOADING":
+                    roguedexLogger.info("Unhandled data-ui-mode: LOADING");
+                    break;
                 default:
-                    console.warn("Unhandled data-ui-mode:", newValue);
+                    roguedexLogger.warn("Unhandled data-ui-mode:", newValue);
                     break;
             }
         } catch (err) {
-            console.error("An error occurred while handling data-ui-mode change:", err);
+            roguedexLogger.error("An error occurred while handling data-ui-mode change:", err);
         }
     }
 
     function handleSessionInitialization() {
-        window.Utils.LocalStorage.setSessionData();
-        const sessionData = window.Utils.LocalStorage.getSessionData();
+        window.RoguedexUtils.LocalStorage.setSessionData();
+        const sessionData = window.RoguedexUtils.LocalStorage.getSessionData();
         if (sessionData && Object.keys(sessionData).length > 0) {
-            initStates.sessionIntialized = true;
-            updateExtensionStatus({sessionState: initStates.sessionIntialized});
+            roguedex.initStates.sessionIntialized = true;
+            updateExtensionStatus({
+                sessionState: roguedex.initStates.sessionIntialized,
+            });
             initCreation(sessionData);
         } else {
-            console.warn("SessionData empty. UI won't work for the moment.");
-            initStates.sessionIntialized = false;
-            updateExtensionStatus({sessionState: initStates.sessionIntialized});
+            roguedexLogger.warn("SessionData empty. UI won't work for the moment.");
+            roguedex.initStates.sessionIntialized = false;
+            updateExtensionStatus({
+                sessionState: roguedex.initStates.sessionIntialized,
+            });
         }
     }
 
     function handleSaveSlotMode() {
-        window.Utils.LocalStorage.clearAllSessionData();
-        initStates.sessionIntialized = false;
-        updateExtensionStatus({sessionState: initStates.sessionIntialized});
+        window.RoguedexUtils.LocalStorage.clearAllSessionData();
+        roguedex.initStates.sessionIntialized = false;
+        updateExtensionStatus({ sessionState: roguedex.initStates.sessionIntialized });
     }
 
     function handleModeWithPokemonCards() {
@@ -1282,21 +1586,21 @@ function listenForDataUiModeChange() {
     }
 
     function observeTouchControls() {
-        const touchControlsElement = document.getElementById('touchControls');
+        const touchControlsElement = document.getElementById("touchControls");
         if (touchControlsElement) {
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-ui-mode') {
-                        const newValue = touchControlsElement.getAttribute('data-ui-mode');
-                        console.info('[data-ui-mode] new value:', newValue);
+                    if (mutation.type === "attributes" && mutation.attributeName === "data-ui-mode") {
+                        const newValue = touchControlsElement.getAttribute("data-ui-mode");
+                        roguedexLogger.debug("[data-ui-mode] new value:", newValue);
                         handleDataUIModeChange(newValue);
                     }
                 });
             });
 
-            observer.observe(touchControlsElement, {attributes: true});
+            observer.observe(touchControlsElement, { attributes: true });
         } else {
-            console.error('Element with ID "touchControls" not found.');
+            roguedexLogger.error('Element with ID "touchControls" not found.');
             setTimeout(observeTouchControls, 1000); // Retry after a short delay
         }
     }
@@ -1337,15 +1641,15 @@ function onElementAvailable(selector, callback) {
  * @function observeGameCanvasResize
  */
 async function observeGameCanvasResize() {
-    if (initStates.resizeObserverInitialized) {
+    if (roguedex.initStates.resizeObserverInitialized) {
         return;
-    }    
-    initStates.resizeObserverInitialized = true;
+    }
+    roguedex.initStates.resizeObserverInitialized = true;
 
     const sidebarElement = document.getElementById("roguedex-sidebar");
-    const bottomPanelElement = document.getElementById('roguedex-bottom-panel');
-    const overlayCardEnemiesElement = document.getElementById('enemies');
-    const overlayCardAlliesElement = document.getElementById('allies');
+    const bottomPanelElement = document.getElementById("roguedex-bottom-panel");
+    const overlayCardEnemiesElement = document.getElementById("enemies");
+    const overlayCardAlliesElement = document.getElementById("allies");
 
     // Function to check if the sidebar is visible
     function isSidebarVisible() {
@@ -1358,7 +1662,7 @@ async function observeGameCanvasResize() {
             const { right, width, height } = entry.contentRect;
             resizeUIBottomPanel(right, width, height);
         }
-        bottomPanelElement.style.display = ''; // Set it back to default display value after resizing
+        bottomPanelElement.style.display = ""; // Set it back to default display value after resizing
     }
 
     // Function to make sure the pokemon overlay cards are inside the viewport on resizing
@@ -1375,22 +1679,21 @@ async function observeGameCanvasResize() {
                 overlayCardAlliesElement.style.display = "";
                 overlayCardEnemiesElement.style.visibility = "";
                 overlayCardAlliesElement.style.visibility = "";
-            }
-            else {
+            } else {
                 updateCardElementPosition(overlayCardEnemiesElement);
                 updateCardElementPosition(overlayCardAlliesElement);
             }
-        } catch (e) {}
+        } catch {}
     }
 
     // Initially hide the bottom panel if the sidebar is not visible
     if (!isSidebarVisible()) {
-        bottomPanelElement.style.display = 'none';
+        bottomPanelElement.style.display = "none";
     }
 
     // ResizeObserver to observe game app canvas element resize
     const resizeObserver = new ResizeObserver(async (entries) => {
-        const extensionSettings = await window.Utils.LocalStorage.getExtensionSettings();
+        const extensionSettings = await window.RoguedexUtils.LocalStorage.getExtensionSettings();
         scaleAllElements();
 
         if (extensionSettings.showSidebar) {
@@ -1405,14 +1708,14 @@ async function observeGameCanvasResize() {
     });
 
     // Observe the game canvas element
-    resizeObserver.observe(document.getElementById('app').getElementsByTagName('canvas')[0]);
+    resizeObserver.observe(document.getElementById("app").getElementsByTagName("canvas")[0]);
 
     // Wait for the sidebar to become visible before showing and resizing the bottom panel
     function useMutationObserver(entries) {
         // MutationObserver to detect changes in the sidebar's display property
         const mutationObserver = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
-                if (mutation.attributeName === 'style' || mutation.attributeName === 'class') {
+                if (mutation.attributeName === "style" || mutation.attributeName === "class") {
                     if (isSidebarVisible()) {
                         // If sidebar becomes visible, disconnect the MutationObserver
                         mutationObserver.disconnect();
@@ -1424,7 +1727,10 @@ async function observeGameCanvasResize() {
         });
 
         // Start observing the sidebar for attribute changes
-        mutationObserver.observe(sidebarElement, { attributes: true, attributeFilter: ['style', 'class'] });
+        mutationObserver.observe(sidebarElement, {
+            attributes: true,
+            attributeFilter: ["style", "class"],
+        });
     }
 }
 
@@ -1436,8 +1742,8 @@ async function observeGameCanvasResize() {
  * @param {number} height - The height of the canvas.
  */
 function resizeUIBottomPanel(right, width, height) {
-    const panel = document.getElementById('roguedex-bottom-panel');
-    const sidePanel = document.getElementById('roguedex-sidebar');
+    const panel = document.getElementById("roguedex-bottom-panel");
+    const sidePanel = document.getElementById("roguedex-sidebar");
 
     if (panel) {
         const sidebarPos = sidePanel.getBoundingClientRect();
@@ -1445,10 +1751,10 @@ function resizeUIBottomPanel(right, width, height) {
         const pageHeight = window.innerHeight;
 
         // Bottom panel should take up the height that is leftover from the game app's canvas
-        panel.style['max-height'] = `${pageHeight - Math.round(height)}px`;
+        panel.style["max-height"] = `${pageHeight - Math.round(height)}px`;
 
         // Bottom panel should fill out the entire leftover horizontal space,
         // and should therefore be "anchored" to the sidebar.
-        panel.style['max-width'] = `${pageWidth - sidebarPos.width}px`;
+        panel.style["max-width"] = `${pageWidth - sidebarPos.width}px`;
     }
 }

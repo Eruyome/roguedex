@@ -5,7 +5,7 @@
  * @class OptionsManager
  */
 
-import settingsTemplate from './settingsTemplate.js';
+import settingsTemplate from "./settingsTemplate.js";
 
 class OptionsManager {
     constructor() {
@@ -19,54 +19,72 @@ class OptionsManager {
      */
     saveOption(setting, value) {
         const settings = {};
-        if (setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint' || setting === 'overlayOpacity') {
+        if (
+            setting === "menuType" ||
+            setting === "scaleFactor" ||
+            setting === "sidebarScaleFactor" ||
+            setting === "bottompanelScaleFactor" ||
+            setting === "sidebarCondenseBreakpoint" ||
+            setting === "sidebarHideAlliesBreakpoint" ||
+            setting === "overlayOpacity"
+        ) {
             settings[setting] = parseFloat(value);
-        } else if (value === 'true' || value === 'false') {
-            settings[setting] = value === 'true';
+        } else if (value === "true" || value === "false") {
+            settings[setting] = value === "true";
         } else {
             settings[setting] = value;
         }
         this.browserApi.storage.sync.set(settings, () => {
             if (this.browserApi.runtime.lastError) {
-                console.error('Error saving option:', this.browserApi.runtime.lastError);
+                console.error("Error saving option:", this.browserApi.runtime.lastError);
             } else {
-                console.log('Option saved successfully');
+                console.log("Option saved successfully");
             }
         });
     }
 
-     /**
+    /**
      * Restores options from storage and updates UI accordingly.
      * @param {Function} callback - The function to call after restoring options.
      */
     restoreOptions(callback) {
-        const keys = Object.values(settingsTemplate).map(setting => setting.localStorage);
+        const keys = Object.values(settingsTemplate).map((setting) => setting.localStorage);
         this.browserApi.storage.sync.get(keys, (data) => {
             if (this.browserApi.runtime.lastError) {
-                console.error('Error retrieving options:', this.browserApi.runtime.lastError);
+                console.error("Error retrieving options:", this.browserApi.runtime.lastError);
             } else {
-                document.querySelectorAll('.setting-options .option').forEach(option => {
+                document.querySelectorAll(".setting-options .option").forEach((option) => {
                     // Get the setting and value from the data attributes of the current option
-                    const setting = option.getAttribute('data-setting');
-                    const value = option.getAttribute('data-value');
-                    
+                    const setting = option.getAttribute("data-setting");
+                    const value = option.getAttribute("data-value");
+
                     let parsedValue;
                     // Determine how to parse the value based on the setting type
-                    if ( setting === 'menuType' || setting === 'scaleFactor' || setting === 'sidebarScaleFactor' || setting === 'bottompanelScaleFactor' || setting === 'sidebarCondenseBreakpoint' || setting === 'sidebarHideAlliesBreakpoint' || setting === 'overlayOpacity') {
+                    if (
+                        setting === "menuType" ||
+                        setting === "scaleFactor" ||
+                        setting === "sidebarScaleFactor" ||
+                        setting === "bottompanelScaleFactor" ||
+                        setting === "sidebarCondenseBreakpoint" ||
+                        setting === "sidebarHideAlliesBreakpoint" ||
+                        setting === "overlayOpacity"
+                    ) {
                         // Parse numeric values as floats
                         parsedValue = parseFloat(value);
-                    }
-                    else {
+                    } else {
                         // Convert 'true'/'false' strings to boolean
-                        parsedValue = value === 'true';
+                        parsedValue = value === "true";
                     }
-                
+
                     // Check if the current option should be selected
-                    const isSelected = data[setting] === parsedValue || ( (setting === 'sidebarPosition' || setting === 'statusbarPosition' ) && data[setting] === value);
-                    
+                    const isSelected =
+                        data[setting] === parsedValue ||
+                        ((setting === "sidebarPosition" || setting === "statusbarPosition") &&
+                            data[setting] === value);
+
                     // Add the 'selected' class if the option matches the setting value
                     if (isSelected) {
-                        option.classList.add('selected');
+                        option.classList.add("selected");
                     }
                 });
 
@@ -78,26 +96,9 @@ class OptionsManager {
     }
 
     /**
-     * Updates scale UI elements.
-     * @param {number} value - The scale value.
-     */
-    updateScale(value) {
-        const scaleFactor = parseFloat(value);
-        document.getElementById('scaleValue').textContent = scaleFactor;
-        // Update any other necessary elements based on scale factor      
-    }
-
-    /**
-     * Scales UI elements.
-     */
-    scaleElements() {
-        const manualScaleFactor = document.getElementById('scaleSlider').value;
-        document.getElementById('scaleValue').textContent = manualScaleFactor;
-    }
-
-    /**
      * Saves options to storage.
      */
+    // prettier-ignore
     saveOptions() {
         const disableSettingsHint = document.querySelector('.option[data-setting="disableSettingsHint"].selected').getAttribute('data-value') === 'true';
         const showMin = document.querySelector('.option[data-setting="showMinified"].selected').getAttribute('data-value') === 'true';
@@ -115,6 +116,7 @@ class OptionsManager {
         const bottompanelScaleFactor = parseFloat(document.querySelector('.option[data-setting="bottompanelScaleFactor"].selected').getAttribute('data-value'));
         const sidebarCondenseBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarCondenseBreakpoint"].selected').getAttribute('data-value'), 10);
         const sidebarHideAlliesBreakpoint = parseInt(document.querySelector('.option[data-setting="sidebarHideAlliesBreakpoint"].selected').getAttribute('data-value'), 10);
+        const enableDevLogs = document.querySelector('.option[data-setting="enableDevLogs"].selected').getAttribute('data-value') === 'true';
 
         this.browserApi.storage.sync.set({
             disableSettingsHint,
@@ -133,6 +135,7 @@ class OptionsManager {
             bottompanelScaleFactor,
             sidebarCondenseBreakpoint,
             sidebarHideAlliesBreakpoint,
+            enableDevLogs,
         }, () => {
             if (this.browserApi.runtime.lastError) {
                 console.error('Error saving options:', this.browserApi.runtime.lastError);

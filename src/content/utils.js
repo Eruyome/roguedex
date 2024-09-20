@@ -11,6 +11,11 @@
  * @type {string[]}
  */
 const contentInjectables = [
+    "/libs/lit-html.bundle.js",
+    "/content/lit-templates/general.js",
+    "/content/lit-templates/bottompanel.js",
+    "/content/lit-templates/sidebar.js",
+    "/content/lit-templates/cards.js",
     "/content/maps/natureMap.js",
     "/content/maps/weatherMap.js",
     "/content/maps/moveList.js",
@@ -20,7 +25,7 @@ const contentInjectables = [
     "/content/util_classes/pokemonMapper.util.js",
     "/content/util_classes/localStorage.util.js",
     "/content/util_classes/pokemonIconDrawer.util.js",
-    "/content/util_classes/uiController.util.js"
+    "/content/util_classes/uiController.util.js",
 ];
 
 class UtilsClass {
@@ -58,7 +63,7 @@ class UtilsClass {
      */
     dispatchEvent(event) {
         if (this.eventListeners[event]) {
-            this.eventListeners[event].forEach(listener => listener());
+            this.eventListeners[event].forEach((listener) => listener());
         }
     }
 
@@ -77,7 +82,7 @@ class UtilsClass {
     set isReady(value) {
         if (this._isReady !== value) {
             this._isReady = value;
-            this.dispatchEvent('isReadyChange');
+            this.dispatchEvent("isReadyChange");
         }
     }
 
@@ -85,37 +90,37 @@ class UtilsClass {
      * Initializes the UtilsClass by injecting scripts.
      */
     init() {
-        console.debug("UtilsClass init called.");
+        console.debug("[RogueDex] UtilsClass init() called.");
         this.injectScripts();
     }
 
-     /**
+    /**
      * Injects utility scripts into the content page.
      * @private
      */
     injectScripts() {
         if (this.index >= contentInjectables.length) {
-            console.log("All scripts injected.");
+            console.info("[RogueDex] All scripts injected.");
             this.checkIfReady();
             return;
         }
 
         const targetScript = contentInjectables[this.index];
-        console.log(`Injecting script: ${targetScript}`);
+        console.debug(`[RogueDex] Injecting script: ${targetScript}`);
         const scriptElem = document.createElement("script");
         scriptElem.src = this.browserApi.runtime.getURL(targetScript);
         scriptElem.type = "module";
         document.head.appendChild(scriptElem);
 
         scriptElem.addEventListener("load", () => {
-            console.log(`${targetScript} loaded.`);
+            console.debug(`[RogueDex] ${targetScript} loaded.`);
             this.handleScriptLoaded(targetScript);
             this.index += 1;
             this.injectScripts();
         });
 
         scriptElem.addEventListener("error", (e) => {
-            console.error(`Failed to load script: ${targetScript}`, e);
+            console.error(`[RogueDex] Failed to load script: ${targetScript}`, e);
         });
     }
 
@@ -131,7 +136,7 @@ class UtilsClass {
         } else if (targetScript.includes("/content/util_classes/localStorage.util.js")) {
             this.classesReady["localStorage.util.js"] = true;
             this.LocalStorage = new LocalStorageClass();
-            this.dispatchEvent('localStorageClassReady');
+            this.dispatchEvent("localStorageClassReady");
         } else if (targetScript.includes("/content/util_classes/pokemonIconDrawer.util.js")) {
             this.classesReady["pokemonIconDrawer.util.js"] = true;
             this.PokemonIconDrawer = new PokemonIconDrawer();
@@ -147,7 +152,7 @@ class UtilsClass {
      * @private
      */
     checkIfReady() {
-        const allReady = Object.values(this.classesReady).every(value => value);
+        const allReady = Object.values(this.classesReady).every((value) => value);
         if (allReady) {
             this.isReady = true;
         }
@@ -159,18 +164,25 @@ class UtilsClass {
      * @readonly
      */
     get browserApi() {
-        if (typeof browser !== "undefined" && typeof browser.runtime !== "undefined" && typeof browser.runtime.getURL === "function") {
+        if (
+            typeof browser !== "undefined" &&
+            typeof browser.runtime !== "undefined" &&
+            typeof browser.runtime.getURL === "function"
+        ) {
             return browser; // Firefox or compatible
-        } else if (typeof chrome !== "undefined" && typeof chrome.runtime !== "undefined" && typeof chrome.runtime.getURL === "function") {
+        } else if (
+            typeof chrome !== "undefined" &&
+            typeof chrome.runtime !== "undefined" &&
+            typeof chrome.runtime.getURL === "function"
+        ) {
             return chrome; // Chrome or compatible
         } else {
-            console.error("Browser API not found or unsupported browser");
+            console.error("[RogueDex] Browser API not found or unsupported browser!");
             return null;
         }
     }
 }
 
 // Attach an instance of UtilsClass to the window object
-window.Utils = new UtilsClass();
-console.debug("UtilsClass instance created and assigned to window.Utils:", window.Utils);
-    
+window.RoguedexUtils = new UtilsClass();
+console.debug("[RogueDex] UtilsClass instance created and assigned to window.RoguedexUtils:", window.RoguedexUtils);

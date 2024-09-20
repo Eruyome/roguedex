@@ -1,6 +1,6 @@
 /**
- * @fileoverview Utility class for handling local storage operations, including session data management, image caching, 
- *      and retrieving extension settings. This file provides methods for saving, retrieving, and clearing session data 
+ * @fileoverview Utility class for handling local storage operations, including session data management, image caching,
+ *      and retrieving extension settings. This file provides methods for saving, retrieving, and clearing session data
  *      and cached images, as well as methods to get and set extension settings from synchronized storage.
  *      Retrieves player data (save data).
  * @file 'src/content/util_classes/localStorage.utils.js'
@@ -22,7 +22,7 @@ class LocalStorageClass {
     clearAllSessionData() {
         setTimeout(() => {
             for (const key in window.localStorage) {
-                if (key.includes('sessionData')) window.localStorage.removeItem(key);
+                if (key.includes("sessionData")) window.localStorage.removeItem(key);
             }
         }, 1000);
     }
@@ -36,7 +36,7 @@ class LocalStorageClass {
         try {
             window.localStorage.setItem(`img_cache_${key}`, imageData);
         } catch (e) {
-            console.error("Failed to save image to cache", e);
+            roguedexLogger.error("Failed to save image to cache", e);
         }
     }
 
@@ -54,8 +54,8 @@ class LocalStorageClass {
      */
     clearImageCache() {
         const keys = Object.keys(window.localStorage);
-        keys.forEach(key => {
-            if (key.startsWith('img_cache_')) {
+        keys.forEach((key) => {
+            if (key.startsWith("img_cache_")) {
                 window.localStorage.removeItem(key);
             }
         });
@@ -68,11 +68,11 @@ class LocalStorageClass {
      * @param {string} yPos - The y position (css "top") of the card.
      */
     savePokemonCardPosToStorage(cardId, xPos, yPos) {
-        const position = { x : xPos, y : yPos };
+        const position = { x: xPos, y: yPos };
         try {
             window.localStorage.setItem(`overlay_card_position_${cardId}`, JSON.stringify(position));
         } catch (e) {
-            console.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
+            roguedexLogger.error(`Failed to save pokemon card position (${cardId}) to local storage.`, e);
         }
     }
 
@@ -86,9 +86,9 @@ class LocalStorageClass {
         try {
             position = JSON.parse(window.localStorage.getItem(`overlay_card_position_${cardId}`));
         } catch (e) {
-            console.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
+            roguedexLogger.error(`Failed to retrieve pokemon card position (${cardId}) from local storage.`, e);
         }
-        return position || null
+        return position || null;
     }
 
     /**
@@ -97,14 +97,25 @@ class LocalStorageClass {
     setSessionData() {
         let currentSessionData = null;
         for (const key in window.localStorage) {
-            if ((this.slotId > 0 && key.includes(`sessionData${this.slotId}`)) || key.includes('sessionData')) {
+            if (
+                (this.slotId > 0 && key.includes(`sessionData${this.slotId}`)) ||
+                key.includes("sessionData")
+            ) {
                 currentSessionData = window.localStorage.getItem(key);
                 break;
             }
         }
         if (currentSessionData) {
-            this.sessionData = JSON.parse(CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8));
-            console.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+            this.sessionData = JSON.parse(
+                CryptoJS.AES.decrypt(currentSessionData, this.saveKey).toString(CryptoJS.enc.Utf8)
+            );
+            if (window.roguedex) {
+                if (window.roguedex.developmentENV) {
+                    roguedexLogger.debug("Got session data", this.sessionData, "for slot id", this.slotId);
+                }
+            } else {
+                console.debug("[RogueDex] Got session data", this.sessionData, "for slot id", this.slotId);
+            }
         } else {
             this.sessionData = {};
         }
@@ -134,17 +145,18 @@ class LocalStorageClass {
                 scaleFactor: 1,
                 showEnemies: true,
                 showParty: true,
-                statusbarPosition: 'Top',
+                statusbarPosition: "Top",
                 menuType: 1,
                 showSidebar: false,
-                sidebarPosition: 'Left',
+                sidebarPosition: "Left",
                 sidebarScaleFactor: 1,
                 sidebarCompactTypes: false,
                 bottompanelScaleFactor: 1,
                 sidebarCondenseBreakpoint: 100,
-                sidebarHideAlliesBreakpoint: 100
+                sidebarHideAlliesBreakpoint: 100,
+                enableDevLogs: false,
             };
-    
+
             // Retrieve the settings from browser storage
             browserApi.storage.sync.get(Object.keys(settingsDefaults), (data) => {
                 // Check and set default values if any setting is undefined
@@ -164,8 +176,10 @@ class LocalStorageClass {
      * @returns {object} The decrypted player data.
      */
     getPlayerData() {
-        const localStorageData = window.localStorage.getItem(this.getDataKey('data_'));
-        const decryptedString = CryptoJS.AES.decrypt(localStorageData, this.saveKey).toString(CryptoJS.enc.Utf8);
+        const localStorageData = window.localStorage.getItem(this.getDataKey("data_"));
+        const decryptedString = CryptoJS.AES.decrypt(localStorageData, this.saveKey).toString(
+            CryptoJS.enc.Utf8
+        );
         return JSON.parse(decryptedString);
     }
 

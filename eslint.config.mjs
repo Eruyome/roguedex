@@ -1,26 +1,25 @@
-import { FlatCompat } from '@eslint/eslintrc'
-import { fixupConfigRules } from '@eslint/compat'
+import neostandard from 'neostandard'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
-const compat = new FlatCompat()
-
 export default [
-    ...fixupConfigRules(
-        compat.config({
-            extends: ['standard'],
-        })
-    ),
+	...neostandard({
+		"noStyle" : true,
+	}),
 	eslintConfigPrettier,
-    {
-        rules: {
+	{
+		ignores: ["src/libs/*", "temp/libs/*"]
+	},
+	{
+		rules: {
             'no-undef': 'warn',
             'no-tabs': 'warn',
             'no-unused-vars': ['warn', { 'vars': 'all', 'args': 'after-used' }],
             'no-mixed-spaces-and-tabs': 'warn',
+            'no-useless-escape' : 'warn',
             eqeqeq: 'warn',
         }
     },
-	{
+    {
 		languageOptions: {
 			globals: {
 				"browser": true,
@@ -33,7 +32,6 @@ export default [
 				"PokemonMapperClass": true,
 				"LocalStorageClass": true,
 				"PokemonIconDrawer": true,
-				"PokemonMapperClass": true,
 				"UIController": true,
 				"XMLHttpRequest": "readonly",
 				"MutationObserver": "readonly",
@@ -65,10 +63,9 @@ export default [
                 "classMap": "readonly",
                 "styleMap": "readonly",
 				"browserApi": "readonly",
+				"roguedexLogger": "readonly",
+				"roguedex": "readonly",
 			}
 		}
-	},
-	{
-		ignores: ["src/libs/*"]
 	}
 ]
